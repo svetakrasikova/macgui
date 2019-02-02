@@ -11,6 +11,8 @@
 		1411BE922203D8FB009BEE1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411BE912203D8FB009BEE1D /* ViewController.swift */; };
 		1411BE942203D8FC009BEE1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1411BE932203D8FC009BEE1D /* Assets.xcassets */; };
 		1411BE972203D8FC009BEE1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1411BE952203D8FC009BEE1D /* Main.storyboard */; };
+		1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */; };
+		1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEAD220524E9009BEE1D /* EditorTools.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		1411BE962203D8FC009BEE1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1411BE982203D8FC009BEE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1411BE992203D8FC009BEE1D /* macgui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macgui.entitlements; sourceTree = "<group>"; };
+		1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnalysisLogView.storyboard; sourceTree = "<group>"; };
+		1411BEAD220524E9009BEE1D /* EditorTools.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditorTools.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 				1411BE912203D8FB009BEE1D /* ViewController.swift */,
 				1411BE932203D8FC009BEE1D /* Assets.xcassets */,
 				1411BE952203D8FC009BEE1D /* Main.storyboard */,
+				1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */,
+				1411BEAD220524E9009BEE1D /* EditorTools.storyboard */,
 				1411BE982203D8FC009BEE1D /* Info.plist */,
 				1411BE992203D8FC009BEE1D /* macgui.entitlements */,
 			);
@@ -122,6 +128,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1411BE942203D8FC009BEE1D /* Assets.xcassets in Resources */,
+				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
+				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
 				1411BE972203D8FC009BEE1D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
