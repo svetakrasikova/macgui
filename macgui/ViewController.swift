@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  macgui
+//  RanchForecastSplit
 //
-//  Created by Svetlana Krasikova on 1/31/19.
+//  Created by Svetlana Krasikova on 1/24/19.
 //  Copyright © 2019 Svetlana Krasikova. All rights reserved.
 //
 
@@ -21,7 +21,5 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
-
-
+    
 }
-
