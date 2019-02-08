@@ -10,16 +10,21 @@ import Cocoa
 
 class AnalysisViewController: NSViewController {
    
+    let imageLoader = ImageLoader(folder: "toolImages")
+    
     enum Appearance {
         static let maxStickerDimension: CGFloat = 150.0
     }
     
+    // Collection view of tools
     @IBOutlet weak var toolView: NSCollectionView!
     
     //Subviews of Analysis Edit View
     @IBOutlet weak var targetLayer: NSView!
     @IBOutlet var destinationView: DestinationView!
     @IBOutlet weak var invitationLabel: NSTextField!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,28 +44,19 @@ class AnalysisViewController: NSViewController {
 
 extension AnalysisViewController: NSCollectionViewDataSource {
     
-    static let tool = "Tool"
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        //return the number of images in toolImages
+        return imageLoader.getImagesCount()
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = toolView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: AnalysisViewController.tool), for: indexPath)
-        return item
+        let tool = toolView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Tool"), for: indexPath) as! Tool
+        tool.imageFile = imageLoader.getImageFileForPathIndex(indexPath: indexPath)
+        return tool
     }
     
     
 }
-
-extension AnalysisViewController: NSCollectionViewDelegate {
-
-    func collectionView(collectionView: NSCollectionView, canDragItemsAtIndexes indexes: NSIndexSet, withEvent event: NSEvent) -> Bool {
-        return true
-    }
-
-}
-
-
 
 extension AnalysisViewController: DestinationViewDelegate{
     

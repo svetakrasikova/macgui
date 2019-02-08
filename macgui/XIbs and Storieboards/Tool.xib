@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="Tool" customModule="macgui" customModuleProvider="target">
             <connections>
+                <outlet property="imageView" destination="qnY-Vw-NmR" id="YVE-Mx-hU9"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -23,7 +24,7 @@
                         <constraint firstAttribute="height" constant="50" id="0tL-s8-nAX"/>
                         <constraint firstAttribute="width" constant="50" id="lQ2-GR-lFy"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="tool_simulate" id="sTf-dR-Bcp"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="sTf-dR-Bcp"/>
                 </imageView>
             </subviews>
             <constraints>
@@ -32,15 +33,8 @@
                 <constraint firstAttribute="trailing" secondItem="qnY-Vw-NmR" secondAttribute="trailing" id="Sfs-GL-H1q"/>
                 <constraint firstItem="qnY-Vw-NmR" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="nNv-uT-4l5"/>
             </constraints>
-            <point key="canvasLocation" x="388" y="209"/>
+            <point key="canvasLocation" x="-53" y="7"/>
         </customView>
-        <customObject id="GAR-ud-GD8" userLabel="Tool" customClass="Tool" customModule="macgui" customModuleProvider="target">
-            <connections>
-                <outlet property="imageView" destination="qnY-Vw-NmR" id="7VI-mQ-qe8"/>
-            </connections>
-        </customObject>
+        <customObject id="GAR-ud-GD8" customClass="Tool" customModule="macgui" customModuleProvider="target"/>
     </objects>
-    <resources>
-        <image name="tool_simulate" width="512" height="512"/>
-    </resources>
 </document>
