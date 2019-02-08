@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="Tool" customModule="macgui" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qnY-Vw-NmR">
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="0tL-s8-nAX"/>
+                        <constraint firstAttribute="width" constant="50" id="lQ2-GR-lFy"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="tool_simulate" id="sTf-dR-Bcp"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="qnY-Vw-NmR" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="4lx-x2-DwR"/>
+                <constraint firstAttribute="bottom" secondItem="qnY-Vw-NmR" secondAttribute="bottom" id="C5W-GY-tY3"/>
+                <constraint firstAttribute="trailing" secondItem="qnY-Vw-NmR" secondAttribute="trailing" id="Sfs-GL-H1q"/>
+                <constraint firstItem="qnY-Vw-NmR" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="nNv-uT-4l5"/>
+            </constraints>
+            <point key="canvasLocation" x="388" y="209"/>
+        </customView>
+        <customObject id="GAR-ud-GD8" userLabel="Tool" customClass="Tool" customModule="macgui" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="qnY-Vw-NmR" id="7VI-mQ-qe8"/>
+            </connections>
+        </customObject>
+    </objects>
+    <resources>
+        <image name="tool_simulate" width="512" height="512"/>
+    </resources>
+</document>
