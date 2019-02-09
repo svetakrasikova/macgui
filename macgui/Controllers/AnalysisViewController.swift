@@ -34,13 +34,25 @@ class AnalysisViewController: NSViewController {
     
     func registerForDragAndDrop() {
         toolView.registerForDraggedTypes([NSPasteboard.PasteboardType.URL])
-       
+        // Enable dragging items within and into the collection view
         toolView.setDraggingSourceOperationMask(NSDragOperation.every, forLocal: true)
-  
+        // Enabled dragging items from the collection view to other applications
         toolView.setDraggingSourceOperationMask(NSDragOperation.every, forLocal: false)
     }
     
 }
+
+extension AnalysisViewController: NSCollectionViewDelegate {
+    func collectionView(_ collectionView: NSCollectionView, canDragItemsAt indexes: IndexSet, with event: NSEvent) -> Bool {
+        return true
+    }
+    func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
+        let imageFile = imageLoader.getImageFileForPathIndex(indexPath: indexPath as IndexPath)
+        return imageFile.url.absoluteURL as NSPasteboardWriting
+    }
+}
+
+
 
 extension AnalysisViewController: NSCollectionViewDataSource {
     

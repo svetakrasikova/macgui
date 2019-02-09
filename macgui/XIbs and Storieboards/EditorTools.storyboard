@@ -56,7 +56,7 @@
                                             <rect key="frame" x="1" y="1" width="563" height="78"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <collectionView selectable="YES" allowsEmptySelection="NO" id="Ck1-Dw-Yiu">
+                                                <collectionView selectable="YES" id="Ck1-Dw-Yiu">
                                                     <rect key="frame" x="0.0" y="0.0" width="563" height="158"/>
                                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="r3o-WX-kRm">
@@ -65,6 +65,7 @@
                                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
                                                         <outlet property="dataSource" destination="PZO-ha-IhC" id="YyY-iH-LNO"/>
+                                                        <outlet property="delegate" destination="PZO-ha-IhC" id="AmJ-Zy-kTT"/>
                                                     </connections>
                                                 </collectionView>
                                             </subviews>
