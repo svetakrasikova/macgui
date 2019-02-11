@@ -9,7 +9,6 @@
 import Cocoa
 
 //Methods to be implemented by the drag and drop delegate of the destination view
-
 protocol DestinationViewDelegate {
     func processImageURLs(_ urls: [URL], center: NSPoint)
     func processImage(_ image: NSImage, center: NSPoint)
@@ -18,7 +17,7 @@ protocol DestinationViewDelegate {
 class DestinationView: NSView {
    
     enum Appearance {
-        static let lineWidth: CGFloat = 10.0
+        static let selectionLineWidth: CGFloat = 10.0
     }
     
     var delegate: DestinationViewDelegate?
@@ -73,7 +72,6 @@ class DestinationView: NSView {
         
         isReceivingDrag = false
         let pasteBoard = draggingInfo.draggingPasteboard
-        
         let point = convert(draggingInfo.draggingLocation, from: nil)
         if let urls = pasteBoard.readObjects(forClasses: [NSURL.self], options:filteringOptions) as? [URL], urls.count > 0 {
             delegate?.processImageURLs(urls, center: point)
@@ -87,9 +85,8 @@ class DestinationView: NSView {
         
         if isReceivingDrag {
             NSColor.selectedControlColor.set()
-            
-            let path = NSBezierPath(rect:bounds)
-            path.lineWidth = Appearance.lineWidth
+            let path = NSBezierPath(rect: bounds)
+            path.lineWidth = Appearance.selectionLineWidth
             path.stroke()
         }
     }

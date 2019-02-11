@@ -13,7 +13,7 @@ class AnalysisViewController: NSViewController {
     let imageLoader = ImageLoader(folder: "toolImages")
     
     enum Appearance {
-        static let maxStickerDimension: CGFloat = 150.0
+        static let maxStickerDimension: CGFloat = 80.0
     }
     
     // Collection view of tools
@@ -75,16 +75,15 @@ extension AnalysisViewController: DestinationViewDelegate{
     func processImageURLs(_ urls: [URL], center: NSPoint) {
         for (_,url) in urls.enumerated() {
             if let image = NSImage(contentsOf: url) {
+                //  create an image subview of the drag and drop target layer and add the dragged image
                 processImage(image, center: center)
             }
         }
     }
     
     func processImage(_ image: NSImage, center: NSPoint) {
-        
         invitationLabel.isHidden = true
         let constrainedSize = image.aspectFitSizeForMaxDimension(Appearance.maxStickerDimension)
-
         let subview = NSImageView(frame:NSRect(x: center.x - constrainedSize.width/2, y: center.y - constrainedSize.height/2, width: constrainedSize.width, height: constrainedSize.height))
         subview.image = image
         targetLayer.addSubview(subview)
