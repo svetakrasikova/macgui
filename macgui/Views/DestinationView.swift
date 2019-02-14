@@ -10,6 +10,7 @@ import Cocoa
 
 //Methods to be implemented by the drag and drop delegate of the destination view
 protocol DestinationViewDelegate {
+    
     func processImageURLs(_ urls: [URL], center: NSPoint)
     func processImage(_ image: NSImage, center: NSPoint)
 }

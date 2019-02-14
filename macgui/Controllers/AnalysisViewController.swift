@@ -9,18 +9,16 @@
 import Cocoa
 
 class AnalysisViewController: NSViewController {
-   
-    let imageLoader = ImageLoader(folder: "toolImages")
+
     
     enum Appearance {
-        static let maxStickerDimension: CGFloat = 80.0
+        static let maxStickerDimension: CGFloat = 50.0
     }
     
-    // Collection view of tools
-    @IBOutlet weak var toolView: NSCollectionView!
+    let imageLoader = ImageLoader(folder: "toolImages")
+    var indexPathsOfItemsBeingDragged: Set<NSIndexPath>!
     
-    //Subviews of Analysis Edit View
-    @IBOutlet weak var targetLayer: NSView!
+    @IBOutlet weak var toolView: NSCollectionView!
     @IBOutlet var destinationView: DestinationView!
     @IBOutlet weak var invitationLabel: NSTextField!
     
@@ -30,29 +28,32 @@ class AnalysisViewController: NSViewController {
         super.viewDidLoad()
         destinationView.delegate = self
         registerForDragAndDrop()
+    
     }
     
     func registerForDragAndDrop() {
         toolView.registerForDraggedTypes([NSPasteboard.PasteboardType.URL])
-        // Enable dragging items within and into the collection view
-        toolView.setDraggingSourceOperationMask(NSDragOperation.every, forLocal: true)
-        // Enabled dragging items from the collection view to other applications
-        toolView.setDraggingSourceOperationMask(NSDragOperation.every, forLocal: false)
+        toolView.setDraggingSourceOperationMask(.every, forLocal: true)
+        toolView.setDraggingSourceOperationMask(.every, forLocal: false)
     }
     
 }
+
+// MARK: - NSCollectionViewDelegate methods for handling drag from the collection view
 
 extension AnalysisViewController: NSCollectionViewDelegate {
     func collectionView(_ collectionView: NSCollectionView, canDragItemsAt indexes: IndexSet, with event: NSEvent) -> Bool {
         return true
     }
     func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
+        
         let imageFile = imageLoader.getImageFileForPathIndex(indexPath: indexPath as IndexPath)
-        return imageFile.url.absoluteURL as NSPasteboardWriting
+        return imageFile.url as NSURL
     }
+    
 }
 
-
+// MARK: - NSCollectionViewDataSource methods
 
 extension AnalysisViewController: NSCollectionViewDataSource {
     
@@ -70,23 +71,27 @@ extension AnalysisViewController: NSCollectionViewDataSource {
     
 }
 
+// MARK: - DestinationViewDelegate methods for handling drop on the canvas
+
 extension AnalysisViewController: DestinationViewDelegate{
     
     func processImageURLs(_ urls: [URL], center: NSPoint) {
         for (_,url) in urls.enumerated() {
             if let image = NSImage(contentsOf: url) {
-                //  create an image subview of the drag and drop target layer and add the dragged image
                 processImage(image, center: center)
             }
+
         }
     }
     
     func processImage(_ image: NSImage, center: NSPoint) {
         invitationLabel.isHidden = true
         let constrainedSize = image.aspectFitSizeForMaxDimension(Appearance.maxStickerDimension)
-        let subview = NSImageView(frame:NSRect(x: center.x - constrainedSize.width/2, y: center.y - constrainedSize.height/2, width: constrainedSize.width, height: constrainedSize.height))
-        subview.image = image
-        targetLayer.addSubview(subview)
+        let frame = NSRect(x: center.x - constrainedSize.width/2, y: center.y - constrainedSize.height/2, width: constrainedSize.width, height: constrainedSize.height)
+        let canvasTool = CanvasTool(image: image, frame: frame)
+        destinationView.addSubview(canvasTool.view)
+     
         
-    }
+}
+
 }

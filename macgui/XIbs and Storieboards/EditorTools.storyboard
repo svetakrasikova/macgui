@@ -20,35 +20,20 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="b0p-ds-ZMm">
                                         <rect key="frame" x="0.0" y="80" width="565" height="639"/>
                                         <subviews>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="hiW-s6-E8u" userLabel="Target Layer">
-                                                <rect key="frame" x="0.0" y="0.0" width="565" height="639"/>
-                                            </customView>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bet-MA-ga3">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bet-MA-ga3">
                                                 <rect key="frame" x="200" y="307" width="166" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Drag Tools Here" id="xR8-q1-L9S">
                                                     <font key="font" metaFont="systemHeavy" size="21"/>
                                                     <color key="textColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="VBn-a0-C6A" customClass="DestinationView" customModule="macgui" customModuleProvider="target">
+                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBn-a0-C6A" customClass="DestinationView" customModule="macgui" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="565" height="639"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             </customView>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="VBn-a0-C6A" firstAttribute="leading" secondItem="hiW-s6-E8u" secondAttribute="leading" id="0T7-JS-6Id"/>
-                                            <constraint firstItem="VBn-a0-C6A" firstAttribute="top" secondItem="hiW-s6-E8u" secondAttribute="top" id="1Vl-Cx-BuM"/>
-                                            <constraint firstItem="VBn-a0-C6A" firstAttribute="centerY" secondItem="bet-MA-ga3" secondAttribute="centerY" id="9g1-7R-F3S"/>
-                                            <constraint firstItem="VBn-a0-C6A" firstAttribute="trailing" secondItem="hiW-s6-E8u" secondAttribute="trailing" id="AIF-ui-zFY"/>
-                                            <constraint firstItem="bet-MA-ga3" firstAttribute="centerX" secondItem="b0p-ds-ZMm" secondAttribute="centerX" id="FqO-dY-Gkg"/>
-                                            <constraint firstItem="bet-MA-ga3" firstAttribute="centerY" secondItem="b0p-ds-ZMm" secondAttribute="centerY" id="JSx-Ff-ArA"/>
-                                            <constraint firstItem="VBn-a0-C6A" firstAttribute="top" secondItem="b0p-ds-ZMm" secondAttribute="top" id="K9R-9M-Hc2"/>
-                                            <constraint firstItem="VBn-a0-C6A" firstAttribute="centerY" secondItem="b0p-ds-ZMm" secondAttribute="centerY" id="Pd4-gm-Gyb"/>
-                                            <constraint firstItem="VBn-a0-C6A" firstAttribute="leading" secondItem="b0p-ds-ZMm" secondAttribute="leading" id="RuP-Un-Zde"/>
-                                            <constraint firstItem="VBn-a0-C6A" firstAttribute="bottom" secondItem="hiW-s6-E8u" secondAttribute="bottom" id="a3W-2O-ME5"/>
-                                            <constraint firstItem="VBn-a0-C6A" firstAttribute="centerX" secondItem="b0p-ds-ZMm" secondAttribute="centerX" id="nS0-UW-eV7"/>
-                                            <constraint firstItem="VBn-a0-C6A" firstAttribute="centerX" secondItem="bet-MA-ga3" secondAttribute="centerX" id="wjH-lz-NEh"/>
-                                        </constraints>
                                     </customView>
                                     <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0V-Tl-PwD">
                                         <rect key="frame" x="0.0" y="0.0" width="565" height="80"/>
@@ -81,28 +66,27 @@
                                     </scrollView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="b0p-ds-ZMm" secondAttribute="bottom" constant="80" id="4UI-NP-Zb2"/>
-                                    <constraint firstItem="b0p-ds-ZMm" firstAttribute="leading" secondItem="bJK-W9-Icp" secondAttribute="leading" id="8RD-wZ-sVh"/>
-                                    <constraint firstItem="b0p-ds-ZMm" firstAttribute="trailing" secondItem="s0V-Tl-PwD" secondAttribute="trailing" id="cIq-bf-Vn4"/>
-                                    <constraint firstAttribute="bottom" secondItem="s0V-Tl-PwD" secondAttribute="bottom" id="ex1-8b-sCM"/>
-                                    <constraint firstItem="b0p-ds-ZMm" firstAttribute="top" secondItem="bJK-W9-Icp" secondAttribute="top" id="sAJ-aL-dbO"/>
-                                    <constraint firstAttribute="trailing" secondItem="b0p-ds-ZMm" secondAttribute="trailing" id="wrf-UF-6c5"/>
-                                    <constraint firstItem="b0p-ds-ZMm" firstAttribute="leading" secondItem="s0V-Tl-PwD" secondAttribute="leading" id="x2m-AC-VGx"/>
-                                    <constraint firstItem="s0V-Tl-PwD" firstAttribute="top" secondItem="b0p-ds-ZMm" secondAttribute="bottom" id="yJR-GL-XDI"/>
+                                    <constraint firstItem="b0p-ds-ZMm" firstAttribute="leading" secondItem="s0V-Tl-PwD" secondAttribute="leading" id="8bB-yR-qVK"/>
+                                    <constraint firstItem="s0V-Tl-PwD" firstAttribute="top" secondItem="b0p-ds-ZMm" secondAttribute="bottom" id="Adj-Cl-Ufp"/>
+                                    <constraint firstAttribute="bottom" secondItem="s0V-Tl-PwD" secondAttribute="bottom" id="Je3-d8-bCN"/>
+                                    <constraint firstAttribute="trailing" secondItem="b0p-ds-ZMm" secondAttribute="trailing" id="OcT-as-u7J"/>
+                                    <constraint firstAttribute="bottom" secondItem="b0p-ds-ZMm" secondAttribute="bottom" constant="80" id="QT9-DT-kSL"/>
+                                    <constraint firstItem="b0p-ds-ZMm" firstAttribute="leading" secondItem="bJK-W9-Icp" secondAttribute="leading" id="eac-LJ-2Jm"/>
+                                    <constraint firstItem="b0p-ds-ZMm" firstAttribute="trailing" secondItem="s0V-Tl-PwD" secondAttribute="trailing" id="ehK-Xf-lMG"/>
+                                    <constraint firstItem="b0p-ds-ZMm" firstAttribute="top" secondItem="bJK-W9-Icp" secondAttribute="top" id="yAH-Ne-svp"/>
                                 </constraints>
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="bJK-W9-Icp" secondAttribute="bottom" id="8T5-gi-1Oo"/>
-                            <constraint firstAttribute="trailing" secondItem="bJK-W9-Icp" secondAttribute="trailing" id="QIR-Z1-bPp"/>
-                            <constraint firstItem="bJK-W9-Icp" firstAttribute="leading" secondItem="M26-vW-J9Z" secondAttribute="leading" id="k9p-i7-0aD"/>
-                            <constraint firstItem="bJK-W9-Icp" firstAttribute="top" secondItem="M26-vW-J9Z" secondAttribute="top" id="s6F-vE-Opx"/>
+                            <constraint firstAttribute="trailing" secondItem="bJK-W9-Icp" secondAttribute="trailing" id="KNn-FR-iP8"/>
+                            <constraint firstItem="bJK-W9-Icp" firstAttribute="leading" secondItem="M26-vW-J9Z" secondAttribute="leading" id="QIa-hg-OEs"/>
+                            <constraint firstItem="bJK-W9-Icp" firstAttribute="top" secondItem="M26-vW-J9Z" secondAttribute="top" id="bTJ-lv-YTV"/>
+                            <constraint firstAttribute="bottom" secondItem="bJK-W9-Icp" secondAttribute="bottom" id="tk2-c6-O3I"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="destinationView" destination="VBn-a0-C6A" id="Heg-Ah-iwG"/>
                         <outlet property="invitationLabel" destination="bet-MA-ga3" id="UP6-rY-JIr"/>
-                        <outlet property="targetLayer" destination="hiW-s6-E8u" id="WJn-Vz-XFs"/>
                         <outlet property="toolView" destination="Ck1-Dw-Yiu" id="yZh-99-5SO"/>
                     </connections>
                 </viewController>
