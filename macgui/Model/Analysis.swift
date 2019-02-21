@@ -21,6 +21,11 @@ class Analysis: NSObject {
         self.name = name
         super.init()
     }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Analysis(name: name)
+        return copy
+    }
 
 }
 

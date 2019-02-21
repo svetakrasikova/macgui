@@ -38,6 +38,7 @@
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
+                                                    <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="name"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="SCi-Av-KA4">
@@ -71,6 +72,8 @@
                                             <connections>
                                                 <binding destination="P95-GE-ATU" name="content" keyPath="arrangedObjects" id="3Yo-E0-wfM"/>
                                                 <binding destination="P95-GE-ATU" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="3Yo-E0-wfM" id="tJC-bV-N8x"/>
+                                                <binding destination="P95-GE-ATU" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="tJC-bV-N8x" id="TUc-6T-M6C"/>
+                                                <outlet property="menu" destination="49R-Sc-pYD" id="pG5-7o-Ky7"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -115,6 +118,7 @@
                     <connections>
                         <outlet property="addRemoveButtons" destination="3YB-9X-49D" id="s8D-0O-Bhq"/>
                         <outlet property="arrayController" destination="P95-GE-ATU" id="RsP-9j-0yM"/>
+                        <outlet property="contextualMenu" destination="49R-Sc-pYD" id="qkm-om-bWO"/>
                     </connections>
                 </viewController>
                 <customObject id="QsT-Jm-rUI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -123,6 +127,16 @@
                         <binding destination="zIC-UL-v7m" name="contentArray" keyPath="self.analyses" id="cUR-Vh-2fy"/>
                     </connections>
                 </arrayController>
+                <menu id="49R-Sc-pYD">
+                    <items>
+                        <menuItem title="Duplicate" id="1hS-uw-u50">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuDuplicateClicked:" target="zIC-UL-v7m" id="8Uq-vc-eDh"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="357" y="404.5"/>
         </scene>

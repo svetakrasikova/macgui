@@ -12,11 +12,16 @@ class NavigatorViewController: NSViewController {
     
     @IBOutlet weak var addRemoveButtons: NSSegmentedControl!
     @IBOutlet weak var arrayController : NSArrayController!
+    @IBOutlet var contextualMenu: NSMenu!
     
     @objc dynamic var analyses: [Analysis] = [Analysis()]
     
-    //  TODO: Add sorting analysis (maybe automatically on insertion)
-    //  TODO: Add additional remove/duplicate
+    // Implement copy
+    @IBAction func menuDuplicateClicked(_ sender: Any) {
+        arrayController.addObject(Analysis())
+        
+    }
+
     @IBAction func addRemoveButtonClicked(_ sender: NSSegmentedControl) {
         switch sender.selectedSegment {
         case 0:
