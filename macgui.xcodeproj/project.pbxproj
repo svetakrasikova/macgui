@@ -23,6 +23,9 @@
 		1452355F220CCC5800A85186 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355E220CCC5800A85186 /* Helpers.swift */; };
 		1452356B220CE9AC00A85186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1452356A220CE9AC00A85186 /* Assets.xcassets */; };
 		14523574220E100B00A85186 /* ImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14523573220E100B00A85186 /* ImageFile.swift */; };
+		14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFC2216487300021607 /* NavigatorViewController.swift */; };
+		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
+		14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE00221E484000021607 /* ControllerExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		1452355E220CCC5800A85186 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		1452356A220CE9AC00A85186 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14523573220E100B00A85186 /* ImageFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFile.swift; sourceTree = "<group>"; };
+		14D6DDFC2216487300021607 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = macgui/Controllers/NavigatorViewController.swift; sourceTree = SOURCE_ROOT; };
+		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
+		14D6DE00221E484000021607 /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +88,7 @@
 				14523575220E101400A85186 /* Model */,
 				1452356D220DF57800A85186 /* Controllers */,
 				1452356E220DF5C400A85186 /* Views */,
-				1452356C220DF55C00A85186 /* Helpers */,
+				1452356C220DF55C00A85186 /* Extensions */,
 				1452356F220DF61600A85186 /* XIbs and Storieboards */,
 				1411BE982203D8FC009BEE1D /* Info.plist */,
 				144CC4A3220E324D003311E4 /* toolImages */,
@@ -90,12 +96,13 @@
 			path = macgui;
 			sourceTree = "<group>";
 		};
-		1452356C220DF55C00A85186 /* Helpers */ = {
+		1452356C220DF55C00A85186 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				1452355E220CCC5800A85186 /* Helpers.swift */,
+				14D6DE00221E484000021607 /* ControllerExtensions.swift */,
 			);
-			path = Helpers;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1452356D220DF57800A85186 /* Controllers */ = {
@@ -104,6 +111,7 @@
 				1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */,
 				1411BED622052A5E009BEE1D /* ViewController.swift */,
 				1411BEE42208DDBE009BEE1D /* AnalysisViewController.swift */,
+				14D6DDFC2216487300021607 /* NavigatorViewController.swift */,
 				1411BEE62208FE91009BEE1D /* Tool.swift */,
 				144CC4BA2213CE8F003311E4 /* CanvasTool.swift */,
 			);
@@ -135,6 +143,7 @@
 				14523573220E100B00A85186 /* ImageFile.swift */,
 				144CC4AE220E4081003311E4 /* ImageLoader.swift */,
 				144CC4B42211F228003311E4 /* ToolObject.swift */,
+				14D6DDFE22164A6E00021607 /* Analysis.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,15 +223,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				144CC4B52211F228003311E4 /* ToolObject.swift in Sources */,
+				14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */,
 				144CC4BC2213CE8F003311E4 /* CanvasTool.swift in Sources */,
 				1411BED922052A5E009BEE1D /* ViewController.swift in Sources */,
 				1452355F220CCC5800A85186 /* Helpers.swift in Sources */,
+				14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */,
 				1411BE902203D8FB009BEE1D /* AppDelegate.swift in Sources */,
 				1452355B220CB79800A85186 /* DestinationView.swift in Sources */,
 				1411BEE52208DDBE009BEE1D /* AnalysisViewController.swift in Sources */,
 				144CC4AF220E4081003311E4 /* ImageLoader.swift in Sources */,
 				14523574220E100B00A85186 /* ImageFile.swift in Sources */,
 				1411BEE82208FE91009BEE1D /* Tool.swift in Sources */,
+				14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
