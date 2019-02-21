@@ -20,9 +20,8 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="b0p-ds-ZMm">
                                         <rect key="frame" x="0.0" y="80" width="565" height="639"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bet-MA-ga3">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bet-MA-ga3">
                                                 <rect key="frame" x="200" y="307" width="166" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Drag Tools Here" id="xR8-q1-L9S">
                                                     <font key="font" metaFont="systemHeavy" size="21"/>
                                                     <color key="textColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
@@ -31,9 +30,13 @@
                                             </textField>
                                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBn-a0-C6A" customClass="DestinationView" customModule="macgui" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="565" height="639"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </customView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="bet-MA-ga3" firstAttribute="centerX" secondItem="b0p-ds-ZMm" secondAttribute="centerX" id="4ng-6R-7D6"/>
+                                            <constraint firstItem="bet-MA-ga3" firstAttribute="centerY" secondItem="b0p-ds-ZMm" secondAttribute="centerY" id="TWE-eq-qjn"/>
+                                        </constraints>
                                     </customView>
                                     <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0V-Tl-PwD">
                                         <rect key="frame" x="0.0" y="0.0" width="565" height="80"/>
