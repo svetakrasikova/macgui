@@ -17,27 +17,12 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="bJK-W9-Icp">
                                 <rect key="frame" x="0.0" y="0.0" width="565" height="719"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="b0p-ds-ZMm">
+                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="qzq-qO-3EG">
                                         <rect key="frame" x="0.0" y="80" width="565" height="639"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bet-MA-ga3">
-                                                <rect key="frame" x="200" y="307" width="166" height="25"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Drag Tools Here" id="xR8-q1-L9S">
-                                                    <font key="font" metaFont="systemHeavy" size="21"/>
-                                                    <color key="textColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBn-a0-C6A" customClass="DestinationView" customModule="macgui" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="565" height="639"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </customView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="bet-MA-ga3" firstAttribute="centerX" secondItem="b0p-ds-ZMm" secondAttribute="centerX" id="4ng-6R-7D6"/>
-                                            <constraint firstItem="bet-MA-ga3" firstAttribute="centerY" secondItem="b0p-ds-ZMm" secondAttribute="centerY" id="TWE-eq-qjn"/>
-                                        </constraints>
-                                    </customView>
+                                        <connections>
+                                            <segue destination="JbB-QB-FR9" kind="embed" id="dWG-oj-ALF"/>
+                                        </connections>
+                                    </containerView>
                                     <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0V-Tl-PwD">
                                         <rect key="frame" x="0.0" y="0.0" width="565" height="80"/>
                                         <clipView key="contentView" drawsBackground="NO" id="gCD-O3-JqV">
@@ -58,6 +43,9 @@
                                                 </collectionView>
                                             </subviews>
                                         </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="Klm-TO-Ejn"/>
+                                        </constraints>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="fbp-0N-ssr">
                                             <rect key="frame" x="1" y="144" width="233" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -69,33 +57,60 @@
                                     </scrollView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="b0p-ds-ZMm" firstAttribute="leading" secondItem="s0V-Tl-PwD" secondAttribute="leading" id="8bB-yR-qVK"/>
-                                    <constraint firstItem="s0V-Tl-PwD" firstAttribute="top" secondItem="b0p-ds-ZMm" secondAttribute="bottom" id="Adj-Cl-Ufp"/>
-                                    <constraint firstAttribute="bottom" secondItem="s0V-Tl-PwD" secondAttribute="bottom" id="Je3-d8-bCN"/>
-                                    <constraint firstAttribute="trailing" secondItem="b0p-ds-ZMm" secondAttribute="trailing" id="OcT-as-u7J"/>
-                                    <constraint firstAttribute="bottom" secondItem="b0p-ds-ZMm" secondAttribute="bottom" constant="80" id="QT9-DT-kSL"/>
-                                    <constraint firstItem="b0p-ds-ZMm" firstAttribute="leading" secondItem="bJK-W9-Icp" secondAttribute="leading" id="eac-LJ-2Jm"/>
-                                    <constraint firstItem="b0p-ds-ZMm" firstAttribute="trailing" secondItem="s0V-Tl-PwD" secondAttribute="trailing" id="ehK-Xf-lMG"/>
-                                    <constraint firstItem="b0p-ds-ZMm" firstAttribute="top" secondItem="bJK-W9-Icp" secondAttribute="top" id="yAH-Ne-svp"/>
+                                    <constraint firstItem="Ck1-Dw-Yiu" firstAttribute="top" secondItem="qzq-qO-3EG" secondAttribute="bottom" constant="1" id="Fgi-Ba-cTH"/>
+                                    <constraint firstAttribute="trailing" secondItem="qzq-qO-3EG" secondAttribute="trailing" id="Mbw-lH-y08"/>
+                                    <constraint firstItem="qzq-qO-3EG" firstAttribute="top" secondItem="bJK-W9-Icp" secondAttribute="top" id="O3j-DN-Vtm"/>
+                                    <constraint firstItem="qzq-qO-3EG" firstAttribute="leading" secondItem="bJK-W9-Icp" secondAttribute="leading" id="Z3w-lQ-Hff"/>
+                                    <constraint firstAttribute="bottom" secondItem="s0V-Tl-PwD" secondAttribute="bottom" id="dmX-6d-dx1"/>
+                                    <constraint firstAttribute="trailing" secondItem="s0V-Tl-PwD" secondAttribute="trailing" id="nl4-BV-d3J"/>
+                                    <constraint firstItem="s0V-Tl-PwD" firstAttribute="leading" secondItem="bJK-W9-Icp" secondAttribute="leading" id="tPe-vV-yLn"/>
                                 </constraints>
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="bJK-W9-Icp" secondAttribute="trailing" id="KNn-FR-iP8"/>
-                            <constraint firstItem="bJK-W9-Icp" firstAttribute="leading" secondItem="M26-vW-J9Z" secondAttribute="leading" id="QIa-hg-OEs"/>
-                            <constraint firstItem="bJK-W9-Icp" firstAttribute="top" secondItem="M26-vW-J9Z" secondAttribute="top" id="bTJ-lv-YTV"/>
-                            <constraint firstAttribute="bottom" secondItem="bJK-W9-Icp" secondAttribute="bottom" id="tk2-c6-O3I"/>
+                            <constraint firstAttribute="bottom" secondItem="bJK-W9-Icp" secondAttribute="bottom" id="AdO-0m-vOj"/>
+                            <constraint firstItem="bJK-W9-Icp" firstAttribute="leading" secondItem="M26-vW-J9Z" secondAttribute="leading" id="bec-Ab-ynE"/>
+                            <constraint firstItem="bJK-W9-Icp" firstAttribute="top" secondItem="M26-vW-J9Z" secondAttribute="top" id="fPh-13-5IS"/>
+                            <constraint firstAttribute="trailing" secondItem="bJK-W9-Icp" secondAttribute="trailing" id="k9A-5d-5Ws"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="destinationView" destination="VBn-a0-C6A" id="Heg-Ah-iwG"/>
-                        <outlet property="invitationLabel" destination="bet-MA-ga3" id="UP6-rY-JIr"/>
                         <outlet property="toolView" destination="Ck1-Dw-Yiu" id="yZh-99-5SO"/>
                     </connections>
                 </viewController>
                 <customObject id="sLi-ej-NgP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="104.5" y="1643.5"/>
+            <point key="canvasLocation" x="-58" y="1644"/>
+        </scene>
+        <!--Canvas View Controller-->
+        <scene sceneID="0MA-Qe-GKB">
+            <objects>
+                <viewController id="JbB-QB-FR9" customClass="CanvasViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Vej-Ld-BJf" customClass="CanvasView" customModule="macgui" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sq8-aF-l7S">
+                                <rect key="frame" x="142" y="138" width="166" height="25"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Drag Tools Here" id="lW8-mV-Uai">
+                                    <font key="font" metaFont="systemHeavy" size="21"/>
+                                    <color key="textColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Sq8-aF-l7S" firstAttribute="centerX" secondItem="Vej-Ld-BJf" secondAttribute="centerX" id="Las-bS-tNP"/>
+                            <constraint firstItem="Sq8-aF-l7S" firstAttribute="centerY" secondItem="Vej-Ld-BJf" secondAttribute="centerY" id="OUN-OB-LVY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="invitationLabel" destination="Sq8-aF-l7S" id="wPP-d3-Wpu"/>
+                    </connections>
+                </viewController>
+                <customObject id="wz6-5F-dTq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="536" y="1655"/>
         </scene>
     </scenes>
 </document>

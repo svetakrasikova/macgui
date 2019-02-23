@@ -11,6 +11,7 @@ import Cocoa
 class Analysis: NSObject {
     
     @objc dynamic var name: String
+    @objc dynamic var tools: [ToolObject] = []
     
     override init(){
         name = "untitled analysis"

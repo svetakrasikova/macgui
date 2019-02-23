@@ -734,10 +734,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Main Split View Controller-->
         <scene sceneID="Vg7-IT-hwr">
             <objects>
-                <splitViewController id="RBs-wf-Pwn" sceneMemberID="viewController">
+                <splitViewController id="RBs-wf-Pwn" customClass="MainSplitViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="078-nC-sWz"/>
                         <splitViewItem id="x8X-Ae-GWW"/>

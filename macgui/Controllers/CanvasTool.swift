@@ -10,7 +10,6 @@ import Cocoa
 
 class CanvasTool: NSViewController {
     
-    weak var tool: ToolObject?
     var frame: NSRect
     var image: NSImage
     

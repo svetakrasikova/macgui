@@ -8,6 +8,12 @@
 
 import Cocoa
 
+protocol NavigatorViewControllerDelegate: class {
+    func navigatorViewController(viewController: NavigatorViewController,
+                                  selectedAnalysis: Analysis?) -> Void
+    }
+    
+
 class NavigatorViewController: NSViewController {
     
     @IBOutlet weak var addRemoveButtons: NSSegmentedControl!
@@ -15,8 +21,14 @@ class NavigatorViewController: NSViewController {
     @IBOutlet var contextualMenu: NSMenu!
     
     @objc dynamic var analyses: [Analysis] = [Analysis()]
+    weak var delegate: NavigatorViewControllerDelegate? = nil
     
-    // Implement copy
+    @IBAction func selectAnalysis(sender: AnyObject){
+        let selectedAnalysis = arrayController.selectedObjects.first as! Analysis?
+        delegate?.navigatorViewController(viewController: self, selectedAnalysis: selectedAnalysis)
+    }
+    
+    // TODO: Implement copy
     @IBAction func menuDuplicateClicked(_ sender: Any) {
         arrayController.addObject(Analysis())
         

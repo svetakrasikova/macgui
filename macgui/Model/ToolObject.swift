@@ -8,12 +8,14 @@
 
 import Cocoa
 
-//Generic class for the tools
+//Generic class for tools
 class ToolObject: NSObject{
     
     var name: String?
+    var frameOnCanvas: NSRect
     
-    init(name: String){
+    init(name: String, frameOnCanvas: NSRect){
         self.name = name
+        self.frameOnCanvas = frameOnCanvas
     }
 }

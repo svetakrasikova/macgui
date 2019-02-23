@@ -8,15 +8,17 @@
 
 import Cocoa
 
-// image and its name
+
 struct ImageFile {
     var url: URL
-    var image: NSImage
-    var name: String
+    var image: NSImage {
+        return NSImage(byReferencing: url)
+    }
+    var name: String {
+        return url.lastPathComponent
+    }
     
     init(url: URL){
-        self.name = url.lastPathComponent
         self.url = url
-        self.image = NSImage(byReferencing: url)
     }
 }

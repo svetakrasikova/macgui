@@ -70,6 +70,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action selector="selectAnalysisWithSender:" target="zIC-UL-v7m" id="Vju-Ft-HYh"/>
                                                 <binding destination="P95-GE-ATU" name="content" keyPath="arrangedObjects" id="3Yo-E0-wfM"/>
                                                 <binding destination="P95-GE-ATU" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="3Yo-E0-wfM" id="tJC-bV-N8x"/>
                                                 <binding destination="P95-GE-ATU" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="tJC-bV-N8x" id="TUc-6T-M6C"/>

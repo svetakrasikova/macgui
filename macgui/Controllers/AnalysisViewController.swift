@@ -10,23 +10,15 @@ import Cocoa
 
 class AnalysisViewController: NSViewController {
 
-    
-    enum Appearance {
-        static let maxStickerDimension: CGFloat = 50.0
-    }
-    
     let imageLoader = ImageLoader(folder: "toolImages")
     var indexPathsOfItemsBeingDragged: Set<NSIndexPath>!
     
     @IBOutlet weak var toolView: NSCollectionView!
-    @IBOutlet var destinationView: DestinationView!
-    @IBOutlet weak var invitationLabel: NSTextField!
+    @IBOutlet weak var canvasViewContainer: NSView!
     
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        destinationView.delegate = self
         registerForDragAndDrop()
     
     }
@@ -35,6 +27,10 @@ class AnalysisViewController: NSViewController {
         toolView.registerForDraggedTypes([NSPasteboard.PasteboardType.URL])
         toolView.setDraggingSourceOperationMask(.every, forLocal: true)
         toolView.setDraggingSourceOperationMask(.every, forLocal: false)
+    }
+    
+    func loadCanvasForSelectedAnalysis(_ analysis: Analysis){
+//        add a new subview for the selected analysis
     }
     
 }
@@ -71,27 +67,4 @@ extension AnalysisViewController: NSCollectionViewDataSource {
     
 }
 
-// MARK: - DestinationViewDelegate methods for handling drop on the canvas
 
-extension AnalysisViewController: DestinationViewDelegate{
-    
-    func processImageURLs(_ urls: [URL], center: NSPoint) {
-        for (_,url) in urls.enumerated() {
-            if let image = NSImage(contentsOf: url) {
-                processImage(image, center: center)
-            }
-
-        }
-    }
-    
-    func processImage(_ image: NSImage, center: NSPoint) {
-        invitationLabel.isHidden = true
-        let constrainedSize = image.aspectFitSizeForMaxDimension(Appearance.maxStickerDimension)
-        let frame = NSRect(x: center.x - constrainedSize.width/2, y: center.y - constrainedSize.height/2, width: constrainedSize.width, height: constrainedSize.height)
-        let canvasTool = CanvasTool(image: image, frame: frame)
-        destinationView.addSubview(canvasTool.view)
-     
-        
-}
-
-}

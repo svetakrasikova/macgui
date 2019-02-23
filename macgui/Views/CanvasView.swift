@@ -8,20 +8,16 @@
 
 import Cocoa
 
-//Methods to be implemented by the drag and drop delegate of the destination view
-protocol DestinationViewDelegate {
-    
-    func processImageURLs(_ urls: [URL], center: NSPoint)
-    func processImage(_ image: NSImage, center: NSPoint)
-}
 
-class DestinationView: NSView {
+
+
+class CanvasView: NSView {
    
     enum Appearance {
         static let selectionLineWidth: CGFloat = 10.0
     }
     
-    var delegate: DestinationViewDelegate?
+    var delegate: CanvasViewDelegate?
     
     //Define the data types that the destination view accepts in a dragging operation.
     var acceptableTypes: Set<NSPasteboard.PasteboardType> { return [NSPasteboard.PasteboardType.URL] }
@@ -98,6 +94,13 @@ class DestinationView: NSView {
         return nil
     }
     
+}
+
+//Delegate that handles drag and drop
+protocol CanvasViewDelegate {
+    
+    func processImageURLs(_ urls: [URL], center: NSPoint)
+    func processImage(_ image: NSImage, center: NSPoint)
 }
 
 
