@@ -11,7 +11,7 @@ import Cocoa
 class Analysis: NSObject {
     
     @objc dynamic var name: String
-    @objc dynamic var tools: [ToolObject] = []
+    var tools: [ToolObject] = []
     
     override init(){
         name = "untitled analysis"
@@ -21,6 +21,10 @@ class Analysis: NSObject {
     init(name: String){
         self.name = name
         super.init()
+    }
+    
+    func isEmpty() -> Bool {
+        return tools.isEmpty
     }
     
     func copy(with zone: NSZone? = nil) -> Any {

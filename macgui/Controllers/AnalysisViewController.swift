@@ -12,9 +12,11 @@ class AnalysisViewController: NSViewController {
 
     let imageLoader = ImageLoader(folder: "toolImages")
     var indexPathsOfItemsBeingDragged: Set<NSIndexPath>!
+    var canvasViewController: CanvasViewController? {
+        return children[0] as? CanvasViewController
+    }
     
     @IBOutlet weak var toolView: NSCollectionView!
-    @IBOutlet weak var canvasViewContainer: NSView!
     
 
     override func viewDidLoad() {
@@ -23,14 +25,26 @@ class AnalysisViewController: NSViewController {
     
     }
     
+    // access  canvas view controller. Not sure it works. maybe just access the child view controllers. Check!
+//    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toCanvasViewController" {
+//            if let canvasViewController = segue.destinationController as? CanvasViewController {
+//                self.canvasViewController = canvasViewController
+//            }
+//        }
+//    }
+//
     func registerForDragAndDrop() {
         toolView.registerForDraggedTypes([NSPasteboard.PasteboardType.URL])
         toolView.setDraggingSourceOperationMask(.every, forLocal: true)
         toolView.setDraggingSourceOperationMask(.every, forLocal: false)
     }
-    
-    func loadCanvasForSelectedAnalysis(_ analysis: Analysis){
-//        add a new subview for the selected analysis
+// Setting up the canvas according to the selected analysis in the navigator view
+    func setCanvasToDefault() {
+        canvasViewController?.analysis = nil
+    }
+    func addAnalysisToCanvas(analysis: Analysis){
+        canvasViewController?.analysis = analysis
     }
     
 }

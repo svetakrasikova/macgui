@@ -20,7 +20,7 @@
                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="qzq-qO-3EG">
                                         <rect key="frame" x="0.0" y="80" width="565" height="639"/>
                                         <connections>
-                                            <segue destination="JbB-QB-FR9" kind="embed" id="dWG-oj-ALF"/>
+                                            <segue destination="JbB-QB-FR9" kind="embed" id="RDN-IK-P6t"/>
                                         </connections>
                                     </containerView>
                                     <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0V-Tl-PwD">
@@ -90,13 +90,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sq8-aF-l7S">
+                            <textField identifier="invitationLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sq8-aF-l7S">
                                 <rect key="frame" x="142" y="138" width="166" height="25"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Drag Tools Here" id="lW8-mV-Uai">
+                                <textFieldCell key="cell" lineBreakMode="clipping" identifier="InvitationLabel" title="Drag Tools Here" id="lW8-mV-Uai">
                                     <font key="font" metaFont="systemHeavy" size="21"/>
                                     <color key="textColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <accessibility identifier="InvitationLabel"/>
                             </textField>
                         </subviews>
                         <constraints>

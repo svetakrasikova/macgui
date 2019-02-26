@@ -25,13 +25,14 @@ class MainSplitViewController: NSSplitViewController, NavigatorViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         masterViewController.delegate = self
-        // Do view setup here.
     }
     
-    //    Mark: NavigatorViewControllerDelegate
+//    MARK: NavigatorViewControllerDelegate
     func navigatorViewController(viewController: NavigatorViewController, selectedAnalysis: Analysis?) {
         if let analysis = selectedAnalysis {
-            detailViewController.loadCanvasForSelectedAnalysis(analysis)
+            detailViewController.addAnalysisToCanvas(analysis: analysis)
+        } else {
+            detailViewController.setCanvasToDefault()
         }
     }
     

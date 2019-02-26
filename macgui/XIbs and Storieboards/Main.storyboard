@@ -719,7 +719,6 @@
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="GUO-LX-cwD"/>
-                                <toolbarItem reference="aeO-Gd-B70"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>

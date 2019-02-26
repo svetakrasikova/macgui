@@ -11,11 +11,11 @@ import Cocoa
 //Generic class for tools
 class ToolObject: NSObject{
     
-    var name: String?
     var frameOnCanvas: NSRect
+    var image: NSImage
     
-    init(name: String, frameOnCanvas: NSRect){
-        self.name = name
+    init(image: NSImage, frameOnCanvas: NSRect){
         self.frameOnCanvas = frameOnCanvas
+        self.image = image
     }
 }
