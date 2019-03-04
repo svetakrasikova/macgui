@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CanvasTool: NSViewController {
+class CanvasToolController: NSViewController {
     
     var frame: NSRect
     var image: NSImage
@@ -24,7 +24,8 @@ class CanvasTool: NSViewController {
     }
     
     override func loadView() {
-        self.view = NSView()
+        self.view = CanvasToolView(image: image, frame: frame)
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()

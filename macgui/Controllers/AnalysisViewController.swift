@@ -24,16 +24,7 @@ class AnalysisViewController: NSViewController {
         registerForDragAndDrop()
     
     }
-    
-    // access  canvas view controller. Not sure it works. maybe just access the child view controllers. Check!
-//    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toCanvasViewController" {
-//            if let canvasViewController = segue.destinationController as? CanvasViewController {
-//                self.canvasViewController = canvasViewController
-//            }
-//        }
-//    }
-//
+
     func registerForDragAndDrop() {
         toolView.registerForDraggedTypes([NSPasteboard.PasteboardType.URL])
         toolView.setDraggingSourceOperationMask(.every, forLocal: true)

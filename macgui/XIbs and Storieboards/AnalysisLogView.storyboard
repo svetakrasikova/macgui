@@ -118,6 +118,7 @@
                     </view>
                     <connections>
                         <outlet property="addRemoveButtons" destination="3YB-9X-49D" id="s8D-0O-Bhq"/>
+                        <outlet property="analysesTableView" destination="TNo-lx-0sx" id="PrO-LW-uGd"/>
                         <outlet property="arrayController" destination="P95-GE-ATU" id="RsP-9j-0yM"/>
                         <outlet property="contextualMenu" destination="49R-Sc-pYD" id="qkm-om-bWO"/>
                     </connections>

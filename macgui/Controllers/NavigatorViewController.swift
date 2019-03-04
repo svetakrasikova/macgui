@@ -19,6 +19,7 @@ class NavigatorViewController: NSViewController {
     @IBOutlet weak var addRemoveButtons: NSSegmentedControl!
     @IBOutlet weak var arrayController : NSArrayController!
     @IBOutlet var contextualMenu: NSMenu!
+    @IBOutlet weak var analysesTableView: NSTableView!
     
     @objc dynamic var analyses: [Analysis] = [Analysis()]
     weak var delegate: NavigatorViewControllerDelegate? = nil
@@ -52,7 +53,8 @@ class NavigatorViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+//        let indices = IndexSet([1])
+//        analysesTableView.selectRowIndexes(indices, byExtendingSelection: false)
     }
     
 }
