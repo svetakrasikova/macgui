@@ -50,11 +50,10 @@ class NavigatorViewController: NSViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let indices = IndexSet([1])
-//        analysesTableView.selectRowIndexes(indices, byExtendingSelection: false)
+        let indices = IndexSet([0])
+        analysesTableView.selectRowIndexes(indices, byExtendingSelection: false)
     }
     
 }

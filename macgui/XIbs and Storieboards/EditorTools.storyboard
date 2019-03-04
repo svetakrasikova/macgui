@@ -90,7 +90,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField identifier="invitationLabel" hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sq8-aF-l7S">
+                            <textField identifier="invitationLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sq8-aF-l7S">
                                 <rect key="frame" x="142" y="138" width="166" height="25"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" identifier="InvitationLabel" title="Drag Tools Here" id="lW8-mV-Uai">
                                     <font key="font" metaFont="systemHeavy" size="21"/>
