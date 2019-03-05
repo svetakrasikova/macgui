@@ -8,16 +8,14 @@
 
 import Cocoa
 
-class Analysis: NSObject {
+class Analysis: NSObject, NSCopying {
     
-    @objc dynamic var name: String
+    @objc dynamic var name: String = ""
     var tools: [ToolObject] = []
     
     override init(){
-        name = "untitled analysis"
         super.init()
     }
-    
     init(name: String){
         self.name = name
         super.init()
@@ -28,7 +26,8 @@ class Analysis: NSObject {
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = Analysis(name: name)
+        let copy = Analysis()
+        copy.tools = tools
         return copy
     }
 

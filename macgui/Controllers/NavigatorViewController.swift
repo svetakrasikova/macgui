@@ -21,15 +21,15 @@ class NavigatorViewController: NSViewController {
     @IBOutlet var contextualMenu: NSMenu!
     @IBOutlet weak var analysesTableView: NSTableView!
     
-    @objc dynamic var analyses: [Analysis] = [Analysis()]
+    @objc dynamic var analyses: [Analysis] = [Analysis(name: "untitled analysis")]
     
     weak var delegate: NavigatorViewControllerDelegate? = nil
     
     
-    // TODO: Implement copy
     @IBAction func menuDuplicateClicked(_ sender: Any) {
-        arrayController.addObject(Analysis())
-        
+        if let selectedAnalysis = arrayController.selectedObjects.first as! Analysis? {
+            copyAnalysis(from: selectedAnalysis)
+        }
     }
 
     @IBAction func addRemoveButtonClicked(_ sender: NSSegmentedControl) {
@@ -75,7 +75,16 @@ class NavigatorViewController: NSViewController {
      Add a new empty analysis
      */
     func addAnalysis() {
-        let analysis = newUntitledAnalysis()
+        let analysis = Analysis(name: getUniqueAnalysisName())
+        arrayController.addObject(analysis)
+    }
+    
+    /**
+     Copy an analysis
+     */
+    func copyAnalysis(from: Analysis) {
+        let analysis = from.copy() as! Analysis
+        analysis.name = getUniqueAnalysisName()
         arrayController.addObject(analysis)
     }
     
@@ -92,12 +101,13 @@ class NavigatorViewController: NSViewController {
 extension NavigatorViewController {
     
     /**
-     Create a new Analysis prefixed with "untitled analysis" followed by the next available numeral identifier
+     Create a unique default analysis name starting with "untitled analysis" followed by the next available numerical identifier
      
-     - returns: Analysis object with a default name
+     - returns: A unique name for an analysis
      */
     
-    func newUntitledAnalysis() -> Analysis {
+    
+    func getUniqueAnalysisName() -> String {
         
         var defaultNameIndices = [Int](repeating: 0, count: analyses.count)
         
@@ -117,14 +127,14 @@ extension NavigatorViewController {
             }
         }
         if defaultNameIndices.isEmpty || defaultNameIndices[0] == 0 {
-            return Analysis()
+            return "untitled analysis"
         }
         for (i,v) in defaultNameIndices.enumerated(){
             if v == 0 {
-                return Analysis(name: "untitled analysis \(i)")
+                return "untitled analysis \(i)"
             }
         }
-        return Analysis(name: "untitled analysis \(defaultNameIndices.count)")
+        return "untitled analysis \(defaultNameIndices.count)"
     }
 
 }
