@@ -32,6 +32,7 @@ class CanvasViewController: NSViewController {
     }
     
     func reset(analysis: Analysis){
+        
         for subview in view.subviews{
             if subview.identifier?.rawValue != "invitationLabel" {
                 subview.removeFromSuperview()

@@ -22,12 +22,9 @@ class NavigatorViewController: NSViewController {
     @IBOutlet weak var analysesTableView: NSTableView!
     
     @objc dynamic var analyses: [Analysis] = [Analysis()]
+    
     weak var delegate: NavigatorViewControllerDelegate? = nil
     
-    @IBAction func selectAnalysis(sender: AnyObject){
-        let selectedAnalysis = arrayController.selectedObjects.first as! Analysis?
-        delegate?.navigatorViewController(viewController: self, selectedAnalysis: selectedAnalysis)
-    }
     
     // TODO: Implement copy
     @IBAction func menuDuplicateClicked(_ sender: Any) {
@@ -38,36 +35,67 @@ class NavigatorViewController: NSViewController {
     @IBAction func addRemoveButtonClicked(_ sender: NSSegmentedControl) {
         switch sender.selectedSegment {
         case 0:
-            let analysis = newUntitledAnalysis()
-            arrayController.addObject(analysis)
+            addAnalysis()
+            
         case 1:
             if let selectedForRemoval = arrayController.selectedObjects {
-                arrayController.removeSelectedAnalyses(sender: sender, toRemove: selectedForRemoval as! [Analysis])
+                arrayController.removeSelectedAnalyses(toRemove: selectedForRemoval as! [Analysis])
+                if analyses.isEmpty {
+                  addAnalysis()
+                }
             }
         default:
             print("Switch case error")
         
-        }
+        }        
+        setSelectedAnalysisToActive()
     }
     
+    
+    /**
+     Trigger a call on the delegate to update the detail view if a new analysis is selected in the table view
+     */
+    @IBAction func selectAnalysis(sender: AnyObject){
+        let selectedAnalysis = arrayController.selectedObjects.first as! Analysis?
+        delegate?.navigatorViewController(viewController: self, selectedAnalysis: selectedAnalysis)
+    }
+    
+    /**
+     Trigger a call on the delegate to update the detail view if an analysis is added or deleted
+     */
+    
+    func setSelectedAnalysisToActive(){
+        let index: IndexSet = [arrayController.selectionIndex]
+        analysesTableView.selectRowIndexes(index, byExtendingSelection: false)
+        let selectedAnalysis = arrayController.selectedObjects.first as! Analysis?
+        delegate?.navigatorViewController(viewController: self, selectedAnalysis: selectedAnalysis)
+    }
+    
+    /**
+     Add a new empty analysis
+     */
+    func addAnalysis() {
+        let analysis = newUntitledAnalysis()
+        arrayController.addObject(analysis)
+    }
+    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         let indices = IndexSet([0])
         analysesTableView.selectRowIndexes(indices, byExtendingSelection: false)
     }
-    
 }
 
 
-// MARK: - Utilities
-
-/**
- Create a new Analysis prefixed with "untitled analysis" followed by the next available numeral identifier
- 
- - returns: Analysis object with a default name
- */
 
 extension NavigatorViewController {
+    
+    /**
+     Create a new Analysis prefixed with "untitled analysis" followed by the next available numeral identifier
+     
+     - returns: Analysis object with a default name
+     */
     
     func newUntitledAnalysis() -> Analysis {
         
@@ -98,6 +126,7 @@ extension NavigatorViewController {
         }
         return Analysis(name: "untitled analysis \(defaultNameIndices.count)")
     }
+
 }
 
 

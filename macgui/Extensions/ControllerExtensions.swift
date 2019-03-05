@@ -16,8 +16,7 @@ extension NSArrayController {
      - parameter toRemove: array of selected Analysis objects
     
      */
-    func removeSelectedAnalyses(sender: AnyObject, toRemove: [Analysis]){
-        //self.remove(contentsOf: toRemove)
+    func removeSelectedAnalyses(toRemove: [Analysis]){
         let alert = NSAlert()
         alert.messageText = "Warning: Delete Analysis"
         if toRemove.count > 1 {
@@ -29,15 +28,11 @@ extension NSArrayController {
         alert.addButton(withTitle: "Delete")
         alert.addButton(withTitle: "Cancel")
         
-        let window = sender.window!
-        alert.beginSheetModal(for: window, completionHandler: { (response) -> Void in
-            switch response {
+        let result = alert.runModal()
+        switch result {
             case NSApplication.ModalResponse.alertFirstButtonReturn:
                 self.remove(contentsOf: toRemove)
             default: break
-            }
-        })
-        
-
+        }
     }
 }
