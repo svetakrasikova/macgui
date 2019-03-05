@@ -25,13 +25,6 @@ class NavigatorViewController: NSViewController {
     
     weak var delegate: NavigatorViewControllerDelegate? = nil
     
-    
-    @IBAction func menuDuplicateClicked(_ sender: Any) {
-        if let selectedAnalysis = arrayController.selectedObjects.first as! Analysis? {
-            copyAnalysis(from: selectedAnalysis)
-        }
-    }
-
     @IBAction func addRemoveButtonClicked(_ sender: NSSegmentedControl) {
         switch sender.selectedSegment {
         case 0:
@@ -43,6 +36,10 @@ class NavigatorViewController: NSViewController {
                 if analyses.isEmpty {
                   addAnalysis()
                 }
+            }
+        case 2:
+            if let selectedAnalysis = arrayController.selectedObjects.first as! Analysis? {
+                copyAnalysis(from: selectedAnalysis)
             }
         default:
             print("Switch case error")
