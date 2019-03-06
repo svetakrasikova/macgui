@@ -11,50 +11,39 @@ import Cocoa
 class CanvasToolView: NSView {
     
     var image: NSImage
+    var firstMouseDownPoint: NSPoint?
     
     init(image: NSImage, frame: NSRect){
         self.image = image
         super.init(frame: frame)
+        self.wantsLayer = true
+     
     }
     
     required init?(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func mouseDown(with event: NSEvent) {
+        firstMouseDownPoint = (self.superview?.convert(event.locationInWindow, to: self))!
+        print("mouseDown, firstMouseDownPoint: \(firstMouseDownPoint!.x, firstMouseDownPoint!.y)")
+    }
     
     override func mouseDragged(with event: NSEvent) {
-        let pasteboardItem = NSPasteboardItem()
-        pasteboardItem.setDataProvider(self, forTypes: [.tiff])
-        let draggingItem = NSDraggingItem(pasteboardWriter: pasteboardItem)
-        draggingItem.setDraggingFrame(self.bounds, contents:snapshot())
-
-        beginDraggingSession(with: [draggingItem], event: event, source: self)
+        let newPoint = (self.superview?.convert(event.locationInWindow, to: self))!
+        let offset = NSPoint(x: newPoint.x - firstMouseDownPoint!.x, y: newPoint.y - firstMouseDownPoint!.y)
+        let origin = self.frame.origin
+        let size = self.frame.size
+        self.frame = NSRect(x: origin.x + offset.x, y: origin.y + offset.y, width: size.width, height: size.height)
+        print("mouseDragged location: \(event.locationInWindow)")
+    }
+    
+    override func mouseUp(with event: NSEvent) {
+//        print("mouseUp clickCount: \(event.clickCount)")
     }
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
     }
     
-}
-
-// MARK: - NSDraggingSource
-extension CanvasToolView: NSDraggingSource {
-    func draggingSession(_ session: NSDraggingSession, sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
-        switch(context) {
-        case .outsideApplication:
-            return NSDragOperation()
-        case .withinApplication:
-            return .generic
-        }
-    }
-}
-
-// MARK: - NSPasteboardItemDataProvider
-extension CanvasToolView: NSPasteboardItemDataProvider {
-    func pasteboard(_ pasteboard: NSPasteboard?, item: NSPasteboardItem, provideDataForType type: NSPasteboard.PasteboardType) {
-        if let pasteboard = pasteboard, type == .tiff {
-            let tiffdata = image.tiffRepresentation
-            pasteboard.setData(tiffdata, forType:type)            
-        }
-    }
 }

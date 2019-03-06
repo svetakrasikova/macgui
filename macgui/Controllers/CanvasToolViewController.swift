@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CanvasToolController: NSViewController {
+class CanvasToolViewController: NSViewController {
     
     var frame: NSRect
     var image: NSImage

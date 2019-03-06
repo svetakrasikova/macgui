@@ -36,3 +36,68 @@ extension NSArrayController {
         }
     }
 }
+
+extension NavigatorViewController {
+    
+    /**
+     Create a unique default analysis name starting with prefix followed by the next available numerical identifier
+     - parameter prefix: the initial substring of the returned name
+     - returns: A unique name for an analysis
+     */
+    
+    
+    func getUniqueAnalysisName(prefix: String, isCopy: Bool) -> String {
+        var prefixUntilCopy = prefix
+        var defaultNameIndices = [Int](repeating: 0, count: analyses.count)
+        if let index = prefix.range(of: " copy")?.lowerBound{
+            prefixUntilCopy = String(prefix.prefix(upTo: index))
+        }
+        for analysis in analyses{
+            if analysis.name.starts(with: prefixUntilCopy){
+                if !isCopy {
+                    if analysis.name == prefix {
+                        defaultNameIndices[0] = 1
+                    } else {
+                        if  analysis.name.range(of: "copy") == nil {
+                            let numericalIdentifierIndex = (analysis.name.components(separatedBy: " ").count)-1
+                            if let index = Int(analysis.name.components(separatedBy: " ")[numericalIdentifierIndex]){
+                                if index >= defaultNameIndices.count {
+                                    defaultNameIndices.insert(1, at: defaultNameIndices.count)
+                                } else {
+                                    defaultNameIndices[index] = 1
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if analysis.name.hasSuffix("copy") ||  analysis.name.range(of: "copy") == nil {
+                        defaultNameIndices[0] = 1
+                    } else {
+                        if  analysis.name.range(of: "copy") != nil {
+                            let numericalIdentifierIndex = (analysis.name.components(separatedBy: " ").count)-1
+                            if let index = Int(analysis.name.components(separatedBy: " ")[numericalIdentifierIndex]){
+                                if index >= defaultNameIndices.count {
+                                    defaultNameIndices.insert(1, at: defaultNameIndices.count)
+                                } else {
+                                    defaultNameIndices[index] = 1
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if defaultNameIndices.isEmpty || defaultNameIndices[0] == 0 {
+            return isCopy ? "\(prefixUntilCopy) copy" : prefix
+        }
+        for (i,v) in defaultNameIndices.enumerated(){
+            if v == 0 {
+                return isCopy ? "\(prefixUntilCopy) copy \(i)": "\(prefix) \(i)"
+            }
+        }
+        return isCopy ? "\(prefixUntilCopy) copy \(defaultNameIndices.count)": "\(prefix) \(defaultNameIndices.count)"
+    }
+    
+}
+
+

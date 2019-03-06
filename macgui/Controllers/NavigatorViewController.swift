@@ -18,7 +18,6 @@ class NavigatorViewController: NSViewController {
     
     @IBOutlet weak var addRemoveButtons: NSSegmentedControl!
     @IBOutlet weak var arrayController : NSArrayController!
-    @IBOutlet var contextualMenu: NSMenu!
     @IBOutlet weak var analysesTableView: NSTableView!
     
     @objc dynamic var analyses: [Analysis] = [Analysis(name: "untitled analysis")]
@@ -72,7 +71,7 @@ class NavigatorViewController: NSViewController {
      Add a new empty analysis
      */
     func addAnalysis() {
-        let analysis = Analysis(name: getUniqueAnalysisName())
+        let analysis = Analysis(name: getUniqueAnalysisName(prefix: "untitled analysis", isCopy: false))
         arrayController.addObject(analysis)
     }
     
@@ -81,7 +80,8 @@ class NavigatorViewController: NSViewController {
      */
     func copyAnalysis(from: Analysis) {
         let analysis = from.copy() as! Analysis
-        analysis.name = getUniqueAnalysisName()
+        let prefix = from.name
+        analysis.name = getUniqueAnalysisName(prefix: prefix, isCopy: true)
         arrayController.addObject(analysis)
     }
     
@@ -91,49 +91,6 @@ class NavigatorViewController: NSViewController {
         let indices = IndexSet([0])
         analysesTableView.selectRowIndexes(indices, byExtendingSelection: false)
     }
-}
-
-
-
-extension NavigatorViewController {
-    
-    /**
-     Create a unique default analysis name starting with "untitled analysis" followed by the next available numerical identifier
-     
-     - returns: A unique name for an analysis
-     */
-    
-    
-    func getUniqueAnalysisName() -> String {
-        
-        var defaultNameIndices = [Int](repeating: 0, count: analyses.count)
-        
-        for analysis in analyses{
-            if analysis.name.starts(with: "untitled analysis"){
-                if analysis.name == "untitled analysis" {
-                    defaultNameIndices[0] = 1
-                } else {
-                    if let index = Int(analysis.name.components(separatedBy: " ")[2]){
-                        if index >= defaultNameIndices.count {
-                            defaultNameIndices.insert(1, at: defaultNameIndices.count)
-                        } else {
-                            defaultNameIndices[index] = 1
-                        }
-                    }
-                }
-            }
-        }
-        if defaultNameIndices.isEmpty || defaultNameIndices[0] == 0 {
-            return "untitled analysis"
-        }
-        for (i,v) in defaultNameIndices.enumerated(){
-            if v == 0 {
-                return "untitled analysis \(i)"
-            }
-        }
-        return "untitled analysis \(defaultNameIndices.count)"
-    }
-
 }
 
 
