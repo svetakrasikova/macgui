@@ -43,7 +43,7 @@ class CanvasView: NSView {
     func shouldAllowDrag(_ draggingInfo: NSDraggingInfo) -> Bool {
         var canAccept = false
         let pasteBoard = draggingInfo.draggingPasteboard
-        if pasteBoard.canReadObject(forClasses: [NSURL.self, NSPasteboardItem.self], options: filteringOptions) {
+        if pasteBoard.canReadObject(forClasses: [NSURL.self], options: filteringOptions) {
             canAccept = true
         }
         return canAccept
@@ -52,7 +52,7 @@ class CanvasView: NSView {
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         let allow = shouldAllowDrag(sender)
         isReceivingDrag = allow
-        return allow ? .copy : NSDragOperation()
+        return allow ? .generic : NSDragOperation()
     }
     
     override func draggingExited(_ sender: NSDraggingInfo?) {
@@ -68,7 +68,7 @@ class CanvasView: NSView {
         isReceivingDrag = false
         let pasteBoard = draggingInfo.draggingPasteboard
         let point = convert(draggingInfo.draggingLocation, from: nil)
-        if let urls = pasteBoard.readObjects(forClasses: [NSURL.self, NSPasteboardItem.self], options:filteringOptions) as? [URL], urls.count > 0 {
+        if let urls = pasteBoard.readObjects(forClasses: [NSURL.self], options:filteringOptions) as? [URL], urls.count > 0 {
             delegate?.processImageURLs(urls, center: point)
             return true
         }

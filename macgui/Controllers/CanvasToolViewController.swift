@@ -8,14 +8,17 @@
 
 import Cocoa
 
-class CanvasToolViewController: NSViewController {
+class CanvasToolViewController: NSViewController, CanvasToolViewDelegate {
     
     var frame: NSRect
     var image: NSImage
+    var tool: ToolObject
+
     
-    init(image: NSImage, frame: NSRect){
-        self.image = image
-        self.frame = frame
+    init(tool: ToolObject){
+        self.image = tool.image
+        self.frame = tool.frameOnCanvas
+        self.tool = tool
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -23,22 +26,31 @@ class CanvasToolViewController: NSViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+   
     override func loadView() {
         self.view = CanvasToolView(image: image, frame: frame)
+        (self.view as! CanvasToolView).delegate = self
+        
 
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.frame = frame
-        view.wantsLayer = true
         setImage()
     }
+
     
     func setImage(){
         let imageFrame = NSRect(origin: .zero, size: frame.size)
         let subview = NSImageView(frame: imageFrame)
         subview.image = image
         view.addSubview(subview)
+    }
+//    this method is called when the view frame origin changes
+    func updateFrame(){
+        let size = tool.frameOnCanvas.size
+        let origin = view.frame.origin
+        tool.frameOnCanvas = NSRect(origin: origin, size: size)
     }
     
 }

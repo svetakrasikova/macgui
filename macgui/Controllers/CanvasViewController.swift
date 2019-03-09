@@ -11,7 +11,6 @@ import Cocoa
 class CanvasViewController: NSViewController {
     
     weak var analysis: Analysis? {
-        
         didSet{
             if let analysis = analysis {
                 reset(analysis: analysis)
@@ -42,25 +41,25 @@ class CanvasViewController: NSViewController {
         } else {
             invitationLabel.isHidden = true
             for tool in analysis.tools {
-                addCanvasToolView(image: tool.image, frame: tool.frameOnCanvas)
+                addToolView(tool: tool)
             }
         }
     }
     
-    func addCanvasToolView(image: NSImage, frame: NSRect){
-        let canvasTool = CanvasToolViewController(image: image, frame: frame)
-        view.addSubview(canvasTool.view)
+    func addToolView(tool: ToolObject){
+        let canvasToolViewController = CanvasToolViewController(tool: tool)
+        view.addSubview(canvasToolViewController.view)
     }
     
     func addCanvasTool(image: NSImage, frame: NSRect){
-        addCanvasToolView(image: image, frame: frame)
         let newTool = ToolObject(image: image, frameOnCanvas: frame)
         analysis?.tools.append(newTool)
+        addToolView(tool: newTool)
     }
 
 }
 
-// MARK: - DestinationViewDelegate methods for handling drag and drop from tool view to canvas
+// MARK: - Methods for handling drag and drop from tool view to canvas
 extension CanvasViewController: CanvasViewDelegate{
     
     func processImageURLs(_ urls: [URL], center: NSPoint) {
@@ -75,7 +74,6 @@ extension CanvasViewController: CanvasViewDelegate{
         invitationLabel.isHidden = true
         let constrainedSize = image.aspectFitSizeForMaxDimension(Appearance.maxStickerDimension)
         let frame = NSRect(x: center.x - constrainedSize.width/2, y: center.y - constrainedSize.height/2, width: constrainedSize.width, height: constrainedSize.height)
-        addCanvasToolView(image: image, frame: frame)
         addCanvasTool(image: image, frame: frame)
     }
     

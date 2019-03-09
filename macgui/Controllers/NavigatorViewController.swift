@@ -22,13 +22,12 @@ class NavigatorViewController: NSViewController {
     
     @objc dynamic var analyses: [Analysis] = [Analysis(name: "untitled analysis")]
     
-    weak var delegate: NavigatorViewControllerDelegate? = nil
+    weak var delegate: NavigatorViewControllerDelegate?
     
     @IBAction func addRemoveButtonClicked(_ sender: NSSegmentedControl) {
         switch sender.selectedSegment {
         case 0:
             addAnalysis()
-            
         case 1:
             if let selectedForRemoval = arrayController.selectedObjects {
                 arrayController.removeSelectedAnalyses(toRemove: selectedForRemoval as! [Analysis])
@@ -90,6 +89,12 @@ class NavigatorViewController: NSViewController {
         super.viewDidLoad()
         let indices = IndexSet([0])
         analysesTableView.selectRowIndexes(indices, byExtendingSelection: false)
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        setSelectedAnalysisToActive()
+
     }
 }
 
