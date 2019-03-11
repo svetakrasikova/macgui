@@ -29,7 +29,6 @@ class CanvasToolView: NSView {
     
     override func mouseDown(with event: NSEvent) {
         firstMouseDownPoint = (self.superview?.convert(event.locationInWindow, to: self))!
-//        print("mouseDown, firstMouseDownPoint: \(firstMouseDownPoint!.x, firstMouseDownPoint!.y)")
     }
     
     override func mouseDragged(with event: NSEvent) {
@@ -37,10 +36,7 @@ class CanvasToolView: NSView {
         let offset = NSPoint(x: newPoint.x - firstMouseDownPoint!.x, y: newPoint.y - firstMouseDownPoint!.y)
         let origin = self.frame.origin
         let newOrigin = NSPoint(x: origin.x + offset.x, y: origin.y + offset.y)
-//        let size = self.frame.size
-//        self.frame = NSRect(x: origin.x + offset.x, y: origin.y + offset.y, width: size.width, height: size.height)
         self.setFrameOrigin(newOrigin)
-//        print("mouseDragged location: \(event.locationInWindow)")
     }
     
     override func mouseUp(with event: NSEvent) {
