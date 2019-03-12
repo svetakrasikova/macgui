@@ -10,6 +10,7 @@ import Cocoa
 
 class CanvasViewController: NSViewController {
     
+   
     weak var analysis: Analysis? {
         didSet{
             if let analysis = analysis {
@@ -17,7 +18,7 @@ class CanvasViewController: NSViewController {
             }
         }
     }
-    
+    @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet weak var invitationLabel: NSTextField!
     
     
@@ -27,11 +28,11 @@ class CanvasViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        (view as! CanvasView).delegate = self
+        canvasView.delegate = self
     }
     
     func reset(analysis: Analysis){
-        for subview in view.subviews{
+        for subview in canvasView.subviews{
             if subview.identifier?.rawValue != "invitationLabel" {
                 subview.removeFromSuperview()
             }
@@ -48,7 +49,7 @@ class CanvasViewController: NSViewController {
     
     func addToolView(tool: ToolObject){
         let canvasToolViewController = CanvasToolViewController(tool: tool)
-        view.addSubview(canvasToolViewController.view)
+        canvasView.addSubview(canvasToolViewController.view)
     }
     
     func addCanvasTool(image: NSImage, frame: NSRect){

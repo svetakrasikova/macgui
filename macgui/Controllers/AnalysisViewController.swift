@@ -30,6 +30,7 @@ class AnalysisViewController: NSViewController {
         toolView.setDraggingSourceOperationMask(.every, forLocal: true)
         toolView.setDraggingSourceOperationMask(.every, forLocal: false)
     }
+    
 // Setting up the canvas according to the selected analysis in the navigator view
     func setCanvasToDefault() {
         canvasViewController?.analysis = nil
@@ -47,7 +48,6 @@ extension AnalysisViewController: NSCollectionViewDelegate {
         return true
     }
     func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
-        
         let imageFile = imageLoader.getImageFileForPathIndex(indexPath: indexPath as IndexPath)
         return imageFile.url as NSURL
     }

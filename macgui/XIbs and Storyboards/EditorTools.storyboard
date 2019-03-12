@@ -86,7 +86,7 @@
         <scene sceneID="0MA-Qe-GKB">
             <objects>
                 <viewController id="JbB-QB-FR9" customClass="CanvasViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="Vej-Ld-BJf" customClass="CanvasView" customModule="macgui" customModuleProvider="target">
+                    <view key="view" id="Vej-Ld-BJf">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -99,13 +99,46 @@
                                 </textFieldCell>
                                 <accessibility identifier="InvitationLabel"/>
                             </textField>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPJ-TS-pd4">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="HRj-1o-szR">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view translatesAutoresizingMaskIntoConstraints="NO" id="lBV-f8-Awk" customClass="CanvasView" customModule="macgui" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lBV-f8-Awk" firstAttribute="top" secondItem="HRj-1o-szR" secondAttribute="top" id="5U8-Cl-Sx9"/>
+                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="lBV-f8-Awk" secondAttribute="trailing" priority="501" id="7iN-3n-zoU"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lBV-f8-Awk" secondAttribute="trailing" priority="499" id="ciC-cG-XZM"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lBV-f8-Awk" secondAttribute="bottom" priority="499" id="cnI-UK-egf"/>
+                                        <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="lBV-f8-Awk" secondAttribute="bottom" priority="501" id="nkU-HM-4Km"/>
+                                        <constraint firstItem="lBV-f8-Awk" firstAttribute="leading" secondItem="HRj-1o-szR" secondAttribute="leading" id="xp8-a5-L2t"/>
+                                    </constraints>
+                                </clipView>
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="HTI-LS-gNZ">
+                                    <rect key="frame" x="0.0" y="284" width="450" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ern-Nz-irE">
+                                    <rect key="frame" x="434" y="0.0" width="16" height="300"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Sq8-aF-l7S" firstAttribute="centerX" secondItem="Vej-Ld-BJf" secondAttribute="centerX" id="Las-bS-tNP"/>
-                            <constraint firstItem="Sq8-aF-l7S" firstAttribute="centerY" secondItem="Vej-Ld-BJf" secondAttribute="centerY" id="OUN-OB-LVY"/>
+                            <constraint firstItem="Sq8-aF-l7S" firstAttribute="centerX" secondItem="Vej-Ld-BJf" secondAttribute="centerX" id="06h-OW-NsP"/>
+                            <constraint firstItem="fPJ-TS-pd4" firstAttribute="leading" secondItem="Vej-Ld-BJf" secondAttribute="leading" priority="750" id="0Od-gm-fW7"/>
+                            <constraint firstAttribute="trailing" secondItem="fPJ-TS-pd4" secondAttribute="trailing" priority="750" id="8HX-qk-mxj"/>
+                            <constraint firstItem="fPJ-TS-pd4" firstAttribute="top" secondItem="Vej-Ld-BJf" secondAttribute="top" priority="750" id="Stn-AR-yQb"/>
+                            <constraint firstAttribute="bottom" secondItem="fPJ-TS-pd4" secondAttribute="bottom" priority="750" id="fHO-0D-llT"/>
+                            <constraint firstItem="Sq8-aF-l7S" firstAttribute="centerY" secondItem="Vej-Ld-BJf" secondAttribute="centerY" id="mjZ-45-tPk"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="canvasView" destination="lBV-f8-Awk" id="FsR-OY-0dI"/>
                         <outlet property="invitationLabel" destination="Sq8-aF-l7S" id="wPP-d3-Wpu"/>
                     </connections>
                 </viewController>
