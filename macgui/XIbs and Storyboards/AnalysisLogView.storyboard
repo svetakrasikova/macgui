@@ -14,13 +14,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="289" height="581"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kH3-y3-DJd">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kH3-y3-DJd">
                                 <rect key="frame" x="0.0" y="21" width="289" height="560"/>
-                                <clipView key="contentView" id="f06-yZ-zIx">
+                                <clipView key="contentView" drawsBackground="NO" id="f06-yZ-zIx">
                                     <rect key="frame" x="1" y="0.0" width="287" height="559"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="23" rowSizeStyle="automatic" headerView="9NU-YZ-rMa" viewBased="YES" id="TNo-lx-0sx">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="9NU-YZ-rMa" viewBased="YES" id="TNo-lx-0sx">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="536"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -73,6 +73,7 @@
                                             </connections>
                                         </tableView>
                                     </subviews>
+                                    <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="hK1-vO-O9u">
                                     <rect key="frame" x="1" y="544" width="236" height="16"/>
