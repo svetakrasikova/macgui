@@ -16,7 +16,8 @@ protocol NavigatorViewControllerDelegate: class {
 
 class NavigatorViewController: NSViewController {
     
-    @IBOutlet weak var addRemoveButtons: NSSegmentedControl!
+
+    @IBOutlet weak var actionButton: NSPopUpButton!
     @IBOutlet weak var arrayController : NSArrayController!
     @IBOutlet weak var analysesTableView: NSTableView!
     
@@ -24,28 +25,30 @@ class NavigatorViewController: NSViewController {
     
     weak var delegate: NavigatorViewControllerDelegate?
     
-    @IBAction func addRemoveButtonClicked(_ sender: NSSegmentedControl) {
-        switch sender.selectedSegment {
-        case 0:
-            addAnalysis()
+    @IBAction func actionButtonClicked(_ sender: NSPopUpButton) {
+        switch sender.selectedItem?.tag {
         case 1:
+            addAnalysis()
+        case 2:
             if let selectedForRemoval = arrayController.selectedObjects {
                 arrayController.removeSelectedAnalyses(toRemove: selectedForRemoval as! [Analysis])
                 if analyses.isEmpty {
-                  addAnalysis()
+                    addAnalysis()
                 }
             }
-        case 2:
+        case 3:
             if let selectedAnalysis = arrayController.selectedObjects.first as! Analysis? {
                 copyAnalysis(from: selectedAnalysis)
             }
         default:
             print("Switch case error")
-        
-        }        
+            
+        }
         setSelectedAnalysisToActive()
+        
     }
-    
+   
+   
     
     /**
      Trigger a call on the delegate to update the detail view if a new analysis is selected in the table view

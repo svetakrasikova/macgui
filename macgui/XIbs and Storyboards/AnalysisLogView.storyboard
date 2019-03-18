@@ -45,9 +45,8 @@
                                                             <rect key="frame" x="1" y="1" width="284" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ya-BD-5zw">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="4ya-BD-5zw">
                                                                     <rect key="frame" x="0.0" y="0.0" width="284" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="6CP-fx-uiO">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -58,6 +57,11 @@
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="4ya-BD-5zw" firstAttribute="centerX" secondItem="SCi-Av-KA4" secondAttribute="centerX" id="CQQ-rA-FZG"/>
+                                                                <constraint firstItem="4ya-BD-5zw" firstAttribute="centerY" secondItem="SCi-Av-KA4" secondAttribute="centerY" id="hEA-Bu-cnJ"/>
+                                                                <constraint firstItem="4ya-BD-5zw" firstAttribute="leading" secondItem="SCi-Av-KA4" secondAttribute="leading" constant="2" id="w3n-Nz-UOb"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="textField" destination="4ya-BD-5zw" id="URU-8l-wzR"/>
                                                             </connections>
@@ -88,35 +92,40 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <segmentedControl horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3YB-9X-49D" userLabel="Segmented Control">
-                                <rect key="frame" x="0.0" y="-1" width="289" height="23"/>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="smallSquare" trackingMode="momentary" id="XBs-7a-0cT">
-                                    <font key="font" metaFont="system"/>
-                                    <segments>
-                                        <segment toolTip="Add Analysis" image="NSAddTemplate"/>
-                                        <segment toolTip="Remove Analysis" image="NSRemoveTemplate" tag="1"/>
-                                        <segment toolTip="Duplicate Analysis" image="NSActionTemplate">
-                                            <nil key="label"/>
-                                        </segment>
-                                    </segments>
-                                </segmentedCell>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ouj-rp-5J4">
+                                <rect key="frame" x="0.0" y="-1" width="60" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="LdC-bo-O0b"/>
+                                </constraints>
+                                <popUpButtonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" id="DEE-j8-ndx">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="4Hl-u4-ksw">
+                                        <items>
+                                            <menuItem state="on" image="NSActionTemplate" hidden="YES" id="ifp-Uv-Nah"/>
+                                            <menuItem title="Add Analysis" tag="1" id="ToU-NT-Jbh"/>
+                                            <menuItem title="Remove Analysis" tag="2" id="hvs-Aq-exA"/>
+                                            <menuItem title="Duplicate Analysis" tag="3" id="PGH-O7-Qf9"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
                                 <connections>
-                                    <action selector="addRemoveButtonClicked:" target="zIC-UL-v7m" id="HDz-yS-4kQ"/>
+                                    <action selector="actionButtonClicked:" target="zIC-UL-v7m" id="85F-YA-ttt"/>
                                 </connections>
-                            </segmentedControl>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="kH3-y3-DJd" secondAttribute="trailing" id="0gn-EB-wH3"/>
-                            <constraint firstItem="3YB-9X-49D" firstAttribute="leading" secondItem="8XU-F7-TRZ" secondAttribute="leading" id="B0a-eJ-y3p"/>
-                            <constraint firstAttribute="bottom" secondItem="3YB-9X-49D" secondAttribute="bottom" id="Bad-hi-cW3"/>
+                            <constraint firstItem="Ouj-rp-5J4" firstAttribute="leading" secondItem="8XU-F7-TRZ" secondAttribute="leading" id="GB7-XO-KT0"/>
+                            <constraint firstAttribute="bottom" secondItem="Ouj-rp-5J4" secondAttribute="bottom" id="IqQ-AT-sIy"/>
                             <constraint firstItem="kH3-y3-DJd" firstAttribute="leading" secondItem="8XU-F7-TRZ" secondAttribute="leading" id="Jxh-se-4jE"/>
                             <constraint firstItem="kH3-y3-DJd" firstAttribute="top" secondItem="8XU-F7-TRZ" secondAttribute="top" id="Sdw-fM-RRk"/>
-                            <constraint firstItem="3YB-9X-49D" firstAttribute="top" secondItem="kH3-y3-DJd" secondAttribute="bottom" id="hOl-Ls-ENK"/>
-                            <constraint firstAttribute="trailing" secondItem="3YB-9X-49D" secondAttribute="trailing" id="whP-Jl-vzo"/>
+                            <constraint firstAttribute="bottom" secondItem="kH3-y3-DJd" secondAttribute="bottom" constant="21" id="W4d-Pf-scr"/>
+                            <constraint firstItem="Ouj-rp-5J4" firstAttribute="top" secondItem="kH3-y3-DJd" secondAttribute="bottom" id="yKo-YW-rgX"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addRemoveButtons" destination="3YB-9X-49D" id="s8D-0O-Bhq"/>
+                        <outlet property="actionButton" destination="Ouj-rp-5J4" id="Gof-2s-bwR"/>
                         <outlet property="analysesTableView" destination="TNo-lx-0sx" id="PrO-LW-uGd"/>
                         <outlet property="arrayController" destination="P95-GE-ATU" id="RsP-9j-0yM"/>
                     </connections>
@@ -133,7 +142,5 @@
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSRemoveTemplate" width="11" height="11"/>
     </resources>
 </document>
