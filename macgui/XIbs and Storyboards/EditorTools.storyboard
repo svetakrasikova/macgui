@@ -99,30 +99,30 @@
                                 </textFieldCell>
                                 <accessibility identifier="InvitationLabel"/>
                             </textField>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPJ-TS-pd4">
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="allowed" verticalScrollElasticity="allowed" findBarPosition="belowContent" translatesAutoresizingMaskIntoConstraints="NO" id="fPJ-TS-pd4">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="HRj-1o-szR">
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="HRj-1o-szR" customClass="CenteringClipView" customModule="macgui" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view translatesAutoresizingMaskIntoConstraints="NO" id="lBV-f8-Awk" customClass="CanvasView" customModule="macgui" customModuleProvider="target">
+                                        <view autoresizesSubviews="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-f8-Awk" customClass="CanvasView" customModule="macgui" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="300" id="mwg-5L-hDZ"/>
+                                                <constraint firstAttribute="width" constant="450" id="tJu-dg-TAc"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="lBV-f8-Awk" firstAttribute="top" secondItem="HRj-1o-szR" secondAttribute="top" id="5U8-Cl-Sx9"/>
-                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="lBV-f8-Awk" secondAttribute="trailing" priority="501" id="7iN-3n-zoU"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lBV-f8-Awk" secondAttribute="trailing" priority="499" id="ciC-cG-XZM"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lBV-f8-Awk" secondAttribute="bottom" priority="499" id="cnI-UK-egf"/>
-                                        <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="lBV-f8-Awk" secondAttribute="bottom" priority="501" id="nkU-HM-4Km"/>
-                                        <constraint firstItem="lBV-f8-Awk" firstAttribute="leading" secondItem="HRj-1o-szR" secondAttribute="leading" id="xp8-a5-L2t"/>
+                                        <constraint firstItem="lBV-f8-Awk" firstAttribute="leading" secondItem="HRj-1o-szR" secondAttribute="leading" id="MAO-8q-w2W"/>
+                                        <constraint firstItem="lBV-f8-Awk" firstAttribute="top" secondItem="HRj-1o-szR" secondAttribute="top" id="xl0-7U-5HV"/>
                                     </constraints>
                                 </clipView>
                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="HTI-LS-gNZ">
                                     <rect key="frame" x="0.0" y="284" width="450" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ern-Nz-irE">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="ern-Nz-irE">
                                     <rect key="frame" x="434" y="0.0" width="16" height="300"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -139,7 +139,10 @@
                     </view>
                     <connections>
                         <outlet property="canvasView" destination="lBV-f8-Awk" id="FsR-OY-0dI"/>
+                        <outlet property="canvasViewHeightConstraint" destination="mwg-5L-hDZ" id="p16-sO-yRJ"/>
+                        <outlet property="canvasViewWidthConstraint" destination="tJu-dg-TAc" id="d1Y-GC-iLz"/>
                         <outlet property="invitationLabel" destination="Sq8-aF-l7S" id="wPP-d3-Wpu"/>
+                        <outlet property="scrollView" destination="fPJ-TS-pd4" id="AYl-6K-l6c"/>
                     </connections>
                 </viewController>
                 <customObject id="wz6-5F-dTq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

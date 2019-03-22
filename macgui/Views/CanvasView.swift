@@ -83,6 +83,7 @@ class CanvasView: NSView {
             path.lineWidth = Appearance.selectionLineWidth
             path.stroke()
         }
+        
     }
     
 }

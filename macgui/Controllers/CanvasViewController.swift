@@ -18,8 +18,12 @@ class CanvasViewController: NSViewController {
             }
         }
     }
+    
+    @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet weak var invitationLabel: NSTextField!
+    @IBOutlet weak var canvasViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var canvasViewWidthConstraint: NSLayoutConstraint!
     
     
     enum Appearance {
@@ -29,6 +33,13 @@ class CanvasViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         canvasView.delegate = self
+    }
+    
+    override func viewDidLayout() {
+        super.viewDidLayout()
+        canvasViewHeightConstraint.constant = scrollView.frame.size.height * 4
+        canvasViewWidthConstraint.constant = scrollView.frame.size.width * 4
+       
     }
     
     func reset(analysis: Analysis){
