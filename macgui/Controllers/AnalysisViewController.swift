@@ -39,6 +39,7 @@ class AnalysisViewController: NSViewController {
         canvasViewController?.analysis = analysis
     }
     
+  
 }
 
 // MARK: - NSCollectionViewDelegate methods for handling drag from the collection view

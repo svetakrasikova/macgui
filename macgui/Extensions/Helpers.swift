@@ -64,6 +64,45 @@ extension NSView {
         let image = NSImage(data: pdfData)
         return image ?? NSImage()
     }
+    
+    func makeGridBackground(dirtyRect: NSRect){
+        
+        //Fill background with white color
+        if let context = NSGraphicsContext.current?.cgContext {
+            NSColor.white.setFill()
+            context.fill(dirtyRect)
+            context.flush()
+        }
+        
+        //Draw Lines: Horizontal
+        for i in 1...(Int(self.bounds.size.height) / 10) {
+            if i % 10 == 0 {
+                NSColor(srgbRed: 100/255.0, green: 149/255.0, blue: 237/255.0, alpha: 0.3).set()
+            }else if i % 5 == 0 {
+                NSColor(srgbRed: 100/255.0, green: 149/255.0, blue: 237/255.0, alpha: 0.2).set()
+            }else{
+                NSColor(srgbRed: 100/255.0, green: 149/255.0, blue: 237/255.0, alpha: 0.1).set()
+            }
+            
+            NSBezierPath.strokeLine(from: NSMakePoint(0, CGFloat(i) * 10 - 0.5), to: NSMakePoint(self.bounds.size.width, CGFloat(i) * 10 - 0.5))
+        }
+        
+        
+        //Draw Lines: Vertical
+        for i in 1...(Int(self.bounds.size.width) / 10) {
+            if i % 10 == 0 {
+                NSColor(srgbRed: 100/255.0, green: 149/255.0, blue: 237/255.0, alpha: 0.3).set()
+            }else if i % 5 == 0 {
+                NSColor(srgbRed: 100/255.0, green: 149/255.0, blue: 237/255.0, alpha: 0.2).set()
+            }else{
+                NSColor(srgbRed: 100/255.0, green: 149/255.0, blue: 237/255.0, alpha: 0.1).set()
+            }
+            
+            NSBezierPath.strokeLine(from: NSMakePoint(CGFloat(i) * 10 - 0.5, 0), to: NSMakePoint(CGFloat(i) * 10 - 0.5, self.bounds.size.height))
+        }
+        
+    }
+    
 }
 
 
