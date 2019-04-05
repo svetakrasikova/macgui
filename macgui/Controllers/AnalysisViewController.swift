@@ -18,7 +18,7 @@ class AnalysisViewController: NSViewController {
     
     @IBOutlet weak var toolView: NSCollectionView!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForDragAndDrop()

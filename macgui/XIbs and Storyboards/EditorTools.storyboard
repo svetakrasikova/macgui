@@ -127,45 +127,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N3B-V6-3Gw" userLabel="Zoom">
-                                <rect key="frame" x="375" y="-1" width="60" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="WEw-oU-CRG"/>
-                                    <constraint firstAttribute="height" constant="18" id="aba-ad-gPu"/>
-                                </constraints>
-                                <popUpButtonCell key="cell" type="smallSquare" title="25%" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="PTV-QI-6VQ" id="JjN-tV-syE" userLabel="Zoom">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="oAP-UO-fPR">
-                                        <items>
-                                            <menuItem title="25%" id="mD9-Fn-R0H"/>
-                                            <menuItem title="50%" tag="1" id="ZOd-8K-ai4"/>
-                                            <menuItem title="75%" tag="2" id="uyS-CU-JoM"/>
-                                            <menuItem title="100%" state="on" tag="3" id="PTV-QI-6VQ"/>
-                                            <menuItem title="125%" tag="4" id="g5P-yV-uQx"/>
-                                            <menuItem title="150%" tag="5" id="DPu-4X-2Ar"/>
-                                            <menuItem title="200%" tag="6" id="H0L-op-Mfd"/>
-                                            <menuItem title="300%" tag="7" id="W3p-nO-O1D"/>
-                                            <menuItem title="400%" tag="8" id="1f3-b6-WI8"/>
-                                            <menuItem isSeparatorItem="YES" tag="9" id="fvh-gA-Nzk"/>
-                                            <menuItem title="Zoom To Fit" tag="10" id="0ct-IO-qN5" userLabel="Zoom To Fit"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="zoomWithSender:" target="JbB-QB-FR9" id="EdO-78-H4y"/>
-                                </connections>
-                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Sq8-aF-l7S" firstAttribute="centerX" secondItem="Vej-Ld-BJf" secondAttribute="centerX" id="06h-OW-NsP"/>
                             <constraint firstItem="fPJ-TS-pd4" firstAttribute="leading" secondItem="Vej-Ld-BJf" secondAttribute="leading" priority="750" id="0Od-gm-fW7"/>
-                            <constraint firstItem="N3B-V6-3Gw" firstAttribute="bottom" secondItem="fPJ-TS-pd4" secondAttribute="bottom" id="6Ei-Ii-dyc"/>
                             <constraint firstAttribute="trailing" secondItem="fPJ-TS-pd4" secondAttribute="trailing" priority="750" id="8HX-qk-mxj"/>
                             <constraint firstItem="fPJ-TS-pd4" firstAttribute="top" secondItem="Vej-Ld-BJf" secondAttribute="top" priority="750" id="Stn-AR-yQb"/>
                             <constraint firstAttribute="bottom" secondItem="fPJ-TS-pd4" secondAttribute="bottom" priority="750" id="fHO-0D-llT"/>
                             <constraint firstItem="Sq8-aF-l7S" firstAttribute="centerY" secondItem="Vej-Ld-BJf" secondAttribute="centerY" id="mjZ-45-tPk"/>
-                            <constraint firstAttribute="trailing" secondItem="N3B-V6-3Gw" secondAttribute="trailing" constant="15" id="n6k-bl-gV6"/>
                         </constraints>
                     </view>
                     <connections>

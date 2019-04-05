@@ -714,11 +714,41 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="success:" target="Oky-zY-oP4" id="wRF-lL-Yvm"/>
+                                        </connections>
                                     </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="F64DF7CF-819D-4657-8C1C-A656000F793D" label="Zoom" paletteLabel="Zoom" sizingBehavior="auto" id="GI7-Ow-JbS">
+                                    <nil key="toolTip"/>
+                                    <popUpButton key="view" verticalHuggingPriority="750" id="1wV-hY-z6B" userLabel="zoom">
+                                        <rect key="frame" x="0.0" y="14" width="60" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="3" imageScaling="proportionallyDown" inset="2" selectedItem="Q5X-ib-mE8" id="x4u-Va-0Vm" userLabel="zoom">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <menu key="menu" id="JJw-60-Ano">
+                                                <items>
+                                                    <menuItem title="25%" tag="1" id="p3j-MU-iWT" userLabel="25%"/>
+                                                    <menuItem title="50%" tag="1" id="Vnl-hq-txe"/>
+                                                    <menuItem title="75%" tag="2" id="KOr-bC-jdU"/>
+                                                    <menuItem title="100%" state="on" tag="3" id="Q5X-ib-mE8"/>
+                                                    <menuItem title="125%" tag="4" id="I9e-6q-jaQ"/>
+                                                    <menuItem title="150%" tag="5" id="cWo-z2-6Y3"/>
+                                                    <menuItem title="200%" tag="6" id="70d-Ep-OfG"/>
+                                                    <menuItem title="300%" tag="7" id="e8O-nQ-Jve"/>
+                                                    <menuItem title="400%" tag="8" id="6aD-Hz-1ht"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <action selector="magnify:" target="Oky-zY-oP4" id="jbR-6Y-v8s"/>
+                                        </connections>
+                                    </popUpButton>
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="GUO-LX-cwD"/>
+                                <toolbarItem reference="GI7-Ow-JbS"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>

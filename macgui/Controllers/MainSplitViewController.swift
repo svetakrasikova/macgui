@@ -9,7 +9,7 @@
 import Cocoa
 
 class MainSplitViewController: NSSplitViewController, NavigatorViewControllerDelegate {
-   
+
     var masterViewController: NavigatorViewController {
         let masterItem = splitViewItems[0]
         return masterItem.viewController as! NavigatorViewController
@@ -21,7 +21,6 @@ class MainSplitViewController: NSSplitViewController, NavigatorViewControllerDel
     }
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         masterViewController.delegate = self

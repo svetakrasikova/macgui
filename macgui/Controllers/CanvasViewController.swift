@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CanvasViewController: NSViewController {
+class CanvasViewController: NSViewController, NSWindowDelegate {
     
    
     weak var analysis: Analysis? {
@@ -19,6 +19,7 @@ class CanvasViewController: NSViewController {
         }
     }
     
+ 
     @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet weak var invitationLabel: NSTextField!
@@ -33,7 +34,12 @@ class CanvasViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         canvasView.delegate = self
+//        add CanvasViewController to the window delegate, so that it can be part of the responder chain
+        if let window = NSApp.windows.first{
+            window.delegate = self
+        }
     }
+    
     
     override func viewDidLayout() {
         super.viewDidLayout()
@@ -42,28 +48,27 @@ class CanvasViewController: NSViewController {
        
     }
     
-    @IBAction func zoom(sender: NSPopUpButton){
+    
+    @IBAction func magnify(_ sender: NSPopUpButton) {
         switch sender.indexOfSelectedItem {
-        case 0:
-            scrollView.magnification = 0.25
         case 1:
-            scrollView.magnification = 0.5
-        case 2:
-            scrollView.magnification = 0.75
-        case 3:
-            scrollView.magnification = 1.0
-        case 4:
-            scrollView.magnification = 1.25
-        case 5:
-            scrollView.magnification = 1.50
-        case 6:
-            scrollView.magnification = 2.0
-        case 7:
-            scrollView.magnification = 3.0
-        case 8:
-            scrollView.magnification = 4.0
-        case 10:
             scrollView.magnification = 0.25
+        case 2:
+            scrollView.magnification = 0.5
+        case 3:
+            scrollView.magnification = 0.75
+        case 4:
+            scrollView.magnification = 1.0
+        case 5:
+            scrollView.magnification = 1.25
+        case 6:
+            scrollView.magnification = 1.50
+        case 7:
+            scrollView.magnification = 2.0
+        case 8:
+            scrollView.magnification = 3.0
+        case 9:
+            scrollView.magnification = 4.0
         default:
             print("Switch case error!")
         }
