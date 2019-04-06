@@ -684,7 +684,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -724,15 +724,16 @@
                                     <popUpButton key="view" verticalHuggingPriority="750" id="1wV-hY-z6B" userLabel="zoom">
                                         <rect key="frame" x="0.0" y="14" width="60" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="3" imageScaling="proportionallyDown" inset="2" selectedItem="Q5X-ib-mE8" id="x4u-Va-0Vm" userLabel="zoom">
+                                        <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" tag="1" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="p3j-MU-iWT" id="x4u-Va-0Vm" userLabel="zoom">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                             <menu key="menu" id="JJw-60-Ano">
                                                 <items>
-                                                    <menuItem title="25%" tag="1" id="p3j-MU-iWT" userLabel="25%"/>
-                                                    <menuItem title="50%" tag="1" id="Vnl-hq-txe"/>
+                                                    <menuItem title="100%" tag="1" hidden="YES" id="p3j-MU-iWT" userLabel="100%"/>
+                                                    <menuItem title="25%" tag="1" id="Vnl-hq-txe"/>
+                                                    <menuItem title="50%" tag="1" id="Hsa-GQ-DVe"/>
                                                     <menuItem title="75%" tag="2" id="KOr-bC-jdU"/>
-                                                    <menuItem title="100%" state="on" tag="3" id="Q5X-ib-mE8"/>
+                                                    <menuItem title="100%" tag="3" id="Q5X-ib-mE8"/>
                                                     <menuItem title="125%" tag="4" id="I9e-6q-jaQ"/>
                                                     <menuItem title="150%" tag="5" id="cWo-z2-6Y3"/>
                                                     <menuItem title="200%" tag="6" id="70d-Ep-OfG"/>
@@ -756,6 +757,7 @@
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="zoom" destination="1wV-hY-z6B" id="aoC-AW-yPk"/>
                         <segue destination="RBs-wf-Pwn" kind="relationship" relationship="window.shadowedContentViewController" id="aRs-yb-wAS"/>
                     </connections>
                 </windowController>

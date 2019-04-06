@@ -105,5 +105,8 @@ extension NSView {
     
 }
 
-
+extension NSNotification.Name {
+    static let didChangeMagnification = Notification.Name("didChangeMagnification")
+    
+}
 

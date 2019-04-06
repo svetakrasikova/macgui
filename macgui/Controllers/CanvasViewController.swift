@@ -38,6 +38,10 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         if let window = NSApp.windows.first{
             window.delegate = self
         }
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didChangeMagnification(_ :)),
+                                               name: NSScrollView.didEndLiveMagnifyNotification,
+                                               object: nil)
     }
     
     
@@ -53,25 +57,40 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         switch sender.indexOfSelectedItem {
         case 1:
             scrollView.magnification = 0.25
+            sender.setTitle("25%")
         case 2:
             scrollView.magnification = 0.5
+            sender.setTitle("50%")
         case 3:
             scrollView.magnification = 0.75
+            sender.setTitle("75%")
         case 4:
             scrollView.magnification = 1.0
+            sender.setTitle("100%")
         case 5:
             scrollView.magnification = 1.25
+            sender.setTitle("125%")
         case 6:
             scrollView.magnification = 1.50
+            sender.setTitle("150%")
         case 7:
             scrollView.magnification = 2.0
+            sender.setTitle("200%")
         case 8:
             scrollView.magnification = 3.0
+            sender.setTitle("300%")
         case 9:
             scrollView.magnification = 4.0
+            sender.setTitle("400%")
         default:
             print("Switch case error!")
         }
+    }
+    
+    @objc func didChangeMagnification(_ notification: Notification){
+        NotificationCenter.default.post(name: .didChangeMagnification,
+                                        object: self,
+                                        userInfo: ["magnification": Float(scrollView.magnification)])
     }
     
     func reset(analysis: Analysis){

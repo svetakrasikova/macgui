@@ -24,6 +24,7 @@
 		1452355F220CCC5800A85186 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355E220CCC5800A85186 /* Helpers.swift */; };
 		1452356B220CE9AC00A85186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1452356A220CE9AC00A85186 /* Assets.xcassets */; };
 		14523574220E100B00A85186 /* ImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14523573220E100B00A85186 /* ImageFile.swift */; };
+		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
 		14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFC2216487300021607 /* NavigatorViewController.swift */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
 		14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE00221E484000021607 /* ControllerExtensions.swift */; };
@@ -52,6 +53,7 @@
 		1452355E220CCC5800A85186 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		1452356A220CE9AC00A85186 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14523573220E100B00A85186 /* ImageFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFile.swift; sourceTree = "<group>"; };
+		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		14D6DDFC2216487300021607 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = macgui/Controllers/NavigatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
 		14D6DE00221E484000021607 /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */,
+				14B5852A225819F6003EB752 /* MainWindowController.swift */,
 				14D6DE02221F47CD00021607 /* MainSplitViewController.swift */,
 				1411BEE42208DDBE009BEE1D /* AnalysisViewController.swift */,
 				14D6DDFC2216487300021607 /* NavigatorViewController.swift */,
@@ -240,6 +243,7 @@
 				1452355F220CCC5800A85186 /* Helpers.swift in Sources */,
 				14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */,
 				1411BE902203D8FB009BEE1D /* AppDelegate.swift in Sources */,
+				14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */,
 				1452355B220CB79800A85186 /* CanvasView.swift in Sources */,
 				1411BEE52208DDBE009BEE1D /* AnalysisViewController.swift in Sources */,
 				144CC4AF220E4081003311E4 /* ImageLoader.swift in Sources */,
