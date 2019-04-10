@@ -30,8 +30,6 @@ class CanvasToolViewController: NSViewController, CanvasToolViewDelegate {
     override func loadView() {
         self.view = CanvasToolView(image: image, frame: frame)
         (self.view as! CanvasToolView).delegate = self
-        
-
     }
     
     override func viewDidLoad() {
