@@ -24,6 +24,9 @@
 		1452355F220CCC5800A85186 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355E220CCC5800A85186 /* Helpers.swift */; };
 		1452356B220CE9AC00A85186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1452356A220CE9AC00A85186 /* Assets.xcassets */; };
 		14523574220E100B00A85186 /* ImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14523573220E100B00A85186 /* ImageFile.swift */; };
+		14710521225DA67E00E88657 /* Loop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710520225DA67D00E88657 /* Loop.swift */; };
+		14710523225DA69500E88657 /* Connectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710522225DA69500E88657 /* Connectable.swift */; };
+		147105252265437600E88657 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105242265437600E88657 /* Bootstrap.swift */; };
 		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
 		14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFC2216487300021607 /* NavigatorViewController.swift */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
@@ -53,6 +56,9 @@
 		1452355E220CCC5800A85186 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		1452356A220CE9AC00A85186 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14523573220E100B00A85186 /* ImageFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFile.swift; sourceTree = "<group>"; };
+		14710520225DA67D00E88657 /* Loop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loop.swift; sourceTree = "<group>"; };
+		14710522225DA69500E88657 /* Connectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectable.swift; sourceTree = "<group>"; };
+		147105242265437600E88657 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
 		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		14D6DDFC2216487300021607 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = macgui/Controllers/NavigatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
@@ -163,7 +169,10 @@
 		1471051F225DA5C800E88657 /* Tool Model */ = {
 			isa = PBXGroup;
 			children = (
+				147105242265437600E88657 /* Bootstrap.swift */,
 				144CC4B42211F228003311E4 /* ToolObject.swift */,
+				14710520225DA67D00E88657 /* Loop.swift */,
+				14710522225DA69500E88657 /* Connectable.swift */,
 			);
 			path = "Tool Model";
 			sourceTree = "<group>";
@@ -246,6 +255,7 @@
 				14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */,
 				144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */,
 				1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */,
+				147105252265437600E88657 /* Bootstrap.swift in Sources */,
 				141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */,
 				14D6DE062220B50800021607 /* CanvasViewController.swift in Sources */,
 				1452355F220CCC5800A85186 /* Helpers.swift in Sources */,
@@ -257,8 +267,10 @@
 				144CC4AF220E4081003311E4 /* ImageLoader.swift in Sources */,
 				14D6DE03221F47CD00021607 /* MainSplitViewController.swift in Sources */,
 				14523574220E100B00A85186 /* ImageFile.swift in Sources */,
+				14710521225DA67E00E88657 /* Loop.swift in Sources */,
 				1411BEE82208FE91009BEE1D /* Tool.swift in Sources */,
 				14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */,
+				14710523225DA69500E88657 /* Connectable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

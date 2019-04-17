@@ -91,7 +91,7 @@ class CanvasView: NSView {
 
 protocol CanvasViewDelegate {
     func processImageURLs(_ urls: [URL], center: NSPoint)
-    func processImage(_ image: NSImage, center: NSPoint)
+    func processImage(_ image: NSImage, center: NSPoint, name: String)
 }
 
 

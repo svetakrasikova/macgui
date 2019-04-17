@@ -35,8 +35,14 @@ class CanvasToolViewController: NSViewController, CanvasToolViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setImage()
+        if tool .isKind(of: Connectable.self){
+           setConnectors()
+        }
     }
-
+//add inlets and outlets
+    func setConnectors(){
+        
+    }
     
     func setImage(){
         let imageFrame = NSRect(origin: .zero, size: frame.size)

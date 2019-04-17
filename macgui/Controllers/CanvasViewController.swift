@@ -114,8 +114,8 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         canvasView.addSubview(canvasToolViewController.view)
     }
     
-    func addCanvasTool(image: NSImage, frame: NSRect){
-        let newTool = ToolObject(image: image, frameOnCanvas: frame)
+    func addCanvasTool(image: NSImage, frame: NSRect, name: String){
+        let newTool = initToolObjectWithName(name, image: image, frame: frame)
         analysis?.tools.append(newTool)
         addToolView(tool: newTool)
     }
@@ -127,19 +127,34 @@ extension CanvasViewController: CanvasViewDelegate{
     
     func processImageURLs(_ urls: [URL], center: NSPoint) {
         for (_,url) in urls.enumerated() {
-            if let image = NSImage(contentsOf: url) {
-                processImage(image, center: center)
+            if let image = NSImage(contentsOf: url){
+                let name = url.lastPathComponent
+                processImage(image, center: center, name: name)
             }
         }
     }
     
-    func processImage(_ image: NSImage, center: NSPoint) {
+    func processImage(_ image: NSImage, center: NSPoint, name: String) {
         invitationLabel.isHidden = true
         let constrainedSize = image.aspectFitSizeForMaxDimension(Appearance.maxStickerDimension)
         let frame = NSRect(x: center.x - constrainedSize.width/2, y: center.y - constrainedSize.height/2, width: constrainedSize.width, height: constrainedSize.height)
-        addCanvasTool(image: image, frame: frame)
+        addCanvasTool(image: image, frame: frame, name: name)
     }
     
     
-    
+}
+
+// MARK: - Initialzing tools by type
+extension CanvasViewController{
+    func initToolObjectWithName(_ name: String, image: NSImage, frame: NSRect) -> ToolObject {
+        let index = name.firstIndex(of: ".") ?? name.endIndex
+        let toolType = String(name[..<index])
+        switch toolType {
+        case "bootstrap":
+            return Bootstrap(image: image, frameOnCanvas: frame)
+        default:
+            return ToolObject(image: image, frameOnCanvas: frame)
+            
+        }
+    }
 }
