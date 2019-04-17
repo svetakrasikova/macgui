@@ -41,7 +41,12 @@ class CanvasToolViewController: NSViewController, CanvasToolViewDelegate {
     }
 //add inlets and outlets
     func setConnectors(){
-        
+        let size = NSSize(width: frame.size.width/2, height: frame.size.height/2)
+        let panel = NSRect(origin: .zero, size: size)
+        let connectorView = NSView(frame: panel)
+        connectorView.wantsLayer = true
+        connectorView.layer?.backgroundColor = NSColor.yellow.cgColor
+        view.addSubview(connectorView)
     }
     
     func setImage(){
