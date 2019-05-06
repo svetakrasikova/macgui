@@ -21,17 +21,7 @@ class ConnectorItem: NSCollectionViewItem {
     }
    
     let rootLayer = CALayer()
- 
-    func getColor(colorType: ConnectorColor) -> NSColor {
-        switch colorType {
-        case .blue: return NSColor.blue
-        case .green: return NSColor.green
-        case .orange: return NSColor.orange
-        case .red: return NSColor.red
-        case .magenta: return NSColor.magenta
-        }
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         rootLayer.frame = view.frame
@@ -51,6 +41,16 @@ class ConnectorItem: NSCollectionViewItem {
         layer.fillColor = color.cgColor
         layer.path = path
         rootLayer.addSublayer(layer)
+    }
+    
+    func getColor(colorType: ConnectorColor) -> NSColor {
+        switch colorType {
+        case .blue: return NSColor.blue
+        case .green: return NSColor.green
+        case .orange: return NSColor.orange
+        case .red: return NSColor.red
+        case .magenta: return NSColor.magenta
+        }
     }
     
 }
