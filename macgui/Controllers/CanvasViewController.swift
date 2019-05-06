@@ -123,7 +123,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
 }
 
 // MARK: - Methods for handling drag and drop from tool view to canvas
-extension CanvasViewController: CanvasViewDelegate{
+extension CanvasViewController: CanvasViewDelegate {
     
     func processImageURLs(_ urls: [URL], center: NSPoint) {
         for (_,url) in urls.enumerated() {

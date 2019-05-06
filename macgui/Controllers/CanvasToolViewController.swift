@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CanvasToolViewController: NSViewController, CanvasToolViewDelegate {
+class CanvasToolViewController: NSViewController, ToolViewDelegate {
     
     var frame: NSRect
     var image: NSImage
@@ -46,7 +46,7 @@ class CanvasToolViewController: NSViewController, CanvasToolViewDelegate {
         
         
         // set self as the delegate of the view
-        (self.view as! CanvasToolView).delegate = self
+        (self.view as! CanvasToolView).toolDelegate = self
         
         // if it is a connectable tool add inlets and outlets
         if tool .isKind(of: Connectable.self){

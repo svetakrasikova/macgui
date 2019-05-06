@@ -12,7 +12,8 @@ class CanvasToolView: NSView {
     
 //    var image: NSImage
     var firstMouseDownPoint: NSPoint?
-    var delegate: CanvasToolViewDelegate? = nil
+    var toolDelegate: ToolViewDelegate? = nil
+    var canvasDelegate: ToolViewCanvasDelegate? = nil
     
     
 //    init(image: NSImage, frame: NSRect){
@@ -28,6 +29,7 @@ class CanvasToolView: NSView {
 
     
     override func mouseDown(with event: NSEvent) {
+         
         firstMouseDownPoint = (self.window?.contentView?.convert(event.locationInWindow, to: self))!
     }
     
@@ -40,7 +42,7 @@ class CanvasToolView: NSView {
     }
     
     override func mouseUp(with event: NSEvent) {
-          delegate?.updateFrame()
+          toolDelegate?.updateFrame()
     }
     
     
@@ -50,6 +52,9 @@ class CanvasToolView: NSView {
     
 }
 
-protocol CanvasToolViewDelegate {
+protocol ToolViewDelegate {
     func updateFrame()
+}
+
+protocol ToolViewCanvasDelegate {
 }
