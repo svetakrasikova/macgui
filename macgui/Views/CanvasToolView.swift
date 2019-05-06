@@ -10,21 +10,21 @@ import Cocoa
 
 class CanvasToolView: NSView {
     
-    var image: NSImage
+//    var image: NSImage
     var firstMouseDownPoint: NSPoint?
     var delegate: CanvasToolViewDelegate? = nil
     
     
-    init(image: NSImage, frame: NSRect){
-        self.image = image
-        super.init(frame: frame)
-        self.wantsLayer = true
-     
-    }
-    
-    required init?(coder decoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init(image: NSImage, frame: NSRect){
+//        self.image = image
+//        super.init(frame: frame)
+//        self.wantsLayer = true
+//     
+//    }
+//    
+//    required init?(coder decoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
 
     
     override func mouseDown(with event: NSEvent) {

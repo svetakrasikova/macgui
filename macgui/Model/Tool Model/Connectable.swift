@@ -8,16 +8,25 @@
 
 import Cocoa
 
-enum Connector{
-    case green, blue, red, brown, turcuoise
-}
 
-class Connectable: ToolObject {
-    
+
+class Connectable: ToolObject {    
     var inlets: [Connector] = []
     var outlets: [Connector] = []
-    var predecessors: [Connectable] = []
-    var successors: [Connectable] = []
-    var isConnected: Bool = true
+    var isConnected: Bool = false
     
+}
+
+enum ConnectorColor {
+    case green, blue, red, orange, magenta
+}
+
+struct Connector {
+    var color: ConnectorColor
+    var neighbor: Connectable?
+    
+    init(color: ConnectorColor){
+        self.color = color
+        self.neighbor = nil
+    }
 }

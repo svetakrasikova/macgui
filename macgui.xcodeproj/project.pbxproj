@@ -27,6 +27,12 @@
 		14710521225DA67E00E88657 /* Loop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710520225DA67D00E88657 /* Loop.swift */; };
 		14710523225DA69500E88657 /* Connectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710522225DA69500E88657 /* Connectable.swift */; };
 		147105252265437600E88657 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105242265437600E88657 /* Bootstrap.swift */; };
+		147105272267A0DA00E88657 /* CanvasToolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147105262267A0DA00E88657 /* CanvasToolViewController.xib */; };
+		1471052A226CD75300E88657 /* ConnectorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710528226CD75300E88657 /* ConnectorItem.swift */; };
+		1471052B226CD75300E88657 /* ConnectorItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14710529226CD75300E88657 /* ConnectorItem.xib */; };
+		1471052D227B94E200E88657 /* ConnectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052C227B94E200E88657 /* ConnectorItemView.swift */; };
+		1471052F2280E36D00E88657 /* Align.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052E2280E36D00E88657 /* Align.swift */; };
+		147105312280E52300E88657 /* ReadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105302280E52300E88657 /* ReadData.swift */; };
 		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
 		14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFC2216487300021607 /* NavigatorViewController.swift */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
@@ -59,6 +65,12 @@
 		14710520225DA67D00E88657 /* Loop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loop.swift; sourceTree = "<group>"; };
 		14710522225DA69500E88657 /* Connectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectable.swift; sourceTree = "<group>"; };
 		147105242265437600E88657 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
+		147105262267A0DA00E88657 /* CanvasToolViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CanvasToolViewController.xib; sourceTree = "<group>"; };
+		14710528226CD75300E88657 /* ConnectorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItem.swift; sourceTree = "<group>"; };
+		14710529226CD75300E88657 /* ConnectorItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectorItem.xib; sourceTree = "<group>"; };
+		1471052C227B94E200E88657 /* ConnectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItemView.swift; sourceTree = "<group>"; };
+		1471052E2280E36D00E88657 /* Align.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Align.swift; sourceTree = "<group>"; };
+		147105302280E52300E88657 /* ReadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadData.swift; sourceTree = "<group>"; };
 		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		14D6DDFC2216487300021607 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = macgui/Controllers/NavigatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
@@ -100,8 +112,8 @@
 				1452356A220CE9AC00A85186 /* Assets.xcassets */,
 				1411BED722052A5E009BEE1D /* macgui.entitlements */,
 				14523575220E101400A85186 /* Model */,
-				1452356D220DF57800A85186 /* Controllers */,
 				1452356E220DF5C400A85186 /* Views */,
+				1452356D220DF57800A85186 /* Controllers */,
 				1452356C220DF55C00A85186 /* Extensions */,
 				1452356F220DF61600A85186 /* XIbs and Storyboards */,
 				1411BE982203D8FC009BEE1D /* Info.plist */,
@@ -130,6 +142,7 @@
 				14D6DE042220B50800021607 /* CanvasViewController.swift */,
 				144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */,
 				1411BEE62208FE91009BEE1D /* Tool.swift */,
+				14710528226CD75300E88657 /* ConnectorItem.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -140,6 +153,7 @@
 				141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */,
 				1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */,
 				1452355A220CB79800A85186 /* CanvasView.swift */,
+				1471052C227B94E200E88657 /* ConnectorItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -149,6 +163,8 @@
 			children = (
 				1411BEE122052B7E009BEE1D /* Main.storyboard */,
 				1411BEE72208FE91009BEE1D /* Tool.xib */,
+				147105262267A0DA00E88657 /* CanvasToolViewController.xib */,
+				14710529226CD75300E88657 /* ConnectorItem.xib */,
 				1411BEAD220524E9009BEE1D /* EditorTools.storyboard */,
 				1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */,
 			);
@@ -158,10 +174,10 @@
 		14523575220E101400A85186 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1471051F225DA5C800E88657 /* Tool Model */,
 				14D6DDFE22164A6E00021607 /* Analysis.swift */,
 				14523573220E100B00A85186 /* ImageFile.swift */,
 				144CC4AE220E4081003311E4 /* ImageLoader.swift */,
+				1471051F225DA5C800E88657 /* Tool Model */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,12 +185,22 @@
 		1471051F225DA5C800E88657 /* Tool Model */ = {
 			isa = PBXGroup;
 			children = (
-				147105242265437600E88657 /* Bootstrap.swift */,
+				147105322280ED9D00E88657 /* Connectables */,
 				144CC4B42211F228003311E4 /* ToolObject.swift */,
 				14710520225DA67D00E88657 /* Loop.swift */,
 				14710522225DA69500E88657 /* Connectable.swift */,
 			);
 			path = "Tool Model";
+			sourceTree = "<group>";
+		};
+		147105322280ED9D00E88657 /* Connectables */ = {
+			isa = PBXGroup;
+			children = (
+				1471052E2280E36D00E88657 /* Align.swift */,
+				147105242265437600E88657 /* Bootstrap.swift */,
+				147105302280E52300E88657 /* ReadData.swift */,
+			);
+			path = Connectables;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,9 +261,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				147105272267A0DA00E88657 /* CanvasToolViewController.xib in Resources */,
 				1411BEE92208FE91009BEE1D /* Tool.xib in Resources */,
 				1411BEE322052B7E009BEE1D /* Main.storyboard in Resources */,
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
+				1471052B226CD75300E88657 /* ConnectorItem.xib in Resources */,
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
 				144CC4A4220E324D003311E4 /* toolImages in Resources */,
 				1452356B220CE9AC00A85186 /* Assets.xcassets in Resources */,
@@ -251,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1471052F2280E36D00E88657 /* Align.swift in Sources */,
 				144CC4B52211F228003311E4 /* ToolObject.swift in Sources */,
 				14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */,
 				144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */,
@@ -264,11 +293,14 @@
 				14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */,
 				1452355B220CB79800A85186 /* CanvasView.swift in Sources */,
 				1411BEE52208DDBE009BEE1D /* AnalysisViewController.swift in Sources */,
+				1471052D227B94E200E88657 /* ConnectorItemView.swift in Sources */,
+				147105312280E52300E88657 /* ReadData.swift in Sources */,
 				144CC4AF220E4081003311E4 /* ImageLoader.swift in Sources */,
 				14D6DE03221F47CD00021607 /* MainSplitViewController.swift in Sources */,
 				14523574220E100B00A85186 /* ImageFile.swift in Sources */,
 				14710521225DA67E00E88657 /* Loop.swift in Sources */,
 				1411BEE82208FE91009BEE1D /* Tool.swift in Sources */,
+				1471052A226CD75300E88657 /* ConnectorItem.swift in Sources */,
 				14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */,
 				14710523225DA69500E88657 /* Connectable.swift in Sources */,
 			);
