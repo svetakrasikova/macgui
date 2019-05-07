@@ -125,6 +125,13 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
 // MARK: - Methods for handling drag and drop from tool view to canvas
 extension CanvasViewController: CanvasViewDelegate {
     
+    func selectContentView(width: CGFloat) {
+        NSColor.selectedControlColor.set()
+        let path = NSBezierPath(rect: scrollView.documentVisibleRect)
+        path.lineWidth = width
+        path.stroke()
+    }
+    
     func processImageURLs(_ urls: [URL], center: NSPoint) {
         for (_,url) in urls.enumerated() {
             if let image = NSImage(contentsOf: url){
@@ -140,7 +147,6 @@ extension CanvasViewController: CanvasViewDelegate {
         let frame = NSRect(x: center.x - constrainedSize.width/2, y: center.y - constrainedSize.height/2, width: constrainedSize.width, height: constrainedSize.height)
         addCanvasTool(image: image, frame: frame, name: name)
     }
-    
     
 }
 

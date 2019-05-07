@@ -79,12 +79,8 @@ class CanvasView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         makeGridBackground(dirtyRect: dirtyRect)
         if isReceivingDrag {
-            NSColor.selectedControlColor.set()
-            let path = NSBezierPath(rect: bounds)
-            path.lineWidth = Appearance.selectionLineWidth
-            path.stroke()
+            delegate?.selectContentView(width: Appearance.selectionLineWidth)
         }
-    
     }
     
 }
@@ -92,6 +88,7 @@ class CanvasView: NSView {
 protocol CanvasViewDelegate {
     func processImageURLs(_ urls: [URL], center: NSPoint)
     func processImage(_ image: NSImage, center: NSPoint, name: String)
+    func selectContentView(width: CGFloat)
 }
 
 
