@@ -13,7 +13,7 @@
                 <outlet property="inletsScrollView" destination="obT-aW-oq6" id="K9C-q9-KaR"/>
                 <outlet property="outlets" destination="7Ki-Cv-W99" id="IkQ-Y4-4cq"/>
                 <outlet property="outletsScrollView" destination="upm-nL-QCz" id="CNQ-PL-lhE"/>
-                <outlet property="view" destination="Xc1-Zh-yIk" id="MDS-lD-l5o"/>
+                <outlet property="view" destination="Xc1-Zh-yIk" id="47Q-LL-xRZ"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>

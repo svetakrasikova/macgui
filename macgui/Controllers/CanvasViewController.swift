@@ -42,6 +42,10 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
                                                selector: #selector(didChangeMagnification(_ :)),
                                                name: NSScrollView.didEndLiveMagnifyNotification,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(changeToolControllersSelection(notification:)),
+                                               name: .didSelectToolController,
+                                               object: nil)
     }
     
     
@@ -49,7 +53,6 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         super.viewDidLayout()
         canvasViewHeightConstraint.constant = scrollView.frame.size.height * 4
         canvasViewWidthConstraint.constant = scrollView.frame.size.width * 4
-       
     }
     
     
@@ -93,6 +96,16 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
                                         userInfo: ["magnification": Float(scrollView.magnification)])
     }
     
+//    deselect all tool controllers except the one that sent the notification
+    @objc func changeToolControllersSelection(notification: Notification){
+        for childController in children {
+            if childController .isKind(of: CanvasToolViewController.self) &&
+                childController !== notification.object as! CanvasToolViewController{
+                    (childController as! CanvasToolViewController).viewSelected = false
+                }
+            }
+        }
+    
     func reset(analysis: Analysis){
         for subview in canvasView.subviews{
             if subview.identifier?.rawValue != "invitationLabel" {
@@ -111,6 +124,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     
     func addToolView(tool: ToolObject){
         let canvasToolViewController = CanvasToolViewController(tool: tool)
+        addChild(canvasToolViewController)
         canvasView.addSubview(canvasToolViewController.view)
     }
     
@@ -146,6 +160,16 @@ extension CanvasViewController: CanvasViewDelegate {
         let constrainedSize = image.aspectFitSizeForMaxDimension(Appearance.maxStickerDimension)
         let frame = NSRect(x: center.x - constrainedSize.width/2, y: center.y - constrainedSize.height/2, width: constrainedSize.width, height: constrainedSize.height)
         addCanvasTool(image: image, frame: frame, name: name)
+    }
+    
+    func mouseDownOnCanvasView() {
+        for childController in children {
+            if childController.isKind(of: CanvasToolViewController.self){
+                if (childController as! CanvasToolViewController).viewSelected {
+                    (childController as! CanvasToolViewController).viewSelected = false
+                }
+            }
+        }
     }
     
 }

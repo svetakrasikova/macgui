@@ -141,8 +141,8 @@
 				14D6DDFC2216487300021607 /* NavigatorViewController.swift */,
 				14D6DE042220B50800021607 /* CanvasViewController.swift */,
 				144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */,
-				1411BEE62208FE91009BEE1D /* Tool.swift */,
 				14710528226CD75300E88657 /* ConnectorItem.swift */,
+				1411BEE62208FE91009BEE1D /* Tool.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

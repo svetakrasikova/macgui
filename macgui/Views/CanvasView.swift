@@ -14,15 +14,14 @@ import Cocoa
 class CanvasView: NSView {
    
     enum Appearance {
-        static let selectionLineWidth: CGFloat = 10.0
+        static let selectionWidth: CGFloat = 10.0
     }
     
     var delegate: CanvasViewDelegate?
     
-    //Define the data types that the destination view accepts in a dragging operation.
+    //Define data types that canvas view accepts in a dragging operation.
     var acceptableTypes: Set<NSPasteboard.PasteboardType> { return [.URL] }
 
-    //Create a dictionary to define the desired URL types
     let filteringOptions = [NSPasteboard.ReadingOptionKey.urlReadingContentsConformToTypes:NSImage.imageTypes]
     
     var isReceivingDrag = false {
@@ -76,19 +75,23 @@ class CanvasView: NSView {
         
     }
     
+    override func mouseDown(with event: NSEvent) {
+        delegate?.mouseDownOnCanvasView()
+    }
+    
     override func draw(_ dirtyRect: NSRect) {
         makeGridBackground(dirtyRect: dirtyRect)
         if isReceivingDrag {
-            delegate?.selectContentView(width: Appearance.selectionLineWidth)
+            delegate?.selectContentView(width: Appearance.selectionWidth)
         }
     }
-    
 }
 
 protocol CanvasViewDelegate {
     func processImageURLs(_ urls: [URL], center: NSPoint)
     func processImage(_ image: NSImage, center: NSPoint, name: String)
     func selectContentView(width: CGFloat)
+    func mouseDownOnCanvasView()
 }
 
 

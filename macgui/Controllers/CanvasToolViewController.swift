@@ -8,20 +8,30 @@
 
 import Cocoa
 
-class CanvasToolViewController: NSViewController, ToolViewDelegate {
+class CanvasToolViewController: NSViewController, CanvasToolViewDelegate {
+    
     
     var frame: NSRect
     var image: NSImage
     var tool: ToolObject
+    var shiftKeyPressed: Bool = false
+    var viewSelected: Bool = false {
+        didSet {
+            (view as! CanvasToolView).isSelected = viewSelected
+            if viewSelected && !shiftKeyPressed {
+                NotificationCenter.default.post(name: .didSelectToolController, object: self)
+            }
+        }
+    }
+    
 
     @IBOutlet weak var inletsScrollView: NSScrollView!
     @IBOutlet weak var outletsScrollView: NSScrollView!
     @IBOutlet weak var inlets: NSCollectionView!
     @IBOutlet weak var outlets: NSCollectionView!
     @IBOutlet weak var imageView: NSImageView!
+    
   
-    
-    
     init(tool: ToolObject){
         self.image = tool.image
         self.frame = tool.frameOnCanvas
@@ -39,14 +49,13 @@ class CanvasToolViewController: NSViewController, ToolViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // set the frame of the tool view and add image to the image view
         setFrame()
         setImage()
         
         
         // set self as the delegate of the view
-        (self.view as! CanvasToolView).toolDelegate = self
+        (self.view as! CanvasToolView).canvasViewToolDelegate = self
         
         // if it is a connectable tool add inlets and outlets
         if tool .isKind(of: Connectable.self){
@@ -71,6 +80,12 @@ class CanvasToolViewController: NSViewController, ToolViewDelegate {
         let size = tool.frameOnCanvas.size
         let origin = view.frame.origin
         tool.frameOnCanvas = NSRect(origin: origin, size: size)
+    }
+    
+    func setViewSelected(flag: Bool) {
+        shiftKeyPressed = flag
+        viewSelected = true
+        
     }
     
 }
