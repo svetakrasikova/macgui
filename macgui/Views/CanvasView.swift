@@ -27,9 +27,7 @@ class CanvasView: NSView {
         }
     }
     
-    override var acceptsFirstResponder: Bool {
-        print("canvas view accepts first responder")
-        return true }
+    override var acceptsFirstResponder: Bool { return true }
     override func becomeFirstResponder() -> Bool { return true }
     override func resignFirstResponder() -> Bool { return true }
     
