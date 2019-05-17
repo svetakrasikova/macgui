@@ -39,6 +39,8 @@
 		14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE00221E484000021607 /* ControllerExtensions.swift */; };
 		14D6DE03221F47CD00021607 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE02221F47CD00021607 /* MainSplitViewController.swift */; };
 		14D6DE062220B50800021607 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE042220B50800021607 /* CanvasViewController.swift */; };
+		14E58526228C92AB00802691 /* ToolImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E58525228C92AB00802691 /* ToolImageView.swift */; };
+		14E58528228DF92F00802691 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E58527228DF92F00802691 /* Notifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		14D6DE00221E484000021607 /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
 		14D6DE02221F47CD00021607 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		14D6DE042220B50800021607 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
+		14E58525228C92AB00802691 /* ToolImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolImageView.swift; sourceTree = "<group>"; };
+		14E58527228DF92F00802691 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				1452355E220CCC5800A85186 /* Helpers.swift */,
+				14E58527228DF92F00802691 /* Notifications.swift */,
 				14D6DE00221E484000021607 /* ControllerExtensions.swift */,
 			);
 			path = Extensions;
@@ -154,6 +159,7 @@
 				1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */,
 				1452355A220CB79800A85186 /* CanvasView.swift */,
 				1471052C227B94E200E88657 /* ConnectorItemView.swift */,
+				14E58525228C92AB00802691 /* ToolImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,12 +303,14 @@
 				147105312280E52300E88657 /* ReadData.swift in Sources */,
 				144CC4AF220E4081003311E4 /* ImageLoader.swift in Sources */,
 				14D6DE03221F47CD00021607 /* MainSplitViewController.swift in Sources */,
+				14E58528228DF92F00802691 /* Notifications.swift in Sources */,
 				14523574220E100B00A85186 /* ImageFile.swift in Sources */,
 				14710521225DA67E00E88657 /* Loop.swift in Sources */,
 				1411BEE82208FE91009BEE1D /* Tool.swift in Sources */,
 				1471052A226CD75300E88657 /* ConnectorItem.swift in Sources */,
 				14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */,
 				14710523225DA69500E88657 /* Connectable.swift in Sources */,
+				14E58526228C92AB00802691 /* ToolImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

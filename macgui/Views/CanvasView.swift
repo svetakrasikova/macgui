@@ -8,13 +8,10 @@
 
 import Cocoa
 
-
-
-
 class CanvasView: NSView {
    
     enum Appearance {
-        static let selectionWidth: CGFloat = 10.0
+        static let selectionWidth: CGFloat = 5.0
     }
     
     var delegate: CanvasViewDelegate?
@@ -29,6 +26,12 @@ class CanvasView: NSView {
             needsDisplay = true
         }
     }
+    
+    override var acceptsFirstResponder: Bool {
+        print("canvas view accepts first responder")
+        return true }
+    override func becomeFirstResponder() -> Bool { return true }
+    override func resignFirstResponder() -> Bool { return true }
     
     func setup() {
         registerForDraggedTypes(Array(acceptableTypes))
@@ -79,12 +82,16 @@ class CanvasView: NSView {
         delegate?.mouseDownOnCanvasView()
     }
     
+    
     override func draw(_ dirtyRect: NSRect) {
         makeGridBackground(dirtyRect: dirtyRect)
         if isReceivingDrag {
             delegate?.selectContentView(width: Appearance.selectionWidth)
+            needsDisplay = true
         }
     }
+    
+    
 }
 
 protocol CanvasViewDelegate {

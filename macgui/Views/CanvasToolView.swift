@@ -13,22 +13,29 @@ class CanvasToolView: NSView {
     enum Appearance {
         static let selectionCornerRadius: CGFloat = 5.0
         static let selectionWidth: CGFloat = 3.0
-        static let selectionColor: CGColor = NSColor.selectedMenuItemColor.cgColor
+        static let selectionColor: CGColor = NSColor.gray.cgColor
         
     }
     
     var firstMouseDownPoint: NSPoint?
     var canvasViewToolDelegate: CanvasToolViewDelegate? = nil
     
-
-   
+    // MARK: - First Responder
+    
+    override var acceptsFirstResponder: Bool {
+        return true
+    }
+    override func becomeFirstResponder() -> Bool {return true}
+    override func resignFirstResponder() -> Bool {return true}
+    
+    
     var isSelected: Bool = false
-    { didSet {
+    { didSet{
           needsDisplay = true
         }
     }
     
-    override var wantsUpdateLayer: Bool { return true }
+    override var wantsUpdateLayer: Bool {return true}
     
     override func mouseDown(with event: NSEvent) {
         let shiftKeyDown = (event.modifierFlags.rawValue &  NSEvent.ModifierFlags.shift.rawValue) != 0
@@ -53,9 +60,11 @@ class CanvasToolView: NSView {
         super.draw(dirtyRect)
     }
     
+    
     func mouseDownOnCanvas() {
         isSelected = false
     }
+    
     
     override func updateLayer() {
         layer?.cornerRadius = Appearance.selectionCornerRadius
@@ -66,6 +75,8 @@ class CanvasToolView: NSView {
             layer?.borderColor = NSColor.clear.cgColor
         }
     }
+    
+
 
 }
 

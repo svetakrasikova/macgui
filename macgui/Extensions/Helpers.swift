@@ -105,9 +105,5 @@ extension NSView {
     
 }
 
-extension NSNotification.Name {
-    static let didChangeMagnification = Notification.Name("didChangeMagnification")
-    static let didSelectToolController = Notification.Name("didSelectToolController")
-    
-}
+
 

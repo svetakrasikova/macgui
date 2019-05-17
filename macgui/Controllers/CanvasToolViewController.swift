@@ -8,13 +8,14 @@
 
 import Cocoa
 
-class CanvasToolViewController: NSViewController, CanvasToolViewDelegate {
+class CanvasToolViewController: NSViewController, NSWindowDelegate, CanvasToolViewDelegate {
     
     
     var frame: NSRect
     var image: NSImage
     var tool: ToolObject
     var shiftKeyPressed: Bool = false
+   
     var viewSelected: Bool = false {
         didSet {
             (view as! CanvasToolView).isSelected = viewSelected
@@ -23,7 +24,6 @@ class CanvasToolViewController: NSViewController, CanvasToolViewDelegate {
             }
         }
     }
-    
 
     @IBOutlet weak var inletsScrollView: NSScrollView!
     @IBOutlet weak var outletsScrollView: NSScrollView!
@@ -39,6 +39,16 @@ class CanvasToolViewController: NSViewController, CanvasToolViewDelegate {
         super.init(nibName: nil, bundle: nil)
     }
     
+    
+    override func keyDown(with event: NSEvent) {
+        if event.charactersIgnoringModifiers == String(Character(UnicodeScalar(NSDeleteCharacter)!)) {
+            let point = event.locationInWindow
+            print("from tool view controller", point)
+            NotificationCenter.default.post(name: .didSelectDeleteKey, object: self, userInfo: ["point": point])
+        }
+    }
+    
+    
     required init?(coder: NSCoder) {
         // set some defaults
         image = NSImage(named: "AppIcon")!
@@ -49,24 +59,28 @@ class CanvasToolViewController: NSViewController, CanvasToolViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let window = NSApp.windows.first{
+            window.delegate = self
+        }
         // set the frame of the tool view and add image to the image view
         setFrame()
         setImage()
-        
         
         // set self as the delegate of the view
         (self.view as! CanvasToolView).canvasViewToolDelegate = self
         
         // if it is a connectable tool add inlets and outlets
-        if tool .isKind(of: Connectable.self){
+        if tool.isKind(of: Connectable.self){
            unhideConnectors()
         }
     }
+
     
     func unhideConnectors(){
         inletsScrollView.isHidden = false
         outletsScrollView.isHidden = false
     }
+    
     
     func setFrame () {
         view.frame = self.frame
@@ -81,12 +95,13 @@ class CanvasToolViewController: NSViewController, CanvasToolViewDelegate {
         let origin = view.frame.origin
         tool.frameOnCanvas = NSRect(origin: origin, size: size)
     }
-    
+
     func setViewSelected(flag: Bool) {
         shiftKeyPressed = flag
         viewSelected = true
         
     }
+    
     
 }
 

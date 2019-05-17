@@ -18,7 +18,6 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
             }
         }
     }
-    
  
     @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var canvasView: CanvasView!
@@ -26,6 +25,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     @IBOutlet weak var canvasViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var canvasViewWidthConstraint: NSLayoutConstraint!
     
+
     
     enum Appearance {
         static let maxStickerDimension: CGFloat = 50.0
@@ -45,6 +45,10 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(changeToolControllersSelection(notification:)),
                                                name: .didSelectToolController,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(deleteSelectedTools(notification:)),
+                                               name: .didSelectDeleteKey,
                                                object: nil)
     }
     
@@ -106,6 +110,19 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
             }
         }
     
+    @objc func deleteSelectedTools(notification: NSNotification){
+        let userInfo = notification.userInfo! as! [String : NSPoint]
+        for childController in children {
+            if childController .isKind(of: CanvasToolViewController.self) &&
+                (childController as! CanvasToolViewController).viewSelected == true {
+                    removeToolView(toolViewController: childController as! CanvasToolViewController)
+                    let size = childController.view.frame.size
+                    NSAnimationEffect.poof.show(centeredAt: userInfo["point"]!, size: size)
+            }
+        }
+    }
+
+    
     func reset(analysis: Analysis){
         for subview in canvasView.subviews{
             if subview.identifier?.rawValue != "invitationLabel" {
@@ -133,6 +150,14 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         analysis?.tools.append(newTool)
         addToolView(tool: newTool)
     }
+    
+    func removeToolView(toolViewController: CanvasToolViewController){
+        if let analysis = analysis, let index = analysis.tools.index(of: toolViewController.tool) {
+            toolViewController.view.removeFromSuperview()
+            toolViewController.removeFromParent()
+            analysis.tools.remove(at: index)
+        }
+    }
 
 }
 
@@ -140,7 +165,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
 extension CanvasViewController: CanvasViewDelegate {
     
     func selectContentView(width: CGFloat) {
-        NSColor.selectedControlColor.set()
+        NSColor.lightGray.set()
         let path = NSBezierPath(rect: scrollView.documentVisibleRect)
         path.lineWidth = width
         path.stroke()
@@ -172,24 +197,4 @@ extension CanvasViewController: CanvasViewDelegate {
         }
     }
     
-}
-
-// MARK: - Initialzing tools by type
-extension CanvasViewController {
-    
-    func initToolObjectWithName(_ name: String, image: NSImage, frame: NSRect) -> ToolObject {
-        let index = name.firstIndex(of: ".") ?? name.endIndex
-        let toolType = String(name[..<index])
-        switch toolType {
-        case "bootstrap":
-            return Bootstrap(image: image, frameOnCanvas: frame)
-        case "align":
-            return Align(image: image, frameOnCanvas: frame)
-        case "readdata":
-            return ReadData(image: image, frameOnCanvas: frame)
-        default:
-            return ToolObject(image: image, frameOnCanvas: frame)
-            
-        }
-    }
 }

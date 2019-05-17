@@ -13,7 +13,7 @@
                 <outlet property="inletsScrollView" destination="obT-aW-oq6" id="K9C-q9-KaR"/>
                 <outlet property="outlets" destination="7Ki-Cv-W99" id="IkQ-Y4-4cq"/>
                 <outlet property="outletsScrollView" destination="upm-nL-QCz" id="CNQ-PL-lhE"/>
-                <outlet property="view" destination="Xc1-Zh-yIk" id="47Q-LL-xRZ"/>
+                <outlet property="view" destination="Xc1-Zh-yIk" id="SL4-ys-veD"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -22,9 +22,9 @@
             <rect key="frame" x="0.0" y="0.0" width="182" height="170"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pEr-0I-cok">
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pEr-0I-cok" customClass="ToolImageView" customModule="macgui" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="182" height="170"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ZTn-4h-lY7"/>
+                    <imageCell key="cell" alignment="left" imageScaling="proportionallyDown" id="ZTn-4h-lY7"/>
                 </imageView>
                 <scrollView hidden="YES" wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="2" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upm-nL-QCz">
                     <rect key="frame" x="172" y="5" width="10" height="160"/>
