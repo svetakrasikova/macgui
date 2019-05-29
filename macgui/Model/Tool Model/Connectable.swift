@@ -13,8 +13,48 @@ import Cocoa
 class Connectable: ToolObject {    
     var inlets: [Connector] = []
     var outlets: [Connector] = []
-    var isConnected: Bool = false
+    var isConnected: Bool {
+        get {
+            for link in outlets {
+                if link.neighbor == nil {return false}
+            }
+            for link in inlets {
+                if link.neighbor == nil {return false}
+            }
+            return true
+        }
+    }
     
+    func addNeighbor(color: ConnectorColor, neighbor: Connectable, linkType: LinkType){
+        switch linkType {
+        case .inlet:
+             for (index, connector) in inlets.enumerated(){
+                if connector.color == color && connector.neighbor == nil {
+                    inlets[index].neighbor = neighbor
+                }
+            }
+        case .outlet:
+            for (index, connector) in outlets.enumerated(){
+                if connector.color == color && connector.neighbor == nil {
+                    outlets[index].neighbor = neighbor
+                }
+            }
+        }
+
+    }
+    
+    func getUnconnectedInlets() -> [Connector] {
+        return inlets.filter{$0.neighbor == nil}
+    }
+    
+    func getUnconnectedOutlets() -> [Connector] {
+        return outlets.filter{$0.neighbor == nil}
+    }
+    
+}
+
+enum LinkType {
+    case inlet, outlet
 }
 
 enum ConnectorColor {
@@ -25,8 +65,13 @@ struct Connector {
     var color: ConnectorColor
     var neighbor: Connectable?
     
+    init(color: ConnectorColor, neighbor: Connectable){
+        self.color = color
+        self.neighbor = neighbor
+    }
     init(color: ConnectorColor){
         self.color = color
         self.neighbor = nil
     }
+    
 }

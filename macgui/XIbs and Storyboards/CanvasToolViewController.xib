@@ -41,7 +41,7 @@
                                 <color key="primaryBackgroundColor" white="0.90980392160000001" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="-2" id="gSU-Qb-4yE"/>
-                                    <outlet property="delegate" destination="-2" id="Erg-S4-nHF"/>
+                                    <outlet property="delegate" destination="-2" id="TlN-A0-nuC"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -74,7 +74,7 @@
                                 <color key="primaryBackgroundColor" white="0.90980392156862744" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="-2" id="ocO-S8-owG"/>
-                                    <outlet property="delegate" destination="-2" id="Rv1-j9-iHg"/>
+                                    <outlet property="delegate" destination="-2" id="ARn-IS-WWo"/>
                                 </connections>
                             </collectionView>
                         </subviews>

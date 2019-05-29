@@ -41,6 +41,10 @@
 		14D6DE062220B50800021607 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE042220B50800021607 /* CanvasViewController.swift */; };
 		14E58526228C92AB00802691 /* ToolImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E58525228C92AB00802691 /* ToolImageView.swift */; };
 		14E58528228DF92F00802691 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E58527228DF92F00802691 /* Notifications.swift */; };
+		14E5856E22947BFB00802691 /* LineOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5856D22947BFB00802691 /* LineOverlay.swift */; };
+		14E5857222949A0900802691 /* ConnectionDragController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857122949A0900802691 /* ConnectionDragController.swift */; };
+		14E585742298574100802691 /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E585732298574100802691 /* ArrowView.swift */; };
+		14E585762298575C00802691 /* ArrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E585752298575C00802691 /* ArrowViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +85,10 @@
 		14D6DE042220B50800021607 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
 		14E58525228C92AB00802691 /* ToolImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolImageView.swift; sourceTree = "<group>"; };
 		14E58527228DF92F00802691 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		14E5856D22947BFB00802691 /* LineOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LineOverlay.swift; path = macgui/Views/LineOverlay.swift; sourceTree = SOURCE_ROOT; };
+		14E5857122949A0900802691 /* ConnectionDragController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDragController.swift; sourceTree = "<group>"; };
+		14E585732298574100802691 /* ArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowView.swift; sourceTree = "<group>"; };
+		14E585752298575C00802691 /* ArrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +147,8 @@
 		1452356D220DF57800A85186 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				14E585752298575C00802691 /* ArrowViewController.swift */,
+				14E5857122949A0900802691 /* ConnectionDragController.swift */,
 				1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */,
 				14B5852A225819F6003EB752 /* MainWindowController.swift */,
 				14D6DE02221F47CD00021607 /* MainSplitViewController.swift */,
@@ -155,11 +165,13 @@
 		1452356E220DF5C400A85186 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				14E585732298574100802691 /* ArrowView.swift */,
 				141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */,
 				1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */,
 				1452355A220CB79800A85186 /* CanvasView.swift */,
 				1471052C227B94E200E88657 /* ConnectorItemView.swift */,
 				14E58525228C92AB00802691 /* ToolImageView.swift */,
+				14E5856D22947BFB00802691 /* LineOverlay.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -285,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E585762298575C00802691 /* ArrowViewController.swift in Sources */,
 				1471052F2280E36D00E88657 /* Align.swift in Sources */,
 				144CC4B52211F228003311E4 /* ToolObject.swift in Sources */,
 				14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */,
@@ -292,9 +305,12 @@
 				1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */,
 				147105252265437600E88657 /* Bootstrap.swift in Sources */,
 				141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */,
+				14E585742298574100802691 /* ArrowView.swift in Sources */,
 				14D6DE062220B50800021607 /* CanvasViewController.swift in Sources */,
 				1452355F220CCC5800A85186 /* Helpers.swift in Sources */,
 				14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */,
+				14E5856E22947BFB00802691 /* LineOverlay.swift in Sources */,
+				14E5857222949A0900802691 /* ConnectionDragController.swift in Sources */,
 				1411BE902203D8FB009BEE1D /* AppDelegate.swift in Sources */,
 				14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */,
 				1452355B220CB79800A85186 /* CanvasView.swift in Sources */,

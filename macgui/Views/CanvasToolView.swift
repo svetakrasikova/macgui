@@ -12,7 +12,7 @@ class CanvasToolView: NSView {
 
     enum Appearance {
         static let selectionCornerRadius: CGFloat = 5.0
-        static let selectionWidth: CGFloat = 3.0
+        static let selectionWidth: CGFloat = 2.0
         static let selectionColor: CGColor = NSColor.gray.cgColor
         
     }

@@ -9,7 +9,8 @@
 import Cocoa
 
 class CanvasViewController: NSViewController, NSWindowDelegate {
-    
+   
+
    
     weak var analysis: Analysis? {
         didSet{
@@ -49,6 +50,10 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(deleteSelectedTools(notification:)),
                                                name: .didSelectDeleteKey,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didConnectTools(notification:)),
+                                               name: .didConnectTools,
                                                object: nil)
     }
     
@@ -93,7 +98,21 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
             print("Switch case error!")
         }
     }
+   
+    @objc func didConnectTools(notification: Notification){
+        let userInfo = notification.userInfo! as! [String: ConnectorItemView]
+        if let color = userInfo["target"]?.arrowColor, let targetTool = userInfo["target"]?.delegate?.getTool(), let sourceTool = userInfo["source"]?.delegate?.getTool() {
+            let arrowController = ArrowViewController()
+            arrowController.color = color
+            arrowController.beginPoint = (sourceTool as! ToolObject).frameOnCanvas.center()
+            arrowController.endPoint = (targetTool as! ToolObject).frameOnCanvas.center()
+            arrowController.canvasFrame = canvasView.bounds
+            addChild(arrowController)
+//            add arrow view to the canvas view
+        }
+        
     
+    }
     @objc func didChangeMagnification(_ notification: Notification){
         NotificationCenter.default.post(name: .didChangeMagnification,
                                         object: self,
@@ -139,6 +158,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         }
     }
     
+    
     func addToolView(tool: ToolObject){
         let canvasToolViewController = CanvasToolViewController(tool: tool)
         addChild(canvasToolViewController)
@@ -158,7 +178,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
             analysis.tools.remove(at: index)
         }
     }
-
+    
 }
 
 // MARK: - Methods for handling drag and drop from tool view to canvas
@@ -198,3 +218,8 @@ extension CanvasViewController: CanvasViewDelegate {
     }
     
 }
+
+
+
+
+

@@ -30,7 +30,18 @@ func aspectFitSizeForMaxDimension(_ maxDimension: CGFloat) -> NSSize {
 
 }
 
-
+/**
+ Get the center point of a rectangle
+ 
+ - returns: NSPoint in the center of the given rectangle
+ */
+extension NSRect {
+    func center() -> NSPoint {
+        let x = origin.x + ( size.width / 2 )
+        let y = origin.y + ( size.height / 2 )
+        return NSPoint(x: x, y: y)
+    }
+}
 extension NSPoint {
         /**
          Mutate an NSPoint with a random amount of noise bounded by maximumDelta
@@ -64,6 +75,14 @@ extension NSView {
         let image = NSImage(data: pdfData)
         return image ?? NSImage()
     }
+    
+    
+    public func bringToFront() {
+        let superlayer = self.layer?.superlayer
+        self.layer?.removeFromSuperlayer()
+        superlayer?.addSublayer(self.layer!)
+    }
+
     
     func makeGridBackground(dirtyRect: NSRect){
         

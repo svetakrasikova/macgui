@@ -10,7 +10,6 @@ import Cocoa
 
 class CanvasToolViewController: NSViewController, NSWindowDelegate, CanvasToolViewDelegate {
     
-    
     var frame: NSRect
     var image: NSImage
     var tool: ToolObject
@@ -30,7 +29,8 @@ class CanvasToolViewController: NSViewController, NSWindowDelegate, CanvasToolVi
     @IBOutlet weak var inlets: NSCollectionView!
     @IBOutlet weak var outlets: NSCollectionView!
     @IBOutlet weak var imageView: NSImageView!
-    
+
+
   
     init(tool: ToolObject){
         self.image = tool.image
@@ -61,20 +61,21 @@ class CanvasToolViewController: NSViewController, NSWindowDelegate, CanvasToolVi
         if let window = NSApp.windows.first{
             window.delegate = self
         }
-        // set the frame of the tool view and add image to the image view
+        
+        
+        
         setFrame()
         setImage()
         
-        // set self as the delegate of the view
         (self.view as! CanvasToolView).canvasViewToolDelegate = self
         
-        // if it is a connectable tool add inlets and outlets
         if tool.isKind(of: Connectable.self){
            unhideConnectors()
         }
+        
     }
 
-    
+
     func unhideConnectors(){
         inletsScrollView.isHidden = false
         outletsScrollView.isHidden = false
@@ -88,7 +89,6 @@ class CanvasToolViewController: NSViewController, NSWindowDelegate, CanvasToolVi
         imageView.image = self.image
     }
     
-//    this method is called when the view frame origin changes
     func updateFrame(){
         let size = tool.frameOnCanvas.size
         let origin = view.frame.origin
@@ -98,7 +98,6 @@ class CanvasToolViewController: NSViewController, NSWindowDelegate, CanvasToolVi
     func setViewSelected(flag: Bool) {
         shiftKeyPressed = flag
         viewSelected = true
-        
     }
     
     
@@ -109,21 +108,22 @@ extension CanvasToolViewController: NSCollectionViewDataSource {
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let connectable = tool as? Connectable else {return 0}
         if collectionView == self.inlets {
-            return connectable.inlets.count
+            return connectable.getUnconnectedInlets().count
         } else {
-            return connectable.outlets.count
+            return connectable.getUnconnectedOutlets().count
         }
-        
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("ConnectorItem"), for: indexPath) as! ConnectorItem
+        item.parentTool = self.tool as? Connectable
         if collectionView == self.outlets {
-            item.type = (self.tool as! Connectable).outlets[indexPath.item]
+            item.type = (self.tool as! Connectable).getUnconnectedOutlets()[indexPath.item]
         } else {
-            item.type = (self.tool as! Connectable).inlets[indexPath.item]
+            item.type = (self.tool as! Connectable).getUnconnectedInlets()[indexPath.item]
         }
         return item
     }
     
 }
+
