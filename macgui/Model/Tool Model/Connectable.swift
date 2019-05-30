@@ -13,6 +13,7 @@ import Cocoa
 class Connectable: ToolObject {    
     var inlets: [Connector] = []
     var outlets: [Connector] = []
+    
     var isConnected: Bool {
         get {
             for link in outlets {
@@ -49,6 +50,14 @@ class Connectable: ToolObject {
     
     func getUnconnectedOutlets() -> [Connector] {
         return outlets.filter{$0.neighbor == nil}
+    }
+    
+    func getConnectedInlets() -> [Connector] {
+        return inlets.filter{$0.neighbor != nil}
+    }
+    
+    func getConnectedOutlets() -> [Connector] {
+        return outlets.filter{$0.neighbor != nil}
     }
     
 }

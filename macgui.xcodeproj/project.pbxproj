@@ -45,6 +45,7 @@
 		14E5857222949A0900802691 /* ConnectionDragController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857122949A0900802691 /* ConnectionDragController.swift */; };
 		14E585742298574100802691 /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E585732298574100802691 /* ArrowView.swift */; };
 		14E585762298575C00802691 /* ArrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E585752298575C00802691 /* ArrowViewController.swift */; };
+		14E5857822A067A600802691 /* TransparentToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857722A067A600802691 /* TransparentToolsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		14E5857122949A0900802691 /* ConnectionDragController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDragController.swift; sourceTree = "<group>"; };
 		14E585732298574100802691 /* ArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowView.swift; sourceTree = "<group>"; };
 		14E585752298575C00802691 /* ArrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowViewController.swift; sourceTree = "<group>"; };
+		14E5857722A067A600802691 /* TransparentToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentToolsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 		1452356E220DF5C400A85186 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				14E5857722A067A600802691 /* TransparentToolsView.swift */,
 				14E585732298574100802691 /* ArrowView.swift */,
 				141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */,
 				1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */,
@@ -327,6 +330,7 @@
 				14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */,
 				14710523225DA69500E88657 /* Connectable.swift in Sources */,
 				14E58526228C92AB00802691 /* ToolImageView.swift in Sources */,
+				14E5857822A067A600802691 /* TransparentToolsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

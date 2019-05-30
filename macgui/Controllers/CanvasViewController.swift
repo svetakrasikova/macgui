@@ -11,7 +11,7 @@ import Cocoa
 class CanvasViewController: NSViewController, NSWindowDelegate {
    
 
-   
+  
     weak var analysis: Analysis? {
         didSet{
             if let analysis = analysis {
@@ -22,6 +22,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
  
     @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var canvasView: CanvasView!
+    @IBOutlet weak var transparentToolsView: TransparentToolsView!
     @IBOutlet weak var invitationLabel: NSTextField!
     @IBOutlet weak var canvasViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var canvasViewWidthConstraint: NSLayoutConstraint!
@@ -55,6 +56,8 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
                                                selector: #selector(didConnectTools(notification:)),
                                                name: .didConnectTools,
                                                object: nil)
+        
+       
     }
     
     
@@ -102,17 +105,21 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     @objc func didConnectTools(notification: Notification){
         let userInfo = notification.userInfo! as! [String: ConnectorItemView]
         if let color = userInfo["target"]?.arrowColor, let targetTool = userInfo["target"]?.delegate?.getTool(), let sourceTool = userInfo["source"]?.delegate?.getTool() {
-            let arrowController = ArrowViewController()
-            arrowController.color = color
-            arrowController.beginPoint = (sourceTool as! ToolObject).frameOnCanvas.center()
-            arrowController.endPoint = (targetTool as! ToolObject).frameOnCanvas.center()
-            arrowController.canvasFrame = canvasView.bounds
-            addChild(arrowController)
-//            add arrow view to the canvas view
+            let arrowController = ArrowViewController(color: color, canvasFrame: canvasView.bounds, endPoint: (targetTool as! ToolObject).frameOnCanvas.center(), beginPoint: (sourceTool as! ToolObject).frameOnCanvas.center())
+            canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
         }
-        
-    
     }
+    
+    func lineShapeLayer(begin: NSPoint, end: NSPoint, color: CGColor, layer: CALayer){
+            let shapeLayer = CAShapeLayer()
+            shapeLayer.strokeColor = color
+            shapeLayer.lineWidth = 2
+            let path = CGMutablePath()
+            path.addLines(between: [begin, end])
+            shapeLayer.path = path
+            layer.addSublayer(shapeLayer)
+    }
+    
     @objc func didChangeMagnification(_ notification: Notification){
         NotificationCenter.default.post(name: .didChangeMagnification,
                                         object: self,
