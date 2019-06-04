@@ -12,7 +12,7 @@ import Cocoa
 class ToolObject: NSObject{
     
     var image: NSImage
-    var frameOnCanvas: NSRect
+    @objc dynamic var frameOnCanvas: NSRect
     var name: String?
     
     

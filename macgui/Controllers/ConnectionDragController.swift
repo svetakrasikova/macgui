@@ -14,10 +14,10 @@ class ConnectionDragController: NSObject, NSDraggingSource {
     private var lineOverlay: LineOverlay?
     
     func connect(to target: ConnectorItemView) {
-        Swift.print("Connect \(sourceEndpoint!) to \(target)")
+        print("Connect \(sourceEndpoint!) to \(target)")
         NotificationCenter.default.post(name: .didConnectTools,
                                         object: self,
-                                        userInfo: ["target": sourceEndpoint!, "source": target])
+                                        userInfo: ["source": sourceEndpoint!, "target": target])
     }
     
     func trackDrag(forMouseDownEvent mouseDownEvent: NSEvent, in sourceEndpoint: ConnectorItemView) {

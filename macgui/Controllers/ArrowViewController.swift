@@ -8,31 +8,36 @@
 
 import Cocoa
 
-class ArrowViewController: NSViewController {
+class ArrowViewController: NSViewController, ArrowViewDelegate {
     
     private let rootLayer = CALayer()
-   
-    var color: CGColor
+    private var observers = [NSKeyValueObservation]()
+    
+    var targetTool: Connectable
+    
+    var sourceTool: Connectable
+    
+    
     var canvasFrame: NSRect
+    var color: CGColor
+    
+    var endPoint: NSPoint {
+        get{
+           return targetTool.frameOnCanvas.center()
+        }
+    }
     
     var beginPoint: NSPoint {
-        didSet{
-            view.needsDisplay = true
-        }
-    }
-  
-    var endPoint: NSPoint {
-        didSet {
-            view.needsDisplay = true
+        get {
+           return sourceTool.frameOnCanvas.center()
         }
     }
     
-    
-    init(color: CGColor, canvasFrame: NSRect, endPoint: NSPoint, beginPoint: NSPoint){
+    init(canvasFrame: NSRect, color: CGColor, sourceTool: Connectable, targetTool: Connectable){
+        self.targetTool = targetTool
+        self.sourceTool = sourceTool
         self.color = color
         self.canvasFrame = canvasFrame
-        self.endPoint = endPoint
-        self.beginPoint = beginPoint
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -41,28 +46,33 @@ class ArrowViewController: NSViewController {
     }
     
     
-    func lineShapeLayer(){
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.strokeColor = color
-        shapeLayer.lineWidth = 2
+    func drawArrowIn(layer: CAShapeLayer){
+        layer.strokeColor = color
+        layer.lineWidth = 2
         let path = CGMutablePath()
         path.addLines(between: [beginPoint, endPoint])
-        shapeLayer.path = path
-        rootLayer.addSublayer(shapeLayer)
+        layer.path = path
+        view.layer?.addSublayer(layer)
     }
     
     override func loadView() {
-        view = NSView(frame: canvasFrame)
+        view = ArrowView(frame: canvasFrame)
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        rootLayer.frame = self.view.frame
-        self.view.wantsLayer = true
-        self.view.layer = rootLayer
-        lineShapeLayer()
+        (view as! ArrowView).delegate = self
+        observeEndPointChanges()
     }
     
-
+    func observeEndPointChanges(){
+        observers = [
+            sourceTool.observe(\Connectable.frameOnCanvas, options: [.old, .new]) {tool, change in
+                self.view.needsDisplay = true},
+            
+            targetTool.observe(\Connectable.frameOnCanvas, options: [.old, .new]) {tool, change in
+                self.view.needsDisplay = true}]
+    }
     
 }

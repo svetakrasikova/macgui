@@ -12,6 +12,7 @@ class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
 
     
     weak var parentTool: Connectable?
+    
     var type: Connector? {
         didSet{
             guard isViewLoaded else { return }
@@ -22,6 +23,7 @@ class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
         }
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         (view as! ConnectorItemView).delegate = self

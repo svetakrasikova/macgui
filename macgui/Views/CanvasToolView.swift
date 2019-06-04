@@ -48,8 +48,9 @@ class CanvasToolView: NSView {
         let offset = NSPoint(x: newPoint.x - firstMouseDownPoint!.x, y: newPoint.y - firstMouseDownPoint!.y)
         let origin = self.frame.origin
         let newOrigin = NSPoint(x: origin.x + offset.x, y: origin.y + offset.y)
-//        change the end points of connections if there are any
+        canvasViewToolDelegate?.updateFrame()
         self.setFrameOrigin(newOrigin)
+   
     }
     
     override func mouseUp(with event: NSEvent) {
@@ -84,6 +85,5 @@ class CanvasToolView: NSView {
 //the delegate is the tool view controller that wants to be notified about its view selection
 protocol CanvasToolViewDelegate {
     func updateFrame()
-    func updateConnections(newToolFrameOrigin: NSPoint)
     func setViewSelected(flag: Bool)
 }

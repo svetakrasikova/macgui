@@ -105,20 +105,11 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     @objc func didConnectTools(notification: Notification){
         let userInfo = notification.userInfo! as! [String: ConnectorItemView]
         if let color = userInfo["target"]?.arrowColor, let targetTool = userInfo["target"]?.delegate?.getTool(), let sourceTool = userInfo["source"]?.delegate?.getTool() {
-            let arrowController = ArrowViewController(color: color, canvasFrame: canvasView.bounds, endPoint: (targetTool as! ToolObject).frameOnCanvas.center(), beginPoint: (sourceTool as! ToolObject).frameOnCanvas.center())
+            let arrowController = ArrowViewController(canvasFrame: canvasView.bounds, color: color, sourceTool: sourceTool as! Connectable, targetTool: targetTool as! Connectable)
             canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
         }
     }
     
-    func lineShapeLayer(begin: NSPoint, end: NSPoint, color: CGColor, layer: CALayer){
-            let shapeLayer = CAShapeLayer()
-            shapeLayer.strokeColor = color
-            shapeLayer.lineWidth = 2
-            let path = CGMutablePath()
-            path.addLines(between: [begin, end])
-            shapeLayer.path = path
-            layer.addSublayer(shapeLayer)
-    }
     
     @objc func didChangeMagnification(_ notification: Notification){
         NotificationCenter.default.post(name: .didChangeMagnification,

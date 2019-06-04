@@ -10,14 +10,9 @@ import Cocoa
 
 class CanvasToolViewController: NSViewController, NSWindowDelegate, CanvasToolViewDelegate {
     
-    
     var frame: NSRect
     var image: NSImage
-    var tool: ToolObject {
-        didSet{
-//            notifify all relevant arrow controllers that their views need to be redrawn
-        }
-    }
+    var tool: ToolObject
     var shiftKeyPressed: Bool = false
    
     var viewSelected: Bool = false {
@@ -77,6 +72,8 @@ class CanvasToolViewController: NSViewController, NSWindowDelegate, CanvasToolVi
            unhideConnectors()
         }
         
+        
+        
     }
 
 
@@ -97,11 +94,10 @@ class CanvasToolViewController: NSViewController, NSWindowDelegate, CanvasToolVi
         let size = tool.frameOnCanvas.size
         let origin = view.frame.origin
         tool.frameOnCanvas = NSRect(origin: origin, size: size)
+        
     }
     
-    func updateConnections(newToolFrameOrigin: NSPoint) {
-        <#code#>
-    }
+
 
     func setViewSelected(flag: Bool) {
         shiftKeyPressed = flag
