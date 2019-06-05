@@ -16,9 +16,16 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         didSet{
             if let analysis = analysis {
                 reset(analysis: analysis)
+//                observers = [
+//                    analysis.observe(\Analysis.name) {object, change in
+//                        print("change in name of analysis")},
+//                    analysis.observe(\Analysis.tools , options: [.old, .new]) {object, change in
+//                        print("change in tools of analysis")}
+//                ]
             }
         }
     }
+    private var observers = [NSKeyValueObservation]()
  
     @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var canvasView: CanvasView!
@@ -45,11 +52,11 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
                                                name: NSScrollView.didEndLiveMagnifyNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(changeToolControllersSelection(notification:)),
-                                               name: .didSelectToolController,
+                                               selector: #selector(changeCanvasObjectControllersSelection(notification:)),
+                                               name: .didSelectCanvasObjectController,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(deleteSelectedTools(notification:)),
+                                               selector: #selector(deleteSelectedCanvasObjects(notification:)),
                                                name: .didSelectDeleteKey,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
@@ -57,6 +64,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
                                                name: .didConnectTools,
                                                object: nil)
         
+
        
     }
     
@@ -65,6 +73,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         super.viewDidLayout()
         canvasViewHeightConstraint.constant = scrollView.frame.size.height * 4
         canvasViewWidthConstraint.constant = scrollView.frame.size.width * 4
+        
     }
     
     
@@ -118,16 +127,16 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     }
     
 //    deselect all tool controllers except the one that sent the notification
-    @objc func changeToolControllersSelection(notification: Notification){
+    @objc func changeCanvasObjectControllersSelection(notification: Notification){
         for childController in children {
-            if childController .isKind(of: CanvasToolViewController.self) &&
-                childController !== notification.object as! CanvasToolViewController{
-                    (childController as! CanvasToolViewController).viewSelected = false
+            if childController .isKind(of: CanvasObjectViewController.self) &&
+                childController !== notification.object as! CanvasObjectViewController{
+                    (childController as! CanvasObjectViewController).viewSelected = false
                 }
             }
         }
     
-    @objc func deleteSelectedTools(notification: NSNotification){
+    @objc func deleteSelectedCanvasObjects(notification: NSNotification){
         let userInfo = notification.userInfo! as! [String : NSPoint]
         for childController in children {
             if childController .isKind(of: CanvasToolViewController.self) &&
@@ -164,9 +173,11 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     }
     
     func addCanvasTool(image: NSImage, frame: NSRect, name: String){
-        let newTool = initToolObjectWithName(name, image: image, frame: frame)
-        analysis?.tools.append(newTool)
-        addToolView(tool: newTool)
+        if let analysis = analysis {
+            let newTool = initToolObjectWithName(name, image: image, frame: frame)
+            analysis.tools.append(newTool)
+            addToolView(tool: newTool)
+        }
     }
     
     func removeToolView(toolViewController: CanvasToolViewController){

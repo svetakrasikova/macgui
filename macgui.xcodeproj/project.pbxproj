@@ -46,6 +46,8 @@
 		14E585742298574100802691 /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E585732298574100802691 /* ArrowView.swift */; };
 		14E585762298575C00802691 /* ArrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E585752298575C00802691 /* ArrowViewController.swift */; };
 		14E5857822A067A600802691 /* TransparentToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857722A067A600802691 /* TransparentToolsView.swift */; };
+		14E5857A22A6F08C00802691 /* CanvasObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */; };
+		14E5857C22A6F16300802691 /* CanvasObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857B22A6F16300802691 /* CanvasObjectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		14E585732298574100802691 /* ArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowView.swift; sourceTree = "<group>"; };
 		14E585752298575C00802691 /* ArrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowViewController.swift; sourceTree = "<group>"; };
 		14E5857722A067A600802691 /* TransparentToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentToolsView.swift; sourceTree = "<group>"; };
+		14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasObjectViewController.swift; sourceTree = "<group>"; };
+		14E5857B22A6F16300802691 /* CanvasObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasObjectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,7 @@
 		1452356D220DF57800A85186 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */,
 				14E585752298575C00802691 /* ArrowViewController.swift */,
 				14E5857122949A0900802691 /* ConnectionDragController.swift */,
 				1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */,
@@ -167,10 +172,11 @@
 		1452356E220DF5C400A85186 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				14E5857722A067A600802691 /* TransparentToolsView.swift */,
+				14E5857B22A6F16300802691 /* CanvasObjectView.swift */,
 				14E585732298574100802691 /* ArrowView.swift */,
-				141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */,
 				1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */,
+				14E5857722A067A600802691 /* TransparentToolsView.swift */,
+				141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */,
 				1452355A220CB79800A85186 /* CanvasView.swift */,
 				1471052C227B94E200E88657 /* ConnectorItemView.swift */,
 				14E58525228C92AB00802691 /* ToolImageView.swift */,
@@ -306,6 +312,7 @@
 				14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */,
 				144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */,
 				1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */,
+				14E5857C22A6F16300802691 /* CanvasObjectView.swift in Sources */,
 				147105252265437600E88657 /* Bootstrap.swift in Sources */,
 				141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */,
 				14E585742298574100802691 /* ArrowView.swift in Sources */,
@@ -326,6 +333,7 @@
 				14523574220E100B00A85186 /* ImageFile.swift in Sources */,
 				14710521225DA67E00E88657 /* Loop.swift in Sources */,
 				1411BEE82208FE91009BEE1D /* Tool.swift in Sources */,
+				14E5857A22A6F08C00802691 /* CanvasObjectViewController.swift in Sources */,
 				1471052A226CD75300E88657 /* ConnectorItem.swift in Sources */,
 				14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */,
 				14710523225DA69500E88657 /* Connectable.swift in Sources */,

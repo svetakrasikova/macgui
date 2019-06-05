@@ -8,21 +8,12 @@
 
 import Cocoa
 
-class CanvasToolViewController: NSViewController, NSWindowDelegate, CanvasToolViewDelegate {
+class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate {
+    
     
     var frame: NSRect
     var image: NSImage
     var tool: ToolObject
-    var shiftKeyPressed: Bool = false
-   
-    var viewSelected: Bool = false {
-        didSet {
-            (view as! CanvasToolView).isSelected = viewSelected
-            if viewSelected && !shiftKeyPressed {
-                NotificationCenter.default.post(name: .didSelectToolController, object: self)
-            }
-        }
-    }
 
     @IBOutlet weak var inletsScrollView: NSScrollView!
     @IBOutlet weak var outletsScrollView: NSScrollView!
@@ -71,9 +62,6 @@ class CanvasToolViewController: NSViewController, NSWindowDelegate, CanvasToolVi
         if tool.isKind(of: Connectable.self){
            unhideConnectors()
         }
-        
-        
-        
     }
 
 
@@ -96,14 +84,7 @@ class CanvasToolViewController: NSViewController, NSWindowDelegate, CanvasToolVi
         tool.frameOnCanvas = NSRect(origin: origin, size: size)
         
     }
-    
 
-
-    func setViewSelected(flag: Bool) {
-        shiftKeyPressed = flag
-        viewSelected = true
-    }
-    
     
 }
 

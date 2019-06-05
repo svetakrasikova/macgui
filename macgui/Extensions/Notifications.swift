@@ -11,7 +11,7 @@ import Cocoa
 extension NSNotification.Name {
     
     static let didChangeMagnification = Notification.Name("didChangeMagnification")
-    static let didSelectToolController = Notification.Name("didSelectToolController")
+    static let didSelectCanvasObjectController = Notification.Name("didSelectToolController")
     static let didSelectDeleteKey = Notification.Name("didSelectDeleteKey")
     static let didConnectTools = Notification.Name("didConnectTools")
     

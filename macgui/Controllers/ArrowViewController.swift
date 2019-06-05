@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ArrowViewController: NSViewController, ArrowViewDelegate {
+class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
     
     private let rootLayer = CALayer()
     private var observers = [NSKeyValueObservation]()
@@ -33,6 +33,7 @@ class ArrowViewController: NSViewController, ArrowViewDelegate {
         }
     }
     
+    
     init(canvasFrame: NSRect, color: CGColor, sourceTool: Connectable, targetTool: Connectable){
         self.targetTool = targetTool
         self.sourceTool = sourceTool
@@ -45,7 +46,6 @@ class ArrowViewController: NSViewController, ArrowViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     func drawArrowIn(layer: CAShapeLayer){
         layer.strokeColor = color
         layer.lineWidth = 2
@@ -57,12 +57,13 @@ class ArrowViewController: NSViewController, ArrowViewDelegate {
     
     override func loadView() {
         view = ArrowView(frame: canvasFrame)
+        
     }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        (view as! ArrowView).delegate = self
+        (view as! ArrowView).arrowViewDelegate = self
         observeEndPointChanges()
     }
     

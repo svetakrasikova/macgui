@@ -8,21 +8,30 @@
 
 import Cocoa
 
-class ArrowView: NSView {
+class ArrowView: CanvasObjectView {
    
-    var shapeLayer = CAShapeLayer()
-    var delegate: ArrowViewDelegate?
-    override var wantsUpdateLayer: Bool {return true}
-
+    let shapeLayer = CAShapeLayer()
+    var arrowViewDelegate: ArrowViewDelegate?
     
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-        wantsLayer = true
+    override func mouseDown(with event: NSEvent) {
+        //TODO: figure out how to convert to the right view coordinate system
+        let point = event.locationInWindow
+            if shapeLayer.contains(point) {
+            print("Arrow clicked!")
+        }
+            NSAnimationEffect.poof.show(centeredAt: point, size: NSSize(width: 10, height: 10))
     }
-   
     override func updateLayer() {
         shapeLayer.removeFromSuperlayer()
-        delegate?.drawArrowIn(layer: shapeLayer)
+        arrowViewDelegate?.drawArrowIn(layer: shapeLayer)
+        shapeLayer.cornerRadius = Appearance.selectionCornerRadius
+        shapeLayer.borderWidth = Appearance.selectionWidth
+        if isSelected {
+            shapeLayer.borderColor = Appearance.selectionColor
+        } else {
+            shapeLayer.borderColor = NSColor.clear.cgColor
+       
+        }
     }
     
 }

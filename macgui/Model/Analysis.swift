@@ -11,7 +11,7 @@ import Cocoa
 class Analysis: NSObject, NSCopying {
     
     @objc dynamic var name: String = ""
-    var tools: [ToolObject] = []
+    @objc dynamic var tools: [ToolObject] = []
     
     override init(){
         super.init()

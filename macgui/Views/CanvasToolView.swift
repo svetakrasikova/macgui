@@ -8,38 +8,13 @@
 
 import Cocoa
 
-class CanvasToolView: NSView {
+class CanvasToolView: CanvasObjectView {
 
-    enum Appearance {
-        static let selectionCornerRadius: CGFloat = 5.0
-        static let selectionWidth: CGFloat = 2.0
-        static let selectionColor: CGColor = NSColor.gray.cgColor
-        
-    }
-    
     var firstMouseDownPoint: NSPoint?
     var canvasViewToolDelegate: CanvasToolViewDelegate? = nil
     
-    // MARK: - First Responder
-    
-    override var acceptsFirstResponder: Bool {
-        return true
-    }
-    override func becomeFirstResponder() -> Bool {return true}
-    override func resignFirstResponder() -> Bool {return true}
-    
-    
-    var isSelected: Bool = false
-    { didSet{
-          needsDisplay = true
-        }
-    }
-    
-    override var wantsUpdateLayer: Bool {return true}
-    
     override func mouseDown(with event: NSEvent) {
-        let shiftKeyDown = (event.modifierFlags.rawValue &  NSEvent.ModifierFlags.shift.rawValue) != 0
-        canvasViewToolDelegate?.setViewSelected(flag: shiftKeyDown)
+        super.mouseDown(with: event)
         firstMouseDownPoint = (self.window?.contentView?.convert(event.locationInWindow, to: self))!
     }
     
@@ -58,16 +33,6 @@ class CanvasToolView: NSView {
     }
     
     
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-    }
-    
-    
-    func mouseDownOnCanvas() {
-        isSelected = false
-    }
-    
-    
     override func updateLayer() {
         layer?.cornerRadius = Appearance.selectionCornerRadius
         layer?.borderWidth = Appearance.selectionWidth
@@ -77,13 +42,10 @@ class CanvasToolView: NSView {
             layer?.borderColor = NSColor.clear.cgColor
         }
     }
-    
-
 
 }
 
 //the delegate is the tool view controller that wants to be notified about its view selection
 protocol CanvasToolViewDelegate {
     func updateFrame()
-    func setViewSelected(flag: Bool)
 }
