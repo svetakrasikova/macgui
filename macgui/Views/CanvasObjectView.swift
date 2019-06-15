@@ -17,6 +17,10 @@ class CanvasObjectView: NSView {
         
     }
     
+    override var wantsUpdateLayer: Bool {return true}
+    
+    var delegate: CanvasObjectViewDelegate?
+    
     // MARK: - First Responder    
     override var acceptsFirstResponder: Bool {
         return true
@@ -28,20 +32,11 @@ class CanvasObjectView: NSView {
     var isSelected: Bool = false
     { didSet { needsDisplay = true } }
    
-    
-    func mouseDownOnCanvas() { isSelected = false }
-    
-    override var wantsUpdateLayer: Bool {return true}
-    
-    var delegate: CanvasObjectViewDelegate?
+
     
     override func mouseDown(with event: NSEvent) {
         let shiftKeyDown = (event.modifierFlags.rawValue &  NSEvent.ModifierFlags.shift.rawValue) != 0
         delegate?.setObjectViewSelected(flag: shiftKeyDown)
-    }
-    
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
     }
     
 }

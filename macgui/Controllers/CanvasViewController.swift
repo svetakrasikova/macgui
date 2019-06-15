@@ -11,14 +11,12 @@ import Cocoa
 class CanvasViewController: NSViewController, NSWindowDelegate {
    
 
-  
+
     weak var analysis: Analysis? {
         didSet{
             if let analysis = analysis {
                 reset(analysis: analysis)
 //                observers = [
-//                    analysis.observe(\Analysis.name) {object, change in
-//                        print("change in name of analysis")},
 //                    analysis.observe(\Analysis.tools , options: [.old, .new]) {object, change in
 //                        print("change in tools of analysis")}
 //                ]
@@ -113,8 +111,15 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
    
     @objc func didConnectTools(notification: Notification){
         let userInfo = notification.userInfo! as! [String: ConnectorItemView]
-        if let color = userInfo["target"]?.arrowColor, let targetTool = userInfo["target"]?.delegate?.getTool(), let sourceTool = userInfo["source"]?.delegate?.getTool() {
-            let arrowController = ArrowViewController(canvasFrame: canvasView.bounds, color: color, sourceTool: sourceTool as! Connectable, targetTool: targetTool as! Connectable)
+        if let color = userInfo["target"]?.arrowColor, let targetTool = userInfo["target"]?.delegate?.getTool(), let sourceTool = userInfo["source"]?.delegate?.getTool(){
+            let toConnector = userInfo["target"]?.delegate?.getConnector() as! Connector
+            toConnector.setNeighbor(neighbor: sourceTool as! Connectable)
+            let fromConnector = userInfo["source"]?.delegate?.getConnector() as! Connector
+            fromConnector.setNeighbor(neighbor: targetTool as! Connectable)
+            let connection = Connection(to: toConnector, from: fromConnector)
+            let arrowController = ArrowViewController(frame: canvasView.bounds, color: color, sourceTool: sourceTool as! Connectable, targetTool: targetTool as! Connectable, connection: connection)
+            addChild(arrowController)
+            analysis?.arrows.append(connection)
             canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
         }
     }
@@ -130,7 +135,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     @objc func changeCanvasObjectControllersSelection(notification: Notification){
         for childController in children {
             if childController .isKind(of: CanvasObjectViewController.self) &&
-                childController !== notification.object as! CanvasObjectViewController{
+                childController !== notification.object as! CanvasObjectViewController {
                     (childController as! CanvasObjectViewController).viewSelected = false
                 }
             }
@@ -139,9 +144,9 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     @objc func deleteSelectedCanvasObjects(notification: NSNotification){
         let userInfo = notification.userInfo! as! [String : NSPoint]
         for childController in children {
-            if childController .isKind(of: CanvasToolViewController.self) &&
-                (childController as! CanvasToolViewController).viewSelected == true {
-                    removeToolView(toolViewController: childController as! CanvasToolViewController)
+            if childController .isKind(of: CanvasObjectViewController.self) &&
+                (childController as! CanvasObjectViewController).viewSelected == true {
+                removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
                     let size = childController.view.frame.size
                     NSAnimationEffect.poof.show(centeredAt: userInfo["point"]!, size: size)
             }
@@ -162,6 +167,19 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
             for tool in analysis.tools {
                 addToolView(tool: tool)
             }
+            for connection in analysis.arrows {
+                addArrowView(connection: connection)
+            }
+        }
+    }
+    
+    func addArrowView(connection: Connection){
+        let color = connection.from.getColor()
+        if let sourceTool = connection.to.neighbor, let targetTool = connection.from.neighbor {
+            let arrowController = ArrowViewController(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool, connection: connection)
+            addChild(arrowController)
+            analysis?.arrows.append(connection)
+            canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
         }
     }
     
@@ -180,12 +198,42 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         }
     }
     
-    func removeToolView(toolViewController: CanvasToolViewController){
+    
+    func removeToolFromAnalysis(toolViewController: CanvasToolViewController){
         if let analysis = analysis, let index = analysis.tools.index(of: toolViewController.tool) {
-            toolViewController.view.removeFromSuperview()
-            toolViewController.removeFromParent()
+            if let arrowViewController = findArrowControllerByTool(tool: toolViewController.tool) {
+                removeCanvasObjectView(canvasObjectViewController: arrowViewController)
+            }
             analysis.tools.remove(at: index)
         }
+    }
+    
+    func findArrowControllerByTool(tool: ToolObject) -> ArrowViewController? {
+        for child in children {
+            if child.isKind(of: ArrowViewController.self){
+                if (child as! ArrowViewController).ownedBy(tool: tool) {return child as? ArrowViewController}
+            }
+        }
+        return nil
+    }
+    
+    func removeConnectionFromAnalysis(arrowViewController: ArrowViewController){
+        if let analysis = analysis, let index = analysis.arrows.index(of: arrowViewController.connection) {
+            analysis.arrows.remove(at: index)
+        }
+    }
+    
+    func removeCanvasObjectView(canvasObjectViewController: CanvasObjectViewController) {
+        canvasObjectViewController.view.removeFromSuperview()
+        canvasObjectViewController.removeFromParent()
+        if canvasObjectViewController.isKind(of: ArrowViewController.self){
+            removeConnectionFromAnalysis(arrowViewController: canvasObjectViewController as! ArrowViewController)
+        } else {
+            if canvasObjectViewController.isKind(of: CanvasToolViewController.self){
+                removeToolFromAnalysis(toolViewController: canvasObjectViewController as! CanvasToolViewController)
+            }
+        }
+        
     }
     
 }
@@ -216,11 +264,25 @@ extension CanvasViewController: CanvasViewDelegate {
         addCanvasTool(image: image, frame: frame, name: name)
     }
     
+    func isMouseDownOnArrowView(event: NSEvent, point: NSPoint) -> Bool {
+        for childController in children {
+            if childController.isKind(of: ArrowViewController.self){
+                let arrowViewController = childController as! ArrowViewController
+                let arrowView = ((arrowViewController.view) as! ArrowView)
+                if arrowView.clickAreaContains(point: point) {
+                    arrowView.mouseDown(with: event)
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
     func mouseDownOnCanvasView() {
         for childController in children {
-            if childController.isKind(of: CanvasToolViewController.self){
-                if (childController as! CanvasToolViewController).viewSelected {
-                    (childController as! CanvasToolViewController).viewSelected = false
+            if childController.isKind(of: CanvasObjectViewController.self){
+                if (childController as! CanvasObjectViewController).viewSelected {
+                    (childController as! CanvasObjectViewController).viewSelected = false
                 }
             }
         }

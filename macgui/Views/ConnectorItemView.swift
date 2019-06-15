@@ -20,7 +20,7 @@ class ConnectorItemView: NSView {
     var state: State = State.idle { didSet { needsLayout = true } }
     private let shapeLayer = CAShapeLayer()
     private let arrowLayer = CAShapeLayer()
-    var arrowColor: CGColor?
+    var arrowColor: NSColor?
     
     var delegate: ConnectorItemViewDelegate?
     
@@ -90,7 +90,7 @@ class ConnectorItemView: NSView {
         path.addLine(to: CGPoint(x: 0.0, y: 0.0))
         arrowLayer.strokeColor = NSColor.darkGray.cgColor
         arrowLayer.lineWidth = 0.5
-        self.arrowColor = color.cgColor
+        self.arrowColor = color
         arrowLayer.path = path
         shapeLayer.addSublayer(arrowLayer)
     }
@@ -102,7 +102,7 @@ class ConnectorItemView: NSView {
         case .target:
             arrowLayer.fillColor = NSColor.gray.cgColor
         default:
-            arrowLayer.fillColor = arrowColor
+            arrowLayer.fillColor = arrowColor?.cgColor
         }
         
         
@@ -113,4 +113,5 @@ protocol ConnectorItemViewDelegate {
     func addLinkInlet(source: ConnectorItemView)
     func addLinkOutlet(source: ConnectorItemView)
     func getTool() -> Any?
+    func getConnector() -> Any?
 }

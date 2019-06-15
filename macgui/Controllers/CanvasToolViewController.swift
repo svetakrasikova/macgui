@@ -103,9 +103,9 @@ extension CanvasToolViewController: NSCollectionViewDataSource {
         let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("ConnectorItem"), for: indexPath) as! ConnectorItem
         item.parentTool = self.tool as? Connectable
         if collectionView == self.outlets {
-            item.type = (self.tool as! Connectable).getUnconnectedOutlets()[indexPath.item]
+            item.connector = (self.tool as! Connectable).getUnconnectedOutlets()[indexPath.item]
         } else {
-            item.type = (self.tool as! Connectable).getUnconnectedInlets()[indexPath.item]
+            item.connector = (self.tool as! Connectable).getUnconnectedInlets()[indexPath.item]
         }
         return item
     }

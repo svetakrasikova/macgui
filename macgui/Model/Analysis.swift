@@ -12,6 +12,7 @@ class Analysis: NSObject, NSCopying {
     
     @objc dynamic var name: String = ""
     @objc dynamic var tools: [ToolObject] = []
+    @objc dynamic var arrows: [Connection] = []
     
     override init(){
         super.init()
@@ -22,12 +23,14 @@ class Analysis: NSObject, NSCopying {
     }
     
     func isEmpty() -> Bool {
-        return tools.isEmpty
+        return arrows.isEmpty && tools.isEmpty
     }
+    
     
     func copy(with zone: NSZone? = nil) -> Any {
         let copy = Analysis()
         copy.tools = tools
+        copy.arrows = arrows
         return copy
     }
 

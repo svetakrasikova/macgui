@@ -53,6 +53,7 @@ class CanvasView: NSView {
         return canAccept
     }
     
+    
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         let allow = shouldAllowDrag(sender)
         isReceivingDrag = allow
@@ -84,6 +85,7 @@ class CanvasView: NSView {
         delegate?.mouseDownOnCanvasView()
     }
     
+
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -100,4 +102,5 @@ protocol CanvasViewDelegate {
     func processImage(_ image: NSImage, center: NSPoint, name: String)
     func selectContentView(width: CGFloat)
     func mouseDownOnCanvasView()
+    func isMouseDownOnArrowView(event: NSEvent, point: NSPoint) -> Bool
 }

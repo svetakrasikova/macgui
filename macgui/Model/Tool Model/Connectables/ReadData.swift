@@ -9,6 +9,7 @@
 import Cocoa
 
 class ReadData: Connectable {
+   
     override init(image: NSImage, frameOnCanvas: NSRect) {
         super.init(image: image, frameOnCanvas: frameOnCanvas)
         self.name = "Bootstrap Tool"

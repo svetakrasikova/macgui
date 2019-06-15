@@ -32,7 +32,6 @@ class CanvasToolView: CanvasObjectView {
         canvasViewToolDelegate?.updateFrame()
     }
     
-    
     override func updateLayer() {
         layer?.cornerRadius = Appearance.selectionCornerRadius
         layer?.borderWidth = Appearance.selectionWidth
@@ -42,10 +41,8 @@ class CanvasToolView: CanvasObjectView {
             layer?.borderColor = NSColor.clear.cgColor
         }
     }
-
 }
 
-//the delegate is the tool view controller that wants to be notified about its view selection
 protocol CanvasToolViewDelegate {
     func updateFrame()
 }

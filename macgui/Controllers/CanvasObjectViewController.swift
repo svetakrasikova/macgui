@@ -11,6 +11,7 @@ import Cocoa
 class CanvasObjectViewController: NSViewController, CanvasObjectViewDelegate {
     
     var shiftKeyPressed: Bool = false
+    
     var viewSelected: Bool = false {
         didSet {
             (view as! CanvasObjectView).isSelected = viewSelected

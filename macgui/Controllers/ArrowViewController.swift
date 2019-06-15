@@ -10,60 +10,95 @@ import Cocoa
 
 class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
     
-    private let rootLayer = CALayer()
     private var observers = [NSKeyValueObservation]()
     
+
     var targetTool: Connectable
-    
     var sourceTool: Connectable
+    var connection: Connection
+    
+    var frame: NSRect
+    var color: NSColor
     
     
-    var canvasFrame: NSRect
-    var color: CGColor
     
     var endPoint: NSPoint {
         get{
-           return targetTool.frameOnCanvas.center()
+            return targetTool.frameOnCanvas.center()
         }
     }
     
     var beginPoint: NSPoint {
         get {
-           return sourceTool.frameOnCanvas.center()
+            return sourceTool.frameOnCanvas.center()
         }
     }
     
     
-    init(canvasFrame: NSRect, color: CGColor, sourceTool: Connectable, targetTool: Connectable){
+    init(frame: NSRect, color: NSColor, sourceTool: Connectable, targetTool: Connectable, connection: Connection){
         self.targetTool = targetTool
         self.sourceTool = sourceTool
         self.color = color
-        self.canvasFrame = canvasFrame
+        self.frame = frame
+        self.connection = connection
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func drawArrowIn(layer: CAShapeLayer){
-        layer.strokeColor = color
-        layer.lineWidth = 2
+
+    func createLinePath() -> CGMutablePath {
         let path = CGMutablePath()
         path.addLines(between: [beginPoint, endPoint])
-        layer.path = path
-        view.layer?.addSublayer(layer)
+        return path
     }
     
-    override func loadView() {
-        view = ArrowView(frame: canvasFrame)
-        
+    func ownedBy(tool: ToolObject) -> Bool{
+        if self.targetTool  === tool || self.sourceTool === tool {
+            return true
+        }
+        return false
     }
-
-
+    
+    func drawArrow(width: CGFloat, color: CGColor){
+        if let sublayers = view.layer?.sublayers {
+            for sublayer in sublayers {
+                sublayer.removeFromSuperlayer()
+            }
+        }
+        let arrowLayer = CAShapeLayer()
+        arrowLayer.strokeColor = color
+        arrowLayer.lineWidth = width
+        arrowLayer.path = createLinePath()
+        view.layer?.addSublayer(arrowLayer)
+    }
+    
+    func updateArrowInLayer(selected: Bool){
+        if selected {
+//            draw normal width arrow and stroke the click area path
+            drawArrow(width: 4.0, color: CanvasObjectView.Appearance.selectionColor)
+        } else {
+            drawArrow(width: 2.0, color: color.cgColor)
+        }
+    }
+    
+    
+    func setClickArea(){
+        let path = CGMutablePath()
+        path.addLines(between: [beginPoint, endPoint])
+        (self.view as! ArrowView).clickArea = path.copy(strokingWithWidth: 10, lineCap: CGLineCap.round, lineJoin: CGLineJoin.round, miterLimit: 1)    }
+    
+    override func loadView() {
+        self.view = ArrowView(frame: frame)     
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        (view as! ArrowView).arrowViewDelegate = self
+        (self.view as! ArrowView).arrowViewDelegate = self
+        view.wantsLayer = true
+        drawArrow(width: 2.0, color: color.cgColor)
+        setClickArea()
         observeEndPointChanges()
     }
     

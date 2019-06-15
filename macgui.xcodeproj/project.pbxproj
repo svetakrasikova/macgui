@@ -48,6 +48,8 @@
 		14E5857822A067A600802691 /* TransparentToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857722A067A600802691 /* TransparentToolsView.swift */; };
 		14E5857A22A6F08C00802691 /* CanvasObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */; };
 		14E5857C22A6F16300802691 /* CanvasObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857B22A6F16300802691 /* CanvasObjectView.swift */; };
+		14E5857E22A8006F00802691 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857D22A8006F00802691 /* Connection.swift */; };
+		14E5858122B0810B00802691 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5858022B0810B00802691 /* Connector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,8 @@
 		14E5857722A067A600802691 /* TransparentToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentToolsView.swift; sourceTree = "<group>"; };
 		14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasObjectViewController.swift; sourceTree = "<group>"; };
 		14E5857B22A6F16300802691 /* CanvasObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasObjectView.swift; sourceTree = "<group>"; };
+		14E5857D22A8006F00802691 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		14E5858022B0810B00802691 /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,7 @@
 			children = (
 				14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */,
 				14E585752298575C00802691 /* ArrowViewController.swift */,
+				144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */,
 				14E5857122949A0900802691 /* ConnectionDragController.swift */,
 				1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */,
 				14B5852A225819F6003EB752 /* MainWindowController.swift */,
@@ -162,7 +167,6 @@
 				1411BEE42208DDBE009BEE1D /* AnalysisViewController.swift */,
 				14D6DDFC2216487300021607 /* NavigatorViewController.swift */,
 				14D6DE042220B50800021607 /* CanvasViewController.swift */,
-				144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */,
 				14710528226CD75300E88657 /* ConnectorItem.swift */,
 				1411BEE62208FE91009BEE1D /* Tool.swift */,
 			);
@@ -201,9 +205,10 @@
 		14523575220E101400A85186 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				14E5858022B0810B00802691 /* Connector.swift */,
+				14E5857F22A8016200802691 /* ImageHandling */,
 				14D6DDFE22164A6E00021607 /* Analysis.swift */,
-				14523573220E100B00A85186 /* ImageFile.swift */,
-				144CC4AE220E4081003311E4 /* ImageLoader.swift */,
+				14E5857D22A8006F00802691 /* Connection.swift */,
 				1471051F225DA5C800E88657 /* Tool Model */,
 			);
 			path = Model;
@@ -228,6 +233,15 @@
 				147105302280E52300E88657 /* ReadData.swift */,
 			);
 			path = Connectables;
+			sourceTree = "<group>";
+		};
+		14E5857F22A8016200802691 /* ImageHandling */ = {
+			isa = PBXGroup;
+			children = (
+				144CC4AE220E4081003311E4 /* ImageLoader.swift */,
+				14523573220E100B00A85186 /* ImageFile.swift */,
+			);
+			path = ImageHandling;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +331,7 @@
 				141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */,
 				14E585742298574100802691 /* ArrowView.swift in Sources */,
 				14D6DE062220B50800021607 /* CanvasViewController.swift in Sources */,
+				14E5857E22A8006F00802691 /* Connection.swift in Sources */,
 				1452355F220CCC5800A85186 /* Helpers.swift in Sources */,
 				14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */,
 				14E5856E22947BFB00802691 /* LineOverlay.swift in Sources */,
@@ -335,6 +350,7 @@
 				1411BEE82208FE91009BEE1D /* Tool.swift in Sources */,
 				14E5857A22A6F08C00802691 /* CanvasObjectViewController.swift in Sources */,
 				1471052A226CD75300E88657 /* ConnectorItem.swift in Sources */,
+				14E5858122B0810B00802691 /* Connector.swift in Sources */,
 				14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */,
 				14710523225DA69500E88657 /* Connectable.swift in Sources */,
 				14E58526228C92AB00802691 /* ToolImageView.swift in Sources */,

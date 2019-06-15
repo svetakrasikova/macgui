@@ -13,11 +13,11 @@ class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
     
     weak var parentTool: Connectable?
     
-    var type: Connector? {
+    var connector: Connector? {
         didSet{
             guard isViewLoaded else { return }
-            if let type = type {
-                let fillColor = getColor(colorType: type.color)
+            if let type = connector {
+                let fillColor = type.getColor()
                 (view as! ConnectorItemView).drawArrow(color: fillColor)
             }
         }
@@ -40,24 +40,14 @@ class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
     }
     
     
-    func getColor(colorType: ConnectorColor) -> NSColor {
-        switch colorType {
-        case .blue: return NSColor.blue
-        case .green: return NSColor.green
-        case .orange: return NSColor.orange
-        case .red: return NSColor.red
-        case .magenta: return NSColor.magenta
-        }
-    }
-    
     func addLinkOutlet(source: ConnectorItemView) {
-        if let source = source.delegate?.getTool(), let color = type?.color, let neighbor = self.parentTool {
+        if let source = source.delegate?.getTool(), let color = connector?.color, let neighbor = self.parentTool {
             (source as! Connectable).addNeighbor(color: color, neighbor: neighbor, linkType: .outlet)
         }
     }
     
     func addLinkInlet(source: ConnectorItemView) {
-        if let source = source.delegate?.getTool(), let color = type?.color, let target = self.parentTool {
+        if let source = source.delegate?.getTool(), let color = connector?.color, let target = self.parentTool {
             target.addNeighbor(color: color, neighbor: source as! Connectable, linkType: .inlet)
         }
     }
@@ -65,6 +55,12 @@ class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
     func getTool() -> Any? {
         if let parentTool = parentTool {
             return parentTool
+        } else {return nil}
+    }
+    
+    func getConnector() -> Any? {
+        if let connector = connector {
+            return connector
         } else {return nil}
     }
     

@@ -69,18 +69,3 @@ enum LinkType {
 enum ConnectorColor {
     case green, blue, red, orange, magenta
 }
-
-struct Connector {
-    var color: ConnectorColor
-    var neighbor: Connectable?
-    
-    init(color: ConnectorColor, neighbor: Connectable){
-        self.color = color
-        self.neighbor = neighbor
-    }
-    init(color: ConnectorColor){
-        self.color = color
-        self.neighbor = nil
-    }
-    
-}
