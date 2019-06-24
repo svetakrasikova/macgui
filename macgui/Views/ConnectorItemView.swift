@@ -27,6 +27,7 @@ class ConnectorItemView: NSView {
     public override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         guard case .idle = state else { return [] }
         guard (sender.draggingSource as? ConnectionDragController)?.sourceEndpoint != nil else { return [] }
+        guard (sender.draggingSource as? ConnectionDragController)?.sourceEndpoint?.arrowColor == self.arrowColor else { return [] }
         state = .target
         return sender.draggingSourceOperationMask
         }
@@ -42,9 +43,7 @@ class ConnectorItemView: NSView {
     }
     
     public override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        if let controller = sender.draggingSource as? ConnectionDragController, let view = controller.sourceEndpoint {
-            delegate?.addLinkInlet(source: view)
-            delegate?.addLinkOutlet(source: view)
+        if let controller = sender.draggingSource as? ConnectionDragController{
             controller.connect(to: self)
             return true
         } else { return false }

@@ -11,19 +11,19 @@ import Cocoa
 class CanvasViewController: NSViewController, NSWindowDelegate {
    
 
-
     weak var analysis: Analysis? {
         didSet{
             if let analysis = analysis {
                 reset(analysis: analysis)
 //                observers = [
-//                    analysis.observe(\Analysis.tools , options: [.old, .new]) {object, change in
-//                        print("change in tools of analysis")}
+//                    analysis.observe(\Analysis.arrows , options: [.old, .new]) {object, change in
+//                        print("change in tools of analysis", object.arrows.count)}
 //                ]
             }
         }
     }
     private var observers = [NSKeyValueObservation]()
+    
  
     @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var canvasView: CanvasView!
@@ -45,6 +45,8 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         if let window = NSApp.windows.first{
             window.delegate = self
         }
+        scrollView.magnification = 1.5
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didChangeMagnification(_ :)),
                                                name: NSScrollView.didEndLiveMagnifyNotification,
@@ -78,31 +80,31 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     @IBAction func magnify(_ sender: NSPopUpButton) {
         switch sender.indexOfSelectedItem {
         case 1:
-            scrollView.magnification = 0.25
+            scrollView.magnification = 0.375
             sender.setTitle("25%")
         case 2:
-            scrollView.magnification = 0.5
+            scrollView.magnification = 0.75
             sender.setTitle("50%")
         case 3:
-            scrollView.magnification = 0.75
+            scrollView.magnification = 1.125
             sender.setTitle("75%")
         case 4:
-            scrollView.magnification = 1.0
+            scrollView.magnification = 1.5
             sender.setTitle("100%")
         case 5:
-            scrollView.magnification = 1.25
+            scrollView.magnification = 1.875
             sender.setTitle("125%")
         case 6:
-            scrollView.magnification = 1.50
-            sender.setTitle("150%")
+            scrollView.magnification = 2.25
+            sender.setTitle("1500%")
         case 7:
-            scrollView.magnification = 2.0
+            scrollView.magnification = 3.0
             sender.setTitle("200%")
         case 8:
-            scrollView.magnification = 3.0
+            scrollView.magnification = 4.5
             sender.setTitle("300%")
         case 9:
-            scrollView.magnification = 4.0
+            scrollView.magnification = 6.0
             sender.setTitle("400%")
         default:
             print("Switch case error!")
@@ -121,6 +123,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
             addChild(arrowController)
             analysis?.arrows.append(connection)
             canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
+            reset(analysis: analysis!)
         }
     }
     
@@ -142,13 +145,10 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         }
     
     @objc func deleteSelectedCanvasObjects(notification: NSNotification){
-        let userInfo = notification.userInfo! as! [String : NSPoint]
         for childController in children {
             if childController .isKind(of: CanvasObjectViewController.self) &&
                 (childController as! CanvasObjectViewController).viewSelected == true {
                 removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
-                    let size = childController.view.frame.size
-                    NSAnimationEffect.poof.show(centeredAt: userInfo["point"]!, size: size)
             }
         }
     }
@@ -178,7 +178,6 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         if let sourceTool = connection.to.neighbor, let targetTool = connection.from.neighbor {
             let arrowController = ArrowViewController(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool, connection: connection)
             addChild(arrowController)
-            analysis?.arrows.append(connection)
             canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
         }
     }
@@ -219,13 +218,12 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     
     func removeConnectionFromAnalysis(arrowViewController: ArrowViewController){
         if let analysis = analysis, let index = analysis.arrows.index(of: arrowViewController.connection) {
+            arrowViewController.willDeleteView()
             analysis.arrows.remove(at: index)
         }
     }
     
     func removeCanvasObjectView(canvasObjectViewController: CanvasObjectViewController) {
-        canvasObjectViewController.view.removeFromSuperview()
-        canvasObjectViewController.removeFromParent()
         if canvasObjectViewController.isKind(of: ArrowViewController.self){
             removeConnectionFromAnalysis(arrowViewController: canvasObjectViewController as! ArrowViewController)
         } else {
@@ -233,7 +231,9 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
                 removeToolFromAnalysis(toolViewController: canvasObjectViewController as! CanvasToolViewController)
             }
         }
-        
+        canvasObjectViewController.view.removeFromSuperview()
+        canvasObjectViewController.removeFromParent()
+        reset(analysis: analysis!)
     }
     
 }

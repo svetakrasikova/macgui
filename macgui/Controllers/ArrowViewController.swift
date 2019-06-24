@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Darwin
 
 class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
     
@@ -20,8 +21,6 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
     var frame: NSRect
     var color: NSColor
     
-    
-    
     var endPoint: NSPoint {
         get{
             return targetTool.frameOnCanvas.center()
@@ -34,6 +33,29 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
         }
     }
     
+    private var targetToolFrame: NSRect {
+        get {
+            return targetTool.frameOnCanvas
+        }
+    }
+    
+
+    var arrowHeadParams: [String: CGFloat] {
+        get {
+            let angle = findLineAngle()
+            let end = findEdgePoint(angle: angle, dimension: targetToolFrame.size.width)
+            let begin = findEdgePoint(angle: angle, dimension: targetToolFrame.size.width + 5)
+            return [
+                "angle": angle,
+                "endX": end.x,
+                "endY": end.y,
+                "beginX": begin.x,
+                "beginY": begin.y,
+            ]
+        }
+    }
+    
+    
     
     init(frame: NSRect, color: NSColor, sourceTool: Connectable, targetTool: Connectable, connection: Connection){
         self.targetTool = targetTool
@@ -44,14 +66,9 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
         super.init(nibName: nil, bundle: nil)
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    func createLinePath() -> CGMutablePath {
-        let path = CGMutablePath()
-        path.addLines(between: [beginPoint, endPoint])
-        return path
     }
     
     func ownedBy(tool: ToolObject) -> Bool{
@@ -61,25 +78,44 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
         return false
     }
     
-    func drawArrow(width: CGFloat, color: CGColor){
+    func willDeleteView(){
+        targetTool.removeNeighbor(neighbor: sourceTool, linkType: LinkType.inlet)
+        sourceTool.removeNeighbor(neighbor: targetTool, linkType: LinkType.outlet)
+    }
+
+    
+    func clearSublayers(){
         if let sublayers = view.layer?.sublayers {
             for sublayer in sublayers {
                 sublayer.removeFromSuperlayer()
             }
         }
-        let arrowLayer = CAShapeLayer()
-        arrowLayer.strokeColor = color
-        arrowLayer.lineWidth = width
-        arrowLayer.path = createLinePath()
-        view.layer?.addSublayer(arrowLayer)
     }
+    
+    func drawArrow(width: CGFloat, highlight: Bool){
+        clearSublayers()
+        let arrowLayer = CAShapeLayer()
+        arrowLayer.strokeColor = color.cgColor
+        arrowLayer.lineWidth = width
+        if highlight {
+            arrowLayer.shadowOpacity = 0.7
+            arrowLayer.shadowRadius = 10.0
+        }
+        
+        let combined = CGMutablePath()
+        combined.addPath(createLinePath())
+        combined.addPath(createHeadPath(width: width))
+        arrowLayer.path = combined
+        view.layer?.addSublayer(arrowLayer)
+        
+    }
+    
     
     func updateArrowInLayer(selected: Bool){
         if selected {
-//            draw normal width arrow and stroke the click area path
-            drawArrow(width: 4.0, color: CanvasObjectView.Appearance.selectionColor)
+           drawArrow(width: 3.0, highlight: true)
         } else {
-            drawArrow(width: 2.0, color: color.cgColor)
+            drawArrow(width: 2.0, highlight: false)
         }
     }
     
@@ -97,7 +133,7 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
         super.viewDidLoad()
         (self.view as! ArrowView).arrowViewDelegate = self
         view.wantsLayer = true
-        drawArrow(width: 2.0, color: color.cgColor)
+        drawArrow(width: 2.0, highlight: false)
         setClickArea()
         observeEndPointChanges()
     }
@@ -110,5 +146,92 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
             targetTool.observe(\Connectable.frameOnCanvas, options: [.old, .new]) {tool, change in
                 self.view.needsDisplay = true}]
     }
+    
+}
+
+extension ArrowViewController {
+    
+    func createLinePath() -> CGMutablePath {
+        let path = CGMutablePath()
+        let endOfLine = CGPoint(x: arrowHeadParams["beginX"]!, y: arrowHeadParams["beginY"]!)
+        path.addLines(between: [beginPoint, endOfLine])
+        return path
+    }
+    
+    func createHeadPath(width: CGFloat)-> CGPath {
+        let end = CGPoint(x: arrowHeadParams["endX"]!, y: arrowHeadParams["endY"]!)
+        let begin = CGPoint(x: arrowHeadParams["beginX"]!, y: arrowHeadParams["beginY"]!)
+        let path = arrow(from: begin, to: end, tailWidth: 0.0, headWidth: width + 1.5, headLength: 3.0)
+        return path
+    }
+    
+    func arrow(from start: CGPoint, to end: CGPoint, tailWidth: CGFloat, headWidth: CGFloat, headLength: CGFloat) -> CGMutablePath {
+        let length = hypot(end.x - start.x, end.y - start.y)
+        let tailLength = length - headLength
+        
+        func p(_ x: CGFloat, _ y: CGFloat) -> CGPoint { return CGPoint(x: x, y: y) }
+        let points: [CGPoint] = [
+            p(0, -tailWidth / 2),
+            p(tailLength, -tailWidth / 2),
+            p(tailLength, -headWidth / 2),
+            p(length, 0),
+            p(tailLength, headWidth / 2),
+            p(tailLength, tailWidth / 2),
+            p(0, tailWidth / 2)
+        ]
+        
+        let cosine = (end.x - start.x) / length
+        let sine = (end.y - start.y) / length
+        let transform = CGAffineTransform(a: cosine, b: sine, c: -sine, d: cosine, tx: start.x, ty: start.y)
+        
+        let path = CGMutablePath()
+        path.addLines(between: points, transform: transform)
+        path.closeSubpath()
+    
+        return path
+    }
+    
+    func findEdgePoint(angle: CGFloat, dimension: CGFloat) -> CGPoint {
+        let intersection: CGPoint
+        
+        let xRad = dimension/2
+        let yRad = dimension/2
+        
+        let tangent = tan(angle)
+        let y = xRad * CGFloat(tangent)
+        
+        if abs(y) <= yRad {
+        
+            if angle < CGFloat.pi / 2 || angle > 3 * CGFloat.pi / 2 {
+                intersection = CGPoint(x: xRad, y: y)
+            } else {
+                intersection = CGPoint(x: -xRad, y: -y)
+            }
+        } else {
+
+            let x = yRad / CGFloat(tangent)
+            
+            if angle < CGFloat.pi {
+                intersection = CGPoint(x: x, y: yRad)
+            } else {
+                intersection = CGPoint(x: -x, y: -yRad)
+            }
+        }
+        let convertedIntersection = CGPoint(x: endPoint.x+intersection.x, y: endPoint.y+intersection.y)
+        return convertedIntersection
+    }
+    
+    
+    func findLineAngle() -> CGFloat {
+        let fromPoint = endPoint
+        let toPoint = beginPoint
+        let dx: CGFloat = toPoint.x - fromPoint.x
+        let dy: CGFloat = toPoint.y - fromPoint.y
+        let twoPi = 2 * CGFloat.pi
+        let radians = (atan2(dy, dx) + twoPi).truncatingRemainder(dividingBy: twoPi)
+        return radians
+    }
+    
+   
     
 }

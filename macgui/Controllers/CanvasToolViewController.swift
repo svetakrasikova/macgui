@@ -14,6 +14,8 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     var frame: NSRect
     var image: NSImage
     var tool: ToolObject
+    
+    private var observers = [NSKeyValueObservation]()
 
     @IBOutlet weak var inletsScrollView: NSScrollView!
     @IBOutlet weak var outletsScrollView: NSScrollView!
@@ -52,6 +54,13 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         if let window = NSApp.windows.first{
             window.delegate = self
         }
+//        observers = [
+//            (tool as! Connectable).observe(\Connectable.unconnectedInlets) {tool, change in
+//                print("change in unconnectedInlets on tool")},
+//            (tool as! Connectable).observe(\Connectable.unconnectedOutlets) {tool, change in
+//                print("change in unconnectedOutlets on tool")}
+//        ]
+        NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
         
         
         setFrame()
@@ -84,6 +93,10 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         tool.frameOnCanvas = NSRect(origin: origin, size: size)
         
     }
+    
+   func windowDidResize(_ notification: Notification) {
+        updateFrame()
+    }
 
     
 }
@@ -93,19 +106,21 @@ extension CanvasToolViewController: NSCollectionViewDataSource {
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let connectable = tool as? Connectable else {return 0}
         if collectionView == self.inlets {
-            return connectable.getUnconnectedInlets().count
+            let count = connectable.unconnectedInlets.count
+            return count
         } else {
-            return connectable.getUnconnectedOutlets().count
+            let count = connectable.unconnectedOutlets.count
+            return count
         }
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("ConnectorItem"), for: indexPath) as! ConnectorItem
         item.parentTool = self.tool as? Connectable
-        if collectionView == self.outlets {
-            item.connector = (self.tool as! Connectable).getUnconnectedOutlets()[indexPath.item]
+        if collectionView == self.inlets {
+            item.connector = (self.tool as! Connectable).unconnectedInlets[indexPath.item]
         } else {
-            item.connector = (self.tool as! Connectable).getUnconnectedInlets()[indexPath.item]
+            item.connector = (self.tool as! Connectable).unconnectedOutlets[indexPath.item]
         }
         return item
     }

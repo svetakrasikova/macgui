@@ -12,7 +12,7 @@ class ReadData: Connectable {
    
     override init(image: NSImage, frameOnCanvas: NSRect) {
         super.init(image: image, frameOnCanvas: frameOnCanvas)
-        self.name = "Bootstrap Tool"
+        self.name = "Read Data Tool"
         let green = Connector(color:ConnectorColor.green)
         let blue = Connector(color:ConnectorColor.blue)
         self.inlets = []

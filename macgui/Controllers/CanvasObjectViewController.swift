@@ -28,8 +28,7 @@ class CanvasObjectViewController: NSViewController, CanvasObjectViewDelegate {
     
     override func keyDown(with event: NSEvent) {
         if event.charactersIgnoringModifiers == String(Character(UnicodeScalar(NSDeleteCharacter)!)) {
-            let point = event.locationInWindow
-            NotificationCenter.default.post(name: .didSelectDeleteKey, object: self, userInfo: ["point": point])
+            NotificationCenter.default.post(name: .didSelectDeleteKey, object: self)
         }
     }
 

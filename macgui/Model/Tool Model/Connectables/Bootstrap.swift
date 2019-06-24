@@ -13,9 +13,10 @@ class Bootstrap: Connectable {
     override init(image: NSImage, frameOnCanvas: NSRect) {
         super.init(image: image, frameOnCanvas: frameOnCanvas)
         self.name = "Bootstrap Tool"
-        let green = Connector(color:ConnectorColor.green)
-        self.inlets = [green]
-        self.outlets = [green]
+        let green1 = Connector(color:ConnectorColor.green)
+        let green2 = Connector(color:ConnectorColor.green)
+        self.inlets = [green1]
+        self.outlets = [green2]
     }
     
 }

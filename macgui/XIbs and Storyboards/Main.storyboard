@@ -726,10 +726,10 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" tag="1" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="p3j-MU-iWT" id="x4u-Va-0Vm" userLabel="zoom">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="menu"/>
                                             <menu key="menu" id="JJw-60-Ano">
                                                 <items>
-                                                    <menuItem title="100%" tag="1" hidden="YES" id="p3j-MU-iWT" userLabel="100%"/>
+                                                    <menuItem title="100%" tag="1" id="p3j-MU-iWT" userLabel="100%"/>
                                                     <menuItem title="25%" tag="1" id="Vnl-hq-txe"/>
                                                     <menuItem title="50%" tag="1" id="Hsa-GQ-DVe"/>
                                                     <menuItem title="75%" tag="2" id="KOr-bC-jdU"/>

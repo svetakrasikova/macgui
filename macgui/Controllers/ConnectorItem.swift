@@ -11,7 +11,7 @@ import Cocoa
 class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
 
     
-    weak var parentTool: Connectable?
+    weak var parentTool: Connectable? 
     
     var connector: Connector? {
         didSet{

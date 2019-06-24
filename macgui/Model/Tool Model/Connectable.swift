@@ -8,11 +8,34 @@
 
 import Cocoa
 
-
-
 class Connectable: ToolObject {    
     var inlets: [Connector] = []
     var outlets: [Connector] = []
+    
+    var unconnectedInlets: [Connector] {
+        get {
+            return inlets.filter{$0.neighbor == nil}
+        }
+        
+    }
+    
+    var unconnectedOutlets: [Connector] {
+        get {
+            return outlets.filter{$0.neighbor == nil}
+        }
+    }
+    
+    var connectedInlets: [Connector] {
+        get {
+            return inlets.filter{$0.neighbor != nil}
+        }
+    }
+    
+    var connectedOutlets: [Connector] {
+        get {
+            return outlets.filter{$0.neighbor != nil}
+        }
+    }
     
     var isConnected: Bool {
         get {
@@ -44,21 +67,25 @@ class Connectable: ToolObject {
 
     }
     
-    func getUnconnectedInlets() -> [Connector] {
-        return inlets.filter{$0.neighbor == nil}
+    func removeNeighbor(neighbor: Connectable, linkType: LinkType){
+        switch linkType {
+        case .inlet:
+            for (index, connector) in inlets.enumerated(){
+                if connector.neighbor === neighbor {
+                    inlets[index].neighbor = nil
+                }
+            }
+        case .outlet:
+            for (index, connector) in outlets.enumerated(){
+                if connector.neighbor === neighbor {
+                    outlets[index].neighbor = nil
+                }
+            }
+        }
+        
     }
     
-    func getUnconnectedOutlets() -> [Connector] {
-        return outlets.filter{$0.neighbor == nil}
-    }
     
-    func getConnectedInlets() -> [Connector] {
-        return inlets.filter{$0.neighbor != nil}
-    }
-    
-    func getConnectedOutlets() -> [Connector] {
-        return outlets.filter{$0.neighbor != nil}
-    }
     
 }
 
