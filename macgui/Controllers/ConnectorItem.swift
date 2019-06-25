@@ -64,6 +64,7 @@ class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
         } else {return nil}
     }
     
+    
 }
 
 private extension NSWindow {

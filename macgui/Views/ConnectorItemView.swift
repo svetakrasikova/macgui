@@ -103,8 +103,6 @@ class ConnectorItemView: NSView {
         default:
             arrowLayer.fillColor = arrowColor?.cgColor
         }
-        
-        
     }
 }
 

@@ -105,7 +105,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view autoresizesSubviews="NO" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-f8-Awk" customClass="CanvasView" customModule="macgui" customModuleProvider="target">
+                                        <view wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-f8-Awk" customClass="CanvasView" customModule="macgui" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                             <subviews>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="r5O-Yj-ak6" customClass="TransparentToolsView" customModule="macgui" customModuleProvider="target">

@@ -9,7 +9,7 @@
 import Cocoa
 import Darwin
 
-class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
+class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate, NSWindowDelegate {
     
     private var observers = [NSKeyValueObservation]()
     
@@ -131,11 +131,19 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
         (self.view as! ArrowView).arrowViewDelegate = self
         view.wantsLayer = true
         drawArrow(width: 2.0, highlight: false)
         setClickArea()
         observeEndPointChanges()
+    }
+    
+    
+    func windowDidResize(_ notification: Notification) {
+        if let canvasView = view.superview as? CanvasView {
+            view.setFrameSize(canvasView.frame.size)
+        }
     }
     
     func observeEndPointChanges(){

@@ -200,20 +200,24 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     
     func removeToolFromAnalysis(toolViewController: CanvasToolViewController){
         if let analysis = analysis, let index = analysis.tools.index(of: toolViewController.tool) {
-            if let arrowViewController = findArrowControllerByTool(tool: toolViewController.tool) {
+            let arrowViewControllers = findArrowControllersByTool(tool: toolViewController.tool)
+            for arrowViewController in arrowViewControllers {
                 removeCanvasObjectView(canvasObjectViewController: arrowViewController)
             }
             analysis.tools.remove(at: index)
         }
     }
     
-    func findArrowControllerByTool(tool: ToolObject) -> ArrowViewController? {
+    func findArrowControllersByTool(tool: ToolObject) -> [ArrowViewController] {
+        var arrowControllers: [ArrowViewController] = []
         for child in children {
             if child.isKind(of: ArrowViewController.self){
-                if (child as! ArrowViewController).ownedBy(tool: tool) {return child as? ArrowViewController}
+                if (child as! ArrowViewController).ownedBy(tool: tool) {
+                    arrowControllers.append(child as! ArrowViewController)
+                }
             }
         }
-        return nil
+        return arrowControllers
     }
     
     func removeConnectionFromAnalysis(arrowViewController: ArrowViewController){
