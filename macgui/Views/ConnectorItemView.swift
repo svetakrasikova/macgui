@@ -18,8 +18,10 @@ class ConnectorItemView: NSView {
     }
     
     var state: State = State.idle { didSet { needsLayout = true } }
+    
     private let shapeLayer = CAShapeLayer()
     private let arrowLayer = CAShapeLayer()
+    
     var arrowColor: NSColor?
     
     var delegate: ConnectorItemViewDelegate?
@@ -28,6 +30,8 @@ class ConnectorItemView: NSView {
         guard case .idle = state else { return [] }
         guard (sender.draggingSource as? ConnectionDragController)?.sourceEndpoint != nil else { return [] }
         guard (sender.draggingSource as? ConnectionDragController)?.sourceEndpoint?.arrowColor == self.arrowColor else { return [] }
+        guard ((sender.draggingSource as? ConnectionDragController)?.sourceEndpoint?.delegate?.isOutlet())!  else { return [] }
+        guard !(self.delegate?.isOutlet())!  else { return [] }
         state = .target
         return sender.draggingSourceOperationMask
         }
@@ -107,8 +111,7 @@ class ConnectorItemView: NSView {
 }
 
 protocol ConnectorItemViewDelegate {
-    func addLinkInlet(source: ConnectorItemView)
-    func addLinkOutlet(source: ConnectorItemView)
     func getTool() -> Any?
     func getConnector() -> Any?
+    func isOutlet() -> Bool
 }

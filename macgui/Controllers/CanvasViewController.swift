@@ -156,8 +156,13 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     
     func reset(analysis: Analysis){
         for subview in canvasView.subviews{
-            if subview.identifier?.rawValue != "invitationLabel" {
+            if subview.isKind(of: CanvasObjectView.self) {
                 subview.removeFromSuperview()
+            }
+        }
+        for child in children{
+            if child.isKind(of: CanvasObjectViewController.self) {
+                child.removeFromParent()
             }
         }
         if analysis.isEmpty(){
@@ -221,7 +226,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     }
     
     func removeConnectionFromAnalysis(arrowViewController: ArrowViewController){
-        if let analysis = analysis, let index = analysis.arrows.index(of: arrowViewController.connection) {
+        if let analysis = analysis, let index = analysis.arrows.index(of: arrowViewController.connection!) {
             arrowViewController.willDeleteView()
             analysis.arrows.remove(at: index)
         }

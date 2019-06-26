@@ -11,7 +11,7 @@ import Cocoa
 class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
 
     
-    weak var parentTool: Connectable? 
+    weak var parentTool: Connectable?
     
     var connector: Connector? {
         didSet{
@@ -40,18 +40,6 @@ class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
     }
     
     
-    func addLinkOutlet(source: ConnectorItemView) {
-        if let source = source.delegate?.getTool(), let color = connector?.color, let neighbor = self.parentTool {
-            (source as! Connectable).addNeighbor(color: color, neighbor: neighbor, linkType: .outlet)
-        }
-    }
-    
-    func addLinkInlet(source: ConnectorItemView) {
-        if let source = source.delegate?.getTool(), let color = connector?.color, let target = self.parentTool {
-            target.addNeighbor(color: color, neighbor: source as! Connectable, linkType: .inlet)
-        }
-    }
-    
     func getTool() -> Any? {
         if let parentTool = parentTool {
             return parentTool
@@ -62,6 +50,13 @@ class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
         if let connector = connector {
             return connector
         } else {return nil}
+    }
+    
+    func isOutlet() -> Bool {
+        if let parentTool = parentTool, let connector = connector {
+           return parentTool.outlets.contains(connector)
+        }
+        return false
     }
     
     

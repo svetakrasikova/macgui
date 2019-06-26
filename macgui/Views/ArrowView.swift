@@ -15,7 +15,7 @@ class ArrowView: CanvasObjectView {
 
     
     override func mouseDown(with event: NSEvent) {
-        let point = convert(event.locationInWindow, from: nil)
+        let point = self.convert(event.locationInWindow, from: nil)
         if clickAreaContains(point: point) {
             super.mouseDown(with: event)
         } else {

@@ -14,28 +14,28 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate, NSWind
     private var observers = [NSKeyValueObservation]()
     
 
-    var targetTool: Connectable
-    var sourceTool: Connectable
-    var connection: Connection
+    weak var targetTool: Connectable?
+    weak var sourceTool: Connectable?
+    weak var connection: Connection?
     
     var frame: NSRect
     var color: NSColor
     
     var endPoint: NSPoint {
         get{
-            return targetTool.frameOnCanvas.center()
+            return (targetTool?.frameOnCanvas.center())!
         }
     }
     
     var beginPoint: NSPoint {
         get {
-            return sourceTool.frameOnCanvas.center()
+            return (sourceTool?.frameOnCanvas.center())!
         }
     }
     
     private var targetToolFrame: NSRect {
         get {
-            return targetTool.frameOnCanvas
+            return (targetTool?.frameOnCanvas)!
         }
     }
     
@@ -79,8 +79,8 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate, NSWind
     }
     
     func willDeleteView(){
-        targetTool.removeNeighbor(neighbor: sourceTool, linkType: LinkType.inlet)
-        sourceTool.removeNeighbor(neighbor: targetTool, linkType: LinkType.outlet)
+        targetTool?.removeNeighbor(neighbor: sourceTool!, linkType: LinkType.inlet)
+        sourceTool?.removeNeighbor(neighbor: targetTool!, linkType: LinkType.outlet)
     }
 
     
@@ -123,7 +123,7 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate, NSWind
     func setClickArea(){
         let path = CGMutablePath()
         path.addLines(between: [beginPoint, endPoint])
-        (self.view as! ArrowView).clickArea = path.copy(strokingWithWidth: 10, lineCap: CGLineCap.round, lineJoin: CGLineJoin.round, miterLimit: 1)    }
+        (self.view as! ArrowView).clickArea = path.copy(strokingWithWidth: 15, lineCap: CGLineCap.round, lineJoin: CGLineJoin.round, miterLimit: 1)    }
     
     override func loadView() {
         self.view = ArrowView(frame: frame)     
@@ -131,7 +131,7 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate, NSWind
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
+       NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
         (self.view as! ArrowView).arrowViewDelegate = self
         view.wantsLayer = true
         drawArrow(width: 2.0, highlight: false)
@@ -148,11 +148,11 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate, NSWind
     
     func observeEndPointChanges(){
         observers = [
-            sourceTool.observe(\Connectable.frameOnCanvas, options: [.old, .new]) {tool, change in
+            sourceTool?.observe(\Connectable.frameOnCanvas, options: [.old, .new]) {tool, change in
                 self.view.needsDisplay = true},
             
-            targetTool.observe(\Connectable.frameOnCanvas, options: [.old, .new]) {tool, change in
-                self.view.needsDisplay = true}]
+            targetTool?.observe(\Connectable.frameOnCanvas, options: [.old, .new]) {tool, change in
+                self.view.needsDisplay = true}] as! [NSKeyValueObservation]
     }
     
 }
