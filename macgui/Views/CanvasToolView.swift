@@ -30,13 +30,13 @@ class CanvasToolView: CanvasObjectView {
     }
     
     override func mouseDragged(with event: NSEvent) {
-        let newPoint = (self.window?.contentView?.convert(event.locationInWindow, to: self))!
-        let offset = NSPoint(x: newPoint.x - firstMouseDownPoint!.x, y: newPoint.y - firstMouseDownPoint!.y)
-        let origin = self.frame.origin
-        let newOrigin = NSPoint(x: origin.x + offset.x, y: origin.y + offset.y)
-        canvasViewToolDelegate?.updateFrame()
-        self.setFrameOrigin(newOrigin)
-   
+        if let newPoint = self.window?.contentView?.convert(event.locationInWindow, to: self), let firstMouseDownPoint = firstMouseDownPoint {
+            let offset = NSPoint(x: newPoint.x - firstMouseDownPoint.x, y: newPoint.y - firstMouseDownPoint.y)
+            let origin = self.frame.origin
+            let newOrigin = NSPoint(x: origin.x + offset.x, y: origin.y + offset.y)
+            canvasViewToolDelegate?.updateFrame()
+            self.setFrameOrigin(newOrigin)
+        }
     }
     
     override func mouseUp(with event: NSEvent) {

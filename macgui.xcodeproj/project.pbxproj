@@ -33,6 +33,7 @@
 		1471052D227B94E200E88657 /* ConnectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052C227B94E200E88657 /* ConnectorItemView.swift */; };
 		1471052F2280E36D00E88657 /* Align.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052E2280E36D00E88657 /* Align.swift */; };
 		147105312280E52300E88657 /* ReadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105302280E52300E88657 /* ReadData.swift */; };
+		147429D522C5B9CB00FF1963 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429D422C5B9CB00FF1963 /* InfoButton.swift */; };
 		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
 		14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFC2216487300021607 /* NavigatorViewController.swift */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
@@ -82,6 +83,7 @@
 		1471052C227B94E200E88657 /* ConnectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItemView.swift; sourceTree = "<group>"; };
 		1471052E2280E36D00E88657 /* Align.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Align.swift; sourceTree = "<group>"; };
 		147105302280E52300E88657 /* ReadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadData.swift; sourceTree = "<group>"; };
+		147429D422C5B9CB00FF1963 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoButton.swift; path = macgui/Views/InfoButton.swift; sourceTree = SOURCE_ROOT; };
 		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		14D6DDFC2216487300021607 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = macgui/Controllers/NavigatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		1452356E220DF5C400A85186 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				147429D422C5B9CB00FF1963 /* InfoButton.swift */,
 				14E5857B22A6F16300802691 /* CanvasObjectView.swift */,
 				14E585732298574100802691 /* ArrowView.swift */,
 				1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */,
@@ -355,6 +358,7 @@
 				14710523225DA69500E88657 /* Connectable.swift in Sources */,
 				14E58526228C92AB00802691 /* ToolImageView.swift in Sources */,
 				14E5857822A067A600802691 /* TransparentToolsView.swift in Sources */,
+				147429D522C5B9CB00FF1963 /* InfoButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
