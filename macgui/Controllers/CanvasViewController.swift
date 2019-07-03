@@ -9,7 +9,6 @@
 import Cocoa
 
 class CanvasViewController: NSViewController, NSWindowDelegate {
-   
 
     weak var analysis: Analysis? {
         didSet{
@@ -187,9 +186,9 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         }
     }
     
-    
     func addToolView(tool: ToolObject){
-        let canvasToolViewController = CanvasToolViewController(tool: tool)
+        guard let canvasToolViewController = NSStoryboard.load(.canvasTool) as? CanvasToolViewController else {return}
+        canvasToolViewController.tool = tool
         addChild(canvasToolViewController)
         canvasView.addSubview(canvasToolViewController.view)
     }
@@ -204,8 +203,8 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     
     
     func removeToolFromAnalysis(toolViewController: CanvasToolViewController){
-        if let analysis = analysis, let index = analysis.tools.index(of: toolViewController.tool) {
-            let arrowViewControllers = findArrowControllersByTool(tool: toolViewController.tool)
+        if let analysis = analysis, let index = analysis.tools.index(of: toolViewController.tool!) {
+            let arrowViewControllers = findArrowControllersByTool(tool: toolViewController.tool!)
             for arrowViewController in arrowViewControllers {
                 removeCanvasObjectView(canvasObjectViewController: arrowViewController)
             }

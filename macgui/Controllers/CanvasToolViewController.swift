@@ -10,27 +10,38 @@ import Cocoa
 
 class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate {
     
-    
-    var frame: NSRect
-    var image: NSImage
-    var tool: ToolObject
+
+    var tool: ToolObject?
     
     private var observers = [NSKeyValueObservation]()
-
+    
     @IBOutlet weak var inletsScrollView: NSScrollView!
     @IBOutlet weak var outletsScrollView: NSScrollView!
     @IBOutlet weak var inlets: NSCollectionView!
     @IBOutlet weak var outlets: NSCollectionView!
     @IBOutlet weak var imageView: NSImageView!
-
-
-  
-    init(tool: ToolObject){
-        self.image = tool.image
-        self.frame = tool.frameOnCanvas
-        self.tool = tool
-        super.init(nibName: nil, bundle: nil)
+    
+    var frame: NSRect {
+        get {
+            if let tool = tool {
+                return tool.frameOnCanvas
+            }
+            else {return NSZeroRect}
+        }
     }
+    var image: NSImage {
+        get {
+            if let tool = tool {
+                return tool.image
+            }
+            else { return NSImage(named: "AppIcon")!}
+        }
+    }
+    
+    lazy var sheetViewController: NSViewController = {
+        return self.storyboard!.instantiateController(withIdentifier: "SheetViewController")
+            as! NSViewController
+    }()
     
     
     override func keyDown(with event: NSEvent) {
@@ -40,14 +51,6 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         }
     }
     
-    
-    required init?(coder: NSCoder) {
-        // set some defaults
-        image = NSImage(named: "AppIcon")!
-        frame = NSRect(origin: .zero, size: NSSize(width: 50, height: 50))
-        tool = ToolObject(image: image, frameOnCanvas: frame)
-        super.init(coder: coder)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,15 +64,21 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
 //                print("change in unconnectedOutlets on tool")}
 //        ]
         NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
-        
+    
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didPushInfo(notification:)),
+                                               name: .didPushInfo,
+                                               object: nil)
         
         setFrame()
         setImage()
         
         (self.view as! CanvasToolView).canvasViewToolDelegate = self
         
-        if tool.isKind(of: Connectable.self){
-           unhideConnectors()
+        if let tool = tool {
+            if tool.isKind(of: Connectable.self){
+                unhideConnectors()
+            }
         }
     }
 
@@ -83,21 +92,25 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     func setFrame () {
         view.frame = self.frame
     }
+    
     func setImage(){
         imageView.image = self.image
     }
     
     func updateFrame(){
-        let size = tool.frameOnCanvas.size
+        let size = tool!.frameOnCanvas.size
         let origin = view.frame.origin
-        tool.frameOnCanvas = NSRect(origin: origin, size: size)
+        tool!.frameOnCanvas = NSRect(origin: origin, size: size)
         
     }
     
    func windowDidResize(_ notification: Notification) {
         updateFrame()
     }
-
+    
+    @objc func didPushInfo(notification: Notification) {
+        self.presentAsModalWindow(sheetViewController)
+    }
     
 }
 

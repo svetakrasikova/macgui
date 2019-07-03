@@ -32,8 +32,8 @@
                                                 <collectionView selectable="YES" id="Ck1-Dw-Yiu">
                                                     <rect key="frame" x="0.0" y="0.0" width="563" height="158"/>
                                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="r3o-WX-kRm">
-                                                        <size key="itemSize" width="50" height="50"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="2" minimumLineSpacing="5" scrollDirection="horizontal" id="r3o-WX-kRm">
+                                                        <size key="itemSize" width="65" height="65"/>
                                                     </collectionViewFlowLayout>
                                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>

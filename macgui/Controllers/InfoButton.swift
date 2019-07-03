@@ -22,6 +22,7 @@ class InfoButton: NSButton {
     
     var mouseIsInside = false
 
+
     override func awakeFromNib() {
         let trackingArea = NSTrackingArea(rect: self.bounds, options:NSTrackingArea.Options.init(rawValue: 129), owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea)
@@ -44,8 +45,7 @@ class InfoButton: NSButton {
     
     override func mouseUp(with event: NSEvent) {
         if mouseIsInside {
-//            show the pop up window
-            
+            NotificationCenter.default.post(name: .didPushInfo, object: self)
         } else {
             buttonState = .idle
         }
@@ -105,3 +105,5 @@ class InfoButton: NSButton {
         }
     }
 }
+
+

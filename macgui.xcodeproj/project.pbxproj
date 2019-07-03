@@ -27,13 +27,15 @@
 		14710521225DA67E00E88657 /* Loop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710520225DA67D00E88657 /* Loop.swift */; };
 		14710523225DA69500E88657 /* Connectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710522225DA69500E88657 /* Connectable.swift */; };
 		147105252265437600E88657 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105242265437600E88657 /* Bootstrap.swift */; };
-		147105272267A0DA00E88657 /* CanvasToolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147105262267A0DA00E88657 /* CanvasToolViewController.xib */; };
 		1471052A226CD75300E88657 /* ConnectorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710528226CD75300E88657 /* ConnectorItem.swift */; };
 		1471052B226CD75300E88657 /* ConnectorItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14710529226CD75300E88657 /* ConnectorItem.xib */; };
 		1471052D227B94E200E88657 /* ConnectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052C227B94E200E88657 /* ConnectorItemView.swift */; };
 		1471052F2280E36D00E88657 /* Align.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052E2280E36D00E88657 /* Align.swift */; };
 		147105312280E52300E88657 /* ReadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105302280E52300E88657 /* ReadData.swift */; };
 		147429D522C5B9CB00FF1963 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429D422C5B9CB00FF1963 /* InfoButton.swift */; };
+		147429D722CADDF800FF1963 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429D622CADDF800FF1963 /* SheetViewController.swift */; };
+		147429D922CBA94C00FF1963 /* CanvasTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147429D822CBA94C00FF1963 /* CanvasTool.storyboard */; };
+		147429DB22CBC8C300FF1963 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DA22CBC8C300FF1963 /* Storyboards.swift */; };
 		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
 		14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFC2216487300021607 /* NavigatorViewController.swift */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
@@ -77,13 +79,15 @@
 		14710520225DA67D00E88657 /* Loop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loop.swift; sourceTree = "<group>"; };
 		14710522225DA69500E88657 /* Connectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectable.swift; sourceTree = "<group>"; };
 		147105242265437600E88657 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
-		147105262267A0DA00E88657 /* CanvasToolViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CanvasToolViewController.xib; sourceTree = "<group>"; };
 		14710528226CD75300E88657 /* ConnectorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItem.swift; sourceTree = "<group>"; };
 		14710529226CD75300E88657 /* ConnectorItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectorItem.xib; sourceTree = "<group>"; };
 		1471052C227B94E200E88657 /* ConnectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItemView.swift; sourceTree = "<group>"; };
 		1471052E2280E36D00E88657 /* Align.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Align.swift; sourceTree = "<group>"; };
 		147105302280E52300E88657 /* ReadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadData.swift; sourceTree = "<group>"; };
-		147429D422C5B9CB00FF1963 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoButton.swift; path = macgui/Views/InfoButton.swift; sourceTree = SOURCE_ROOT; };
+		147429D422C5B9CB00FF1963 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoButton.swift; path = macgui/Controllers/InfoButton.swift; sourceTree = SOURCE_ROOT; };
+		147429D622CADDF800FF1963 /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
+		147429D822CBA94C00FF1963 /* CanvasTool.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CanvasTool.storyboard; sourceTree = "<group>"; };
+		147429DA22CBC8C300FF1963 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		14D6DDFC2216487300021607 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = macgui/Controllers/NavigatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 				1452355E220CCC5800A85186 /* Helpers.swift */,
 				14E58527228DF92F00802691 /* Notifications.swift */,
 				14D6DE00221E484000021607 /* ControllerExtensions.swift */,
+				147429DA22CBC8C300FF1963 /* Storyboards.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -159,7 +164,9 @@
 		1452356D220DF57800A85186 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				147429D422C5B9CB00FF1963 /* InfoButton.swift */,
 				14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */,
+				147429D622CADDF800FF1963 /* SheetViewController.swift */,
 				14E585752298575C00802691 /* ArrowViewController.swift */,
 				144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */,
 				14E5857122949A0900802691 /* ConnectionDragController.swift */,
@@ -178,7 +185,6 @@
 		1452356E220DF5C400A85186 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				147429D422C5B9CB00FF1963 /* InfoButton.swift */,
 				14E5857B22A6F16300802691 /* CanvasObjectView.swift */,
 				14E585732298574100802691 /* ArrowView.swift */,
 				1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */,
@@ -196,11 +202,11 @@
 			isa = PBXGroup;
 			children = (
 				1411BEE122052B7E009BEE1D /* Main.storyboard */,
-				1411BEE72208FE91009BEE1D /* Tool.xib */,
-				147105262267A0DA00E88657 /* CanvasToolViewController.xib */,
-				14710529226CD75300E88657 /* ConnectorItem.xib */,
 				1411BEAD220524E9009BEE1D /* EditorTools.storyboard */,
 				1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */,
+				1411BEE72208FE91009BEE1D /* Tool.xib */,
+				147429D822CBA94C00FF1963 /* CanvasTool.storyboard */,
+				14710529226CD75300E88657 /* ConnectorItem.xib */,
 			);
 			path = "XIbs and Storyboards";
 			sourceTree = "<group>";
@@ -305,7 +311,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				147105272267A0DA00E88657 /* CanvasToolViewController.xib in Resources */,
 				1411BEE92208FE91009BEE1D /* Tool.xib in Resources */,
 				1411BEE322052B7E009BEE1D /* Main.storyboard in Resources */,
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
@@ -313,6 +318,7 @@
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
 				144CC4A4220E324D003311E4 /* toolImages in Resources */,
 				1452356B220CE9AC00A85186 /* Assets.xcassets in Resources */,
+				147429D922CBA94C00FF1963 /* CanvasTool.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +344,7 @@
 				1452355F220CCC5800A85186 /* Helpers.swift in Sources */,
 				14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */,
 				14E5856E22947BFB00802691 /* LineOverlay.swift in Sources */,
+				147429D722CADDF800FF1963 /* SheetViewController.swift in Sources */,
 				14E5857222949A0900802691 /* ConnectionDragController.swift in Sources */,
 				1411BE902203D8FB009BEE1D /* AppDelegate.swift in Sources */,
 				14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */,
@@ -348,6 +355,7 @@
 				144CC4AF220E4081003311E4 /* ImageLoader.swift in Sources */,
 				14D6DE03221F47CD00021607 /* MainSplitViewController.swift in Sources */,
 				14E58528228DF92F00802691 /* Notifications.swift in Sources */,
+				147429DB22CBC8C300FF1963 /* Storyboards.swift in Sources */,
 				14523574220E100B00A85186 /* ImageFile.swift in Sources */,
 				14710521225DA67E00E88657 /* Loop.swift in Sources */,
 				1411BEE82208FE91009BEE1D /* Tool.swift in Sources */,

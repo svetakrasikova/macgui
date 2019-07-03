@@ -722,14 +722,14 @@
                                 <toolbarItem implicitItemIdentifier="F64DF7CF-819D-4657-8C1C-A656000F793D" label="Zoom" paletteLabel="Zoom" sizingBehavior="auto" id="GI7-Ow-JbS">
                                     <nil key="toolTip"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="1wV-hY-z6B" userLabel="zoom">
-                                        <rect key="frame" x="0.0" y="14" width="60" height="28"/>
+                                        <rect key="frame" x="0.0" y="14" width="63" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" tag="1" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="p3j-MU-iWT" id="x4u-Va-0Vm" userLabel="zoom">
+                                        <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" tag="1" imageScaling="axesIndependently" inset="2" pullsDown="YES" selectedItem="p3j-MU-iWT" id="x4u-Va-0Vm" userLabel="zoom">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
                                             <menu key="menu" id="JJw-60-Ano">
                                                 <items>
-                                                    <menuItem title="100%" tag="1" id="p3j-MU-iWT" userLabel="100%"/>
+                                                    <menuItem title="100%" tag="1" hidden="YES" id="p3j-MU-iWT" userLabel="100%"/>
                                                     <menuItem title="25%" tag="1" id="Vnl-hq-txe"/>
                                                     <menuItem title="50%" tag="1" id="Hsa-GQ-DVe"/>
                                                     <menuItem title="75%" tag="2" id="KOr-bC-jdU"/>
@@ -788,7 +788,7 @@
                 </splitViewController>
                 <customObject id="dWc-hi-FXU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="712"/>
+            <point key="canvasLocation" x="75" y="713"/>
         </scene>
         <!--AnalysisLogView-->
         <scene sceneID="faQ-Eu-hvO">
