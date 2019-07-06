@@ -13,6 +13,7 @@ enum StoryBoardName: String {
     case canvasTool = "CanvasTool"
     case canvas = "EditorTools"
     case analyses = "AnalysisLogView"
+    case readData = "ReadData"
 }
 
 

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="NKk-nb-iKR">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Read Data View Controller-->
+        <scene sceneID="GmR-P5-Uv4">
+            <objects>
+                <viewController storyboardIdentifier="ReadData" id="NKk-nb-iKR" customClass="ReadDataViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="WPN-TW-kY0">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="n1n-Ve-Joz">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="n1n-Ve-Joz" firstAttribute="top" secondItem="WPN-TW-kY0" secondAttribute="top" id="5h0-0e-8wi"/>
+                            <constraint firstItem="n1n-Ve-Joz" firstAttribute="leading" secondItem="WPN-TW-kY0" secondAttribute="leading" id="A45-ZI-JqK"/>
+                            <constraint firstAttribute="trailing" secondItem="n1n-Ve-Joz" secondAttribute="trailing" id="IZo-io-Mo1"/>
+                            <constraint firstAttribute="bottom" secondItem="n1n-Ve-Joz" secondAttribute="bottom" id="jMK-2i-iBH"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="qfo-nq-oxm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-37" y="329"/>
+        </scene>
+    </scenes>
+</document>

@@ -38,9 +38,11 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         }
     }
     
-    lazy var sheetViewController: NSViewController = {
-        return self.storyboard!.instantiateController(withIdentifier: "SheetViewController")
-            as! NSViewController
+    lazy var sheetViewController: SheetViewController = {
+        let vc = self.storyboard!.instantiateController(withIdentifier: "SheetViewController")
+            as! SheetViewController
+        vc.tool = tool
+        return vc
     }()
     
     

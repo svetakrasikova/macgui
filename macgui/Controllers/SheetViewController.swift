@@ -9,10 +9,27 @@
 import Cocoa
 
 class SheetViewController: NSViewController {
-
+    
+    weak var tool: ToolObject?
+    
+    var contentViewController: NSViewController {
+        return getChildSheetViewController()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        self.addChild(contentViewController)
+        self.view.addSubview(contentViewController.view)
+    }
+    
+    func getChildSheetViewController() -> NSViewController {
+        switch tool {
+        case _ as ReadData:
+            return NSStoryboard.load(.readData)
+        default:
+            return self
+        }
+        
     }
     
 }
