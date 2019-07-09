@@ -11,12 +11,14 @@ import Cocoa
 class ReadDataViewController: NSViewController {
     
     
-    var tabViewController: NSTabViewController {
-        return self.storyboard!.instantiateController(withIdentifier: "TabViewController") as! NSTabViewController
+    @IBAction func cancelButtonPushed(_ sender: Any) {
+//        dismiss sheet view controller
+        NotificationCenter.default.post(name: .dismissToolSheet, object: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     

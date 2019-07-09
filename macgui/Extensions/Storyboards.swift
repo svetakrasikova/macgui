@@ -21,4 +21,7 @@ extension NSStoryboard{
     class func load(_ storyboard: StoryBoardName) -> NSViewController{
         return NSStoryboard(name: storyboard.rawValue, bundle: nil).instantiateController(withIdentifier: storyboard.rawValue) as! NSViewController
     }
+    class func load(_ storyboard: StoryBoardName, controller: String) -> NSViewController{
+        return NSStoryboard(name: storyboard.rawValue, bundle: nil).instantiateController(withIdentifier: controller) as! NSViewController
+    }
 }

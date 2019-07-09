@@ -16,9 +16,15 @@ class SheetViewController: NSViewController {
     }
     weak var tool: ToolObject?
     
-    var contentViewController: NSViewController {
-        return getChildSheetViewController()
-    }
+   
+    
+    lazy var tabViewController: NSTabViewController = {
+        return self.storyboard!.instantiateController(withIdentifier: "TabViewController")
+        }() as! NSTabViewController
+    
+//    var contentViewController: NSViewController {
+//        return getChildSheetViewController()
+//    }
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -31,24 +37,33 @@ class SheetViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = tool?.name
-        addContentController()
+        tabViewController.selectedTabViewItemIndex = 0
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didPushCancel(notification:)),
+                                               name: .dismissToolSheet,
+                                               object: nil)
+//        addContentController()
     }
     
-    
-    func addContentController(){
-        self.addChild(contentViewController)
-        self.view.addSubview(contentViewController.view)
+    @objc func didPushCancel(notification: NSNotification) {
+        presentingViewController?.dismiss(self)
     }
     
-    func getChildSheetViewController() -> NSViewController {
-        switch tool {
-        case _ as ReadData:
-            let childVC = NSStoryboard.load(.readData)
-            return childVC
-        default:
-            return NSStoryboard.load(.readData) 
-        }
-        
-    }
+//
+//    func addContentController(){
+//        self.addChild(contentViewController)
+//        self.view.addSubview(contentViewController.view)
+//    }
+//
+//    func getChildSheetViewController() -> NSViewController {
+//        switch tool {
+//        case _ as ReadData:
+//            let childVC = NSStoryboard.load(.readData)
+//            return childVC
+//        default:
+//            return NSStoryboard.load(.readData)
+//        }
+//
+//    }
     
 }

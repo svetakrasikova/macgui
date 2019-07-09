@@ -27,7 +27,7 @@ Gw
 </string>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="dismissController:" target="NKk-nb-iKR" id="sEt-h6-b7M"/>
+                                            <action selector="cancelButtonPushed:" target="NKk-nb-iKR" id="sNF-nH-QDI"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tpn-Co-Gkf">
@@ -78,7 +78,7 @@ DQ
                 </viewController>
                 <customObject id="qfo-nq-oxm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="386" y="-11041"/>
+            <point key="canvasLocation" x="394" y="-11212"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="znZ-nG-SPM">
@@ -103,7 +103,7 @@ DQ
                 </tabViewController>
                 <customObject id="3Ir-v2-zYE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="351.5" y="-10528"/>
+            <point key="canvasLocation" x="508" y="-10811"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="oSG-Gu-Wz3">
