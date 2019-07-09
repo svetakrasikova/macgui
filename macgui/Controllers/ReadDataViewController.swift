@@ -9,10 +9,16 @@
 import Cocoa
 
 class ReadDataViewController: NSViewController {
-
+    
+    
+    var tabViewController: NSTabViewController {
+        return self.storyboard!.instantiateController(withIdentifier: "TabViewController") as! NSTabViewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
     }
+    
+    
     
 }

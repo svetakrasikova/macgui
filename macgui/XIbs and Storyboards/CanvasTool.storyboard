@@ -18,8 +18,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="E9l-0I-Esa"/>
                             </imageView>
-                            <scrollView hidden="YES" wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="2" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Z-Qm-Ijk" userLabel="Outlets Scroll View - Collection View">
-                                <rect key="frame" x="440" y="245" width="10" height="50"/>
+                            <scrollView hidden="YES" wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="5" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Z-Qm-Ijk" userLabel="Outlets Scroll View - Collection View">
+                                <rect key="frame" x="440" y="250" width="10" height="50"/>
                                 <clipView key="contentView" drawsBackground="NO" id="0Cn-01-AN1">
                                     <rect key="frame" x="0.0" y="0.0" width="10" height="50"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,8 +27,9 @@
                                         <collectionView id="HaQ-1X-9xq" userLabel="Outlets">
                                             <rect key="frame" x="0.0" y="0.0" width="10" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="1" minimumLineSpacing="1" id="czk-OG-yY3">
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="1" minimumLineSpacing="1" id="Cpd-QD-pDl">
                                                 <size key="itemSize" width="5" height="5"/>
+                                                <size key="headerReferenceSize" width="0.0" height="5"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" white="0.90980392160000001" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <connections>
@@ -110,7 +111,7 @@
                             <constraint firstAttribute="trailing" secondItem="F5D-nF-dLg" secondAttribute="trailing" constant="2" id="Wv6-Dq-tbM"/>
                             <constraint firstAttribute="trailing" secondItem="Nwy-6C-qMO" secondAttribute="trailing" id="b2g-GD-tW4"/>
                             <constraint firstItem="Nwy-6C-qMO" firstAttribute="leading" secondItem="TpE-bo-cSb" secondAttribute="leading" id="k74-51-gF9"/>
-                            <constraint firstItem="R8Z-Qm-Ijk" firstAttribute="top" secondItem="TpE-bo-cSb" secondAttribute="top" constant="5" id="pr0-eN-NV1"/>
+                            <constraint firstItem="R8Z-Qm-Ijk" firstAttribute="top" secondItem="TpE-bo-cSb" secondAttribute="top" id="pr0-eN-NV1"/>
                             <constraint firstItem="Nwy-6C-qMO" firstAttribute="top" secondItem="TpE-bo-cSb" secondAttribute="top" id="xs9-Ez-ygv"/>
                         </constraints>
                     </customView>
@@ -134,22 +135,11 @@
                     <containerView key="view" id="blU-tU-FUO">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <segue destination="lUe-AI-d4f" kind="embed" id="Qif-op-Pa7"/>
-                        </connections>
                     </containerView>
                 </viewController>
                 <customObject id="UTh-Sl-IXG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="172" y="-194"/>
-        </scene>
-        <!--ReadData-->
-        <scene sceneID="gxZ-Nn-WPH">
-            <objects>
-                <controllerPlaceholder storyboardName="ReadData" id="lUe-AI-d4f" sceneMemberID="viewController"/>
-                <customObject id="OA9-ja-her" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-16" y="137"/>
         </scene>
     </scenes>
 </document>

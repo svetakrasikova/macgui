@@ -168,10 +168,10 @@
 		1452356D220DF57800A85186 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				147429D622CADDF800FF1963 /* SheetViewController.swift */,
 				147429DF22D1554400FF1963 /* ReadDataViewController.swift */,
 				147429D422C5B9CB00FF1963 /* InfoButton.swift */,
 				14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */,
-				147429D622CADDF800FF1963 /* SheetViewController.swift */,
 				14E585752298575C00802691 /* ArrowViewController.swift */,
 				144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */,
 				14E5857122949A0900802691 /* ConnectionDragController.swift */,
