@@ -10,17 +10,12 @@ import Cocoa
 
 class ReadDataViewController: NSViewController {
     
-    
     @IBAction func cancelButtonPushed(_ sender: Any) {
-//        dismiss sheet view controller
         NotificationCenter.default.post(name: .dismissToolSheet, object: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
-    
     
 }

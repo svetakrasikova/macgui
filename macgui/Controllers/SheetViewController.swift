@@ -22,9 +22,9 @@ class SheetViewController: NSViewController {
         return self.storyboard!.instantiateController(withIdentifier: "TabViewController")
         }() as! NSTabViewController
     
-//    var contentViewController: NSViewController {
-//        return getChildSheetViewController()
-//    }
+    lazy var contentViewController: NSViewController = {
+        return getChildSheetViewController()
+    }()
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -37,33 +37,33 @@ class SheetViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = tool?.name
-        tabViewController.selectedTabViewItemIndex = 0
+        addContentController()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didPushCancel(notification:)),
                                                name: .dismissToolSheet,
                                                object: nil)
-//        addContentController()
     }
     
     @objc func didPushCancel(notification: NSNotification) {
         presentingViewController?.dismiss(self)
     }
     
-//
-//    func addContentController(){
-//        self.addChild(contentViewController)
-//        self.view.addSubview(contentViewController.view)
-//    }
-//
-//    func getChildSheetViewController() -> NSViewController {
-//        switch tool {
-//        case _ as ReadData:
-//            let childVC = NSStoryboard.load(.readData)
-//            return childVC
-//        default:
-//            return NSStoryboard.load(.readData)
-//        }
-//
-//    }
+    func addContentController(){
+        if let tabItem = tabViewController.tabViewItem(for: contentViewController) {
+            let index = (tabViewController.view as! NSTabView).indexOfTabViewItem(tabItem)
+            tabViewController.selectedTabViewItemIndex = index
+        }
+    }
+
+    func getChildSheetViewController() -> NSViewController {
+        switch tool {
+        case _ as ReadData:
+            let childVC = NSStoryboard.load(.readData)
+            return childVC
+        default:
+            return NSStoryboard.load(.readData)
+        }
+
+    }
     
 }

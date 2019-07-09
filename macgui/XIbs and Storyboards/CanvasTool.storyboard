@@ -174,7 +174,7 @@
                 <controllerPlaceholder storyboardName="ReadData" referencedIdentifier="ReadData" id="QGg-vQ-8CM" sceneMemberID="viewController"/>
                 <customObject id="7cz-90-bDW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173" y="655"/>
+            <point key="canvasLocation" x="-16" y="669"/>
         </scene>
     </scenes>
 </document>
