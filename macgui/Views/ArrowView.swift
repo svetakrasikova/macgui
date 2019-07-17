@@ -10,7 +10,7 @@ import Cocoa
 
 class ArrowView: CanvasObjectView {
     
-    var arrowViewDelegate: ArrowViewDelegate?
+    weak var arrowViewDelegate: ArrowViewDelegate?
     var clickArea: CGPath?
 
     
@@ -45,7 +45,7 @@ class ArrowView: CanvasObjectView {
     
 }
 
-protocol ArrowViewDelegate {
+protocol ArrowViewDelegate: class {
     func updateArrowInLayer(selected: Bool)
     func setClickArea()
 }

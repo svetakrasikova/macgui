@@ -19,10 +19,5 @@ class ToolImageView: NSImageView {
         super.keyDown(with: event)
     }
     
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
-    }
     
 }

@@ -38,7 +38,6 @@
 		147429DB22CBC8C300FF1963 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DA22CBC8C300FF1963 /* Storyboards.swift */; };
 		147429DE22D154D200FF1963 /* ReadData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147429DD22D154D200FF1963 /* ReadData.storyboard */; };
 		147429E022D1554400FF1963 /* ReadDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DF22D1554400FF1963 /* ReadDataViewController.swift */; };
-		147429E422D555D700FF1963 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429E322D555D700FF1963 /* File.swift */; };
 		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
 		14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFC2216487300021607 /* NavigatorViewController.swift */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
@@ -93,7 +92,6 @@
 		147429DA22CBC8C300FF1963 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		147429DD22D154D200FF1963 /* ReadData.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReadData.storyboard; sourceTree = "<group>"; };
 		147429DF22D1554400FF1963 /* ReadDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDataViewController.swift; sourceTree = "<group>"; };
-		147429E322D555D700FF1963 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		14D6DDFC2216487300021607 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = macgui/Controllers/NavigatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 				14E58527228DF92F00802691 /* Notifications.swift */,
 				14D6DE00221E484000021607 /* ControllerExtensions.swift */,
 				147429DA22CBC8C300FF1963 /* Storyboards.swift */,
-				147429E322D555D700FF1963 /* File.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -223,11 +220,11 @@
 		14523575220E101400A85186 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				14E5858022B0810B00802691 /* Connector.swift */,
-				14E5857F22A8016200802691 /* ImageHandling */,
 				14D6DDFE22164A6E00021607 /* Analysis.swift */,
-				14E5857D22A8006F00802691 /* Connection.swift */,
 				1471051F225DA5C800E88657 /* Tool Model */,
+				14E5858022B0810B00802691 /* Connector.swift */,
+				14E5857D22A8006F00802691 /* Connection.swift */,
+				14E5857F22A8016200802691 /* ImageHandling */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,10 +232,10 @@
 		1471051F225DA5C800E88657 /* Tool Model */ = {
 			isa = PBXGroup;
 			children = (
-				147105322280ED9D00E88657 /* Connectables */,
 				144CC4B42211F228003311E4 /* ToolObject.swift */,
-				14710520225DA67D00E88657 /* Loop.swift */,
 				14710522225DA69500E88657 /* Connectable.swift */,
+				147105322280ED9D00E88657 /* Connectables */,
+				14710520225DA67D00E88657 /* Loop.swift */,
 			);
 			path = "Tool Model";
 			sourceTree = "<group>";
@@ -344,7 +341,6 @@
 				144CC4B52211F228003311E4 /* ToolObject.swift in Sources */,
 				14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */,
 				144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */,
-				147429E422D555D700FF1963 /* File.swift in Sources */,
 				1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */,
 				14E5857C22A6F16300802691 /* CanvasObjectView.swift in Sources */,
 				147105252265437600E88657 /* Bootstrap.swift in Sources */,

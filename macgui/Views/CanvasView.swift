@@ -16,7 +16,7 @@ class CanvasView: NSView {
         static let selectionWidth: CGFloat = 5.0
     }
     
-    var delegate: CanvasViewDelegate?
+    weak var delegate: CanvasViewDelegate?
     
     //Define data types that canvas view accepts in a dragging operation.
     var acceptableTypes: Set<NSPasteboard.PasteboardType> { return [.URL] }
@@ -97,7 +97,7 @@ class CanvasView: NSView {
     }
 }
 
-protocol CanvasViewDelegate {
+protocol CanvasViewDelegate: class {
     func processImageURLs(_ urls: [URL], center: NSPoint)
     func processImage(_ image: NSImage, center: NSPoint, name: String)
     func selectContentView(width: CGFloat)

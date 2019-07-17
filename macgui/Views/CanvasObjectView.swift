@@ -14,7 +14,7 @@ class CanvasObjectView: NSView {
     
     override var wantsUpdateLayer: Bool {return true}
     
-    var delegate: CanvasObjectViewDelegate?
+    weak var delegate: CanvasObjectViewDelegate?
     
     // MARK: - First Responder    
     override var acceptsFirstResponder: Bool {
@@ -36,6 +36,6 @@ class CanvasObjectView: NSView {
     
 }
 
-protocol CanvasObjectViewDelegate {
+protocol CanvasObjectViewDelegate: class {
     func setObjectViewSelected(flag: Bool)
 }

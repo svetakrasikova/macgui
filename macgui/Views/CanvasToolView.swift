@@ -22,7 +22,7 @@ class CanvasToolView: CanvasObjectView {
     }
     
     var firstMouseDownPoint: NSPoint?
-    var canvasViewToolDelegate: CanvasToolViewDelegate? = nil
+    weak var canvasViewToolDelegate: CanvasToolViewDelegate?
     
     override func mouseDown(with event: NSEvent) {
         super.mouseDown(with: event)
@@ -46,7 +46,6 @@ class CanvasToolView: CanvasObjectView {
     override func viewDidEndLiveResize() {
         super.viewDidEndLiveResize()
         canvasViewToolDelegate?.updateFrame()
-        
     }
     
     override func updateLayer() {
@@ -61,6 +60,6 @@ class CanvasToolView: CanvasObjectView {
     }
 }
 
-protocol CanvasToolViewDelegate {
+protocol CanvasToolViewDelegate: class {
     func updateFrame()
 }

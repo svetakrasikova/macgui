@@ -24,7 +24,7 @@ class ConnectorItemView: NSView {
     
     var arrowColor: NSColor?
     
-    var delegate: ConnectorItemViewDelegate?
+    weak var delegate: ConnectorItemViewDelegate?
     
     public override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         guard case .idle = state else { return [] }
@@ -110,7 +110,7 @@ class ConnectorItemView: NSView {
     }
 }
 
-protocol ConnectorItemViewDelegate {
+protocol ConnectorItemViewDelegate: class {
     func getTool() -> Any?
     func getConnector() -> Any?
     func isOutlet() -> Bool
