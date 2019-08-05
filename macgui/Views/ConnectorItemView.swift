@@ -72,12 +72,8 @@ class ConnectorItemView: NSView {
         return shapeLayer
     }
     
-    override var intrinsicContentSize: CGSize { return CGSize(width: 80, height: 80) }
-    
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        shapeLayer.frame = frame
-        layer = shapeLayer
     }
     
     override func layout() {
@@ -93,7 +89,7 @@ class ConnectorItemView: NSView {
         path.addLine(to: CGPoint(x: 0.0, y: 0.0))
         arrowLayer.strokeColor = NSColor.darkGray.cgColor
         arrowLayer.lineWidth = 0.5
-        self.arrowColor = color
+        arrowColor = color
         arrowLayer.path = path
         shapeLayer.addSublayer(arrowLayer)
     }

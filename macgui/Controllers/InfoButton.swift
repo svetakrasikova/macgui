@@ -75,7 +75,7 @@ class InfoButton: NSButton {
         setAppearanceForState()
         shapeLayer.path = CGPath(ellipseIn: bounds, transform: nil)
         if  let backingScaleFactor = self.window?.backingScaleFactor {
-            shapeLayer.rasterizationScale = backingScaleFactor
+            shapeLayer.contentsScale = backingScaleFactor
             addLabel(scaleFactor: backingScaleFactor)
         }
     }
@@ -83,11 +83,11 @@ class InfoButton: NSButton {
     private func addLabel(scaleFactor: CGFloat) {
         let textLayer = CATextLayer()
         textLayer.frame = bounds
+        textLayer.contentsScale = scaleFactor
         textLayer.font = "Hoefler Text" as CFTypeRef
         textLayer.foregroundColor = NSColor.white.cgColor
         textLayer.fontSize = 7
         textLayer.string = "i"
-        textLayer.contentsScale = scaleFactor
         textLayer.allowsFontSubpixelQuantization = true
         textLayer.position = bounds.center()
         textLayer.alignmentMode = .center;

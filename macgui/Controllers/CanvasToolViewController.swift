@@ -59,12 +59,6 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         if let window = NSApp.windows.first{
             window.delegate = self
         }
-//        observers = [
-//            (tool as! Connectable).observe(\Connectable.unconnectedInlets) {tool, change in
-//                print("change in unconnectedInlets on tool")},
-//            (tool as! Connectable).observe(\Connectable.unconnectedOutlets) {tool, change in
-//                print("change in unconnectedOutlets on tool")}
-//        ]
         NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
     
         NotificationCenter.default.addObserver(self,

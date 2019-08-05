@@ -144,10 +144,44 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         }
     
     @objc func deleteSelectedCanvasObjects(notification: NSNotification){
+        var connectionsToDelete = 0
         for childController in children {
-            if childController .isKind(of: CanvasObjectViewController.self) &&
+            if childController .isKind(of: ArrowViewController.self) &&
                 (childController as! CanvasObjectViewController).viewSelected == true {
-                removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
+                connectionsToDelete = connectionsToDelete + 1
+            }
+        }
+        if connectionsToDelete > 0 {
+            let alert = NSAlert()
+            if connectionsToDelete > 1 {
+                alert.messageText = "Warning: Removing connections between tools"
+                alert.informativeText = "Removing connections can lead to loss of information in downstream tools"
+            } else {
+                alert.messageText = "Warning: Removing a connection between tools"
+                alert.informativeText = "Removing a connection can lead to loss of information in downstream tools"
+            }
+            
+            alert.addButton(withTitle: "Delete")
+            alert.addButton(withTitle: "Cancel")
+            
+            let result = alert.runModal()
+            switch result {
+                case NSApplication.ModalResponse.alertFirstButtonReturn:
+                    for childController in children {
+                        if childController .isKind(of: CanvasObjectViewController.self) &&
+                            (childController as! CanvasObjectViewController).viewSelected == true {
+                            removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
+                        }
+                    }
+                default: break
+            }
+        }
+        else {
+            for childController in children {
+                if childController .isKind(of: CanvasObjectViewController.self) &&
+                    (childController as! CanvasObjectViewController).viewSelected == true {
+                    removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
+                }
             }
         }
     }
