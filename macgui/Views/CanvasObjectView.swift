@@ -10,8 +10,6 @@ import Cocoa
 
 class CanvasObjectView: NSView {
     
-   
-    
     override var wantsUpdateLayer: Bool {return true}
     
     weak var delegate: CanvasObjectViewDelegate?

@@ -144,16 +144,16 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         }
     
     @objc func deleteSelectedCanvasObjects(notification: NSNotification){
-        var connectionsToDelete = 0
+        var numConnectionsToDelete = 0
         for childController in children {
             if childController .isKind(of: ArrowViewController.self) &&
                 (childController as! CanvasObjectViewController).viewSelected == true {
-                connectionsToDelete = connectionsToDelete + 1
+                numConnectionsToDelete = numConnectionsToDelete + 1
             }
         }
-        if connectionsToDelete > 0 {
+        if numConnectionsToDelete > 0 {
             let alert = NSAlert()
-            if connectionsToDelete > 1 {
+            if numConnectionsToDelete > 1 {
                 alert.messageText = "Warning: Removing connections between tools"
                 alert.informativeText = "Removing connections can lead to loss of information in downstream tools"
             } else {
@@ -168,22 +168,29 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
             switch result {
                 case NSApplication.ModalResponse.alertFirstButtonReturn:
                     for childController in children {
-                        if childController .isKind(of: CanvasObjectViewController.self) &&
+                        if childController .isKind(of: CanvasToolViewController.self) &&
                             (childController as! CanvasObjectViewController).viewSelected == true {
                             removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
                         }
                     }
+                    for childController in children {
+                        if childController .isKind(of: ArrowViewController.self) &&
+                            (childController as! CanvasObjectViewController).viewSelected == true {
+                            removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
+                        }
+                }
                 default: break
             }
         }
         else {
             for childController in children {
-                if childController .isKind(of: CanvasObjectViewController.self) &&
+                if childController .isKind(of: CanvasToolViewController.self) &&
                     (childController as! CanvasObjectViewController).viewSelected == true {
                     removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
                 }
             }
         }
+            reset(analysis: analysis!)
     }
 
     
@@ -236,6 +243,16 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     }
     
     
+    func removeToolFromAnalysisOld(toolViewController: CanvasToolViewController){
+        if let analysis = analysis, let index = analysis.tools.index(of: toolViewController.tool!) {
+            let arrowViewControllers = findArrowControllersByTool(tool: toolViewController.tool!)
+            for arrowViewController in arrowViewControllers {
+                removeCanvasObjectView(canvasObjectViewController: arrowViewController)
+            }
+            analysis.tools.remove(at: index)
+        }
+    }
+    
     func removeToolFromAnalysis(toolViewController: CanvasToolViewController){
         if let analysis = analysis, let index = analysis.tools.index(of: toolViewController.tool!) {
             let arrowViewControllers = findArrowControllersByTool(tool: toolViewController.tool!)
@@ -275,7 +292,6 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         }
         canvasObjectViewController.view.removeFromSuperview()
         canvasObjectViewController.removeFromParent()
-        reset(analysis: analysis!)
     }
     
 }

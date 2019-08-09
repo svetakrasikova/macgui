@@ -78,7 +78,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         }
     }
 
-
+  
     func unhideConnectors(){
         inletsScrollView.isHidden = false
         outletsScrollView.isHidden = false

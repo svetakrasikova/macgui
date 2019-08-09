@@ -11,16 +11,21 @@ import Cocoa
 class CanvasToolView: CanvasObjectView {
    
     enum Appearance {
+         static let borderWidth: CGFloat = 1.8
         static let selectionCornerRadius: CGFloat = 5.0
-        static let selectionWidth: CGFloat = 0.5
-        static let selectionColor: CGColor = NSColor.selectedKnobColor.cgColor
-        static let selectionShadowOpacity: Float = 1.0
-        static let selectionShadowRadius: CGFloat = 5.0
+        
+        static let selectionColor: CGColor = NSColor.systemGray.cgColor
+        static let defaultColor: CGColor = NSColor.clear.cgColor
+        
+        static let selectionShadowOpacity: Float = 0.7
         static let defaultShadowOpacity: Float = 0.0
+       
+        static let selectionShadowRadius: CGFloat = 10.0
         static let defaultShadowRadius: CGFloat = 3.0
         
     }
     
+
     var firstMouseDownPoint: NSPoint?
     weak var canvasViewToolDelegate: CanvasToolViewDelegate?
     
@@ -48,14 +53,20 @@ class CanvasToolView: CanvasObjectView {
         canvasViewToolDelegate?.updateFrame()
     }
     
+
+    
     override func updateLayer() {
         layer?.cornerRadius = Appearance.selectionCornerRadius
+        layer?.borderWidth = Appearance.borderWidth
+        layer?.masksToBounds =  false
         if isSelected {
             layer?.shadowOpacity = Appearance.selectionShadowOpacity
             layer?.shadowRadius = Appearance.selectionShadowRadius
+            layer?.borderColor = Appearance.selectionColor
         } else {
             layer?.shadowOpacity = Appearance.defaultShadowOpacity
             layer?.shadowRadius = Appearance.defaultShadowRadius
+            layer?.borderColor = Appearance.defaultColor
         }
     }
 }
