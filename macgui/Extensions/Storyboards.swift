@@ -13,7 +13,9 @@ enum StoryBoardName: String {
     case canvasTool = "CanvasTool"
     case canvas = "EditorTools"
     case analyses = "AnalysisLogView"
+    case modalSheet = "ModalSheet"
     case readData = "ReadData"
+    case modalSheetTabView = "ModalSheetTabView"
 }
 
 

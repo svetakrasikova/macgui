@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1407184A22FF5D430098285D /* ModalSheet.storyboard */; };
+		1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */; };
 		1411BE902203D8FB009BEE1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */; };
 		1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */; };
 		1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEAD220524E9009BEE1D /* EditorTools.storyboard */; };
@@ -58,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1407184A22FF5D430098285D /* ModalSheet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheet.storyboard; sourceTree = "<group>"; };
+		1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheetTabView.storyboard; sourceTree = "<group>"; };
 		1411BE8C2203D8FB009BEE1D /* macgui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macgui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1411BE982203D8FC009BEE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 				1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */,
 				1411BEE72208FE91009BEE1D /* Tool.xib */,
 				147429D822CBA94C00FF1963 /* CanvasTool.storyboard */,
+				1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */,
+				1407184A22FF5D430098285D /* ModalSheet.storyboard */,
 				147429DD22D154D200FF1963 /* ReadData.storyboard */,
 				14710529226CD75300E88657 /* ConnectorItem.xib */,
 			);
@@ -323,9 +329,11 @@
 				147429DE22D154D200FF1963 /* ReadData.storyboard in Resources */,
 				1471052B226CD75300E88657 /* ConnectorItem.xib in Resources */,
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
+				1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */,
 				144CC4A4220E324D003311E4 /* toolImages in Resources */,
 				1452356B220CE9AC00A85186 /* Assets.xcassets in Resources */,
 				147429D922CBA94C00FF1963 /* CanvasTool.storyboard in Resources */,
+				1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

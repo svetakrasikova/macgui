@@ -14,6 +14,5 @@ extension NSNotification.Name {
     static let didSelectCanvasObjectController = Notification.Name("didSelectCanvasObjectController")
     static let didSelectDeleteKey = Notification.Name("didSelectDeleteKey")
     static let didConnectTools = Notification.Name("didConnectTools")
-    static let didPushInfo = Notification.Name("didPushInfo")
     static let dismissToolSheet = Notification.Name("dismissToolSheet")
 }

@@ -58,9 +58,6 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <connections>
-                                    <segue destination="QCX-rm-mPZ" kind="popover" popoverAnchorView="F5D-nF-dLg" popoverBehavior="t" preferredEdge="maxY" id="dHx-Ph-dLm"/>
-                                </connections>
                             </button>
                             <scrollView hidden="YES" wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="5" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Z-Qm-Ijk" userLabel="Outlets">
                                 <rect key="frame" x="240" y="25" width="210" height="50"/>
@@ -113,6 +110,7 @@
                     </customView>
                     <connections>
                         <outlet property="imageView" destination="Nwy-6C-qMO" id="IfJ-gd-b1b"/>
+                        <outlet property="infoButton" destination="F5D-nF-dLg" id="cj1-6w-q0K"/>
                         <outlet property="inlets" destination="gQw-V1-6qQ" id="csn-tb-L90"/>
                         <outlet property="inletsScrollView" destination="ca7-dw-39x" id="Vb5-bF-GbH"/>
                         <outlet property="outlets" destination="HaQ-1X-9xq" id="yq0-Sr-nhz"/>
@@ -124,53 +122,21 @@
             </objects>
             <point key="canvasLocation" x="172" y="-629"/>
         </scene>
-        <!--Sheet View Controller-->
-        <scene sceneID="9qz-mX-w49">
+        <!--ModalSheet-->
+        <scene sceneID="4k0-C2-vxq">
             <objects>
-                <viewController storyboardIdentifier="SheetViewController" id="QCX-rm-mPZ" customClass="SheetViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
-                    <containerView key="view" id="blU-tU-FUO">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <segue destination="3V7-fT-kdA" kind="embed" id="Ypf-RE-dvB"/>
-                        </connections>
-                    </containerView>
-                </viewController>
-                <customObject id="UTh-Sl-IXG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="NOQ-3H-ikh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <controllerPlaceholder storyboardIdentifier="ModalSheet" storyboardName="ModalSheet" referencedIdentifier="ModalSheet" id="zhC-PP-h9p" sceneMemberID="viewController"/>
             </objects>
-            <point key="canvasLocation" x="172" y="-194"/>
+            <point key="canvasLocation" x="173" y="-554"/>
         </scene>
-        <!--Tab View Controller-->
-        <scene sceneID="Z68-No-4E7">
+        <!--ModalSheetTabView-->
+        <scene sceneID="JLU-iS-TcN">
             <objects>
-                <tabViewController identifier="TabViewController" storyboardIdentifier="TabViewController" selectedTabViewItemIndex="0" tabStyle="unspecified" id="3V7-fT-kdA" sceneMemberID="viewController">
-                    <tabViewItems>
-                        <tabViewItem id="zmD-9m-svV"/>
-                    </tabViewItems>
-                    <tabView key="tabView" type="noTabsNoBorder" id="626-6W-VnF">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="message"/>
-                        <connections>
-                            <outlet property="delegate" destination="3V7-fT-kdA" id="7YQ-hA-Fzd"/>
-                        </connections>
-                    </tabView>
-                    <connections>
-                        <outlet property="tabView" destination="626-6W-VnF" id="fIH-O1-OPa"/>
-                        <segue destination="QGg-vQ-8CM" kind="relationship" relationship="tabItems" id="uTN-gJ-a4x"/>
-                    </connections>
-                </tabViewController>
-                <customObject id="MKF-UK-4bl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="wMv-y6-HWj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <controllerPlaceholder storyboardIdentifier="TabViewController" storyboardName="ModalSheetTabView" referencedIdentifier="ModalSheetTabView" id="FSW-ds-9G3" sceneMemberID="viewController"/>
             </objects>
-            <point key="canvasLocation" x="172" y="260"/>
-        </scene>
-        <!--ReadData-->
-        <scene sceneID="T3n-p9-LW2">
-            <objects>
-                <controllerPlaceholder storyboardName="ReadData" referencedIdentifier="ReadData" id="QGg-vQ-8CM" sceneMemberID="viewController"/>
-                <customObject id="7cz-90-bDW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-16" y="669"/>
+            <point key="canvasLocation" x="180" y="-509"/>
         </scene>
     </scenes>
 </document>

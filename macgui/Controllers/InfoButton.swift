@@ -21,7 +21,9 @@ class InfoButton: NSButton {
     var buttonState: ButtonState = .idle { didSet { needsLayout = true } }
     
     var mouseIsInside = false
-
+    
+    weak var delegate: InfoButtonDelegate?
+    
 
     override func awakeFromNib() {
         let trackingArea = NSTrackingArea(rect: self.bounds, options:NSTrackingArea.Options.init(rawValue: 129), owner: self, userInfo: nil)
@@ -45,7 +47,7 @@ class InfoButton: NSButton {
     
     override func mouseUp(with event: NSEvent) {
         if mouseIsInside {
-            NotificationCenter.default.post(name: .didPushInfo, object: self)
+            delegate?.infoButtonClicked()
         } else {
             buttonState = .idle
         }
@@ -104,6 +106,10 @@ class InfoButton: NSButton {
             shapeLayer.fillColor = NSColor.clear.cgColor
         }
     }
+}
+
+protocol InfoButtonDelegate: class {
+    func infoButtonClicked()
 }
 
 

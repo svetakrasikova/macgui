@@ -16,15 +16,11 @@ class SheetViewController: NSViewController {
     }
     weak var tool: ToolObject?
     
-   
     
     lazy var tabViewController: NSTabViewController = {
-        return self.storyboard!.instantiateController(withIdentifier: "TabViewController")
+        return NSStoryboard.load(StoryBoardName.modalSheetTabView)
         }() as! NSTabViewController
     
-    lazy var contentViewController: NSViewController = {
-        return getChildSheetViewController()
-    }()
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -49,19 +45,26 @@ class SheetViewController: NSViewController {
     }
     
     func addContentController(){
-        if let tabItem = tabViewController.tabViewItem(for: contentViewController) {
-            let index = (tabViewController.view as! NSTabView).indexOfTabViewItem(tabItem)
-            tabViewController.selectedTabViewItemIndex = index
-        }
+        let tabIndex = findTabIndex()
+        tabViewController.selectedTabViewItemIndex = tabIndex
     }
 
-    func getChildSheetViewController() -> NSViewController {
+    func findTabIndex() -> Int {
+        for (index, tabItem) in tabViewController.tabViewItems.enumerated() {
+            let name = getToolName()
+            if tabItem.identifier as! String == name {
+                return index
+            }
+        }
+        return 0
+    }
+    
+    func getToolName() -> String {
         switch tool {
         case _ as ReadData:
-            let childVC = NSStoryboard.load(.readData)
-            return childVC
+            return StoryBoardName.readData.rawValue
         default:
-            return NSStoryboard.load(.readData)
+            return StoryBoardName.readData.rawValue
         }
 
     }

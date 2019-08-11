@@ -8,13 +8,13 @@
 
 import Cocoa
 
-class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate {
-    
+class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate, InfoButtonDelegate {
 
     var tool: ToolObject?
     
     private var observers = [NSKeyValueObservation]()
     
+    @IBOutlet weak var infoButton: InfoButton!
     @IBOutlet weak var inletsScrollView: NSScrollView!
     @IBOutlet weak var outletsScrollView: NSScrollView!
     @IBOutlet weak var inlets: NSCollectionView!
@@ -39,8 +39,9 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
     
     lazy var sheetViewController: SheetViewController = {
-        let vc = self.storyboard!.instantiateController(withIdentifier: "SheetViewController")
-            as! SheetViewController
+//        let vc1 = self.storyboard!.instantiateController(withIdentifier: "SheetViewController")
+//            as! SheetViewController
+        let vc = NSStoryboard.load(StoryBoardName.modalSheet)  as! SheetViewController
         vc.tool = tool
         return vc
     }()
@@ -59,12 +60,11 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         if let window = NSApp.windows.first{
             window.delegate = self
         }
+       
+        infoButton.delegate = self
+        
         NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
     
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(didPushInfo(notification:)),
-                                               name: .didPushInfo,
-                                               object: nil)
         
         setFrame()
         setImage()
@@ -104,9 +104,12 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         updateFrame()
     }
     
-    @objc func didPushInfo(notification: Notification) {
+    func infoButtonClicked() {
         self.presentAsModalWindow(sheetViewController)
     }
+    
+    
+
     
 }
 
