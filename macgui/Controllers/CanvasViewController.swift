@@ -14,14 +14,9 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         didSet{
             if let analysis = analysis {
                 reset(analysis: analysis)
-//                observers = [
-//                    analysis.observe(\Analysis.arrows , options: [.old, .new]) {object, change in
-//                        print("change in tools of analysis", object.arrows.count)}
-//                ]
             }
         }
     }
-    private var observers = [NSKeyValueObservation]()
     
  
     @IBOutlet weak var scrollView: NSScrollView!

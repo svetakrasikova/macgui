@@ -22,12 +22,47 @@ class CanvasToolView: CanvasObjectView {
        
         static let selectionShadowRadius: CGFloat = 10.0
         static let defaultShadowRadius: CGFloat = 3.0
-        
     }
     
 
     var firstMouseDownPoint: NSPoint?
     weak var canvasViewToolDelegate: CanvasToolViewDelegate?
+    
+    override init(frame: NSRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder decoder: NSCoder) {
+        super.init(coder: decoder)
+        commonInit()
+    }
+    
+    private func commonInit() {
+        registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: kUTTypeData as String)])
+    }
+    
+    public override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        return canvasViewToolDelegate?.getConnectorItem(sender)?.draggingEntered(sender) ??  sender.draggingSourceOperationMask
+    }
+    
+    public override func draggingExited(_ sender: NSDraggingInfo?) {
+        if let sender = sender {
+            canvasViewToolDelegate?.getConnectorItem(sender)?.draggingExited(sender)
+        }
+    }
+    
+    public override func draggingEnded(_ sender: NSDraggingInfo?) {
+        if let sender = sender {
+            canvasViewToolDelegate?.getConnectorItem(sender)?.draggingEnded(sender)
+        }
+    }
+    
+    public override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        if let connector = canvasViewToolDelegate?.getConnectorItem(sender) {
+            return connector.performDragOperation(sender)
+        } else { return false }
+    }
     
     override func mouseDown(with event: NSEvent) {
         super.mouseDown(with: event)
@@ -53,8 +88,6 @@ class CanvasToolView: CanvasObjectView {
         canvasViewToolDelegate?.updateFrame()
     }
     
-
-    
     override func updateLayer() {
         layer?.cornerRadius = Appearance.selectionCornerRadius
         layer?.borderWidth = Appearance.borderWidth
@@ -73,4 +106,5 @@ class CanvasToolView: CanvasObjectView {
 
 protocol CanvasToolViewDelegate: class {
     func updateFrame()
+    func getConnectorItem(_ sender: NSDraggingInfo) -> ConnectorItemView?
 }

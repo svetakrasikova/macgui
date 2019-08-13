@@ -47,7 +47,7 @@ class ConnectorItemView: NSView {
     }
     
     public override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        if let controller = sender.draggingSource as? ConnectionDragController{
+        if let controller = sender.draggingSource as? ConnectionDragController {
             controller.connect(to: self)
             return true
         } else { return false }

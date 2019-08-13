@@ -39,8 +39,6 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
     
     lazy var sheetViewController: SheetViewController = {
-//        let vc1 = self.storyboard!.instantiateController(withIdentifier: "SheetViewController")
-//            as! SheetViewController
         let vc = NSStoryboard.load(StoryBoardName.modalSheet)  as! SheetViewController
         vc.tool = tool
         return vc
@@ -99,6 +97,19 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         tool!.frameOnCanvas = NSRect(origin: origin, size: size)
         
     }
+    
+    func getConnectorItem(_ sender: NSDraggingInfo) -> ConnectorItemView? {
+        if let connectionDragController = sender.draggingSource as? ConnectionDragController, let color = connectionDragController.sourceEndpoint?.arrowColor {
+            for item in self.inlets.visibleItems() as! [ConnectorItem] {
+                let itemView = item.view as! ConnectorItemView
+                if itemView.arrowColor == color {
+                    return itemView
+                }
+            }
+        }
+        return nil
+    }
+    
     
    func windowDidResize(_ notification: Notification) {
         updateFrame()
