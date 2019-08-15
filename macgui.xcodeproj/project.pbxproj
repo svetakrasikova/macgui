@@ -16,6 +16,7 @@
 		1411BEE52208DDBE009BEE1D /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411BEE42208DDBE009BEE1D /* AnalysisViewController.swift */; };
 		1411BEE82208FE91009BEE1D /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411BEE62208FE91009BEE1D /* Tool.swift */; };
 		1411BEE92208FE91009BEE1D /* Tool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEE72208FE91009BEE1D /* Tool.xib */; };
+		1411D1632305B18D00A8B936 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411D1622305B18D00A8B936 /* ToolTipView.swift */; };
 		141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */; };
 		1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */; };
 		144CC4A4220E324D003311E4 /* toolImages in Resources */ = {isa = PBXBuildFile; fileRef = 144CC4A3220E324D003311E4 /* toolImages */; };
@@ -40,6 +41,7 @@
 		147429DB22CBC8C300FF1963 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DA22CBC8C300FF1963 /* Storyboards.swift */; };
 		147429DE22D154D200FF1963 /* ReadData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147429DD22D154D200FF1963 /* ReadData.storyboard */; };
 		147429E022D1554400FF1963 /* ReadDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DF22D1554400FF1963 /* ReadDataViewController.swift */; };
+		149370432303545D00503CCB /* ToolTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149370422303545D00503CCB /* ToolTipViewController.swift */; };
 		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
 		14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFC2216487300021607 /* NavigatorViewController.swift */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
@@ -72,6 +74,7 @@
 		1411BEE42208DDBE009BEE1D /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		1411BEE62208FE91009BEE1D /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		1411BEE72208FE91009BEE1D /* Tool.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tool.xib; sourceTree = "<group>"; };
+		1411D1622305B18D00A8B936 /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteringClipView.swift; sourceTree = "<group>"; };
 		1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolView.swift; sourceTree = "<group>"; };
 		144CC4A3220E324D003311E4 /* toolImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = toolImages; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		147429DA22CBC8C300FF1963 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		147429DD22D154D200FF1963 /* ReadData.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReadData.storyboard; sourceTree = "<group>"; };
 		147429DF22D1554400FF1963 /* ReadDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDataViewController.swift; sourceTree = "<group>"; };
+		149370422303545D00503CCB /* ToolTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipViewController.swift; sourceTree = "<group>"; };
 		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		14D6DDFC2216487300021607 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = macgui/Controllers/NavigatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				14D6DE042220B50800021607 /* CanvasViewController.swift */,
 				14710528226CD75300E88657 /* ConnectorItem.swift */,
 				1411BEE62208FE91009BEE1D /* Tool.swift */,
+				149370422303545D00503CCB /* ToolTipViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 		1452356E220DF5C400A85186 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1411D1622305B18D00A8B936 /* ToolTipView.swift */,
 				14E5857B22A6F16300802691 /* CanvasObjectView.swift */,
 				14E585732298574100802691 /* ArrowView.swift */,
 				1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */,
@@ -297,6 +303,7 @@
 				TargetAttributes = {
 					1411BE8B2203D8FB009BEE1D = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
@@ -344,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				149370432303545D00503CCB /* ToolTipViewController.swift in Sources */,
 				14E585762298575C00802691 /* ArrowViewController.swift in Sources */,
 				1471052F2280E36D00E88657 /* Align.swift in Sources */,
 				144CC4B52211F228003311E4 /* ToolObject.swift in Sources */,
@@ -365,6 +373,7 @@
 				1411BE902203D8FB009BEE1D /* AppDelegate.swift in Sources */,
 				14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */,
 				1452355B220CB79800A85186 /* CanvasView.swift in Sources */,
+				1411D1632305B18D00A8B936 /* ToolTipView.swift in Sources */,
 				1411BEE52208DDBE009BEE1D /* AnalysisViewController.swift in Sources */,
 				1471052D227B94E200E88657 /* ConnectorItemView.swift in Sources */,
 				147105312280E52300E88657 /* ReadData.swift in Sources */,
@@ -519,7 +528,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ucb.macgui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -538,7 +547,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ucb.macgui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
