@@ -64,10 +64,12 @@ class CanvasToolView: CanvasObjectView {
         } else { return false }
     }
     
+    
     override func mouseDown(with event: NSEvent) {
         super.mouseDown(with: event)
         firstMouseDownPoint = (self.window?.contentView?.convert(event.locationInWindow, to: self))!
     }
+
     
     override func mouseDragged(with event: NSEvent) {
         if let newPoint = self.window?.contentView?.convert(event.locationInWindow, to: self), let firstMouseDownPoint = firstMouseDownPoint {

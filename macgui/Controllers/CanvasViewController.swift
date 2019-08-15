@@ -239,7 +239,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     
     
     func removeToolFromAnalysisOld(toolViewController: CanvasToolViewController){
-        if let analysis = analysis, let index = analysis.tools.index(of: toolViewController.tool!) {
+        if let analysis = analysis, let index = analysis.tools.firstIndex(of: toolViewController.tool!) {
             let arrowViewControllers = findArrowControllersByTool(tool: toolViewController.tool!)
             for arrowViewController in arrowViewControllers {
                 removeCanvasObjectView(canvasObjectViewController: arrowViewController)
@@ -249,7 +249,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     }
     
     func removeToolFromAnalysis(toolViewController: CanvasToolViewController){
-        if let analysis = analysis, let index = analysis.tools.index(of: toolViewController.tool!) {
+        if let analysis = analysis, let index = analysis.tools.firstIndex(of: toolViewController.tool!) {
             let arrowViewControllers = findArrowControllersByTool(tool: toolViewController.tool!)
             for arrowViewController in arrowViewControllers {
                 removeCanvasObjectView(canvasObjectViewController: arrowViewController)
@@ -271,7 +271,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     }
     
     func removeConnectionFromAnalysis(arrowViewController: ArrowViewController){
-        if let analysis = analysis, let index = analysis.arrows.index(of: arrowViewController.connection!) {
+        if let analysis = analysis, let index = analysis.arrows.firstIndex(of: arrowViewController.connection!) {
             arrowViewController.willDeleteView()
             analysis.arrows.remove(at: index)
         }

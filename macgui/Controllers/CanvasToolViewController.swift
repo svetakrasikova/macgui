@@ -12,6 +12,8 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
 
     var tool: ToolObject?
     
+    var timer: Timer?
+    
     private var observers = [NSKeyValueObservation]()
     
     @IBOutlet weak var infoButton: InfoButton!
@@ -20,6 +22,8 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     @IBOutlet weak var inlets: NSCollectionView!
     @IBOutlet weak var outlets: NSCollectionView!
     @IBOutlet weak var imageView: NSImageView!
+    
+    let toolTipPopover: NSPopover = NSPopover()
     
     var frame: NSRect {
         get {
@@ -52,7 +56,25 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         }
     }
     
-
+    override func mouseEntered(with event: NSEvent) {
+        infoButton.mouseEntered(with: event)
+        self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(schedulePopoverLoop), userInfo: nil, repeats: false)
+    
+    }
+    
+    @objc func schedulePopoverLoop(){
+        self.toolTipPopover.show(relativeTo: self.view.bounds, of: self.view, preferredEdge: NSRectEdge.maxX)
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { timer in
+            self.toolTipPopover.close()
+        }
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        infoButton.mouseExited(with: event)
+        toolTipPopover.close()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let window = NSApp.windows.first{
@@ -63,9 +85,10 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         
         NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
     
-        
         setFrame()
         setImage()
+        setTrackingArea()
+        setPopOver()
         
         (self.view as! CanvasToolView).canvasViewToolDelegate = self
         
@@ -74,9 +97,26 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
                 unhideConnectors()
             }
         }
+     
+        
+    }
+    
+    override func viewWillDisappear() {
+        timer?.invalidate()
+    }
+    
+    func setPopOver(){
+        toolTipPopover.contentViewController = NSStoryboard.load(StoryBoardName.canvasTool, controller: StoryBoardName.toolTipView.rawValue)
+    }
+    
+    func setTrackingArea(){
+        let trackingArea = NSTrackingArea(rect: view.bounds,
+                                          options: [NSTrackingArea.Options.activeAlways ,NSTrackingArea.Options.mouseEnteredAndExited],
+                                          owner: self,
+                                          userInfo: nil)
+        view.addTrackingArea(trackingArea)
     }
 
-  
     func unhideConnectors(){
         inletsScrollView.isHidden = false
         outletsScrollView.isHidden = false
@@ -118,9 +158,6 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     func infoButtonClicked() {
         self.presentAsModalWindow(sheetViewController)
     }
-    
-    
-
     
 }
 
