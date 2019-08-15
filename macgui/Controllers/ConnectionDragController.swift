@@ -31,6 +31,8 @@ class ConnectionDragController: NSObject, NSDraggingSource {
         switch context {
         case .withinApplication: return .generic
         case .outsideApplication: return []
+        @unknown default:
+            fatalError()
         }
     }
     

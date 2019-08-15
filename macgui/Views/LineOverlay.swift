@@ -37,7 +37,7 @@ class LineOverlay {
         windows.removeAll()
         for screen in NSScreen.screens {
             let window: NSWindow
-            if let index = spareWindows.index(where: { $0.screen === screen}) {
+            if let index = spareWindows.firstIndex(where: { $0.screen === screen}) {
                 window = spareWindows.remove(at: index)
             } else {
                 let styleMask = NSWindow.StyleMask.borderless
