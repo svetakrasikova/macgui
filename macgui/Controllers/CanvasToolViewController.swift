@@ -111,7 +111,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
     
     func setPopOver(){
-        toolTipPopover.contentViewController = NSStoryboard.load(StoryBoardName.canvasTool, controller: StoryBoardName.toolTipView.rawValue)
+        toolTipPopover.contentViewController = NSStoryboard.load(StoryBoardName.toolTip)
     }
     
     func setTrackingArea(){
