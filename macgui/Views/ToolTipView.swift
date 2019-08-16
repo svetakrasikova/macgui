@@ -10,10 +10,10 @@ import Cocoa
 
 class ToolTipView: NSView {
     
+    //   TODO: still showing as opaque, find a way to make it transparent
     override var isOpaque: Bool {return false}
-//    not showing as opaque!
-    override func draw(_ dirtyRect: NSRect) {
-        dirtyRect.fill(using: NSCompositingOperation.clear)
-    }
     
+    override func draw(_ dirtyRect: NSRect) {
+    }
+
 }

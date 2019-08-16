@@ -10,8 +10,15 @@ import Cocoa
 
 class ToolTipViewController: NSViewController {
     
+    override func awakeFromNib() {
+        // does not help to make the popover transparent
+        view.window?.isOpaque = false
+        view.window?.backgroundColor = NSColor.clear
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+      
     }
     
 }
