@@ -58,20 +58,25 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     
     override func mouseEntered(with event: NSEvent) {
         infoButton.mouseEntered(with: event)
-        self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(schedulePopoverLoop), userInfo: nil, repeats: false)
+        perform(#selector(showPopover), with: nil, afterDelay: 1.5)
+        self.timer = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(popoverLoop), userInfo: nil, repeats: true)
     
     }
     
-    @objc func schedulePopoverLoop(){
-        self.toolTipPopover.show(relativeTo: self.view.bounds, of: self.view, preferredEdge: NSRectEdge.maxX)
-        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { timer in
-            self.toolTipPopover.close()
-        }
+     @objc func showPopover(){
+         self.toolTipPopover.show(relativeTo: self.view.bounds, of: self.view, preferredEdge: NSRectEdge.maxX)
+    }
+    
+    @objc func popoverLoop(){
+        self.toolTipPopover.close()
+        perform(#selector(showPopover), with: nil, afterDelay: 3)
+       
     }
     
     override func mouseExited(with event: NSEvent) {
         infoButton.mouseExited(with: event)
         toolTipPopover.close()
+        timer?.invalidate()
     }
     
     
