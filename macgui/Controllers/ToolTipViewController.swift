@@ -10,15 +10,30 @@ import Cocoa
 
 class ToolTipViewController: NSViewController {
     
-    override func awakeFromNib() {
-        // does not help to make the popover transparent
-        view.window?.isOpaque = false
-        view.window?.backgroundColor = NSColor.clear
-    }
+    weak var delegate: ToolTipDelegate?
+    
+    @IBOutlet weak var toolNameLabel: NSTextField!
+    @IBOutlet weak var connectionsStatusLabel: NSTextField!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        self.toolNameLabel.stringValue = delegate?.getToolName() ?? "Unnamed Tool"
+        setConnectionStatus()
     }
     
+    func setConnectionStatus() {
+        if let delegate = self.delegate {
+            if delegate.isConnected() {
+                connectionsStatusLabel.stringValue = "Fully connected"
+            } else {
+                connectionsStatusLabel.stringValue = "Missing connections"
+            }
+        }
+    }
+}
+
+protocol ToolTipDelegate: class {
+    func getToolName() -> String
+    func isConnected() -> Bool
 }

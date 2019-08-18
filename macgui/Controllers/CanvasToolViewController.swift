@@ -8,11 +8,11 @@
 
 import Cocoa
 
-class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate, InfoButtonDelegate {
-
+class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate, InfoButtonDelegate, ToolTipDelegate {
+    
     var tool: ToolObject?
     
-    var timer: Timer?
+   var timer: Timer?
     
     private var observers = [NSKeyValueObservation]()
     
@@ -66,11 +66,11 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
      @objc func showPopover(){
          self.toolTipPopover.show(relativeTo: self.view.bounds, of: self.view, preferredEdge: NSRectEdge.maxX)
     }
-    
+
     @objc func popoverLoop(){
         self.toolTipPopover.close()
         perform(#selector(showPopover), with: nil, afterDelay: 3)
-       
+
     }
     
     override func mouseExited(with event: NSEvent) {
@@ -112,6 +112,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     
     func setPopOver(){
         toolTipPopover.contentViewController = NSStoryboard.load(StoryBoardName.toolTip)
+        (toolTipPopover.contentViewController as! ToolTipViewController).delegate = self
     }
     
     func setTrackingArea(){
@@ -163,6 +164,17 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     func infoButtonClicked() {
         self.presentAsModalWindow(sheetViewController)
     }
+    
+    func getToolName() -> String {
+        if let toolName = self.tool?.name { return toolName }
+        return "Unnamed Tool"
+    }
+    
+    func isConnected() -> Bool {
+        return (self.tool as! Connectable).isConnected
+    }
+    
+
     
 }
 
