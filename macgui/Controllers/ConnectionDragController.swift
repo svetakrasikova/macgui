@@ -23,6 +23,8 @@ class ConnectionDragController: NSObject, NSDraggingSource {
     func trackDrag(forMouseDownEvent mouseDownEvent: NSEvent, in sourceEndpoint: ConnectorItemView) {
         self.sourceEndpoint = sourceEndpoint
         let item = NSDraggingItem(pasteboardWriter: NSPasteboardItem(pasteboardPropertyList: "view", ofType: NSPasteboard.PasteboardType(rawValue: kUTTypeData as String as String))!)
+//        setting the frame of dragging item to non-zero to fix the crash after upgrade to Mojave
+        item.draggingFrame.size = NSSize(width: 0.1, height: 0.1)
         let session = sourceEndpoint.beginDraggingSession(with: [item], event: mouseDownEvent, source: self)
         session.animatesToStartingPositionsOnCancelOrFail = false
     }
