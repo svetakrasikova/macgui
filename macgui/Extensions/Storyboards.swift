@@ -17,6 +17,7 @@ enum StoryBoardName: String {
     case readData = "ReadData"
     case modalSheetTabView = "ModalSheetTabView"
     case toolTip = "ToolTip"
+    case notebook = "Notebook"
 }
 
 

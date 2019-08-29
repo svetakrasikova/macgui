@@ -13,6 +13,7 @@ class Analysis: NSObject, NSCopying {
     @objc dynamic var name: String = ""
     @objc dynamic var tools: [ToolObject] = []
     @objc dynamic var arrows: [Connection] = []
+    var notes: String?
     
     override init(){
         super.init()

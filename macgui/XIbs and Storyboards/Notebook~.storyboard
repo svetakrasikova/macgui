@@ -759,7 +759,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <segue destination="1OM-eW-pKN" kind="show" id="HqT-Rg-tX8"/>
+                                            <segue destination="ief-cJ-d7x" kind="show" id="HqT-Rg-tX8"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -774,6 +774,7 @@
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="notebook" destination="aSq-Nf-4L5" id="Lik-fa-Ngs"/>
                         <outlet property="zoom" destination="1wV-hY-z6B" id="aoC-AW-yPk"/>
                         <segue destination="RBs-wf-Pwn" kind="relationship" relationship="window.shadowedContentViewController" id="aRs-yb-wAS"/>
                     </connections>
@@ -781,6 +782,24 @@
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="JuD-M4-Jte">
+            <objects>
+                <windowController id="ief-cJ-d7x" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="rGH-sU-vwN">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="ief-cJ-d7x" id="Rfs-le-j8S"/>
+                        </connections>
+                    </window>
+                </windowController>
+                <customObject id="QFK-hp-IrH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-439" y="718"/>
         </scene>
         <!--Main Split View Controller-->
         <scene sceneID="Vg7-IT-hwr">
@@ -822,14 +841,6 @@
                 <customObject id="p8Q-yI-IaJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="212" y="1044"/>
-        </scene>
-        <!--Notebook-->
-        <scene sceneID="8p2-ql-GNd">
-            <objects>
-                <controllerPlaceholder storyboardName="Notebook" id="1OM-eW-pKN" sceneMemberID="viewController"/>
-                <customObject id="aIJ-tD-0fj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-212" y="577"/>
         </scene>
     </scenes>
     <resources>

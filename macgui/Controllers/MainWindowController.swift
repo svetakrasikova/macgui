@@ -11,7 +11,14 @@ import Cocoa
 class MainWindowController: NSWindowController{
 
     @IBOutlet weak var zoom: NSPopUpButton!
-    @IBOutlet weak var notebook: NSButton!
+    
+    var activeAnalysis: Analysis? {
+        if let analysis = (self.contentViewController as! MainSplitViewController).detailViewController.canvasViewController?.analysis {
+            return analysis
+        }
+        else {return Analysis()}
+    }
+    
     
     @objc func changeZoomTitle(notification: Notification){
         let userInfo = notification.userInfo! as! [String : Float]
