@@ -8,6 +8,14 @@
 
 import Cocoa
 
+extension String {
+    
+    func prefixWithoutFileExtension() -> String {
+        let index = self.firstIndex(of: ".") ?? self.endIndex
+        return String(self[..<index])
+    }
+}
+
 extension NSImage {
 
 /**
@@ -151,6 +159,7 @@ public extension NSBezierPath {
         return path
     }
     
+
    
 
     

@@ -104,8 +104,7 @@ extension NavigatorViewController {
 extension CanvasViewController {
     
     func initToolObjectWithName(_ name: String, image: NSImage, frame: NSRect) -> ToolObject {
-        let index = name.firstIndex(of: ".") ?? name.endIndex
-        let toolType = String(name[..<index])
+        let toolType = name.prefixWithoutFileExtension()
         switch toolType {
         case "bootstrap":
             return Bootstrap(image: image, frameOnCanvas: frame)
