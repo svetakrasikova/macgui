@@ -9,11 +9,6 @@
 import Cocoa
 
 class TransparentToolsView: NSView {
-
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-    }
     
     override func hitTest(_ point: NSPoint) -> NSView? {
         return nil
