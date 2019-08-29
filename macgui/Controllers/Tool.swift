@@ -10,6 +10,13 @@ import Cocoa
 
 class Tool: NSCollectionViewItem {
     
+    var name: String? {
+        guard isViewLoaded else { return ""}
+        if let imageFile = imageFile {
+            return imageFile.name
+        } else { return "" }
+    }
+    
     var imageFile: ImageFile? {
         didSet {
             guard isViewLoaded else { return }
@@ -22,10 +29,11 @@ class Tool: NSCollectionViewItem {
             }
         }
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
+    
+    override func viewWillAppear() {
+        self.view.toolTip = self.name?.prefixWithoutFileExtension()
     }
+    
     
 }
 
