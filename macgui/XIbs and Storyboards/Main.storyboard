@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -620,7 +620,7 @@
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -747,8 +747,23 @@
                                         </connections>
                                     </popUpButton>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="52791819-F0EC-43D7-8D11-843905557167" label="Notebook" paletteLabel="Notebook" image="Notebook" id="Shr-5p-fva" userLabel="Notebook">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="48" height="48"/>
+                                    <size key="maxSize" width="50" height="50"/>
+                                    <button key="view" id="aSq-Nf-4L5">
+                                        <rect key="frame" x="6" y="14" width="48" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Notebook" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="fzQ-t4-J29">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
+                                <toolbarItem reference="Shr-5p-fva"/>
+                                <toolbarItem reference="WYg-MI-QdS"/>
                                 <toolbarItem reference="GI7-Ow-JbS"/>
                             </defaultToolbarItems>
                         </toolbar>
@@ -757,6 +772,7 @@
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="notebook" destination="aSq-Nf-4L5" id="Lik-fa-Ngs"/>
                         <outlet property="zoom" destination="1wV-hY-z6B" id="aoC-AW-yPk"/>
                         <segue destination="RBs-wf-Pwn" kind="relationship" relationship="window.shadowedContentViewController" id="aRs-yb-wAS"/>
                     </connections>
@@ -807,4 +823,7 @@
             <point key="canvasLocation" x="212" y="1044"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Notebook" width="512" height="512"/>
+    </resources>
 </document>

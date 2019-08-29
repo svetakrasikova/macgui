@@ -11,7 +11,7 @@ import Cocoa
 class MainWindowController: NSWindowController{
 
     @IBOutlet weak var zoom: NSPopUpButton!
-
+    @IBOutlet weak var notebook: NSButton!
     
     @objc func changeZoomTitle(notification: Notification){
         let userInfo = notification.userInfo! as! [String : Float]
