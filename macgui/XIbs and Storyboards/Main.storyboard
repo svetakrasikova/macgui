@@ -763,7 +763,6 @@
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="Shr-5p-fva"/>
-                                <toolbarItem reference="WYg-MI-QdS"/>
                                 <toolbarItem reference="GI7-Ow-JbS"/>
                             </defaultToolbarItems>
                         </toolbar>
