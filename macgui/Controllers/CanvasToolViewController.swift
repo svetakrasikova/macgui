@@ -12,7 +12,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     
     var tool: ToolObject?
     
-   var timer: Timer?
+    
     
     private var observers = [NSKeyValueObservation]()
     
@@ -24,6 +24,9 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     @IBOutlet weak var imageView: NSImageView!
     
     let toolTipPopover: NSPopover = NSPopover()
+    var popoverLoopTimer: Timer?
+    var showPopoverTimer: Timer?
+    var showFirstPopoverTimer: Timer?
     
     var frame: NSRect {
         get {
@@ -42,6 +45,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         }
     }
     
+    
     lazy var sheetViewController: SheetViewController = {
         let vc = NSStoryboard.load(StoryBoardName.modalSheet)  as! SheetViewController
         vc.tool = tool
@@ -58,25 +62,34 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     
     override func mouseEntered(with event: NSEvent) {
         infoButton.mouseEntered(with: event)
-        perform(#selector(showPopover), with: nil, afterDelay: 1.5)
-        self.timer = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(popoverLoop), userInfo: nil, repeats: true)
-    
+            if !toolTipPopover.isShown {
+                showFirstPopoverTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(showPopover), userInfo: nil, repeats: false)
+                }
+            self.popoverLoopTimer = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(popoverLoop), userInfo: nil, repeats: true)
+        
     }
     
      @objc func showPopover(){
-         self.toolTipPopover.show(relativeTo: self.view.bounds, of: self.view, preferredEdge: NSRectEdge.maxX)
+        self.toolTipPopover.show(relativeTo: self.view.bounds, of: self.view, preferredEdge: NSRectEdge.minY)
     }
 
     @objc func popoverLoop(){
         self.toolTipPopover.close()
-        perform(#selector(showPopover), with: nil, afterDelay: 3)
+        showPopoverTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(showPopover), userInfo: nil, repeats: false)
+    
+    }
 
+    
+    func closePopover(){
+        popoverLoopTimer?.invalidate()
+        showPopoverTimer?.invalidate()
+        showFirstPopoverTimer?.invalidate()
+        self.toolTipPopover.close()
     }
     
     override func mouseExited(with event: NSEvent) {
         infoButton.mouseExited(with: event)
-        toolTipPopover.close()
-        timer?.invalidate()
+        closePopover()
     }
     
     
@@ -102,12 +115,10 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
                 unhideConnectors()
             }
         }
-     
-        
     }
     
-    override func viewWillDisappear() {
-        timer?.invalidate()
+    override func viewDidDisappear() {
+        closePopover()
     }
     
     func setPopOver(){
