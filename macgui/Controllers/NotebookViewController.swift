@@ -9,10 +9,15 @@
 import Cocoa
 
 class NotebookViewController: NSViewController {
+    
+    weak var analysis: Analysis? 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        if let analysis = analysis {
+            self.title = "RevBayes Notebook for \"" + analysis.name + "\""
+        }
     }
-    
+
 }
+
