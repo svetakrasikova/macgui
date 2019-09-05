@@ -47,7 +47,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     
     
     lazy var sheetViewController: SheetViewController = {
-        let vc = NSStoryboard.load(StoryBoardName.modalSheet)  as! SheetViewController
+        let vc = NSStoryboard.loadVC(StoryBoardName.modalSheet)  as! SheetViewController
         vc.tool = tool
         return vc
     }()
@@ -122,7 +122,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
     
     func setPopOver(){
-        toolTipPopover.contentViewController = NSStoryboard.load(StoryBoardName.toolTip)
+        toolTipPopover.contentViewController = NSStoryboard.loadVC(StoryBoardName.toolTip)
         (toolTipPopover.contentViewController as! ToolTipViewController).delegate = self
     }
     

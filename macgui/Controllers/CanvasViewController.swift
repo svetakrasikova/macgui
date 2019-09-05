@@ -223,7 +223,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     }
     
     func addToolView(tool: ToolObject){
-        guard let canvasToolViewController = NSStoryboard.load(.canvasTool) as? CanvasToolViewController else {return}
+        guard let canvasToolViewController = NSStoryboard.loadVC(.canvasTool) as? CanvasToolViewController else {return}
         canvasToolViewController.tool = tool
         addChild(canvasToolViewController)
         canvasView.addSubview(canvasToolViewController.view)

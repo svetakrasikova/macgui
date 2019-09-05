@@ -722,7 +722,7 @@
                                 <toolbarItem implicitItemIdentifier="F64DF7CF-819D-4657-8C1C-A656000F793D" label="Zoom" paletteLabel="Zoom" sizingBehavior="auto" id="GI7-Ow-JbS">
                                     <nil key="toolTip"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="1wV-hY-z6B" userLabel="zoom">
-                                        <rect key="frame" x="0.0" y="14" width="63" height="28"/>
+                                        <rect key="frame" x="0.0" y="14" width="65" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" tag="1" imageScaling="axesIndependently" inset="2" pullsDown="YES" selectedItem="p3j-MU-iWT" id="x4u-Va-0Vm" userLabel="zoom">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -759,7 +759,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <segue destination="1OM-eW-pKN" kind="show" id="HqT-Rg-tX8"/>
+                                            <action selector="openNotebook:" target="B8D-0N-5wS" id="sbM-Za-Lzc"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -826,10 +826,10 @@
         <!--Notebook-->
         <scene sceneID="8p2-ql-GNd">
             <objects>
-                <controllerPlaceholder storyboardName="Notebook" id="1OM-eW-pKN" sceneMemberID="viewController"/>
+                <controllerPlaceholder storyboardIdentifier="Notebook" storyboardName="Notebook" referencedIdentifier="Notebook" id="1OM-eW-pKN" sceneMemberID="viewController"/>
                 <customObject id="aIJ-tD-0fj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-212" y="577"/>
+            <point key="canvasLocation" x="-230" y="601"/>
         </scene>
     </scenes>
     <resources>

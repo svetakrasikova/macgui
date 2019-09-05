@@ -18,7 +18,7 @@ class SheetViewController: NSViewController {
     
     
     lazy var tabViewController: NSTabViewController = {
-        return NSStoryboard.load(StoryBoardName.modalSheetTabView)
+        return NSStoryboard.loadVC(StoryBoardName.modalSheetTabView)
         }() as! NSTabViewController
     
 

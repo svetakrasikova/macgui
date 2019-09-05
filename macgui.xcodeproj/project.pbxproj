@@ -45,6 +45,7 @@
 		149370432303545D00503CCB /* ToolTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149370422303545D00503CCB /* ToolTipViewController.swift */; };
 		14A663BC23186CFE0034EA53 /* Notebook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A663BB23186CFE0034EA53 /* Notebook.storyboard */; };
 		14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BD2319A0950034EA53 /* NotebookViewController.swift */; };
+		14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */; };
 		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
 		14D6DDFD2216487300021607 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFC2216487300021607 /* NavigatorViewController.swift */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
@@ -106,6 +107,7 @@
 		149370422303545D00503CCB /* ToolTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipViewController.swift; sourceTree = "<group>"; };
 		14A663BB23186CFE0034EA53 /* Notebook.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notebook.storyboard; sourceTree = "<group>"; };
 		14A663BD2319A0950034EA53 /* NotebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookViewController.swift; sourceTree = "<group>"; };
+		14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookWindowController.swift; sourceTree = "<group>"; };
 		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		14D6DDFC2216487300021607 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = macgui/Controllers/NavigatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
@@ -182,9 +184,10 @@
 		1452356D220DF57800A85186 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				14A663BD2319A0950034EA53 /* NotebookViewController.swift */,
 				1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */,
 				14B5852A225819F6003EB752 /* MainWindowController.swift */,
+				14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */,
+				14A663BD2319A0950034EA53 /* NotebookViewController.swift */,
 				14D6DE02221F47CD00021607 /* MainSplitViewController.swift */,
 				14D6DDFC2216487300021607 /* NavigatorViewController.swift */,
 				1411BEE42208DDBE009BEE1D /* AnalysisViewController.swift */,
@@ -373,6 +376,7 @@
 				147105252265437600E88657 /* Bootstrap.swift in Sources */,
 				147429E022D1554400FF1963 /* ReadDataViewController.swift in Sources */,
 				141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */,
+				14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */,
 				14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */,
 				14E585742298574100802691 /* ArrowView.swift in Sources */,
 				14D6DE062220B50800021607 /* CanvasViewController.swift in Sources */,
