@@ -29,7 +29,7 @@
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
-                            <outlet property="delegate" destination="ief-cJ-d7x" id="Rfs-le-j8S"/>
+                            <outlet property="delegate" destination="ief-cJ-d7x" id="JTq-WH-qpn"/>
                         </connections>
                     </window>
                     <connections>

@@ -8,11 +8,9 @@
 
 import Cocoa
 
-class MainWindowController: NSWindowController {
+class MainWindowController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet weak var zoom: NSPopUpButton!
-    
-   
     var notebooks: [NotebookWindowController]? = []
     
     var activeAnalysis: Analysis? {
@@ -25,9 +23,7 @@ class MainWindowController: NSWindowController {
     
     @IBAction func openNotebook(_ sender: Any) {
         showNotebookWindow()
-        print("Number of open notebooks: ", String(notebooks!.count))
     }
-    
     
     
     @objc func changeZoomTitle(notification: Notification){
@@ -39,7 +35,7 @@ class MainWindowController: NSWindowController {
     
     func showNotebookWindow() {
         let notebookWC = NSStoryboard.loadWC(StoryBoardName.notebook)
-            notebooks?.append(notebookWC as! NotebookWindowController)
+        notebooks?.append(notebookWC as! NotebookWindowController)
         notebookWC.showWindow(self)
     }
     
@@ -48,9 +44,7 @@ class MainWindowController: NSWindowController {
         guard  closedWC != nil && closedWC!.isKind(of: NotebookWindowController.self)
         else { return }
         notebooks?.removeAll{$0 == closedWC}
-        print("Number of open notebooks: ", String(notebooks!.count))
     }
-    
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -62,6 +56,12 @@ class MainWindowController: NSWindowController {
                                                selector: #selector(closeNotebookWindow(notification:)),
                                                name: NSWindow.willCloseNotification,
                                                object: nil)
+        
     }
+    
+    func windowWillClose(_ notification: Notification) {
+        notebooks?.removeAll()
+    }
+
     
 }

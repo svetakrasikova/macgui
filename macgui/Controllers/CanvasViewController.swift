@@ -36,9 +36,9 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         super.viewDidLoad()
         canvasView.delegate = self
 //        add CanvasViewController to the window delegate, so that it can be part of the responder chain
-        if let window = NSApp.windows.first{
-            window.delegate = self
-        }
+//        if let window = NSApp.windows.first{
+//            window.delegate = self
+//        }
         scrollView.magnification = 1.5
         
         NotificationCenter.default.addObserver(self,
