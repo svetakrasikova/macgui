@@ -13,7 +13,7 @@ class Tool: NSCollectionViewItem {
     var name: String? {
         guard isViewLoaded else { return ""}
         if let imageFile = imageFile {
-            return imageFile.name
+            return imageFile.name.rawValue
         } else { return "" }
     }
     
@@ -22,7 +22,7 @@ class Tool: NSCollectionViewItem {
             guard isViewLoaded else { return }
             if let imageFile = imageFile {
                 imageView?.image = imageFile.image
-                textField?.stringValue = imageFile.name
+                textField?.stringValue = imageFile.name.rawValue
             } else {
                 imageView?.image = nil
                 textField?.stringValue = ""
@@ -31,7 +31,7 @@ class Tool: NSCollectionViewItem {
     }
     
     override func viewWillAppear() {
-        self.view.toolTip = self.name?.prefixWithoutFileExtension()
+        self.view.toolTip = self.name
     }
     
     

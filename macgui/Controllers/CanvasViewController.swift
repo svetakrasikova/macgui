@@ -300,15 +300,7 @@ extension CanvasViewController: CanvasViewDelegate {
         path.lineWidth = width
         path.stroke()
     }
-    
-    func processImageURLs(_ urls: [URL], center: NSPoint) {
-        for (_,url) in urls.enumerated() {
-            if let image = NSImage(contentsOf: url){
-                let name = url.lastPathComponent
-                processImage(image, center: center, name: name)
-            }
-        }
-    }
+
     
     func processImage(_ image: NSImage, center: NSPoint, name: String) {
         invitationLabel.isHidden = true

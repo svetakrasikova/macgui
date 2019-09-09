@@ -19,9 +19,7 @@ class CanvasView: NSView {
     weak var delegate: CanvasViewDelegate?
     
     //Define data types that canvas view accepts in a dragging operation.
-    var acceptableTypes: Set<NSPasteboard.PasteboardType> { return [.URL] }
-
-    let filteringOptions = [NSPasteboard.ReadingOptionKey.urlReadingContentsConformToTypes:NSImage.imageTypes]
+    var acceptableTypes: Set<NSPasteboard.PasteboardType> { return [.string] }
     
     var isReceivingDrag = false {
         didSet {
@@ -47,7 +45,7 @@ class CanvasView: NSView {
     func shouldAllowDrag(_ draggingInfo: NSDraggingInfo) -> Bool {
         var canAccept = false
         let pasteBoard = draggingInfo.draggingPasteboard
-        if pasteBoard.canReadObject(forClasses: [NSURL.self], options: filteringOptions) {
+        if let types = pasteBoard.types, acceptableTypes.intersection(types).count > 0 {
             canAccept = true
         }
         return canAccept
@@ -73,8 +71,8 @@ class CanvasView: NSView {
         isReceivingDrag = false
         let pasteBoard = draggingInfo.draggingPasteboard
         let point = convert(draggingInfo.draggingLocation, from: nil)
-        if let urls = pasteBoard.readObjects(forClasses: [NSURL.self], options:filteringOptions) as? [URL], urls.count > 0 {
-            delegate?.processImageURLs(urls, center: point)
+        if let pasteboarditems = pasteBoard.readObjects(forClasses: [NSString.self], options: nil) as? [String], pasteboarditems.count != 0, let name =  pasteboarditems.first, let image = NSImage(named: name)  {
+            delegate?.processImage(image, center: point, name: name)
             return true
         }
         return false
@@ -98,7 +96,6 @@ class CanvasView: NSView {
 }
 
 protocol CanvasViewDelegate: class {
-    func processImageURLs(_ urls: [URL], center: NSPoint)
     func processImage(_ image: NSImage, center: NSPoint, name: String)
     func selectContentView(width: CGFloat)
     func mouseDownOnCanvasView()

@@ -43,6 +43,7 @@
 		147429DE22D154D200FF1963 /* ReadData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147429DD22D154D200FF1963 /* ReadData.storyboard */; };
 		147429E022D1554400FF1963 /* ReadDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DF22D1554400FF1963 /* ReadDataViewController.swift */; };
 		149370432303545D00503CCB /* ToolTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149370422303545D00503CCB /* ToolTipViewController.swift */; };
+		149C5FC52325A52D0060043E /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC42325A52D0060043E /* Tools.swift */; };
 		14A663BC23186CFE0034EA53 /* Notebook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A663BB23186CFE0034EA53 /* Notebook.storyboard */; };
 		14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BD2319A0950034EA53 /* NotebookViewController.swift */; };
 		14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */; };
@@ -105,6 +106,7 @@
 		147429DD22D154D200FF1963 /* ReadData.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReadData.storyboard; sourceTree = "<group>"; };
 		147429DF22D1554400FF1963 /* ReadDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDataViewController.swift; sourceTree = "<group>"; };
 		149370422303545D00503CCB /* ToolTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipViewController.swift; sourceTree = "<group>"; };
+		149C5FC42325A52D0060043E /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		14A663BB23186CFE0034EA53 /* Notebook.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notebook.storyboard; sourceTree = "<group>"; };
 		14A663BD2319A0950034EA53 /* NotebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookViewController.swift; sourceTree = "<group>"; };
 		14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookWindowController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				14E58527228DF92F00802691 /* Notifications.swift */,
 				14D6DE00221E484000021607 /* ControllerExtensions.swift */,
 				147429DA22CBC8C300FF1963 /* Storyboards.swift */,
+				149C5FC42325A52D0060043E /* Tools.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */,
 				144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */,
 				1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */,
+				149C5FC52325A52D0060043E /* Tools.swift in Sources */,
 				14E5857C22A6F16300802691 /* CanvasObjectView.swift in Sources */,
 				147105252265437600E88657 /* Bootstrap.swift in Sources */,
 				147429E022D1554400FF1963 /* ReadDataViewController.swift in Sources */,

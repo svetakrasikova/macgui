@@ -9,8 +9,8 @@
 import Cocoa
 
 class AnalysisViewController: NSViewController {
-
-    let imageLoader = ImageLoader(folder: "toolImages")
+    
+    let imageLoader = ImageLoader()
     var indexPathsOfItemsBeingDragged: Set<NSIndexPath>!
     var canvasViewController: CanvasViewController? {
         return children[0] as? CanvasViewController
@@ -49,11 +49,12 @@ extension AnalysisViewController: NSCollectionViewDelegate {
         return true
     }
     func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
-        let imageFile = imageLoader.getImageFileForPathIndex(indexPath: indexPath as IndexPath)
-        return imageFile.url as NSURL
+        let name = imageLoader.getImageFileForPathIndex(indexPath: indexPath as IndexPath).name.rawValue
+        return name as NSString
     }
-    
+        
 }
+
 
 // MARK: - NSCollectionViewDataSource methods
 

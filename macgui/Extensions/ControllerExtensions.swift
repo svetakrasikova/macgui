@@ -104,13 +104,13 @@ extension NavigatorViewController {
 extension CanvasViewController {
     
     func initToolObjectWithName(_ name: String, image: NSImage, frame: NSRect) -> ToolObject {
-        let toolType = name.prefixWithoutFileExtension()
+        let toolType = ToolType(rawValue: name)!
         switch toolType {
-        case "bootstrap":
+        case  .bootstrap:
             return Bootstrap(image: image, frameOnCanvas: frame)
-        case "align":
+        case .align:
             return Align(image: image, frameOnCanvas: frame)
-        case "readdata":
+        case .readdata:
             return ReadData(image: image, frameOnCanvas: frame)
         default:
             return ToolObject(image: image, frameOnCanvas: frame)

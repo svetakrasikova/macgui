@@ -8,26 +8,21 @@
 
 import Cocoa
 
-class ImageLoader {
+struct ImageLoader {
     
-    private var imageFiles = [ImageFile]()
-    private var folder: String
-    
-    init(folder: String){
-        self.folder = folder
-        let resourcePath = NSURL(string: Bundle.main.resourcePath!)?.appendingPathComponent(folder)
-        let resourcesContent = try! FileManager().contentsOfDirectory(at: resourcePath!, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
-        for url in resourcesContent {
-            let imageFile = ImageFile(url: url)
-            imageFiles.append(imageFile)
+    var imageFiles: [ImageFile] {
+        var imageFiles = [ImageFile]()
+        for type in ToolType.allCases {
+            imageFiles.append(ImageFile(name: type))
         }
+        return imageFiles
     }
     
     func getImagesCount () -> Int {
-        return imageFiles.count
+        return ToolType.allCases.count
     }
     
-    func getImageFileForPathIndex(indexPath: IndexPath) -> ImageFile{
+    func getImageFileForPathIndex(indexPath: IndexPath) -> ImageFile {
         let imageIndexInImageFiles = indexPath.item
         let imageFile = imageFiles[imageIndexInImageFiles]
         return imageFile

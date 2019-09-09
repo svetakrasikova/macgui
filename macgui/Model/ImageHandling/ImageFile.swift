@@ -9,16 +9,15 @@
 import Cocoa
 
 
-struct ImageFile {
-    var url: URL
-    var image: NSImage {
-        return NSImage(byReferencing: url)
-    }
-    var name: String {
-        return url.lastPathComponent
+class ImageFile: NSObject {
+    
+    
+    var name: ToolType
+    var image: NSImage? {
+        return NSImage(named: self.name.rawValue)
     }
     
-    init(url: URL){
-        self.url = url
+    init(name: ToolType){
+        self.name = name
     }
 }
