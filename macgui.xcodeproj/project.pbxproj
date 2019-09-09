@@ -20,7 +20,6 @@
 		1411D1632305B18D00A8B936 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411D1622305B18D00A8B936 /* ToolTipView.swift */; };
 		141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */; };
 		1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */; };
-		144CC4A4220E324D003311E4 /* toolImages in Resources */ = {isa = PBXBuildFile; fileRef = 144CC4A3220E324D003311E4 /* toolImages */; };
 		144CC4AF220E4081003311E4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CC4AE220E4081003311E4 /* ImageLoader.swift */; };
 		144CC4B52211F228003311E4 /* ToolObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CC4B42211F228003311E4 /* ToolObject.swift */; };
 		144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */; };
@@ -83,7 +82,6 @@
 		1411D1622305B18D00A8B936 /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteringClipView.swift; sourceTree = "<group>"; };
 		1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolView.swift; sourceTree = "<group>"; };
-		144CC4A3220E324D003311E4 /* toolImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = toolImages; sourceTree = "<group>"; };
 		144CC4AE220E4081003311E4 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		144CC4B42211F228003311E4 /* ToolObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToolObject.swift; path = "macgui/Model/Tool Model/ToolObject.swift"; sourceTree = SOURCE_ROOT; };
 		144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolViewController.swift; sourceTree = "<group>"; };
@@ -164,10 +162,10 @@
 				14523575220E101400A85186 /* Model */,
 				1452356E220DF5C400A85186 /* Views */,
 				1452356D220DF57800A85186 /* Controllers */,
+				14E5857F22A8016200802691 /* ImageHandling */,
 				1452356C220DF55C00A85186 /* Extensions */,
 				1452356F220DF61600A85186 /* XIbs and Storyboards */,
 				1411BE982203D8FC009BEE1D /* Info.plist */,
-				144CC4A3220E324D003311E4 /* toolImages */,
 			);
 			path = macgui;
 			sourceTree = "<group>";
@@ -248,10 +246,9 @@
 			isa = PBXGroup;
 			children = (
 				14D6DDFE22164A6E00021607 /* Analysis.swift */,
-				1471051F225DA5C800E88657 /* Tool Model */,
 				14E5858022B0810B00802691 /* Connector.swift */,
 				14E5857D22A8006F00802691 /* Connection.swift */,
-				14E5857F22A8016200802691 /* ImageHandling */,
+				1471051F225DA5C800E88657 /* Tool Model */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -353,7 +350,6 @@
 				1471052B226CD75300E88657 /* ConnectorItem.xib in Resources */,
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
 				1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */,
-				144CC4A4220E324D003311E4 /* toolImages in Resources */,
 				1452356B220CE9AC00A85186 /* Assets.xcassets in Resources */,
 				14A663BC23186CFE0034EA53 /* Notebook.storyboard in Resources */,
 				147429D922CBA94C00FF1963 /* CanvasTool.storyboard in Resources */,
