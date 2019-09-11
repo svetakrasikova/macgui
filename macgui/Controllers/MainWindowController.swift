@@ -9,11 +9,12 @@
 import Cocoa
 
 class MainWindowController: NSWindowController, NSWindowDelegate {
+    
 
     @IBOutlet weak var zoom: NSPopUpButton!
     var notebooks: [NotebookWindowController]? = []
     
-    var activeAnalysis: Analysis? {
+    var activeAnalysis: Analysis {
         if let analysis = (self.contentViewController as! MainSplitViewController).detailViewController.canvasViewController?.analysis {
             return analysis
         }
@@ -26,6 +27,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     }
     
     
+    
     @objc func changeZoomTitle(notification: Notification){
         let userInfo = notification.userInfo! as! [String : Float]
         let magnification = userInfo["magnification"]!/0.015
@@ -34,8 +36,10 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     }
     
     func showNotebookWindow() {
-        let notebookWC = NSStoryboard.loadWC(StoryBoardName.notebook)
-        notebooks?.append(notebookWC as! NotebookWindowController)
+        let notebookWC = NSStoryboard.loadWC(StoryBoardName.notebook) as! NotebookWindowController
+        let notebookVC = notebookWC.contentViewController as! NotebookViewController
+        notebookVC.analysis = self.activeAnalysis
+        notebooks?.append(notebookWC)
         notebookWC.showWindow(self)
     }
     
@@ -43,6 +47,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         let closedWC = (notification.object as! NSWindow).windowController
         guard  closedWC != nil && closedWC!.isKind(of: NotebookWindowController.self)
         else { return }
+        (closedWC?.contentViewController as! NotebookViewController).saveText()
         notebooks?.removeAll{$0 == closedWC}
     }
     

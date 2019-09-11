@@ -82,6 +82,9 @@
                             <constraint firstAttribute="bottom" secondItem="Ttr-R8-e0j" secondAttribute="bottom" id="qq4-V5-Ybr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="E2V-Ws-g8f" id="ZxI-9b-rBF"/>
+                    </connections>
                 </viewController>
                 <customObject id="3Xc-df-hck" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

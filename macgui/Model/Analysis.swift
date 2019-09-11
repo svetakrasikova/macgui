@@ -32,6 +32,7 @@ class Analysis: NSObject, NSCopying {
         let copy = Analysis()
         copy.tools = tools
         copy.arrows = arrows
+        copy.notes = self.notes
         return copy
     }
 

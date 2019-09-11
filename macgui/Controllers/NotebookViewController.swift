@@ -10,14 +10,20 @@ import Cocoa
 
 class NotebookViewController: NSViewController {
     
-    weak var analysis: Analysis? 
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBOutlet var textView: NSTextView!
+    weak var analysis: Analysis?
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
         if let analysis = analysis {
-            self.title = "RevBayes Notebook for \"" + analysis.name + "\""
+            self.view.window?.title = "RevBayes Notebook for \"" + analysis.name + "\""
+            self.textView.string = analysis.notes ?? ""
         }
     }
-
+    
+    func saveText() {
+        self.analysis?.notes = textView.string
+    }
+    
 }
 
