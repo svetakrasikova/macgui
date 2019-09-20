@@ -15,7 +15,12 @@ class Align: Connectable {
         self.name = "Sequence Alignment Tool"
         let green = Connector(color:ConnectorColor.green)
         let blue = Connector(color: ConnectorColor.blue)
-        self.inlets = [blue]
-        self.outlets = [green]
+        inlets = [blue]
+        outlets = [green]
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
 }

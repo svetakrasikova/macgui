@@ -15,4 +15,8 @@ class TreeSet: Connectable {
         self.inlets = [Connector(color:ConnectorColor.red)]
         self.outlets = [Connector(color:ConnectorColor.orange)]
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 }

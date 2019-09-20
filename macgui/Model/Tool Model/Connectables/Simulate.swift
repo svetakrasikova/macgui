@@ -17,4 +17,8 @@ class Simulate: Connectable {
         self.inlets = []
         self.outlets = [green]
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 }

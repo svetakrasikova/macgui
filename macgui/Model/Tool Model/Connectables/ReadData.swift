@@ -18,4 +18,7 @@ class ReadData: Connectable {
         self.inlets = []
         self.outlets = [green, blue]
     }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 }

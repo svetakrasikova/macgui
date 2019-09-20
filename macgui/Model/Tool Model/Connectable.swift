@@ -8,10 +8,21 @@
 
 import Cocoa
 
-class Connectable: ToolObject {    
+class Connectable: ToolObject {
+    
     var inlets: [Connector] = []
     var outlets: [Connector] = []
     
+    override init(image: NSImage, frameOnCanvas: NSRect){
+        super.init(image: image, frameOnCanvas: frameOnCanvas)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        inlets = aDecoder.decodeObject(forKey: "inlets") as! [Connector]
+        outlets = aDecoder.decodeObject(forKey: "outlets") as! [Connector]
+    }
+  
     var unconnectedInlets: [Connector] {
         get {
             return inlets.filter{$0.neighbor == nil}
@@ -93,6 +104,4 @@ enum LinkType {
     case inlet, outlet
 }
 
-enum ConnectorColor {
-    case green, blue, red, orange, magenta
-}
+

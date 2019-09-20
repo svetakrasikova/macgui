@@ -9,7 +9,9 @@
 import Foundation
 import Cocoa
 
-class Connector: NSObject {
+class Connector: NSObject, NSCoding {
+    
+    
     var color: ConnectorColor
     var neighbor: Connectable?
     
@@ -22,6 +24,19 @@ class Connector: NSObject {
         self.neighbor = nil
     }
     
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(color.rawValue, forKey: "color")
+        if let neighbor = neighbor {
+            aCoder.encode(neighbor, forKey: "neighbor")
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        color = ConnectorColor(rawValue: aDecoder.decodeObject(forKey: "color") as! String) ?? .clear
+        neighbor = aDecoder.decodeObject(forKey: "neighbor") as? Connectable
+    }
+    
+    
     func setNeighbor(neighbor: Connectable){
         self.neighbor = neighbor
     }
@@ -33,7 +48,17 @@ class Connector: NSObject {
         case .orange: return NSColor.orange
         case .red: return NSColor.red
         case .magenta: return NSColor.magenta
+        case .clear: return NSColor.clear
         }
     }
     
+}
+
+enum ConnectorColor: String {
+    case green = "green"
+    case blue = "blue"
+    case red = "red"
+    case orange = "orange"
+    case magenta = "magenta"
+    case clear = "clear"
 }

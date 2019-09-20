@@ -18,5 +18,7 @@ class Bootstrap: Connectable {
         self.inlets = [green1]
         self.outlets = [green2]
     }
-    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 }
