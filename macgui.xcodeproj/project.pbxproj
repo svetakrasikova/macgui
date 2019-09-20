@@ -41,6 +41,7 @@
 		147429DB22CBC8C300FF1963 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DA22CBC8C300FF1963 /* Storyboards.swift */; };
 		147429DE22D154D200FF1963 /* ReadData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147429DD22D154D200FF1963 /* ReadData.storyboard */; };
 		147429E022D1554400FF1963 /* ReadDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DF22D1554400FF1963 /* ReadDataViewController.swift */; };
+		148D93C92335406D00FDFAFA /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148D93C82335406C00FDFAFA /* Document.swift */; };
 		149370432303545D00503CCB /* ToolTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149370422303545D00503CCB /* ToolTipViewController.swift */; };
 		149C5FC52325A52D0060043E /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC42325A52D0060043E /* Tools.swift */; };
 		149C5FC7232953610060043E /* Simulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC6232953610060043E /* Simulate.swift */; };
@@ -106,6 +107,7 @@
 		147429DA22CBC8C300FF1963 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		147429DD22D154D200FF1963 /* ReadData.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReadData.storyboard; sourceTree = "<group>"; };
 		147429DF22D1554400FF1963 /* ReadDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDataViewController.swift; sourceTree = "<group>"; };
+		148D93C82335406C00FDFAFA /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		149370422303545D00503CCB /* ToolTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipViewController.swift; sourceTree = "<group>"; };
 		149C5FC42325A52D0060043E /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		149C5FC6232953610060043E /* Simulate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				1452356A220CE9AC00A85186 /* Assets.xcassets */,
 				1411BED722052A5E009BEE1D /* macgui.entitlements */,
+				148D93C82335406C00FDFAFA /* Document.swift */,
 				14523575220E101400A85186 /* Model */,
 				1452356E220DF5C400A85186 /* Views */,
 				1452356D220DF57800A85186 /* Controllers */,
@@ -381,6 +384,7 @@
 				144CC4B52211F228003311E4 /* ToolObject.swift in Sources */,
 				14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */,
 				144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */,
+				148D93C92335406D00FDFAFA /* Document.swift in Sources */,
 				1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */,
 				149C5FC52325A52D0060043E /* Tools.swift in Sources */,
 				14E5857C22A6F16300802691 /* CanvasObjectView.swift in Sources */,
