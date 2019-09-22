@@ -48,7 +48,6 @@ class NavigatorViewController: NSViewController {
         
     }
    
-   
     
     /**
      Trigger a call on the delegate to update the detail view if a new analysis is selected in the table view

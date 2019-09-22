@@ -14,6 +14,14 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet weak var zoom: NSPopUpButton!
     var notebooks: [NotebookWindowController]? = []
     
+    override var document: AnyObject? {
+           didSet {
+            if let document = self.document as Document {
+                   self.contentViewController?.representedObject = document
+                }
+            }
+       }
+    
     var activeAnalysis: Analysis {
         if let analysis = (self.contentViewController as! MainSplitViewController).detailViewController.canvasViewController?.analysis {
             return analysis

@@ -67,6 +67,7 @@
 		14E5857C22A6F16300802691 /* CanvasObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857B22A6F16300802691 /* CanvasObjectView.swift */; };
 		14E5857E22A8006F00802691 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857D22A8006F00802691 /* Connection.swift */; };
 		14E5858122B0810B00802691 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5858022B0810B00802691 /* Connector.swift */; };
+		14EBB04923381FC70087CB27 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EBB04823381FC70087CB27 /* DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +134,7 @@
 		14E5857B22A6F16300802691 /* CanvasObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasObjectView.swift; sourceTree = "<group>"; };
 		14E5857D22A8006F00802691 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		14E5858022B0810B00802691 /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
+		14EBB04823381FC70087CB27 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = macgui/Model/DataSource.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +169,6 @@
 			children = (
 				1452356A220CE9AC00A85186 /* Assets.xcassets */,
 				1411BED722052A5E009BEE1D /* macgui.entitlements */,
-				148D93C82335406C00FDFAFA /* Document.swift */,
 				14523575220E101400A85186 /* Model */,
 				1452356E220DF5C400A85186 /* Views */,
 				1452356D220DF57800A85186 /* Controllers */,
@@ -254,6 +255,8 @@
 		14523575220E101400A85186 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				148D93C82335406C00FDFAFA /* Document.swift */,
+				14EBB04823381FC70087CB27 /* DataSource.swift */,
 				14D6DDFE22164A6E00021607 /* Analysis.swift */,
 				14E5858022B0810B00802691 /* Connector.swift */,
 				14E5857D22A8006F00802691 /* Connection.swift */,
@@ -383,6 +386,7 @@
 				1471052F2280E36D00E88657 /* Align.swift in Sources */,
 				144CC4B52211F228003311E4 /* ToolObject.swift in Sources */,
 				14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */,
+				14EBB04923381FC70087CB27 /* DataSource.swift in Sources */,
 				144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */,
 				148D93C92335406D00FDFAFA /* Document.swift in Sources */,
 				1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */,

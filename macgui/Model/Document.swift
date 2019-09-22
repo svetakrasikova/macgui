@@ -9,7 +9,9 @@
 import Cocoa
 
 class Document: NSDocument {
-
+    
+    var dataSource: DataSource? = DataSource()
+   
     override init() {
         super.init()
         // Add your subclass-specific initialization here.
@@ -27,16 +29,19 @@ class Document: NSDocument {
     }
 
     override func data(ofType typeName: String) throws -> Data {
-        // Insert code here to write your document to data of the specified type, throwing an error in case of failure.
-        // Alternatively, you could remove this method and override fileWrapper(ofType:), write(to:ofType:), or write(to:ofType:for:originalContentsURL:) instead.
-        throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
+        if let dataSource = self.dataSource {
+                  return NSKeyedArchiver.archivedData(withRootObject: dataSource)
+              } else {
+                  throw NSError(domain: "Document", code: 0, userInfo: nil)
+              }
     }
 
     override func read(from data: Data, ofType typeName: String) throws {
-        // Insert code here to read your document from the given data of the specified type, throwing an error in case of failure.
-        // Alternatively, you could remove this method and override read(from:ofType:) instead.
-        // If you do, you should also override isEntireFileLoaded to return false if the contents are lazily loaded.
-        throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
+       if let dataSource = NSKeyedUnarchiver.unarchiveObject(with: data) as? DataSource {
+            self.dataSource = dataSource
+        } else {
+            throw NSError(domain: "Document", code: 0, userInfo: nil)
+        }
     }
 
 
