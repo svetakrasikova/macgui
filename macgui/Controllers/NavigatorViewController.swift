@@ -20,9 +20,12 @@ class NavigatorViewController: NSViewController {
     @IBOutlet weak var actionButton: NSPopUpButton!
     @IBOutlet weak var arrayController : NSArrayController!
     @IBOutlet weak var analysesTableView: NSTableView!
-    
-    @objc dynamic var analyses: [Analysis] = [Analysis(name: "untitled analysis")]
-    
+   
+    var analyses: [Analysis] {
+        let analyses = (self.representedObject as! Document).dataSource?.analyses
+        assert(analyses != nil, "Unable to find the document for this view controller.")
+        return analyses!
+    }
     weak var delegate: NavigatorViewControllerDelegate?
     
     @IBAction func actionButtonClicked(_ sender: NSPopUpButton) {

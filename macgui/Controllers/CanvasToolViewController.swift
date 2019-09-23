@@ -12,8 +12,6 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     
     var tool: ToolObject?
     
-    
-    
     private var observers = [NSKeyValueObservation]()
     
     @IBOutlet weak var infoButton: InfoButton!

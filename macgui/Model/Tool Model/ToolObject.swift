@@ -30,7 +30,7 @@ class ToolObject: NSObject, NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         image = aDecoder.decodeObject(forKey: "image") as! NSImage
-        frameOnCanvas = aDecoder.decodeObject(forKey: "frameOnCanvas") as! NSRect
+        frameOnCanvas = aDecoder.decodeRect(forKey: "frameOnCanvas") as! NSRect
         
     }
 }

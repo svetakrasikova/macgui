@@ -10,7 +10,7 @@ import Cocoa
 
 class Document: NSDocument {
     
-    var dataSource: DataSource? = DataSource()
+    @objc dynamic var dataSource: DataSource? = DataSource()
    
     override init() {
         super.init()

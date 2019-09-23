@@ -20,6 +20,14 @@ class MainSplitViewController: NSSplitViewController, NavigatorViewControllerDel
         return detailItem.viewController as! AnalysisViewController
     }
     
+    override var representedObject: Any? {
+           didSet {
+               for viewController in self.children {
+                   viewController.representedObject = representedObject
+               }
+           }
+       }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -16,7 +16,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     
     override var document: AnyObject? {
            didSet {
-            if let document = self.document as Document {
+            if let document = self.document as? Document {
                    self.contentViewController?.representedObject = document
                 }
             }

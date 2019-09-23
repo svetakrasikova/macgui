@@ -16,6 +16,12 @@ class Connectable: ToolObject {
     override init(image: NSImage, frameOnCanvas: NSRect){
         super.init(image: image, frameOnCanvas: frameOnCanvas)
     }
+    
+    override func encode(with coder: NSCoder) {
+        super.encode(with: coder)
+        coder.encode(inlets, forKey: "inlets")
+        coder.encode(outlets, forKey: "outlets")
+    }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

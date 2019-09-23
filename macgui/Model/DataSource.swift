@@ -10,8 +10,8 @@ import Cocoa
 
 class DataSource: NSObject, NSCoding {
     
-    var analyses: [Analysis] = []
-    var selectionIndexes: NSIndexSet = NSIndexSet()
+    @objc dynamic var analyses: [Analysis] = [Analysis(name: "untitled analysis")]
+    @objc dynamic var selectionIndexes: NSIndexSet = NSIndexSet()
     
     
     func encode(with coder: NSCoder) {
