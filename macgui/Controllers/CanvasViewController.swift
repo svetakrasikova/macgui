@@ -107,18 +107,28 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
    
     @objc func didConnectTools(notification: Notification){
         let userInfo = notification.userInfo! as! [String: ConnectorItemView]
-        if let color = userInfo["target"]?.arrowColor, let targetTool = userInfo["target"]?.delegate?.getTool(), let sourceTool = userInfo["source"]?.delegate?.getTool(){
+        if userInfo["target"]?.window == self.view.window, let color = userInfo["target"]?.arrowColor, let targetTool = userInfo["target"]?.delegate?.getTool(), let sourceTool = userInfo["source"]?.delegate?.getTool(){
             let toConnector = userInfo["target"]?.delegate?.getConnector() as! Connector
             toConnector.setNeighbor(neighbor: sourceTool as! Connectable)
             let fromConnector = userInfo["source"]?.delegate?.getConnector() as! Connector
             fromConnector.setNeighbor(neighbor: targetTool as! Connectable)
             let connection = Connection(to: toConnector, from: fromConnector)
-            let arrowController = ArrowViewController(frame: canvasView.bounds, color: color, sourceTool: sourceTool as! Connectable, targetTool: targetTool as! Connectable, connection: connection)
+            let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool as! Connectable, targetTool: targetTool as! Connectable, connection: connection)
             addChild(arrowController)
             analysis?.arrows.append(connection)
             canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
             reset(analysis: analysis!)
         }
+    }
+    
+    func setUpConnection(frame: NSRect, color: NSColor, sourceTool: Connectable, targetTool: Connectable, connection: Connection) -> ArrowViewController {
+        let arrowController = ArrowViewController()
+        arrowController.frame = frame
+        arrowController.color = color
+        arrowController.sourceTool = sourceTool
+        arrowController.targetTool = targetTool
+        arrowController.connection = connection
+        return arrowController
     }
     
     
@@ -216,7 +226,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     func addArrowView(connection: Connection){
         let color = connection.from.getColor()
         if let sourceTool = connection.to.neighbor, let targetTool = connection.from.neighbor {
-            let arrowController = ArrowViewController(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool, connection: connection)
+            let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool, connection: connection)
             addChild(arrowController)
             canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
         }

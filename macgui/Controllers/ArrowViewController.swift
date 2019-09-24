@@ -17,9 +17,8 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate, NSWind
     weak var targetTool: Connectable?
     weak var sourceTool: Connectable?
     weak var connection: Connection?
-    
-    var frame: NSRect
-    var color: NSColor
+    var frame: NSRect?
+    weak var color: NSColor?
     
     var endPoint: NSPoint {
         get{
@@ -56,21 +55,6 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate, NSWind
     }
     
     
-    
-    init(frame: NSRect, color: NSColor, sourceTool: Connectable, targetTool: Connectable, connection: Connection){
-        self.targetTool = targetTool
-        self.sourceTool = sourceTool
-        self.color = color
-        self.frame = frame
-        self.connection = connection
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func ownedBy(tool: ToolObject) -> Bool{
         if self.targetTool  === tool || self.sourceTool === tool {
             return true
@@ -95,7 +79,7 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate, NSWind
     func drawArrow(width: CGFloat, highlight: Bool){
         clearSublayers()
         let arrowLayer = CAShapeLayer()
-        arrowLayer.strokeColor = color.cgColor
+        arrowLayer.strokeColor = color?.cgColor
         arrowLayer.lineWidth = width
         if highlight {
             arrowLayer.shadowOpacity = 0.7
@@ -126,7 +110,7 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate, NSWind
         (self.view as! ArrowView).clickArea = path.copy(strokingWithWidth: 15, lineCap: CGLineCap.round, lineJoin: CGLineJoin.round, miterLimit: 1)    }
     
     override func loadView() {
-        self.view = ArrowView(frame: frame)     
+        self.view = ArrowView(frame: frame!)
     }
     
     override func viewDidLoad() {
