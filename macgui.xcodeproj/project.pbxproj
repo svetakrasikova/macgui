@@ -68,6 +68,7 @@
 		14E5857E22A8006F00802691 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857D22A8006F00802691 /* Connection.swift */; };
 		14E5858122B0810B00802691 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5858022B0810B00802691 /* Connector.swift */; };
 		14EBB04923381FC70087CB27 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EBB04823381FC70087CB27 /* DataSource.swift */; };
+		14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */ = {isa = PBXBuildFile; fileRef = 14ECE4DE233BFE2300106EB4 /* aquabayes.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +136,7 @@
 		14E5857D22A8006F00802691 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		14E5858022B0810B00802691 /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 		14EBB04823381FC70087CB27 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = macgui/Model/DataSource.swift; sourceTree = SOURCE_ROOT; };
+		14ECE4DE233BFE2300106EB4 /* aquabayes.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = aquabayes.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				1452356C220DF55C00A85186 /* Extensions */,
 				1452356F220DF61600A85186 /* XIbs and Storyboards */,
 				1411BE982203D8FC009BEE1D /* Info.plist */,
+				14ECE4DE233BFE2300106EB4 /* aquabayes.icns */,
 			);
 			path = macgui;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */,
 				1452356B220CE9AC00A85186 /* Assets.xcassets in Resources */,
 				14A663BC23186CFE0034EA53 /* Notebook.storyboard in Resources */,
+				14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */,
 				147429D922CBA94C00FF1963 /* CanvasTool.storyboard in Resources */,
 				1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */,
 			);
