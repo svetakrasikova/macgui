@@ -19,21 +19,21 @@ enum ToolType: String, CaseIterable {
 
 extension CanvasViewController {
     
-    func initToolObjectWithName(_ name: String, image: NSImage, frame: NSRect) -> ToolObject {
+    func initToolObjectWithName(_ name: String, frame: NSRect) -> ToolObject {
         let toolType = ToolType(rawValue: name)!
         switch toolType {
         case  .bootstrap:
-            return Bootstrap(image: image, frameOnCanvas: frame)
+            return Bootstrap(name: name, frameOnCanvas: frame)
         case .align:
-            return Align(image: image, frameOnCanvas: frame)
+            return Align(name: name, frameOnCanvas: frame)
         case .readdata:
-            return ReadData(image: image, frameOnCanvas: frame)
+            return ReadData(name: name, frameOnCanvas: frame)
         case .treeset:
-            return TreeSet(image: image, frameOnCanvas: frame)
+            return TreeSet(name: name, frameOnCanvas: frame)
         case .simulate:
-            return Simulate(image: image, frameOnCanvas: frame)
+            return Simulate(name: name, frameOnCanvas: frame)
         case .model:
-            return Model(image: image, frameOnCanvas: frame)
+            return Model(name: name, frameOnCanvas: frame)
             
         }
     }

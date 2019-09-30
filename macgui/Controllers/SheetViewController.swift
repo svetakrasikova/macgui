@@ -32,7 +32,7 @@ class SheetViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = tool?.name
+        self.title = tool?.descriptiveName
         addContentController()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didPushCancel(notification:)),

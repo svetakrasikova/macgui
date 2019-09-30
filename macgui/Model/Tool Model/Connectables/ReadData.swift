@@ -10,9 +10,9 @@ import Cocoa
 
 class ReadData: Connectable {
    
-    override init(image: NSImage, frameOnCanvas: NSRect) {
-        super.init(image: image, frameOnCanvas: frameOnCanvas)
-        self.name = "Read Data Tool"
+    override init(name: String, frameOnCanvas: NSRect) {
+        super.init(name: name, frameOnCanvas: frameOnCanvas)
+        self.descriptiveName = "Read Data Tool"
         let green = Connector(color:ConnectorColor.green)
         let blue = Connector(color:ConnectorColor.blue)
         self.inlets = []

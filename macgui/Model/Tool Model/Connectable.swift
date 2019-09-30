@@ -13,8 +13,8 @@ class Connectable: ToolObject {
     var inlets: [Connector] = []
     var outlets: [Connector] = []
     
-    override init(image: NSImage, frameOnCanvas: NSRect){
-        super.init(image: image, frameOnCanvas: frameOnCanvas)
+    override init(name: String, frameOnCanvas: NSRect){
+        super.init(name: name, frameOnCanvas: frameOnCanvas)
     }
     
     override func encode(with coder: NSCoder) {

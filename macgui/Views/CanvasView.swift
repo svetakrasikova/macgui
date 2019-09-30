@@ -71,8 +71,8 @@ class CanvasView: NSView {
         isReceivingDrag = false
         let pasteBoard = draggingInfo.draggingPasteboard
         let point = convert(draggingInfo.draggingLocation, from: nil)
-        if let pasteboarditems = pasteBoard.readObjects(forClasses: [NSString.self], options: nil) as? [String], pasteboarditems.count != 0, let name =  pasteboarditems.first, let image = NSImage(named: name)  {
-            delegate?.processImage(image, center: point, name: name)
+        if let pasteboarditems = pasteBoard.readObjects(forClasses: [NSString.self], options: nil) as? [String], pasteboarditems.count != 0, let name =  pasteboarditems.first  {
+            delegate?.processImage(center: point, name: name)
             return true
         }
         return false
@@ -96,7 +96,7 @@ class CanvasView: NSView {
 }
 
 protocol CanvasViewDelegate: class {
-    func processImage(_ image: NSImage, center: NSPoint, name: String)
+    func processImage(center: NSPoint, name: String)
     func selectContentView(width: CGFloat)
     func mouseDownOnCanvasView()
     func isMouseDownOnArrowView(event: NSEvent, point: NSPoint) -> Bool

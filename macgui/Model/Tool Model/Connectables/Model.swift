@@ -10,9 +10,9 @@ import Cocoa
 
 class Model: Connectable {
    
-    override init(image: NSImage, frameOnCanvas: NSRect) {
-        super.init(image: image, frameOnCanvas: frameOnCanvas)
-        self.name = "Data Model Tool"
+    override init(name: String, frameOnCanvas: NSRect) {
+        super.init(name: name, frameOnCanvas: frameOnCanvas)
+        self.descriptiveName = "Data Model Tool"
     }
     
     required init?(coder aDecoder: NSCoder) {

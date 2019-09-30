@@ -10,9 +10,9 @@ import Cocoa
 
 class Simulate: Connectable {
 
-    override init(image: NSImage, frameOnCanvas: NSRect) {
-        super.init(image: image, frameOnCanvas: frameOnCanvas)
-        self.name = "Data Simulation Tool"
+    override init(name: String, frameOnCanvas: NSRect) {
+        super.init(name: name, frameOnCanvas: frameOnCanvas)
+        self.descriptiveName = "Data Simulation Tool"
         let green = Connector(color:ConnectorColor.green)
         self.inlets = []
         self.outlets = [green]

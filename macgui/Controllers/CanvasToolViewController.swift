@@ -10,9 +10,8 @@ import Cocoa
 
 class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate, InfoButtonDelegate, ToolTipDelegate {
     
-    var tool: ToolObject?
+    weak var tool: ToolObject?
     
-    private var observers = [NSKeyValueObservation]()
     
     @IBOutlet weak var infoButton: InfoButton!
     @IBOutlet weak var inletsScrollView: NSScrollView!
@@ -26,21 +25,19 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     var showPopoverTimer: Timer?
     var showFirstPopoverTimer: Timer?
     
-    var frame: NSRect {
-        get {
-            if let tool = tool {
-                return tool.frameOnCanvas
-            }
-            else {return NSZeroRect}
-        }
-    }
+
     var image: NSImage {
-        get {
-            if let tool = tool {
-                return tool.image
-            }
-            else { return NSImage(named: "AppIcon")!}
+        guard let tool = self.tool else {
+            return NSImage(named: "AppIcon")!
         }
+        return NSImage(named: tool.name)!
+    }
+   
+    var frame: NSRect {
+        guard let tool = self.tool else {
+                   return NSZeroRect
+               }
+        return tool.frameOnCanvas
     }
     
     
@@ -108,11 +105,10 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         
         (self.view as! CanvasToolView).canvasViewToolDelegate = self
         
-        if let tool = tool {
-            if tool.isKind(of: Connectable.self){
+        
+        if tool!.isKind(of: Connectable.self){
                 unhideConnectors()
             }
-        }
     }
     
     override func viewDidDisappear() {
@@ -143,13 +139,13 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
     
     func setImage(){
-        imageView.image = self.image
+        imageView.image = image
     }
     
     func updateFrame(){
-        let size = tool!.frameOnCanvas.size
+        let size = tool?.frameOnCanvas.size
         let origin = view.frame.origin
-        tool!.frameOnCanvas = NSRect(origin: origin, size: size)
+        tool?.frameOnCanvas = NSRect(origin: origin, size: size!)
         
     }
     
@@ -175,7 +171,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
     
     func getToolName() -> String {
-        if let toolName = self.tool?.name { return toolName }
+        if let toolName = self.tool?.descriptiveName { return toolName }
         return "Unnamed Tool"
     }
     

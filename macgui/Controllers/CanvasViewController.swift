@@ -29,7 +29,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
 
     
     enum Appearance {
-        static let maxStickerDimension: CGFloat = 50.0
+        static let toolDimension: CGFloat = 50.0
     }
     
     override func viewDidLoad() {
@@ -239,9 +239,9 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
         canvasView.addSubview(canvasToolViewController.view)
     }
     
-    func addCanvasTool(image: NSImage, frame: NSRect, name: String){
+    func addCanvasTool(frame: NSRect, name: String){
         if let analysis = analysis {
-            let newTool = initToolObjectWithName(name, image: image, frame: frame)
+            let newTool = initToolObjectWithName(name, frame: frame)
             analysis.tools.append(newTool)
             addToolView(tool: newTool)
         }
@@ -312,11 +312,11 @@ extension CanvasViewController: CanvasViewDelegate {
     }
 
     
-    func processImage(_ image: NSImage, center: NSPoint, name: String) {
+    func processImage(center: NSPoint, name: String) {
         invitationLabel.isHidden = true
-        let constrainedSize = image.aspectFitSizeForMaxDimension(Appearance.maxStickerDimension)
-        let frame = NSRect(x: center.x - constrainedSize.width/2, y: center.y - constrainedSize.height/2, width: constrainedSize.width, height: constrainedSize.height)
-        addCanvasTool(image: image, frame: frame, name: name)
+        let size = NSSize(width: Appearance.toolDimension, height: Appearance.toolDimension)
+        let frame = NSRect(x: center.x - size.width/2, y: center.y - size.height/2, width: size.width, height: size.height)
+        addCanvasTool(frame: frame, name: name)
     }
     
     func isMouseDownOnArrowView(event: NSEvent, point: NSPoint) -> Bool {

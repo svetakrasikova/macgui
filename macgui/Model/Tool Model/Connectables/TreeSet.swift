@@ -9,9 +9,9 @@
 import Cocoa
 
 class TreeSet: Connectable {
-    override init(image: NSImage, frameOnCanvas: NSRect) {
-        super.init(image: image, frameOnCanvas: frameOnCanvas)
-        self.name = "Tree Set Tool"
+    override init(name: String, frameOnCanvas: NSRect) {
+        super.init(name: name, frameOnCanvas: frameOnCanvas)
+        self.descriptiveName = "Tree Set Tool"
         self.inlets = [Connector(color:ConnectorColor.red)]
         self.outlets = [Connector(color:ConnectorColor.orange)]
     }
