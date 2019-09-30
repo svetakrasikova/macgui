@@ -12,7 +12,7 @@ class Align: Connectable {
     
     override init(name: String, frameOnCanvas: NSRect) {
         super.init(name: name, frameOnCanvas: frameOnCanvas)
-        self.descriptiveName = "Sequence Alignment Tool"
+        
         let green = Connector(color:ConnectorColor.green)
         let blue = Connector(color: ConnectorColor.blue)
         inlets = [blue]

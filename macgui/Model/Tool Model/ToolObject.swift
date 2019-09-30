@@ -12,7 +12,9 @@ class ToolObject: NSObject, NSCoding {
     
     @objc dynamic var frameOnCanvas: NSRect
     var name: String
-    var descriptiveName: String?
+    var descriptiveName: String {
+        return getDescriptiveNameString(name: name)
+    }
    
     init(name: String, frameOnCanvas: NSRect){
         self.name = name
@@ -22,9 +24,7 @@ class ToolObject: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
         aCoder.encode(frameOnCanvas, forKey: "frameOnCanvas")
-        if let name = descriptiveName {
-            aCoder.encode(name, forKey: "descriptiveName")
-        }
+        aCoder.encode(descriptiveName, forKey: "descriptiveName")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,3 +33,5 @@ class ToolObject: NSObject, NSCoding {
         
     }
 }
+
+

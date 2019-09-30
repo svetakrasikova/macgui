@@ -12,7 +12,7 @@ class Bootstrap: Connectable {
     
     override init(name: String, frameOnCanvas: NSRect) {
         super.init(name: name, frameOnCanvas: frameOnCanvas)
-        self.descriptiveName = "Bootstrap Tool"
+        
         let green1 = Connector(color:ConnectorColor.green)
         let green2 = Connector(color:ConnectorColor.green)
         self.inlets = [green1]

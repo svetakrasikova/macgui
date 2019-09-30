@@ -12,7 +12,7 @@ class Simulate: Connectable {
 
     override init(name: String, frameOnCanvas: NSRect) {
         super.init(name: name, frameOnCanvas: frameOnCanvas)
-        self.descriptiveName = "Data Simulation Tool"
+        
         let green = Connector(color:ConnectorColor.green)
         self.inlets = []
         self.outlets = [green]

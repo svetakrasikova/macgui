@@ -38,3 +38,25 @@ extension CanvasViewController {
         }
     }
 }
+
+extension ToolObject {
+    
+    func getDescriptiveNameString(name: String) -> String {
+        let toolType = ToolType(rawValue: name)!
+        switch toolType {
+        case  .bootstrap:
+            return "Bootstrap Tool"
+        case .align:
+            return "Sequence Alignment Tool"
+        case .readdata:
+            return "Read Data Tool"
+        case .treeset:
+            return "Tree Set Tool"
+        case .simulate:
+            return "Data Simulation Tool"
+        case .model:
+            return "Data Model Tool"
+            
+        }
+    }
+}

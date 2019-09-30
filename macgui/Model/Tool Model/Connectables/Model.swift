@@ -12,7 +12,6 @@ class Model: Connectable {
    
     override init(name: String, frameOnCanvas: NSRect) {
         super.init(name: name, frameOnCanvas: frameOnCanvas)
-        self.descriptiveName = "Data Model Tool"
     }
     
     required init?(coder aDecoder: NSCoder) {
