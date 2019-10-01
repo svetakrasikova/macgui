@@ -117,7 +117,9 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
             addChild(arrowController)
             analysis?.arrows.append(connection)
             canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
-            reset(analysis: analysis!)
+           
+            let userInfo  = ["sourceTool" : sourceTool, "targetTool" : targetTool]
+            NotificationCenter.default.post(name: .didAddNewArrow, object: self, userInfo: userInfo)
         }
     }
     

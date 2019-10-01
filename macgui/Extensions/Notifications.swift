@@ -15,4 +15,5 @@ extension NSNotification.Name {
     static let didSelectDeleteKey = Notification.Name("didSelectDeleteKey")
     static let didConnectTools = Notification.Name("didConnectTools")
     static let dismissToolSheet = Notification.Name("dismissToolSheet")
+    static let didAddNewArrow = Notification.Name("didAddNewArrow")
 }

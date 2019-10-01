@@ -12,7 +12,6 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     
     weak var tool: ToolObject?
     
-    
     @IBOutlet weak var infoButton: InfoButton!
     @IBOutlet weak var inletsScrollView: NSScrollView!
     @IBOutlet weak var outletsScrollView: NSScrollView!
@@ -97,6 +96,11 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         infoButton.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
+        
+          NotificationCenter.default.addObserver(self,
+                                                     selector: #selector(didAddNewArrow(notification:)),
+                                                     name: .didAddNewArrow,
+                                                     object: nil)
     
         setFrame()
         setImage()
@@ -115,6 +119,17 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         closePopover()
     }
     
+    @objc func didAddNewArrow(notification: Notification){
+        print("updating tool view", self)
+        let tools = notification.userInfo as! [String:ToolObject]
+        if tool == tools["sourceTool"]{
+            outlets.reloadData()
+        }
+        if tool == tools["targetTool"] {
+            inlets.reloadData()
+        }
+        
+    }
     func setPopOver(){
         toolTipPopover.contentViewController = NSStoryboard.loadVC(StoryBoardName.toolTip)
         (toolTipPopover.contentViewController as! ToolTipViewController).delegate = self
