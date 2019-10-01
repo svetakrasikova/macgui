@@ -120,7 +120,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
     
     @objc func didAddNewArrow(notification: Notification){
-        print("updating tool view", self)
+
         let tools = notification.userInfo as! [String:ToolObject]
         if tool == tools["sourceTool"]{
             outlets.reloadData()
