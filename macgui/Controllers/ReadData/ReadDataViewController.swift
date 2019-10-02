@@ -14,6 +14,7 @@ class ReadDataViewController: NSViewController {
         NotificationCenter.default.post(name: .dismissToolSheet, object: self)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

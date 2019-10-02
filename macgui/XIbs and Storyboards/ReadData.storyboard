@@ -142,6 +142,9 @@ DQ
                                                         </items>
                                                     </menu>
                                                 </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="selectFormatDetermined:" target="fEv-0E-w8Q" id="PyC-e4-KuQ"/>
+                                                </connections>
                                             </popUpButton>
                                         </subviews>
                                         <visibilityPriorities>
@@ -180,6 +183,10 @@ DQ
                                                         </items>
                                                     </menu>
                                                 </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="selectDataFormat:" target="fEv-0E-w8Q" id="f4n-Kw-Sjl"/>
+                                                    <binding destination="fEv-0E-w8Q" name="enabled" keyPath="formatDeterminedByUser" id="fVH-ZC-Rjd"/>
+                                                </connections>
                                             </popUpButton>
                                         </subviews>
                                         <visibilityPriorities>
@@ -207,18 +214,26 @@ DQ
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="mCA-Zl-y8v"/>
                                                 </constraints>
-                                                <popUpButtonCell key="cell" type="push" title="Standard" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eO6-T2-SYb" id="CLi-tT-v93">
+                                                <popUpButtonCell key="cell" type="push" title="Standard" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eO6-T2-SYb" id="CLi-tT-v93">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
                                                     <menu key="menu" id="dho-FB-gLV">
                                                         <items>
-                                                            <menuItem title="Standard" state="on" id="eO6-T2-SYb" userLabel="Standard"/>
-                                                            <menuItem title="DNA" id="q8d-Xe-5Ki" userLabel="PHYLIP"/>
-                                                            <menuItem title="RNA" id="3iX-P1-fjb" userLabel="PHYLIP"/>
-                                                            <menuItem title="Protein" id="ZcJ-9O-M9F" userLabel="Protein"/>
+                                                            <menuItem title="Standard" id="eO6-T2-SYb" userLabel="Standard">
+                                                                <connections>
+                                                                    <binding destination="fEv-0E-w8Q" name="enabled" keyPath="standardDataTypeSelectable" id="Joz-tO-yGq"/>
+                                                                </connections>
+                                                            </menuItem>
+                                                            <menuItem title="DNA" tag="1" id="q8d-Xe-5Ki"/>
+                                                            <menuItem title="RNA" tag="2" id="3iX-P1-fjb"/>
+                                                            <menuItem title="Protein" state="on" tag="3" id="ZcJ-9O-M9F" userLabel="Protein"/>
                                                         </items>
                                                     </menu>
                                                 </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="selectDataType:" target="fEv-0E-w8Q" id="JsB-ER-TzL"/>
+                                                    <binding destination="fEv-0E-w8Q" name="enabled" keyPath="dataTypeSelectable" id="eIU-G5-oYp"/>
+                                                </connections>
                                             </popUpButton>
                                         </subviews>
                                         <visibilityPriorities>
@@ -251,13 +266,14 @@ DQ
                                                     <font key="font" metaFont="menu"/>
                                                     <menu key="menu" id="nSq-cB-1c6">
                                                         <items>
-                                                            <menuItem title="Aligned" state="on" id="Pql-Y1-Zid" userLabel="Standard"/>
-                                                            <menuItem title="Unaligned" id="pda-Yb-YRL" userLabel="PHYLIP"/>
-                                                            <menuItem title="RNA" id="6Zv-i4-pKa" userLabel="PHYLIP"/>
-                                                            <menuItem title="Protein" id="oqO-cd-dq0" userLabel="Protein"/>
+                                                            <menuItem title="Aligned" state="on" id="Pql-Y1-Zid"/>
+                                                            <menuItem title="Unaligned" id="pda-Yb-YRL"/>
                                                         </items>
                                                     </menu>
                                                 </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="selectDataAlignment:" target="fEv-0E-w8Q" id="4hS-JX-rwV"/>
+                                                </connections>
                                             </popUpButton>
                                         </subviews>
                                         <visibilityPriorities>
@@ -295,6 +311,10 @@ DQ
                                                         </items>
                                                     </menu>
                                                 </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="selectInterleavedFormat:" target="fEv-0E-w8Q" id="Ske-5o-HMq"/>
+                                                    <binding destination="fEv-0E-w8Q" name="enabled" keyPath="interleavedFormatSelectable" id="1ir-ka-bti"/>
+                                                </connections>
                                             </popUpButton>
                                         </subviews>
                                         <visibilityPriorities>
@@ -329,6 +349,13 @@ DQ
                             <constraint firstItem="uwZ-Gb-b4r" firstAttribute="centerX" secondItem="bvt-Ek-VA3" secondAttribute="centerX" id="wzc-oD-zcA"/>
                         </constraints>
                     </customView>
+                    <connections>
+                        <outlet property="dataAlignment" destination="1J9-Ow-ayt" id="rzG-3W-sjg"/>
+                        <outlet property="dataFormat" destination="GXO-g3-nhT" id="0yn-UG-nT9"/>
+                        <outlet property="dataType" destination="76H-U6-299" id="HGt-Tp-M8m"/>
+                        <outlet property="formatDeterminedBy" destination="Pra-oS-6KI" id="hSD-3i-DzP"/>
+                        <outlet property="interleavedFormat" destination="0vv-qK-sS2" id="KET-R4-iGn"/>
+                    </connections>
                 </viewController>
                 <customObject id="zZo-4t-Ojk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
