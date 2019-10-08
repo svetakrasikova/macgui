@@ -9,26 +9,13 @@
 import Cocoa
 
 class SheetViewController: NSViewController {
-    
-    enum Appearance {
-        static let modalSheetWidth: CGFloat = 330.0
-        static let modalSheetHight: CGFloat = 330.0
-    }
+
     weak var tool: ToolObject?
-    
     
     lazy var tabViewController: NSTabViewController = {
         return NSStoryboard.loadVC(StoryBoardName.modalSheetTabView)
         }() as! NSTabViewController
     
-
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-    }
-
-    override func viewWillLayout() {
-        self.preferredContentSize = NSSize(width: Appearance.modalSheetWidth, height: Appearance.modalSheetHight)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
