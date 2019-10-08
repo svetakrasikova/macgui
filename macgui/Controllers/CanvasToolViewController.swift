@@ -23,7 +23,6 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     var popoverLoopTimer: Timer?
     var showPopoverTimer: Timer?
     var showFirstPopoverTimer: Timer?
-    
 
     var image: NSImage {
         guard let tool = self.tool else {

@@ -21,6 +21,7 @@ class InfoButton: NSButton {
     var buttonState: ButtonState = .idle { didSet { needsLayout = true } }
     
     var mouseIsInside = false
+
     
     weak var delegate: InfoButtonDelegate?
     
@@ -99,7 +100,7 @@ class InfoButton: NSButton {
     private func setAppearanceForState() {
         switch buttonState {
         case .pressed:
-            shapeLayer.fillColor = NSColor.darkGray.cgColor
+            shapeLayer.fillColor = NSColor.lightGray.cgColor
         case .highlighted:
             shapeLayer.fillColor = NSColor.darkGray.cgColor
         case .idle:
