@@ -6,316 +6,53 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Read Data Controller-->
+        <!--Read Data Tool-->
         <scene sceneID="GmR-P5-Uv4">
             <objects>
-                <viewController title="Read Data Controller" storyboardIdentifier="ReadData" id="NKk-nb-iKR" customClass="ReadDataViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
-                    <customView key="view" autoresizesSubviews="NO" id="Xmt-Ke-T6e">
-                        <rect key="frame" x="0.0" y="0.0" width="330" height="330"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wdc-Pm-9Oo" userLabel="Button Stack View">
-                                <rect key="frame" x="160" y="16" width="150" height="21"/>
-                                <subviews>
-                                    <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O36-pB-HVA">
-                                        <rect key="frame" x="-6" y="-7" width="82" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dNI-Ea-1q7">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="cancelButtonPushed:" target="NKk-nb-iKR" id="sNF-nH-QDI"/>
-                                        </connections>
-                                    </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tpn-Co-Gkf">
-                                        <rect key="frame" x="76" y="-7" width="80" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Import" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rLe-RG-EVq">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                                        </buttonCell>
-                                    </button>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pno-Qw-qXQ">
-                                <rect key="frame" x="18" y="12" width="25" height="25"/>
-                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Z9z-ra-o7z">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="zNd-JH-a5v" userLabel="Tab View">
-                                <rect key="frame" x="0.0" y="49" width="330" height="281"/>
-                                <connections>
-                                    <segue destination="ihH-9a-RsU" kind="embed" id="new-nN-Ar1"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="pno-Qw-qXQ" firstAttribute="leading" secondItem="Xmt-Ke-T6e" secondAttribute="leading" constant="20" id="8dg-kb-o8K"/>
-                            <constraint firstItem="zNd-JH-a5v" firstAttribute="top" secondItem="Xmt-Ke-T6e" secondAttribute="top" id="Jnf-33-3SV"/>
-                            <constraint firstItem="zNd-JH-a5v" firstAttribute="leading" secondItem="Xmt-Ke-T6e" secondAttribute="leading" id="XuA-x1-7gh"/>
-                            <constraint firstItem="wdc-Pm-9Oo" firstAttribute="top" secondItem="pno-Qw-qXQ" secondAttribute="top" id="b1G-Gh-L1a"/>
-                            <constraint firstAttribute="trailing" secondItem="wdc-Pm-9Oo" secondAttribute="trailing" constant="20" id="jds-Nc-zvI"/>
-                            <constraint firstAttribute="trailing" secondItem="zNd-JH-a5v" secondAttribute="trailing" id="oIV-DM-jif"/>
-                            <constraint firstAttribute="bottom" secondItem="pno-Qw-qXQ" secondAttribute="bottom" constant="16" id="rhP-bX-y7q"/>
-                            <constraint firstItem="pno-Qw-qXQ" firstAttribute="top" secondItem="zNd-JH-a5v" secondAttribute="bottom" constant="12" id="xqy-9d-lyY"/>
-                        </constraints>
-                    </customView>
-                </viewController>
-                <customObject id="qfo-nq-oxm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="394" y="-11212"/>
-        </scene>
-        <!--Tab View Controller-->
-        <scene sceneID="znZ-nG-SPM">
-            <objects>
-                <tabViewController identifier="TabViewController" storyboardIdentifier="TabViewController" selectedTabViewItemIndex="0" id="ihH-9a-RsU" sceneMemberID="viewController">
-                    <tabViewItems>
-                        <tabViewItem label="Data Matrix" identifier="" id="0Ov-il-RrN"/>
-                        <tabViewItem label="Blank Matrix" identifier="" id="eN2-dR-lgT"/>
-                    </tabViewItems>
-                    <tabView key="tabView" type="noTabsNoBorder" id="uAF-Lu-gou">
-                        <rect key="frame" x="0.0" y="0.0" width="261" height="196"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="system"/>
-                        <connections>
-                            <outlet property="delegate" destination="ihH-9a-RsU" id="Mc0-0T-Qg6"/>
-                        </connections>
-                    </tabView>
-                    <connections>
-                        <segue destination="fEv-0E-w8Q" kind="relationship" relationship="tabItems" id="bzw-TU-vTg"/>
-                        <segue destination="c1r-Hd-KdI" kind="relationship" relationship="tabItems" id="LH2-CJ-qih"/>
-                    </connections>
-                </tabViewController>
-                <customObject id="3Ir-v2-zYE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="508" y="-10811"/>
-        </scene>
-        <!--Data Matrix-->
-        <scene sceneID="oSG-Gu-Wz3">
-            <objects>
-                <viewController title="Data Matrix" id="fEv-0E-w8Q" customClass="DataMatrixViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Read Data Tool" storyboardIdentifier="ReadData" id="NKk-nb-iKR" customClass="ReadDataViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <customView key="view" id="bvt-Ek-VA3">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uwZ-Gb-b4r">
-                                <rect key="frame" x="50" y="68" width="350" height="165"/>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="200" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FmD-nC-1gp">
+                                <rect key="frame" x="32" y="26" width="386" height="21"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="60" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O4K-Os-aqD" userLabel="Format determined">
-                                        <rect key="frame" x="52" y="144" width="298" height="21"/>
+                                    <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7t9-tD-F7a">
+                                        <rect key="frame" x="-2" y="-4" width="25" height="25"/>
+                                        <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="z3V-cO-aok">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="27" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yeu-nK-ApS">
+                                        <rect key="frame" x="221" y="0.0" width="165" height="21"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fE1-D8-Sa6">
-                                                <rect key="frame" x="-2" y="3" width="142" height="16"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Format determined by:" id="w1m-Ej-gde">
+                                            <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O36-pB-HVA">
+                                                <rect key="frame" x="-6" y="-7" width="82" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dNI-Ea-1q7">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pra-oS-6KI">
-                                                <rect key="frame" x="196" y="-3" width="105" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="AC8-c2-Nbo"/>
-                                                </constraints>
-                                                <popUpButtonCell key="cell" type="push" title="User" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TPd-NC-Y4o" id="5Mv-nK-QB0">
-                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="menu"/>
-                                                    <menu key="menu" id="xSR-jA-YmD">
-                                                        <items>
-                                                            <menuItem title="User" state="on" id="TPd-NC-Y4o"/>
-                                                            <menuItem title="RevBayes" id="IA1-Kn-vXc"/>
-                                                        </items>
-                                                    </menu>
-                                                </popUpButtonCell>
+                                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                                </buttonCell>
                                                 <connections>
-                                                    <action selector="selectFormatDetermined:" target="fEv-0E-w8Q" id="PyC-e4-KuQ"/>
+                                                    <action selector="cancelPushed:" target="NKk-nb-iKR" id="VTX-0r-pnV"/>
                                                 </connections>
-                                            </popUpButton>
-                                        </subviews>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="60" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tvm-G1-tIF" userLabel="Data Format">
-                                        <rect key="frame" x="111" y="108" width="239" height="21"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X4g-RP-nU7">
-                                                <rect key="frame" x="-2" y="3" width="83" height="16"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Data Format:" id="Ni8-OV-zQK">
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tpn-Co-Gkf">
+                                                <rect key="frame" x="91" y="-7" width="80" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Import" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rLe-RG-EVq">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GXO-g3-nhT">
-                                                <rect key="frame" x="137" y="-3" width="105" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="yhc-5P-63a"/>
-                                                </constraints>
-                                                <popUpButtonCell key="cell" type="push" title="NEXUS" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="nQ6-xV-RcR" id="Z0B-E1-Ygu">
-                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="menu"/>
-                                                    <menu key="menu" id="qjt-9Y-Fh3">
-                                                        <items>
-                                                            <menuItem title="NEXUS" state="on" id="nQ6-xV-RcR"/>
-                                                            <menuItem title="PHYLIP" id="4z0-mU-EP7" userLabel="PHYLIP"/>
-                                                            <menuItem title="FASTA" id="Ndn-NY-3r5" userLabel="PHYLIP"/>
-                                                        </items>
-                                                    </menu>
-                                                </popUpButtonCell>
+                                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                                </buttonCell>
                                                 <connections>
-                                                    <action selector="selectDataFormat:" target="fEv-0E-w8Q" id="f4n-Kw-Sjl"/>
-                                                    <binding destination="fEv-0E-w8Q" name="enabled" keyPath="formatDeterminedByUser" id="fVH-ZC-Rjd"/>
+                                                    <action selector="importPushed:" target="NKk-nb-iKR" id="OrX-Zp-q0A"/>
                                                 </connections>
-                                            </popUpButton>
-                                        </subviews>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="60" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EFJ-sv-zrZ" userLabel="Data Type">
-                                        <rect key="frame" x="124" y="72" width="226" height="21"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DcX-4I-mXt">
-                                                <rect key="frame" x="-2" y="3" width="70" height="16"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Data Type:" id="Lu6-CJ-RN7">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="76H-U6-299">
-                                                <rect key="frame" x="124" y="-3" width="105" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="mCA-Zl-y8v"/>
-                                                </constraints>
-                                                <popUpButtonCell key="cell" type="push" title="Standard" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eO6-T2-SYb" id="CLi-tT-v93">
-                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="menu"/>
-                                                    <menu key="menu" id="dho-FB-gLV">
-                                                        <items>
-                                                            <menuItem title="Standard" id="eO6-T2-SYb" userLabel="Standard">
-                                                                <connections>
-                                                                    <binding destination="fEv-0E-w8Q" name="enabled" keyPath="standardDataTypeSelectable" id="Joz-tO-yGq"/>
-                                                                </connections>
-                                                            </menuItem>
-                                                            <menuItem title="DNA" tag="1" id="q8d-Xe-5Ki"/>
-                                                            <menuItem title="RNA" tag="2" id="3iX-P1-fjb"/>
-                                                            <menuItem title="Protein" state="on" tag="3" id="ZcJ-9O-M9F" userLabel="Protein"/>
-                                                        </items>
-                                                    </menu>
-                                                </popUpButtonCell>
-                                                <connections>
-                                                    <action selector="selectDataType:" target="fEv-0E-w8Q" id="JsB-ER-TzL"/>
-                                                    <binding destination="fEv-0E-w8Q" name="enabled" keyPath="dataTypeSelectable" id="eIU-G5-oYp"/>
-                                                </connections>
-                                            </popUpButton>
-                                        </subviews>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="60" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wKv-RV-7Tz" userLabel="Data Alignment">
-                                        <rect key="frame" x="93" y="36" width="257" height="21"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibn-s1-Lgw">
-                                                <rect key="frame" x="-2" y="3" width="101" height="16"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Data Alignment:" id="sdS-6D-Zix">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1J9-Ow-ayt" userLabel="Data Alignment">
-                                                <rect key="frame" x="155" y="-3" width="105" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="yxv-68-08A"/>
-                                                </constraints>
-                                                <popUpButtonCell key="cell" type="push" title="Aligned" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Pql-Y1-Zid" id="2hM-13-yFJ">
-                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="menu"/>
-                                                    <menu key="menu" id="nSq-cB-1c6">
-                                                        <items>
-                                                            <menuItem title="Aligned" state="on" id="Pql-Y1-Zid"/>
-                                                            <menuItem title="Unaligned" id="pda-Yb-YRL"/>
-                                                        </items>
-                                                    </menu>
-                                                </popUpButtonCell>
-                                                <connections>
-                                                    <action selector="selectDataAlignment:" target="fEv-0E-w8Q" id="4hS-JX-rwV"/>
-                                                </connections>
-                                            </popUpButton>
-                                        </subviews>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="60" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qA-by-fLv" userLabel="Interleaved Format">
-                                        <rect key="frame" x="72" y="0.0" width="278" height="21"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PlE-u7-Kss">
-                                                <rect key="frame" x="-2" y="3" width="122" height="16"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Interleaved Format:" id="K6m-7V-3gR">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0vv-qK-sS2" userLabel="Interlieaved Format">
-                                                <rect key="frame" x="176" y="-3" width="105" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="3Ge-5M-7Ox"/>
-                                                </constraints>
-                                                <popUpButtonCell key="cell" type="push" title="Yes" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Afc-zC-bEi" id="4e8-gv-muZ">
-                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="menu"/>
-                                                    <menu key="menu" id="W7e-hs-Cep">
-                                                        <items>
-                                                            <menuItem title="Yes" state="on" id="Afc-zC-bEi"/>
-                                                            <menuItem title="No" id="neU-TY-RvQ"/>
-                                                        </items>
-                                                    </menu>
-                                                </popUpButtonCell>
-                                                <connections>
-                                                    <action selector="selectInterleavedFormat:" target="fEv-0E-w8Q" id="Ske-5o-HMq"/>
-                                                    <binding destination="fEv-0E-w8Q" name="enabled" keyPath="interleavedFormatSelectable" id="1ir-ka-bti"/>
-                                                </connections>
-                                            </popUpButton>
+                                            </button>
                                         </subviews>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
@@ -330,49 +67,267 @@ DQ
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <box fixedFrame="YES" title="Data Matrix" translatesAutoresizingMaskIntoConstraints="NO" id="rd7-Je-i7N">
+                                <rect key="frame" x="47" y="61" width="356" height="211"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" id="Pyi-7D-t5e">
+                                    <rect key="frame" x="3" y="3" width="350" height="192"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uwZ-Gb-b4r">
+                                            <rect key="frame" x="20" y="19" width="298" height="153"/>
+                                            <subviews>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="60" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O4K-Os-aqD" userLabel="Format determined">
+                                                    <rect key="frame" x="0.0" y="132" width="298" height="21"/>
+                                                    <subviews>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fE1-D8-Sa6">
+                                                            <rect key="frame" x="-2" y="3" width="142" height="16"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Format determined by:" id="w1m-Ej-gde">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pra-oS-6KI">
+                                                            <rect key="frame" x="196" y="-3" width="105" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="AC8-c2-Nbo"/>
+                                                            </constraints>
+                                                            <popUpButtonCell key="cell" type="push" title="User" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TPd-NC-Y4o" id="5Mv-nK-QB0">
+                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                                <menu key="menu" id="xSR-jA-YmD">
+                                                                    <items>
+                                                                        <menuItem title="User" state="on" id="TPd-NC-Y4o"/>
+                                                                        <menuItem title="RevBayes" id="IA1-Kn-vXc"/>
+                                                                    </items>
+                                                                </menu>
+                                                            </popUpButtonCell>
+                                                            <connections>
+                                                                <action selector="selectFormatDetermined:" target="NKk-nb-iKR" id="uUS-BX-v44"/>
+                                                            </connections>
+                                                        </popUpButton>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="60" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tvm-G1-tIF" userLabel="Data Format">
+                                                    <rect key="frame" x="59" y="99" width="239" height="21"/>
+                                                    <subviews>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X4g-RP-nU7">
+                                                            <rect key="frame" x="-2" y="3" width="83" height="16"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Data Format:" id="Ni8-OV-zQK">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GXO-g3-nhT">
+                                                            <rect key="frame" x="137" y="-3" width="105" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="yhc-5P-63a"/>
+                                                            </constraints>
+                                                            <popUpButtonCell key="cell" type="push" title="NEXUS" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="nQ6-xV-RcR" id="Z0B-E1-Ygu">
+                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                                <menu key="menu" id="qjt-9Y-Fh3">
+                                                                    <items>
+                                                                        <menuItem title="NEXUS" state="on" id="nQ6-xV-RcR"/>
+                                                                        <menuItem title="PHYLIP" id="4z0-mU-EP7" userLabel="PHYLIP"/>
+                                                                        <menuItem title="FASTA" id="Ndn-NY-3r5" userLabel="PHYLIP"/>
+                                                                    </items>
+                                                                </menu>
+                                                            </popUpButtonCell>
+                                                            <connections>
+                                                                <action selector="selectDataFormat:" target="NKk-nb-iKR" id="4ex-Tg-R0J"/>
+                                                                <binding destination="NKk-nb-iKR" name="enabled" keyPath="formatDeterminedByUser" id="Z0L-qu-sWO"/>
+                                                            </connections>
+                                                        </popUpButton>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="60" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EFJ-sv-zrZ" userLabel="Data Type">
+                                                    <rect key="frame" x="72" y="66" width="226" height="21"/>
+                                                    <subviews>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DcX-4I-mXt">
+                                                            <rect key="frame" x="-2" y="3" width="70" height="16"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Data Type:" id="Lu6-CJ-RN7">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="76H-U6-299">
+                                                            <rect key="frame" x="124" y="-3" width="105" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="mCA-Zl-y8v"/>
+                                                            </constraints>
+                                                            <popUpButtonCell key="cell" type="push" title="Standard" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eO6-T2-SYb" id="CLi-tT-v93">
+                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                                <menu key="menu" id="dho-FB-gLV">
+                                                                    <items>
+                                                                        <menuItem title="Standard" state="on" id="eO6-T2-SYb" userLabel="Standard">
+                                                                            <connections>
+                                                                                <binding destination="NKk-nb-iKR" name="enabled" keyPath="standardDataTypeSelectable" id="vLz-Np-KK9"/>
+                                                                            </connections>
+                                                                        </menuItem>
+                                                                        <menuItem title="DNA" tag="1" id="q8d-Xe-5Ki"/>
+                                                                        <menuItem title="RNA" tag="2" id="3iX-P1-fjb"/>
+                                                                        <menuItem title="Protein" tag="3" id="ZcJ-9O-M9F" userLabel="Protein"/>
+                                                                    </items>
+                                                                </menu>
+                                                            </popUpButtonCell>
+                                                            <connections>
+                                                                <action selector="selectDataType:" target="NKk-nb-iKR" id="Itp-8S-fX1"/>
+                                                                <binding destination="NKk-nb-iKR" name="enabled" keyPath="dataTypeSelectable" id="src-zC-saB"/>
+                                                            </connections>
+                                                        </popUpButton>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="60" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wKv-RV-7Tz" userLabel="Data Alignment">
+                                                    <rect key="frame" x="41" y="33" width="257" height="21"/>
+                                                    <subviews>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibn-s1-Lgw">
+                                                            <rect key="frame" x="-2" y="3" width="101" height="16"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Data Alignment:" id="sdS-6D-Zix">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1J9-Ow-ayt" userLabel="Data Alignment">
+                                                            <rect key="frame" x="155" y="-3" width="105" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="yxv-68-08A"/>
+                                                            </constraints>
+                                                            <popUpButtonCell key="cell" type="push" title="Aligned" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Pql-Y1-Zid" id="2hM-13-yFJ">
+                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                                <menu key="menu" id="nSq-cB-1c6">
+                                                                    <items>
+                                                                        <menuItem title="Aligned" state="on" id="Pql-Y1-Zid"/>
+                                                                        <menuItem title="Unaligned" id="pda-Yb-YRL"/>
+                                                                    </items>
+                                                                </menu>
+                                                            </popUpButtonCell>
+                                                            <connections>
+                                                                <action selector="selectDataAlignment:" target="NKk-nb-iKR" id="Xi8-5T-6uV"/>
+                                                                <binding destination="NKk-nb-iKR" name="enabled" keyPath="dataAlignmentSelectable" id="tAs-1l-EZi"/>
+                                                            </connections>
+                                                        </popUpButton>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="60" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qA-by-fLv" userLabel="Interleaved Format">
+                                                    <rect key="frame" x="20" y="0.0" width="278" height="21"/>
+                                                    <subviews>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PlE-u7-Kss">
+                                                            <rect key="frame" x="-2" y="3" width="122" height="16"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Interleaved Format:" id="K6m-7V-3gR">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0vv-qK-sS2" userLabel="Interlieaved Format">
+                                                            <rect key="frame" x="176" y="-3" width="105" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="3Ge-5M-7Ox"/>
+                                                            </constraints>
+                                                            <popUpButtonCell key="cell" type="push" title="Yes" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Afc-zC-bEi" id="4e8-gv-muZ">
+                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                                <menu key="menu" id="W7e-hs-Cep">
+                                                                    <items>
+                                                                        <menuItem title="Yes" state="on" id="Afc-zC-bEi"/>
+                                                                        <menuItem title="No" id="neU-TY-RvQ"/>
+                                                                    </items>
+                                                                </menu>
+                                                            </popUpButtonCell>
+                                                            <connections>
+                                                                <action selector="selectInterleavedFormat:" target="NKk-nb-iKR" id="q0R-Ba-kyQ"/>
+                                                                <binding destination="NKk-nb-iKR" name="enabled" keyPath="interleavedFormatSelectable" id="A7K-bN-reS"/>
+                                                            </connections>
+                                                        </popUpButton>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                            </subviews>
+                                            <visibilityPriorities>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                            </visibilityPriorities>
+                                            <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                            </customSpacing>
+                                        </stackView>
+                                    </subviews>
+                                </view>
+                                <font key="titleFont" metaFont="systemMedium" size="12"/>
+                            </box>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="uwZ-Gb-b4r" firstAttribute="centerY" secondItem="bvt-Ek-VA3" secondAttribute="centerY" id="DWb-mA-qZe"/>
-                            <constraint firstAttribute="trailing" secondItem="uwZ-Gb-b4r" secondAttribute="trailing" constant="50" id="Lfl-UH-zZA" userLabel="trailing = Stack View.trailing + 70"/>
-                            <constraint firstItem="uwZ-Gb-b4r" firstAttribute="centerX" secondItem="bvt-Ek-VA3" secondAttribute="centerX" id="wzc-oD-zcA"/>
-                        </constraints>
                     </customView>
                     <connections>
-                        <outlet property="dataAlignment" destination="1J9-Ow-ayt" id="rzG-3W-sjg"/>
-                        <outlet property="dataFormat" destination="GXO-g3-nhT" id="0yn-UG-nT9"/>
-                        <outlet property="dataType" destination="76H-U6-299" id="HGt-Tp-M8m"/>
-                        <outlet property="formatDeterminedBy" destination="Pra-oS-6KI" id="hSD-3i-DzP"/>
-                        <outlet property="interleavedFormat" destination="0vv-qK-sS2" id="KET-R4-iGn"/>
+                        <outlet property="dataAlignment" destination="1J9-Ow-ayt" id="Kqt-us-qk3"/>
+                        <outlet property="dataFormatButton" destination="GXO-g3-nhT" id="yCW-Dv-m28"/>
+                        <outlet property="dataTypeButton" destination="76H-U6-299" id="fua-1w-TjK"/>
+                        <outlet property="formatDeterminedBy" destination="Pra-oS-6KI" id="vR4-I4-57y"/>
+                        <outlet property="interleavedFormat" destination="0vv-qK-sS2" id="H2Q-ah-6fV"/>
                     </connections>
                 </viewController>
-                <customObject id="zZo-4t-Ojk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="qfo-nq-oxm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="TbB-ZW-p9D"/>
             </objects>
-            <point key="canvasLocation" x="395" y="-10405"/>
-        </scene>
-        <!--Blank Matrix-->
-        <scene sceneID="f52-oZ-8rW">
-            <objects>
-                <viewController title="Blank Matrix" id="c1r-Hd-KdI" sceneMemberID="viewController">
-                    <customView key="view" id="ira-hh-Qjn">
-                        <rect key="frame" x="0.0" y="0.0" width="303" height="291"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </customView>
-                </viewController>
-                <customObject id="PCO-2c-TrI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="978" y="-10637"/>
+            <point key="canvasLocation" x="390" y="-11334"/>
         </scene>
     </scenes>
 </document>
