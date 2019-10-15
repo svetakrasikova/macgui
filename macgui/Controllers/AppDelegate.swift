@@ -15,7 +15,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+    
+        let myCoreBridge: CoreBridge = CoreBridge()
+        myCoreBridge.startCore()
+        myCoreBridge.printTest()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
