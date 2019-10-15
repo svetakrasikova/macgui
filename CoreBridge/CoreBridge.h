@@ -6,7 +6,7 @@
     
 }
 
-- (void)printTest;
+- (int)sendParser:(NSString*)theCommand;
 - (void)startCore;
 
 @end

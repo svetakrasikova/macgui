@@ -12,17 +12,21 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+    let myCoreBridge: CoreBridge = CoreBridge()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
     
-        let myCoreBridge: CoreBridge = CoreBridge()
         myCoreBridge.startCore()
-        myCoreBridge.printTest()
+        
+        myCoreBridge.sendParser("x <- 3")
+        myCoreBridge.sendParser("x")
+        myCoreBridge.sendParser("y <- 30")
+        myCoreBridge.sendParser("x + y")
+
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+
     }
 
 
