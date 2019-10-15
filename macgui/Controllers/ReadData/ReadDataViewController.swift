@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ReadDataViewController: NSViewController {
+class ReadDataViewController: ToolViewController {
     
 
     @IBOutlet weak var formatDeterminedBy: NSPopUpButton!
@@ -16,7 +16,6 @@ class ReadDataViewController: NSViewController {
     @IBOutlet weak var dataTypeButton: NSPopUpButton!
     @IBOutlet weak var dataAlignment: NSPopUpButton!
     @IBOutlet weak var interleavedFormat: NSPopUpButton!
-    
     
    
     @objc dynamic var formatDeterminedByUser = true
