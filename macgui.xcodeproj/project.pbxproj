@@ -71,6 +71,7 @@
 		14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */ = {isa = PBXBuildFile; fileRef = 14ECE4DE233BFE2300106EB4 /* aquabayes.icns */; };
 		14F95D6623569913009884D2 /* ToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D6523569913009884D2 /* ToolViewController.swift */; };
 		14F95D68235699BF009884D2 /* DataMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D67235699BF009884D2 /* DataMatrix.swift */; };
+		14F95D6C23569A70009884D2 /* CoreBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D6A23569A70009884D2 /* CoreBridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +142,9 @@
 		14ECE4DE233BFE2300106EB4 /* aquabayes.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = aquabayes.icns; sourceTree = "<group>"; };
 		14F95D6523569913009884D2 /* ToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolViewController.swift; sourceTree = "<group>"; };
 		14F95D67235699BF009884D2 /* DataMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMatrix.swift; sourceTree = "<group>"; };
+		14F95D6A23569A70009884D2 /* CoreBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreBridge.m; sourceTree = "<group>"; };
+		14F95D6B23569A70009884D2 /* CoreBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreBridge.h; sourceTree = "<group>"; };
+		14F95D6D23569A87009884D2 /* macgui-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "macgui-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,7 @@
 		1411BE832203D8FB009BEE1D = {
 			isa = PBXGroup;
 			children = (
+				14F95D6923569A70009884D2 /* CoreBridge */,
 				1411BE8E2203D8FB009BEE1D /* macgui */,
 				1411BE8D2203D8FB009BEE1D /* Products */,
 			);
@@ -173,6 +178,7 @@
 		1411BE8E2203D8FB009BEE1D /* macgui */ = {
 			isa = PBXGroup;
 			children = (
+				14F95D6D23569A87009884D2 /* macgui-Bridging-Header.h */,
 				1452356A220CE9AC00A85186 /* Assets.xcassets */,
 				1411BED722052A5E009BEE1D /* macgui.entitlements */,
 				14523575220E101400A85186 /* Model */,
@@ -315,6 +321,15 @@
 			path = ImageHandling;
 			sourceTree = "<group>";
 		};
+		14F95D6923569A70009884D2 /* CoreBridge */ = {
+			isa = PBXGroup;
+			children = (
+				14F95D6A23569A70009884D2 /* CoreBridge.m */,
+				14F95D6B23569A70009884D2 /* CoreBridge.h */,
+			);
+			path = CoreBridge;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -414,6 +429,7 @@
 				141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */,
 				14F95D68235699BF009884D2 /* DataMatrix.swift in Sources */,
 				14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */,
+				14F95D6C23569A70009884D2 /* CoreBridge.m in Sources */,
 				14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */,
 				14E585742298574100802691 /* ArrowView.swift in Sources */,
 				14D6DE062220B50800021607 /* CanvasViewController.swift in Sources */,
