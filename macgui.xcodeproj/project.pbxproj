@@ -69,6 +69,8 @@
 		14E5858122B0810B00802691 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5858022B0810B00802691 /* Connector.swift */; };
 		14EBB04923381FC70087CB27 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EBB04823381FC70087CB27 /* DataSource.swift */; };
 		14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */ = {isa = PBXBuildFile; fileRef = 14ECE4DE233BFE2300106EB4 /* aquabayes.icns */; };
+		14F95D6623569913009884D2 /* ToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D6523569913009884D2 /* ToolViewController.swift */; };
+		14F95D68235699BF009884D2 /* DataMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D67235699BF009884D2 /* DataMatrix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +139,8 @@
 		14E5858022B0810B00802691 /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 		14EBB04823381FC70087CB27 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = macgui/Model/DataSource.swift; sourceTree = SOURCE_ROOT; };
 		14ECE4DE233BFE2300106EB4 /* aquabayes.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = aquabayes.icns; sourceTree = "<group>"; };
+		14F95D6523569913009884D2 /* ToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolViewController.swift; sourceTree = "<group>"; };
+		14F95D67235699BF009884D2 /* DataMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMatrix.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,7 @@
 		1452356D220DF57800A85186 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				14F95D6523569913009884D2 /* ToolViewController.swift */,
 				147429D622CADDF800FF1963 /* SheetViewController.swift */,
 				146F42D22344396F00547562 /* ReadData */,
 				1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */,
@@ -264,6 +269,7 @@
 				14E5858022B0810B00802691 /* Connector.swift */,
 				14E5857D22A8006F00802691 /* Connection.swift */,
 				1471051F225DA5C800E88657 /* Tool Model */,
+				14F95D67235699BF009884D2 /* DataMatrix.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 				14E5857C22A6F16300802691 /* CanvasObjectView.swift in Sources */,
 				147105252265437600E88657 /* Bootstrap.swift in Sources */,
 				141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */,
+				14F95D68235699BF009884D2 /* DataMatrix.swift in Sources */,
 				14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */,
 				14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */,
 				14E585742298574100802691 /* ArrowView.swift in Sources */,
@@ -427,6 +434,7 @@
 				147105312280E52300E88657 /* ReadData.swift in Sources */,
 				144CC4AF220E4081003311E4 /* ImageLoader.swift in Sources */,
 				14D6DE03221F47CD00021607 /* MainSplitViewController.swift in Sources */,
+				14F95D6623569913009884D2 /* ToolViewController.swift in Sources */,
 				14E58528228DF92F00802691 /* Notifications.swift in Sources */,
 				147429DB22CBC8C300FF1963 /* Storyboards.swift in Sources */,
 				14523574220E100B00A85186 /* ImageFile.swift in Sources */,

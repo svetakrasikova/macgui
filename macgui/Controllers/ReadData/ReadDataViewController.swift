@@ -29,9 +29,6 @@ class ReadDataViewController: ToolViewController {
     var dataAligned: Bool = true
     var dataInterleaved: Bool = true
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     @IBAction func selectFormatDetermined(_ sender: NSPopUpButton) {
         switch sender.indexOfSelectedItem {
