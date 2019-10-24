@@ -161,7 +161,6 @@
 		1411BE832203D8FB009BEE1D = {
 			isa = PBXGroup;
 			children = (
-				14F95D6923569A70009884D2 /* CoreBridge */,
 				1411BE8E2203D8FB009BEE1D /* macgui */,
 				1411BE8D2203D8FB009BEE1D /* Products */,
 			);
@@ -178,6 +177,7 @@
 		1411BE8E2203D8FB009BEE1D /* macgui */ = {
 			isa = PBXGroup;
 			children = (
+				14F95D6923569A70009884D2 /* CoreBridge */,
 				14F95D6D23569A87009884D2 /* macgui-Bridging-Header.h */,
 				1452356A220CE9AC00A85186 /* Assets.xcassets */,
 				1411BED722052A5E009BEE1D /* macgui.entitlements */,
