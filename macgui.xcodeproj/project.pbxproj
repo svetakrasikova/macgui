@@ -601,6 +601,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ucb.macgui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "macgui/macgui-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -621,6 +622,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ucb.macgui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "macgui/macgui-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
