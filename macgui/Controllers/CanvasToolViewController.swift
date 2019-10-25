@@ -96,7 +96,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         
         NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
         
-          NotificationCenter.default.addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                      selector: #selector(didAddNewArrow(notification:)),
                                                      name: .didAddNewArrow,
                                                      object: nil)
@@ -181,10 +181,30 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
     
     func infoButtonClicked() {
-        self.presentAsModalWindow(sheetViewController)
+        if let toolName = tool?.name {
+            let toolType = ToolType(rawValue: toolName)
+            switch toolType {
+            case  .readdata:
+                openFileBrowser()
+            default:
+                presentAsModalWindow(sheetViewController)
+            }
+        }
     }
     
-    func getToolName() -> String {
+    func openFileBrowser() {
+        let panel = NSOpenPanel()
+        // specify allowed file extensions
+        panel.allowedFileTypes = []
+        panel.begin { [unowned self] result in
+            if result == .OK {
+                guard let fileURL = panel.url else { return }
+                //do something with the file URL
+            }
+        }
+    }
+    
+    func getDescriptiveToolName() -> String {
         if let toolName = self.tool?.descriptiveName { return toolName }
         return "Unnamed Tool"
     }
@@ -196,6 +216,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
 
     
 }
+
 
 extension CanvasToolViewController: NSCollectionViewDataSource {
     

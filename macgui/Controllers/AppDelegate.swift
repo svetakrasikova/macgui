@@ -16,12 +16,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
     
-        myCoreBridge.startCore()
-        
-        myCoreBridge.sendParser("x <- 3")
-        myCoreBridge.sendParser("x")
-        myCoreBridge.sendParser("y <- 30")
-        myCoreBridge.sendParser("x + y")
+//        myCoreBridge.startCore()
+//
+//        myCoreBridge.sendParser("x <- 3")
+//        myCoreBridge.sendParser("x")
+//        myCoreBridge.sendParser("y <- 30")
+//        myCoreBridge.sendParser("x + y")
 
     }
 

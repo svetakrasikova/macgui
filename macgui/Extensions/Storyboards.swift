@@ -14,7 +14,7 @@ enum StoryBoardName: String {
     case canvas = "EditorTools"
     case analyses = "AnalysisLogView"
     case modalSheet = "ModalSheet"
-    case readData = "ReadData"
+    case modelTool = "ModelTool"
     case modalSheetTabView = "ModalSheetTabView"
     case toolTip = "ToolTip"
     case notebook = "Notebook"
@@ -37,3 +37,5 @@ extension NSStoryboard{
         return NSStoryboard(name: storyboard.rawValue, bundle: nil).instantiateController(withIdentifier: storyboard.rawValue) as! NSWindowController
     }
 }
+
+

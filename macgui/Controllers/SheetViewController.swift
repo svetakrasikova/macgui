@@ -40,22 +40,12 @@ class SheetViewController: NSViewController {
 
     func findTabIndex() -> Int {
         for (index, tabItem) in tabViewController.tabViewItems.enumerated() {
-            let name = getToolName()
-            if tabItem.identifier as! String == name {
+            let name = tool?.getStroyboardName()
+            if tabItem.identifier as? String == name {
                 return index
             }
         }
         return 0
-    }
-    
-    func getToolName() -> String {
-        switch tool {
-        case _ as ReadData:
-            return StoryBoardName.readData.rawValue
-        default:
-            return StoryBoardName.readData.rawValue
-        }
-
     }
     
 }

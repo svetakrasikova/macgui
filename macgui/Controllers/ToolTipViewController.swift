@@ -18,7 +18,7 @@ class ToolTipViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.toolNameLabel.stringValue = delegate?.getToolName() ?? "Unnamed Tool"
+        self.toolNameLabel.stringValue = delegate?.getDescriptiveToolName() ?? "Unnamed Tool"
         setConnectionStatus()
     }
     
@@ -34,6 +34,6 @@ class ToolTipViewController: NSViewController {
 }
 
 protocol ToolTipDelegate: class {
-    func getToolName() -> String
+    func getDescriptiveToolName() -> String
     func isConnected() -> Bool
 }

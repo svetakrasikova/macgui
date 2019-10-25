@@ -34,4 +34,18 @@ class ToolObject: NSObject, NSCoding {
     }
 }
 
+extension ToolObject {
+
+func getStroyboardName() -> String {
+    switch self {
+    case _ as ReadData:
+        return StoryBoardName.modelTool.rawValue
+    default:
+        return StoryBoardName.modelTool.rawValue
+        }
+    }
+    
+}
+
+
 

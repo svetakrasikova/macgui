@@ -16,6 +16,7 @@ class InfoButton: NSButton {
         case highlighted
     }
     
+    
     private let shapeLayer = CAShapeLayer()
     
     var buttonState: ButtonState = .idle { didSet { needsLayout = true } }
