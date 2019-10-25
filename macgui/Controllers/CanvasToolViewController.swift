@@ -10,7 +10,10 @@ import Cocoa
 
 class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate, InfoButtonDelegate, ToolTipDelegate {
     
-    weak var tool: ToolObject?
+
+    
+    
+    // MARK: -  Interface Builder Outlets
     
     @IBOutlet weak var infoButton: InfoButton!
     @IBOutlet weak var inletsScrollView: NSScrollView!
@@ -19,11 +22,11 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     @IBOutlet weak var outlets: NSCollectionView!
     @IBOutlet weak var imageView: NSImageView!
     
-    let toolTipPopover: NSPopover = NSPopover()
-    var popoverLoopTimer: Timer?
-    var showPopoverTimer: Timer?
-    var showFirstPopoverTimer: Timer?
-
+    // MARK: - Tool Related Properties
+    
+    weak var tool: ToolObject?
+    
+    
     var image: NSImage {
         guard let tool = self.tool else {
             return NSImage(named: "AppIcon")!
@@ -38,31 +41,14 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         return tool.frameOnCanvas
     }
     
+    // MARK: - Info Popover Related Properties
     
-    lazy var sheetViewController: SheetViewController = {
-        let vc = NSStoryboard.loadVC(StoryBoardName.modalSheet)  as! SheetViewController
-        vc.tool = tool
-        return vc
-    }()
+    let toolTipPopover: NSPopover = NSPopover()
+    var popoverLoopTimer: Timer?
+    var showPopoverTimer: Timer?
+    var showFirstPopoverTimer: Timer?
     
-    
-    override func keyDown(with event: NSEvent) {
-        if event.charactersIgnoringModifiers == String(Character(UnicodeScalar(NSDeleteCharacter)!)) {
-            let point = event.locationInWindow
-            NotificationCenter.default.post(name: .didSelectDeleteKey, object: self, userInfo: ["point": point])
-        }
-    }
-    
-    override func mouseEntered(with event: NSEvent) {
-        infoButton.mouseEntered(with: event)
-            if !toolTipPopover.isShown {
-                showFirstPopoverTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(showPopover), userInfo: nil, repeats: false)
-                }
-            self.popoverLoopTimer = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(popoverLoop), userInfo: nil, repeats: true)
-        
-    }
-    
-     @objc func showPopover(){
+    @objc func showPopover(){
         self.toolTipPopover.show(relativeTo: self.view.bounds, of: self.view, preferredEdge: NSRectEdge.minY)
     }
 
@@ -80,19 +66,60 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         self.toolTipPopover.close()
     }
     
+    func setPopOver(){
+           toolTipPopover.contentViewController = NSStoryboard.loadVC(StoryBoardName.toolTip)
+           (toolTipPopover.contentViewController as! ToolTipViewController).delegate = self
+       }
+       
+    
+    // MARK: - Info Button Modal Dialog
+    
+    lazy var sheetViewController: SheetViewController = {
+        let vc = NSStoryboard.loadVC(StoryBoardName.modalSheet)  as! SheetViewController
+        vc.tool = tool
+        return vc
+    }()
+    
+    // MARK: - Mouse Events
+    
+    override func keyDown(with event: NSEvent) {
+        if event.charactersIgnoringModifiers == String(Character(UnicodeScalar(NSDeleteCharacter)!)) {
+            let point = event.locationInWindow
+            NotificationCenter.default.post(name: .didSelectDeleteKey, object: self, userInfo: ["point": point])
+        }
+    }
+    
+    override func mouseEntered(with event: NSEvent) {
+        infoButton.mouseEntered(with: event)
+            if !toolTipPopover.isShown {
+                showFirstPopoverTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(showPopover), userInfo: nil, repeats: false)
+                }
+            self.popoverLoopTimer = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(popoverLoop), userInfo: nil, repeats: true)
+        
+    }
+    
+    
     override func mouseExited(with event: NSEvent) {
         infoButton.mouseExited(with: event)
         closePopover()
     }
     
+    func setTrackingArea(){
+           let trackingArea = NSTrackingArea(rect: view.bounds,
+                                             options: [NSTrackingArea.Options.activeAlways ,NSTrackingArea.Options.mouseEnteredAndExited],
+                                             owner: self,
+                                             userInfo: nil)
+           view.addTrackingArea(trackingArea)
+       }
+    
+    // MARK: - Controller Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let window = NSApp.windows.first{
-            window.delegate = self
-        }
-       
+        
+        if let window = NSApp.windows.first { window.delegate = self}
         infoButton.delegate = self
+        (self.view as! CanvasToolView).canvasViewToolDelegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
         
@@ -100,48 +127,24 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
                                                      selector: #selector(didAddNewArrow(notification:)),
                                                      name: .didAddNewArrow,
                                                      object: nil)
-    
-        setFrame()
-        setImage()
-        setTrackingArea()
-        setPopOver()
-        
-        (self.view as! CanvasToolView).canvasViewToolDelegate = self
-        
-        
-        if tool!.isKind(of: Connectable.self){
-                unhideConnectors()
-            }
+        setUp()
     }
     
     override func viewDidDisappear() {
         closePopover()
     }
     
-    @objc func didAddNewArrow(notification: Notification){
-
-        let tools = notification.userInfo as! [String:ToolObject]
-        if tool == tools["sourceTool"]{
-            outlets.reloadData()
-        }
-        if tool == tools["targetTool"] {
-            inlets.reloadData()
-        }
-        
-    }
-    func setPopOver(){
-        toolTipPopover.contentViewController = NSStoryboard.loadVC(StoryBoardName.toolTip)
-        (toolTipPopover.contentViewController as! ToolTipViewController).delegate = self
-    }
+    func setUp(){
+           setFrame()
+           setImage()
+           setTrackingArea()
+           setPopOver()
+           if tool!.isKind(of: Connectable.self){ unhideConnectors()}
+       }
+   
     
-    func setTrackingArea(){
-        let trackingArea = NSTrackingArea(rect: view.bounds,
-                                          options: [NSTrackingArea.Options.activeAlways ,NSTrackingArea.Options.mouseEnteredAndExited],
-                                          owner: self,
-                                          userInfo: nil)
-        view.addTrackingArea(trackingArea)
-    }
-
+    // MARK: - View Setup
+   
     func unhideConnectors(){
         inletsScrollView.isHidden = false
         outletsScrollView.isHidden = false
@@ -155,13 +158,9 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     func setImage(){
         imageView.image = image
     }
+
     
-    func updateFrame(){
-        let size = tool?.frameOnCanvas.size
-        let origin = view.frame.origin
-        tool?.frameOnCanvas = NSRect(origin: origin, size: size!)
-        
-    }
+    // MARK: - Canvas Tool View Delegate
     
     func getConnectorItem(_ sender: NSDraggingInfo) -> ConnectorItemView? {
         if let connectionDragController = sender.draggingSource as? ConnectionDragController, let color = connectionDragController.sourceEndpoint?.arrowColor {
@@ -175,11 +174,15 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         return nil
     }
     
+    func updateFrame(){
+         let size = tool?.frameOnCanvas.size
+         let origin = view.frame.origin
+         tool?.frameOnCanvas = NSRect(origin: origin, size: size!)
+         
+     }
     
-   func windowDidResize(_ notification: Notification) {
-        updateFrame()
-    }
     
+    // MARK: - Info Button Delegate
     func infoButtonClicked() {
         if let toolName = tool?.name {
             let toolType = ToolType(rawValue: toolName)
@@ -204,20 +207,39 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         }
     }
     
-    func getDescriptiveToolName() -> String {
-        if let toolName = self.tool?.descriptiveName { return toolName }
-        return "Unnamed Tool"
-    }
+    // MARK: - Tool Tip Delegate
     
     func isConnected() -> Bool {
         return (self.tool as! Connectable).isConnected
     }
     
-
+    func getDescriptiveToolName() -> String {
+           if let toolName = self.tool?.descriptiveName { return toolName }
+           return "Unnamed Tool"
+       }
     
+    // MARK: - Selectors for Observed Notifications
+    
+    
+    @objc func didAddNewArrow(notification: Notification){
+
+        let tools = notification.userInfo as! [String:ToolObject]
+        if tool == tools["sourceTool"]{
+            outlets.reloadData()
+        }
+        if tool == tools["targetTool"] {
+            inlets.reloadData()
+        }
+    }
+    
+    func windowDidResize(_ notification: Notification) {
+           updateFrame()
+       }
+       
+
 }
 
-
+// MARK: - Inlets and Outlets
 extension CanvasToolViewController: NSCollectionViewDataSource {
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
