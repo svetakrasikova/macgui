@@ -1335,6 +1335,7 @@
 		149F8B3523624E93003146FD /* Bitvector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149F8B2C23624E93003146FD /* Bitvector.swift */; };
 		149F8B372363927B003146FD /* ToolObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149F8B362363927B003146FD /* ToolObject.swift */; };
 		149F8B3B2363934F003146FD /* ModelToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149F8B3A2363934F003146FD /* ModelToolViewController.swift */; };
+		149F8B3D23639E46003146FD /* DataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149F8B3C23639E46003146FD /* DataTool.swift */; };
 		14A663BC23186CFE0034EA53 /* Notebook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A663BB23186CFE0034EA53 /* Notebook.storyboard */; };
 		14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BD2319A0950034EA53 /* NotebookViewController.swift */; };
 		14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */; };
@@ -4177,6 +4178,7 @@
 		149F8B2C23624E93003146FD /* Bitvector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bitvector.swift; sourceTree = "<group>"; };
 		149F8B362363927B003146FD /* ToolObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolObject.swift; sourceTree = "<group>"; };
 		149F8B3A2363934F003146FD /* ModelToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelToolViewController.swift; sourceTree = "<group>"; };
+		149F8B3C23639E46003146FD /* DataTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataTool.swift; path = Connectables/DataTool.swift; sourceTree = "<group>"; };
 		14A663BB23186CFE0034EA53 /* Notebook.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notebook.storyboard; sourceTree = "<group>"; };
 		14A663BD2319A0950034EA53 /* NotebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookViewController.swift; sourceTree = "<group>"; };
 		14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookWindowController.swift; sourceTree = "<group>"; };
@@ -4354,6 +4356,7 @@
 			children = (
 				149F8B362363927B003146FD /* ToolObject.swift */,
 				14710522225DA69500E88657 /* Connectable.swift */,
+				149F8B3C23639E46003146FD /* DataTool.swift */,
 				147105322280ED9D00E88657 /* Connectables */,
 				14710520225DA67D00E88657 /* Loop.swift */,
 			);
@@ -9354,6 +9357,7 @@
 				149F86E623622FB5003146FD /* RlTimeTree.cpp in Sources */,
 				149F86DF23622FB5003146FD /* RlContinuousCharacterData.cpp in Sources */,
 				149F89D423622FB6003146FD /* NewickConverter.cpp in Sources */,
+				149F8B3D23639E46003146FD /* DataTool.swift in Sources */,
 				149F89EB23622FB6003146FD /* StringUtilities.cpp in Sources */,
 				149F89C223622FB6003146FD /* RangeEvolutionRateModifier.cpp in Sources */,
 				149F89E523622FB6003146FD /* PoMoCountFileReader.cpp in Sources */,

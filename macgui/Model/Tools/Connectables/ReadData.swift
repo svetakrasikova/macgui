@@ -8,9 +8,7 @@
 
 import Cocoa
 
-class ReadData: Connectable {
-   
-    var dataMatrices: [DataMatrix]? = []
+class ReadData: DataTool {
     
     override init(name: String, frameOnCanvas: NSRect) {
         super.init(name: name, frameOnCanvas: frameOnCanvas)
