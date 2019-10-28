@@ -243,7 +243,7 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
     
     func addCanvasTool(frame: NSRect, name: String){
         if let analysis = analysis {
-            let newTool = initToolObjectWithName(name, frame: frame)
+            let newTool = initToolObjectWithName(name, frame: frame, analysis: analysis)
             analysis.tools.append(newTool)
             addToolView(tool: newTool)
         }

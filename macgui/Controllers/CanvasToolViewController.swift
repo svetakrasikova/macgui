@@ -202,7 +202,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         panel.begin { [unowned self] result in
             if result == .OK {
                 guard let fileURL = panel.url else { return }
-                //do something with the file URL
+                //TODO: point of connection with the core
             }
         }
     }

@@ -10,8 +10,8 @@ import Cocoa
 
 class Bootstrap: Connectable {
     
-    override init(name: String, frameOnCanvas: NSRect) {
-        super.init(name: name, frameOnCanvas: frameOnCanvas)
+   override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
+    super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
         let green1 = Connector(color:ConnectorColor.green)
         let green2 = Connector(color:ConnectorColor.green)

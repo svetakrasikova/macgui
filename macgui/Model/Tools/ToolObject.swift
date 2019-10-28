@@ -15,10 +15,12 @@ class ToolObject: NSObject, NSCoding {
     var descriptiveName: String {
         return getDescriptiveNameString(name: name)
     }
+    unowned let analysis: Analysis
    
-    init(name: String, frameOnCanvas: NSRect){
+    init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         self.name = name
         self.frameOnCanvas = frameOnCanvas
+        self.analysis = analysis
     }
     
     func encode(with aCoder: NSCoder) {
@@ -28,6 +30,7 @@ class ToolObject: NSObject, NSCoding {
     }
     
     required init?(coder aDecoder: NSCoder) {
+        analysis = aDecoder.decodeObject(forKey: "analysis") as! Analysis
         frameOnCanvas = aDecoder.decodeRect(forKey: "frameOnCanvas")
         name = aDecoder.decodeObject(forKey: "name") as! String
         

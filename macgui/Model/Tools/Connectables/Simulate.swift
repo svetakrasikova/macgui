@@ -10,9 +10,9 @@ import Cocoa
 
 class Simulate: Connectable {
 
-    override init(name: String, frameOnCanvas: NSRect) {
-        super.init(name: name, frameOnCanvas: frameOnCanvas)
-        
+   override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
+        super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
+    
         let green = Connector(color:ConnectorColor.green)
         self.inlets = []
         self.outlets = [green]
