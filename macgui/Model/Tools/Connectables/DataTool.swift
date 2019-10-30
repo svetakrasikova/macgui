@@ -10,8 +10,13 @@ import Cocoa
 
 class DataTool: Connectable {
     
-    var dataMatrices: [DataMatrix]? {
-        return self.analysis.dataMatrices
+    var dataMatrices: [DataMatrix] {
+        get {
+            return self.analysis.dataMatrices
+        }
+        set {
+            self.analysis.dataMatrices = newValue
+        }
     }
     
   override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {

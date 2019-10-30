@@ -8,5 +8,6 @@
 
 - (int)sendParser:(NSString*)theCommand;
 - (void)startCore;
+- (Boolean)readMatrixFrom:(NSString*)fileToRead;
 
 @end

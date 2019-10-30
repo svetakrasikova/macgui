@@ -188,21 +188,9 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
             let toolType = ToolType(rawValue: toolName)
             switch toolType {
             case  .readdata:
-                openFileBrowser()
+                (tool as! ReadData).openFileBrowser()
             default:
                 presentAsModalWindow(sheetViewController)
-            }
-        }
-    }
-    
-    func openFileBrowser() {
-        let panel = NSOpenPanel()
-        // specify allowed file extensions
-        panel.allowedFileTypes = []
-        panel.begin { [unowned self] result in
-            if result == .OK {
-                guard let fileURL = panel.url else { return }
-                //TODO: point of connection with the core
             }
         }
     }
@@ -265,4 +253,3 @@ extension CanvasToolViewController: NSCollectionViewDataSource {
     }
     
 }
-
