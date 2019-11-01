@@ -8,13 +8,14 @@
 
 import Cocoa
 
-class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate, InfoButtonDelegate, ToolTipDelegate {
+class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate, InfoButtonDelegate, ToolTipDelegate, ToolObjectDelegate {
     
 
     
     
     // MARK: -  Interface Builder Outlets
     
+    @IBOutlet weak var progressSpinner: NSProgressIndicator!
     @IBOutlet weak var infoButton: InfoButton!
     @IBOutlet weak var inletsScrollView: NSScrollView!
     @IBOutlet weak var outletsScrollView: NSScrollView!
@@ -120,6 +121,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         if let window = NSApp.windows.first { window.delegate = self}
         infoButton.delegate = self
         (self.view as! CanvasToolView).canvasViewToolDelegate = self
+        tool?.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
         
@@ -181,6 +183,18 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
          
      }
     
+    
+    // MARK: - Tool Object Delegate
+    
+    func startProgressIndicator() {
+        progressSpinner.isHidden = false
+        progressSpinner.startAnimation(self.view)
+    }
+    
+    func endProgressIndicator() {
+        progressSpinner.isHidden = true
+        progressSpinner.stopAnimation(self.view)
+    }
     
     // MARK: - Info Button Delegate
     func infoButtonClicked() {

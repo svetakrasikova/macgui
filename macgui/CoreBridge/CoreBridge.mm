@@ -64,11 +64,7 @@
         TODO: Pass the reference to the read-in data for initialisation on the gui side.
                     Maybe instead 'Boolean' return a dictionary with a boolean return code and the dataload
      */
-
- 
-    if ( RevLanguage::Workspace::userWorkspace().existsVariable(variableName) )
-        RevLanguage::Workspace::userWorkspace().eraseVariable(variableName);
-    
+    [self eraseVariableFromCore:nsVariableName];
     return true;
 }
 

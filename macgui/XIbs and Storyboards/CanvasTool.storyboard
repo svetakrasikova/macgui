@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -90,6 +90,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="7Vm-MJ-DH7">
+                                <rect key="frame" x="217" y="30" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="R8Z-Qm-Ijk" secondAttribute="trailing" id="0FD-zD-Ack"/>
@@ -97,9 +100,11 @@
                             <constraint firstAttribute="bottom" secondItem="Nwy-6C-qMO" secondAttribute="bottom" id="5Is-Zv-WpK"/>
                             <constraint firstItem="ca7-dw-39x" firstAttribute="leading" secondItem="TpE-bo-cSb" secondAttribute="leading" id="73V-h4-3Ci"/>
                             <constraint firstItem="F5D-nF-dLg" firstAttribute="top" secondItem="R8Z-Qm-Ijk" secondAttribute="bottom" constant="13" id="AWK-vX-Hwf"/>
+                            <constraint firstItem="7Vm-MJ-DH7" firstAttribute="centerX" secondItem="TpE-bo-cSb" secondAttribute="centerX" id="GKU-1e-QdM"/>
                             <constraint firstItem="ca7-dw-39x" firstAttribute="top" secondItem="TpE-bo-cSb" secondAttribute="top" constant="5" id="Gja-vc-g3y"/>
                             <constraint firstItem="R8Z-Qm-Ijk" firstAttribute="leading" secondItem="ca7-dw-39x" secondAttribute="trailing" constant="30" id="ILV-9g-AMa" userLabel="Outlets.trailing= Inlets.leading + 420"/>
                             <constraint firstAttribute="bottom" secondItem="ca7-dw-39x" secondAttribute="bottom" constant="20" id="NOz-k0-OTU"/>
+                            <constraint firstItem="7Vm-MJ-DH7" firstAttribute="centerY" secondItem="TpE-bo-cSb" secondAttribute="centerY" id="P87-dp-opM"/>
                             <constraint firstItem="R8Z-Qm-Ijk" firstAttribute="width" secondItem="ca7-dw-39x" secondAttribute="width" id="V5Y-Qk-lct"/>
                             <constraint firstAttribute="trailing" secondItem="F5D-nF-dLg" secondAttribute="trailing" constant="2" id="Wv6-Dq-tbM"/>
                             <constraint firstAttribute="trailing" secondItem="Nwy-6C-qMO" secondAttribute="trailing" id="b2g-GD-tW4"/>
@@ -115,6 +120,7 @@
                         <outlet property="inletsScrollView" destination="ca7-dw-39x" id="Vb5-bF-GbH"/>
                         <outlet property="outlets" destination="HaQ-1X-9xq" id="yq0-Sr-nhz"/>
                         <outlet property="outletsScrollView" destination="R8Z-Qm-Ijk" id="YCV-U2-HIm"/>
+                        <outlet property="progressSpinner" destination="7Vm-MJ-DH7" id="jgN-BI-lh0"/>
                         <outlet property="view" destination="TpE-bo-cSb" id="Ja3-Ic-siF"/>
                     </connections>
                 </viewController>

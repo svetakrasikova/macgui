@@ -16,6 +16,8 @@ class ToolObject: NSObject, NSCoding {
         return getDescriptiveNameString(name: name)
     }
     unowned let analysis: Analysis
+    
+    weak var delegate: ToolObjectDelegate?
    
     init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         self.name = name
@@ -48,6 +50,11 @@ func getStroyboardName() -> String {
         }
     }
     
+}
+
+protocol ToolObjectDelegate: class {
+    func startProgressIndicator()
+    func endProgressIndicator()
 }
 
 

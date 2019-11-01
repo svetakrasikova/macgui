@@ -56,7 +56,9 @@ class ReadData: DataTool {
         }
     }
     func readFromFileURL(_ fileURL: URL){
+        delegate?.startProgressIndicator()
         let success = revbayesBridge.readMatrix(from: fileURL.path)
+        delegate?.endProgressIndicator()
         if !success {
             readDataAlert()
         }
