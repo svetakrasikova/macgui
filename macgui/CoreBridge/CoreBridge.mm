@@ -58,7 +58,6 @@
 
 - (Boolean)readMatrixFrom:(NSString*)fileToRead {
     
-    [self startCore];
     std::string variableName = RevLanguage::Workspace::userWorkspace().generateUniqueVariableName();
     NSString* nsVariableName = [NSString stringWithCString:variableName.c_str() encoding:NSUTF8StringEncoding];
     const char* cmdAsCStr = [fileToRead UTF8String];
@@ -100,14 +99,18 @@
             }
             else
             {
-               // Error while converting character data object.
+               [self eraseVariableFromCore:nsVariableName];
+               return false;
             }
             
-            if (cd->isHomologyEstablished() == false && cd->getDataType() == "Continuous") {
-                // Output error: Homology must be established for continuous data
+            // homology must be established for Standard and Continuous data types
+            if (cd->isHomologyEstablished() == false && (cd->getDataType() == "Continuous" || cd->getDataType() == "Standard")) {
+                [self eraseVariableFromCore:nsVariableName];
+                return false;
             }
         
-            if (cd->getDataType() == "RNA"){
+            // make GUI version of the data matrix that is in the core
+            if (cd->getDataType() == "RNA") {
                 std::string type = "RNA";
                 }
             else if (cd->getDataType() == "DNA") {
