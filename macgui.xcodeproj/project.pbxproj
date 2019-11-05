@@ -1361,6 +1361,7 @@
 		22B86A8E2372049B0019A599 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = 22B8658C237204950019A599 /* utf8.c */; };
 		22B86A8F2372049B0019A599 /* linenoise.c in Sources */ = {isa = PBXBuildFile; fileRef = 22B8658D237204950019A599 /* linenoise.c */; };
 		22B86A902372049B0019A599 /* pull.sh in Resources */ = {isa = PBXBuildFile; fileRef = 22B8658E237204950019A599 /* pull.sh */; };
+		22B86A9223720E460019A599 /* DataMatrixContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B86A9123720E460019A599 /* DataMatrixContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -4208,6 +4209,7 @@
 		22B8658D237204950019A599 /* linenoise.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = linenoise.c; sourceTree = "<group>"; };
 		22B8658E237204950019A599 /* pull.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = pull.sh; sourceTree = "<group>"; };
 		22B8658F237204950019A599 /* utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utf8.h; sourceTree = "<group>"; };
+		22B86A9123720E460019A599 /* DataMatrixContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMatrixContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4391,6 +4393,7 @@
 				149F8B2423624E92003146FD /* TaxonDataProtein.swift */,
 				149F8B2B23624E93003146FD /* TaxonDataRNA.swift */,
 				149F8B2623624E92003146FD /* TaxonDataStandard.swift */,
+				22B86A9123720E460019A599 /* DataMatrixContainer.swift */,
 			);
 			path = "Data Matrix";
 			sourceTree = "<group>";
@@ -9076,6 +9079,7 @@
 				22B8660D237204960019A599 /* Mntr_Model.cpp in Sources */,
 				22B86732237204970019A599 /* Func_simTree.cpp in Sources */,
 				22B867B0237204970019A599 /* Dist_categorical.cpp in Sources */,
+				22B86A9223720E460019A599 /* DataMatrixContainer.swift in Sources */,
 				22B868E8237204990019A599 /* RateMatrix_Blosum62.cpp in Sources */,
 				22B86911237204990019A599 /* BranchHistory.cpp in Sources */,
 				144CC4AF220E4081003311E4 /* ImageLoader.swift in Sources */,
