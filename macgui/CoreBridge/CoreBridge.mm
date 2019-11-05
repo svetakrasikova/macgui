@@ -145,5 +145,123 @@
         RevLanguage::Workspace::userWorkspace().eraseVariable(tempName);
 }
 
+- (void)makeNewGuiDataMatrixFromCoreMatrixWithAddress:(const RevBayesCore::AbstractCharacterData&)cd andDataType:(const std::string&)dt {
 
+    std::string fn = cd.getFileName();
+    
+#   if 0
+    NSString* nsfn = [NSString stringWithCString:(fn.c_str()) encoding:NSUTF8StringEncoding];
+    RbData* m = [[RbData alloc] init];
+    [m setNumTaxa:(int)(cd.getNumberOfTaxa())];
+    if ( cd.isHomologyEstablished() == true )
+        {
+        [m setIsHomologyEstablished:YES];
+        const RevBayesCore::HomologousCharacterData* hd = dynamic_cast<const RevBayesCore::HomologousCharacterData*>(&cd);
+        if (!hd)
+            {
+            
+            }
+        [m setNumCharacters:(int)(hd->getNumberOfCharacters())];
+        }
+    else
+        {
+        [m setIsHomologyEstablished:NO];
+        const RevBayesCore::NonHomologousCharacterData* nhd = dynamic_cast<const RevBayesCore::NonHomologousCharacterData*>(&cd);
+        if (!nhd)
+            {
+            
+            }
+        std::vector<size_t> sequenceLengths = nhd->getNumberOfCharacters();
+        size_t maxLen = 0;
+        for (int i=0; i<sequenceLengths.size(); i++)
+            {
+            if (sequenceLengths[i] > maxLen)
+                maxLen = sequenceLengths[i];
+            }
+        [m setNumCharacters:(int)maxLen];
+        }
+    
+    // get the state labels
+    std::string stateLabels = cd.getStateLabels();
+    NSString* sl = [NSString stringWithCString:(stateLabels.c_str()) encoding:NSUTF8StringEncoding];
+    [m setStateLabels:sl];
+    
+    [m setName:nsfn];
+    if ( dt == "DNA" )
+        [m setDataType:DNA];
+    else if ( dt == "RNA" )
+        [m setDataType:RNA];
+    else if ( dt == "Protein" )
+        [m setDataType:AA];
+    else if ( dt == "Standard" )
+        [m setDataType:STANDARD];
+    else if ( dt == "Continuous" )
+        [m setDataType:CONTINUOUS];
+
+    for (size_t i=0; i<cd.getNumberOfTaxa(); i++)
+        {
+        const RevBayesCore::AbstractTaxonData& td = cd.getTaxonData(i);
+        NSString* taxonName = [NSString stringWithCString:td.getTaxonName().c_str() encoding:NSUTF8StringEncoding];
+        [m cleanName:taxonName];
+        [m addTaxonName:taxonName];
+        RbTaxonData* rbTaxonData = [[RbTaxonData alloc] init];
+        [rbTaxonData setTaxonName:taxonName];
+        for (size_t j=0; j<td.getNumberOfCharacters(); j++)
+            {
+            RbDataCell* cell = [[RbDataCell alloc] init];
+            [cell setDataType:[m dataType]];
+            if ( [m dataType] != CONTINUOUS )
+                {
+                const RevBayesCore::DiscreteCharacterState& theChar = static_cast<const RevBayesCore::AbstractDiscreteTaxonData &>(td).getCharacter(j);
+                //unsigned int x = (unsigned int)static_cast<const RevBayesCore::DiscreteCharacterState &>(theChar).getState();
+                RevBayesCore::RbBitSet bs = (RevBayesCore::RbBitSet)static_cast<const RevBayesCore::DiscreteCharacterState &>(theChar).getState();
+                std::string sv = (std::string)static_cast<const RevBayesCore::DiscreteCharacterState &>(theChar).getStringValue();
+
+                unsigned x = 0;
+                if (dt == "DNA")
+                    x = [cell dnaToUnsigned:sv];
+                else if (dt == "RNA")
+                    x = [cell rnaToUnsigned:sv];
+                else if (dt == "Protein")
+                    x = [cell aaToUnsigned:sv];
+                else if (dt == "Standard")
+                    x = [cell standardToUnsigned:sv withLabels:sl];
+
+                NSNumber* n = [NSNumber numberWithUnsignedInt:x];
+                [cell setVal:n];
+                [cell setIsDiscrete:YES];
+                [cell setNumStates:((int)theChar.getNumberOfStates())];
+                if ( theChar.isAmbiguous() == true )
+                    [cell setIsAmbig:YES];
+                if (theChar.isGapState() == true)
+                    [cell setIsGapState:YES];
+                else
+                    [cell setIsGapState:NO];
+                }
+            else
+                {
+                const double x = static_cast<const RevBayesCore::ContinuousCharacterData &>(cd).getCharacter(i, j);
+                if ( RevBayesCore::RbMath::isNan(x) )
+                    {
+                    [cell setIsAmbig:YES];
+                    }
+                else
+                    {
+                    NSNumber* n = [NSNumber numberWithDouble:x];
+                    [cell setVal:n];
+                    [cell setIsDiscrete:NO];
+                    [cell setNumStates:0];
+                    }
+                }
+            [cell setRow:i];
+            [cell setColumn:j];
+            [rbTaxonData addObservation:cell];
+            }
+        [m addTaxonData:rbTaxonData];
+        }
+    
+    return m;
+    
+#   endif
+}
 @end
