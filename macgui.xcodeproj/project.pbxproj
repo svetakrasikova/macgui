@@ -8271,12 +8271,9 @@
 		1411BE832203D8FB009BEE1D = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-=======
 				22B85F8E237204940019A599 /* core */,
 				22B86559237204950019A599 /* libs */,
 				22B85A50237204930019A599 /* revlanguage */,
->>>>>>> development
 				1411BE8E2203D8FB009BEE1D /* macgui */,
 				1411BE8D2203D8FB009BEE1D /* Products */,
 			);
@@ -8537,7 +8534,6 @@
 			path = simplex;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144500BA2372036C00254FAF /* mixture */ = {
 			isa = PBXGroup;
 			children = (
@@ -8600,7 +8596,6 @@
 				144500EE2372036C00254FAF /* BetaProbabilityProposal.h */,
 				144500EF2372036C00254FAF /* GMRFUnevenGridHyperpriorGibbsMove.cpp */,
 				144500F02372036C00254FAF /* ScaleBactrianCauchyProposal.cpp */,
-=======
 		149F8B2323624E39003146FD /* Data Matrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -8790,12 +8785,10 @@
 				22B85AAC237204930019A599 /* Move_TipTimeSlideUniform.h */,
 				22B85AAD237204930019A599 /* Move_SpeciesNodeTimeSlideUniform.h */,
 				22B85AAE237204930019A599 /* Move_BirthDeathEventDiscrete.h */,
->>>>>>> development
 			);
 			path = scalar;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144500F12372036C00254FAF /* vector */ = {
 			isa = PBXGroup;
 			children = (
@@ -8837,7 +8830,6 @@
 				144501152372036C00254FAF /* VectorSlideRecenterProposal.h */,
 				144501162372036C00254FAF /* SingleElementSlideProposal.h */,
 				144501172372036C00254FAF /* VectorSlideProposal.cpp */,
-=======
 		22B85ABD237204930019A599 /* simplex */ = {
 			isa = PBXGroup;
 			children = (
@@ -8847,12 +8839,10 @@
 				22B85AC1237204930019A599 /* Move_ElementSwapSimplex.cpp */,
 				22B85AC2237204930019A599 /* Move_DirichletSimplex.h */,
 				22B85AC3237204930019A599 /* Move_ElementSwapSimplex.h */,
->>>>>>> development
 			);
 			path = vector;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501192372036C00254FAF /* matrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -8882,7 +8872,6 @@
 				144501312372036C00254FAF /* CorrelationMatrixElementSwapProposal.h */,
 				144501322372036C00254FAF /* CorrelationMatrixProposal.cpp */,
 				144501332372036C00254FAF /* CorrelationMatrixRandomWalkProposal.cpp */,
-=======
 		22B85AC5237204930019A599 /* mixture */ = {
 			isa = PBXGroup;
 			children = (
@@ -8900,12 +8889,10 @@
 				22B85AD1237204930019A599 /* Move_UPPAllocation.h */,
 				22B85AD2237204930019A599 /* Move_MultiValueEventBirthDeath.h */,
 				22B85AD3237204930019A599 /* Move_MultiValueEventScale.h */,
->>>>>>> development
 			);
 			path = matrix;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501362372036C00254FAF /* characterhistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -8937,7 +8924,6 @@
 				144501502372036C00254FAF /* GibbsDrawCharacterHistoryProposal.cpp */,
 				144501512372036C00254FAF /* DiscreteEventBirthDeathProposal.cpp */,
 				144501522372036C00254FAF /* NodeUniformizationSampleProposal.h */,
-=======
 		22B85AD4237204930019A599 /* integer */ = {
 			isa = PBXGroup;
 			children = (
@@ -8947,12 +8933,10 @@
 				22B85AD8237204930019A599 /* Move_BinarySwitch.cpp */,
 				22B85AD9237204930019A599 /* Move_RandomGeometricWalk.cpp */,
 				22B85ADA237204930019A599 /* Move_RandomIntegerWalk.cpp */,
->>>>>>> development
 			);
 			path = characterhistory;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501582372036C00254FAF /* mixture */ = {
 			isa = PBXGroup;
 			children = (
@@ -8966,7 +8950,6 @@
 				144501602372036C00254FAF /* MultiValueEventScaleProposal.cpp */,
 				144501612372036C00254FAF /* DPPGibbsConcentrationMove.cpp */,
 				144501622372036C00254FAF /* DPPAllocateAuxGibbsMove.h */,
-=======
 		22B85ADE237204930019A599 /* scalar */ = {
 			isa = PBXGroup;
 			children = (
@@ -8996,12 +8979,10 @@
 				22B85AF6237204930019A599 /* Move_GMRFHyperpriorGibbs.h */,
 				22B85AF7237204930019A599 /* Move_BetaProbability.cpp */,
 				22B85AF8237204930019A599 /* Move_RandomDive.cpp */,
->>>>>>> development
 			);
 			path = mixture;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501632372036C00254FAF /* compound */ = {
 			isa = PBXGroup;
 			children = (
@@ -9011,7 +8992,6 @@
 				144501672372036C00254FAF /* ConjugateInverseWishartMove.h */,
 				144501682372036C00254FAF /* RateAgeBetaShift.cpp */,
 				144501692372036C00254FAF /* ConjugateInverseWishartMove.cpp */,
-=======
 		22B85AF9237204930019A599 /* vector */ = {
 			isa = PBXGroup;
 			children = (
@@ -9055,12 +9035,10 @@
 				22B85B1F237204930019A599 /* Move_SingleElementScale.cpp */,
 				22B85B20237204930019A599 /* Move_VectorSlide.h */,
 				22B85B21237204930019A599 /* Move_VectorSlide.cpp */,
->>>>>>> development
 			);
 			path = compound;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501702372036C00254FAF /* monitors */ = {
 			isa = PBXGroup;
 			children = (
@@ -9093,7 +9071,6 @@
 				144501942372036C00254FAF /* StochasticBranchStateTimesMonitor.cpp */,
 				144501952372036C00254FAF /* StochasticVariableMonitor.cpp */,
 				144501962372036C00254FAF /* AbstractFileMonitor.cpp */,
-=======
 		22B85B22237204930019A599 /* matrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -9127,12 +9104,10 @@
 				22B85B3E237204930019A599 /* Move_CorrelationMatrixElementSwap.h */,
 				22B85B3F237204930019A599 /* Move_CorrelationMatrixUpdate.cpp */,
 				22B85B40237204930019A599 /* Move_CorrelationMatrixExpansion.cpp */,
->>>>>>> development
 			);
 			path = monitors;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501812372036C00254FAF /* characterhistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -9145,7 +9120,6 @@
 				144501882372036C00254FAF /* CharacterHistoryPosteriorPredictiveMonitor.cpp */,
 				144501892372036C00254FAF /* CharacterHistoryPosteriorPredictiveMonitor.h */,
 				1445018A2372036C00254FAF /* TreeCharacterHistoryNhxMonitor.h */,
-=======
 		22B85B45237204930019A599 /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -9158,12 +9132,10 @@
 				22B85B4C237204930019A599 /* RlUserInterfaceOutputStream.h */,
 				22B85B4D237204930019A599 /* RlStringOutputStream.h */,
 				22B85B4E237204930019A599 /* RlStringOutputStream.cpp */,
->>>>>>> development
 			);
 			path = characterhistory;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501972372036C00254FAF /* analysis */ = {
 			isa = PBXGroup;
 			children = (
@@ -9190,7 +9162,6 @@
 				144501E62372036C00254FAF /* BootstrapAnalysis.h */,
 				144501E72372036C00254FAF /* MaximumLikelihoodEstimation.cpp */,
 				144501E82372036C00254FAF /* MonteCarloAnalysis.h */,
-=======
 		22B85B4F237204930019A599 /* monitors */ = {
 			isa = PBXGroup;
 			children = (
@@ -9225,12 +9196,10 @@
 				22B85B72237204930019A599 /* Mntr_Screen.h */,
 				22B85B73237204930019A599 /* Mntr_HomeologPhase.h */,
 				22B85B74237204930019A599 /* Mntr_AncestralState.cpp */,
->>>>>>> development
 			);
 			path = analysis;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445019D2372036C00254FAF /* stoppingRule */ = {
 			isa = PBXGroup;
 			children = (
@@ -9250,7 +9219,6 @@
 				144501AB2372036C00254FAF /* MinEssStoppingRule.h */,
 				144501AC2372036C00254FAF /* GelmanRubinStoppingRule.h */,
 				144501AD2372036C00254FAF /* StoppingRule.cpp */,
-=======
 		22B85B63237204930019A599 /* characterhistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -9260,12 +9228,10 @@
 				22B85B67237204930019A599 /* Mntr_CharacterHistoryNhxFile.h */,
 				22B85B68237204930019A599 /* Mntr_CharacterHistoryNhxFile.cpp */,
 				22B85B69237204930019A599 /* Mntr_CharacterHistorySummary.h */,
->>>>>>> development
 			);
 			path = stoppingRule;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501B42372036C00254FAF /* mcmc */ = {
 			isa = PBXGroup;
 			children = (
@@ -9285,7 +9251,6 @@
 				144501DC2372036C00254FAF /* SteppingStoneSampler.cpp */,
 				144501DD2372036C00254FAF /* WangLandauMcmc.cpp */,
 				144501DE2372036C00254FAF /* Mcmcmc.cpp */,
-=======
 		22B85B75237204930019A599 /* analysis */ = {
 			isa = PBXGroup;
 			children = (
@@ -9322,12 +9287,10 @@
 				22B85BA9237204930019A599 /* RlMaxTimeStoppingRule.cpp */,
 				22B85BAA237204930019A599 /* RlAbstractConvergenceStoppingRule.h */,
 				22B85BAB237204930019A599 /* RlMaximumLikelihoodAnalysis.cpp */,
->>>>>>> development
 			);
 			path = mcmc;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501BB2372036C00254FAF /* output */ = {
 			isa = PBXGroup;
 			children = (
@@ -9341,7 +9304,6 @@
 				144501C32372036C00254FAF /* TraceTree.h */,
 				144501C42372036C00254FAF /* TraceNumeric.cpp */,
 				144501C52372036C00254FAF /* TreeSummary.cpp */,
-=======
 		22B85B8C237204930019A599 /* mcmc */ = {
 			isa = PBXGroup;
 			children = (
@@ -9356,12 +9318,10 @@
 				22B85B9F237204930019A599 /* RlMcmcmc.h */,
 				22B85BA0237204930019A599 /* RlMonteCarloAnalysis.h */,
 				22B85BA1237204930019A599 /* RlSteppingStoneSampler.h */,
->>>>>>> development
 			);
 			path = output;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501C62372036C00254FAF /* convergence */ = {
 			isa = PBXGroup;
 			children = (
@@ -9381,7 +9341,6 @@
 				144501D42372036C00254FAF /* SemMin.h */,
 				144501D52372036C00254FAF /* StationarityTest.h */,
 				144501D62372036C00254FAF /* SemMin.cpp */,
-=======
 		22B85B90237204930019A599 /* output */ = {
 			isa = PBXGroup;
 			children = (
@@ -9395,12 +9354,10 @@
 				22B85B98237204930019A599 /* RlTrace.h */,
 				22B85B99237204930019A599 /* RlTraceTree.h */,
 				22B85B9A237204930019A599 /* RlTraceTree.cpp */,
->>>>>>> development
 			);
 			path = convergence;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501E92372036C00254FAF /* dag */ = {
 			isa = PBXGroup;
 			children = (
@@ -9413,7 +9370,6 @@
 				144501F02372036C00254FAF /* DagNode.cpp */,
 				144501F12372036C00254FAF /* ContinuousStochasticNode.cpp */,
 				144501F22372036C00254FAF /* DeterministicNode.h */,
-=======
 		22B85BAD237204930019A599 /* dag */ = {
 			isa = PBXGroup;
 			children = (
@@ -9423,12 +9379,10 @@
 				22B85BB1237204930019A599 /* RlConstantNode.h */,
 				22B85BB2237204930019A599 /* RlStochasticNode.h */,
 				22B85BB3237204930019A599 /* UserFunctionNode.h */,
->>>>>>> development
 			);
 			path = dag;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501F32372036C00254FAF /* datatypes */ = {
 			isa = PBXGroup;
 			children = (
@@ -9463,7 +9417,6 @@
 				144502282372036C00254FAF /* Cloneable.h */,
 				144502292372036C00254FAF /* DagNodeMap.cpp */,
 				1445022A2372036C00254FAF /* phylogenetics */,
-=======
 		22B85BB4237204930019A599 /* datatypes */ = {
 			isa = PBXGroup;
 			children = (
@@ -9487,12 +9440,10 @@
 				22B85BEB237204930019A599 /* phylogenetics */,
 				22B85C31237204930019A599 /* RevNullObject.cpp */,
 				22B85C32237204930019A599 /* RlMultiValueEvent.cpp */,
->>>>>>> development
 			);
 			path = datatypes;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144501F72372036C00254FAF /* trees */ = {
 			isa = PBXGroup;
 			children = (
@@ -9508,7 +9459,6 @@
 				144502012372036C00254FAF /* RootedTripletDistribution.h */,
 				144502022372036C00254FAF /* Clade.h */,
 				144502032372036C00254FAF /* TreeChangeEventListener.h */,
-=======
 		22B85BB8237204930019A599 /* basic */ = {
 			isa = PBXGroup;
 			children = (
@@ -9526,12 +9476,10 @@
 				22B85BC4237204930019A599 /* Probability.cpp */,
 				22B85BC5237204930019A599 /* Integer.h */,
 				22B85BC6237204930019A599 /* RlString.cpp */,
->>>>>>> development
 			);
 			path = trees;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445020E2372036C00254FAF /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -9547,7 +9495,6 @@
 				144502182372036C00254FAF /* TransitionProbabilityMatrix.h */,
 				144502192372036C00254FAF /* CorrespondenceAnalysis.cpp */,
 				1445021A2372036C00254FAF /* MatrixReal.h */,
-=======
 		22B85BCA237204930019A599 /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -9571,12 +9518,10 @@
 				22B85BDC237204930019A599 /* RlCorrespondenceAnalysis.h */,
 				22B85BDD237204930019A599 /* RlCorrespondenceAnalysis.cpp */,
 				22B85BDE237204930019A599 /* RlMatrixReal.h */,
->>>>>>> development
 			);
 			path = math;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445022A2372036C00254FAF /* phylogenetics */ = {
 			isa = PBXGroup;
 			children = (
@@ -9601,19 +9546,16 @@
 				144502F32372036D00254FAF /* geography */,
 				144502F82372036D00254FAF /* RelativeNodeAgeWeightedConstraints.cpp */,
 				144502F92372036D00254FAF /* RelativeNodeAgeConstraints.h */,
-=======
 		22B85BE0237204930019A599 /* container */ = {
 			isa = PBXGroup;
 			children = (
 				22B85BE1237204930019A599 /* WorkspaceVector.h */,
 				22B85BE2237204930019A599 /* ModelVector.h */,
 				22B85BE3237204930019A599 /* RlContainer.h */,
->>>>>>> development
 			);
 			path = phylogenetics;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445022F2372036C00254FAF /* ratematrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -9703,7 +9645,6 @@
 				144502832372036D00254FAF /* RateMatrix_Vt.h */,
 				144502842372036D00254FAF /* RateMatrix_F81.h */,
 				144502852372036D00254FAF /* RateMatrix_FreeBinary.h */,
-=======
 		22B85BEB237204930019A599 /* phylogenetics */ = {
 			isa = PBXGroup;
 			children = (
@@ -9721,12 +9662,10 @@
 				22B85C2C237204930019A599 /* RlRelativeNodeAgeConstraints.cpp */,
 				22B85C2D237204930019A599 /* RlDistanceMatrix.cpp */,
 				22B85C2E237204930019A599 /* geography */,
->>>>>>> development
 			);
 			path = ratematrix;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144502862372036D00254FAF /* characterdata */ = {
 			isa = PBXGroup;
 			children = (
@@ -9751,7 +9690,6 @@
 				144502992372036D00254FAF /* AbstractTaxonData.cpp */,
 				1445029A2372036D00254FAF /* AbstractNonHomologousDiscreteCharacterData.h */,
 				1445029B2372036D00254FAF /* AbstractCharacterData.cpp */,
-=======
 		22B85BEC237204930019A599 /* characterdata */ = {
 			isa = PBXGroup;
 			children = (
@@ -9773,12 +9711,10 @@
 				22B85BFC237204930019A599 /* RlAbstractHomologousDiscreteCharacterData.h */,
 				22B85BFD237204930019A599 /* RlContinuousTaxonData.cpp */,
 				22B85BFE237204930019A599 /* RlNonHomologousDiscreteCharacterData.h */,
->>>>>>> development
 			);
 			path = characterdata;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445029F2372036D00254FAF /* character */ = {
 			isa = PBXGroup;
 			children = (
@@ -9810,7 +9746,6 @@
 				144502B92372036D00254FAF /* DiscreteCharacterState.h */,
 				144502BA2372036D00254FAF /* DnaState.cpp */,
 				144502BB2372036D00254FAF /* PoMoState4.h */,
-=======
 		22B85BFF237204930019A599 /* trees */ = {
 			isa = PBXGroup;
 			children = (
@@ -9824,12 +9759,10 @@
 				22B85C07237204930019A599 /* RlRootedTripletDistribution.h */,
 				22B85C08237204930019A599 /* RlTimeTree.h */,
 				22B85C09237204930019A599 /* RlClade.h */,
->>>>>>> development
 			);
 			path = character;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144502BE2372036D00254FAF /* cladogeneticmatrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -9839,7 +9772,6 @@
 				144502C22372036D00254FAF /* CladogeneticSpeciationRateMatrix.cpp */,
 				144502C32372036D00254FAF /* CladogeneticProbabilityMatrix.cpp */,
 				144502C42372036D00254FAF /* CladogeneticProbabilityMatrix.h */,
-=======
 		22B85C0A237204930019A599 /* character */ = {
 			isa = PBXGroup;
 			children = (
@@ -9857,12 +9789,10 @@
 				22B85C16237204930019A599 /* RlPoMoState.cpp */,
 				22B85C17237204930019A599 /* RlStandardState.h */,
 				22B85C18237204930019A599 /* RlDiscreteCharacterState.cpp */,
->>>>>>> development
 			);
 			path = cladogeneticmatrix;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144502C62372036D00254FAF /* characterhistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -9887,19 +9817,16 @@
 				144502D92372036D00254FAF /* BranchHistoryDiscrete.h */,
 				144502DA2372036D00254FAF /* CharacterHistory.cpp */,
 				144502DB2372036D00254FAF /* CharacterEventType.h */,
-=======
 		22B85C1F237204930019A599 /* characterhistory */ = {
 			isa = PBXGroup;
 			children = (
 				22B85C20237204930019A599 /* RlCharacterHistoryRateModifier.cpp */,
 				22B85C21237204930019A599 /* RlCharacterHistoryRateModifier.h */,
 				22B85C22237204930019A599 /* RlGeographyRateModifier.h */,
->>>>>>> development
 			);
 			path = characterhistory;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144502DD2372036D00254FAF /* ratemap */ = {
 			isa = PBXGroup;
 			children = (
@@ -9923,7 +9850,6 @@
 				144502EF2372036D00254FAF /* HostSwitchRateModifier.h */,
 				144502F02372036D00254FAF /* CharacterHistoryRateModifier.cpp */,
 				144502F12372036D00254FAF /* DistanceRateModifier.h */,
-=======
 		22B85C23237204930019A599 /* demography */ = {
 			isa = PBXGroup;
 			children = (
@@ -9935,12 +9861,10 @@
 				22B85C29237204930019A599 /* RlDemographicFunction.h */,
 				22B85C2A237204930019A599 /* RlExponentialDemographicFunction.h */,
 				22B85C2B237204930019A599 /* RlLinearDemographicFunction.h */,
->>>>>>> development
 			);
 			path = ratemap;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144502F32372036D00254FAF /* geography */ = {
 			isa = PBXGroup;
 			children = (
@@ -9948,18 +9872,15 @@
 				144502F52372036D00254FAF /* TimeAtlas.h */,
 				144502F62372036D00254FAF /* GeographicArea.cpp */,
 				144502F72372036D00254FAF /* TimeAtlas.cpp */,
-=======
 		22B85C2E237204930019A599 /* geography */ = {
 			isa = PBXGroup;
 			children = (
 				22B85C2F237204930019A599 /* RlAtlas.h */,
 				22B85C30237204930019A599 /* RlAtlas.cpp */,
->>>>>>> development
 			);
 			path = geography;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144502FA2372036D00254FAF /* io */ = {
 			isa = PBXGroup;
 			children = (
@@ -10009,7 +9930,6 @@
 				144503262372036D00254FAF /* TaxonReader.h */,
 				144503272372036D00254FAF /* VCFReader.cpp */,
 				144503282372036D00254FAF /* PoMoCountFileReader.cpp */,
-=======
 		22B85C33237204930019A599 /* workspace */ = {
 			isa = PBXGroup;
 			children = (
@@ -10045,12 +9965,10 @@
 				22B85C51237204930019A599 /* Module.h */,
 				22B85C52237204930019A599 /* ModuleSystem.h */,
 				22B85C53237204930019A599 /* RbRegister_Move.cpp */,
->>>>>>> development
 			);
 			path = io;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144503292372036D00254FAF /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -10077,7 +9995,6 @@
 				1445033E2372036D00254FAF /* TreeUtilities.cpp */,
 				1445033F2372036D00254FAF /* TreeUtilities.h */,
 				144503402372036D00254FAF /* BirthDeathForwardSimulator.cpp */,
-=======
 		22B85C54237204930019A599 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -10088,12 +10005,10 @@
 				22B85C59237204930019A599 /* RbVersion.cpp */,
 				22B85C5A237204930019A599 /* RbVersion.h */,
 				22B85C5B237204930019A599 /* GitVersion.cpp */,
->>>>>>> development
 			);
 			path = utils;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144503412372036D00254FAF /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -10122,7 +10037,6 @@
 				144503582372036D00254FAF /* RbMathHelper.h */,
 				144503592372036D00254FAF /* distributions */,
 				144503962372036D00254FAF /* RbMathCombinatorialFunctions.h */,
-=======
 		22B85C5C237204930019A599 /* parser */ = {
 			isa = PBXGroup;
 			children = (
@@ -10183,12 +10097,10 @@
 				22B85C93237204930019A599 /* SyntaxDecrement.h */,
 				22B85C94237204930019A599 /* grammar.tab.h */,
 				22B85C95237204930019A599 /* SyntaxConstant.cpp */,
->>>>>>> development
 			);
 			path = math;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144503592372036D00254FAF /* distributions */ = {
 			isa = PBXGroup;
 			children = (
@@ -10252,7 +10164,6 @@
 				144503932372036D00254FAF /* DistributionScaledDirichlet.h */,
 				144503942372036D00254FAF /* DistributionBivariatePoisson.h */,
 				144503952372036D00254FAF /* DistributionLogistic.h */,
-=======
 		22B85C97237204930019A599 /* functions */ = {
 			isa = PBXGroup;
 			children = (
@@ -10300,12 +10211,10 @@
 				22B85DD2237204940019A599 /* phylogenetics */,
 				22B85E8A237204940019A599 /* popgen */,
 				22B85E95237204940019A599 /* UserFunctionDef.cpp */,
->>>>>>> development
 			);
 			path = distributions;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144503972372036D00254FAF /* functions */ = {
 			isa = PBXGroup;
 			children = (
@@ -10321,7 +10230,6 @@
 				144504322372036D00254FAF /* Function.h */,
 				144504332372036D00254FAF /* phylogenetics */,
 				144504BF2372036D00254FAF /* popgen */,
-=======
 		22B85C9F237204930019A599 /* argument */ = {
 			isa = PBXGroup;
 			children = (
@@ -10445,12 +10353,10 @@
 				22B85D0C237204930019A599 /* Func__mod.h */,
 				22B85D0D237204930019A599 /* Func__vectorIndexOperator.h */,
 				22B85D0E237204930019A599 /* Func__and.cpp */,
->>>>>>> development
 			);
 			path = functions;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445039B2372036D00254FAF /* distribution */ = {
 			isa = PBXGroup;
 			children = (
@@ -10482,7 +10388,6 @@
 				144503B52372036D00254FAF /* DiscretizeBetaFunction.cpp */,
 				144503B62372036D00254FAF /* CumulativeDistributionFunction.h */,
 				144503B72372036D00254FAF /* DiscretizeLognormalQuadratureFunction.cpp */,
-=======
 		22B85D10237204930019A599 /* basic */ = {
 			isa = PBXGroup;
 			children = (
@@ -10535,12 +10440,10 @@
 				22B85D3F237204930019A599 /* Func_setwd.h */,
 				22B85D40237204930019A599 /* Func_sort.cpp */,
 				22B85D41237204930019A599 /* Func_exists.h */,
->>>>>>> development
 			);
 			path = distribution;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144503B82372036D00254FAF /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -10610,7 +10513,6 @@
 				144503F82372036D00254FAF /* ContinuousFunction.cpp */,
 				144503F92372036D00254FAF /* LnFunction.h */,
 				144503FA2372036D00254FAF /* ChooseFunction.cpp */,
-=======
 		22B85D47237204930019A599 /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -10710,12 +10612,10 @@
 				22B85DA5237204940019A599 /* Func_abs.h */,
 				22B85DA6237204940019A599 /* Func_normalize.cpp */,
 				22B85DA7237204940019A599 /* Func_gamma.cpp */,
->>>>>>> development
 			);
 			path = math;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144503FD2372036D00254FAF /* vector */ = {
 			isa = PBXGroup;
 			children = (
@@ -10734,7 +10634,6 @@
 				1445040A2372036D00254FAF /* SortVectorFunction.cpp */,
 				1445040B2372036D00254FAF /* VectorAppendVector.h */,
 				1445040C2372036D00254FAF /* SimplexScaleFunction.cpp */,
-=======
 		22B85DA9237204940019A599 /* type_conversion */ = {
 			isa = PBXGroup;
 			children = (
@@ -10755,12 +10654,10 @@
 				22B85DB9237204940019A599 /* ArgumentRule.h */,
 				22B85DBA237204940019A599 /* OptionRule.h */,
 				22B85DBB237204940019A599 /* ArgumentRules.h */,
->>>>>>> development
 			);
 			path = vector;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445040D2372036D00254FAF /* builtin */ = {
 			isa = PBXGroup;
 			children = (
@@ -10800,7 +10697,6 @@
 				1445042F2372036D00254FAF /* LogicalAndFunction.cpp */,
 				144504302372036D00254FAF /* EquationFunction.h */,
 				144504312372036D00254FAF /* NormalizeVectorFunction.cpp */,
-=======
 		22B85DC1237204940019A599 /* math_helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -10816,12 +10712,10 @@
 				22B85DCB237204940019A599 /* Func_numUniqueInVector.h */,
 				22B85DCC237204940019A599 /* Func_dppConcFromMean.cpp */,
 				22B85DCD237204940019A599 /* Func_dppMeanFromConc.h */,
->>>>>>> development
 			);
 			path = builtin;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144504332372036D00254FAF /* phylogenetics */ = {
 			isa = PBXGroup;
 			children = (
@@ -10863,7 +10757,6 @@
 				144504BC2372036D00254FAF /* CheckNodeOrderConstraintsFunction.h */,
 				144504BD2372036D00254FAF /* PhyloDiversityFunction.cpp */,
 				144504BE2372036D00254FAF /* ComputeWeightedNodeOrderConstraintsScoreFunction.h */,
-=======
 		22B85DD2237204940019A599 /* phylogenetics */ = {
 			isa = PBXGroup;
 			children = (
@@ -10912,12 +10805,10 @@
 				22B85E87237204940019A599 /* Func_cladogeneticProbabilityMatrix.cpp */,
 				22B85E88237204940019A599 /* Func_CladeSpecificHierarchicalBranchRate.cpp */,
 				22B85E89237204940019A599 /* Func_constructRootedTripletDistribution.cpp */,
->>>>>>> development
 			);
 			path = phylogenetics;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144504342372036D00254FAF /* tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -10927,7 +10818,6 @@
 				144504382372036D00254FAF /* ExtantTreeFunction.cpp */,
 				144504392372036D00254FAF /* EarlyBurstRatesFunction.h */,
 				1445043A2372036D00254FAF /* ChronoToPhyloFunction.cpp */,
-=======
 		22B85DD3237204940019A599 /* tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -10971,12 +10861,10 @@
 				22B85DF9237204940019A599 /* Func_symmetricDifference.h */,
 				22B85DFA237204940019A599 /* Func_pruneTree.cpp */,
 				22B85DFB237204940019A599 /* Func_BirthDeathSimulator.h */,
->>>>>>> development
 			);
 			path = tree;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445043B2372036D00254FAF /* ratematrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -11042,7 +10930,6 @@
 				144504772372036D00254FAF /* FreeKRateMatrixFunction.cpp */,
 				144504782372036D00254FAF /* JcRateMatrixFunction.cpp */,
 				144504792372036D00254FAF /* CodonSynonymousNonsynonymousHKYRateMatrixFunction.h */,
-=======
 		22B85DFE237204940019A599 /* ratematrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -11128,12 +11015,10 @@
 				22B85E4E237204940019A599 /* Func_blosum62.h */,
 				22B85E4F237204940019A599 /* Func_BinaryMutationCoalescentRateMatrix.cpp */,
 				22B85E50237204940019A599 /* Func_mtMam.h */,
->>>>>>> development
 			);
 			path = ratematrix;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445048A2372036D00254FAF /* cladogenetic */ = {
 			isa = PBXGroup;
 			children = (
@@ -11154,7 +11039,6 @@
 				144504992372036D00254FAF /* EpochCladogeneticStateFunction.h */,
 				1445049A2372036D00254FAF /* ChromosomesCladogenicBirthDeathFunction.cpp */,
 				1445049B2372036D00254FAF /* CladogeneticProbabilityMatrixFunction.cpp */,
-=======
 		22B85E68237204940019A599 /* ratemap */ = {
 			isa = PBXGroup;
 			children = (
@@ -11174,12 +11058,10 @@
 				22B85E76237204940019A599 /* Func_hostSwitchRateModifier.cpp */,
 				22B85E77237204940019A599 /* Func_adjacentRateModifier.cpp */,
 				22B85E78237204940019A599 /* Func_stateCountRateModifier.h */,
->>>>>>> development
 			);
 			path = cladogenetic;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144504A22372036D00254FAF /* ratemap */ = {
 			isa = PBXGroup;
 			children = (
@@ -11199,7 +11081,6 @@
 				144504B02372036D00254FAF /* AdjacentRateModifierFunction.cpp */,
 				144504B12372036D00254FAF /* HostSwitchRateModifierFunction.h */,
 				144504B22372036D00254FAF /* SiteRateModifierFunction.h */,
-=======
 		22B85E8A237204940019A599 /* popgen */ = {
 			isa = PBXGroup;
 			children = (
@@ -11213,12 +11094,10 @@
 				22B85E92237204940019A599 /* Func_PattersonsD.h */,
 				22B85E93237204940019A599 /* Func_WattersonTheta.h */,
 				22B85E94237204940019A599 /* Func_SegregatingSites.h */,
->>>>>>> development
 			);
 			path = ratemap;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144504BF2372036D00254FAF /* popgen */ = {
 			isa = PBXGroup;
 			children = (
@@ -11232,7 +11111,6 @@
 				144504C72372036D00254FAF /* PattersonsDFunction.cpp */,
 				144504C82372036D00254FAF /* WattersonThetaFunction.h */,
 				144504C92372036D00254FAF /* TajimasDFunction.cpp */,
-=======
 		22B85E98237204940019A599 /* distributions */ = {
 			isa = PBXGroup;
 			children = (
@@ -11249,12 +11127,10 @@
 				22B85F0D237204940019A599 /* RlContinuousDistribution.h */,
 				22B85F0E237204940019A599 /* mixture */,
 				22B85F18237204940019A599 /* phylogenetics */,
->>>>>>> development
 			);
 			path = popgen;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144504CA2372036D00254FAF /* distributions */ = {
 			isa = PBXGroup;
 			children = (
@@ -11276,7 +11152,6 @@
 				144505322372036D00254FAF /* DirichletProcessPriorDistribution.h */,
 				144505332372036D00254FAF /* EmpiricalDistribution.h */,
 				144505342372036D00254FAF /* phylogenetics */,
-=======
 		22B85E9F237204940019A599 /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -11386,12 +11261,10 @@
 				22B85F07237204940019A599 /* Dist_cppNormal.h */,
 				22B85F08237204940019A599 /* Dist_varianceGamma.h */,
 				22B85F09237204940019A599 /* Dist_bernoulli.h */,
->>>>>>> development
 			);
 			path = distributions;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144504D12372036D00254FAF /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -11483,7 +11356,6 @@
 				144505272372036D00254FAF /* ExponentialDistribution.cpp */,
 				144505282372036D00254FAF /* CauchyDistribution.h */,
 				144505292372036D00254FAF /* BimodalLognormalDistribution.cpp */,
-=======
 		22B85F0E237204940019A599 /* mixture */ = {
 			isa = PBXGroup;
 			children = (
@@ -11496,12 +11368,10 @@
 				22B85F15237204940019A599 /* Dist_MultiValueEvent.cpp */,
 				22B85F16237204940019A599 /* Dist_reversibleJumpMixtureConstant.h */,
 				22B85F17237204940019A599 /* Dist_event.h */,
->>>>>>> development
 			);
 			path = math;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144505342372036D00254FAF /* phylogenetics */ = {
 			isa = PBXGroup;
 			children = (
@@ -11511,7 +11381,6 @@
 				144505CF2372036E00254FAF /* MPEST.h */,
 				144505D02372036E00254FAF /* substitution */,
 				144505E02372036E00254FAF /* characterhistory */,
-=======
 		22B85F18237204940019A599 /* phylogenetics */ = {
 			isa = PBXGroup;
 			children = (
@@ -11520,12 +11389,10 @@
 				22B85F61237204940019A599 /* Dist_MPEST.cpp */,
 				22B85F62237204940019A599 /* character */,
 				22B85F6F237204940019A599 /* branchrate */,
->>>>>>> development
 			);
 			path = phylogenetics;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144505352372036D00254FAF /* tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -11565,7 +11432,6 @@
 				144505A22372036E00254FAF /* UniformTimeTreeDistribution.h */,
 				144505A32372036E00254FAF /* NodeOrderWeightedConstrainedTreeDistribution.h */,
 				144505A42372036E00254FAF /* UniformSerialSampledTimeTreeDistribution.h */,
-=======
 		22B85F19237204940019A599 /* tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -11639,12 +11505,10 @@
 				22B85F5D237204940019A599 /* Dist_episodicBirthDeath.cpp */,
 				22B85F5E237204940019A599 /* Dist_ConstrainedTopology.h */,
 				22B85F5F237204940019A599 /* Dist_outgroupBirthDeath.cpp */,
->>>>>>> development
 			);
 			path = tree;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144505502372036E00254FAF /* coalescent */ = {
 			isa = PBXGroup;
 			children = (
@@ -11661,7 +11525,6 @@
 				144505632372036E00254FAF /* AbstractCoalescent.h */,
 				144505642372036E00254FAF /* PiecewiseConstantHeterochronousCoalescent.cpp */,
 				144505652372036E00254FAF /* AbstractCoalescent.cpp */,
-=======
 		22B85F62237204940019A599 /* character */ = {
 			isa = PBXGroup;
 			children = (
@@ -11677,12 +11540,10 @@
 				22B85F6C237204940019A599 /* Dist_phyloCTMCDollo.cpp */,
 				22B85F6D237204940019A599 /* Dist_phyloCTMCDASiteIID.h */,
 				22B85F6E237204940019A599 /* Dist_phyloCTMCDASequence.cpp */,
->>>>>>> development
 			);
 			path = coalescent;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445055A2372036E00254FAF /* demography */ = {
 			isa = PBXGroup;
 			children = (
@@ -11694,7 +11555,6 @@
 				144505602372036E00254FAF /* DemographicFunction.h */,
 				144505612372036E00254FAF /* ConstantDemographicFunction.cpp */,
 				144505622372036E00254FAF /* DemographicFunction.cpp */,
-=======
 		22B85F6F237204940019A599 /* branchrate */ = {
 			isa = PBXGroup;
 			children = (
@@ -11728,12 +11588,10 @@
 				22B85F8B237204940019A599 /* Dist_PhyloMultiSampleOrnsteinUhlenbeck.cpp */,
 				22B85F8C237204940019A599 /* Dist_PhyloOrnsteinUhlenbeckREML.h */,
 				22B85F8D237204940019A599 /* Dist_PhyloOrnsteinUhlenbeckMVN.h */,
->>>>>>> development
 			);
 			path = demography;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144505662372036E00254FAF /* birthdeath */ = {
 			isa = PBXGroup;
 			children = (
@@ -11923,7 +11781,6 @@
 				144506002372036E00254FAF /* EditorState.h */,
 				144506012372036E00254FAF /* pull.sh */,
 				144506022372036E00254FAF /* EditorMachine.h */,
-=======
 		22B85F8E237204940019A599 /* core */ = {
 			isa = PBXGroup;
 			children = (
@@ -11949,12 +11806,10 @@
 			children = (
 				22B85F90237204940019A599 /* tree */,
 				22B85FA3237204940019A599 /* mixture */,
->>>>>>> development
 			);
 			path = lineedit;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144506032372036E00254FAF /* ncl */ = {
 			isa = PBXGroup;
 			children = (
@@ -11999,7 +11854,6 @@
 				1445062A2372036E00254FAF /* nxscharactersblock.h */,
 				1445062B2372036E00254FAF /* nxsstring.cpp */,
 				1445062C2372036E00254FAF /* nxsdistancesblock.cpp */,
-=======
 		22B85F90237204940019A599 /* tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -12021,12 +11875,10 @@
 				22B85FA0237204940019A599 /* TmrcaStatistic.h */,
 				22B85FA1237204940019A599 /* TreeBipartitions.cpp */,
 				22B85FA2237204940019A599 /* MrcaIndexStatistic.cpp */,
->>>>>>> development
 			);
 			path = ncl;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445062D2372036E00254FAF /* linenoise */ = {
 			isa = PBXGroup;
 			children = (
@@ -12035,7 +11887,6 @@
 				144506302372036E00254FAF /* linenoise.c */,
 				144506312372036E00254FAF /* pull.sh */,
 				144506322372036E00254FAF /* utf8.h */,
-=======
 		22B85FA3237204940019A599 /* mixture */ = {
 			isa = PBXGroup;
 			children = (
@@ -12044,12 +11895,10 @@
 				22B85FA6237204940019A599 /* MeanVecContinuousValStatistic.cpp */,
 				22B85FA7237204940019A599 /* VectorDoubleProductStatistic.h */,
 				22B85FA8237204940019A599 /* VectorDoubleProductStatistic.cpp */,
->>>>>>> development
 			);
 			path = linenoise;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144506332372036E00254FAF /* revlanguage */ = {
 			isa = PBXGroup;
 			children = (
@@ -12105,7 +11954,6 @@
 				144507252372036E00254FAF /* Move_ContinuousCharacterDataSlide.h */,
 				144507262372036E00254FAF /* Move_LevyJump.cpp */,
 				144507272372036E00254FAF /* Move_UpDownSlide.cpp */,
-=======
 		22B85FA9237204940019A599 /* moves */ = {
 			isa = PBXGroup;
 			children = (
@@ -12169,12 +12017,10 @@
 				22B86076237204940019A599 /* matrix */,
 				22B86091237204940019A599 /* ContinuousCharacterDataScaleProposal.h */,
 				22B86092237204940019A599 /* ContinuousCharacterDataSlideProposal.h */,
->>>>>>> development
 			);
 			path = moves;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144506352372036E00254FAF /* tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -12270,7 +12116,6 @@
 				1445068F2372036E00254FAF /* Move_TipTimeSlideUniform.h */,
 				144506902372036E00254FAF /* Move_SpeciesNodeTimeSlideUniform.h */,
 				144506912372036E00254FAF /* Move_BirthDeathEventDiscrete.h */,
-=======
 		22B85FB9237204940019A599 /* tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -12346,12 +12191,10 @@
 				22B85FFF237204940019A599 /* NodeTimeScaleProposal.cpp */,
 				22B86000237204940019A599 /* SubtreeScaleProposal.cpp */,
 				22B86001237204940019A599 /* SpeciesTreeScaleProposal.cpp */,
->>>>>>> development
 			);
 			path = tree;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144506A02372036E00254FAF /* simplex */ = {
 			isa = PBXGroup;
 			children = (
@@ -12361,7 +12204,6 @@
 				144506A42372036E00254FAF /* Move_ElementSwapSimplex.cpp */,
 				144506A52372036E00254FAF /* Move_DirichletSimplex.h */,
 				144506A62372036E00254FAF /* Move_ElementSwapSimplex.h */,
-=======
 		22B8600E237204940019A599 /* simplex */ = {
 			isa = PBXGroup;
 			children = (
@@ -12371,12 +12213,10 @@
 				22B86012237204940019A599 /* BetaSimplexProposal.cpp */,
 				22B86013237204940019A599 /* BetaSimplexProposal.h */,
 				22B86014237204940019A599 /* ElementSwapSimplexProposal.cpp */,
->>>>>>> development
 			);
 			path = simplex;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144506A82372036E00254FAF /* mixture */ = {
 			isa = PBXGroup;
 			children = (
@@ -12394,7 +12234,6 @@
 				144506B42372036E00254FAF /* Move_UPPAllocation.h */,
 				144506B52372036E00254FAF /* Move_MultiValueEventBirthDeath.h */,
 				144506B62372036E00254FAF /* Move_MultiValueEventScale.h */,
-=======
 		22B86017237204940019A599 /* mixture */ = {
 			isa = PBXGroup;
 			children = (
@@ -12402,12 +12241,10 @@
 				22B86019237204940019A599 /* GibbsMixtureAllocationProposal.h */,
 				22B8601A237204940019A599 /* ReversibleJumpMixtureProposal.h */,
 				22B8601B237204940019A599 /* MixtureAllocationProposal.h */,
->>>>>>> development
 			);
 			path = mixture;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144506B72372036E00254FAF /* integer */ = {
 			isa = PBXGroup;
 			children = (
@@ -12417,7 +12254,6 @@
 				144506BB2372036E00254FAF /* Move_BinarySwitch.cpp */,
 				144506BC2372036E00254FAF /* Move_RandomGeometricWalk.cpp */,
 				144506BD2372036E00254FAF /* Move_RandomIntegerWalk.cpp */,
-=======
 		22B8601D237204940019A599 /* scalar */ = {
 			isa = PBXGroup;
 			children = (
@@ -12514,12 +12350,10 @@
 				22B86072237204940019A599 /* VectorSlideRecenterProposal.h */,
 				22B86073237204940019A599 /* SingleElementSlideProposal.h */,
 				22B86074237204940019A599 /* VectorSlideProposal.cpp */,
->>>>>>> development
 			);
 			path = integer;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144506C12372036E00254FAF /* scalar */ = {
 			isa = PBXGroup;
 			children = (
@@ -12549,7 +12383,6 @@
 				144506D92372036E00254FAF /* Move_GMRFHyperpriorGibbs.h */,
 				144506DA2372036E00254FAF /* Move_BetaProbability.cpp */,
 				144506DB2372036E00254FAF /* Move_RandomDive.cpp */,
-=======
 		22B86076237204940019A599 /* matrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -12579,12 +12412,10 @@
 				22B8608E237204940019A599 /* CorrelationMatrixElementSwapProposal.h */,
 				22B8608F237204940019A599 /* CorrelationMatrixProposal.cpp */,
 				22B86090237204940019A599 /* CorrelationMatrixRandomWalkProposal.cpp */,
->>>>>>> development
 			);
 			path = scalar;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144506DC2372036E00254FAF /* vector */ = {
 			isa = PBXGroup;
 			children = (
@@ -12628,7 +12459,6 @@
 				144507022372036E00254FAF /* Move_SingleElementScale.cpp */,
 				144507032372036E00254FAF /* Move_VectorSlide.h */,
 				144507042372036E00254FAF /* Move_VectorSlide.cpp */,
-=======
 		22B86093237204940019A599 /* characterhistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -12660,12 +12490,10 @@
 				22B860AD237204940019A599 /* GibbsDrawCharacterHistoryProposal.cpp */,
 				22B860AE237204940019A599 /* DiscreteEventBirthDeathProposal.cpp */,
 				22B860AF237204940019A599 /* NodeUniformizationSampleProposal.h */,
->>>>>>> development
 			);
 			path = vector;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507052372036E00254FAF /* matrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -12699,7 +12527,6 @@
 				144507212372036E00254FAF /* Move_CorrelationMatrixElementSwap.h */,
 				144507222372036E00254FAF /* Move_CorrelationMatrixUpdate.cpp */,
 				144507232372036E00254FAF /* Move_CorrelationMatrixExpansion.cpp */,
-=======
 		22B860B5237204940019A599 /* mixture */ = {
 			isa = PBXGroup;
 			children = (
@@ -12713,12 +12540,10 @@
 				22B860BD237204940019A599 /* MultiValueEventScaleProposal.cpp */,
 				22B860BE237204940019A599 /* DPPGibbsConcentrationMove.cpp */,
 				22B860BF237204940019A599 /* DPPAllocateAuxGibbsMove.h */,
->>>>>>> development
 			);
 			path = matrix;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507282372036E00254FAF /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -12731,7 +12556,6 @@
 				1445072F2372036E00254FAF /* RlUserInterfaceOutputStream.h */,
 				144507302372036E00254FAF /* RlStringOutputStream.h */,
 				144507312372036E00254FAF /* RlStringOutputStream.cpp */,
-=======
 		22B860C0237204940019A599 /* compound */ = {
 			isa = PBXGroup;
 			children = (
@@ -12741,12 +12565,10 @@
 				22B860C4237204940019A599 /* ConjugateInverseWishartMove.h */,
 				22B860C5237204940019A599 /* RateAgeBetaShift.cpp */,
 				22B860C6237204940019A599 /* ConjugateInverseWishartMove.cpp */,
->>>>>>> development
 			);
 			path = ui;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507322372036E00254FAF /* monitors */ = {
 			isa = PBXGroup;
 			children = (
@@ -12781,7 +12603,6 @@
 				144507552372036E00254FAF /* Mntr_Screen.h */,
 				144507562372036E00254FAF /* Mntr_HomeologPhase.h */,
 				144507572372036E00254FAF /* Mntr_AncestralState.cpp */,
-=======
 		22B860CD237204940019A599 /* monitors */ = {
 			isa = PBXGroup;
 			children = (
@@ -12814,12 +12635,10 @@
 				22B860F1237204940019A599 /* StochasticBranchStateTimesMonitor.cpp */,
 				22B860F2237204940019A599 /* StochasticVariableMonitor.cpp */,
 				22B860F3237204940019A599 /* AbstractFileMonitor.cpp */,
->>>>>>> development
 			);
 			path = monitors;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507462372036E00254FAF /* characterhistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -12829,7 +12648,6 @@
 				1445074A2372036E00254FAF /* Mntr_CharacterHistoryNhxFile.h */,
 				1445074B2372036E00254FAF /* Mntr_CharacterHistoryNhxFile.cpp */,
 				1445074C2372036E00254FAF /* Mntr_CharacterHistorySummary.h */,
-=======
 		22B860DE237204940019A599 /* characterhistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -12842,12 +12660,10 @@
 				22B860E5237204940019A599 /* CharacterHistoryPosteriorPredictiveMonitor.cpp */,
 				22B860E6237204940019A599 /* CharacterHistoryPosteriorPredictiveMonitor.h */,
 				22B860E7237204940019A599 /* TreeCharacterHistoryNhxMonitor.h */,
->>>>>>> development
 			);
 			path = characterhistory;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507582372036E00254FAF /* analysis */ = {
 			isa = PBXGroup;
 			children = (
@@ -12884,7 +12700,6 @@
 				1445078C2372036F00254FAF /* RlMaxTimeStoppingRule.cpp */,
 				1445078D2372036F00254FAF /* RlAbstractConvergenceStoppingRule.h */,
 				1445078E2372036F00254FAF /* RlMaximumLikelihoodAnalysis.cpp */,
-=======
 		22B860F4237204940019A599 /* analysis */ = {
 			isa = PBXGroup;
 			children = (
@@ -12911,12 +12726,10 @@
 				22B86143237204940019A599 /* BootstrapAnalysis.h */,
 				22B86144237204940019A599 /* MaximumLikelihoodEstimation.cpp */,
 				22B86145237204940019A599 /* MonteCarloAnalysis.h */,
->>>>>>> development
 			);
 			path = analysis;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445076F2372036E00254FAF /* mcmc */ = {
 			isa = PBXGroup;
 			children = (
@@ -12931,7 +12744,6 @@
 				144507822372036E00254FAF /* RlMcmcmc.h */,
 				144507832372036E00254FAF /* RlMonteCarloAnalysis.h */,
 				144507842372036E00254FAF /* RlSteppingStoneSampler.h */,
-=======
 		22B860FA237204940019A599 /* stoppingRule */ = {
 			isa = PBXGroup;
 			children = (
@@ -12974,12 +12786,10 @@
 				22B86139237204940019A599 /* SteppingStoneSampler.cpp */,
 				22B8613A237204940019A599 /* WangLandauMcmc.cpp */,
 				22B8613B237204940019A599 /* Mcmcmc.cpp */,
->>>>>>> development
 			);
 			path = mcmc;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507732372036E00254FAF /* output */ = {
 			isa = PBXGroup;
 			children = (
@@ -12993,7 +12803,6 @@
 				1445077B2372036E00254FAF /* RlTrace.h */,
 				1445077C2372036E00254FAF /* RlTraceTree.h */,
 				1445077D2372036E00254FAF /* RlTraceTree.cpp */,
-=======
 		22B86118237204940019A599 /* output */ = {
 			isa = PBXGroup;
 			children = (
@@ -13007,12 +12816,10 @@
 				22B86120237204940019A599 /* TraceTree.h */,
 				22B86121237204940019A599 /* TraceNumeric.cpp */,
 				22B86122237204940019A599 /* TreeSummary.cpp */,
->>>>>>> development
 			);
 			path = output;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507902372036F00254FAF /* dag */ = {
 			isa = PBXGroup;
 			children = (
@@ -13022,7 +12829,6 @@
 				144507942372036F00254FAF /* RlConstantNode.h */,
 				144507952372036F00254FAF /* RlStochasticNode.h */,
 				144507962372036F00254FAF /* UserFunctionNode.h */,
-=======
 		22B86123237204940019A599 /* convergence */ = {
 			isa = PBXGroup;
 			children = (
@@ -13058,12 +12864,10 @@
 				22B8614D237204940019A599 /* DagNode.cpp */,
 				22B8614E237204940019A599 /* ContinuousStochasticNode.cpp */,
 				22B8614F237204940019A599 /* DeterministicNode.h */,
->>>>>>> development
 			);
 			path = dag;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507972372036F00254FAF /* datatypes */ = {
 			isa = PBXGroup;
 			children = (
@@ -13087,7 +12891,6 @@
 				144507CE2372036F00254FAF /* phylogenetics */,
 				144508142372036F00254FAF /* RevNullObject.cpp */,
 				144508152372036F00254FAF /* RlMultiValueEvent.cpp */,
-=======
 		22B86150237204940019A599 /* datatypes */ = {
 			isa = PBXGroup;
 			children = (
@@ -13122,12 +12925,10 @@
 				22B86185237204940019A599 /* Cloneable.h */,
 				22B86186237204940019A599 /* DagNodeMap.cpp */,
 				22B86187237204940019A599 /* phylogenetics */,
->>>>>>> development
 			);
 			path = datatypes;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445079B2372036F00254FAF /* basic */ = {
 			isa = PBXGroup;
 			children = (
@@ -13145,7 +12946,6 @@
 				144507A72372036F00254FAF /* Probability.cpp */,
 				144507A82372036F00254FAF /* Integer.h */,
 				144507A92372036F00254FAF /* RlString.cpp */,
-=======
 		22B86154237204940019A599 /* trees */ = {
 			isa = PBXGroup;
 			children = (
@@ -13161,12 +12961,10 @@
 				22B8615E237204940019A599 /* RootedTripletDistribution.h */,
 				22B8615F237204940019A599 /* Clade.h */,
 				22B86160237204940019A599 /* TreeChangeEventListener.h */,
->>>>>>> development
 			);
 			path = basic;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507AD2372036F00254FAF /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -13190,7 +12988,6 @@
 				144507BF2372036F00254FAF /* RlCorrespondenceAnalysis.h */,
 				144507C02372036F00254FAF /* RlCorrespondenceAnalysis.cpp */,
 				144507C12372036F00254FAF /* RlMatrixReal.h */,
-=======
 		22B8616B237204940019A599 /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -13206,19 +13003,16 @@
 				22B86175237204940019A599 /* TransitionProbabilityMatrix.h */,
 				22B86176237204940019A599 /* CorrespondenceAnalysis.cpp */,
 				22B86177237204940019A599 /* MatrixReal.h */,
->>>>>>> development
 			);
 			path = math;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507C32372036F00254FAF /* container */ = {
 			isa = PBXGroup;
 			children = (
 				144507C42372036F00254FAF /* WorkspaceVector.h */,
 				144507C52372036F00254FAF /* ModelVector.h */,
 				144507C62372036F00254FAF /* RlContainer.h */,
-=======
 		22B86187237204940019A599 /* phylogenetics */ = {
 			isa = PBXGroup;
 			children = (
@@ -13243,12 +13037,10 @@
 				22B86250237204950019A599 /* geography */,
 				22B86255237204950019A599 /* RelativeNodeAgeWeightedConstraints.cpp */,
 				22B86256237204950019A599 /* RelativeNodeAgeConstraints.h */,
->>>>>>> development
 			);
 			path = container;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507CE2372036F00254FAF /* phylogenetics */ = {
 			isa = PBXGroup;
 			children = (
@@ -13266,7 +13058,6 @@
 				1445080F2372036F00254FAF /* RlRelativeNodeAgeConstraints.cpp */,
 				144508102372036F00254FAF /* RlDistanceMatrix.cpp */,
 				144508112372036F00254FAF /* geography */,
-=======
 		22B8618C237204940019A599 /* ratematrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -13356,12 +13147,10 @@
 				22B861E0237204950019A599 /* RateMatrix_Vt.h */,
 				22B861E1237204950019A599 /* RateMatrix_F81.h */,
 				22B861E2237204950019A599 /* RateMatrix_FreeBinary.h */,
->>>>>>> development
 			);
 			path = phylogenetics;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507CF2372036F00254FAF /* characterdata */ = {
 			isa = PBXGroup;
 			children = (
@@ -13383,7 +13172,6 @@
 				144507DF2372036F00254FAF /* RlAbstractHomologousDiscreteCharacterData.h */,
 				144507E02372036F00254FAF /* RlContinuousTaxonData.cpp */,
 				144507E12372036F00254FAF /* RlNonHomologousDiscreteCharacterData.h */,
-=======
 		22B861E3237204950019A599 /* characterdata */ = {
 			isa = PBXGroup;
 			children = (
@@ -13408,12 +13196,10 @@
 				22B861F6237204950019A599 /* AbstractTaxonData.cpp */,
 				22B861F7237204950019A599 /* AbstractNonHomologousDiscreteCharacterData.h */,
 				22B861F8237204950019A599 /* AbstractCharacterData.cpp */,
->>>>>>> development
 			);
 			path = characterdata;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507E22372036F00254FAF /* trees */ = {
 			isa = PBXGroup;
 			children = (
@@ -13427,7 +13213,6 @@
 				144507EA2372036F00254FAF /* RlRootedTripletDistribution.h */,
 				144507EB2372036F00254FAF /* RlTimeTree.h */,
 				144507EC2372036F00254FAF /* RlClade.h */,
-=======
 		22B861FC237204950019A599 /* character */ = {
 			isa = PBXGroup;
 			children = (
@@ -13459,12 +13244,10 @@
 				22B86216237204950019A599 /* DiscreteCharacterState.h */,
 				22B86217237204950019A599 /* DnaState.cpp */,
 				22B86218237204950019A599 /* PoMoState4.h */,
->>>>>>> development
 			);
 			path = trees;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144507ED2372036F00254FAF /* character */ = {
 			isa = PBXGroup;
 			children = (
@@ -13482,7 +13265,6 @@
 				144507F92372036F00254FAF /* RlPoMoState.cpp */,
 				144507FA2372036F00254FAF /* RlStandardState.h */,
 				144507FB2372036F00254FAF /* RlDiscreteCharacterState.cpp */,
-=======
 		22B8621B237204950019A599 /* cladogeneticmatrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -13492,19 +13274,16 @@
 				22B8621F237204950019A599 /* CladogeneticSpeciationRateMatrix.cpp */,
 				22B86220237204950019A599 /* CladogeneticProbabilityMatrix.cpp */,
 				22B86221237204950019A599 /* CladogeneticProbabilityMatrix.h */,
->>>>>>> development
 			);
 			path = character;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144508022372036F00254FAF /* characterhistory */ = {
 			isa = PBXGroup;
 			children = (
 				144508032372036F00254FAF /* RlCharacterHistoryRateModifier.cpp */,
 				144508042372036F00254FAF /* RlCharacterHistoryRateModifier.h */,
 				144508052372036F00254FAF /* RlGeographyRateModifier.h */,
-=======
 		22B86223237204950019A599 /* characterhistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -13529,12 +13308,10 @@
 				22B86236237204950019A599 /* BranchHistoryDiscrete.h */,
 				22B86237237204950019A599 /* CharacterHistory.cpp */,
 				22B86238237204950019A599 /* CharacterEventType.h */,
->>>>>>> development
 			);
 			path = characterhistory;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144508062372036F00254FAF /* demography */ = {
 			isa = PBXGroup;
 			children = (
@@ -13546,7 +13323,6 @@
 				1445080C2372036F00254FAF /* RlDemographicFunction.h */,
 				1445080D2372036F00254FAF /* RlExponentialDemographicFunction.h */,
 				1445080E2372036F00254FAF /* RlLinearDemographicFunction.h */,
-=======
 		22B8623A237204950019A599 /* ratemap */ = {
 			isa = PBXGroup;
 			children = (
@@ -13570,18 +13346,15 @@
 				22B8624C237204950019A599 /* HostSwitchRateModifier.h */,
 				22B8624D237204950019A599 /* CharacterHistoryRateModifier.cpp */,
 				22B8624E237204950019A599 /* DistanceRateModifier.h */,
->>>>>>> development
 			);
 			path = demography;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144508112372036F00254FAF /* geography */ = {
 			isa = PBXGroup;
 			children = (
 				144508122372036F00254FAF /* RlAtlas.h */,
 				144508132372036F00254FAF /* RlAtlas.cpp */,
-=======
 		22B86250237204950019A599 /* geography */ = {
 			isa = PBXGroup;
 			children = (
@@ -13589,12 +13362,10 @@
 				22B86252237204950019A599 /* TimeAtlas.h */,
 				22B86253237204950019A599 /* GeographicArea.cpp */,
 				22B86254237204950019A599 /* TimeAtlas.cpp */,
->>>>>>> development
 			);
 			path = geography;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144508162372036F00254FAF /* workspace */ = {
 			isa = PBXGroup;
 			children = (
@@ -13630,7 +13401,6 @@
 				144508342372036F00254FAF /* Module.h */,
 				144508352372036F00254FAF /* ModuleSystem.h */,
 				144508362372036F00254FAF /* RbRegister_Move.cpp */,
-=======
 		22B86257237204950019A599 /* io */ = {
 			isa = PBXGroup;
 			children = (
@@ -13680,12 +13450,10 @@
 				22B86283237204950019A599 /* TaxonReader.h */,
 				22B86284237204950019A599 /* VCFReader.cpp */,
 				22B86285237204950019A599 /* PoMoCountFileReader.cpp */,
->>>>>>> development
 			);
 			path = workspace;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144508372372036F00254FAF /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -13696,7 +13464,6 @@
 				1445083C2372036F00254FAF /* RbVersion.cpp */,
 				1445083D2372036F00254FAF /* RbVersion.h */,
 				1445083E2372036F00254FAF /* GitVersion.cpp */,
-=======
 		22B86286237204950019A599 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -13723,12 +13490,10 @@
 				22B8629B237204950019A599 /* TreeUtilities.cpp */,
 				22B8629C237204950019A599 /* TreeUtilities.h */,
 				22B8629D237204950019A599 /* BirthDeathForwardSimulator.cpp */,
->>>>>>> development
 			);
 			path = utils;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445083F2372036F00254FAF /* parser */ = {
 			isa = PBXGroup;
 			children = (
@@ -13789,7 +13554,6 @@
 				144508762372036F00254FAF /* SyntaxDecrement.h */,
 				144508772372036F00254FAF /* grammar.tab.h */,
 				144508782372036F00254FAF /* SyntaxConstant.cpp */,
-=======
 		22B8629E237204950019A599 /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -13818,12 +13582,10 @@
 				22B862B5237204950019A599 /* RbMathHelper.h */,
 				22B862B6237204950019A599 /* distributions */,
 				22B862F3237204950019A599 /* RbMathCombinatorialFunctions.h */,
->>>>>>> development
 			);
 			path = parser;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445087A2372036F00254FAF /* functions */ = {
 			isa = PBXGroup;
 			children = (
@@ -13871,7 +13633,6 @@
 				144509B52372036F00254FAF /* phylogenetics */,
 				14450A6D2372037000254FAF /* popgen */,
 				14450A782372037000254FAF /* UserFunctionDef.cpp */,
-=======
 		22B862B6237204950019A599 /* distributions */ = {
 			isa = PBXGroup;
 			children = (
@@ -13935,18 +13696,15 @@
 				22B862F0237204950019A599 /* DistributionScaledDirichlet.h */,
 				22B862F1237204950019A599 /* DistributionBivariatePoisson.h */,
 				22B862F2237204950019A599 /* DistributionLogistic.h */,
->>>>>>> development
 			);
 			path = functions;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144508822372036F00254FAF /* argument */ = {
 			isa = PBXGroup;
 			children = (
 				144508832372036F00254FAF /* Argument.h */,
 				144508842372036F00254FAF /* Argument.cpp */,
-=======
 		22B862F4237204950019A599 /* functions */ = {
 			isa = PBXGroup;
 			children = (
@@ -13962,12 +13720,10 @@
 				22B8638F237204950019A599 /* Function.h */,
 				22B86390237204950019A599 /* phylogenetics */,
 				22B8641C237204950019A599 /* popgen */,
->>>>>>> development
 			);
 			path = argument;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144508882372036F00254FAF /* io */ = {
 			isa = PBXGroup;
 			children = (
@@ -14047,7 +13803,6 @@
 				144508D22372036F00254FAF /* Func_write.h */,
 				144508D32372036F00254FAF /* Func_readVCF.h */,
 				144508D42372036F00254FAF /* Func_writeFasta.h */,
-=======
 		22B862F8237204950019A599 /* distribution */ = {
 			isa = PBXGroup;
 			children = (
@@ -14079,7 +13834,6 @@
 				22B86312237204950019A599 /* DiscretizeBetaFunction.cpp */,
 				22B86313237204950019A599 /* CumulativeDistributionFunction.h */,
 				22B86314237204950019A599 /* DiscretizeLognormalQuadratureFunction.cpp */,
->>>>>>> development
 			);
 			path = io;
 			sourceTree = "<group>";
@@ -14175,7 +13929,6 @@
 			path = basic;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445092A2372036F00254FAF /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -14275,7 +14028,6 @@
 				144509882372036F00254FAF /* Func_abs.h */,
 				144509892372036F00254FAF /* Func_normalize.cpp */,
 				1445098A2372036F00254FAF /* Func_gamma.cpp */,
-=======
 		22B86315237204950019A599 /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -14345,18 +14097,15 @@
 				22B86355237204950019A599 /* ContinuousFunction.cpp */,
 				22B86356237204950019A599 /* LnFunction.h */,
 				22B86357237204950019A599 /* ChooseFunction.cpp */,
->>>>>>> development
 			);
 			path = math;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1445098C2372036F00254FAF /* type_conversion */ = {
 			isa = PBXGroup;
 			children = (
 				1445098D2372036F00254FAF /* Proc_StringToInt.h */,
 				1445098E2372036F00254FAF /* Proc_StringToInt.cpp */,
-=======
 		22B8635A237204950019A599 /* vector */ = {
 			isa = PBXGroup;
 			children = (
@@ -14375,12 +14124,10 @@
 				22B86367237204950019A599 /* SortVectorFunction.cpp */,
 				22B86368237204950019A599 /* VectorAppendVector.h */,
 				22B86369237204950019A599 /* SimplexScaleFunction.cpp */,
->>>>>>> development
 			);
 			path = type_conversion;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144509962372036F00254FAF /* argumentrules */ = {
 			isa = PBXGroup;
 			children = (
@@ -14392,7 +14139,6 @@
 				1445099C2372036F00254FAF /* ArgumentRule.h */,
 				1445099D2372036F00254FAF /* OptionRule.h */,
 				1445099E2372036F00254FAF /* ArgumentRules.h */,
-=======
 		22B8636A237204950019A599 /* builtin */ = {
 			isa = PBXGroup;
 			children = (
@@ -14432,7 +14178,6 @@
 				22B8638C237204950019A599 /* LogicalAndFunction.cpp */,
 				22B8638D237204950019A599 /* EquationFunction.h */,
 				22B8638E237204950019A599 /* NormalizeVectorFunction.cpp */,
->>>>>>> development
 			);
 			path = argumentrules;
 			sourceTree = "<group>";
@@ -14456,7 +14201,6 @@
 			path = math_helper;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144509B52372036F00254FAF /* phylogenetics */ = {
 			isa = PBXGroup;
 			children = (
@@ -14505,7 +14249,6 @@
 				14450A6A2372037000254FAF /* Func_cladogeneticProbabilityMatrix.cpp */,
 				14450A6B2372037000254FAF /* Func_CladeSpecificHierarchicalBranchRate.cpp */,
 				14450A6C2372037000254FAF /* Func_constructRootedTripletDistribution.cpp */,
-=======
 		22B86390237204950019A599 /* phylogenetics */ = {
 			isa = PBXGroup;
 			children = (
@@ -14547,12 +14290,10 @@
 				22B86419237204950019A599 /* CheckNodeOrderConstraintsFunction.h */,
 				22B8641A237204950019A599 /* PhyloDiversityFunction.cpp */,
 				22B8641B237204950019A599 /* ComputeWeightedNodeOrderConstraintsScoreFunction.h */,
->>>>>>> development
 			);
 			path = phylogenetics;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144509B62372036F00254FAF /* tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -14596,7 +14337,6 @@
 				144509DC2372036F00254FAF /* Func_symmetricDifference.h */,
 				144509DD2372036F00254FAF /* Func_pruneTree.cpp */,
 				144509DE2372036F00254FAF /* Func_BirthDeathSimulator.h */,
-=======
 		22B86391237204950019A599 /* tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -14606,12 +14346,10 @@
 				22B86395237204950019A599 /* ExtantTreeFunction.cpp */,
 				22B86396237204950019A599 /* EarlyBurstRatesFunction.h */,
 				22B86397237204950019A599 /* ChronoToPhyloFunction.cpp */,
->>>>>>> development
 			);
 			path = tree;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		144509E12372036F00254FAF /* ratematrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -14697,7 +14435,6 @@
 				14450A312372036F00254FAF /* Func_blosum62.h */,
 				14450A322372036F00254FAF /* Func_BinaryMutationCoalescentRateMatrix.cpp */,
 				14450A332372036F00254FAF /* Func_mtMam.h */,
-=======
 		22B86398237204950019A599 /* ratematrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -14763,12 +14500,10 @@
 				22B863D4237204950019A599 /* FreeKRateMatrixFunction.cpp */,
 				22B863D5237204950019A599 /* JcRateMatrixFunction.cpp */,
 				22B863D6237204950019A599 /* CodonSynonymousNonsynonymousHKYRateMatrixFunction.h */,
->>>>>>> development
 			);
 			path = ratematrix;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		14450A4B2372037000254FAF /* ratemap */ = {
 			isa = PBXGroup;
 			children = (
@@ -14788,7 +14523,6 @@
 				14450A592372037000254FAF /* Func_hostSwitchRateModifier.cpp */,
 				14450A5A2372037000254FAF /* Func_adjacentRateModifier.cpp */,
 				14450A5B2372037000254FAF /* Func_stateCountRateModifier.h */,
-=======
 		22B863E7237204950019A599 /* cladogenetic */ = {
 			isa = PBXGroup;
 			children = (
@@ -14809,12 +14543,10 @@
 				22B863F6237204950019A599 /* EpochCladogeneticStateFunction.h */,
 				22B863F7237204950019A599 /* ChromosomesCladogenicBirthDeathFunction.cpp */,
 				22B863F8237204950019A599 /* CladogeneticProbabilityMatrixFunction.cpp */,
->>>>>>> development
 			);
 			path = ratemap;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		14450A6D2372037000254FAF /* popgen */ = {
 			isa = PBXGroup;
 			children = (
@@ -14828,7 +14560,6 @@
 				14450A752372037000254FAF /* Func_PattersonsD.h */,
 				14450A762372037000254FAF /* Func_WattersonTheta.h */,
 				14450A772372037000254FAF /* Func_SegregatingSites.h */,
-=======
 		22B863FF237204950019A599 /* ratemap */ = {
 			isa = PBXGroup;
 			children = (
@@ -14848,12 +14579,10 @@
 				22B8640D237204950019A599 /* AdjacentRateModifierFunction.cpp */,
 				22B8640E237204950019A599 /* HostSwitchRateModifierFunction.h */,
 				22B8640F237204950019A599 /* SiteRateModifierFunction.h */,
->>>>>>> development
 			);
 			path = popgen;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		14450A7B2372037000254FAF /* distributions */ = {
 			isa = PBXGroup;
 			children = (
@@ -14870,7 +14599,6 @@
 				14450AF02372037000254FAF /* RlContinuousDistribution.h */,
 				14450AF12372037000254FAF /* mixture */,
 				14450AFB2372037000254FAF /* phylogenetics */,
-=======
 		22B8641C237204950019A599 /* popgen */ = {
 			isa = PBXGroup;
 			children = (
@@ -14884,12 +14612,10 @@
 				22B86424237204950019A599 /* PattersonsDFunction.cpp */,
 				22B86425237204950019A599 /* WattersonThetaFunction.h */,
 				22B86426237204950019A599 /* TajimasDFunction.cpp */,
->>>>>>> development
 			);
 			path = distributions;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		14450A822372037000254FAF /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -14999,7 +14725,6 @@
 				14450AEA2372037000254FAF /* Dist_cppNormal.h */,
 				14450AEB2372037000254FAF /* Dist_varianceGamma.h */,
 				14450AEC2372037000254FAF /* Dist_bernoulli.h */,
-=======
 		22B86427237204950019A599 /* distributions */ = {
 			isa = PBXGroup;
 			children = (
@@ -15021,12 +14746,10 @@
 				22B8648F237204950019A599 /* DirichletProcessPriorDistribution.h */,
 				22B86490237204950019A599 /* EmpiricalDistribution.h */,
 				22B86491237204950019A599 /* phylogenetics */,
->>>>>>> development
 			);
 			path = math;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		14450AF12372037000254FAF /* mixture */ = {
 			isa = PBXGroup;
 			children = (
@@ -15039,7 +14762,6 @@
 				14450AF82372037000254FAF /* Dist_MultiValueEvent.cpp */,
 				14450AF92372037000254FAF /* Dist_reversibleJumpMixtureConstant.h */,
 				14450AFA2372037000254FAF /* Dist_event.h */,
-=======
 		22B8642E237204950019A599 /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -15131,12 +14853,10 @@
 				22B86484237204950019A599 /* ExponentialDistribution.cpp */,
 				22B86485237204950019A599 /* CauchyDistribution.h */,
 				22B86486237204950019A599 /* BimodalLognormalDistribution.cpp */,
->>>>>>> development
 			);
 			path = mixture;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		14450AFB2372037000254FAF /* phylogenetics */ = {
 			isa = PBXGroup;
 			children = (
@@ -15145,7 +14865,6 @@
 				14450B442372037000254FAF /* Dist_MPEST.cpp */,
 				14450B452372037000254FAF /* character */,
 				14450B522372037000254FAF /* branchrate */,
-=======
 		22B86491237204950019A599 /* phylogenetics */ = {
 			isa = PBXGroup;
 			children = (
@@ -15155,12 +14874,10 @@
 				22B8652C237204950019A599 /* MPEST.h */,
 				22B8652D237204950019A599 /* substitution */,
 				22B8653D237204950019A599 /* characterhistory */,
->>>>>>> development
 			);
 			path = phylogenetics;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		14450AFC2372037000254FAF /* tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -15234,7 +14951,6 @@
 				14450B402372037000254FAF /* Dist_episodicBirthDeath.cpp */,
 				14450B412372037000254FAF /* Dist_ConstrainedTopology.h */,
 				14450B422372037000254FAF /* Dist_outgroupBirthDeath.cpp */,
-=======
 		22B86492237204950019A599 /* tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -15274,12 +14990,10 @@
 				22B864FF237204950019A599 /* UniformTimeTreeDistribution.h */,
 				22B86500237204950019A599 /* NodeOrderWeightedConstrainedTreeDistribution.h */,
 				22B86501237204950019A599 /* UniformSerialSampledTimeTreeDistribution.h */,
->>>>>>> development
 			);
 			path = tree;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		14450B452372037000254FAF /* character */ = {
 			isa = PBXGroup;
 			children = (
@@ -15295,7 +15009,6 @@
 				14450B4F2372037000254FAF /* Dist_phyloCTMCDollo.cpp */,
 				14450B502372037000254FAF /* Dist_phyloCTMCDASiteIID.h */,
 				14450B512372037000254FAF /* Dist_phyloCTMCDASequence.cpp */,
-=======
 		22B864AD237204950019A599 /* coalescent */ = {
 			isa = PBXGroup;
 			children = (
@@ -15312,7 +15025,6 @@
 				22B864C0237204950019A599 /* AbstractCoalescent.h */,
 				22B864C1237204950019A599 /* PiecewiseConstantHeterochronousCoalescent.cpp */,
 				22B864C2237204950019A599 /* AbstractCoalescent.cpp */,
->>>>>>> development
 			);
 			path = character;
 			sourceTree = "<group>";
@@ -15354,7 +15066,6 @@
 			path = branchrate;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1452356C220DF55C00A85186 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -15363,7 +15074,6 @@
 				14D6DE00221E484000021607 /* ControllerExtensions.swift */,
 				147429DA22CBC8C300FF1963 /* Storyboards.swift */,
 				149C5FC42325A52D0060043E /* Tools.swift */,
-=======
 		22B864B7237204950019A599 /* demography */ = {
 			isa = PBXGroup;
 			children = (
@@ -15375,12 +15085,10 @@
 				22B864BD237204950019A599 /* DemographicFunction.h */,
 				22B864BE237204950019A599 /* ConstantDemographicFunction.cpp */,
 				22B864BF237204950019A599 /* DemographicFunction.cpp */,
->>>>>>> development
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1452356D220DF57800A85186 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -15403,7 +15111,6 @@
 				14710528226CD75300E88657 /* ConnectorItem.swift */,
 				1411BEE62208FE91009BEE1D /* Tool.swift */,
 				149370422303545D00503CCB /* ToolTipViewController.swift */,
-=======
 		22B864C3237204950019A599 /* birthdeath */ = {
 			isa = PBXGroup;
 			children = (
@@ -15461,12 +15168,10 @@
 				22B864F7237204950019A599 /* BirthDeathProcess.h */,
 				22B864F8237204950019A599 /* EpisodicBirthDeathSamplingTreatmentProcess.cpp */,
 				22B864F9237204950019A599 /* AbstractPiecewiseConstantFossilizedRangeProcess.h */,
->>>>>>> development
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1452356E220DF5C400A85186 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -15480,7 +15185,6 @@
 				1471052C227B94E200E88657 /* ConnectorItemView.swift */,
 				14E58525228C92AB00802691 /* ToolImageView.swift */,
 				14E5856D22947BFB00802691 /* LineOverlay.swift */,
-=======
 		22B86503237204950019A599 /* continuousCharacter */ = {
 			isa = PBXGroup;
 			children = (
@@ -15524,12 +15228,10 @@
 				22B86529237204950019A599 /* PhyloMultiSampleOrnsteinUhlenbeckProcessREML.cpp */,
 				22B8652A237204950019A599 /* PhyloBrownianProcessMultiSampleREML.h */,
 				22B8652B237204950019A599 /* PhyloBrownianProcess.cpp */,
->>>>>>> development
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1452356F220DF61600A85186 /* XIbs and Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -15544,7 +15246,6 @@
 				1407184A22FF5D430098285D /* ModalSheet.storyboard */,
 				147429DD22D154D200FF1963 /* ModelTool.storyboard */,
 				14710529226CD75300E88657 /* ConnectorItem.xib */,
-=======
 		22B8652D237204950019A599 /* substitution */ = {
 			isa = PBXGroup;
 			children = (
@@ -15563,12 +15264,10 @@
 				22B8653A237204950019A599 /* AbstractPhyloCTMCSiteHomogeneous.h */,
 				22B8653B237204950019A599 /* PhyloDistanceGamma.cpp */,
 				22B8653C237204950019A599 /* PopGenInfinitesSites.h */,
->>>>>>> development
 			);
 			path = "XIbs and Storyboards";
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		14523575220E101400A85186 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -15579,7 +15278,6 @@
 				14E5857D22A8006F00802691 /* Connection.swift */,
 				149F8B2323624E39003146FD /* Data Matrix */,
 				1471051F225DA5C800E88657 /* Tools */,
-=======
 		22B8653D237204950019A599 /* characterhistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -15589,7 +15287,6 @@
 				22B86541237204950019A599 /* AbstractTreeHistoryCtmc.h */,
 				22B86542237204950019A599 /* GeneralTreeHistoryCtmcSiteIID.h */,
 				22B86543237204950019A599 /* TreeHistoryCtmc.h */,
->>>>>>> development
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -15602,7 +15299,6 @@
 			path = ModelTool;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1471051F225DA5C800E88657 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -15611,7 +15307,6 @@
 				149F8B3C23639E46003146FD /* DataTool.swift */,
 				147105322280ED9D00E88657 /* Connectables */,
 				14710520225DA67D00E88657 /* Loop.swift */,
-=======
 		22B86544237204950019A599 /* help */ = {
 			isa = PBXGroup;
 			children = (
@@ -15635,7 +15330,6 @@
 				22B86556237204950019A599 /* RbHelpSystem.cpp */,
 				22B86557237204950019A599 /* RbHelpReference.cpp */,
 				22B86558237204950019A599 /* RbHelpEntry.cpp */,
->>>>>>> development
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -15798,11 +15492,8 @@
 				141106B9230742D500A8B936 /* ToolTip.storyboard in Resources */,
 				1411BEE92208FE91009BEE1D /* Tool.xib in Resources */,
 				1411BEE322052B7E009BEE1D /* Main.storyboard in Resources */,
-<<<<<<< HEAD
 				14450E0E2372037100254FAF /* pull.sh in Resources */,
-=======
 				22B86A902372049B0019A599 /* pull.sh in Resources */,
->>>>>>> development
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
 				147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */,
 				1471052B226CD75300E88657 /* ConnectorItem.xib in Resources */,
@@ -15823,7 +15514,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				14450D5B2372037100254FAF /* CladogeneticProbabilityMatrixFunction.cpp in Sources */,
 				14450D7F2372037100254FAF /* InverseWishartDistribution.cpp in Sources */,
 				14450C272372037000254FAF /* SemMin.cpp in Sources */,
@@ -17164,7 +16854,6 @@
 				14450C732372037100254FAF /* HomologousCharacterData.cpp in Sources */,
 				144510672372037300254FAF /* Dist_PhyloMultiSampleOrnsteinUhlenbeckREML.cpp in Sources */,
 				14450F162372037200254FAF /* SyntaxConstantAssignment.cpp in Sources */,
-=======
 				22B86890237204980019A599 /* PosteriorPredictiveAnalysis.cpp in Sources */,
 				22B867B5237204970019A599 /* Dist_LKJ.cpp in Sources */,
 				22B867C0237204970019A599 /* Dist_ConstrainedTopology.cpp in Sources */,
@@ -18506,7 +18195,6 @@
 				22B867CE237204970019A599 /* Dist_ConstrainedNodeOrder.cpp in Sources */,
 				22B866E2237204960019A599 /* Func_abs.cpp in Sources */,
 				22B8661F237204960019A599 /* RlModel.cpp in Sources */,
->>>>>>> development
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
