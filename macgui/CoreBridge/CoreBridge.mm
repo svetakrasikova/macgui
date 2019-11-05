@@ -11,12 +11,27 @@
 
 #include <string>
 #include <vector>
-#include "Parser.h"
 #include "RevLanguageMain.h"
-#include "RevNullObject.h"
 #include "RlCommandLineOutputStream.h"
 #include "RlUserInterface.h"
+#include "CharacterState.h"
+#include "AbstractCharacterData.h"
+#include "HomologousDiscreteCharacterData.h"
+#include "ModelVector.h"
+#include "NclReader.h"
+#include "Parser.h"
+#include "RbFileManager.h"
+#include "RevNullObject.h"
+#include "RlAminoAcidState.h"
+#include "DnaState.h"
+#include "RlDnaState.h"
+#include "RlRnaState.h"
+#include "RlStandardState.h"
 #include "Workspace.h"
+#include "WorkspaceVector.h"
+#include "RlAbstractCharacterData.h"
+#include "RlNonHomologousDiscreteCharacterData.h"
+#include "RlContinuousCharacterData.h"
 
 
 
@@ -61,9 +76,62 @@
         [self eraseVariableFromCore:nsVariableName];
     
     /**
+     
         TODO: Pass the reference to the read-in data for initialisation on the gui side.
-                    Maybe instead 'Boolean' return a dictionary with a boolean return code and the dataload
      */
+    
+    const WorkspaceVector<RevObject> *dnc = dynamic_cast<const WorkspaceVector<RevObject> *>( &dv );
+    if (dnc != NULL){
+        for (int i=0; i<dnc->size(); i++){
+           
+            const RevBayesCore::AbstractCharacterData* cd = NULL;
+
+            if ( dynamic_cast<const ModelObject<RevBayesCore::AbstractHomologousDiscreteCharacterData> *>( &((*dnc)[i] ) ) != NULL )
+            {
+                cd = &dynamic_cast<const ModelObject<RevBayesCore::AbstractHomologousDiscreteCharacterData> *>( &((*dnc)[i] ) )->getValue();
+            }
+            else if ( dynamic_cast<const ModelObject<RevBayesCore::AbstractNonHomologousDiscreteCharacterData> *>( &((*dnc)[i] ) ) != NULL )
+            {
+                cd = &dynamic_cast<const ModelObject<RevBayesCore::AbstractNonHomologousDiscreteCharacterData> *>( &((*dnc)[i] ) )->getValue();
+            }
+            else if ( dynamic_cast<const ModelObject<RevBayesCore::ContinuousCharacterData> *>( &((*dnc)[i] ) ) != NULL )
+            {
+                cd = &dynamic_cast<const ModelObject<RevBayesCore::ContinuousCharacterData> *>( &((*dnc)[i] ) )->getValue();
+            }
+            else
+            {
+               // Error while converting character data object.
+            }
+            
+            if (cd->isHomologyEstablished() == false && cd->getDataType() == "Continuous") {
+                // Output error: Homology must be established for continuous data
+            }
+        
+            if (cd->getDataType() == "RNA"){
+                std::string type = "RNA";
+                }
+            else if (cd->getDataType() == "DNA") {
+                std::string type = "DNA";
+                }
+            else if (cd->getDataType() == "Protein") {
+                std::string type = "Protein";
+            }
+            else if (cd->getDataType() == "Standard") {
+                    std::string type = "Standard";
+                    }
+            else if (cd->getDataType() == "Continuous") {
+                    std::string type = "Continuous";
+                    }
+            else {
+                // Output error: Unrecognized data type
+                    }
+        }
+
+    } else {
+        [self eraseVariableFromCore:nsVariableName];
+        return false;
+    }
+    
     [self eraseVariableFromCore:nsVariableName];
     return true;
 }
