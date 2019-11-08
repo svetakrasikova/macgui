@@ -16,7 +16,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     // MARK: -  Interface Builder Outlets
     
     @IBOutlet weak var progressSpinner: NSProgressIndicator!
-    @IBOutlet weak var infoButton: InfoButton!
+    @IBOutlet weak var infoButton: ActionButton!
     @IBOutlet weak var inletsScrollView: NSScrollView!
     @IBOutlet weak var outletsScrollView: NSScrollView!
     @IBOutlet weak var inlets: NSCollectionView!

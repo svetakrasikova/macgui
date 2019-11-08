@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class InfoButton: NSButton {
+class ActionButton: NSButton {
 
     enum ButtonState {
         case idle
@@ -80,11 +80,20 @@ class InfoButton: NSButton {
         shapeLayer.path = CGPath(ellipseIn: bounds, transform: nil)
         if  let backingScaleFactor = self.window?.backingScaleFactor {
             shapeLayer.contentsScale = backingScaleFactor
-            addLabel(scaleFactor: backingScaleFactor)
+            addInfoLabel(scaleFactor: backingScaleFactor)
         }
+        addMagnifierImage()
     }
     
-    private func addLabel(scaleFactor: CGFloat) {
+    private func addMagnifierImage() {
+        let imageLayer = CALayer()
+        imageLayer.backgroundColor = NSColor.clear.cgColor
+        imageLayer.frame = bounds
+        imageLayer.contents = NSImage(named: "Magnifier")
+        shapeLayer.addSublayer(imageLayer)
+    }
+    
+    private func addInfoLabel(scaleFactor: CGFloat) {
         let textLayer = CATextLayer()
         textLayer.frame = bounds
         textLayer.contentsScale = scaleFactor
