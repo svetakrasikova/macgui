@@ -16,13 +16,37 @@ class ActionButton: NSButton {
         case highlighted
     }
     
+    enum ActionButtonType {
+        case Info
+        case Inspector
+        case Default
+    }
+    
+    override var isHidden: Bool {
+        didSet {
+            if let delegate = self.delegate, delegate.isDataTool() {
+                needsLayout = true
+            }
+        }
+        
+    }
     
     private let shapeLayer = CAShapeLayer()
     
     var buttonState: ButtonState = .idle { didSet { needsLayout = true } }
     
     var mouseIsInside = false
-
+    
+    var buttonType: ActionButtonType {
+        switch tag {
+        case 0:
+            return .Info
+        case 1:
+            return .Inspector
+        default:
+            return .Default
+        }
+    }
     
     weak var delegate: InfoButtonDelegate?
     
@@ -30,6 +54,7 @@ class ActionButton: NSButton {
     override func awakeFromNib() {
         let trackingArea = NSTrackingArea(rect: self.bounds, options:NSTrackingArea.Options.init(rawValue: 129), owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea)
+        NotificationCenter.default.addObserver(self, selector: #selector(toggleHiddenState(notification: )), name: .didUpdateDataMatrices, object: nil)
     }
     
     override func mouseEntered(with event: NSEvent) {
@@ -73,24 +98,28 @@ class ActionButton: NSButton {
         return shapeLayer
     }
     
-    
     override func layout() {
         super.layout()
         setAppearanceForState()
         shapeLayer.path = CGPath(ellipseIn: bounds, transform: nil)
-        if  let backingScaleFactor = self.window?.backingScaleFactor {
-            shapeLayer.contentsScale = backingScaleFactor
-            addInfoLabel(scaleFactor: backingScaleFactor)
+        switch buttonType {
+        case .Info:
+            if  let backingScaleFactor = self.window?.backingScaleFactor {
+                shapeLayer.contentsScale = backingScaleFactor
+                addInfoLabel(scaleFactor: backingScaleFactor)
+            }
+        case .Inspector:
+            addMagnifierImage()
+        default:
+            addDefaultImage()
         }
-        addMagnifierImage()
     }
     
-    private func addMagnifierImage() {
-        let imageLayer = CALayer()
-        imageLayer.backgroundColor = NSColor.clear.cgColor
-        imageLayer.frame = bounds
-        imageLayer.contents = NSImage(named: "Magnifier")
-        shapeLayer.addSublayer(imageLayer)
+    @objc func toggleHiddenState(notification: Notification){
+        if buttonType == .Inspector , let matricesListState = notification.userInfo as? [String: Bool] {
+            if matricesListState["isEmpty"]! == true { isHidden = true} else { isHidden = false }
+        }
+        
     }
     
     private func addInfoLabel(scaleFactor: CGFloat) {
@@ -105,6 +134,24 @@ class ActionButton: NSButton {
         textLayer.position = bounds.center()
         textLayer.alignmentMode = .center;
         shapeLayer.addSublayer(textLayer)
+    }
+   
+    private func addMagnifierImage() {
+        if !isHidden {
+            let imageLayer = CALayer()
+            imageLayer.backgroundColor = NSColor.clear.cgColor
+            imageLayer.frame = bounds
+            imageLayer.contents = NSImage(named: "Magnifier")
+            shapeLayer.addSublayer(imageLayer)
+        }
+    }
+    
+    private func addDefaultImage() {
+        let imageLayer = CALayer()
+        imageLayer.backgroundColor = NSColor.clear.cgColor
+        imageLayer.frame = bounds
+        imageLayer.contents = NSImage(named: "AppIcon")
+        shapeLayer.addSublayer(imageLayer)
     }
     
     private func setAppearanceForState() {
@@ -121,6 +168,8 @@ class ActionButton: NSButton {
 
 protocol InfoButtonDelegate: class {
     func infoButtonClicked()
+    func inspectorButtonClicked()
+    func isDataTool() -> Bool
 }
 
 

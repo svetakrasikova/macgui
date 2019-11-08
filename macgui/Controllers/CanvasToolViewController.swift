@@ -9,9 +9,7 @@
 import Cocoa
 
 class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate, InfoButtonDelegate, ToolTipDelegate, ToolObjectDelegate {
-    
 
-    
     
     // MARK: -  Interface Builder Outlets
     
@@ -207,6 +205,16 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
                 presentAsModalWindow(sheetViewController)
             }
         }
+    }
+    
+    func inspectorButtonClicked() {
+        
+    }
+    
+    func isDataTool() -> Bool {
+        if let tool = self.tool, tool.isKind(of: DataTool.self) {
+            return true
+        } else { return false }
     }
     
     // MARK: - Tool Tip Delegate

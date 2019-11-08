@@ -14,7 +14,15 @@ class Analysis: NSObject, NSCoding, NSCopying {
     @objc dynamic var tools: [ToolObject] = []
     @objc dynamic var arrows: [Connection] = []
     
-    var dataMatrices: [DataMatrix] = []
+    var dataMatrices: [DataMatrix] = [] {
+        didSet {
+            if isEmpty(){
+                NotificationCenter.default.post(name: .didUpdateDataMatrices, object: nil, userInfo: ["isEmpty" : true])
+            } else {
+                NotificationCenter.default.post(name: .didUpdateDataMatrices, object: nil, userInfo: ["isEmpty" : false])
+            }
+        }
+    }
     var notes: String?
     
     override init(){
