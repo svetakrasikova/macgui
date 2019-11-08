@@ -208,7 +208,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
     
     func inspectorButtonClicked() {
-        
+//        TODO: show an data matrix inspector view
     }
     
     func isDataTool() -> Bool {

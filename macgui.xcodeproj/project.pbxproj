@@ -4335,8 +4335,8 @@
 		14523575220E101400A85186 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1471051F225DA5C800E88657 /* Tools */,
 				149F8B2323624E39003146FD /* Data Matrix */,
+				1471051F225DA5C800E88657 /* Tools */,
 				148D93C82335406C00FDFAFA /* Document.swift */,
 				14EBB04823381FC70087CB27 /* DataSource.swift */,
 				14D6DDFE22164A6E00021607 /* Analysis.swift */,
