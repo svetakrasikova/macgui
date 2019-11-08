@@ -34,7 +34,6 @@
 		1471052D227B94E200E88657 /* ConnectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052C227B94E200E88657 /* ConnectorItemView.swift */; };
 		1471052F2280E36D00E88657 /* Align.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052E2280E36D00E88657 /* Align.swift */; };
 		147105312280E52300E88657 /* ReadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105302280E52300E88657 /* ReadData.swift */; };
-		147429D522C5B9CB00FF1963 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429D422C5B9CB00FF1963 /* ActionButton.swift */; };
 		147429D722CADDF800FF1963 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429D622CADDF800FF1963 /* SheetViewController.swift */; };
 		147429D922CBA94C00FF1963 /* CanvasTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147429D822CBA94C00FF1963 /* CanvasTool.storyboard */; };
 		147429DB22CBC8C300FF1963 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DA22CBC8C300FF1963 /* Storyboards.swift */; };
@@ -1357,7 +1356,7 @@
 		14E69A59237221D50045E283 /* Dist_PhyloMvtBrownian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14E69553237221D20045E283 /* Dist_PhyloMvtBrownian.cpp */; };
 		14E69A5A237221D50045E283 /* Dist_PhyloBrownianMVN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14E69556237221D20045E283 /* Dist_PhyloBrownianMVN.cpp */; };
 		14E69A5B237221D50045E283 /* Dist_PhyloMultiSampleOrnsteinUhlenbeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14E69558237221D20045E283 /* Dist_PhyloMultiSampleOrnsteinUhlenbeck.cpp */; };
-		14E69A5F2375FB830045E283 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E69A5E2375FB830045E283 /* InfoButton.swift */; };
+		14E69A5F2375FB830045E283 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E69A5E2375FB830045E283 /* ActionButton.swift */; };
 		14EBB04923381FC70087CB27 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EBB04823381FC70087CB27 /* DataSource.swift */; };
 		14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */ = {isa = PBXBuildFile; fileRef = 14ECE4DE233BFE2300106EB4 /* aquabayes.icns */; };
 		14F95D6623569913009884D2 /* ToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D6523569913009884D2 /* ToolViewController.swift */; };
@@ -1395,7 +1394,6 @@
 		1471052C227B94E200E88657 /* ConnectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItemView.swift; sourceTree = "<group>"; };
 		1471052E2280E36D00E88657 /* Align.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Align.swift; sourceTree = "<group>"; };
 		147105302280E52300E88657 /* ReadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadData.swift; sourceTree = "<group>"; };
-		147429D422C5B9CB00FF1963 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActionButton.swift; path = macgui/Controllers/ActionButton.swift; sourceTree = SOURCE_ROOT; };
 		147429D622CADDF800FF1963 /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
 		147429D822CBA94C00FF1963 /* CanvasTool.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CanvasTool.storyboard; sourceTree = "<group>"; };
 		147429DA22CBC8C300FF1963 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
@@ -4203,7 +4201,7 @@
 		14E69558237221D20045E283 /* Dist_PhyloMultiSampleOrnsteinUhlenbeck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dist_PhyloMultiSampleOrnsteinUhlenbeck.cpp; sourceTree = "<group>"; };
 		14E69559237221D20045E283 /* Dist_PhyloOrnsteinUhlenbeckREML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dist_PhyloOrnsteinUhlenbeckREML.h; sourceTree = "<group>"; };
 		14E6955A237221D20045E283 /* Dist_PhyloOrnsteinUhlenbeckMVN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dist_PhyloOrnsteinUhlenbeckMVN.h; sourceTree = "<group>"; };
-		14E69A5E2375FB830045E283 /* InfoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
+		14E69A5E2375FB830045E283 /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		14EBB04823381FC70087CB27 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = macgui/Model/DataSource.swift; sourceTree = SOURCE_ROOT; };
 		14ECE4DE233BFE2300106EB4 /* aquabayes.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = aquabayes.icns; sourceTree = "<group>"; };
 		14F95D6523569913009884D2 /* ToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolViewController.swift; sourceTree = "<group>"; };
@@ -4276,11 +4274,11 @@
 		1452356D220DF57800A85186 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				14E69A5E2375FB830045E283 /* InfoButton.swift */,
 				14F95D6523569913009884D2 /* ToolViewController.swift */,
 				147429D622CADDF800FF1963 /* SheetViewController.swift */,
 				146F42D22344396F00547562 /* ModelTool */,
 				1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */,
+				14E69A5E2375FB830045E283 /* ActionButton.swift */,
 				14B5852A225819F6003EB752 /* MainWindowController.swift */,
 				14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */,
 				14A663BD2319A0950034EA53 /* NotebookViewController.swift */,
@@ -4288,7 +4286,6 @@
 				14D6DDFC2216487300021607 /* NavigatorViewController.swift */,
 				1411BEE42208DDBE009BEE1D /* AnalysisViewController.swift */,
 				14D6DE042220B50800021607 /* CanvasViewController.swift */,
-				147429D422C5B9CB00FF1963 /* ActionButton.swift */,
 				14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */,
 				14E585752298575C00802691 /* ArrowViewController.swift */,
 				144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */,
@@ -8732,7 +8729,7 @@
 				14E69784237221D30045E283 /* BinomialDistribution.cpp in Sources */,
 				14E695AD237221D30045E283 /* BetaSimplexProposal.cpp in Sources */,
 				14E69674237221D30045E283 /* ContinuousTaxonData.cpp in Sources */,
-				14E69A5F2375FB830045E283 /* InfoButton.swift in Sources */,
+				14E69A5F2375FB830045E283 /* ActionButton.swift in Sources */,
 				14E695F2237221D30045E283 /* Move.cpp in Sources */,
 				14E699AF237221D40045E283 /* Func_cpRev.cpp in Sources */,
 				14E699E8237221D40045E283 /* UserFunctionDef.cpp in Sources */,
@@ -9497,7 +9494,6 @@
 				14E6969E237221D30045E283 /* RateGeneratorSequence.cpp in Sources */,
 				14E697B2237221D30045E283 /* ConstantDemographicFunction.cpp in Sources */,
 				14E6961B237221D30045E283 /* Trace.cpp in Sources */,
-				147429D522C5B9CB00FF1963 /* ActionButton.swift in Sources */,
 				14E698D5237221D40045E283 /* Module.cpp in Sources */,
 				14E69817237221D30045E283 /* Move_NodeTimeSlideBeta.cpp in Sources */,
 				14E697A6237221D30045E283 /* NodeOrderWeightedConstrainedTreeDistribution.cpp in Sources */,
