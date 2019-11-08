@@ -4202,7 +4202,7 @@
 		14E69559237221D20045E283 /* Dist_PhyloOrnsteinUhlenbeckREML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dist_PhyloOrnsteinUhlenbeckREML.h; sourceTree = "<group>"; };
 		14E6955A237221D20045E283 /* Dist_PhyloOrnsteinUhlenbeckMVN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dist_PhyloOrnsteinUhlenbeckMVN.h; sourceTree = "<group>"; };
 		14E69A5E2375FB830045E283 /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
-		14EBB04823381FC70087CB27 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = macgui/Model/DataSource.swift; sourceTree = SOURCE_ROOT; };
+		14EBB04823381FC70087CB27 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = macgui/Controllers/DataSource.swift; sourceTree = SOURCE_ROOT; };
 		14ECE4DE233BFE2300106EB4 /* aquabayes.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = aquabayes.icns; sourceTree = "<group>"; };
 		14F95D6523569913009884D2 /* ToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolViewController.swift; sourceTree = "<group>"; };
 		14F95D6A23569A70009884D2 /* CoreBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CoreBridge.mm; sourceTree = "<group>"; };
@@ -4274,6 +4274,12 @@
 		1452356D220DF57800A85186 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				148D93C82335406C00FDFAFA /* Document.swift */,
+				14EBB04823381FC70087CB27 /* DataSource.swift */,
+				14D6DDFE22164A6E00021607 /* Analysis.swift */,
+				14E5858022B0810B00802691 /* Connector.swift */,
+				14E5857D22A8006F00802691 /* Connection.swift */,
+				1471051F225DA5C800E88657 /* Tools */,
 				14F95D6523569913009884D2 /* ToolViewController.swift */,
 				147429D622CADDF800FF1963 /* SheetViewController.swift */,
 				146F42D22344396F00547562 /* ModelTool */,
@@ -4336,12 +4342,6 @@
 			isa = PBXGroup;
 			children = (
 				149F8B2323624E39003146FD /* Data Matrix */,
-				1471051F225DA5C800E88657 /* Tools */,
-				148D93C82335406C00FDFAFA /* Document.swift */,
-				14EBB04823381FC70087CB27 /* DataSource.swift */,
-				14D6DDFE22164A6E00021607 /* Analysis.swift */,
-				14E5858022B0810B00802691 /* Connector.swift */,
-				14E5857D22A8006F00802691 /* Connection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
