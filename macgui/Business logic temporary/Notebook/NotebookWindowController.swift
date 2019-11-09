@@ -10,7 +10,6 @@ import Cocoa
 
 class NotebookWindowController: NSWindowController {
     
-    
     override func windowDidLoad() {
         super.windowDidLoad()
     }

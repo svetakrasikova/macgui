@@ -12,7 +12,6 @@ import Cocoa
 
 class Connection: NSObject, NSCoding {
     
-    
     var to: Connector
     var from: Connector
     
