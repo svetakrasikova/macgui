@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ModelToolViewController: ToolViewController {
+class ModelToolViewController: InfoToolViewController {
     
     @IBAction func cancelPushed(_ sender: NSButton) {
         NotificationCenter.default.post(name: .dismissToolSheet, object: self)

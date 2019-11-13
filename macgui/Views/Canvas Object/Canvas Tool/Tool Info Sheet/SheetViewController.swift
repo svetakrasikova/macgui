@@ -34,7 +34,7 @@ class SheetViewController: NSViewController {
     func addContentController(){
         let tabIndex = findTabIndex()
         tabViewController.selectedTabViewItemIndex = tabIndex
-        let contentController = tabViewController.tabViewItems[tabIndex].viewController as! ToolViewController
+        let contentController = tabViewController.tabViewItems[tabIndex].viewController as! InfoToolViewController
         contentController.tool = self.tool
     }
 

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ToolViewController: NSViewController {
+class InfoToolViewController: NSViewController {
     
     weak var tool: ToolObject?
     
