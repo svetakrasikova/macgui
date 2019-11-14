@@ -8,12 +8,13 @@
 
 import Cocoa
 
-class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate, InfoButtonDelegate, ToolTipDelegate, ToolObjectDelegate {
+class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate, ActionButtonDelegate, ToolTipDelegate, ToolObjectDelegate {
 
     
     // MARK: -  Interface Builder Outlets
     
     @IBOutlet weak var progressSpinner: NSProgressIndicator!
+    @IBOutlet weak var inspectorButton: ActionButton!
     @IBOutlet weak var infoButton: ActionButton!
     @IBOutlet weak var inletsScrollView: NSScrollView!
     @IBOutlet weak var outletsScrollView: NSScrollView!
@@ -79,6 +80,16 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         return vc
     }()
     
+    // MARK: - Matrix Inspector Window
+    
+    lazy var matrixInspectorWindowController: NSWindowController = {
+       let wc = NSStoryboard.loadWC(StoryBoardName.matrixInspector)
+        if let inspectorVC = wc.contentViewController as? InspectorViewController, let dataTool = self.tool as? DataTool {
+            inspectorVC.dataMatrices = dataTool.dataMatrices
+        }
+        return wc
+    }()
+
     // MARK: - Mouse Events
     
     override func keyDown(with event: NSEvent) {
@@ -90,6 +101,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     
     override func mouseEntered(with event: NSEvent) {
         infoButton.mouseEntered(with: event)
+        inspectorButton.mouseEntered(with: event)
             if !toolTipPopover.isShown {
                 showFirstPopoverTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(showPopover), userInfo: nil, repeats: false)
                 }
@@ -100,6 +112,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     
     override func mouseExited(with event: NSEvent) {
         infoButton.mouseExited(with: event)
+        inspectorButton.mouseExited(with: event)
         closePopover()
     }
     
@@ -118,6 +131,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         
         if let window = NSApp.windows.first { window.delegate = self}
         infoButton.delegate = self
+        inspectorButton.delegate = self
         (self.view as! CanvasToolView).canvasViewToolDelegate = self
         tool?.delegate = self
         
@@ -194,7 +208,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         progressSpinner.stopAnimation(self.view)
     }
     
-    // MARK: - Info Button Delegate
+    // MARK: - Action Button Delegate
     func infoButtonClicked() {
         if let toolName = tool?.name {
             let toolType = ToolType(rawValue: toolName)
@@ -202,13 +216,13 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
             case  .readdata:
                 (tool as! ReadData).openFileBrowser()
             default:
-                presentAsModalWindow(sheetViewController)
+                self.presentAsModalWindow(sheetViewController)
             }
         }
     }
     
     func inspectorButtonClicked() {
-//        TODO: show an data matrix inspector view
+        matrixInspectorWindowController.showWindow(self)
     }
     
     func isDataTool() -> Bool {

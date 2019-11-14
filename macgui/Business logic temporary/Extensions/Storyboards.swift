@@ -18,7 +18,9 @@ enum StoryBoardName: String {
     case modalSheetTabView = "ModalSheetTabView"
     case toolTip = "ToolTip"
     case notebook = "Notebook"
+    case matrixInspector = "MatrixInspector"
 }
+
 
 
 extension NSStoryboard{

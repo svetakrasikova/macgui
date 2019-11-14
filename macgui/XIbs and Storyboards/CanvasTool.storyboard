@@ -59,7 +59,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button hidden="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-RZ-Dr8" userLabel="Inspector" customClass="ActionButton" customModule="macgui" customModuleProvider="target">
+                            <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-RZ-Dr8" userLabel="Inspector" customClass="ActionButton" customModule="macgui" customModuleProvider="target">
                                 <rect key="frame" x="2" y="2" width="8" height="8"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="8" id="AeD-z6-JfV"/>
@@ -71,6 +71,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <segue destination="I4Z-r3-Igh" kind="show" identifier="SegueToMatrixInspector" id="nel-5i-9N0"/>
+                                </connections>
                             </button>
                             <scrollView hidden="YES" wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="5" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Z-Qm-Ijk" userLabel="Outlets">
                                 <rect key="frame" x="240" y="23" width="210" height="211"/>
@@ -133,6 +136,7 @@
                         <outlet property="infoButton" destination="F5D-nF-dLg" id="cj1-6w-q0K"/>
                         <outlet property="inlets" destination="gQw-V1-6qQ" id="csn-tb-L90"/>
                         <outlet property="inletsScrollView" destination="ca7-dw-39x" id="Vb5-bF-GbH"/>
+                        <outlet property="inspectorButton" destination="eoV-RZ-Dr8" id="JZf-eU-qEa"/>
                         <outlet property="outlets" destination="HaQ-1X-9xq" id="yq0-Sr-nhz"/>
                         <outlet property="outletsScrollView" destination="R8Z-Qm-Ijk" id="YCV-U2-HIm"/>
                         <outlet property="progressSpinner" destination="7Vm-MJ-DH7" id="jgN-BI-lh0"/>
@@ -157,7 +161,7 @@
                 <customObject id="wMv-y6-HWj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <controllerPlaceholder storyboardIdentifier="TabViewController" storyboardName="ModalSheetTabView" referencedIdentifier="ModalSheetTabView" id="FSW-ds-9G3" sceneMemberID="viewController"/>
             </objects>
-            <point key="canvasLocation" x="173" y="-392"/>
+            <point key="canvasLocation" x="51" y="-283"/>
         </scene>
         <!--ToolTip-->
         <scene sceneID="WcK-MY-1XY">
@@ -165,7 +169,15 @@
                 <controllerPlaceholder storyboardIdentifier="ToolTip" storyboardName="ToolTip" referencedIdentifier="ToolTip" id="4hm-TJ-ZOL" sceneMemberID="viewController"/>
                 <customObject id="2Ac-bo-php" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="193" y="-335"/>
+            <point key="canvasLocation" x="12" y="-234"/>
+        </scene>
+        <!--MatrixInspector-->
+        <scene sceneID="cE4-pf-5sX">
+            <objects>
+                <controllerPlaceholder storyboardName="MatrixInspector" id="I4Z-r3-Igh" sceneMemberID="viewController"/>
+                <customObject id="1MH-LV-zCl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="640" y="-550"/>
         </scene>
     </scenes>
 </document>

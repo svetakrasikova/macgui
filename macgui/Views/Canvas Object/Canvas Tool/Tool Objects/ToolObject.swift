@@ -15,6 +15,7 @@ class ToolObject: NSObject, NSCoding {
     var descriptiveName: String {
         return getDescriptiveNameString(name: name)
     }
+    
     unowned let analysis: Analysis
     
     weak var delegate: ToolObjectDelegate?

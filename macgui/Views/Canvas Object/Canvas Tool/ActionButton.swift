@@ -48,7 +48,7 @@ class ActionButton: NSButton {
         }
     }
     
-    weak var delegate: InfoButtonDelegate?
+    weak var delegate: ActionButtonDelegate?
     
 
     override func awakeFromNib() {
@@ -74,7 +74,14 @@ class ActionButton: NSButton {
     
     override func mouseUp(with event: NSEvent) {
         if mouseIsInside {
-            delegate?.infoButtonClicked()
+            switch buttonType {
+            case .Info:
+                delegate?.infoButtonClicked()
+            case .Inspector:
+                delegate?.inspectorButtonClicked()
+            default:
+                print("No default action button implemented.")
+            }
         } else {
             buttonState = .idle
         }
@@ -166,7 +173,7 @@ class ActionButton: NSButton {
     }
 }
 
-protocol InfoButtonDelegate: class {
+protocol ActionButtonDelegate: class {
     func infoButtonClicked()
     func inspectorButtonClicked()
     func isDataTool() -> Bool
