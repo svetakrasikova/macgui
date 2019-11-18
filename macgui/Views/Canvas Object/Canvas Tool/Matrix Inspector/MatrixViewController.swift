@@ -9,10 +9,10 @@
 import Cocoa
 
 class MatrixViewController: NSViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
     }
     
 }
