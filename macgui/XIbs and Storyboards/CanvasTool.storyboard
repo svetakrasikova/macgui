@@ -59,7 +59,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-RZ-Dr8" userLabel="Inspector" customClass="ActionButton" customModule="macgui" customModuleProvider="target">
+                            <button hidden="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-RZ-Dr8" userLabel="Inspector" customClass="ActionButton" customModule="macgui" customModuleProvider="target">
                                 <rect key="frame" x="2" y="2" width="8" height="8"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="8" id="AeD-z6-JfV"/>

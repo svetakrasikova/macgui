@@ -10,9 +10,27 @@ import Cocoa
 
 class InfoInspector: NSViewController {
 
+    weak var delegate: InfoInspectorDelegate?
+    
+    @IBOutlet weak var dataType: NSTextField!
+    
+    @IBOutlet weak var numberOfTaxa: NSTextField!
+    
+    @IBOutlet weak var numberOfCharacters: NSTextField!
+    
+    @IBOutlet weak var numberOfExcludedTaxa: NSTextField!
+    
+    @IBOutlet weak var numberOfExcludedCharacters: NSTextField!
+    
+    @IBOutlet weak var sequencesAligned: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        delegate?.setInfoInspectorValues(inspector: self)
     }
     
+}
+
+protocol InfoInspectorDelegate: class {
+    func setInfoInspectorValues(inspector: InfoInspector)
 }

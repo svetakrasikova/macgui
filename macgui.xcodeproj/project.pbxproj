@@ -26,6 +26,8 @@
 		1452355F220CCC5800A85186 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355E220CCC5800A85186 /* Helpers.swift */; };
 		1452356B220CE9AC00A85186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1452356A220CE9AC00A85186 /* Assets.xcassets */; };
 		14523574220E100B00A85186 /* ImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14523573220E100B00A85186 /* ImageFile.swift */; };
+		14640BAB2383331500358042 /* InspectorViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14640BAA2383331500358042 /* InspectorViewControllerTests.swift */; };
+		14640BB12383716300358042 /* TestDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14640BB02383716300358042 /* TestDataConstants.swift */; };
 		14710521225DA67E00E88657 /* Loop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710520225DA67D00E88657 /* Loop.swift */; };
 		14710523225DA69500E88657 /* Connectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710522225DA69500E88657 /* Connectable.swift */; };
 		147105252265437600E88657 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105242265437600E88657 /* Bootstrap.swift */; };
@@ -44,7 +46,7 @@
 		1495A0B6237C991200F46312 /* MatrixInspector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1495A0B5237C991200F46312 /* MatrixInspector.storyboard */; };
 		1495A0BC237CBB9F00F46312 /* MatrixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0BB237CBB9F00F46312 /* MatrixViewController.swift */; };
 		1495A0BE237CBBC400F46312 /* InfoInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0BD237CBBC400F46312 /* InfoInspector.swift */; };
-		1495A0C2237DC46600F46312 /* FilesNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0C1237DC46600F46312 /* FilesNavigatorViewController.swift */; };
+		1495A0C2237DC46600F46312 /* MatrixNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0C1237DC46600F46312 /* MatrixNavigatorViewController.swift */; };
 		1495A0C4237DF99900F46312 /* InspectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0C3237DF99900F46312 /* InspectorWindowController.swift */; };
 		149C5FC52325A52D0060043E /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC42325A52D0060043E /* Tools.swift */; };
 		149C5FC7232953610060043E /* Simulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC6232953610060043E /* Simulate.swift */; };
@@ -1369,6 +1371,16 @@
 		14F95D6C23569A70009884D2 /* CoreBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D6A23569A70009884D2 /* CoreBridge.mm */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		14640BA5238332B000358042 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1411BE842203D8FB009BEE1D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1411BE8B2203D8FB009BEE1D;
+			remoteInfo = macgui;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1407184A22FF5D430098285D /* ModalSheet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheet.storyboard; sourceTree = "<group>"; };
 		1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheetTabView.storyboard; sourceTree = "<group>"; };
@@ -1392,6 +1404,10 @@
 		1452355E220CCC5800A85186 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		1452356A220CE9AC00A85186 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14523573220E100B00A85186 /* ImageFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFile.swift; sourceTree = "<group>"; };
+		14640BA0238332B000358042 /* macguiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macguiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14640BA4238332B000358042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14640BAA2383331500358042 /* InspectorViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorViewControllerTests.swift; sourceTree = "<group>"; };
+		14640BB02383716300358042 /* TestDataConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataConstants.swift; sourceTree = "<group>"; };
 		14710520225DA67D00E88657 /* Loop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loop.swift; sourceTree = "<group>"; };
 		14710522225DA69500E88657 /* Connectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectable.swift; sourceTree = "<group>"; };
 		147105242265437600E88657 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
@@ -1410,7 +1426,7 @@
 		1495A0B5237C991200F46312 /* MatrixInspector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MatrixInspector.storyboard; sourceTree = "<group>"; };
 		1495A0BB237CBB9F00F46312 /* MatrixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixViewController.swift; sourceTree = "<group>"; };
 		1495A0BD237CBBC400F46312 /* InfoInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoInspector.swift; sourceTree = "<group>"; };
-		1495A0C1237DC46600F46312 /* FilesNavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesNavigatorViewController.swift; sourceTree = "<group>"; };
+		1495A0C1237DC46600F46312 /* MatrixNavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixNavigatorViewController.swift; sourceTree = "<group>"; };
 		1495A0C3237DF99900F46312 /* InspectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorWindowController.swift; sourceTree = "<group>"; };
 		149C5FC42325A52D0060043E /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		149C5FC6232953610060043E /* Simulate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulate.swift; sourceTree = "<group>"; };
@@ -4230,6 +4246,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		14640B9D238332B000358042 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -4237,6 +4260,7 @@
 			isa = PBXGroup;
 			children = (
 				1411BE8E2203D8FB009BEE1D /* macgui */,
+				14640BA1238332B000358042 /* macguiTests */,
 				1411BE8D2203D8FB009BEE1D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -4245,6 +4269,7 @@
 			isa = PBXGroup;
 			children = (
 				1411BE8C2203D8FB009BEE1D /* macgui.app */,
+				14640BA0238332B000358042 /* macguiTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4252,6 +4277,7 @@
 		1411BE8E2203D8FB009BEE1D /* macgui */ = {
 			isa = PBXGroup;
 			children = (
+				14640BB02383716300358042 /* TestDataConstants.swift */,
 				14E68A52237221D00045E283 /* core */,
 				14E68A1B237221D00045E283 /* libs */,
 				14E6901D237221D10045E283 /* revlanguage */,
@@ -4331,6 +4357,23 @@
 				149F8B2323624E39003146FD /* Data Matrix */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		14640BA1238332B000358042 /* macguiTests */ = {
+			isa = PBXGroup;
+			children = (
+				14640BA4238332B000358042 /* Info.plist */,
+				14640BAC23834D3600358042 /* Matrix Inspector Tests */,
+			);
+			path = macguiTests;
+			sourceTree = "<group>";
+		};
+		14640BAC23834D3600358042 /* Matrix Inspector Tests */ = {
+			isa = PBXGroup;
+			children = (
+				14640BAA2383331500358042 /* InspectorViewControllerTests.swift */,
+			);
+			path = "Matrix Inspector Tests";
 			sourceTree = "<group>";
 		};
 		147105322280ED9D00E88657 /* Connectable Tools */ = {
@@ -4431,11 +4474,11 @@
 		1495A0B2237C97F800F46312 /* Matrix Inspector */ = {
 			isa = PBXGroup;
 			children = (
-				1495A0C1237DC46600F46312 /* FilesNavigatorViewController.swift */,
+				1495A0C3237DF99900F46312 /* InspectorWindowController.swift */,
 				1495A0B3237C987600F46312 /* InspectorViewController.swift */,
+				1495A0C1237DC46600F46312 /* MatrixNavigatorViewController.swift */,
 				1495A0BB237CBB9F00F46312 /* MatrixViewController.swift */,
 				1495A0BD237CBBC400F46312 /* InfoInspector.swift */,
-				1495A0C3237DF99900F46312 /* InspectorWindowController.swift */,
 			);
 			path = "Matrix Inspector";
 			sourceTree = "<group>";
@@ -8256,19 +8299,42 @@
 			productReference = 1411BE8C2203D8FB009BEE1D /* macgui.app */;
 			productType = "com.apple.product-type.application";
 		};
+		14640B9F238332B000358042 /* macguiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14640BA7238332B000358042 /* Build configuration list for PBXNativeTarget "macguiTests" */;
+			buildPhases = (
+				14640B9C238332B000358042 /* Sources */,
+				14640B9D238332B000358042 /* Frameworks */,
+				14640B9E238332B000358042 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14640BA6238332B000358042 /* PBXTargetDependency */,
+			);
+			name = macguiTests;
+			productName = macguiTests;
+			productReference = 14640BA0238332B000358042 /* macguiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		1411BE842203D8FB009BEE1D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Svetlana Krasikova";
 				TargetAttributes = {
 					1411BE8B2203D8FB009BEE1D = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1030;
+					};
+					14640B9F238332B000358042 = {
+						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
+						TestTargetID = 1411BE8B2203D8FB009BEE1D;
 					};
 				};
 			};
@@ -8286,6 +8352,7 @@
 			projectRoot = "";
 			targets = (
 				1411BE8B2203D8FB009BEE1D /* macgui */,
+				14640B9F238332B000358042 /* macguiTests */,
 			);
 		};
 /* End PBXProject section */
@@ -8310,6 +8377,13 @@
 				14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */,
 				147429D922CBA94C00FF1963 /* CanvasTool.storyboard in Resources */,
 				1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14640B9E238332B000358042 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8963,7 +9037,7 @@
 				14E698E7237221D40045E283 /* SyntaxStatement.cpp in Sources */,
 				14E69A48237221D50045E283 /* Dist_phyloCTMC.cpp in Sources */,
 				14E695B1237221D30045E283 /* BetaProbabilityProposal.cpp in Sources */,
-				1495A0C2237DC46600F46312 /* FilesNavigatorViewController.swift in Sources */,
+				1495A0C2237DC46600F46312 /* MatrixNavigatorViewController.swift in Sources */,
 				14E69698237221D30045E283 /* RangeEvolutionRateModifier.cpp in Sources */,
 				14E69866237221D40045E283 /* Move_CorrelationMatrixUpdate.cpp in Sources */,
 				14E69600237221D30045E283 /* ExtendedNewickTreeMonitor.cpp in Sources */,
@@ -9093,6 +9167,7 @@
 				14E696DC237221D30045E283 /* DistributionLaplace.cpp in Sources */,
 				14E696EF237221D30045E283 /* DecomposedVarianceCovarianceFunction.cpp in Sources */,
 				14E6987D237221D40045E283 /* Mntr_StochasticBranchStateTimes.cpp in Sources */,
+				14640BB12383716300358042 /* TestDataConstants.swift in Sources */,
 				1411BEE52208DDBE009BEE1D /* AnalysisViewController.swift in Sources */,
 				14E697D6237221D30045E283 /* PhyloOrnsteinUhlenbeckREML.cpp in Sources */,
 				14E69671237221D30045E283 /* AbstractDiscreteTaxonData.cpp in Sources */,
@@ -9668,7 +9743,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		14640B9C238332B000358042 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14640BAB2383331500358042 /* InspectorViewControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14640BA6238332B000358042 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1411BE8B2203D8FB009BEE1D /* macgui */;
+			targetProxy = 14640BA5238332B000358042 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1411BE9A2203D8FC009BEE1D /* Debug */ = {
@@ -9706,6 +9797,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -9767,6 +9859,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -9838,6 +9931,61 @@
 			};
 			name = Release;
 		};
+		14640BA8238332B000358042 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = P3X4F8B2U7;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				INFOPLIST_FILE = macguiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = ucb.macguiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_INCLUDE_PATHS[arch=*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/svetakrasikova/Repos/macgui/macgui/macgui-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/macgui.app/Contents/MacOS/macgui";
+			};
+			name = Debug;
+		};
+		14640BA9238332B000358042 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = P3X4F8B2U7;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				INFOPLIST_FILE = macguiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = ucb.macguiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/svetakrasikova/Repos/macgui/macgui/macgui-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/macgui.app/Contents/MacOS/macgui";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -9855,6 +10003,15 @@
 			buildConfigurations = (
 				1411BE9D2203D8FC009BEE1D /* Debug */,
 				1411BE9E2203D8FC009BEE1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14640BA7238332B000358042 /* Build configuration list for PBXNativeTarget "macguiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14640BA8238332B000358042 /* Debug */,
+				14640BA9238332B000358042 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

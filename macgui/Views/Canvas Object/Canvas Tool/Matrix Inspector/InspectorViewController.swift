@@ -8,16 +8,24 @@
 
 import Cocoa
 
-class InspectorViewController: NSSplitViewController, FilesNavigatorViewControllerDelegate {
-  
+class InspectorViewController: NSSplitViewController, MatrixNavigatorViewControllerDelegate, InfoInspectorDelegate {
+    
+    
     var dataMatrices: [DataMatrix]?
+    
+    var selectedMatrix: DataMatrix? {
+        didSet{
+            if let infoInspector = self.infoInspector {
+                setInfoInspectorValues(inspector: infoInspector)
+            }
+        }
+    }
 
     
-    var filesNavigator: FilesNavigatorViewController? {
+    var matrixNavigator: MatrixNavigatorViewController? {
         for item in splitViewItems {
-            if let fileNavigator = item.viewController as? FilesNavigatorViewController {
-                fileNavigator.dataMatrices = self.dataMatrices
-                return fileNavigator
+            if let matrixNavigator = item.viewController as? MatrixNavigatorViewController {
+                return matrixNavigator
             }
         }
         return nil
@@ -42,22 +50,40 @@ class InspectorViewController: NSSplitViewController, FilesNavigatorViewControll
         return nil
     }
     
-    func setSelectedFile(viewController: FilesNavigatorViewController, selectedFile: String) {
-//          TODO: set the value of the matrix viewer to the selected file matrix
+    // MARK: - MatrixNavigatorViewControllerDelegate
+    
+    func matrixNavigatorViewController(viewController: MatrixNavigatorViewController, selectedMatrix: DataMatrix) {
+        self.selectedMatrix = selectedMatrix
+        matrixViewer?.showSelectedMatrix(matrixToShow: selectedMatrix)
       }
-      
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        filesNavigator?.delegate = self
-    }
+    // MARK: - InfoInspectorDelegate
     
-    func expandCollapseSidebar() {
-        if splitViewItems[0].isCollapsed {
-            splitViewItems[0].isCollapsed = false
-        } else {
-            splitViewItems[0].isCollapsed = true
+    func setInfoInspectorValues(inspector: InfoInspector) {
+        if let selectedMatrix = self.selectedMatrix {
+            inspector.dataType.stringValue = selectedMatrix.dataType.rawValue
+            inspector.numberOfCharacters.stringValue = selectedMatrix.numberOfCharactersToString(numberOfCharacters: selectedMatrix.getNumCharacters())
+            inspector.numberOfTaxa.integerValue = selectedMatrix.numTaxa
+            inspector.numberOfExcludedCharacters.integerValue = selectedMatrix.getDeletedCharacters().count
+            inspector.numberOfExcludedTaxa.integerValue = selectedMatrix.getDeletedTaxaNames().count
+            //@John: How do we establish this?
+            inspector.sequencesAligned.stringValue = "Unknown"
         }
     }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        matrixNavigator?.delegate = self
+        
+        infoInspector?.delegate = self
+        
+        if let inspectorWC = view.window?.windowController as? InspectorWindowController {
+            self.dataMatrices = inspectorWC.dataMatrices
+        }
+        
+    }
+   
+    
     
 }

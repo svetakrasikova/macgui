@@ -82,11 +82,9 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     
     // MARK: - Matrix Inspector Window
     
-    lazy var matrixInspectorWindowController: NSWindowController = {
-       let wc = NSStoryboard.loadWC(StoryBoardName.matrixInspector)
-        if let inspectorVC = wc.contentViewController as? InspectorViewController, let dataTool = self.tool as? DataTool {
-            inspectorVC.dataMatrices = dataTool.dataMatrices
-        }
+    lazy var matrixInspectorWindowController: InspectorWindowController = {
+        let wc = NSStoryboard.loadWC(StoryBoardName.matrixInspector) as! InspectorWindowController
+        wc.dataMatrices = (tool as! DataTool).dataMatrices
         return wc
     }()
 

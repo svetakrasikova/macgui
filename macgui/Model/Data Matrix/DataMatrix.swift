@@ -23,23 +23,23 @@ enum DataType: String, Codable {
 class DataMatrix : CustomStringConvertible, Codable {
     
     /// The number of taxa.
-    private var numTaxa : Int
+    var numTaxa : Int
     /// An array containing the taxon names.
-    private var taxonNames : [String]
+    var taxonNames : [String]
     /// An array containing the taxon data.
-    private var taxonData : [TaxonData]
+    var taxonData : [TaxonData]
     /// A name for the character data matrix.
-    private var matrixName : String
+    var matrixName : String
     /// The file name from which the data originated.
-    private var dataFileName : String
+    var dataFileName : String
     /// Is the homology of the character data established.
-    private var homologyEstablished : Bool
+    var homologyEstablished : Bool
     /// A vector of bits indicating whether the taxon is deleted.
-    private var isTaxonDeleted = Bitvector()
+    var isTaxonDeleted = Bitvector()
     /// A vector of bits indicating whether the character is deleted.
-    private var isCharacterDeleted = Bitvector()
+    var isCharacterDeleted = Bitvector()
     /// The type of data contained by the matrix.
-    private var dataType : DataType = DataType.Unknown
+    var dataType : DataType = DataType.Unknown
     
     // MARK: - Codable  protocol
     
@@ -366,12 +366,7 @@ class DataMatrix : CustomStringConvertible, Codable {
         str += "DataMatrix: \(matrixName)\n"
         str += "   Data type = \(dataType)\n"
         str += "   Number of taxa = \(numTaxa)\n"
-        if ntR.min() != ntR.max() {
-            str += "   Number of characters = \(ntR)\n"
-        }
-        else {
-            str += "   Number of characters = \(nt)\n"
-        }
+        str += "   Number of characters = \(numberOfCharactersToString(numberOfCharacters:(ntR, nt)))\n"
         str += "   Taxon names = \(taxonNames)\n"
         str += "   Homology established = \(homologyEstablished)\n"
         for i in 0..<numTaxa {
@@ -385,6 +380,18 @@ class DataMatrix : CustomStringConvertible, Codable {
         
         return str
     }
+    
+    func numberOfCharactersToString(numberOfCharacters: (ClosedRange<Int>, Int)) -> String {
+              var numberCharactersString: String = ""
+              let (ntR, nt) = numberOfCharacters
+              if ntR.min() != ntR.max() {
+                  numberCharactersString += "\(ntR)"
+              }
+              else {
+                  numberCharactersString += "\(nt)"
+              }
+              return numberCharactersString
+          }
     
     // check to see if the index is valid
     func validIndex(rowIdx: Int, columnIdx: Int) -> Bool {
@@ -700,6 +707,7 @@ class DataMatrix : CustomStringConvertible, Codable {
             return (r, 0)
         }
     }
+    
     
     // restore all characters
     func restoreAllCharacters() {

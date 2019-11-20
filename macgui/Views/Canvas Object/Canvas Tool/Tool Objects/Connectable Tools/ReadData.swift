@@ -8,6 +8,7 @@
 
 import Cocoa
 
+
 class ReadData: DataTool {
 
     let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
@@ -62,7 +63,10 @@ class ReadData: DataTool {
         if !success {
             readDataAlert()
         }
-        //    TODO: Initialise data matrices from the core data and add them to the tool
+        //  Add a test matrix here
+        let matrix = try! JSONDecoder().decode(DataMatrix.self, from: TestDataConstants.matrixJson)
+        self.dataMatrices.append(matrix)
+
     }
     
     func readDataAlert(){
