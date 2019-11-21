@@ -393,6 +393,11 @@ class DataMatrix : CustomStringConvertible, Codable {
               return numberCharactersString
           }
     
+    func numberOfCharactersToInt(numberOfCharacters: (ClosedRange<Int>, Int)) -> Int{
+        let (ntR, nt) = numberOfCharacters
+        return  ntR.min() != ntR.max() ? ntR.max()! : nt
+    }
+    
     // check to see if the index is valid
     func validIndex(rowIdx: Int, columnIdx: Int) -> Bool {
         
