@@ -9,35 +9,26 @@
 import Cocoa
 
 class DataTool: Connectable {
-<<<<<<< HEAD:macgui/Model/Tools/Connectables/DataTool.swift
 
-    enum DataToolError: Error {
-        
-        case readError
-        case jsonError
-    }
+   enum DataToolError: Error {
+          
+          case readError
+          case jsonError
+      }
+      
+   var dataMatrices: [DataMatrix]  = [] {
+          didSet {
+              if dataMatrices.isEmpty {
+                  NotificationCenter.default.post(name: .didUpdateDataMatrices, object: nil, userInfo: ["isEmpty" : true])
+              } else {
+                  NotificationCenter.default.post(name: .didUpdateDataMatrices, object: nil, userInfo: ["isEmpty" : false])
+              }
 
-    var dataMatrices: [DataMatrix] {
-        get {
-            return self.analysis.dataMatrices
-        }
-        set {
-            self.analysis.dataMatrices = newValue
-=======
+          }
+      }
     
-    var dataMatrices: [DataMatrix]  = [] {
-        didSet {
-            if dataMatrices.isEmpty {
-                NotificationCenter.default.post(name: .didUpdateDataMatrices, object: nil, userInfo: ["isEmpty" : true])
-            } else {
-                NotificationCenter.default.post(name: .didUpdateDataMatrices, object: nil, userInfo: ["isEmpty" : false])
-            }
->>>>>>> b0ae5d47b3ff1f99352eae5028c07d58167b9b2d:macgui/Views/Canvas Object/Canvas Tool/Tool Objects/Connectable Tools/DataTool.swift
-        }
-    }
-    
-  override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
-    super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
+    override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
+        super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
     }
     
     override func encode(with aCoder: NSCoder) {
@@ -193,4 +184,5 @@ class DataTool: Connectable {
 
     print(newDataMatrix)
     }
+
 }
