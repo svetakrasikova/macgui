@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -690,7 +690,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <toolbar key="toolbar" implicitIdentifier="098DA229-9451-47CA-B1EF-7B0E9105714B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="h4m-rH-hcW">
+                        <toolbar key="toolbar" implicitIdentifier="098DA229-9451-47CA-B1EF-7B0E9105714B" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="h4m-rH-hcW">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="WYg-MI-QdS"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Dzc-es-9Az"/>
@@ -726,7 +726,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" tag="1" imageScaling="axesIndependently" inset="2" pullsDown="YES" selectedItem="p3j-MU-iWT" id="x4u-Va-0Vm" userLabel="zoom">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="menu"/>
+                                            <font key="font" metaFont="system"/>
                                             <menu key="menu" id="JJw-60-Ano">
                                                 <items>
                                                     <menuItem title="100%" tag="1" hidden="YES" id="p3j-MU-iWT" userLabel="100%"/>
@@ -749,10 +749,10 @@
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="52791819-F0EC-43D7-8D11-843905557167" label="Notebook" paletteLabel="Notebook" image="Notebook" id="Shr-5p-fva" userLabel="Notebook">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="48" height="48"/>
-                                    <size key="maxSize" width="50" height="50"/>
+                                    <size key="minSize" width="45" height="47"/>
+                                    <size key="maxSize" width="47" height="47"/>
                                     <button key="view" id="aSq-Nf-4L5">
-                                        <rect key="frame" x="6" y="14" width="48" height="48"/>
+                                        <rect key="frame" x="6" y="14" width="47" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Notebook" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="fzQ-t4-J29">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

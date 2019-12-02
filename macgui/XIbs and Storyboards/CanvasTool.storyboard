@@ -11,21 +11,21 @@
             <objects>
                 <viewController storyboardIdentifier="CanvasTool" id="RZH-rY-g2O" customClass="CanvasToolViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <customView key="view" id="TpE-bo-cSb" userLabel="CanvasToolView" customClass="CanvasToolView" customModule="macgui" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="75"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="234"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nwy-6C-qMO" userLabel="ImageView" customClass="ToolImageView" customModule="macgui" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="234"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="E9l-0I-Esa"/>
                             </imageView>
                             <scrollView hidden="YES" wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="5" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ca7-dw-39x" userLabel="Inlets">
-                                <rect key="frame" x="0.0" y="20" width="210" height="50"/>
+                                <rect key="frame" x="0.0" y="20" width="210" height="209"/>
                                 <clipView key="contentView" drawsBackground="NO" id="GmI-xZ-TNM">
-                                    <rect key="frame" x="0.0" y="0.0" width="210" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="210" height="209"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView id="gQw-V1-6qQ" userLabel="Inlets">
-                                            <rect key="frame" x="0.0" y="0.0" width="210" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="210" height="209"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="1" minimumLineSpacing="1" id="XW2-kH-EXr">
                                                 <size key="itemSize" width="5" height="5"/>
@@ -48,25 +48,41 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="F5D-nF-dLg" userLabel="Info" customClass="InfoButton" customModule="macgui" customModuleProvider="target">
-                                <rect key="frame" x="438" y="2" width="10" height="10"/>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="F5D-nF-dLg" userLabel="Info" customClass="ActionButton" customModule="macgui" customModuleProvider="target">
+                                <rect key="frame" x="440" y="2" width="8" height="8"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="ek7-D5-gX0"/>
-                                    <constraint firstAttribute="width" constant="10" id="zJ3-zG-kKn"/>
+                                    <constraint firstAttribute="width" constant="8" id="Afa-qN-iYF"/>
+                                    <constraint firstAttribute="height" constant="8" id="IOT-fa-W6l"/>
                                 </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="Vct-yr-NNe">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <button hidden="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-RZ-Dr8" userLabel="Inspector" customClass="ActionButton" customModule="macgui" customModuleProvider="target">
+                                <rect key="frame" x="2" y="2" width="8" height="8"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="8" id="AeD-z6-JfV"/>
+                                    <constraint firstAttribute="height" constant="8" id="Z8i-2b-9Qb"/>
+                                    <constraint firstAttribute="width" constant="8" id="fb1-Xv-xOz"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="8" id="tzx-ur-Kko"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="djR-n2-6fL">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="I4Z-r3-Igh" kind="show" identifier="SegueToMatrixInspector" id="nel-5i-9N0"/>
+                                </connections>
+                            </button>
                             <scrollView hidden="YES" wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="5" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Z-Qm-Ijk" userLabel="Outlets">
-                                <rect key="frame" x="240" y="25" width="210" height="50"/>
+                                <rect key="frame" x="240" y="23" width="210" height="211"/>
                                 <clipView key="contentView" drawsBackground="NO" id="0Cn-01-AN1">
-                                    <rect key="frame" x="0.0" y="0.0" width="210" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="210" height="211"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView id="HaQ-1X-9xq" userLabel="Outlets">
-                                            <rect key="frame" x="0.0" y="0.0" width="210" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="210" height="211"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="1" minimumLineSpacing="1" id="Cpd-QD-pDl">
                                                 <size key="itemSize" width="5" height="5"/>
@@ -86,7 +102,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="XqU-2U-djz">
-                                    <rect key="frame" x="10" y="1" width="16" height="48"/>
+                                    <rect key="frame" x="194" y="0.0" width="16" height="211"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -111,10 +127,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="R8Z-Qm-Ijk" secondAttribute="trailing" id="0FD-zD-Ack"/>
+                            <constraint firstItem="eoV-RZ-Dr8" firstAttribute="leading" secondItem="TpE-bo-cSb" secondAttribute="leading" constant="2" id="0LP-Cf-wHf"/>
                             <constraint firstAttribute="bottom" secondItem="F5D-nF-dLg" secondAttribute="bottom" constant="2" id="0TI-bM-6P1"/>
                             <constraint firstAttribute="bottom" secondItem="Nwy-6C-qMO" secondAttribute="bottom" id="5Is-Zv-WpK"/>
                             <constraint firstItem="ca7-dw-39x" firstAttribute="leading" secondItem="TpE-bo-cSb" secondAttribute="leading" id="73V-h4-3Ci"/>
-                            <constraint firstItem="F5D-nF-dLg" firstAttribute="top" secondItem="R8Z-Qm-Ijk" secondAttribute="bottom" constant="13" id="AWK-vX-Hwf"/>
+                            <constraint firstAttribute="bottom" secondItem="eoV-RZ-Dr8" secondAttribute="bottom" constant="2" id="7bQ-Mi-mCJ"/>
                             <constraint firstItem="7Vm-MJ-DH7" firstAttribute="centerX" secondItem="TpE-bo-cSb" secondAttribute="centerX" id="GKU-1e-QdM"/>
                             <constraint firstItem="ca7-dw-39x" firstAttribute="top" secondItem="TpE-bo-cSb" secondAttribute="top" constant="5" id="Gja-vc-g3y"/>
                             <constraint firstItem="R8Z-Qm-Ijk" firstAttribute="leading" secondItem="ca7-dw-39x" secondAttribute="trailing" constant="30" id="ILV-9g-AMa" userLabel="Outlets.trailing= Inlets.leading + 420"/>
@@ -122,6 +139,7 @@
                             <constraint firstItem="7Vm-MJ-DH7" firstAttribute="centerY" secondItem="TpE-bo-cSb" secondAttribute="centerY" id="P87-dp-opM"/>
                             <constraint firstItem="R8Z-Qm-Ijk" firstAttribute="width" secondItem="ca7-dw-39x" secondAttribute="width" id="V5Y-Qk-lct"/>
                             <constraint firstAttribute="trailing" secondItem="F5D-nF-dLg" secondAttribute="trailing" constant="2" id="Wv6-Dq-tbM"/>
+                            <constraint firstItem="F5D-nF-dLg" firstAttribute="top" secondItem="R8Z-Qm-Ijk" secondAttribute="bottom" constant="13" id="Y9r-fG-cV3"/>
                             <constraint firstAttribute="trailing" secondItem="Nwy-6C-qMO" secondAttribute="trailing" id="b2g-GD-tW4"/>
                             <constraint firstItem="Nwy-6C-qMO" firstAttribute="leading" secondItem="TpE-bo-cSb" secondAttribute="leading" id="k74-51-gF9"/>
                             <constraint firstItem="R8Z-Qm-Ijk" firstAttribute="top" secondItem="TpE-bo-cSb" secondAttribute="top" id="pr0-eN-NV1"/>
@@ -133,6 +151,7 @@
                         <outlet property="infoButton" destination="F5D-nF-dLg" id="cj1-6w-q0K"/>
                         <outlet property="inlets" destination="gQw-V1-6qQ" id="csn-tb-L90"/>
                         <outlet property="inletsScrollView" destination="ca7-dw-39x" id="Vb5-bF-GbH"/>
+                        <outlet property="inspectorButton" destination="eoV-RZ-Dr8" id="JZf-eU-qEa"/>
                         <outlet property="outlets" destination="HaQ-1X-9xq" id="yq0-Sr-nhz"/>
                         <outlet property="outletsScrollView" destination="R8Z-Qm-Ijk" id="YCV-U2-HIm"/>
                         <outlet property="progressSpinner" destination="7Vm-MJ-DH7" id="jgN-BI-lh0"/>
@@ -141,7 +160,7 @@
                 </viewController>
                 <customObject id="fe1-sI-gbw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="172" y="-629"/>
+            <point key="canvasLocation" x="172" y="-550"/>
         </scene>
         <!--ModalSheet-->
         <scene sceneID="4k0-C2-vxq">
@@ -149,7 +168,7 @@
                 <customObject id="NOQ-3H-ikh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <controllerPlaceholder storyboardIdentifier="ModalSheet" storyboardName="ModalSheet" referencedIdentifier="ModalSheet" id="zhC-PP-h9p" sceneMemberID="viewController"/>
             </objects>
-            <point key="canvasLocation" x="173" y="-554"/>
+            <point key="canvasLocation" x="26" y="-329"/>
         </scene>
         <!--ModalSheetTabView-->
         <scene sceneID="JLU-iS-TcN">
@@ -157,7 +176,7 @@
                 <customObject id="wMv-y6-HWj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <controllerPlaceholder storyboardIdentifier="TabViewController" storyboardName="ModalSheetTabView" referencedIdentifier="ModalSheetTabView" id="FSW-ds-9G3" sceneMemberID="viewController"/>
             </objects>
-            <point key="canvasLocation" x="180" y="-509"/>
+            <point key="canvasLocation" x="51" y="-283"/>
         </scene>
         <!--ToolTip-->
         <scene sceneID="WcK-MY-1XY">
@@ -165,7 +184,15 @@
                 <controllerPlaceholder storyboardIdentifier="ToolTip" storyboardName="ToolTip" referencedIdentifier="ToolTip" id="4hm-TJ-ZOL" sceneMemberID="viewController"/>
                 <customObject id="2Ac-bo-php" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173" y="-464"/>
+            <point key="canvasLocation" x="12" y="-234"/>
+        </scene>
+        <!--MatrixInspector-->
+        <scene sceneID="cE4-pf-5sX">
+            <objects>
+                <controllerPlaceholder storyboardName="MatrixInspector" id="I4Z-r3-Igh" sceneMemberID="viewController"/>
+                <customObject id="1MH-LV-zCl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="640" y="-550"/>
         </scene>
     </scenes>
 </document>
