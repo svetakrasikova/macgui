@@ -23,7 +23,6 @@ enum DataType: String, Codable {
 class DataMatrix : CustomStringConvertible, Codable {
     
     /// The number of taxa.
-<<<<<<< HEAD
     public var numTaxa : Int
     /// An array containing the taxon names.
     public var taxonNames : [String]
@@ -33,37 +32,17 @@ class DataMatrix : CustomStringConvertible, Codable {
     public var matrixName : String
     /// The file name from which the data originated.
     public var dataFileName : String
-=======
-    var numTaxa : Int
-    /// An array containing the taxon names.
-    var taxonNames : [String]
-    /// An array containing the taxon data.
-    var taxonData : [TaxonData]
-    /// A name for the character data matrix.
-    var matrixName : String
-    /// The file name from which the data originated.
-    var dataFileName : String
->>>>>>> b0ae5d47b3ff1f99352eae5028c07d58167b9b2d
     /// Is the homology of the character data established.
     var homologyEstablished : Bool
     /// A vector of bits indicating whether the taxon is deleted.
-<<<<<<< HEAD
     private var deletedTaxa : [String]
-=======
-    var isTaxonDeleted = Bitvector()
->>>>>>> b0ae5d47b3ff1f99352eae5028c07d58167b9b2d
     /// A vector of bits indicating whether the character is deleted.
     var isCharacterDeleted = Bitvector()
     /// The type of data contained by the matrix.
-<<<<<<< HEAD
     public var dataType : DataType = DataType.Unknown
     /// The valid character states.
     public var stateLabels : String
 
-=======
-    var dataType : DataType = DataType.Unknown
-    
->>>>>>> b0ae5d47b3ff1f99352eae5028c07d58167b9b2d
     // MARK: - Codable  protocol
     
     private enum CodingKeys: String, CodingKey {
@@ -428,17 +407,8 @@ class DataMatrix : CustomStringConvertible, Codable {
         str += "   Data type = \(dataType)\n"
         str += "   File name = \(dataFileName)\n"
         str += "   Number of taxa = \(numTaxa)\n"
-<<<<<<< HEAD
-        if ntR.min() != ntR.max() {
-            str += "   Number of characters = \(ntR)\n"
-        }
-        else {
-            str += "   Number of characters = \(nt)\n"
-        }
+  	str += "   Number of characters = \(numberOfCharactersToString(numberOfCharacters:(ntR, nt)))\n"
         str += "   State labels = \(stateLabels)\n"
-=======
-        str += "   Number of characters = \(numberOfCharactersToString(numberOfCharacters:(ntR, nt)))\n"
->>>>>>> b0ae5d47b3ff1f99352eae5028c07d58167b9b2d
         str += "   Taxon names = \(taxonNames)\n"
         str += "   Homology established = \(homologyEstablished)\n"
         for i in 0..<taxonNames.count {
