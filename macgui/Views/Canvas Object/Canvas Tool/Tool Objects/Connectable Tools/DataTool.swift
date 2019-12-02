@@ -132,14 +132,14 @@ class DataTool: Connectable {
                         }
                     }
                     else if newDataMatrix.dataType == DataType.Standard {
-                        do {
+                        /*do {
                             let newTaxonData : TaxonDataStandard = try TaxonDataStandard(jsonDictionary:tdDict, stateLabels: stateLabels)
                             try newDataMatrix.addTaxonData(taxonData: newTaxonData)
                         }
                         catch {
                             print("Problem adding standard taxon data")
                             throw DataToolError.jsonError
-                        }
+                        }*/
                     }
                     else if newDataMatrix.dataType == DataType.Continuous {
                     

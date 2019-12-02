@@ -27,7 +27,7 @@ class DataMatrix : CustomStringConvertible, Codable {
     /// An array containing the taxon names.
     public var taxonNames : [String]
     /// An array containing the taxon data.
-    private var taxonData : [String: TaxonData]
+    public var taxonData : [String: TaxonData]
     /// A name for the character data matrix.
     public var matrixName : String
     /// The file name from which the data originated.

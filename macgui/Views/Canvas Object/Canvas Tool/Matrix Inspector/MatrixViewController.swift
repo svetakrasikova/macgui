@@ -17,9 +17,11 @@ class MatrixViewController: NSViewController, NSTableViewDataSource {
     var taxonData: [(String, [Character])]? {
         guard let matrix = self.matrix else { return nil }
         var taxonData = [(String, [Character])]()
-        for taxonIndex in 0..<matrix.numTaxa {
-            let characterDataString = matrix.taxonData[taxonIndex].characterDataString()
-            taxonData.append((matrix.taxonNames[taxonIndex], Array(characterDataString)))
+        let activeTaxonNames : [String] = matrix.getActiveTaxaNames()
+        for n in activeTaxonNames {
+            if let td = matrix.getTaxonData(name: n) {
+                taxonData.append((n,Array(td.characterDataString())))
+            }
         }
         return taxonData
     }
