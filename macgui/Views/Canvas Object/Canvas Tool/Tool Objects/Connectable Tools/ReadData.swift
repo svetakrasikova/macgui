@@ -91,13 +91,6 @@ class ReadData: DataTool {
         if !successfullyReadData {
             readDataAlert()
         }
-<<<<<<< HEAD:macgui/Model/Tools/Connectables/ReadData.swift
-=======
-        //  Add a test matrix here
-        let matrix = try! JSONDecoder().decode(DataMatrix.self, from: TestDataConstants.matrixJson)
-        self.dataMatrices.append(matrix)
-
->>>>>>> b0ae5d47b3ff1f99352eae5028c07d58167b9b2d:macgui/Views/Canvas Object/Canvas Tool/Tool Objects/Connectable Tools/ReadData.swift
     }
     
     func readDataTask(_ fileURL: URL) throws {
