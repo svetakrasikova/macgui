@@ -23,24 +23,26 @@ enum DataType: String, Codable {
 class DataMatrix : CustomStringConvertible, Codable {
     
     /// The number of taxa.
-    private var numTaxa : Int
+    public var numTaxa : Int
     /// An array containing the taxon names.
-    private var taxonNames : [String]
+    public var taxonNames : [String]
     /// An array containing the taxon data.
-    private var taxonData : [TaxonData]
+    private var taxonData : [String: TaxonData]
     /// A name for the character data matrix.
-    private var matrixName : String
+    public var matrixName : String
     /// The file name from which the data originated.
-    private var dataFileName : String
+    public var dataFileName : String
     /// Is the homology of the character data established.
     private var homologyEstablished : Bool
     /// A vector of bits indicating whether the taxon is deleted.
-    private var isTaxonDeleted = Bitvector()
+    private var deletedTaxa : [String]
     /// A vector of bits indicating whether the character is deleted.
     private var isCharacterDeleted = Bitvector()
     /// The type of data contained by the matrix.
-    private var dataType : DataType = DataType.Unknown
-    
+    public var dataType : DataType = DataType.Unknown
+    /// The valid character states.
+    public var stateLabels : String
+
     // MARK: - Codable  protocol
     
     private enum CodingKeys: String, CodingKey {
@@ -51,9 +53,10 @@ class DataMatrix : CustomStringConvertible, Codable {
         case matrixName
         case dataFileName
         case homologyEstablished
-        case isTaxonDeleted
+        case deletedTaxa
         case isCharacterDeleted
         case dataType
+        case stateLabels
     }
     
     enum DataMatrixError: Error {
@@ -63,6 +66,7 @@ class DataMatrix : CustomStringConvertible, Codable {
         case decodingError
         case writeError
         case concatenationError
+        case accessError
     }
     
     // MARK: - Intializers
@@ -72,10 +76,12 @@ class DataMatrix : CustomStringConvertible, Codable {
         
         self.numTaxa = 0
         self.taxonNames = []
-        self.taxonData = []
+        self.taxonData = [:]
+        self.deletedTaxa = []
         self.matrixName = ""
         self.dataFileName = ""
         self.homologyEstablished = true
+        self.stateLabels = ""
     }
     
     /// Initialzie only the name of the character data matrix.
@@ -83,10 +89,25 @@ class DataMatrix : CustomStringConvertible, Codable {
         
         self.numTaxa = 0
         self.taxonNames = []
-        self.taxonData = []
+        self.taxonData = [:]
+        self.deletedTaxa = []
         self.matrixName = name
         self.dataFileName = ""
         self.homologyEstablished = true
+        self.stateLabels = ""
+    }
+    
+    init(jsonStr: String) {
+    
+        print("Initializing with JSON string, \(jsonStr)")
+        self.numTaxa = 0
+        self.taxonNames = []
+        self.taxonData = [:]
+        self.deletedTaxa = []
+        self.matrixName = ""
+        self.dataFileName = ""
+        self.homologyEstablished = true
+        self.stateLabels = ""
     }
     
     /// Initialize from serialized data.
@@ -99,19 +120,23 @@ class DataMatrix : CustomStringConvertible, Codable {
             self.matrixName          = try values.decode(String.self,      forKey: .matrixName)
             self.dataFileName        = try values.decode(String.self,      forKey: .dataFileName)
             self.homologyEstablished = try values.decode(Bool.self,        forKey: .homologyEstablished)
-            self.isTaxonDeleted      = try values.decode(Bitvector.self,   forKey: .isTaxonDeleted)
+            self.deletedTaxa         = try values.decode([String].self,    forKey: .deletedTaxa)
             self.isCharacterDeleted  = try values.decode(Bitvector.self,   forKey: .isCharacterDeleted)
             self.dataType            = try values.decode(DataType.self,    forKey: .dataType)
+            self.stateLabels         = try values.decode(String.self,      forKey: .stateLabels)
             
             print(self.dataType)
             if self.dataType == .DNA {
-                self.taxonData = try values.decode([TaxonDataDNA].self, forKey: .taxonData)
+                self.taxonData = try values.decode([String:TaxonDataDNA].self, forKey: .taxonData)
             }
             else if self.dataType == .RNA {
-                self.taxonData = try values.decode([TaxonDataRNA].self, forKey: .taxonData)
+                self.taxonData = try values.decode([String:TaxonDataRNA].self, forKey: .taxonData)
             }
             else if self.dataType == .Protein {
-                self.taxonData = try values.decode([TaxonDataRNA].self, forKey: .taxonData)
+                self.taxonData = try values.decode([String:TaxonDataRNA].self, forKey: .taxonData)
+            }
+            else if self.dataType == .Standard {
+                self.taxonData = try values.decode([String:TaxonDataStandard].self, forKey: .taxonData)
             }
             else {
                 throw DataMatrixError.decodingError
@@ -133,9 +158,10 @@ class DataMatrix : CustomStringConvertible, Codable {
             try container.encode(matrixName,          forKey: .matrixName)
             try container.encode(dataFileName,        forKey: .dataFileName)
             try container.encode(homologyEstablished, forKey: .homologyEstablished)
-            try container.encode(isTaxonDeleted,      forKey: .isTaxonDeleted)
+            try container.encode(deletedTaxa,         forKey: .deletedTaxa)
             try container.encode(isCharacterDeleted,  forKey: .isCharacterDeleted)
             try container.encode(dataType,            forKey: .dataType)
+            try container.encode(stateLabels,         forKey: .stateLabels)
         }
         catch {
             throw DataMatrixError.encodingError
@@ -147,8 +173,13 @@ class DataMatrix : CustomStringConvertible, Codable {
         
         get {
             if validIndex(rowIdx: rowIdx, columnIdx: columnIdx) {
-                let td = taxonData[rowIdx]
-                return td[columnIdx]
+                let tn : String = getTaxonIndexed(index: rowIdx)
+                if let td = getTaxonData(name:tn) {
+                    return td[columnIdx]
+                }
+                else {
+                    return " "
+                }
             }
             else {
                 return " "
@@ -157,12 +188,17 @@ class DataMatrix : CustomStringConvertible, Codable {
         
         set(newValue) {
             if validIndex(rowIdx: rowIdx, columnIdx: columnIdx) {
-                let td = taxonData[rowIdx]
-                if td.isValidCharacterState(potentialCharacterState: newValue) {
-                    td.setCharacterState(characterIdx: columnIdx, characterState: newValue)
+                let tn : String = getTaxonIndexed(index: rowIdx)
+                if let td = getTaxonData(name:tn) {
+                    if td.isValidCharacterState(potentialCharacterState: newValue) {
+                        td.setCharacterState(characterIdx: columnIdx, characterState: newValue)
+                    }
+                    else {
+                        print("Invalid character state \(newValue)")
+                    }
                 }
                 else {
-                    print("Invalid character state \(newValue)")
+                    print("Could not find data for taxon \(tn)")
                 }
             }
         }
@@ -185,8 +221,7 @@ class DataMatrix : CustomStringConvertible, Codable {
         let (_, ncR) = lhs.getNumCharacters()
         
         // concatenate to all taxon data found in lhs
-        for tdL in lhs.taxonData {
-            let nameL : String = tdL.taxonName
+        for (nameL, tdL) in lhs.taxonData {
             let tdR = rhs.getTaxonData(name: nameL)
             if tdR == nil {
                 var missingStr : String = ""
@@ -220,8 +255,7 @@ class DataMatrix : CustomStringConvertible, Codable {
         }
         
         // concatenate for all taxa unique to rhs
-        for tdR in rhs.taxonData {
-            let nameR : String = tdR.taxonName
+        for (nameR, tdR) in rhs.taxonData {
             let tdL = lhs.getTaxonData(name: nameR)
             if tdL == nil {
                 var missingStr : String = ""
@@ -314,15 +348,22 @@ class DataMatrix : CustomStringConvertible, Codable {
         
         // check that the states are the same
         if self.taxonData.count > 0 {
-            guard taxonData.isSameStateSpace(taxonData: self.taxonData[0]) == true else {
-                throw DataMatrixError.incompatibleDataTypes
+            if let td = getTaxonData(name: getTaxonIndexed(index:0) ) {
+                guard taxonData.isSameStateSpace(taxonData: td) == true else {
+                    throw DataMatrixError.incompatibleDataTypes
+                }
+            }
+            else {
+                throw DataMatrixError.accessError
             }
         }
         
         // check the homology
         if self.taxonData.count > 0 {
-            if self.taxonData[0].numCharacters != taxonData.numCharacters {
-                homologyEstablished = false
+            if let td = getTaxonData(name: getTaxonIndexed(index:0) ) {
+                if td.numCharacters != taxonData.numCharacters {
+                    homologyEstablished = false
+                }
             }
         }
         else {
@@ -345,10 +386,9 @@ class DataMatrix : CustomStringConvertible, Codable {
         }
         
         // add the information
-        self.taxonData.append(taxonData)
+        self.taxonData[taxonData.taxonName] = taxonData
         self.taxonNames.append(taxonData.taxonName)
         self.numTaxa += 1
-        self.isTaxonDeleted += false
     }
     
     // return a string with the data type
@@ -365,6 +405,7 @@ class DataMatrix : CustomStringConvertible, Codable {
         var str: String = ""
         str += "DataMatrix: \(matrixName)\n"
         str += "   Data type = \(dataType)\n"
+        str += "   File name = \(dataFileName)\n"
         str += "   Number of taxa = \(numTaxa)\n"
         if ntR.min() != ntR.max() {
             str += "   Number of characters = \(ntR)\n"
@@ -372,14 +413,27 @@ class DataMatrix : CustomStringConvertible, Codable {
         else {
             str += "   Number of characters = \(nt)\n"
         }
+        str += "   State labels = \(stateLabels)\n"
         str += "   Taxon names = \(taxonNames)\n"
         str += "   Homology established = \(homologyEstablished)\n"
-        for i in 0..<numTaxa {
-            str += "   \(paddedTaxonName(index: i, underscore: false))   \(taxonData[i].characterDataString())\n"
+        for i in 0..<taxonNames.count {
+            if let td = getTaxonData(name:taxonNames[i]) {
+                str += "   \(paddedTaxonName(index: i, underscore: false))   \(td.characterDataString())\n"
+            }
+            else {
+                str += "   Could not find taxon in taxon map\n"
+            }
         }
-        for i in 0..<numTaxa {
-            str += "   \(paddedTaxonName(index: i, underscore: false))   \(taxonData[i].bitString())\n"
+#if false
+        for i in 0..<taxonData.count {
+            if let td = getTaxonData(name:taxonNames[i]) {
+                str += "   \(paddedTaxonName(index: i, underscore: false))   \(td.bitString())\n"
+            }
+            else {
+                str += "   Could not find taxon in taxon map\n"
+            }
         }
+#endif
         str += "   Deleted taxa: \(self.getDeletedTaxaNames())\n"
         str += "   Deleted characters: \(self.getDeletedCharacters())\n"
         
@@ -397,7 +451,12 @@ class DataMatrix : CustomStringConvertible, Codable {
             return false
         }
         else {
-            if columnIdx >= self.taxonData[0].numCharacters {
+            if let td = getTaxonData(name:taxonNames[rowIdx]) {
+                if columnIdx >= td.numCharacters {
+                    return false
+                }
+            }
+            else {
                 return false
             }
         }
@@ -436,15 +495,22 @@ class DataMatrix : CustomStringConvertible, Codable {
         str += "begin data;\n"
         str += "   dimensions ntax=\(numTaxa) nchar=\(nt);\n"
         if dataType == DataType.Standard {
-            let td = self.taxonData[0] as! TaxonDataStandard
-            str += "   format datatype=\(getDataType()) symbols=\"\(td.possibleCharacterStates)\" missing=\(td.missingCharacter);\n"
+            if let td = getTaxonData(name: taxonNames[0]) {
+                let tds = td as! TaxonDataStandard
+                str += "   format datatype=\(getDataType()) symbols=\"\(stateLabels)\" missing=\(tds.missingCharacter);\n"
+            }
         }
         else {
             str += "   format datatype=\(getDataType()) missing=? gap=-;\n"
         }
         str += "   matrix\n"
-        for i in 0..<numTaxa {
-            str += "   \(paddedTaxonName(index: i, underscore: true))   \(taxonData[i].characterDataString())\n"
+        for i in 0..<taxonNames.count {
+            if let td = getTaxonData(name: taxonNames[i]) {
+                str += "   \(paddedTaxonName(index: i, underscore: true))   \(td.characterDataString())\n"
+            }
+            else {
+            str += "   \(paddedTaxonName(index: i, underscore: true))   Could not find data!!!)\n"
+            }
         }
         str += "   ;\n"
         str += "end;\n\n"
@@ -463,41 +529,50 @@ class DataMatrix : CustomStringConvertible, Codable {
     
     // delete the taxon by index
     func deleteTaxon(taxonIdx: Int) {
-        
-        if taxonIdx >= 0 && taxonIdx < self.isTaxonDeleted.size() {
-            if self.isTaxonDeleted[taxonIdx] == true {
-                print("Taxon \(taxonNames[taxonIdx]) is already deleted")
-            }
-            else {
-                self.isTaxonDeleted[taxonIdx] = true
-            }
+    
+        // check the index
+        if taxonIdx < 0 || taxonIdx >= taxonNames.count {
+            print("Deleted taxon index is out-of-range")
+            return
         }
+        
+        // find the taxon name
+        let tn : String = taxonNames[taxonIdx]
+        
+        // check that the taxon is not already deleted
+        if isTaxonDeleted(taxon:tn) == true {
+            print("Taxon \(tn) is already deleted")
+            return
+        }
+        
+        // add the taxon to the list of deleted taxa
+        deletedTaxa.append(tn)
     }
     
     // delete the taxon by name
     func deleteTaxon(taxonId: String) {
+    
+        // check that the name is in the list of names
+        if taxonNames.contains(taxonId) == false {
+            print("Could not find taxon \(taxonId) in the list of taxa for this matrix")
+            return
+        }
         
-        let isTaxonHere = taxonNames.contains(taxonId)
-        if isTaxonHere == true {
-            var taxonIdx : Int = 0
-            for i in 0..<taxonNames.count {
-                if taxonNames[i] == taxonId {
-                    taxonIdx = i
-                    break
-                }
-            }
-            deleteTaxon(taxonIdx: taxonIdx)
+        // check that the taxon isn't already deleted
+        if deletedTaxa.contains(taxonId) == true {
+            print("The taxon \(taxonId) has already been deleted")
+            return
         }
-        else {
-            print("Taxon \"\(taxonId)\" is not found in the matrix")
-        }
+        
+        // delete the taxon
+        deletedTaxa.append(taxonId)
     }
     
     // delete all the taxa
     func deleteAllTaxa() {
         
-        for i in 0..<self.isTaxonDeleted.size() {
-            self.isTaxonDeleted[i] = true
+        for tn in taxonNames {
+            deleteTaxon(taxonId:tn)
         }
     }
     
@@ -505,9 +580,9 @@ class DataMatrix : CustomStringConvertible, Codable {
     func getActiveTaxaNames() -> [String] {
         
         var activeTaxa : [String] = []
-        for i in 0..<numTaxa {
-            if self.isTaxonDeleted[i] == false {
-                activeTaxa.append(taxonNames[i])
+        for tn in taxonNames {
+            if isTaxonDeleted(taxon: tn) == false {
+                activeTaxa.append(tn)
             }
         }
         return activeTaxa
@@ -516,25 +591,34 @@ class DataMatrix : CustomStringConvertible, Codable {
     // get the list of deleted taxa
     func getDeletedTaxaNames() -> [String] {
         
-        var deletedTaxa : [String] = []
-        for i in 0..<numTaxa {
-            if self.isTaxonDeleted[i] == true {
-                deletedTaxa.append(taxonNames[i])
+        var delTaxa : [String] = []
+        for tn in taxonNames {
+            if self.isTaxonDeleted(taxon:tn) == true {
+                delTaxa.append(tn)
             }
         }
-        return deletedTaxa
+        return delTaxa
     }
     
     // get taxon data
     func getTaxonData(name: String) -> TaxonData? {
         
-        for td in taxonData {
-            let n : String = td.taxonName
-            if n == name {
-                return td
-            }
+        if let val = taxonData[name] {
+            return val
         }
-        return nil
+        else {
+            print("Could not find taxon name \(name) in the data matrix")
+            return nil
+        }
+    }
+    
+    // get taxon name by index
+    func getTaxonIndexed(index: Int) -> String {
+    
+        if index < 0 || index >= taxonNames.count {
+            return String()
+        }
+        return taxonNames[index]
     }
     
     // get all taxa, active and deleted
@@ -545,11 +629,33 @@ class DataMatrix : CustomStringConvertible, Codable {
     
     // is the taxon deleted?
     func isTaxonDeleted(taxonIdx: Int) -> Bool {
-        
-        if taxonIdx >= 0 && taxonIdx < self.isTaxonDeleted.size() {
-            return self.isTaxonDeleted[taxonIdx]
+    
+        // check the index
+        if taxonIdx < 0 || taxonIdx >= taxonNames.count {
+            print("Taxon index, \(taxonIdx), is out of range")
+            return false
         }
-        return false
+        
+        // get the taxon name for that index
+        let tn : String = taxonNames[taxonIdx]
+        
+        return isTaxonDeleted(taxon:tn)
+    }
+    
+    // is the taxon deleted?
+    func isTaxonDeleted(taxon: String) -> Bool {
+    
+        // check that the taxon is in the list of taxa
+        if taxonNames.contains(taxon) == false {
+            print("The taxon \(taxon) could not be found in the list of taxa for this matrix")
+            return false
+        }
+        
+        // check to see if the taxon is in the list of deleted taxa
+        if deletedTaxa.contains(taxon) == false {
+            return false
+        }
+        return true
     }
     
     // check for presence of taxon
@@ -592,40 +698,36 @@ class DataMatrix : CustomStringConvertible, Codable {
     // restore all taxa
     func restoreAllTaxa() {
         
-        for i in 0..<self.isTaxonDeleted.size() {
-            self.isTaxonDeleted[i] = false
-        }
+        deletedTaxa.removeAll()
     }
     
     // restore the taxon by index
     func restoreTaxon(taxonIdx: Int) {
         
-        if taxonIdx >= 0 && taxonIdx < self.isTaxonDeleted.size() {
-            if self.isTaxonDeleted[taxonIdx] == false {
-                print("Taxon \(taxonNames[taxonIdx]) is already included")
-            }
-            else {
-                self.isTaxonDeleted[taxonIdx] = false
-            }
+        // check the index
+        if taxonIdx < 0 || taxonIdx >= taxonNames.count {
+            print("Index is out of range")
+            return
         }
+        
+        // get the taxon name
+        let tn : String = taxonNames[taxonIdx]
+        
+        // check to see if the taxon is deleted, and if so, delete it
+        restoreTaxon(taxonId: tn)
     }
     
     // restore the taxon by name
     func restoreTaxon(taxonId: String) {
         
-        let isTaxonHere = taxonNames.contains(taxonId)
-        if isTaxonHere == true {
-            var taxonIdx : Int = 0
-            for i in 0..<taxonNames.count {
-                if taxonNames[i] == taxonId {
-                    taxonIdx = i
-                    break
-                }
+        // check to see if the taxon is deleted, and if so, delete it
+        if isTaxonDeleted(taxon: taxonId) == true {
+            if let idx = deletedTaxa.firstIndex(of: taxonId) {
+                deletedTaxa.remove(at: idx)
             }
-            restoreTaxon(taxonIdx: taxonIdx)
         }
         else {
-            print("Taxon \"\(taxonId)\" is not found in the matrix")
+            print("Taxon \(taxonId) is already restored")
         }
     }
     
@@ -680,10 +782,14 @@ class DataMatrix : CustomStringConvertible, Codable {
     func getNumCharacters() -> (ClosedRange<Int>, Int) {
         
         var r : ClosedRange<Int>
-        if numTaxa > 0 {
-            var minV : Int = taxonData[0].numCharacters
-            var maxV : Int = taxonData[0].numCharacters
-            for td in taxonData {
+        if taxonData.count > 0 {
+            var minV : Int = 0
+            var maxV : Int = 0
+            if let td = getTaxonData(name: taxonNames[0]) {
+                minV = td.numCharacters
+                maxV = td.numCharacters
+            }
+            for (_,td) in taxonData {
                 let x : Int = td.numCharacters
                 if x < minV {
                     minV = x

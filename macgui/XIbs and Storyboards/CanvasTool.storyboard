@@ -90,8 +90,23 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="7Vm-MJ-DH7">
-                                <rect key="frame" x="217" y="30" width="16" height="16"/>
+                            <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="7Vm-MJ-DH7">
+                                <rect key="frame" x="209" y="22" width="32" height="32"/>
+                                <contentFilters>
+                                    <ciFilter name="CITemperatureAndTint">
+                                        <configuration>
+                                            <null key="inputImage"/>
+                                            <ciVector key="inputNeutral">
+                                                <real value="6500"/>
+                                                <real value="0.0"/>
+                                            </ciVector>
+                                            <ciVector key="inputTargetNeutral">
+                                                <real value="6500"/>
+                                                <real value="0.0"/>
+                                            </ciVector>
+                                        </configuration>
+                                    </ciFilter>
+                                </contentFilters>
                             </progressIndicator>
                         </subviews>
                         <constraints>

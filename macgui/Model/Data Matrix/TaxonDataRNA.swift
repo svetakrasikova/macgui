@@ -36,6 +36,41 @@ class TaxonDataRNA: TaxonDataDNA {
         }
     }
 
+    /// Initialize from json dictionary.
+    required init(jsonDictionary: [String: Any]) throws {
+    
+        // get the taxon name
+        var taxonName : String = ""
+        if let taxonInfo = jsonDictionary["Taxon"] as? [String: Any] {
+            taxonName = taxonInfo["name"] as! String
+        }
+        else {
+            print("Could not read the taxon information for the taxon data")
+            throw TaxonDataError.decodingError
+        }
+
+        // get the character data
+        var nucleotideString : String = ""
+        if let charArray = jsonDictionary["charData"] as? [String] {
+            for str in charArray {
+                nucleotideString += str
+            }
+        }
+        else {
+            print("Could not read the characters for the taxon data")
+            throw TaxonDataError.decodingError
+        }
+
+        // initialize the remaining parts of the TaxonData
+        do {
+            try super.init(taxonName: taxonName, nucleotideString: nucleotideString)
+            self.dataType = .RNA
+        }
+        catch {
+            throw TaxonDataError.decodingError
+        }
+    }
+
    // MARK: NSCopying Protocol
     
     override func copy(with zone: NSZone? = nil) -> Any {

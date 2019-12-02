@@ -154,6 +154,7 @@ class TaxonData : Bitvector, NSCopying {
     func isValidCharacterStateString(potentialCharacterStateString: String) -> Bool {
         for c in potentialCharacterStateString {
             if isValidCharacterState(potentialCharacterState: c) == false {
+                print("invalid character state is \(c)")
                 return false
             }
         }
