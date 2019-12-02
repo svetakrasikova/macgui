@@ -14,12 +14,20 @@ class ToolTipViewController: NSViewController {
     
     @IBOutlet weak var toolNameLabel: NSTextField!
     @IBOutlet weak var connectionsStatusLabel: NSTextField!
-
+    @IBOutlet weak var numberMatricesLabel: NSTextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.toolNameLabel.stringValue = delegate?.getDescriptiveToolName() ?? "Unnamed Tool"
         setConnectionStatus()
+        if let delegate = self.delegate as? CanvasToolViewController, let tool = delegate.tool as? DataTool {
+            let number = tool.dataMatrices.count
+            setNumberOfMatrices(number)
+        } else {
+            numberMatricesLabel.isHidden = true
+        }
+         NotificationCenter.default.addObserver(self, selector: #selector(setNumberOfMatrices(_:)), name: .didUpdateDataMatrices, object: nil)
     }
     
     func setConnectionStatus() {
@@ -30,6 +38,11 @@ class ToolTipViewController: NSViewController {
                 connectionsStatusLabel.stringValue = "Missing connections"
             }
         }
+    }
+    
+    @objc func setNumberOfMatrices(_ number: Int) {
+        numberMatricesLabel.stringValue = "# Matrices: \(number)"
+        self.view.needsDisplay = true
     }
 }
 

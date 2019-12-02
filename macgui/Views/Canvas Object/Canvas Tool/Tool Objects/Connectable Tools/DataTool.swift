@@ -10,12 +10,13 @@ import Cocoa
 
 class DataTool: Connectable {
     
-    var dataMatrices: [DataMatrix] {
-        get {
-            return self.analysis.dataMatrices
-        }
-        set {
-            self.analysis.dataMatrices = newValue
+    var dataMatrices: [DataMatrix]  = [] {
+        didSet {
+            if dataMatrices.isEmpty {
+                NotificationCenter.default.post(name: .didUpdateDataMatrices, object: nil, userInfo: ["isEmpty" : true])
+            } else {
+                NotificationCenter.default.post(name: .didUpdateDataMatrices, object: nil, userInfo: ["isEmpty" : false])
+            }
         }
     }
     

@@ -8,23 +8,24 @@
 
 import Cocoa
 
-class MatrixViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
+class MatrixViewController: NSViewController, NSTableViewDataSource {
     
     @IBOutlet weak var tableView: NSTableView!
 
     var matrix: DataMatrix?
-    
-    var taxonData: [String:[Character]]? {
+   
+    var taxonData: [(String, [Character])]? {
         guard let matrix = self.matrix else { return nil }
-        var taxonData = [String:[Character]]()
+        var taxonData = [(String, [Character])]()
         for taxonIndex in 0..<matrix.numTaxa {
             let characterDataString = matrix.taxonData[taxonIndex].characterDataString()
-            taxonData[matrix.taxonNames[taxonIndex]] = Array(characterDataString)
+            taxonData.append((matrix.taxonNames[taxonIndex], Array(characterDataString)))
         }
         return taxonData
     }
+
     
-    var tableViewColumnsArray: Array<ColumnDictionary> = []
+    var tableViewColumnsArray: [ColumnDictionary] = []
     let columnDefaultWidth:Float = 100.0
 
     func populateTableViewColumnsArray() {
@@ -51,39 +52,61 @@ class MatrixViewController: NSViewController, NSTableViewDataSource, NSTableView
     // MARK: - NSTableViewDataSource
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        guard let numberOfRows = taxonData?.keys.count else {
+        guard let numberOfRows = taxonData?.count else {
             return 0
         }
+
         return numberOfRows
     }
     
-    
+
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard let taxonData = self.taxonData, let tableColumn = tableColumn  else { return nil }
-        
-        let taxaNames: [String] =  Array<String>(taxonData.keys)
-        
+
+        let taxaNames: [String] =  taxonData.map {$0.0}
+
         if tableColumn.title == "Taxon Name" {
             return taxaNames[row]
         }
 
-        if let taxonCharacterData: [Character] = taxonData[taxaNames[row]], let characterPosition =  Int(tableColumn.identifier.rawValue)  {
+        if let characterPosition =  Int(tableColumn.identifier.rawValue)  {
+            let taxonCharacterData: [Character] = taxonData[row].1
             return String(taxonCharacterData[characterPosition-1])
 
        }
         return nil
     }
-    
+
+//    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+//        guard let taxonData = self.taxonData, let tableColumn = tableColumn  else { return nil }
+//
+//        let taxaNames: [String] =  taxonData.map {$0.0}
+//        let cell: NSTableCellView = tableView.makeView(withIdentifier: (NSUserInterfaceItemIdentifier(rawValue: "CharacterCell")), owner: self) as! NSTableCellView
+//
+//
+//        if tableColumn.title == "Taxon Name" {
+//            cell.textField?.stringValue = taxaNames[row]
+//            return cell
+//        }
+//
+//        if let characterPosition =  Int(tableColumn.identifier.rawValue)  {
+//            let taxonCharacterData: [Character] = taxonData[row].1
+//            cell.textField?.stringValue = String(taxonCharacterData[characterPosition-1])
+//            return cell
+//
+//        }
+//        return nil
+//    }
     
     func addMatrixDataColumnsToTableView(){
         
          for column in tableView.tableColumns {
             tableView.removeTableColumn(column)
         }
-        
         for columnDictionary in tableViewColumnsArray {
             let column: NSTableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: columnDictionary.identifier))
             column.headerCell.title = columnDictionary.title
+//            (column.dataCell as? NSTextField)?.textColor = NSColor.red
             column.width = CGFloat(self.columnDefaultWidth)
             column.minWidth = CGFloat(columnDictionary.minWidth)
             column.maxWidth = CGFloat(columnDictionary.maxWidth)

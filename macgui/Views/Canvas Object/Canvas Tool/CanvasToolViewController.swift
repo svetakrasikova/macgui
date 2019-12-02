@@ -9,6 +9,8 @@
 import Cocoa
 
 class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate, ActionButtonDelegate, ToolTipDelegate, ToolObjectDelegate {
+ 
+    
 
     
     // MARK: -  Interface Builder Outlets
