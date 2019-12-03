@@ -55,6 +55,45 @@ class TaxonDataStandard: TaxonDataDiscrete {
         }
     }
     
+    /// Initialize from JSON dictionary.
+    required convenience init(jsonDictionary: [String: Any], stateLabels: String) throws {
+    
+        // get the taxon name
+        var taxonName : String = ""
+        if let taxonInfo = jsonDictionary["Taxon"] as? [String: Any] {
+            taxonName = taxonInfo["name"] as! String
+        }
+        else {
+            print("Could not read the taxon information for the taxon data")
+            throw TaxonDataError.decodingError
+        }
+
+        #if false
+
+        // get the character data
+        var aminoAcidString : String = ""
+        if let charArray = jsonDictionary["charData"] as? [String] {
+            for str in charArray {
+                aminoAcidString += str
+            }
+        }
+        else {
+            print("Could not read the characters for the taxon data")
+            throw TaxonDataError.decodingError
+        }
+
+        do {
+            try self.init(taxonName: taxonName, aminoAcidString: aminoAcidString)
+        }
+        catch {
+            print("Problem initializing protein coding data")
+            throw TaxonDataError.decodingError
+        }
+#else
+        try self.init(taxonName: "", charcterDataString: "", possibleStates: stateLabels, missingCharacter: "")
+#endif
+    }
+
     /// Initialize from serialized data.
     required init(from decoder: Decoder) throws {
         

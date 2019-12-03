@@ -52,28 +52,96 @@ class ReadData: DataTool {
                            default: break
                            }
                 }
-                self.readFromFileURL(fileURL)
+                do {
+                    try self.readFromFileURL(fileURL)
+                }
+                catch {
+                
+                }
             }
         }
     }
-    func readFromFileURL(_ fileURL: URL){
-        delegate?.startProgressIndicator()
-        let success = revbayesBridge.readMatrix(from: fileURL.path)
-        delegate?.endProgressIndicator()
-        if !success {
+    
+    func readFromFileURL(_ fileURL: URL) throws {
+            
+        // start the progress indicator on the tool
+        let group = DispatchGroup()
+        DispatchQueue.main.async {
+            self.delegate?.startProgressIndicator()
+        }
+
+        // read the data on another thread
+        let queue = DispatchQueue(label:"Read data queue", qos: .userInitiated)
+        var successfullyReadData : Bool = true
+        queue.async(group: group) {
+            do {
+                try self.readDataTask(fileURL)
+                }
+            catch {
+                successfullyReadData = false
+            }
+        }
+        
+        // wait here until the read data task is finished
+        group.notify(queue: DispatchQueue.main) {
+            self.delegate?.endProgressIndicator()
+        }
+        
+        // notify the user if we fail to properly read the data
+        if !successfullyReadData {
             readDataAlert()
         }
-        //  Add a test matrix here
-        let matrix = try! JSONDecoder().decode(DataMatrix.self, from: TestDataConstants.matrixJson)
-        self.dataMatrices.append(matrix)
-
     }
     
-    func readDataAlert(){
+    func readDataTask(_ fileURL: URL) throws {
+    
+        // obtain a JSON string from the core
+        let jsonStringArray : [Any] = revbayesBridge.readMatrix(from: fileURL.path) as! [Any]
+        
+        // check the array
+        if jsonStringArray.count == 0 {
+            print("Could not read data from path \(fileURL.path)")
+            throw DataToolError.readError
+        }
+        
+        // loop over the json-information stored in the array for each data matrix
+        for elem in jsonStringArray {
+            do {
+                let resultString : String = elem as! String
+                print(resultString)
+                let data = Data(resultString.utf8)
+                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                let dictionary = json as? [String: Any]
+                    
+                if let nestedDictionary = dictionary!["CharacterDataMatrix"] as? [String: Any] {
+                    do {
+                        try self.addMatrix(jsonDictionary:nestedDictionary)
+                    }
+                    catch {
+                        throw DataToolError.readError
+                    }
+                }
+                else {
+                    print("Could not read CharacterDataMatrix entry in JSON string")
+                    throw DataToolError.jsonError
+                }
+            }
+            catch {
+                throw DataToolError.readError
+            }
+        }
+    }
+
+    func readDataAlert() {
         let alert = NSAlert()
         alert.messageText = "Problem Reading Data"
         alert.informativeText = "Data could not be read"
         alert.runModal()
+    }
+    
+    func testFunction() {
+    
+        print("TestFunction")
     }
     
     

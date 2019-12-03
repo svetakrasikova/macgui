@@ -3,3 +3,7 @@
 //
 
 #import "CoreBridge.h"
+
+@interface ReadData : NSObject
+- (void)testFunction;
+@end

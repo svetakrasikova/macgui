@@ -12,4 +12,9 @@ import Foundation
 
     var dataMatrices: [DataMatrix]?
 
+    class func create() -> DataMatrixContainer {
+    
+        return DataMatrixContainer()
+    }
+
 }

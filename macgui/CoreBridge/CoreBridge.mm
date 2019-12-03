@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AppKit/AppKit.h"
 #import "CoreBridge.h"
+#import "macgui-Swift.h"
 
 #include <string>
 #include <vector>
@@ -56,87 +58,72 @@
     
 }
 
-- (Boolean)readMatrixFrom:(NSString*)fileToRead {
+- (NSMutableArray*)readMatrixFrom:(NSString*)fileToRead {
     
     std::string variableName = RevLanguage::Workspace::userWorkspace().generateUniqueVariableName();
     NSString* nsVariableName = [NSString stringWithCString:variableName.c_str() encoding:NSUTF8StringEncoding];
     const char* cmdAsCStr = [fileToRead UTF8String];
     std::string cmdAsStlStr = cmdAsCStr;
     std::string line = variableName + " = readCharacterData(\"" + cmdAsStlStr + "\",alwaysReturnAsVector=TRUE)";
-
     int coreResult = RevLanguage::Parser::getParser().processCommand(line, &RevLanguage::Workspace::userWorkspace());
-    
-    if (coreResult != 0) {
+    if (coreResult != 0)
+        {
         [self eraseVariableFromCore:nsVariableName];
-        return false;
-    }
+        return [NSMutableArray array];
+        }
     const RevLanguage::RevObject& dv = RevLanguage::Workspace::userWorkspace().getRevObject(variableName);
     if ( dv == RevLanguage::RevNullObject::getInstance() )
         [self eraseVariableFromCore:nsVariableName];
     
-    /**
-     
-        TODO: Pass the reference to the read-in data for initialisation on the gui side.
-     */
-    
     const WorkspaceVector<RevObject> *dnc = dynamic_cast<const WorkspaceVector<RevObject> *>( &dv );
-    if (dnc != NULL){
-        for (int i=0; i<dnc->size(); i++){
-           
+
+    NSMutableArray* jsonStringArray = [NSMutableArray array];
+    if (dnc != NULL)
+        {
+        for (int i=0; i<(int)dnc->size(); i++)
+            {
+            std::string jsonStr = "";
             const RevBayesCore::AbstractCharacterData* cd = NULL;
 
             if ( dynamic_cast<const ModelObject<RevBayesCore::AbstractHomologousDiscreteCharacterData> *>( &((*dnc)[i] ) ) != NULL )
-            {
+                {
                 cd = &dynamic_cast<const ModelObject<RevBayesCore::AbstractHomologousDiscreteCharacterData> *>( &((*dnc)[i] ) )->getValue();
-            }
+                }
             else if ( dynamic_cast<const ModelObject<RevBayesCore::AbstractNonHomologousDiscreteCharacterData> *>( &((*dnc)[i] ) ) != NULL )
-            {
+                {
                 cd = &dynamic_cast<const ModelObject<RevBayesCore::AbstractNonHomologousDiscreteCharacterData> *>( &((*dnc)[i] ) )->getValue();
-            }
+                }
             else if ( dynamic_cast<const ModelObject<RevBayesCore::ContinuousCharacterData> *>( &((*dnc)[i] ) ) != NULL )
-            {
+                {
                 cd = &dynamic_cast<const ModelObject<RevBayesCore::ContinuousCharacterData> *>( &((*dnc)[i] ) )->getValue();
-            }
+                }
             else
-            {
-               [self eraseVariableFromCore:nsVariableName];
-               return false;
-            }
+                {
+                [self eraseVariableFromCore:nsVariableName];
+                return [NSMutableArray array];
+                }
             
             // homology must be established for Standard and Continuous data types
-            if (cd->isHomologyEstablished() == false && (cd->getDataType() == "Continuous" || cd->getDataType() == "Standard")) {
+            if (cd->isHomologyEstablished() == false && (cd->getDataType() == "Continuous" || cd->getDataType() == "Standard"))
+                {
                 [self eraseVariableFromCore:nsVariableName];
-                return false;
-            }
+                return [NSMutableArray array];
+                }
         
-            // make GUI version of the data matrix that is in the core
-            if (cd->getDataType() == "RNA") {
-                std::string type = "RNA";
-                }
-            else if (cd->getDataType() == "DNA") {
-                std::string type = "DNA";
-                }
-            else if (cd->getDataType() == "Protein") {
-                std::string type = "Protein";
+            jsonStr += cd->getJsonRepresentation();
+            [jsonStringArray addObject: [NSString stringWithUTF8String:jsonStr.c_str()] ];
             }
-            else if (cd->getDataType() == "Standard") {
-                    std::string type = "Standard";
-                    }
-            else if (cd->getDataType() == "Continuous") {
-                    std::string type = "Continuous";
-                    }
-            else {
-                // Output error: Unrecognized data type
-                    }
+        }
+    else
+        {
+        [self eraseVariableFromCore:nsVariableName];
+        return [NSMutableArray array];
         }
 
-    } else {
-        [self eraseVariableFromCore:nsVariableName];
-        return false;
-    }
-    
+    // no errors, so we can return the JSON string representation
     [self eraseVariableFromCore:nsVariableName];
-    return true;
+
+    return jsonStringArray;
 }
 
 - (void)eraseVariableFromCore:(NSString*)variableName  {
@@ -148,6 +135,10 @@
 - (void)makeNewGuiDataMatrixFromCoreMatrixWithAddress:(const RevBayesCore::AbstractCharacterData&)cd andDataType:(const std::string&)dt {
 
     std::string fn = cd.getFileName();
+    
+    //Cat *cat = Cat.create;
+    
+
     
 #   if 0
     NSString* nsfn = [NSString stringWithCString:(fn.c_str()) encoding:NSUTF8StringEncoding];
