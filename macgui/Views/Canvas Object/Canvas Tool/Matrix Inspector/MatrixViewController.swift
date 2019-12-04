@@ -10,13 +10,6 @@ import Cocoa
 
 class MatrixViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
     
-    enum CharacterColor {
-        case G
-        case A
-        case C
-        case T
-    }
-    
     @IBOutlet weak var tableView: NSTableView!
 
     var matrix: DataMatrix?
@@ -95,11 +88,7 @@ class MatrixViewController: NSViewController, NSTableViewDataSource, NSTableView
     func setCellContent(_ cell: NSTableCellView, withCharacterString characterString: String) {
         cell.textField?.stringValue = characterString
         cell.textField?.drawsBackground = true
-        cell.textField?.backgroundColor = characterToColor(characterString)
-    }
-    
-    func characterToColor(_ characterString: String) -> NSColor {
-        return NSColor.red
+        cell.textField?.backgroundColor = TaxonDataDNA.nucleotideColorCode(nucChar: characterString)
     }
     
     func addMatrixDataColumnsToTableView(){

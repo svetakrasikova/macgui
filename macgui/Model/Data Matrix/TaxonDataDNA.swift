@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 class TaxonDataDNA: TaxonDataDiscrete {
 
@@ -306,6 +307,47 @@ class TaxonDataDNA: TaxonDataDiscrete {
                 nucVector[1] = true
                 nucVector[2] = true
                 nucVector[3] = true
+        }
+    }
+    
+    static func nucleotideColorCode(nucChar: String) -> NSColor {
+        switch nucChar {
+            case "A":
+                return Color.orange.rawValue
+            case "C":
+                return Color.green.rawValue
+            case "G":
+                return Color.blue.rawValue
+            case "T":
+                return Color.yellow.rawValue
+            case "R":
+                return Color.cyan.rawValue
+            case "Y":
+                return Color.azure.rawValue
+            case "M":
+                return Color.darkblue.rawValue
+            case "K":
+                return Color.fuchsia.rawValue
+            case "S":
+                return Color.darkgreen.rawValue
+            case "W":
+                return Color.darkmagenta.rawValue
+            case "H":
+                return Color.red.rawValue
+            case "B":
+                return Color.khaki.rawValue
+            case "V":
+                return Color.brown.rawValue
+            case "D":
+                return Color.beige.rawValue
+            case "N":
+                return Color.cyan.rawValue
+            case "?":
+                return Color.darkgrey.rawValue
+            case "-":
+                return Color.aqua.rawValue
+            default:
+                return Color.white.rawValue
         }
     }
 

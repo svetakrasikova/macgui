@@ -20,6 +20,7 @@
 		1411D1632305B18D00A8B936 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411D1622305B18D00A8B936 /* ToolTipView.swift */; };
 		141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */; };
 		1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */; };
+		144BC105239732940001B2EF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BC104239732940001B2EF /* Color.swift */; };
 		144CC4AF220E4081003311E4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CC4AE220E4081003311E4 /* ImageLoader.swift */; };
 		144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */; };
 		1452355B220CB79800A85186 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355A220CB79800A85186 /* CanvasView.swift */; };
@@ -1398,6 +1399,7 @@
 		1411D1622305B18D00A8B936 /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteringClipView.swift; sourceTree = "<group>"; };
 		1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolView.swift; sourceTree = "<group>"; };
+		144BC104239732940001B2EF /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		144CC4AE220E4081003311E4 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolViewController.swift; sourceTree = "<group>"; };
 		1452355A220CB79800A85186 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
@@ -4303,6 +4305,7 @@
 				14D6DE00221E484000021607 /* ControllerExtensions.swift */,
 				147429DA22CBC8C300FF1963 /* Storyboards.swift */,
 				149C5FC42325A52D0060043E /* Tools.swift */,
+				144BC104239732940001B2EF /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -8441,6 +8444,7 @@
 				14E69697237221D30045E283 /* DistanceRateModifier.cpp in Sources */,
 				14E69A37237221D50045E283 /* Dist_ConstrainedNodeOrder.cpp in Sources */,
 				14E69589237221D30045E283 /* TipTimeSlideUniformProposal.cpp in Sources */,
+				144BC105239732940001B2EF /* Color.swift in Sources */,
 				14E695B8237221D30045E283 /* GammaScaleProposal.cpp in Sources */,
 				14E6962A237221D30045E283 /* WangLandauMcmc.cpp in Sources */,
 				14E69813237221D30045E283 /* Move_RateAgeBetaShift.cpp in Sources */,
