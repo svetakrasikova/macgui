@@ -125,20 +125,16 @@ class DataMatrix : CustomStringConvertible, Codable {
             self.dataType            = try values.decode(DataType.self,    forKey: .dataType)
             self.stateLabels         = try values.decode(String.self,      forKey: .stateLabels)
             
-            print(self.dataType)
-            if self.dataType == .DNA {
+            switch self.dataType {
+            case .DNA:
                 self.taxonData = try values.decode([String:TaxonDataDNA].self, forKey: .taxonData)
-            }
-            else if self.dataType == .RNA {
+            case .RNA:
                 self.taxonData = try values.decode([String:TaxonDataRNA].self, forKey: .taxonData)
-            }
-            else if self.dataType == .Protein {
-                self.taxonData = try values.decode([String:TaxonDataRNA].self, forKey: .taxonData)
-            }
-            else if self.dataType == .Standard {
+            case .Protein:
+                self.taxonData = try values.decode([String:TaxonDataProtein].self, forKey: .taxonData)
+            case . Standard:
                 self.taxonData = try values.decode([String:TaxonDataStandard].self, forKey: .taxonData)
-            }
-            else {
+            default:
                 throw DataMatrixError.decodingError
             }
         }
@@ -149,7 +145,6 @@ class DataMatrix : CustomStringConvertible, Codable {
     
     /// Encode the object for serialization.
     func encode(to encoder: Encoder) throws {
-        
         do {
             var container = encoder.container(keyedBy: CodingKeys.self)
             try container.encode(numTaxa,             forKey: .numTaxa)
@@ -205,8 +200,7 @@ class DataMatrix : CustomStringConvertible, Codable {
     }
     
     // MARK: - Operators
-    
-    
+        
     // concatenate matrices
     static func +=(lhs: DataMatrix, rhs: DataMatrix) throws {
         
