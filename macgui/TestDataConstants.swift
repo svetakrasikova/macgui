@@ -9,10 +9,37 @@
 import Foundation
 
 class TestDataConstants {
-
-    static let matrixJson = """
-    {"homologyEstablished":true,"isTaxonDeleted":{"numInts":1,"mask":17870283321406128128,"vector":[0],"numElements":4},"taxonData":[{"dataType":"DNA","super":{"numInts":1,"mask":18446744073709543424,"vector":[9376784841553543168],"numElements":50},"numFlags":1,"numStates":4,"numCharacters":10,"taxonName":"Taxon 1"},{"dataType":"DNA","super":{"numInts":1,"mask":18446744073709543424,"vector":[4760450083537944576],"numElements":50},"numFlags":1,"numStates":4,"numCharacters":10,"taxonName":"Taxon 2"},{"dataType":"DNA","super":{"numInts":1,"mask":18446744073709543424,"vector":[2380225041768972288],"numElements":50},"numFlags":1,"numStates":4,"numCharacters":10,"taxonName":"Taxon 3"},{"dataType":"DNA","super":{"numInts":1,"mask":18446744073709543424,"vector":[1190112520884486144],"numElements":50},"numFlags":1,"numStates":4,"numCharacters":10,"taxonName":"Taxon 4"}],"dataFileName":"","dataType":"DNA","isCharacterDeleted":{"numInts":1,"mask":18437736874454810624,"vector":[0],"numElements":10},"taxonNames":["Taxon 1","Taxon 2","Taxon 3","Taxon 4"],"matrixName":"Test data matrix","numTaxa":4}
-
-    """.data(using: .utf8)!
     
+    static  let emptyBitVectorJsonString: String = String(data: (try! JSONEncoder().encode(Bitvector())), encoding: .utf8)!
+    
+    static let  (A, T, G, C): (String, String, String, String) = ("A", "T", "G", "C")
+    
+    static let charData: String = [A,T,G,C,T,G,C,C].joined()
+
+    
+    static let taxonDataDNA = try! TaxonDataDNA(taxonName: "Sbay", nucleotideString: String(charData))
+    static  let taxonDataDNAJsonString: String = String(data: (try! JSONEncoder().encode(taxonDataDNA)), encoding: .utf8)!
+    
+    static let matrixJson = """
+ {
+   "numTaxa": 1,
+   "taxonNames": [
+     "Sbay"
+   ],
+   "matrixName": "nYAL021C",
+   "dataFileName": "/Users/svetakrasikova/Documents/Data/rawfas/nYAL021C",
+   "dataType": "DNA",
+   "homologyEstablished": true,
+   "deletedTaxa": [
+     
+   ],
+   "isCharacterDeleted": \(emptyBitVectorJsonString),
+   "stateLabels": "",
+   "taxonData": 
+     {
+       "Sbay": \(taxonDataDNAJsonString)
+     }
+ }
+""".data(using: .utf8)!
+
 }
