@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:../../revbayes/src/core"
+      name = "core">
+   </Group>
+   <Group
+      location = "group:../../revbayes/src/libs"
+      name = "libs">
+   </Group>
+   <Group
+      location = "group:../../revbayes/src/revlanguage"
+      name = "revlanguage">
+   </Group>
    <FileRef
-      location = "self:macgui.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
