@@ -95,40 +95,22 @@ class ReadData: DataTool {
     
     func readDataTask(_ fileURL: URL) throws {
     
-        // obtain a JSON string from the core
-        let jsonStringArray : [Any] = revbayesBridge.readMatrix(from: fileURL.path) as! [Any]
-        
-        // check the array
-        if jsonStringArray.count == 0 {
-            print("Could not read data from path \(fileURL.path)")
-            throw DataToolError.readError
+        guard let jsonStringArray: [String] = revbayesBridge.readMatrix(from: fileURL.path) as? [String], jsonStringArray.count != 0 else {
+            throw ReadDataError.fetchDataError(fileURL: fileURL)
         }
-        
-        // loop over the json-information stored in the array for each data matrix
-        for elem in jsonStringArray {
-            do {
-                let resultString : String = elem as! String
-                print(resultString)
-                let data = Data(resultString.utf8)
-                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                let dictionary = json as? [String: Any]
-                    
-                if let nestedDictionary = dictionary!["CharacterDataMatrix"] as? [String: Any] {
-                    do {
-                        try self.addMatrix(jsonDictionary:nestedDictionary)
-                    }
-                    catch {
-                        throw DataToolError.readError
-                    }
-                }
-                else {
-                    print("Could not read CharacterDataMatrix entry in JSON string")
-                    throw DataToolError.jsonError
+        do {
+            let matricesData: [Data] = try JsonCoreBridge(jsonArray: jsonStringArray).encodeJsonStringArray()
+            for data in matricesData {
+                do {
+                    let newMatrix = try JSONDecoder().decode(DataMatrix.self, from: data)
+//                    let newMatrix = try JSONDecoder().decode(DataMatrix.self, from: TestDataConstants.matrixJson)
+                    dataMatrices.append(newMatrix)
+                } catch  {
+                    throw ReadDataError.dataDecodingError
                 }
             }
-            catch {
-                throw DataToolError.readError
-            }
+        } catch ReadDataError.coreJsonError {
+            print("Core JSON data is not well-formatted.")
         }
     }
 
@@ -140,7 +122,6 @@ class ReadData: DataTool {
     }
     
     func testFunction() {
-    
         print("TestFunction")
     }
     
