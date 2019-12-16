@@ -72,6 +72,7 @@ class MatrixViewController: NSViewController, NSTableViewDataSource, NSTableView
 
         if tableColumn.title == "Taxon Name" {
             cell.textField?.stringValue = taxaNames[row]
+            cell.textField?.drawsBackground = false
             return cell
         }
 
@@ -102,7 +103,6 @@ class MatrixViewController: NSViewController, NSTableViewDataSource, NSTableView
             column.width = CGFloat(self.columnDefaultWidth)
             column.minWidth = CGFloat(columnDictionary.minWidth)
             column.maxWidth = CGFloat(columnDictionary.maxWidth)
-            
             tableView.addTableColumn(column)
         }
         

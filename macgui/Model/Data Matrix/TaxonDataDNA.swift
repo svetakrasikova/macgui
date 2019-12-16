@@ -315,9 +315,9 @@ class TaxonDataDNA: TaxonDataDiscrete {
             case "A":
                 return Color.orange.rawValue
             case "C":
-                return Color.green.rawValue
+                return Color.lightgreen.rawValue
             case "G":
-                return Color.blue.rawValue
+                return Color.lightblue.rawValue
             case "T":
                 return Color.yellow.rawValue
             case "R":
