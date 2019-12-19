@@ -53,6 +53,7 @@ class MatrixNavigatorViewController: NSViewController, NSTableViewDelegate, NSTa
         super.viewWillAppear()
         tableView.reloadData()
     }
+    
 
 }
 

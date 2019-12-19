@@ -66,15 +66,12 @@ class JsonCoreBridge {
         var dataArray: [Data] = []
         for jsonString in jsonStringArray {
             do {
-//                print(jsonString)
-//                return []
                 let json = try JSONSerialization.jsonObject(with: Data(jsonString.utf8), options: .mutableContainers)
                 guard let dictionary = json as? [String: Any], let nestedDictionary = dictionary[CoreJsonKeys.matrix.rawValue] as? [String: Any]
                     else {
                         throw ReadDataError.coreJsonError
                 }
                 let matrixJsonString = matrixJsonStringFromDictionary(nestedDictionary)
-                print(matrixJsonString)
                 dataArray.append(matrixJsonString.data(using: .utf8)!)
                 
             } catch {

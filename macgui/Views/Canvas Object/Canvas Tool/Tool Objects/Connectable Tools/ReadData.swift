@@ -63,20 +63,20 @@ class ReadData: DataTool {
     }
     
     func readFromFileURL(_ fileURL: URL) throws {
-            
+        
         // start the progress indicator on the tool
         let group = DispatchGroup()
         DispatchQueue.main.async {
             self.delegate?.startProgressIndicator()
         }
-
+        
         // read the data on another thread
         let queue = DispatchQueue(label:"Read data queue", qos: .userInitiated)
         var successfullyReadData : Bool = true
         queue.async(group: group) {
             do {
                 try self.readDataTask(fileURL)
-                }
+            }
             catch {
                 successfullyReadData = false
             }
@@ -103,7 +103,6 @@ class ReadData: DataTool {
             for data in matricesData {
                 do {
                     let newMatrix = try JSONDecoder().decode(DataMatrix.self, from: data)
-//                    let newMatrix = try JSONDecoder().decode(DataMatrix.self, from: TestDataConstants.matrixJson)
                     dataMatrices.append(newMatrix)
                 } catch  {
                     throw ReadDataError.dataDecodingError

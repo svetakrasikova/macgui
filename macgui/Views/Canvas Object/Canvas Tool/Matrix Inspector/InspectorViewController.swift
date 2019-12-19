@@ -54,6 +54,7 @@ class InspectorViewController: NSSplitViewController, MatrixNavigatorViewControl
     
     func matrixNavigatorViewController(viewController: MatrixNavigatorViewController, selectedMatrix: DataMatrix) {
         self.selectedMatrix = selectedMatrix
+        matrixViewer?.flushTableView()
         matrixViewer?.showSelectedMatrix(matrixToShow: selectedMatrix)
       }
     
@@ -66,7 +67,6 @@ class InspectorViewController: NSSplitViewController, MatrixNavigatorViewControl
             inspector.numberOfTaxa.integerValue = selectedMatrix.numTaxa
             inspector.numberOfExcludedCharacters.integerValue = selectedMatrix.getDeletedCharacters().count
             inspector.numberOfExcludedTaxa.integerValue = selectedMatrix.getDeletedTaxaNames().count
-            //@John: How do we establish this?
             inspector.sequencesAligned.stringValue = "Unknown"
         }
     }
