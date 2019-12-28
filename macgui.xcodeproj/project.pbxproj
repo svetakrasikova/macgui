@@ -1310,6 +1310,7 @@
 		144BF19623A17AC80001B2EF /* RbHelpSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 144BEC8F23A17AC50001B2EF /* RbHelpSystem.cpp */; };
 		144BF19723A17AC80001B2EF /* RbHelpReference.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 144BEC9023A17AC50001B2EF /* RbHelpReference.cpp */; };
 		144BF19823A17AC80001B2EF /* RbHelpEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 144BEC9123A17AC50001B2EF /* RbHelpEntry.cpp */; };
+		144BF19C23AC16710001B2EF /* CharacterCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BF19B23AC16710001B2EF /* CharacterCellView.swift */; };
 		144CC4AF220E4081003311E4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CC4AE220E4081003311E4 /* ImageLoader.swift */; };
 		144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */; };
 		1452355B220CB79800A85186 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355A220CB79800A85186 /* CanvasView.swift */; };
@@ -4190,6 +4191,7 @@
 		144BEC8F23A17AC50001B2EF /* RbHelpSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RbHelpSystem.cpp; sourceTree = "<group>"; };
 		144BEC9023A17AC50001B2EF /* RbHelpReference.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RbHelpReference.cpp; sourceTree = "<group>"; };
 		144BEC9123A17AC50001B2EF /* RbHelpEntry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RbHelpEntry.cpp; sourceTree = "<group>"; };
+		144BF19B23AC16710001B2EF /* CharacterCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CharacterCellView.swift; path = "/Users/svetakrasikova/Repos/macgui/macgui/Views/Canvas Object/Canvas Tool/Matrix Inspector/CharacterCellView.swift"; sourceTree = "<absolute>"; };
 		144CC4AE220E4081003311E4 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolViewController.swift; sourceTree = "<group>"; };
 		1452355A220CB79800A85186 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
@@ -8210,6 +8212,7 @@
 		1495A0B2237C97F800F46312 /* Matrix Inspector */ = {
 			isa = PBXGroup;
 			children = (
+				144BF19B23AC16710001B2EF /* CharacterCellView.swift */,
 				1495A0C3237DF99900F46312 /* InspectorWindowController.swift */,
 				1495A0B3237C987600F46312 /* InspectorViewController.swift */,
 				1495A0C1237DC46600F46312 /* MatrixNavigatorViewController.swift */,
@@ -9240,6 +9243,7 @@
 				144BF14B23A17AC70001B2EF /* ConstantPopulationHeterochronousCoalescent.cpp in Sources */,
 				144BF03A23A17AC70001B2EF /* RateGeneratorSequence.cpp in Sources */,
 				144BEEE823A17AC60001B2EF /* Dist_PhyloOrnsteinUhlenbeckREML.cpp in Sources */,
+				144BF19C23AC16710001B2EF /* CharacterCellView.swift in Sources */,
 				144BEEFD23A17AC60001B2EF /* nxsunalignedblock.cpp in Sources */,
 				144BEF1323A17AC60001B2EF /* MeanVecContinuousValStatistic.cpp in Sources */,
 				1452355B220CB79800A85186 /* CanvasView.swift in Sources */,

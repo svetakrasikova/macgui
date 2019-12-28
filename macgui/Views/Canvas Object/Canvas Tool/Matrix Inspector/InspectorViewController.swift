@@ -54,7 +54,6 @@ class InspectorViewController: NSSplitViewController, MatrixNavigatorViewControl
     
     func matrixNavigatorViewController(viewController: MatrixNavigatorViewController, selectedMatrix: DataMatrix) {
         self.selectedMatrix = selectedMatrix
-        matrixViewer?.flushTableView()
         matrixViewer?.showSelectedMatrix(matrixToShow: selectedMatrix)
       }
     
