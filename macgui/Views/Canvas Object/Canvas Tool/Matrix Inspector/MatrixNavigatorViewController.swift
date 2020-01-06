@@ -21,6 +21,19 @@ class MatrixNavigatorViewController: NSViewController, NSTableViewDelegate, NSTa
         return delegate.dataMatrices
     }
     
+    var maxNumberOfCharacters: Int {
+        guard let dataMatrices = self.dataMatrices
+            else { return 0}
+        var max = 0
+        for matrix in dataMatrices {
+            let currentMax = matrix.numberOfCharactersToInt(numberOfCharacters: matrix.getNumCharacters())
+            if currentMax > max {
+                max = currentMax
+            }
+        }
+        return max
+    }
+    
     // MARK: - NSTableViewDataSource
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -46,18 +59,22 @@ class MatrixNavigatorViewController: NSViewController, NSTableViewDelegate, NSTa
         if row == -1 {
             return
         }
-        delegate?.matrixNavigatorViewController(viewController: self, selectedMatrix: dataMatrices[row])
+        delegate?.matrixNavigatorViewController(selectedMatrix: dataMatrices[row])
     }
     
     override func viewWillAppear() {
         super.viewWillAppear()
         tableView.reloadData()
+        if let dataMatrices = self.dataMatrices {
+            tableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
+            delegate?.matrixNavigatorViewController(selectedMatrix: dataMatrices[0])
+        }
     }
     
 
 }
 
 protocol MatrixNavigatorViewControllerDelegate: class {
-    func matrixNavigatorViewController(viewController: MatrixNavigatorViewController, selectedMatrix: DataMatrix)
+    func matrixNavigatorViewController(selectedMatrix: DataMatrix)
 }
 

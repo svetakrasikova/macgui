@@ -52,10 +52,11 @@ class InspectorViewController: NSSplitViewController, MatrixNavigatorViewControl
     
     // MARK: - MatrixNavigatorViewControllerDelegate
     
-    func matrixNavigatorViewController(viewController: MatrixNavigatorViewController, selectedMatrix: DataMatrix) {
+    func matrixNavigatorViewController(selectedMatrix: DataMatrix) {
         self.selectedMatrix = selectedMatrix
         matrixViewer?.showSelectedMatrix(matrixToShow: selectedMatrix)
       }
+    
     
     // MARK: - InfoInspectorDelegate
     

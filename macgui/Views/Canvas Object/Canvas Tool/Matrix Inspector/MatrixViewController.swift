@@ -10,10 +10,9 @@ import Cocoa
 
 class MatrixViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
    
-    
-    
     @IBOutlet weak var tableView: NSTableView!
-   
+    @IBOutlet weak var tableHeader: CharacterCellHeaderView!
+    
     var taxonData: [String:String]?
     var taxaNames: [String]?
 
@@ -30,11 +29,15 @@ class MatrixViewController: NSViewController, NSTableViewDataSource, NSTableView
         self.taxonData = taxonData
     }
     
+    
     func showSelectedMatrix(matrixToShow: DataMatrix) {
         setTableDataFromMatrix(matrixToShow)
+//        tableHeader.numberOfCharacters = taxonData?.count 
+//        tableHeader.needsDisplay = true
         self.tableView.reloadData()
 
     }
+    
 
     // MARK: - NSTableViewDataSource
     
@@ -57,51 +60,30 @@ class MatrixViewController: NSViewController, NSTableViewDataSource, NSTableView
             cell.textField?.stringValue = taxonName
             return cell
         } else {
-            let taxonCharacterData = taxonData![taxonName]
-            let cell: NSTableCellView = tableView.makeView(withIdentifier: (NSUserInterfaceItemIdentifier(rawValue: "CharacterCell")), owner: self) as! NSTableCellView
-            setCellContent(cell, withCharacterString: taxonCharacterData ?? "??", column: tableColumn)
-            print("update cell, row \(row)")
-//            cell.textField?.stringValue = taxonCharacterData ?? "#"
-            
-            return cell
+            if let taxonCharacterData = taxonData![taxonName], let cell = tableView.makeView(withIdentifier: (NSUserInterfaceItemIdentifier(rawValue: "CharacterCell")), owner: self) as? CharacterCellView {
+                cell.characterString = taxonCharacterData
+                autoSizeColumnToFitWidth(column: tableColumn, cell: cell)
+                return cell
+            }
+
+            return nil
         }
     }
     
-    func autoSizeToFitWidth(column: NSTableColumn, string: NSAttributedString) {
-        let rectAutoWidth: NSRect = string.boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: 24), options: [])
+    
+    func autoSizeColumnToFitWidth(column: NSTableColumn, cell: CharacterCellView) {
+        
+        let cellWidth = cell.viewSize.width
 
-        if ( column.minWidth < rectAutoWidth.size.width )
+        if ( column.minWidth < cellWidth )
         {
-            column.minWidth = rectAutoWidth.size.width
-            column.width = rectAutoWidth.size.width
+            column.minWidth = cellWidth
+            column.width = cellWidth
         }
     }
+    
 
-    func setCellContent(_ cell: NSTableCellView, withCharacterString characterString: String, column: NSTableColumn) {
-        cell.textField?.allowsEditingTextAttributes = true
-        let attributedCharacterString = createAttributedStringFromString(characterString)
-        cell.textField?.attributedStringValue = attributedCharacterString
-        autoSizeToFitWidth(column: column, string: attributedCharacterString)
-        
-    }
-    
-    func createAttributedStringFromString(_ string: String) -> NSMutableAttributedString {
-        var stringWithSpacing = ""
-        for character in string {
-            stringWithSpacing += "\(character) "
-        }
-        
-        let attributedString = NSMutableAttributedString(string: stringWithSpacing)
-        for i in stride(from: 0, to: stringWithSpacing.count, by: 2){
-            let index = stringWithSpacing.index(stringWithSpacing.startIndex, offsetBy: i)
-            let character = stringWithSpacing[index]
-            let color = TaxonDataDNA.nucleotideColorCode(nucChar: String(character))
-            let characterAttributes: [NSAttributedString.Key : Any] = [.backgroundColor: color, .font: NSFont.userFixedPitchFont(ofSize: 12) as Any, .kern: 1]
-            attributedString.addAttributes(characterAttributes, range: NSRange(location: i, length: 1) )
-        }
-        return attributedString
-    }
-    
+ 
 
 }
 
