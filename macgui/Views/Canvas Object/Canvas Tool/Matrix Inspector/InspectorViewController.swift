@@ -13,7 +13,7 @@ class InspectorViewController: NSSplitViewController, MatrixNavigatorViewControl
     
     var dataMatrices: [DataMatrix]?
     
-    var selectedMatrix: DataMatrix? {
+    var selectedMatrixIndex: Int? {
         didSet{
             if let infoInspector = self.infoInspector {
                 setInfoInspectorValues(inspector: infoInspector)
@@ -34,6 +34,7 @@ class InspectorViewController: NSSplitViewController, MatrixNavigatorViewControl
     var matrixViewer: MatrixViewController? {
         for item in splitViewItems {
             if let matrixViewer = item.viewController as? MatrixViewController {
+                matrixViewer.dataMatrices = self.dataMatrices
                 return matrixViewer
             }
         }
@@ -52,16 +53,16 @@ class InspectorViewController: NSSplitViewController, MatrixNavigatorViewControl
     
     // MARK: - MatrixNavigatorViewControllerDelegate
     
-    func matrixNavigatorViewController(selectedMatrix: DataMatrix) {
-        self.selectedMatrix = selectedMatrix
-        matrixViewer?.showSelectedMatrix(matrixToShow: selectedMatrix)
+    func matrixNavigatorViewController(selectedMatrixIndex: Int) {
+        self.selectedMatrixIndex = selectedMatrixIndex
+        matrixViewer?.showSelectedMatrix(matrixIndex: selectedMatrixIndex)
       }
     
     
     // MARK: - InfoInspectorDelegate
     
     func setInfoInspectorValues(inspector: InfoInspector) {
-        if let selectedMatrix = self.selectedMatrix {
+        if let index = self.selectedMatrixIndex, let selectedMatrix = self.dataMatrices?[index] {
             inspector.dataType.stringValue = selectedMatrix.dataType.rawValue
             inspector.numberOfCharacters.stringValue = selectedMatrix.numberOfCharactersToString(numberOfCharacters: selectedMatrix.getNumCharacters())
             inspector.numberOfTaxa.integerValue = selectedMatrix.numTaxa
