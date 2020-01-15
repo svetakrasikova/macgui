@@ -1312,6 +1312,7 @@
 		144BF19823A17AC80001B2EF /* RbHelpEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 144BEC9123A17AC50001B2EF /* RbHelpEntry.cpp */; };
 		144CC4AF220E4081003311E4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CC4AE220E4081003311E4 /* ImageLoader.swift */; };
 		144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */; };
+		1451029D23CE6A1300BA88BA /* SynchroScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1451029C23CE6A1300BA88BA /* SynchroScrollView.swift */; };
 		1452355B220CB79800A85186 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355A220CB79800A85186 /* CanvasView.swift */; };
 		1452355F220CCC5800A85186 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355E220CCC5800A85186 /* Helpers.swift */; };
 		1452356B220CE9AC00A85186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1452356A220CE9AC00A85186 /* Assets.xcassets */; };
@@ -4192,6 +4193,7 @@
 		144BEC9123A17AC50001B2EF /* RbHelpEntry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RbHelpEntry.cpp; sourceTree = "<group>"; };
 		144CC4AE220E4081003311E4 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolViewController.swift; sourceTree = "<group>"; };
+		1451029C23CE6A1300BA88BA /* SynchroScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchroScrollView.swift; sourceTree = "<group>"; };
 		1452355A220CB79800A85186 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		1452355E220CCC5800A85186 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		1452356A220CE9AC00A85186 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -8214,6 +8216,7 @@
 				1495A0B3237C987600F46312 /* InspectorViewController.swift */,
 				1495A0C1237DC46600F46312 /* MatrixNavigatorViewController.swift */,
 				1495A0BB237CBB9F00F46312 /* MatrixViewController.swift */,
+				1451029C23CE6A1300BA88BA /* SynchroScrollView.swift */,
 				1495A0BD237CBBC400F46312 /* InfoInspector.swift */,
 			);
 			path = "Matrix Inspector";
@@ -9400,6 +9403,7 @@
 				144BF06323A17AC70001B2EF /* EigenSystem.cpp in Sources */,
 				14E58528228DF92F00802691 /* Notifications.swift in Sources */,
 				144BF01C23A17AC70001B2EF /* PoMoState.cpp in Sources */,
+				1451029D23CE6A1300BA88BA /* SynchroScrollView.swift in Sources */,
 				144BEF1623A17AC60001B2EF /* MetropolisHastingsMove.cpp in Sources */,
 				144BED1423A17AC50001B2EF /* Mntr_CharacterHistoryNhxFile.cpp in Sources */,
 				144BF09D23A17AC70001B2EF /* LnFunction.cpp in Sources */,
@@ -9882,7 +9886,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -9941,7 +9945,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
 		};

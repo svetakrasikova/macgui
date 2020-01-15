@@ -123,7 +123,7 @@
                                             <tableColumns>
                                                 <tableColumn width="152" minWidth="40" maxWidth="1000" id="NFq-d6-3bq">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -216,7 +216,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M88-m5-qF8">
                                                                     <rect key="frame" x="-2" y="0.0" width="61" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Data Type:" id="Qyj-7w-5KY">
-                                                                        <font key="font" metaFont="label" size="11"/>
+                                                                        <font key="font" metaFont="message" size="11"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -224,7 +224,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gVj-zI-68q">
                                                                     <rect key="frame" x="60" y="0.0" width="12" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="#" id="8ZM-dg-5BF">
-                                                                        <font key="font" metaFont="label" size="11"/>
+                                                                        <font key="font" metaFont="message" size="11"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -245,7 +245,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1JI-Bj-Azh">
                                                                     <rect key="frame" x="-2" y="0.0" width="91" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Number of Taxa:" id="nQ6-uE-ptB">
-                                                                        <font key="font" metaFont="label" size="11"/>
+                                                                        <font key="font" metaFont="message" size="11"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -253,7 +253,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PTD-rw-B5g">
                                                                     <rect key="frame" x="90" y="0.0" width="12" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="#" id="678-f7-v0e">
-                                                                        <font key="font" metaFont="label" size="11"/>
+                                                                        <font key="font" metaFont="message" size="11"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -274,7 +274,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Txx-56-EiH">
                                                                     <rect key="frame" x="-2" y="0.0" width="124" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Number of Characters:" id="E1g-nw-f8Q">
-                                                                        <font key="font" metaFont="label" size="11"/>
+                                                                        <font key="font" metaFont="message" size="11"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -282,7 +282,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gw7-HB-W9B">
                                                                     <rect key="frame" x="123" y="0.0" width="12" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="#" id="eSO-ne-XY5">
-                                                                        <font key="font" metaFont="label" size="11"/>
+                                                                        <font key="font" metaFont="message" size="11"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -303,7 +303,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="opz-lj-bYC">
                                                                     <rect key="frame" x="-2" y="0.0" width="141" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Number of Excluded Taxa:" id="MpX-gr-CIl">
-                                                                        <font key="font" metaFont="label" size="11"/>
+                                                                        <font key="font" metaFont="message" size="11"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -311,7 +311,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TyR-5G-vCM">
                                                                     <rect key="frame" x="140" y="0.0" width="12" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="#" id="Mno-fR-pcr">
-                                                                        <font key="font" metaFont="label" size="11"/>
+                                                                        <font key="font" metaFont="message" size="11"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -332,7 +332,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wvv-Ds-frV">
                                                                     <rect key="frame" x="-2" y="0.0" width="175" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Number of Excluded Characters:" id="ejf-EG-IQP">
-                                                                        <font key="font" metaFont="label" size="11"/>
+                                                                        <font key="font" metaFont="message" size="11"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -340,7 +340,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h7c-WJ-Hmg">
                                                                     <rect key="frame" x="174" y="0.0" width="12" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="#" id="4Ag-MY-rvD">
-                                                                        <font key="font" metaFont="label" size="11"/>
+                                                                        <font key="font" metaFont="message" size="11"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -361,7 +361,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nji-ck-ZaD">
                                                                     <rect key="frame" x="-2" y="0.0" width="108" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Sequences Aligned:" id="Sp6-vo-h7R">
-                                                                        <font key="font" metaFont="label" size="11"/>
+                                                                        <font key="font" metaFont="message" size="11"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -369,7 +369,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Od-LO-dvq">
                                                                     <rect key="frame" x="107" y="0.0" width="12" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="#" id="SxJ-MN-1T0">
-                                                                        <font key="font" metaFont="label" size="11"/>
+                                                                        <font key="font" metaFont="message" size="11"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -453,43 +453,50 @@
                             <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ObF-Cp-Pq4">
                                 <rect key="frame" x="0.0" y="0.0" width="485" height="209"/>
                                 <subviews>
-                                    <customView fixedFrame="YES" id="gsm-Rb-DfR" userLabel="Taxon Names">
-                                        <rect key="frame" x="0.0" y="0.0" width="109" height="209"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </customView>
-                                    <customView id="PW4-0U-XcB" userLabel="Matrix">
-                                        <rect key="frame" x="110" y="0.0" width="375" height="209"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6H-h5-UJE">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="209"/>
-                                                <clipView key="contentView" id="k6D-pv-4U4">
-                                                    <rect key="frame" x="1" y="1" width="373" height="207"/>
+                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="UAh-dx-nM2" userLabel="Taxa Names">
+                                        <rect key="frame" x="0.0" y="0.0" width="149" height="209"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <clipView key="contentView" id="Soy-oo-MF6">
+                                            <rect key="frame" x="1" y="1" width="147" height="207"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <view id="1jm-Tk-aXm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="149" height="208"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <subviews>
-                                                        <view id="sCB-fN-uYj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="358" height="192"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        </view>
-                                                    </subviews>
-                                                </clipView>
-                                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Q2E-NQ-rgW">
-                                                    <rect key="frame" x="1" y="192" width="373" height="16"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </scroller>
-                                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hhj-Kf-wJv">
-                                                    <rect key="frame" x="358" y="1" width="16" height="207"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </scroller>
-                                            </scrollView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="n6H-h5-UJE" firstAttribute="top" secondItem="PW4-0U-XcB" secondAttribute="top" id="6Pl-GW-JXs"/>
-                                            <constraint firstAttribute="bottom" secondItem="n6H-h5-UJE" secondAttribute="bottom" id="8J4-Tf-Dtz"/>
-                                            <constraint firstAttribute="trailing" secondItem="n6H-h5-UJE" secondAttribute="trailing" id="fph-0E-SEl"/>
-                                            <constraint firstItem="n6H-h5-UJE" firstAttribute="leading" secondItem="PW4-0U-XcB" secondAttribute="leading" id="viF-fd-eQO"/>
-                                        </constraints>
-                                    </customView>
+                                                </view>
+                                            </subviews>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Pco-j2-NUB">
+                                            <rect key="frame" x="-100" y="-100" width="147" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="0VU-WF-8D7">
+                                            <rect key="frame" x="-100" y="-100" width="16" height="207"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="n6H-h5-UJE" userLabel="Character Data">
+                                        <rect key="frame" x="150" y="0.0" width="335" height="209"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <clipView key="contentView" id="k6D-pv-4U4">
+                                            <rect key="frame" x="1" y="1" width="333" height="207"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <view id="sCB-fN-uYj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="318" height="208"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </view>
+                                            </subviews>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Q2E-NQ-rgW">
+                                            <rect key="frame" x="1" y="192" width="333" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hhj-Kf-wJv">
+                                            <rect key="frame" x="318" y="1" width="16" height="207"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
                                 </subviews>
                                 <holdingPriorities>
                                     <real value="250"/>
@@ -505,8 +512,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="dataMatrix" destination="sCB-fN-uYj" id="JXZ-f6-IK8"/>
-                        <outlet property="taxaNamesView" destination="gsm-Rb-DfR" id="KOk-fh-5Di"/>
+                        <outlet property="matrixScrollView" destination="n6H-h5-UJE" id="HLm-MI-y0V"/>
+                        <outlet property="matrixView" destination="sCB-fN-uYj" id="DLM-fp-IWv"/>
+                        <outlet property="taxaNamesScrollView" destination="UAh-dx-nM2" id="uz0-0r-vKn"/>
+                        <outlet property="taxaNamesView" destination="1jm-Tk-aXm" id="Afg-1q-xC3"/>
                     </connections>
                 </viewController>
                 <customObject id="e2b-ia-1jF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

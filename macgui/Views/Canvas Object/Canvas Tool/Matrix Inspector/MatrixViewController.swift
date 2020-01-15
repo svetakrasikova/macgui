@@ -14,7 +14,9 @@ class MatrixViewController: NSViewController {
     var dataMatrix: NSMatrix?
     
     @IBOutlet weak var matrixView: NSView!
+    @IBOutlet weak var matrixScrollView: NSScrollView!
     @IBOutlet weak var taxaNamesView: NSView!
+    @IBOutlet weak var taxaNamesScrollView: NSScrollView!
     
     var dataMatrices: [DataMatrix]?
     var taxonData: [String:String]?
@@ -43,7 +45,6 @@ class MatrixViewController: NSViewController {
     }
     
     
-    
     func showSelectedMatrix(matrixIndex: Int) {
         if let matrixToShow = self.dataMatrices?[matrixIndex] {
             setDataFromSelectedMatrix(matrixToShow)
@@ -67,9 +68,16 @@ class MatrixViewController: NSViewController {
     }
     
     func initializeTaxaMatrix(){
-        if let taxaNames = taxaNames {
-            let taxaMatrix = NSMatrix(frame: NSZeroRect, mode: .listModeMatrix, cellClass: NSTextFieldCell.self, numberOfRows: numberRows, numberOfColumns: 1)
+        
+        if let taxaNames = taxaNames, let taxaNamesWidth = self.taxaNamesWidth {
+            
+            let size = NSSize(width: taxaNamesWidth, height: taxaNamesView.frame.size.height)
+            let frameRect = NSRect(origin: taxaNamesView.frame.origin, size: size)
+            let taxaMatrix = NSMatrix(frame: frameRect, mode: .listModeMatrix, cellClass: NSTextFieldCell.self, numberOfRows: numberRows, numberOfColumns: 1)
+            taxaMatrix.cellSize = NSMakeSize(taxaNamesWidth, Appearance.cellHeight)
+            
             setMatrixViewProperties(matrix: taxaMatrix)
+            
             for index in 0..<taxaMatrix.cells.count {
                 let cell: NSTextFieldCell = taxaMatrix.cell(atRow: index, column: 0)  as! NSTextFieldCell
                 if index == 0 {
@@ -80,11 +88,8 @@ class MatrixViewController: NSViewController {
                     setMatrixCell(cell: cell, backgroundColor: Appearance.namesBackgroundColor, textColor: Appearance.namesTextColor, stringValue: taxaNames[index-2])
                 }
             }
-            let nameWidth = lengthOfLongestName(taxaNames: taxaNames)
-            taxaMatrix.cellSize = NSMakeSize(nameWidth, Appearance.cellHeight)
-            taxaMatrix.frame =  taxaNamesView.frame
-            self.taxaMatrix = taxaMatrix
             
+            self.taxaMatrix = taxaMatrix
         }
     }
     
@@ -122,12 +127,10 @@ class MatrixViewController: NSViewController {
         
         initializeTaxaMatrix()
         
-        if let taxaNamesWidth = self.taxaNamesWidth {
-            let size = NSSize(width: taxaNamesWidth, height: taxaNamesView.frame.size.height)
-            taxaNamesView.setFrameSize(size)
-        }
-        
         guard let taxaMatrix = self.taxaMatrix else { return }
+        let size = taxaMatrix.frame.size
+        self.taxaNamesScrollView.setFrameSize(size)
+        self.taxaNamesView.setFrameSize(size)
         taxaNamesView.addSubview(taxaMatrix)
         taxaMatrix.widthAnchor.constraint(equalToConstant: taxaNamesView.frame.width).isActive = true
         taxaMatrix.heightAnchor.constraint(equalToConstant: taxaNamesView.frame.height).isActive = true
@@ -160,6 +163,7 @@ class MatrixViewController: NSViewController {
             let frameRect = NSRect(x: 0.0, y: 0.0, width: cellWidth * CGFloat(numberColumns), height: Appearance.cellHeight * CGFloat(numberRows))
             let dataMatrix = NSMatrix(frame: frameRect, mode: .listModeMatrix, cellClass: NSTextFieldCell.self, numberOfRows: numberRows, numberOfColumns: numberColumns)
             
+            dataMatrix.cellSize = NSSize(width: cellWidth, height: Appearance.cellHeight)
             setMatrixViewProperties(matrix: dataMatrix)
             
             var nextSiteMarker: Int = 10
@@ -175,6 +179,7 @@ class MatrixViewController: NSViewController {
                 }
                 
                 for j in 0..<nc {
+                    
                     var stringValue = ""
                     let cell: NSTextFieldCell = dataMatrix.cells[(i*numberColumns)+j] as! NSTextFieldCell
                     
@@ -191,7 +196,9 @@ class MatrixViewController: NSViewController {
                         } else if  10 - testVal < nextSiteMarkerString.length {
                             
                             if  (j+1) <= (nc - nc % 10) {
-                                stringValue = String( nextSiteMarkerString.character(at: nextSiteMarkerString.length-1-10-testVal))
+                                let char = nextSiteMarkerString.character(at: nextSiteMarkerString.length-1-(10-testVal))
+                                let character = Character(UnicodeScalar(char) ?? "?")
+                                stringValue = String(character)
                             }
                             
                             if (j+1) % 10 == 0 {
@@ -216,71 +223,56 @@ class MatrixViewController: NSViewController {
                         setMatrixCell(cell: cell, backgroundColor: Appearance.headerBackgroundColor, textColor: Appearance.headerTextColor, stringValue: stringValue)
                         
                     default:
-                        let character = NSString(string: taxonData[taxaNames[i-2]]!).character(at: j)
+                        
+                        let char = NSString(string: taxonData[taxaNames[i-2]]!).character(at: j)
+                        let character = Character(UnicodeScalar(char) ?? "?")
                         if isContinuous {
-                            stringValue = String(format: "%2.4f", character)
+                            stringValue = String(format: "%2.4f", String(character))
                             setMatrixCell(cell: cell, backgroundColor: NSColor.gray, textColor: NSColor.black, stringValue: stringValue)
                         } else {
                             stringValue = String(character)
+                            let backgroundColor = segementColorForCharacter(character)
+                            setMatrixCell(cell: cell, backgroundColor: backgroundColor, textColor: NSColor.black, stringValue: stringValue)
 
                         }
                     }
                 }
+                
+                
+                for j in nc..<numberColumns {
+                    if i > 1 {
+                        
+                        let cell: NSTextFieldCell = dataMatrix.cells[(i*numberColumns)+j] as! NSTextFieldCell
+                        setMatrixCell(cell: cell, backgroundColor: Appearance.headerBackgroundColor, textColor: Appearance.headerTextColor, stringValue: "")
+                    }
+                }
         
             }
-            
-            
-            //
-            //                    {
-            //                    // setting up discrete matrix
-            //                    //char state = [dataMatrixCell getDiscreteState];
-            //                    char state = [matrix stateWithRow:(i-2) andColumn:j];
-            //
-            //                    if ( [dataMatrixCell isGapState] == YES )
-            //                        state = '-';
-            //                    NSString* stateStr = [NSString localizedStringWithFormat:@"%c", state];
-            //
-            //                    NSDictionary* colorDict;
-            //                    if ([dataMatrixCell dataType] == DNA || [dataMatrixCell dataType] == RNA)
-            //                        colorDict = [self nucleotideColorsDict];
-            //                    else if ([dataMatrixCell dataType] == AA)
-            //                        colorDict = [self aminoColorsDict];
-            //                    else if ([dataMatrixCell dataType] == STANDARD)
-            //                        colorDict = [self standardColorsDict];
-            //                    NSColor* textColor = [NSColor blackColor];
-            //                    NSColor* bkgrndColor = [colorDict objectForKey:stateStr];
-            //                    if ( [matrix isCharacterExcluded:j] == YES || [matrix isTaxonExcluded:(i-2)] == YES )
-            //                        bkgrndColor = [NSColor grayColor];
-            //                    bkgrndColor = [bkgrndColor colorWithAlphaComponent:0.5];
-            //
-            //
-            //                    NSTextFieldCell* aCell = [allCells objectAtIndex:(i*nCols)+j];
-            //                    [aCell setTag:1];
-            //                    [aCell setEditable:NO];
-            //                    [aCell setSelectable:NO];
-            //                    [aCell setDrawsBackground:YES];
-            //                    [aCell setBackgroundColor:bkgrndColor];
-            //                    [aCell setTextColor:textColor];
-            //                    [aCell setAlignment:NSCenterTextAlignment];
-            //                    [aCell setStringValue:[NSString stringWithFormat:@"%c", state]];
-            //                    }
-            //                }
-            //            }
+            self.dataMatrix = dataMatrix
         }
+    }
+    
+    func segementColorForCharacter(_ char: Character) -> NSColor {
+        return TaxonDataDNA.nucleotideColorCode(nucChar: String(char))
     }
     
     func setDataMatrixView(){
         
+        initializeDataMatrix()
+        
+        guard let dataMatrix = self.dataMatrix else { return }
+        let size = NSSize(width: dataMatrix.frame.size.width, height: matrixView.frame.size.height)
+        matrixView.setFrameSize(size)
+        matrixView.addSubview(dataMatrix)
+        dataMatrix.widthAnchor.constraint(equalToConstant: matrixView.frame.width).isActive = true
+        dataMatrix.topAnchor.constraint(equalTo: matrixView.topAnchor).isActive = true
+        dataMatrix.leadingAnchor.constraint(equalTo: matrixView.leadingAnchor).isActive = true
+
     }
     
-    
-    
-    
-    
-    
-    
-    
 }
+
+
 
 
 
