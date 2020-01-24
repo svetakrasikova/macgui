@@ -64,6 +64,8 @@ class ReadData: DataTool {
     
     func readFromFileURL(_ fileURL: URL) throws {
         
+        var readMatrices: [DataMatrix] = []
+        
         // start the progress indicator on the tool
         let group = DispatchGroup()
         DispatchQueue.main.async {
@@ -75,7 +77,14 @@ class ReadData: DataTool {
         var successfullyReadData : Bool = true
         queue.async(group: group) {
             do {
-                try self.readDataTask(fileURL)
+                try readMatrices = self.readDataTask(fileURL)
+                if !readMatrices.isEmpty {
+                           DispatchQueue.main.async {
+                               for matrix in readMatrices {
+                                   self.dataMatrices.append(matrix)
+                               }
+                           }
+                       }
             }
             catch {
                 successfullyReadData = false
@@ -87,14 +96,17 @@ class ReadData: DataTool {
             self.delegate?.endProgressIndicator()
         }
         
+       
+        
         // notify the user if we fail to properly read the data
         if !successfullyReadData {
             readDataAlert()
         }
     }
     
-    func readDataTask(_ fileURL: URL) throws {
-    
+    func readDataTask(_ fileURL: URL) throws -> [DataMatrix] {
+        
+        var readMatrices: [DataMatrix] = []
         guard let jsonStringArray: [String] = revbayesBridge.readMatrix(from: fileURL.path) as? [String], jsonStringArray.count != 0 else {
             throw ReadDataError.fetchDataError(fileURL: fileURL)
         }
@@ -103,7 +115,7 @@ class ReadData: DataTool {
             for data in matricesData {
                 do {
                     let newMatrix = try JSONDecoder().decode(DataMatrix.self, from: data)
-                    dataMatrices.append(newMatrix)
+                    readMatrices.append(newMatrix)
                 } catch  {
                     throw ReadDataError.dataDecodingError
                 }
@@ -111,6 +123,8 @@ class ReadData: DataTool {
         } catch ReadDataError.coreJsonError {
             print("Core JSON data is not well-formatted.")
         }
+        
+        return readMatrices
     }
 
     func readDataAlert() {
@@ -119,11 +133,6 @@ class ReadData: DataTool {
         alert.informativeText = "Data could not be read"
         alert.runModal()
     }
-    
-    func testFunction() {
-        print("TestFunction")
-    }
-    
     
 }
 
