@@ -11,28 +11,32 @@ import Cocoa
 class SynchroScrollView: NSScrollView {
     
     var synchronizedScrollView: NSScrollView?
+    
 
     func setSynchronizedScrollView(view: NSScrollView) {
         self.stopSynchronising()
         self.synchronizedScrollView = view;
-        let syncronizedContentView = synchronizedScrollView?.contentView
-        syncronizedContentView?.postsBoundsChangedNotifications = true
-        NotificationCenter.default.addObserver(self, selector: #selector(synchronizedViewContentBoundsDidChange), name: NSView.boundsDidChangeNotification, object: syncronizedContentView)
+        synchronizedScrollView?.contentView.postsBoundsChangedNotifications = true
+        NotificationCenter.default.addObserver(self, selector: #selector(synchronizedViewContentBoundsDidChange), name: NSView.boundsDidChangeNotification, object:  synchronizedScrollView?.contentView)
     }
     
     func stopSynchronising(){
-        
+        if let synchronizedScrollView = self.synchronizedScrollView {
+            NotificationCenter.default.removeObserver(self, name: NSView.boundsDidChangeNotification, object: synchronizedScrollView.contentView)
+        }
     }
     
+  
+    
     @objc func synchronizedViewContentBoundsDidChange(notification: NSNotification){
-        let changedContentView: NSClipView = notification.object as! NSClipView
+        guard let changedContentView: NSClipView = notification.object as? NSClipView
+            else { return }
         let changedBoundsOrigin = changedContentView.documentVisibleRect.origin
-        let curOffset: NSPoint  = self.contentView.bounds.origin
-        var newOffset: NSPoint = curOffset
+        let currentOffset: NSPoint  = self.contentView.bounds.origin
+        var newOffset: NSPoint = currentOffset
         newOffset.y = changedBoundsOrigin.y
-        
-//        if NSEqualPoints(changedBoundsOrigin, curOffset)
-        
-        
+        guard newOffset != currentOffset else { return }
+        self.contentView.scroll(to: newOffset)
+        self.reflectScrolledClipView(self.contentView)
     }
 }

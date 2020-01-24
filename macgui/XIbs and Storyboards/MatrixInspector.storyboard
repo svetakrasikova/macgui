@@ -83,7 +83,7 @@
                         <splitViewItem canCollapse="YES" collapsed="YES" holdingPriority="260" behavior="sidebar" id="kzF-GX-h68"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="HrR-fD-0Q1">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="-37" y="0.0" width="487" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="delegate" destination="mOE-gp-tCH" id="63M-7k-GsI"/>
@@ -445,62 +445,63 @@
         <!--Matrix View Controller-->
         <scene sceneID="891-kY-Wfp">
             <objects>
+                <customObject id="e2b-ia-1jF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="C3t-OR-5yO" customClass="MatrixViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="jD0-D0-BYQ">
                         <rect key="frame" x="0.0" y="0.0" width="485" height="209"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ObF-Cp-Pq4">
+                            <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ObF-Cp-Pq4">
                                 <rect key="frame" x="0.0" y="0.0" width="485" height="209"/>
                                 <subviews>
-                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="UAh-dx-nM2" userLabel="Taxa Names">
-                                        <rect key="frame" x="0.0" y="0.0" width="149" height="209"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <clipView key="contentView" id="Soy-oo-MF6">
-                                            <rect key="frame" x="1" y="1" width="147" height="207"/>
+                                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="UAh-dx-nM2" userLabel="Taxa Names" customClass="SynchroScrollView" customModule="macgui" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="173" height="209"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <clipView key="contentView" copiesOnScroll="NO" id="Soy-oo-MF6">
+                                            <rect key="frame" x="1" y="1" width="171" height="207"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <view id="1jm-Tk-aXm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="149" height="208"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="174" height="208"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </subviews>
                                         </clipView>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Pco-j2-NUB">
-                                            <rect key="frame" x="-100" y="-100" width="147" height="16"/>
+                                            <rect key="frame" x="-100" y="-100" width="162" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="0VU-WF-8D7">
-                                            <rect key="frame" x="-100" y="-100" width="16" height="207"/>
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="0VU-WF-8D7">
+                                            <rect key="frame" x="156" y="1" width="16" height="207"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="n6H-h5-UJE" userLabel="Character Data">
-                                        <rect key="frame" x="150" y="0.0" width="335" height="209"/>
+                                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="n6H-h5-UJE" userLabel="Character Data" customClass="SynchroScrollView" customModule="macgui" customModuleProvider="target">
+                                        <rect key="frame" x="174" y="0.0" width="311" height="209"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" id="k6D-pv-4U4">
-                                            <rect key="frame" x="1" y="1" width="333" height="207"/>
+                                            <rect key="frame" x="1" y="1" width="309" height="207"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <view id="sCB-fN-uYj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="318" height="208"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="294" height="208"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </subviews>
                                         </clipView>
-                                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Q2E-NQ-rgW">
-                                            <rect key="frame" x="1" y="192" width="333" height="16"/>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Q2E-NQ-rgW">
+                                            <rect key="frame" x="1" y="194" width="309" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hhj-Kf-wJv">
-                                            <rect key="frame" x="318" y="1" width="16" height="207"/>
+                                            <rect key="frame" x="294" y="1" width="16" height="207"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
                                 </subviews>
                                 <holdingPriorities>
-                                    <real value="250"/>
-                                    <real value="250"/>
+                                    <real value="200"/>
+                                    <real value="199"/>
                                 </holdingPriorities>
                             </splitView>
                         </subviews>
@@ -518,7 +519,6 @@
                         <outlet property="taxaNamesView" destination="1jm-Tk-aXm" id="Afg-1q-xC3"/>
                     </connections>
                 </viewController>
-                <customObject id="e2b-ia-1jF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="374.5" y="731.5"/>
         </scene>

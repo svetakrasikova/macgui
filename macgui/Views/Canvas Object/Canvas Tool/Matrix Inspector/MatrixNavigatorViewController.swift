@@ -64,10 +64,10 @@ class MatrixNavigatorViewController: NSViewController, NSTableViewDelegate, NSTa
     override func viewWillAppear() {
         super.viewWillAppear()
         tableView.reloadData()
-//        if let dataMatrices = self.dataMatrices {
-//            tableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
-//            delegate?.matrixNavigatorViewController(selectedMatrixIndex: 0)
-//        }
+        if let dataMatrices = self.dataMatrices {
+            tableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
+            delegate?.matrixNavigatorViewController(selectedMatrixIndex: 0)
+        }
     }
     
 }

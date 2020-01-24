@@ -8,10 +8,12 @@
 
 import Cocoa
 
-class MatrixViewController: NSViewController {
+class MatrixViewController: NSSplitViewController {
     
+
     var taxaMatrix: NSMatrix?
     var dataMatrix: NSMatrix?
+    
     
     @IBOutlet weak var matrixView: NSView!
     @IBOutlet weak var matrixScrollView: NSScrollView!
@@ -22,11 +24,14 @@ class MatrixViewController: NSViewController {
     var taxonData: [String:String]?
     var taxaNames: [String]?
     var isContinuous: Bool?
+    var maxNumberCharacters: Int?
+    
     var numberRows: Int {
         guard let taxaNames = self.taxaNames else { return 0 }
         return taxaNames.count + 2
     }
-    var maxNumberCharacters: Int?
+   
+
     
     var taxaNamesWidth: CGFloat? {
         guard let taxaNames = self.taxaNames else {
@@ -36,8 +41,8 @@ class MatrixViewController: NSViewController {
     }
     
     enum Appearance {
-        static let cellWidth: CGFloat = 16.0
-        static let cellHeight: CGFloat = 16.0
+        static let cellWidth: CGFloat = 18.0
+        static let cellHeight: CGFloat = 18.0
         static let headerBackgroundColor: NSColor = NSColor.darkGray
         static let headerTextColor: NSColor = NSColor.white
         static let namesBackgroundColor: NSColor = NSColor.white
@@ -45,11 +50,36 @@ class MatrixViewController: NSViewController {
     }
     
     
+    override func viewDidLoad() {
+        if let matrixScrollView = self.matrixScrollView as? SynchroScrollView, let taxaNamesScrollView = self.taxaNamesScrollView as? SynchroScrollView {
+            matrixScrollView.setSynchronizedScrollView(view: taxaNamesScrollView)
+            taxaNamesScrollView.setSynchronizedScrollView(view: matrixScrollView)
+        }
+    }
+    
+    
     func showSelectedMatrix(matrixIndex: Int) {
+        
         if let matrixToShow = self.dataMatrices?[matrixIndex] {
+           
+            clearMatrixView()
             setDataFromSelectedMatrix(matrixToShow)
             setTaxaNamesView()
             setDataMatrixView()
+        }
+    }
+    
+    func clearMatrixView() {
+        for subview in taxaNamesView.subviews {
+            if subview.isKind(of: NSMatrix.self) {
+                subview.removeFromSuperview()
+            }
+        }
+        
+        for subview in matrixView.subviews {
+            if subview.isKind(of: NSMatrix.self) {
+                subview.removeFromSuperview()
+            }
         }
     }
     
@@ -122,22 +152,15 @@ class MatrixViewController: NSViewController {
         cell.stringValue = stringValue
     }
     
-    
     func setTaxaNamesView(){
         
         initializeTaxaMatrix()
         
         guard let taxaMatrix = self.taxaMatrix else { return }
-        let size = taxaMatrix.frame.size
-        self.taxaNamesScrollView.setFrameSize(size)
-        self.taxaNamesView.setFrameSize(size)
         taxaNamesView.addSubview(taxaMatrix)
-        taxaMatrix.widthAnchor.constraint(equalToConstant: taxaNamesView.frame.width).isActive = true
-        taxaMatrix.heightAnchor.constraint(equalToConstant: taxaNamesView.frame.height).isActive = true
         taxaMatrix.leadingAnchor.constraint(equalTo: taxaNamesView.leadingAnchor).isActive = true
-        taxaMatrix.bottomAnchor.constraint(equalTo: taxaNamesView.bottomAnchor).isActive = true
-        taxaMatrix.trailingAnchor.constraint(equalTo: taxaNamesView.trailingAnchor).isActive = true
         taxaMatrix.topAnchor.constraint(equalTo: taxaNamesView.topAnchor).isActive = true
+        taxaMatrix.trailingAnchor.constraint(equalTo: taxaNamesView.trailingAnchor).isActive = true
     }
     
     func setMatrixViewProperties(matrix: NSMatrix) {
@@ -147,6 +170,8 @@ class MatrixViewController: NSViewController {
         matrix.alignment = .center
         matrix.allowsEmptySelection = true
         matrix.intercellSpacing = NSMakeSize(0.0, 0.0)
+        matrix.autorecalculatesCellSize = true
+        matrix.autosizesCells = true
     }
     
     
@@ -264,9 +289,9 @@ class MatrixViewController: NSViewController {
         let size = NSSize(width: dataMatrix.frame.size.width, height: matrixView.frame.size.height)
         matrixView.setFrameSize(size)
         matrixView.addSubview(dataMatrix)
-        dataMatrix.widthAnchor.constraint(equalToConstant: matrixView.frame.width).isActive = true
         dataMatrix.topAnchor.constraint(equalTo: matrixView.topAnchor).isActive = true
         dataMatrix.leadingAnchor.constraint(equalTo: matrixView.leadingAnchor).isActive = true
+        dataMatrix.trailingAnchor.constraint(equalTo: matrixView.trailingAnchor).isActive = true
 
     }
     
