@@ -54,12 +54,11 @@ class MatrixNavigatorViewController: NSViewController, NSTableViewDelegate, NSTa
     // MARK: - NSTableViewDelegate
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        guard let dataMatrices = self.dataMatrices else { return }
         let row = tableView.selectedRow
         if row == -1 {
             return
         }
-        delegate?.matrixNavigatorViewController(selectedMatrix: dataMatrices[row])
+        delegate?.matrixNavigatorViewController(selectedMatrixIndex: row)
     }
     
     override func viewWillAppear() {
@@ -67,14 +66,13 @@ class MatrixNavigatorViewController: NSViewController, NSTableViewDelegate, NSTa
         tableView.reloadData()
         if let dataMatrices = self.dataMatrices {
             tableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
-            delegate?.matrixNavigatorViewController(selectedMatrix: dataMatrices[0])
+            delegate?.matrixNavigatorViewController(selectedMatrixIndex: 0)
         }
     }
     
-
 }
 
 protocol MatrixNavigatorViewControllerDelegate: class {
-    func matrixNavigatorViewController(selectedMatrix: DataMatrix)
+    func matrixNavigatorViewController(selectedMatrixIndex: Int)
 }
 
