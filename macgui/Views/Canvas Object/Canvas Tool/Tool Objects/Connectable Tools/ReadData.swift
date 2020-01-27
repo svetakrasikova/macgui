@@ -65,47 +65,34 @@ class ReadData: DataTool {
     func readFromFileURL(_ fileURL: URL) throws {
         
         var readMatrices: [DataMatrix] = []
-        
-        // start the progress indicator on the tool
-        let group = DispatchGroup()
-        DispatchQueue.main.async {
-            self.delegate?.startProgressIndicator()
-        }
-        
-        // read the data on another thread
-        let queue = DispatchQueue(label:"Read data queue", qos: .userInitiated)
-        var successfullyReadData : Bool = true
-        queue.async(group: group) {
+        var successfullyReadData:Bool = true
+        self.delegate?.startProgressIndicator()
+        DispatchQueue.global(qos: .background).async {
             do {
                 try readMatrices = self.readDataTask(fileURL)
                 if !readMatrices.isEmpty {
-                           DispatchQueue.main.async {
-                               for matrix in readMatrices {
-                                   self.dataMatrices.append(matrix)
-                               }
-                           }
-                       }
+                    DispatchQueue.main.async {
+                        self.dataMatrices = readMatrices
+                    }
+                }
             }
             catch {
                 successfullyReadData = false
             }
+            DispatchQueue.main.async {
+                self.delegate?.endProgressIndicator()
+                if !successfullyReadData {
+                    self.readDataAlert()
+                }
+            }
         }
-        
-        // wait here until the read data task is finished
-        group.notify(queue: DispatchQueue.main) {
-            self.delegate?.endProgressIndicator()
-        }
+       
         
        
         
-        // notify the user if we fail to properly read the data
-        if !successfullyReadData {
-            readDataAlert()
-        }
     }
     
     func readDataTask(_ fileURL: URL) throws -> [DataMatrix] {
-        
         var readMatrices: [DataMatrix] = []
         guard let jsonStringArray: [String] = revbayesBridge.readMatrix(from: fileURL.path) as? [String], jsonStringArray.count != 0 else {
             throw ReadDataError.fetchDataError(fileURL: fileURL)
@@ -123,7 +110,6 @@ class ReadData: DataTool {
         } catch ReadDataError.coreJsonError {
             print("Core JSON data is not well-formatted.")
         }
-        
         return readMatrices
     }
 
