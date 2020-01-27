@@ -76,19 +76,29 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     
     // MARK: - Info Button Modal Dialog
     
+    
     lazy var sheetViewController: SheetViewController = {
         let vc = NSStoryboard.loadVC(StoryBoardName.modalSheet)  as! SheetViewController
-        vc.tool = tool
+        vc.tool = self.tool
         return vc
     }()
+
     
     // MARK: - Matrix Inspector Window
     
-    lazy var matrixInspectorWindowController: InspectorWindowController = {
-        let wc = NSStoryboard.loadWC(StoryBoardName.matrixInspector) as! InspectorWindowController
-        wc.dataMatrices = (tool as! DataTool).dataMatrices
-        return wc
-    }()
+    private var _matrixInspectorWindowController: InspectorWindowController? = nil
+    
+    func resetMatrixInspectorWindowController(){
+        _matrixInspectorWindowController = nil
+    }
+    
+    var matrixInspectorWindowController: InspectorWindowController {
+        if _matrixInspectorWindowController == nil {
+            _matrixInspectorWindowController = NSStoryboard.loadWC(StoryBoardName.matrixInspector) as? InspectorWindowController
+            _matrixInspectorWindowController!.dataMatrices = (self.tool as! DataTool).dataMatrices
+        }
+        return _matrixInspectorWindowController!
+    }
 
     // MARK: - Mouse Events
     
@@ -222,6 +232,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
     
     func inspectorButtonClicked() {
+        resetMatrixInspectorWindowController()
         matrixInspectorWindowController.showWindow(self)
     }
     
