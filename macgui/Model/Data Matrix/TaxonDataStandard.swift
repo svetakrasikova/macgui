@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 class TaxonDataStandard: TaxonDataDiscrete {
     
@@ -235,6 +236,37 @@ class TaxonDataStandard: TaxonDataDiscrete {
             }
         }
         return true
+    }
+    
+    static func characterColorCode(Char: String) -> NSColor {
+        switch Char {
+        case "0":
+            return Color.orange.rawValue
+        case "1":
+            return Color.lightgreen.rawValue
+        case "2":
+            return Color.lightblue.rawValue
+        case "3":
+            return Color.yellow.rawValue
+        case "4":
+            return Color.maroon.rawValue
+        case "5":
+            return Color.cyan.rawValue
+        case "6":
+            return Color.azure.rawValue
+        case "7":
+            return Color.darkblue.rawValue
+        case "8":
+            return Color.fuchsia.rawValue
+        case "9":
+            return Color.darkgreen.rawValue
+        case "?":
+            return Color.darkgrey.rawValue
+        case "-":
+            return Color.aqua.rawValue
+        default:
+            return Color.white.rawValue
+        }
     }
     
     func decodeCharacterStateVector(stateVector: [Bool]) {

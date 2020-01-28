@@ -356,11 +356,6 @@ class TaxonDataDNA: TaxonDataDiscrete {
                 return Color.white.rawValue
         }
     }
-    
-
-
-
-
     /// Get the nucleotide character from the integer index
     override func getCharacterState(index: Int) -> Character {
 

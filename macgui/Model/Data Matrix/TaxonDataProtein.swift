@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 class TaxonDataProtein: TaxonDataDiscrete {
 
@@ -50,6 +51,67 @@ class TaxonDataProtein: TaxonDataDiscrete {
             if readingAmbiguousState == false {
                 addCharacter(characterState: c)
             }
+        }
+    }
+    
+    static func aminoAcidColorCode(Char: String) -> NSColor {
+        switch Char {
+        case "A":
+            return Color.orange.rawValue
+        case "R":
+            return Color.lightgreen.rawValue
+        case "N":
+            return Color.lightblue.rawValue
+        case "D":
+            return Color.yellow.rawValue
+        case "C":
+            return Color.maroon.rawValue
+        case "Q":
+            return Color.cyan.rawValue
+        case "E":
+            return Color.azure.rawValue
+        case "G":
+            return Color.darkblue.rawValue
+        case "H":
+            return Color.fuchsia.rawValue
+        case "I":
+            return Color.darkgreen.rawValue
+        case "L":
+            return Color.darkmagenta.rawValue
+        case "K":
+            return Color.red.rawValue
+        case "M":
+            return Color.khaki.rawValue
+        case "F":
+            return Color.brown.rawValue
+        case "P":
+            return Color.beige.rawValue
+        case "S":
+            return Color.lightpink.rawValue
+        case "T":
+            return Color.olive.rawValue
+        case "W":
+            return Color.lightcyan.rawValue
+        case "Y":
+            return Color.silver.rawValue
+        case "V":
+            return Color.purple.rawValue
+        case "B":
+            return Color.violet.rawValue
+        case "Z":
+            return Color.darkorchid.rawValue
+        case "X":
+            return Color.darkorange.rawValue
+        case "*":
+            return Color.darksalmon.rawValue
+        case "?":
+            return Color.darkgrey.rawValue
+        case "-":
+            return Color.aqua.rawValue
+        case ".":
+            return Color.aqua.rawValue
+        default:
+            return Color.white.rawValue
         }
     }
 

@@ -25,6 +25,7 @@ class MatrixViewController: NSSplitViewController {
     var taxaNames: [String]?
     var isContinuous: Bool?
     var maxNumberCharacters: Int?
+    var dataType: DataType?
     
     var numberRows: Int {
         guard let taxaNames = self.taxaNames else { return 0 }
@@ -85,6 +86,7 @@ class MatrixViewController: NSSplitViewController {
     
     func setDataFromSelectedMatrix(_ matrix: DataMatrix){
         self.isContinuous = ( matrix.dataType == DataType.Continuous ? true : false )
+        self.dataType = matrix.dataType
         self.taxaNames = matrix.getTaxaNames()
         var taxonData = [String:String]()
         let activeTaxonNames : [String] = matrix.getActiveTaxaNames()
@@ -278,7 +280,18 @@ class MatrixViewController: NSSplitViewController {
     }
     
     func getColorForCharacter(_ char: Character) -> NSColor {
-        return TaxonDataDNA.nucleotideColorCode(nucChar: String(char))
+        switch self.dataType {
+        case .DNA:
+            return TaxonDataDNA.nucleotideColorCode(nucChar: String(char))
+        case .RNA:
+            return TaxonDataDNA.nucleotideColorCode(nucChar: String(char))
+        case .Standard:
+            return TaxonDataStandard.characterColorCode(Char: String(char))
+        case .Protein:
+            return TaxonDataProtein.aminoAcidColorCode(Char: String(char))
+        default:
+            return NSColor.white
+        }
     }
     
     func setDataMatrixView(){

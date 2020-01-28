@@ -20,7 +20,6 @@
 		1411D1632305B18D00A8B936 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411D1622305B18D00A8B936 /* ToolTipView.swift */; };
 		141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */; };
 		1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */; };
-		144BC105239732940001B2EF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BC104239732940001B2EF /* Color.swift */; };
 		144BE13C2397797C0001B2EF /* GitVersion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 144BE13B2397797C0001B2EF /* GitVersion.cpp */; };
 		144BE142239B07BA0001B2EF /* DataMatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BE141239B07BA0001B2EF /* DataMatrixTests.swift */; };
 		144BE14423A03E780001B2EF /* JsonCoreBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BE14323A03E780001B2EF /* JsonCoreBridge.swift */; };
@@ -1359,6 +1358,7 @@
 		14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BD2319A0950034EA53 /* NotebookViewController.swift */; };
 		14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */; };
 		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
+		14C618DE23DFC16C001FFFD6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618DD23DFC16C001FFFD6 /* Color.swift */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
 		14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE00221E484000021607 /* ControllerExtensions.swift */; };
 		14D6DE03221F47CD00021607 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE02221F47CD00021607 /* MainSplitViewController.swift */; };
@@ -1409,7 +1409,6 @@
 		1411D1622305B18D00A8B936 /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteringClipView.swift; sourceTree = "<group>"; };
 		1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolView.swift; sourceTree = "<group>"; };
-		144BC104239732940001B2EF /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		144BE13B2397797C0001B2EF /* GitVersion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GitVersion.cpp; path = ../../revbayes/projects/cmake/GitVersion.cpp; sourceTree = "<group>"; };
 		144BE141239B07BA0001B2EF /* DataMatrixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMatrixTests.swift; sourceTree = "<group>"; };
 		144BE14323A03E780001B2EF /* JsonCoreBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JsonCoreBridge.swift; path = macgui/CoreBridge/JsonCoreBridge.swift; sourceTree = SOURCE_ROOT; };
@@ -4242,6 +4241,7 @@
 		14A663BD2319A0950034EA53 /* NotebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookViewController.swift; sourceTree = "<group>"; };
 		14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookWindowController.swift; sourceTree = "<group>"; };
 		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		14C618DD23DFC16C001FFFD6 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
 		14D6DE00221E484000021607 /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
 		14D6DE02221F47CD00021607 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
@@ -8039,12 +8039,12 @@
 		1452356C220DF55C00A85186 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				14C618DD23DFC16C001FFFD6 /* Color.swift */,
 				1452355E220CCC5800A85186 /* Helpers.swift */,
 				14E58527228DF92F00802691 /* Notifications.swift */,
 				14D6DE00221E484000021607 /* ControllerExtensions.swift */,
 				147429DA22CBC8C300FF1963 /* Storyboards.swift */,
 				149C5FC42325A52D0060043E /* Tools.swift */,
-				144BC104239732940001B2EF /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -8462,7 +8462,6 @@
 				144BEDD223A17AC60001B2EF /* Func_VectorMonitors.cpp in Sources */,
 				144BF03D23A17AC70001B2EF /* TimeInterval.cpp in Sources */,
 				144BEF3023A17AC60001B2EF /* NarrowExchangeProposal.cpp in Sources */,
-				144BC105239732940001B2EF /* Color.swift in Sources */,
 				144BEF4723A17AC60001B2EF /* BetaSimplexProposal.cpp in Sources */,
 				144BF0D623A17AC70001B2EF /* FreeBinaryRateMatrixFunction.cpp in Sources */,
 				144BEFDC23A17AC70001B2EF /* RbBitSet.cpp in Sources */,
@@ -9027,6 +9026,7 @@
 				144BF00323A17AC70001B2EF /* RateMatrix_BinaryMutationCoalescent.cpp in Sources */,
 				144BEDB023A17AC60001B2EF /* Func_writeNexus.cpp in Sources */,
 				144BEE7C23A17AC60001B2EF /* Func_TajimasPi.cpp in Sources */,
+				14C618DE23DFC16C001FFFD6 /* Color.swift in Sources */,
 				144BF17B23A17AC80001B2EF /* AbstractPhyloBrownianProcess.cpp in Sources */,
 				144BEDD123A17AC60001B2EF /* Func_getwd.cpp in Sources */,
 				144BEE0723A17AC60001B2EF /* Func_mean.cpp in Sources */,
