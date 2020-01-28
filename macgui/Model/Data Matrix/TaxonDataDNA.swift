@@ -320,6 +320,8 @@ class TaxonDataDNA: TaxonDataDiscrete {
                 return Color.lightblue.rawValue
             case "T":
                 return Color.yellow.rawValue
+            case "U":
+                return Color.maroon.rawValue
             case "R":
                 return Color.cyan.rawValue
             case "Y":
@@ -342,14 +344,22 @@ class TaxonDataDNA: TaxonDataDiscrete {
                 return Color.beige.rawValue
             case "N":
                 return Color.cyan.rawValue
+            case "X":
+                return Color.olive.rawValue
             case "?":
                 return Color.darkgrey.rawValue
             case "-":
+                return Color.aqua.rawValue
+            case ".":
                 return Color.aqua.rawValue
             default:
                 return Color.white.rawValue
         }
     }
+    
+
+
+
 
     /// Get the nucleotide character from the integer index
     override func getCharacterState(index: Int) -> Character {

@@ -256,7 +256,7 @@ class MatrixViewController: NSSplitViewController {
                             setMatrixCell(cell: cell, backgroundColor: NSColor.gray, textColor: NSColor.black, stringValue: stringValue)
                         } else {
                             stringValue = String(character)
-                            let backgroundColor = segementColorForCharacter(character)
+                            let backgroundColor = getColorForCharacter(character)
                             setMatrixCell(cell: cell, backgroundColor: backgroundColor, textColor: NSColor.black, stringValue: stringValue)
 
                         }
@@ -277,7 +277,7 @@ class MatrixViewController: NSSplitViewController {
         }
     }
     
-    func segementColorForCharacter(_ char: Character) -> NSColor {
+    func getColorForCharacter(_ char: Character) -> NSColor {
         return TaxonDataDNA.nucleotideColorCode(nucChar: String(char))
     }
     

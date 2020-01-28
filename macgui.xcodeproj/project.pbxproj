@@ -4318,7 +4318,12 @@
 				14F95D6923569A70009884D2 /* CoreBridge */,
 				14523575220E101400A85186 /* Model */,
 				1452356E220DF5C400A85186 /* Views */,
-				1452356D220DF57800A85186 /* Business logic temporary */,
+				14E69A6B237641330045E283 /* Selection Panel Tool */,
+				1452356C220DF55C00A85186 /* Extensions */,
+				14E5857F22A8016200802691 /* ImageHandling */,
+				14E69A6623763D4A0045E283 /* Application */,
+				14E69A64237638770045E283 /* Document */,
+				14E69A6523763CCC0045E283 /* Main Window */,
 				1452356F220DF61600A85186 /* XIbs and Storyboards */,
 				14ECE4DE233BFE2300106EB4 /* aquabayes.icns */,
 			);
@@ -8044,20 +8049,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		1452356D220DF57800A85186 /* Business logic temporary */ = {
-			isa = PBXGroup;
-			children = (
-				1452356C220DF55C00A85186 /* Extensions */,
-				14E5857F22A8016200802691 /* ImageHandling */,
-				14E69A6623763D4A0045E283 /* Application */,
-				14E69A64237638770045E283 /* Document */,
-				14E69A6523763CCC0045E283 /* Main Window */,
-				14E69A6B237641330045E283 /* Selection Panel Tool */,
-				14E69A6723763EB90045E283 /* Notebook */,
-			);
-			path = "Business logic temporary";
-			sourceTree = "<group>";
-		};
 		1452356E220DF5C400A85186 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -8172,6 +8163,7 @@
 		1495A0AE237C883E00F46312 /* Notebook */ = {
 			isa = PBXGroup;
 			children = (
+				14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */,
 				14A663BD2319A0950034EA53 /* NotebookViewController.swift */,
 			);
 			path = Notebook;
@@ -8271,14 +8263,6 @@
 				1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		14E69A6723763EB90045E283 /* Notebook */ = {
-			isa = PBXGroup;
-			children = (
-				14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */,
-			);
-			path = Notebook;
 			sourceTree = "<group>";
 		};
 		14E69A6B237641330045E283 /* Selection Panel Tool */ = {

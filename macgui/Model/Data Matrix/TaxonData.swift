@@ -166,13 +166,13 @@ class TaxonData : Bitvector, NSCopying {
     }
   
     /// Return whether the character is a gap, or not.
-       func isGap(dataChar: Character) -> Bool {
-       
-           if dataChar == "-" {
-               return true
-           }
-           return false
-       }
+    func isGap(dataChar: Character) -> Bool {
+        
+        if dataChar == "-" {
+            return true
+        }
+        return false
+    }
     
    func isSameStateSpace(taxonData: TaxonData) -> Bool {
           return true
