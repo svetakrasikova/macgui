@@ -86,7 +86,6 @@ class Bitvector : CustomStringConvertible, Codable {
     /// Initialize from serialized data
     required init(from decoder: Decoder) throws {
 
-        print("Bitvector decoder")
         do {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             self.numElements = try values.decode(Int.self,    forKey: .numElements)

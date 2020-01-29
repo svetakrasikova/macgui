@@ -68,8 +68,6 @@ class TaxonData : Bitvector, NSCopying {
     /// Initialize from serialized data.
     required init(from decoder: Decoder) throws {
         
-        print("TaxonData decoder")
-        
         do {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.numCharacters = try container.decode(Int.self,    forKey: .numCharacters)
