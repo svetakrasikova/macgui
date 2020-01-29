@@ -1,40 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="NKk-nb-iKR">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="TZL-73-EW0">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Model Tool-->
-        <scene sceneID="GmR-P5-Uv4">
+        <!--Window Controller-->
+        <scene sceneID="gCO-nB-7JG">
             <objects>
-                <viewController title="Model Tool" identifier="ModelTool" storyboardIdentifier="ModelTool" id="NKk-nb-iKR" customClass="ModelToolViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
-                    <customView key="view" id="bvt-Ek-VA3">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hcf-wa-fAa">
-                                <rect key="frame" x="346" y="13" width="82" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="43j-gg-JtE">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="cancelPushed:" target="NKk-nb-iKR" id="XMN-CT-iqY"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                    </customView>
-                </viewController>
-                <customObject id="qfo-nq-oxm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController representsSharedInstance="YES" id="TbB-ZW-p9D"/>
+                <windowController storyboardIdentifier="ModelTool" id="TZL-73-EW0" customClass="ModelToolWindowController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Model Tool" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="beM-Ho-Q4s">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <toolbar key="toolbar" implicitIdentifier="FB545DC0-C234-416B-8F48-05B4B980D40B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="nN1-Ul-Dek">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="HPT-ke-JU5"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="ljy-UR-EcM"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="h83-k2-xR8"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Ta1-B8-2YP"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="74G-9w-Oh5"/>
+                                <toolbarItem implicitItemIdentifier="02AF444E-AE5E-4AB4-AFEC-F38DD466FE50" label="" paletteLabel="" image="NSTouchBarSidebarTemplate" id="JoS-Rt-zxa">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="47" height="24"/>
+                                    <size key="maxSize" width="48" height="47"/>
+                                    <button key="view" verticalHuggingPriority="750" id="kjU-iE-Gow">
+                                        <rect key="frame" x="0.0" y="14" width="48" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarSidebarTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wwi-7V-juA">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="collapseExpandSidebar:" target="TZL-73-EW0" id="Z5N-AM-GB4"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="JoS-Rt-zxa"/>
+                            </defaultToolbarItems>
+                        </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="TZL-73-EW0" id="f7j-Fe-Idh"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Rll-4Z-r3g" kind="relationship" relationship="window.shadowedContentViewController" id="NOq-HM-nYX"/>
+                    </connections>
+                </windowController>
+                <customObject id="lNQ-3N-ZeC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="390" y="-11334"/>
+            <point key="canvasLocation" x="476" y="-11839"/>
+        </scene>
+        <!--Model Tool View Controller-->
+        <scene sceneID="V0B-Ob-csZ">
+            <objects>
+                <splitViewController id="Rll-4Z-r3g" customClass="ModelToolViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem canCollapse="YES" collapsed="YES" holdingPriority="200" id="fqJ-5c-Lec"/>
+                        <splitViewItem holdingPriority="199" id="v0f-7n-53H"/>
+                    </splitViewItems>
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="Ovh-SF-w9Y">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="Rll-4Z-r3g" id="rQt-Kr-gkb"/>
+                        </connections>
+                    </splitView>
+                    <connections>
+                        <outlet property="splitView" destination="Ovh-SF-w9Y" id="eC6-nX-aRQ"/>
+                        <segue destination="06Z-q5-krc" kind="relationship" relationship="splitItems" id="91Z-jJ-1Wn"/>
+                        <segue destination="0Bp-Sd-gTW" kind="relationship" relationship="splitItems" id="TZp-Yr-gO1"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="iKw-HY-0Or" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="461" y="-11360"/>
+        </scene>
+        <!--Model Palette-->
+        <scene sceneID="TKr-7Q-jmm">
+            <objects>
+                <viewController title="Model Canvas" id="06Z-q5-krc" userLabel="Model Palette" customClass="ModelPaletteViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="P6C-Ex-qkH">
+                        <rect key="frame" x="0.0" y="0.0" width="152" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="jA3-JO-Knq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="-10872"/>
+        </scene>
+        <!--Model Canvas-->
+        <scene sceneID="JoO-NE-eoC">
+            <objects>
+                <viewController title="Model Canvas" id="0Bp-Sd-gTW" customClass="ModelCanvasViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="uPi-Ch-2gp">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField identifier="invitationLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="50j-fY-bPO" userLabel="Drag Parameters Here">
+                                <rect key="frame" x="142" y="138" width="166" height="24"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" identifier="InvitationLabel" title="Drag Tools Here" id="lnb-bO-mJF">
+                                    <font key="font" metaFont="systemHeavy" size="21"/>
+                                    <color key="textColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <accessibility identifier="InvitationLabel"/>
+                            </textField>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="6" minMagnification="0.375" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="allowed" verticalScrollElasticity="allowed" findBarPosition="belowContent" translatesAutoresizingMaskIntoConstraints="NO" id="hbh-Mq-iMv">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="U9b-kj-zlp" customClass="CenteringClipView" customModule="macgui" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view autoresizesSubviews="NO" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h6g-Pw-01m">
+                                            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                            <subviews>
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="wFz-e1-atk" customClass="TransparentToolsView" customModule="macgui" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                                </customView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="wFz-e1-atk" secondAttribute="trailing" id="6Zn-LD-gZ1"/>
+                                                <constraint firstAttribute="bottom" secondItem="wFz-e1-atk" secondAttribute="bottom" id="OBD-Ed-N4H"/>
+                                                <constraint firstAttribute="height" constant="300" id="VSl-HE-G05"/>
+                                                <constraint firstAttribute="width" constant="450" id="Ygm-IW-gfT"/>
+                                                <constraint firstItem="wFz-e1-atk" firstAttribute="leading" secondItem="h6g-Pw-01m" secondAttribute="leading" id="jMi-oH-C94"/>
+                                                <constraint firstItem="wFz-e1-atk" firstAttribute="top" secondItem="h6g-Pw-01m" secondAttribute="top" id="s55-dY-wmv"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="h6g-Pw-01m" firstAttribute="top" secondItem="U9b-kj-zlp" secondAttribute="top" id="Zqq-NP-tSQ"/>
+                                        <constraint firstItem="h6g-Pw-01m" firstAttribute="leading" secondItem="U9b-kj-zlp" secondAttribute="leading" id="i7n-n9-z9S"/>
+                                    </constraints>
+                                </clipView>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="VQh-Kr-r2f">
+                                    <rect key="frame" x="0.0" y="284" width="450" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="GVN-Or-rdK">
+                                    <rect key="frame" x="434" y="0.0" width="16" height="300"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="hbh-Mq-iMv" secondAttribute="bottom" priority="750" id="1za-gN-bL7"/>
+                            <constraint firstItem="hbh-Mq-iMv" firstAttribute="top" secondItem="uPi-Ch-2gp" secondAttribute="top" priority="750" id="Tvf-5I-xUB"/>
+                            <constraint firstAttribute="trailing" secondItem="hbh-Mq-iMv" secondAttribute="trailing" priority="750" id="UfF-Dp-oXs"/>
+                            <constraint firstItem="hbh-Mq-iMv" firstAttribute="leading" secondItem="uPi-Ch-2gp" secondAttribute="leading" priority="750" id="ebq-10-fS6"/>
+                            <constraint firstItem="50j-fY-bPO" firstAttribute="centerX" secondItem="uPi-Ch-2gp" secondAttribute="centerX" id="gxz-HU-9pY"/>
+                            <constraint firstItem="50j-fY-bPO" firstAttribute="centerY" secondItem="uPi-Ch-2gp" secondAttribute="centerY" id="h5e-Yt-5sA"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="2SV-IF-2D2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="702" y="-10841"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSTouchBarSidebarTemplate" width="22" height="30"/>
+    </resources>
 </document>

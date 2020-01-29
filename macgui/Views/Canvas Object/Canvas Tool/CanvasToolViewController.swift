@@ -99,6 +99,22 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         }
         return _matrixInspectorWindowController!
     }
+    
+    // MARK: - Model Tool Window
+    
+    private var _modelToolWindowController: ModelToolWindowController? = nil
+    
+    func resetModelToolWindowController (){
+        _modelToolWindowController = nil
+    }
+    
+    var modelToolWindowController: ModelToolWindowController {
+        if _modelToolWindowController == nil {
+            _modelToolWindowController = NSStoryboard.loadWC(StoryBoardName.modelTool) as? ModelToolWindowController
+            _modelToolWindowController!.tool = self.tool
+        }
+        return _modelToolWindowController!
+    }
 
     // MARK: - Mouse Events
     
@@ -225,6 +241,9 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
             switch toolType {
             case  .readdata:
                 (tool as! ReadData).openFileBrowser()
+            case .model:
+                resetModelToolWindowController()
+                modelToolWindowController.showWindow(self)
             default:
                 self.presentAsModalWindow(sheetViewController)
             }

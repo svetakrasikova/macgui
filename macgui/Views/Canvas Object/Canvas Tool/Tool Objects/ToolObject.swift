@@ -44,7 +44,7 @@ extension ToolObject {
 
 func getStroyboardName() -> String {
     switch self {
-    case _ as ReadData:
+    case _ as Model:
         return StoryBoardName.modelTool.rawValue
     default:
         return StoryBoardName.modelTool.rawValue

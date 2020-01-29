@@ -9,8 +9,6 @@
 import Cocoa
 
 class CanvasView: NSView {
-   
-    
     
     enum Appearance {
         static let selectionWidth: CGFloat = 5.0

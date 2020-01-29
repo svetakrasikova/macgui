@@ -1358,7 +1358,11 @@
 		14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BD2319A0950034EA53 /* NotebookViewController.swift */; };
 		14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */; };
 		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
+		14BF307D23E236F100426D7A /* ModelCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF307C23E236F100426D7A /* ModelCanvasView.swift */; };
 		14C618DE23DFC16C001FFFD6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618DD23DFC16C001FFFD6 /* Color.swift */; };
+		14C618E023E0E0CE001FFFD6 /* ModelCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */; };
+		14C618E323E0E0FB001FFFD6 /* ModelPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */; };
+		14C618E823E20411001FFFD6 /* ModelToolWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618E623E20411001FFFD6 /* ModelToolWindowController.swift */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
 		14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE00221E484000021607 /* ControllerExtensions.swift */; };
 		14D6DE03221F47CD00021607 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE02221F47CD00021607 /* MainSplitViewController.swift */; };
@@ -4241,7 +4245,11 @@
 		14A663BD2319A0950034EA53 /* NotebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookViewController.swift; sourceTree = "<group>"; };
 		14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookWindowController.swift; sourceTree = "<group>"; };
 		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		14BF307C23E236F100426D7A /* ModelCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasView.swift; sourceTree = "<group>"; };
 		14C618DD23DFC16C001FFFD6 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasViewController.swift; sourceTree = "<group>"; };
+		14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPaletteViewController.swift; sourceTree = "<group>"; };
+		14C618E623E20411001FFFD6 /* ModelToolWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelToolWindowController.swift; sourceTree = "<group>"; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
 		14D6DE00221E484000021607 /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
 		14D6DE02221F47CD00021607 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
@@ -8063,18 +8071,18 @@
 		1452356F220DF61600A85186 /* XIbs and Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				1411BEE122052B7E009BEE1D /* Main.storyboard */,
-				14A663BB23186CFE0034EA53 /* Notebook.storyboard */,
-				1411BEAD220524E9009BEE1D /* EditorTools.storyboard */,
 				1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */,
-				1411BEE72208FE91009BEE1D /* Tool.xib */,
 				147429D822CBA94C00FF1963 /* CanvasTool.storyboard */,
-				141106B8230742D500A8B936 /* ToolTip.storyboard */,
-				1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */,
-				1407184A22FF5D430098285D /* ModalSheet.storyboard */,
-				147429DD22D154D200FF1963 /* ModelTool.storyboard */,
 				14710529226CD75300E88657 /* ConnectorItem.xib */,
+				1411BEAD220524E9009BEE1D /* EditorTools.storyboard */,
+				1411BEE122052B7E009BEE1D /* Main.storyboard */,
 				1495A0B5237C991200F46312 /* MatrixInspector.storyboard */,
+				1407184A22FF5D430098285D /* ModalSheet.storyboard */,
+				1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */,
+				147429DD22D154D200FF1963 /* ModelTool.storyboard */,
+				14A663BB23186CFE0034EA53 /* Notebook.storyboard */,
+				1411BEE72208FE91009BEE1D /* Tool.xib */,
+				141106B8230742D500A8B936 /* ToolTip.storyboard */,
 			);
 			path = "XIbs and Storyboards";
 			sourceTree = "<group>";
@@ -8125,7 +8133,6 @@
 			children = (
 				147429D622CADDF800FF1963 /* SheetViewController.swift */,
 				14F95D6523569913009884D2 /* InfoToolViewController.swift */,
-				149F8B3A2363934F003146FD /* ModelToolViewController.swift */,
 			);
 			path = "Tool Info Sheet";
 			sourceTree = "<group>";
@@ -8230,6 +8237,18 @@
 			path = "Data Matrix";
 			sourceTree = "<group>";
 		};
+		14C618E523E0E11E001FFFD6 /* Model Tool */ = {
+			isa = PBXGroup;
+			children = (
+				14C618E623E20411001FFFD6 /* ModelToolWindowController.swift */,
+				149F8B3A2363934F003146FD /* ModelToolViewController.swift */,
+				14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */,
+				14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */,
+				14BF307C23E236F100426D7A /* ModelCanvasView.swift */,
+			);
+			path = "Model Tool";
+			sourceTree = "<group>";
+		};
 		14E5857F22A8016200802691 /* ImageHandling */ = {
 			isa = PBXGroup;
 			children = (
@@ -8277,6 +8296,7 @@
 			isa = PBXGroup;
 			children = (
 				1495A0B2237C97F800F46312 /* Matrix Inspector */,
+				14C618E523E0E11E001FFFD6 /* Model Tool */,
 				1495A0B1237C89A200F46312 /* Tool Objects */,
 				14E69A5E2375FB830045E283 /* ActionButton.swift */,
 				1495A0AB237C877B00F46312 /* Tool Tip */,
@@ -8715,6 +8735,7 @@
 				144BEE3523A17AC60001B2EF /* Func_chromosomes.cpp in Sources */,
 				144BEDBF23A17AC60001B2EF /* Func_listFiles.cpp in Sources */,
 				144BED0723A17AC50001B2EF /* RlStringOutputStream.cpp in Sources */,
+				14BF307D23E236F100426D7A /* ModelCanvasView.swift in Sources */,
 				144BEF5523A17AC60001B2EF /* RandomIntegerWalkProposal.cpp in Sources */,
 				144BED0923A17AC50001B2EF /* Mntr_HomeologPhase.cpp in Sources */,
 				144BF00923A17AC70001B2EF /* RateMatrix_MtMam.cpp in Sources */,
@@ -9428,6 +9449,7 @@
 				144BEFF823A17AC70001B2EF /* RateMatrix_JC.cpp in Sources */,
 				144BF01D23A17AC70001B2EF /* AminoAcidState.cpp in Sources */,
 				144BF09A23A17AC70001B2EF /* UpperTriangle.cpp in Sources */,
+				14C618E023E0E0CE001FFFD6 /* ModelCanvasViewController.swift in Sources */,
 				144BEE2123A17AC60001B2EF /* Func_treePairwiseDistances.cpp in Sources */,
 				144BEEA523A17AC60001B2EF /* Dist_LKJPartial.cpp in Sources */,
 				147429DB22CBC8C300FF1963 /* Storyboards.swift in Sources */,
@@ -9586,6 +9608,7 @@
 				144BEE0C23A17AC60001B2EF /* Func_hyperbolicSine.cpp in Sources */,
 				144BED6923A17AC60001B2EF /* RlAtlas.cpp in Sources */,
 				144BED3B23A17AC60001B2EF /* Integer.cpp in Sources */,
+				14C618E323E0E0FB001FFFD6 /* ModelPaletteViewController.swift in Sources */,
 				144BF10723A17AC70001B2EF /* PhylogeneticIndependentContrastsFunction.cpp in Sources */,
 				144BEFA923A17AC60001B2EF /* GelmanRubinStoppingRule.cpp in Sources */,
 				144BF18F23A17AC80001B2EF /* RbHelpType.cpp in Sources */,
@@ -9642,6 +9665,7 @@
 				14D6DE01221E484000021607 /* ControllerExtensions.swift in Sources */,
 				144BF13923A17AC70001B2EF /* LaplaceDistribution.cpp in Sources */,
 				144BF0E123A17AC70001B2EF /* CodonSynonymousNonsynonymousRateMatrixFunction.cpp in Sources */,
+				14C618E823E20411001FFFD6 /* ModelToolWindowController.swift in Sources */,
 				144BF06F23A17AC70001B2EF /* DistributionUniform.cpp in Sources */,
 				144BEDBB23A17AC60001B2EF /* Func_readMatrix.cpp in Sources */,
 				144BEF4323A17AC60001B2EF /* UpDownSlideBactrianProposal.cpp in Sources */,

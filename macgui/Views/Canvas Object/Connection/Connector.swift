@@ -49,6 +49,7 @@ class Connector: NSObject, NSCoding {
         case .red: return NSColor.red
         case .magenta: return NSColor.magenta
         case .clear: return NSColor.clear
+        case .purple: return NSColor.purple
         }
     }
     
@@ -60,5 +61,6 @@ enum ConnectorColor: String {
     case red = "red"
     case orange = "orange"
     case magenta = "magenta"
+    case purple = "purple"
     case clear = "clear"
 }

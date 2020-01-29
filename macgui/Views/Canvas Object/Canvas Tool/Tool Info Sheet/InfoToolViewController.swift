@@ -12,6 +12,10 @@ class InfoToolViewController: NSViewController {
     
     weak var tool: ToolObject?
     
+    //    @IBAction func cancelPushed(_ sender: NSButton) {
+    //        NotificationCenter.default.post(name: .dismissToolSheet, object: self)
+    //    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
