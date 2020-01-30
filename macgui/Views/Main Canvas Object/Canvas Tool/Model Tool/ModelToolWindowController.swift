@@ -11,6 +11,7 @@ import Cocoa
 class ModelToolWindowController: NSWindowController {
     
     weak var tool: ToolObject?
+    @IBOutlet weak var zoom: NSPopUpButton!
     
         var canvas: NSSplitViewItem? {
             if let canvas = (contentViewController as? ModelToolViewController)?.splitViewItems[1] {
@@ -37,11 +38,21 @@ class ModelToolWindowController: NSWindowController {
                }
            }
     
+    @objc func changeModelZoomTitle(notification: Notification){
+        let userInfo = notification.userInfo! as! [String : Float]
+        let magnification = userInfo["magnification"]!/0.015
+        let title = String(format:"%.0f", magnification)
+        zoom.setTitle("\(title)%")
+    }
+    
 
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+         NotificationCenter.default.addObserver(self,
+                                                      selector: #selector(changeModelZoomTitle(notification:)),
+                                                      name: .didChangeMagnification,
+                                                      object: nil)
     }
     
 }

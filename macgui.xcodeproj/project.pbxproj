@@ -4326,12 +4326,10 @@
 				14F95D6923569A70009884D2 /* CoreBridge */,
 				14523575220E101400A85186 /* Model */,
 				1452356E220DF5C400A85186 /* Views */,
-				14E69A6B237641330045E283 /* Selection Panel Tool */,
+				14E69A6B237641330045E283 /* Analysis Palette  */,
 				1452356C220DF55C00A85186 /* Extensions */,
 				14E5857F22A8016200802691 /* ImageHandling */,
 				14E69A6623763D4A0045E283 /* Application */,
-				14E69A64237638770045E283 /* Document */,
-				14E69A6523763CCC0045E283 /* Main Window */,
 				1452356F220DF61600A85186 /* XIbs and Storyboards */,
 				14ECE4DE233BFE2300106EB4 /* aquabayes.icns */,
 			);
@@ -8060,10 +8058,11 @@
 		1452356E220DF5C400A85186 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1495A0AD237C87DA00F46312 /* Analyses */,
+				14E69A64237638770045E283 /* Document */,
+				1495A0AD237C87DA00F46312 /* Main Window */,
 				1495A0AE237C883E00F46312 /* Notebook */,
-				14E69A6D237643BC0045E283 /* Canvas View */,
-				1495A0AA237C870E00F46312 /* Canvas Object */,
+				14E69A6D237643BC0045E283 /* Main Canvas View */,
+				1495A0AA237C870E00F46312 /* Main Canvas Object */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -8128,24 +8127,23 @@
 			path = "Connectable Tools";
 			sourceTree = "<group>";
 		};
-		1495A0A9237C86B200F46312 /* Tool Info Sheet */ = {
+		1495A0A9237C86B200F46312 /* Tool Info Dialogue */ = {
 			isa = PBXGroup;
 			children = (
 				147429D622CADDF800FF1963 /* SheetViewController.swift */,
 				14F95D6523569913009884D2 /* InfoToolViewController.swift */,
 			);
-			path = "Tool Info Sheet";
+			path = "Tool Info Dialogue";
 			sourceTree = "<group>";
 		};
-		1495A0AA237C870E00F46312 /* Canvas Object */ = {
+		1495A0AA237C870E00F46312 /* Main Canvas Object */ = {
 			isa = PBXGroup;
 			children = (
 				1495A0AF237C88F300F46312 /* Generic Canvas Object */,
 				14E69A6E2376441D0045E283 /* Canvas Arrow */,
 				14E69A6C237643200045E283 /* Canvas Tool */,
-				1495A0B0237C892A00F46312 /* Connection */,
 			);
-			path = "Canvas Object";
+			path = "Main Canvas Object";
 			sourceTree = "<group>";
 		};
 		1495A0AB237C877B00F46312 /* Tool Tip */ = {
@@ -8157,14 +8155,15 @@
 			path = "Tool Tip";
 			sourceTree = "<group>";
 		};
-		1495A0AD237C87DA00F46312 /* Analyses */ = {
+		1495A0AD237C87DA00F46312 /* Main Window */ = {
 			isa = PBXGroup;
 			children = (
+				14B5852A225819F6003EB752 /* MainWindowController.swift */,
 				14D6DE02221F47CD00021607 /* MainSplitViewController.swift */,
 				14E69A622376383D0045E283 /* NavigatorViewController.swift */,
 				1411BEE42208DDBE009BEE1D /* AnalysisViewController.swift */,
 			);
-			path = Analyses;
+			path = "Main Window";
 			sourceTree = "<group>";
 		};
 		1495A0AE237C883E00F46312 /* Notebook */ = {
@@ -8268,14 +8267,6 @@
 			path = Document;
 			sourceTree = "<group>";
 		};
-		14E69A6523763CCC0045E283 /* Main Window */ = {
-			isa = PBXGroup;
-			children = (
-				14B5852A225819F6003EB752 /* MainWindowController.swift */,
-			);
-			path = "Main Window";
-			sourceTree = "<group>";
-		};
 		14E69A6623763D4A0045E283 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -8284,31 +8275,32 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		14E69A6B237641330045E283 /* Selection Panel Tool */ = {
+		14E69A6B237641330045E283 /* Analysis Palette  */ = {
 			isa = PBXGroup;
 			children = (
 				1411BEE62208FE91009BEE1D /* Tool.swift */,
 			);
-			path = "Selection Panel Tool";
+			path = "Analysis Palette ";
 			sourceTree = "<group>";
 		};
 		14E69A6C237643200045E283 /* Canvas Tool */ = {
 			isa = PBXGroup;
 			children = (
+				1495A0B1237C89A200F46312 /* Tool Objects */,
 				1495A0B2237C97F800F46312 /* Matrix Inspector */,
 				14C618E523E0E11E001FFFD6 /* Model Tool */,
-				1495A0B1237C89A200F46312 /* Tool Objects */,
-				14E69A5E2375FB830045E283 /* ActionButton.swift */,
 				1495A0AB237C877B00F46312 /* Tool Tip */,
-				1495A0A9237C86B200F46312 /* Tool Info Sheet */,
+				1495A0A9237C86B200F46312 /* Tool Info Dialogue */,
+				1495A0B0237C892A00F46312 /* Connection */,
+				14E69A5E2375FB830045E283 /* ActionButton.swift */,
+				14E58525228C92AB00802691 /* ToolImageView.swift */,
 				1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */,
 				144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */,
-				14E58525228C92AB00802691 /* ToolImageView.swift */,
 			);
 			path = "Canvas Tool";
 			sourceTree = "<group>";
 		};
-		14E69A6D237643BC0045E283 /* Canvas View */ = {
+		14E69A6D237643BC0045E283 /* Main Canvas View */ = {
 			isa = PBXGroup;
 			children = (
 				14E5857722A067A600802691 /* TransparentToolsView.swift */,
@@ -8316,7 +8308,7 @@
 				1452355A220CB79800A85186 /* CanvasView.swift */,
 				14D6DE042220B50800021607 /* CanvasViewController.swift */,
 			);
-			path = "Canvas View";
+			path = "Main Canvas View";
 			sourceTree = "<group>";
 		};
 		14E69A6E2376441D0045E283 /* Canvas Arrow */ = {

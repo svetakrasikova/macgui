@@ -15,4 +15,5 @@ class ModelPaletteViewController: NSViewController {
         // Do view setup here.
     }
     
+    
 }

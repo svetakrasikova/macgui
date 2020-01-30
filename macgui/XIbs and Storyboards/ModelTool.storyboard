@@ -21,7 +21,6 @@
                                 <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="ljy-UR-EcM"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="h83-k2-xR8"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Ta1-B8-2YP"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="74G-9w-Oh5"/>
                                 <toolbarItem implicitItemIdentifier="02AF444E-AE5E-4AB4-AFEC-F38DD466FE50" label="" paletteLabel="" image="NSTouchBarSidebarTemplate" id="JoS-Rt-zxa">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="47" height="24"/>
@@ -38,9 +37,39 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="1D44E6B5-76E1-4C4C-AA1C-6B559AD65A30" label="" paletteLabel="" sizingBehavior="auto" id="MfI-2i-fSw" userLabel="Zoom">
+                                    <nil key="toolTip"/>
+                                    <popUpButton key="view" verticalHuggingPriority="750" id="pZa-Yy-dUG" userLabel="zoom">
+                                        <rect key="frame" x="0.0" y="14" width="65" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" tag="1" imageScaling="axesIndependently" inset="2" pullsDown="YES" selectedItem="rlK-oL-IeD" id="rZx-iQ-MQJ" userLabel="zoom">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <menu key="menu" id="0Sy-H0-8PG">
+                                                <items>
+                                                    <menuItem title="100%" tag="1" hidden="YES" id="rlK-oL-IeD" userLabel="100%"/>
+                                                    <menuItem title="25%" tag="1" id="sgd-tU-J6n"/>
+                                                    <menuItem title="50%" tag="1" id="ujR-8e-ghY"/>
+                                                    <menuItem title="75%" tag="2" id="P5X-0n-JoC"/>
+                                                    <menuItem title="100%" tag="3" id="bc6-Mt-9AJ"/>
+                                                    <menuItem title="125%" tag="4" id="bb2-FW-rVc"/>
+                                                    <menuItem title="150%" tag="5" id="Ucq-YX-VQZ"/>
+                                                    <menuItem title="200%" tag="6" id="jkU-pI-5dB"/>
+                                                    <menuItem title="300%" tag="7" id="Xg5-NY-j8U"/>
+                                                    <menuItem title="400%" tag="8" id="jSK-bj-J2P"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <action selector="magnifyModelToolCanvas:" target="lNQ-3N-ZeC" id="sSn-ux-0Hs"/>
+                                        </connections>
+                                    </popUpButton>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="74G-9w-Oh5"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="JoS-Rt-zxa"/>
+                                <toolbarItem reference="MfI-2i-fSw"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -48,6 +77,7 @@
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="zoom" destination="pZa-Yy-dUG" id="28d-kF-PMX"/>
                         <segue destination="Rll-4Z-r3g" kind="relationship" relationship="window.shadowedContentViewController" id="NOq-HM-nYX"/>
                     </connections>
                 </windowController>
@@ -60,7 +90,7 @@
             <objects>
                 <splitViewController id="Rll-4Z-r3g" customClass="ModelToolViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem canCollapse="YES" collapsed="YES" holdingPriority="200" id="fqJ-5c-Lec"/>
+                        <splitViewItem canCollapse="YES" collapsed="YES" id="fqJ-5c-Lec"/>
                         <splitViewItem holdingPriority="199" id="v0f-7n-53H"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="Ovh-SF-w9Y">
@@ -97,66 +127,72 @@
         <scene sceneID="JoO-NE-eoC">
             <objects>
                 <viewController title="Model Canvas" id="0Bp-Sd-gTW" customClass="ModelCanvasViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="uPi-Ch-2gp">
+                    <view key="view" id="F9n-Q0-EER">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField identifier="invitationLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="50j-fY-bPO" userLabel="Drag Parameters Here">
-                                <rect key="frame" x="142" y="138" width="166" height="24"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" identifier="InvitationLabel" title="Drag Tools Here" id="lnb-bO-mJF">
+                            <textField identifier="invitationLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ah0-aL-S0G" userLabel="Drag Paremeters Here">
+                                <rect key="frame" x="110" y="138" width="231" height="24"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" identifier="InvitationLabel" title="Drag Parameters Here" id="eSY-J4-gOU">
                                     <font key="font" metaFont="systemHeavy" size="21"/>
                                     <color key="textColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <accessibility identifier="InvitationLabel"/>
                             </textField>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="6" minMagnification="0.375" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="allowed" verticalScrollElasticity="allowed" findBarPosition="belowContent" translatesAutoresizingMaskIntoConstraints="NO" id="hbh-Mq-iMv">
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="6" minMagnification="0.375" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="allowed" verticalScrollElasticity="allowed" findBarPosition="belowContent" translatesAutoresizingMaskIntoConstraints="NO" id="uYG-QC-F6p" userLabel="Scroll View">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="U9b-kj-zlp" customClass="CenteringClipView" customModule="macgui" customModuleProvider="target">
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="1Qa-Fs-fbe" customClass="CenteringClipView" customModule="macgui" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view autoresizesSubviews="NO" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h6g-Pw-01m">
+                                        <view autoresizesSubviews="NO" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rFB-ux-jOW" customClass="ModelCanvasView" customModule="macgui" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                             <subviews>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="wFz-e1-atk" customClass="TransparentToolsView" customModule="macgui" customModuleProvider="target">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Kg5-LM-zRC" customClass="TransparentToolsView" customModule="macgui" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                                 </customView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="wFz-e1-atk" secondAttribute="trailing" id="6Zn-LD-gZ1"/>
-                                                <constraint firstAttribute="bottom" secondItem="wFz-e1-atk" secondAttribute="bottom" id="OBD-Ed-N4H"/>
-                                                <constraint firstAttribute="height" constant="300" id="VSl-HE-G05"/>
-                                                <constraint firstAttribute="width" constant="450" id="Ygm-IW-gfT"/>
-                                                <constraint firstItem="wFz-e1-atk" firstAttribute="leading" secondItem="h6g-Pw-01m" secondAttribute="leading" id="jMi-oH-C94"/>
-                                                <constraint firstItem="wFz-e1-atk" firstAttribute="top" secondItem="h6g-Pw-01m" secondAttribute="top" id="s55-dY-wmv"/>
+                                                <constraint firstAttribute="trailing" secondItem="Kg5-LM-zRC" secondAttribute="trailing" id="5WN-79-Qhi"/>
+                                                <constraint firstAttribute="width" constant="450" id="740-lW-Qcp"/>
+                                                <constraint firstItem="Kg5-LM-zRC" firstAttribute="top" secondItem="rFB-ux-jOW" secondAttribute="top" id="C9x-jY-x9g"/>
+                                                <constraint firstAttribute="bottom" secondItem="Kg5-LM-zRC" secondAttribute="bottom" id="FgY-9l-0r2"/>
+                                                <constraint firstAttribute="height" constant="300" id="Ohi-oz-g1Z"/>
+                                                <constraint firstItem="Kg5-LM-zRC" firstAttribute="leading" secondItem="rFB-ux-jOW" secondAttribute="leading" id="TI0-Cx-0Mv"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="h6g-Pw-01m" firstAttribute="top" secondItem="U9b-kj-zlp" secondAttribute="top" id="Zqq-NP-tSQ"/>
-                                        <constraint firstItem="h6g-Pw-01m" firstAttribute="leading" secondItem="U9b-kj-zlp" secondAttribute="leading" id="i7n-n9-z9S"/>
+                                        <constraint firstItem="rFB-ux-jOW" firstAttribute="top" secondItem="1Qa-Fs-fbe" secondAttribute="top" id="OcL-sq-cnx"/>
+                                        <constraint firstItem="rFB-ux-jOW" firstAttribute="leading" secondItem="1Qa-Fs-fbe" secondAttribute="leading" id="PUS-Qx-sGx"/>
                                     </constraints>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="VQh-Kr-r2f">
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="h3I-06-RKT">
                                     <rect key="frame" x="0.0" y="284" width="450" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="GVN-Or-rdK">
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="oVH-TQ-M5d">
                                     <rect key="frame" x="434" y="0.0" width="16" height="300"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="hbh-Mq-iMv" secondAttribute="bottom" priority="750" id="1za-gN-bL7"/>
-                            <constraint firstItem="hbh-Mq-iMv" firstAttribute="top" secondItem="uPi-Ch-2gp" secondAttribute="top" priority="750" id="Tvf-5I-xUB"/>
-                            <constraint firstAttribute="trailing" secondItem="hbh-Mq-iMv" secondAttribute="trailing" priority="750" id="UfF-Dp-oXs"/>
-                            <constraint firstItem="hbh-Mq-iMv" firstAttribute="leading" secondItem="uPi-Ch-2gp" secondAttribute="leading" priority="750" id="ebq-10-fS6"/>
-                            <constraint firstItem="50j-fY-bPO" firstAttribute="centerX" secondItem="uPi-Ch-2gp" secondAttribute="centerX" id="gxz-HU-9pY"/>
-                            <constraint firstItem="50j-fY-bPO" firstAttribute="centerY" secondItem="uPi-Ch-2gp" secondAttribute="centerY" id="h5e-Yt-5sA"/>
+                            <constraint firstItem="uYG-QC-F6p" firstAttribute="leading" secondItem="F9n-Q0-EER" secondAttribute="leading" priority="750" id="BpW-3L-lqI" userLabel="Scroll View.leading = leading @750"/>
+                            <constraint firstAttribute="bottom" secondItem="uYG-QC-F6p" secondAttribute="bottom" priority="750" id="Qwd-JG-3gh" userLabel="bottom = Scroll View.bottom @750"/>
+                            <constraint firstItem="ah0-aL-S0G" firstAttribute="centerY" secondItem="F9n-Q0-EER" secondAttribute="centerY" id="nPm-Q7-OHT"/>
+                            <constraint firstItem="uYG-QC-F6p" firstAttribute="top" secondItem="F9n-Q0-EER" secondAttribute="top" priority="750" id="wg9-wb-Unc" userLabel="Scroll View.top = top @750"/>
+                            <constraint firstItem="ah0-aL-S0G" firstAttribute="centerX" secondItem="F9n-Q0-EER" secondAttribute="centerX" id="xCz-yI-RJY"/>
+                            <constraint firstAttribute="trailing" secondItem="uYG-QC-F6p" secondAttribute="trailing" priority="750" id="zbf-tS-Fie" userLabel="trailing = Scroll View.trailing @750"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="canvasView" destination="rFB-ux-jOW" id="0Jl-vv-UE1"/>
+                        <outlet property="canvasViewHeightConstraint" destination="Ohi-oz-g1Z" id="ix3-GE-M3g"/>
+                        <outlet property="canvasViewWidthConstraint" destination="740-lW-Qcp" id="bZB-K3-UwD"/>
+                        <outlet property="scrollView" destination="uYG-QC-F6p" id="INv-L6-EES"/>
+                    </connections>
                 </viewController>
                 <customObject id="2SV-IF-2D2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
