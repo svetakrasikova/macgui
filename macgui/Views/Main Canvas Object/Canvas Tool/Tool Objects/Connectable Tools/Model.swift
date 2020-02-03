@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Model: Connectable {
+class Model: DataTool {
    
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)

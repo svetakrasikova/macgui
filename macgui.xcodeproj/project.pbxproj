@@ -1359,6 +1359,7 @@
 		14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */; };
 		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
 		14BF307D23E236F100426D7A /* ModelCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF307C23E236F100426D7A /* ModelCanvasView.swift */; };
+		14BF307F23E4BD9700426D7A /* LineOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF307E23E4BD9600426D7A /* LineOverlay.swift */; };
 		14C618DE23DFC16C001FFFD6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618DD23DFC16C001FFFD6 /* Color.swift */; };
 		14C618E023E0E0CE001FFFD6 /* ModelCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */; };
 		14C618E323E0E0FB001FFFD6 /* ModelPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */; };
@@ -1369,7 +1370,6 @@
 		14D6DE062220B50800021607 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE042220B50800021607 /* CanvasViewController.swift */; };
 		14E58526228C92AB00802691 /* ToolImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E58525228C92AB00802691 /* ToolImageView.swift */; };
 		14E58528228DF92F00802691 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E58527228DF92F00802691 /* Notifications.swift */; };
-		14E5856E22947BFB00802691 /* LineOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5856D22947BFB00802691 /* LineOverlay.swift */; };
 		14E5857222949A0900802691 /* ConnectionDragController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857122949A0900802691 /* ConnectionDragController.swift */; };
 		14E585742298574100802691 /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E585732298574100802691 /* ArrowView.swift */; };
 		14E585762298575C00802691 /* ArrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E585752298575C00802691 /* ArrowViewController.swift */; };
@@ -4246,6 +4246,7 @@
 		14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookWindowController.swift; sourceTree = "<group>"; };
 		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		14BF307C23E236F100426D7A /* ModelCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasView.swift; sourceTree = "<group>"; };
+		14BF307E23E4BD9600426D7A /* LineOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineOverlay.swift; sourceTree = "<group>"; };
 		14C618DD23DFC16C001FFFD6 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasViewController.swift; sourceTree = "<group>"; };
 		14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPaletteViewController.swift; sourceTree = "<group>"; };
@@ -4256,7 +4257,6 @@
 		14D6DE042220B50800021607 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
 		14E58525228C92AB00802691 /* ToolImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolImageView.swift; sourceTree = "<group>"; };
 		14E58527228DF92F00802691 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		14E5856D22947BFB00802691 /* LineOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LineOverlay.swift; path = "macgui/Views/Canvas Object/Connection/LineOverlay.swift"; sourceTree = SOURCE_ROOT; };
 		14E5857122949A0900802691 /* ConnectionDragController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDragController.swift; sourceTree = "<group>"; };
 		14E585732298574100802691 /* ArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowView.swift; sourceTree = "<group>"; };
 		14E585752298575C00802691 /* ArrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowViewController.swift; sourceTree = "<group>"; };
@@ -8187,7 +8187,7 @@
 		1495A0B0237C892A00F46312 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				14E5856D22947BFB00802691 /* LineOverlay.swift */,
+				14BF307E23E4BD9600426D7A /* LineOverlay.swift */,
 				14E5857122949A0900802691 /* ConnectionDragController.swift */,
 				1471052C227B94E200E88657 /* ConnectorItemView.swift */,
 				14710528226CD75300E88657 /* ConnectorItem.swift */,
@@ -9152,7 +9152,6 @@
 				144BECC523A17AC50001B2EF /* Move_LevyJumpSum.cpp in Sources */,
 				144BF17023A17AC80001B2EF /* NodeOrderConstrainedTreeDistribution.cpp in Sources */,
 				144BF03623A17AC70001B2EF /* RateGeneratorSequence_Biogeography.cpp in Sources */,
-				14E5856E22947BFB00802691 /* LineOverlay.swift in Sources */,
 				144BED0623A17AC50001B2EF /* RevClient.cpp in Sources */,
 				144BEFBC23A17AC70001B2EF /* GelmanRubinTest.cpp in Sources */,
 				144BEF2723A17AC60001B2EF /* NodeTimeSlideUniformProposal.cpp in Sources */,
@@ -9333,6 +9332,7 @@
 				144BED2D23A17AC60001B2EF /* RlMaxIterationStoppingRule.cpp in Sources */,
 				144BF10323A17AC70001B2EF /* AdjacentRateModifierFunction.cpp in Sources */,
 				1471052D227B94E200E88657 /* ConnectorItemView.swift in Sources */,
+				14BF307F23E4BD9700426D7A /* LineOverlay.swift in Sources */,
 				144BEF7A23A17AC60001B2EF /* GraphFlipEdgeProposal.cpp in Sources */,
 				144BF05423A17AC70001B2EF /* BranchLengthDistributionReader.cpp in Sources */,
 				144BECC623A17AC50001B2EF /* Move_DirichletSimplex.cpp in Sources */,
