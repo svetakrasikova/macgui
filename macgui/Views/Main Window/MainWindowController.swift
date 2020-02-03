@@ -58,9 +58,11 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         (closedWC?.contentViewController as! NotebookViewController).saveText()
         notebooks?.removeAll{$0 == closedWC}
     }
+
     
     override func windowDidLoad() {
         super.windowDidLoad()
+        self.window?.delegate = self
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(changeZoomTitle(notification:)),
                                                name: .didChangeMagnification,
@@ -73,8 +75,11 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     }
     
     func windowWillClose(_ notification: Notification) {
-        notebooks?.removeAll()
+        guard var notebooks = self.notebooks else { return  }
+        for nbController in notebooks {
+            nbController.window?.close()
+        }
+        notebooks.removeAll()
     }
-
-    
+  
 }
