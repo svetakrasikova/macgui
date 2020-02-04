@@ -66,17 +66,17 @@ class Connectable: ToolObject {
         }
     }
     
-    func addNeighbor(color: ConnectorColor, neighbor: Connectable, linkType: LinkType){
+    func addNeighbor(color: ConnectorType, neighbor: Connectable, linkType: LinkType){
         switch linkType {
         case .inlet:
              for (index, connector) in inlets.enumerated(){
-                if connector.color == color && connector.neighbor == nil {
+                if connector.type == color && connector.neighbor == nil {
                     inlets[index].neighbor = neighbor
                 }
             }
         case .outlet:
             for (index, connector) in outlets.enumerated(){
-                if connector.color == color && connector.neighbor == nil {
+                if connector.type == color && connector.neighbor == nil {
                     outlets[index].neighbor = neighbor
                 }
             }

@@ -14,8 +14,8 @@ class Model: DataTool {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
         
-        let green = Connector(color:ConnectorColor.green)
-        let purple = Connector(color:ConnectorColor.purple)
+        let green = Connector(color:ConnectorType.alignedData)
+        let purple = Connector(color:ConnectorType.purple)
         self.inlets = [green]
         self.outlets = [purple]
     }

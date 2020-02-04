@@ -13,8 +13,8 @@ class Align: Connectable {
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
     
-        let green = Connector(color:ConnectorColor.green)
-        let blue = Connector(color: ConnectorColor.blue)
+        let green = Connector(color:ConnectorType.alignedData)
+        let blue = Connector(color: ConnectorType.unalignedData)
         inlets = [blue]
         outlets = [green]
     }

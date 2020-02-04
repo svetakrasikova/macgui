@@ -13,7 +13,7 @@ class Simulate: Connectable {
    override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
     
-        let green = Connector(color:ConnectorColor.green)
+        let green = Connector(color:ConnectorType.alignedData)
         self.inlets = []
         self.outlets = [green]
     }

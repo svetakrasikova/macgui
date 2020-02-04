@@ -13,8 +13,8 @@ class TreeSet: Connectable {
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
-        self.inlets = [Connector(color:ConnectorColor.red)]
-        self.outlets = [Connector(color:ConnectorColor.orange)]
+        self.inlets = [Connector(color:ConnectorType.red)]
+        self.outlets = [Connector(color:ConnectorType.orange)]
     }
     
     required init?(coder aDecoder: NSCoder) {

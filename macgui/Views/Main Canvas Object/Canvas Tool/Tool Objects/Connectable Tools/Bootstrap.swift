@@ -13,8 +13,8 @@ class Bootstrap: Connectable {
    override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
     super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
-        let green1 = Connector(color:ConnectorColor.green)
-        let green2 = Connector(color:ConnectorColor.green)
+        let green1 = Connector(color:ConnectorType.alignedData)
+        let green2 = Connector(color:ConnectorType.alignedData)
         self.inlets = [green1]
         self.outlets = [green2]
     }

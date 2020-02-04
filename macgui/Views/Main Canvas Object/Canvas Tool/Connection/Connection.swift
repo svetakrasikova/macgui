@@ -14,20 +14,25 @@ class Connection: NSObject, NSCoding {
     
     var to: Connector
     var from: Connector
+    var type: ConnectorType
+    
     
     init(to: Connector, from: Connector){
         self.to = to
         self.from = from
+        self.type = to.type
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(to, forKey: "to")
         aCoder.encode(from, forKey: "from")
+        aCoder.encode(type.rawValue, forKey: "type")
     }
     
     required init?(coder aDecoder: NSCoder) {
         to = aDecoder.decodeObject(forKey: "to") as! Connector
         from = aDecoder.decodeObject(forKey: "from") as! Connector
+        type = ConnectorType(rawValue: aDecoder.decodeObject(forKey: "type") as! String) ?? .generic
     }
     
     

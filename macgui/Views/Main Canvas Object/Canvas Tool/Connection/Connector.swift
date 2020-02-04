@@ -11,28 +11,27 @@ import Cocoa
 
 class Connector: NSObject, NSCoding {
     
-    
-    var color: ConnectorColor
+    var type: ConnectorType
     var neighbor: Connectable?
     
-    init(color: ConnectorColor, neighbor: Connectable){
-        self.color = color
+    init(color: ConnectorType, neighbor: Connectable){
+        self.type = color
         self.neighbor = neighbor
     }
-    init(color: ConnectorColor){
-        self.color = color
+    init(color: ConnectorType){
+        self.type = color
         self.neighbor = nil
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(color.rawValue, forKey: "color")
+        aCoder.encode(type.rawValue, forKey: "type")
         if let neighbor = neighbor {
             aCoder.encode(neighbor, forKey: "neighbor")
         }
     }
     
     required init?(coder aDecoder: NSCoder) {
-        color = ConnectorColor(rawValue: aDecoder.decodeObject(forKey: "color") as! String) ?? .clear
+        type = ConnectorType(rawValue: aDecoder.decodeObject(forKey: "type") as! String) ?? .generic
         neighbor = aDecoder.decodeObject(forKey: "neighbor") as? Connectable
     }
     
@@ -42,25 +41,25 @@ class Connector: NSObject, NSCoding {
     }
 
     func getColor() -> NSColor {
-        switch self.color {
-        case .blue: return NSColor.blue
-        case .green: return NSColor.green
+        switch self.type {
+        case .alignedData: return NSColor.blue
+        case .unalignedData: return NSColor.green
         case .orange: return NSColor.orange
         case .red: return NSColor.red
         case .magenta: return NSColor.magenta
-        case .clear: return NSColor.clear
         case .purple: return NSColor.purple
+        case .generic: return NSColor.clear
         }
     }
     
 }
 
-enum ConnectorColor: String {
-    case green = "green"
-    case blue = "blue"
+enum ConnectorType: String {
+    case alignedData = "green"
+    case unalignedData = "blue"
     case red = "red"
     case orange = "orange"
     case magenta = "magenta"
     case purple = "purple"
-    case clear = "clear"
+    case generic = "clear"
 }
