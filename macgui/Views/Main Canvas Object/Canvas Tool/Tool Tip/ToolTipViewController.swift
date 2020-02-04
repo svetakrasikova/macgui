@@ -21,13 +21,8 @@ class ToolTipViewController: NSViewController {
         super.viewDidLoad()
         self.toolNameLabel.stringValue = delegate?.getDescriptiveToolName() ?? "Unnamed Tool"
         setConnectionStatus()
-        if let delegate = self.delegate as? CanvasToolViewController, let tool = delegate.tool as? DataTool {
-            let number = tool.dataMatrices.count
-            setNumberOfMatrices(number)
-        } else {
-            numberMatricesLabel.isHidden = true
-        }
-         NotificationCenter.default.addObserver(self, selector: #selector(setNumberOfMatrices(_:)), name: .didUpdateDataMatrices, object: nil)
+        setNumberOfMatrices()
+        NotificationCenter.default.addObserver(self, selector: #selector(setNumberOfMatrices), name: .didUpdateDataMatrices, object: nil)
     }
     
     func setConnectionStatus() {
@@ -40,9 +35,14 @@ class ToolTipViewController: NSViewController {
         }
     }
     
-    @objc func setNumberOfMatrices(_ number: Int) {
-        numberMatricesLabel.stringValue = "# Matrices: \(number)"
-        self.view.needsDisplay = true
+    @objc func setNumberOfMatrices(){
+        if let delegate = self.delegate as? CanvasToolViewController, let tool = delegate.tool as? DataTool {
+            let number = tool.dataMatrices.count
+            numberMatricesLabel.stringValue = "# Matrices: \(number)"
+            self.view.needsDisplay = true
+        } else {
+            numberMatricesLabel.isHidden = true
+        }
     }
 }
 
