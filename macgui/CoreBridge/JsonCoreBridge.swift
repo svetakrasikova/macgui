@@ -202,8 +202,8 @@ class JsonCoreBridge {
         }
         
         if let dataType = DataType(rawValue: try! dataTypeFromDict(dict)) {
-            
-            for taxonData in data {
+
+            for (index, taxonData) in data.enumerated() {
                 guard let discreteTaxonData = taxonData[CoreJsonKeys.DiscreteTaxonData.rawValue] as? [String: Any], let taxon = discreteTaxonData[CoreJsonKeys.Taxon.rawValue] as? [String: Any]
                     else {
                         throw CoreJsonError.discreteTaxonData
@@ -219,7 +219,7 @@ class JsonCoreBridge {
                 guard let taxonData = try initTaxonDataByType(dataType, taxonName: taxonName, charData: charData.joined()) else {
                     throw ReadDataError.taxonDataInitError
                 }
-                if taxonData.numCharacters != numCharacters {
+                if taxonData.numCharacters != numCharacters && index > 0 {
                     self.homologyEstablished = false
                 }
                 
