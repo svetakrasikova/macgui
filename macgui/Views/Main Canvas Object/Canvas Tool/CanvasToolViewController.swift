@@ -69,9 +69,11 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
     
     func setPopOver(){
-           toolTipPopover.contentViewController = NSStoryboard.loadVC(StoryBoardName.toolTip)
-           (toolTipPopover.contentViewController as! ToolTipViewController).delegate = self
-       }
+        toolTipPopover.contentViewController = NSStoryboard.loadVC(StoryBoardName.toolTip)
+        if let toolTipPopoverVC = toolTipPopover.contentViewController as? ToolTipViewController{
+            toolTipPopoverVC.delegate = self
+        }
+    }
        
     
     // MARK: - Info Button Modal Dialog
@@ -158,6 +160,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         if let window = NSApp.windows.first { window.delegate = self}
         infoButton.delegate = self
         inspectorButton.delegate = self
+        inspectorButton.observeDataChange()
         (self.view as! CanvasToolView).canvasViewToolDelegate = self
         tool?.delegate = self
         

@@ -20,7 +20,7 @@ enum DataType: String, Codable {
 }
 
 
-class DataMatrix : CustomStringConvertible, Codable {
+class DataMatrix : NSObject,Codable {
     
     /// The number of taxa.
     public var numTaxa : Int
@@ -72,7 +72,7 @@ class DataMatrix : CustomStringConvertible, Codable {
     // MARK: - Intializers
     
     /// Initialize an empty character data matrix.
-    init() {
+    override init() {
         
         self.numTaxa = 0
         self.taxonNames = []
@@ -392,7 +392,7 @@ class DataMatrix : CustomStringConvertible, Codable {
     }
     
     // sensibly print the object's information
-    var description: String {
+   override var description: String {
         
         let (ntR, nt) = getNumCharacters()
         

@@ -16,16 +16,7 @@ class DataTool: Connectable {
           case jsonError
       }
       
-   var dataMatrices: [DataMatrix]  = [] {
-          didSet {
-              if dataMatrices.isEmpty {
-                  NotificationCenter.default.post(name: .didUpdateDataMatrices, object: nil, userInfo: ["isEmpty" : true])
-              } else {
-                  NotificationCenter.default.post(name: .didUpdateDataMatrices, object: nil, userInfo: ["isEmpty" : false])
-              }
-
-          }
-      }
+   @objc dynamic var dataMatrices: [DataMatrix]  = []
     
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
@@ -37,6 +28,18 @@ class DataTool: Connectable {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func propagateAlignedData(data: [DataMatrix]){
+        if self.outlets.isEmpty {
+            self.dataMatrices = data
+        } else {
+            for connector in self.outlets {
+                if let tool = connector.neighbor as? DataTool {
+                    tool.propagateAlignedData(data: data)
+                }
+            }
+        }
     }
 
 }

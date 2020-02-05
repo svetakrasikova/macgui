@@ -16,13 +16,26 @@ class ToolTipViewController: NSViewController {
     @IBOutlet weak var connectionsStatusLabel: NSTextField!
     @IBOutlet weak var numberMatricesLabel: NSTextField!
     
+    private var observer: NSKeyValueObservation?
     
+    func setDataObserver(){
+        if let delegate = self.delegate as? CanvasToolViewController, let tool = delegate.tool as? DataTool {
+            self.observer = tool.observe(\DataTool.dataMatrices, options: [.initial]) {(tool, change) in
+                self.setNumberOfMatrices(number: tool.dataMatrices.count)
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.toolNameLabel.stringValue = delegate?.getDescriptiveToolName() ?? "Unnamed Tool"
         setConnectionStatus()
-        setNumberOfMatrices()
-        NotificationCenter.default.addObserver(self, selector: #selector(setNumberOfMatrices), name: .didUpdateDataMatrices, object: nil)
+        if let delegate = self.delegate as? CanvasToolViewController, let tool = delegate.tool as? DataTool {
+            setNumberOfMatrices(number: tool.dataMatrices.count)
+            } else {
+                numberMatricesLabel.isHidden = true
+            }
+        setDataObserver()
     }
     
     func setConnectionStatus() {
@@ -34,16 +47,13 @@ class ToolTipViewController: NSViewController {
             }
         }
     }
+
     
-    @objc func setNumberOfMatrices(){
-        if let delegate = self.delegate as? CanvasToolViewController, let tool = delegate.tool as? DataTool {
-            let number = tool.dataMatrices.count
-            numberMatricesLabel.stringValue = "# Matrices: \(number)"
-            self.view.needsDisplay = true
-        } else {
-            numberMatricesLabel.isHidden = true
-        }
+    func setNumberOfMatrices(number: Int){
+        numberMatricesLabel.stringValue = "# Matrices: \(number)"
+        self.view.needsDisplay = true
     }
+    
 }
 
 protocol ToolTipDelegate: class {

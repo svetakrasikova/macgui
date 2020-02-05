@@ -50,11 +50,24 @@ class ActionButton: NSButton {
     
     weak var delegate: ActionButtonDelegate?
     
+    private var observer: NSKeyValueObservation?
+    
+    func observeDataChange(){
+        if let delegate = self.delegate, delegate.isDataTool(), let toolVC = delegate as? CanvasToolViewController {
+            let tool = toolVC.tool as! DataTool
+            self.observer = tool.observe(\DataTool.dataMatrices, options: [.initial]) {(tool, change) in
+                if self.buttonType == .Inspector {
+                    if tool.dataMatrices.isEmpty { self.isHidden = true} else { self.isHidden = false }
+                }
+            }
+       }
+    }
+    
 
     override func awakeFromNib() {
         let trackingArea = NSTrackingArea(rect: self.bounds, options:NSTrackingArea.Options.init(rawValue: 129), owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea)
-        NotificationCenter.default.addObserver(self, selector: #selector(toggleHiddenState(notification: )), name: .didUpdateDataMatrices, object: nil)
+        observeDataChange()
     }
     
     override func mouseEntered(with event: NSEvent) {
@@ -122,12 +135,6 @@ class ActionButton: NSButton {
         }
     }
     
-    @objc func toggleHiddenState(notification: Notification){
-        if buttonType == .Inspector , let matricesListState = notification.userInfo as? [String: Bool] {
-            if matricesListState["isEmpty"]! == true { isHidden = true} else { isHidden = false }
-        }
-        
-    }
     
     private func addInfoLabel(scaleFactor: CGFloat) {
         let textLayer = CATextLayer()
