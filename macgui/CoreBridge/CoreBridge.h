@@ -5,8 +5,9 @@
     
 }
 
+- (NSMutableArray*)getPalletItems;
+- (NSMutableArray*)readMatrixFrom:(NSString*)fileToRead;
 - (int)sendParser:(NSString*)theCommand;
 - (void)startCore;
-- (NSMutableArray*)readMatrixFrom:(NSString*)fileToRead;
 
 @end

@@ -13,8 +13,10 @@
 
 #include <string>
 #include <vector>
+#include "ConstructorFunction.h"
 #include "RevLanguageMain.h"
 #include "RlCommandLineOutputStream.h"
+#include "RlDistribution.h"
 #include "RlUserInterface.h"
 #include "CharacterState.h"
 #include "AbstractCharacterData.h"
@@ -25,6 +27,8 @@
 #include "RbFileManager.h"
 #include "RevNullObject.h"
 #include "RlAminoAcidState.h"
+#include "RlFunction.h"
+#include "RlMove.h"
 #include "DnaState.h"
 #include "RlDnaState.h"
 #include "RlRnaState.h"
@@ -38,6 +42,131 @@
 
 
 @implementation CoreBridge : NSObject
+
+- (NSMutableArray*)getPalletItems {
+
+    NSMutableArray* palletItems = [NSMutableArray array];
+
+    // construct the list of variables for the random variable and constants pallets
+    RevLanguage::Workspace& myWorkspace = RevLanguage::Workspace::globalWorkspace();
+    std::map<std::string, RevLanguage::RevObject*> list = myWorkspace.getTypeTable();
+    for (std::map<std::string, RevLanguage::RevObject*>::iterator it = list.begin(); it != list.end(); it++)
+        {
+        RevLanguage::AbstractModelObject* varPtr = dynamic_cast<RevLanguage::AbstractModelObject*>(it->second);
+        if (varPtr != NULL)
+            {
+            // is it a vector of a scalar?
+            bool isVector = false;
+            RevLanguage::Container* containerPtr = dynamic_cast<RevLanguage::Container*>(it->second);
+            if (containerPtr != NULL)
+                isVector = true;
+
+            // if it's a vector, find the base class
+            std::string baseName = "";
+            for (size_t i=0; i<it->first.size(); i++)
+                {
+                if (it->first[i] != '[' && it->first[i] != ']')
+                    baseName += it->first[i];
+                }
+            RevLanguage::AbstractModelObject* baseObj = NULL;
+            std::map<std::string, RevLanguage::RevObject*>::iterator itf = list.find(baseName);
+            if (itf != list.end())
+                baseObj = dynamic_cast<RevLanguage::AbstractModelObject*>(itf->second);
+            
+            std::string vType     = varPtr->getType();
+            size_t n              = std::count(vType.begin(), vType.end(), '['); // dimension of variable
+
+            // get information on the variable
+            std::string varName = (it)->first;
+            
+            // fillout JSON string
+            std::string jsonStr = "{";
+            jsonStr += "\"type\": \"Variable\", ";
+            jsonStr += "\"name\": \"";
+            jsonStr += baseName + "\", ";
+            jsonStr += "\"dimension\": ";
+            jsonStr += std::to_string(n) + ",";
+            jsonStr += "}";
+
+            [palletItems addObject: [NSString stringWithUTF8String:jsonStr.c_str()]];
+            }
+        }
+
+
+    // construct the list of moves
+    for (std::map<std::string, RevLanguage::RevObject*>::iterator it = list.begin(); it != list.end(); it++)
+        {
+        RevLanguage::Move* movePtr = dynamic_cast<RevLanguage::Move*>(it->second);
+        if (movePtr != NULL)
+            {
+            // it's a move!
+            
+            // get information on the move
+            std::string moveName = (it)->first;
+            std::string s = "Move_";
+            std::string::size_type i = moveName.find(s);
+            if (i != std::string::npos)
+               moveName.erase(i, s.length());
+            
+            // fillout JSON string
+            std::string jsonStr = "{";
+            jsonStr += "\"type\": \"Move\", ";
+            jsonStr += "\"name\": \"";
+            jsonStr += moveName + "\", ";
+            jsonStr += "\"dimension\": 0";
+            jsonStr += "}";
+
+            [palletItems addObject: [NSString stringWithUTF8String:jsonStr.c_str()]];
+            }
+        }
+        
+        
+    // construct the list of distributions
+    RevLanguage::FunctionTable& funcList = myWorkspace.getFunctionTable();
+    for (RevLanguage::FunctionTable::iterator it = funcList.begin(); it != funcList.end(); it++)
+        {
+        RevLanguage::ConstructorFunction* conFunc = dynamic_cast<RevLanguage::ConstructorFunction*>(it->second);
+        std::cout << it->first << std::endl;
+        if (conFunc != NULL)
+            {
+            std::cout << "   " << it->first << std::endl;
+            RevLanguage::RevObject* revObj = conFunc->getRevObject();
+            RevLanguage::Distribution* distPtr = dynamic_cast<RevLanguage::Distribution*>(revObj);
+            if (distPtr != NULL)
+                {
+                // it's a distribution!
+
+                // get information on the distribution
+                std::string distName = (it)->first;
+                std::string s = "dn";
+                std::string::size_type i = distName.find(s);
+                if (i != std::string::npos)
+                   distName.erase(i, s.length());
+
+                // fillout JSON string
+                std::string jsonStr = "{";
+                jsonStr += "\"type\": \"Distribution\", ";
+                jsonStr += "\"name\": \"";
+                jsonStr += distName + "\", ";
+                jsonStr += "\"dimension\": 0";
+                jsonStr += "}";
+
+                [palletItems addObject: [NSString stringWithUTF8String:jsonStr.c_str()]];
+                }
+            }
+       }
+
+
+    // construct the list of functions
+    for (RevLanguage::FunctionTable::iterator it = funcList.begin(); it != funcList.end(); it++)
+        {
+        std::vector<Function*> funcs = funcList.findFunctions(it->first);
+        //std::cout << it->first << " " << funcs.size() << std::endl;
+        }
+
+
+    return palletItems;
+}
 
 - (void)startCore {
     
@@ -132,127 +261,4 @@
         RevLanguage::Workspace::userWorkspace().eraseVariable(tempName);
 }
 
-- (void)makeNewGuiDataMatrixFromCoreMatrixWithAddress:(const RevBayesCore::AbstractCharacterData&)cd andDataType:(const std::string&)dt {
-
-    std::string fn = cd.getFileName();
-    
-    //Cat *cat = Cat.create;
-    
-
-    
-#   if 0
-    NSString* nsfn = [NSString stringWithCString:(fn.c_str()) encoding:NSUTF8StringEncoding];
-    RbData* m = [[RbData alloc] init];
-    [m setNumTaxa:(int)(cd.getNumberOfTaxa())];
-    if ( cd.isHomologyEstablished() == true )
-        {
-        [m setIsHomologyEstablished:YES];
-        const RevBayesCore::HomologousCharacterData* hd = dynamic_cast<const RevBayesCore::HomologousCharacterData*>(&cd);
-        if (!hd)
-            {
-            
-            }
-        [m setNumCharacters:(int)(hd->getNumberOfCharacters())];
-        }
-    else
-        {
-        [m setIsHomologyEstablished:NO];
-        const RevBayesCore::NonHomologousCharacterData* nhd = dynamic_cast<const RevBayesCore::NonHomologousCharacterData*>(&cd);
-        if (!nhd)
-            {
-            
-            }
-        std::vector<size_t> sequenceLengths = nhd->getNumberOfCharacters();
-        size_t maxLen = 0;
-        for (int i=0; i<sequenceLengths.size(); i++)
-            {
-            if (sequenceLengths[i] > maxLen)
-                maxLen = sequenceLengths[i];
-            }
-        [m setNumCharacters:(int)maxLen];
-        }
-    
-    // get the state labels
-    std::string stateLabels = cd.getStateLabels();
-    NSString* sl = [NSString stringWithCString:(stateLabels.c_str()) encoding:NSUTF8StringEncoding];
-    [m setStateLabels:sl];
-    
-    [m setName:nsfn];
-    if ( dt == "DNA" )
-        [m setDataType:DNA];
-    else if ( dt == "RNA" )
-        [m setDataType:RNA];
-    else if ( dt == "Protein" )
-        [m setDataType:AA];
-    else if ( dt == "Standard" )
-        [m setDataType:STANDARD];
-    else if ( dt == "Continuous" )
-        [m setDataType:CONTINUOUS];
-
-    for (size_t i=0; i<cd.getNumberOfTaxa(); i++)
-        {
-        const RevBayesCore::AbstractTaxonData& td = cd.getTaxonData(i);
-        NSString* taxonName = [NSString stringWithCString:td.getTaxonName().c_str() encoding:NSUTF8StringEncoding];
-        [m cleanName:taxonName];
-        [m addTaxonName:taxonName];
-        RbTaxonData* rbTaxonData = [[RbTaxonData alloc] init];
-        [rbTaxonData setTaxonName:taxonName];
-        for (size_t j=0; j<td.getNumberOfCharacters(); j++)
-            {
-            RbDataCell* cell = [[RbDataCell alloc] init];
-            [cell setDataType:[m dataType]];
-            if ( [m dataType] != CONTINUOUS )
-                {
-                const RevBayesCore::DiscreteCharacterState& theChar = static_cast<const RevBayesCore::AbstractDiscreteTaxonData &>(td).getCharacter(j);
-                //unsigned int x = (unsigned int)static_cast<const RevBayesCore::DiscreteCharacterState &>(theChar).getState();
-                RevBayesCore::RbBitSet bs = (RevBayesCore::RbBitSet)static_cast<const RevBayesCore::DiscreteCharacterState &>(theChar).getState();
-                std::string sv = (std::string)static_cast<const RevBayesCore::DiscreteCharacterState &>(theChar).getStringValue();
-
-                unsigned x = 0;
-                if (dt == "DNA")
-                    x = [cell dnaToUnsigned:sv];
-                else if (dt == "RNA")
-                    x = [cell rnaToUnsigned:sv];
-                else if (dt == "Protein")
-                    x = [cell aaToUnsigned:sv];
-                else if (dt == "Standard")
-                    x = [cell standardToUnsigned:sv withLabels:sl];
-
-                NSNumber* n = [NSNumber numberWithUnsignedInt:x];
-                [cell setVal:n];
-                [cell setIsDiscrete:YES];
-                [cell setNumStates:((int)theChar.getNumberOfStates())];
-                if ( theChar.isAmbiguous() == true )
-                    [cell setIsAmbig:YES];
-                if (theChar.isGapState() == true)
-                    [cell setIsGapState:YES];
-                else
-                    [cell setIsGapState:NO];
-                }
-            else
-                {
-                const double x = static_cast<const RevBayesCore::ContinuousCharacterData &>(cd).getCharacter(i, j);
-                if ( RevBayesCore::RbMath::isNan(x) )
-                    {
-                    [cell setIsAmbig:YES];
-                    }
-                else
-                    {
-                    NSNumber* n = [NSNumber numberWithDouble:x];
-                    [cell setVal:n];
-                    [cell setIsDiscrete:NO];
-                    [cell setNumStates:0];
-                    }
-                }
-            [cell setRow:i];
-            [cell setColumn:j];
-            [rbTaxonData addObservation:cell];
-            }
-        [m addTaxonData:rbTaxonData];
-        }
-    
-    return m;
-    
-#   endif
-}
 @end
