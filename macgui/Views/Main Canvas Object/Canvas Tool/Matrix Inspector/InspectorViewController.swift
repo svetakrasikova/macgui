@@ -68,7 +68,11 @@ class InspectorViewController: NSSplitViewController, MatrixNavigatorViewControl
             inspector.numberOfTaxa.integerValue = selectedMatrix.numTaxa
             inspector.numberOfExcludedCharacters.integerValue = selectedMatrix.getDeletedCharacters().count
             inspector.numberOfExcludedTaxa.integerValue = selectedMatrix.getDeletedTaxaNames().count
-            inspector.sequencesAligned.stringValue = "Unknown"
+            if selectedMatrix.homologyEstablished {
+                inspector.sequencesAligned.stringValue = "Yes"
+            } else {
+                inspector.sequencesAligned.stringValue = "No"
+            }
         }
     }
     
