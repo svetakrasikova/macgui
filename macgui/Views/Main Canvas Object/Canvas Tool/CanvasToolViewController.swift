@@ -258,10 +258,21 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         matrixInspectorWindowController.showWindow(self)
     }
     
-    func isDataTool() -> Bool {
+    func isDisplayDataTool() -> Bool {
         if let tool = self.tool, tool.isKind(of: DataTool.self) {
-            return true
-        } else { return false }
+            let toolType = ToolType(rawValue: tool.name)!
+            switch toolType {
+            case .readdata:
+                return true
+            case .model:
+                return false
+            default:
+                return true
+            }
+        } else {
+            return false
+            
+        }
     }
     
     // MARK: - Tool Tip Delegate

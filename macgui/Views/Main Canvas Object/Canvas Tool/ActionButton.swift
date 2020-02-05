@@ -24,7 +24,7 @@ class ActionButton: NSButton {
     
     override var isHidden: Bool {
         didSet {
-            if let delegate = self.delegate, delegate.isDataTool() {
+            if let delegate = self.delegate, delegate.isDisplayDataTool() {
                 needsLayout = true
             }
         }
@@ -53,7 +53,7 @@ class ActionButton: NSButton {
     private var observer: NSKeyValueObservation?
     
     func observeDataChange(){
-        if let delegate = self.delegate, delegate.isDataTool(), let toolVC = delegate as? CanvasToolViewController {
+        if let delegate = self.delegate, delegate.isDisplayDataTool(), let toolVC = delegate as? CanvasToolViewController {
             let tool = toolVC.tool as! DataTool
             self.observer = tool.observe(\DataTool.dataMatrices, options: [.initial]) {(tool, change) in
                 if self.buttonType == .Inspector {
@@ -183,7 +183,7 @@ class ActionButton: NSButton {
 protocol ActionButtonDelegate: class {
     func infoButtonClicked()
     func inspectorButtonClicked()
-    func isDataTool() -> Bool
+    func isDisplayDataTool() -> Bool
 }
 
 
