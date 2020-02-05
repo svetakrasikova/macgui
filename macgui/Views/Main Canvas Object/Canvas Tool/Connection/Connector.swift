@@ -42,13 +42,23 @@ class Connector: NSObject, NSCoding {
 
     func getColor() -> NSColor {
         switch self.type {
-        case .alignedData: return NSColor.blue
-        case .unalignedData: return NSColor.green
+        case .alignedData: return NSColor.green
+        case .unalignedData: return NSColor.blue
         case .orange: return NSColor.orange
         case .red: return NSColor.red
         case .magenta: return NSColor.magenta
         case .purple: return NSColor.purple
         case .generic: return NSColor.clear
+        }
+    }
+  
+      // MARK: - Operations
+    
+    func connectAlignedData(to: Connector) {
+        guard let sourceTool = to.neighbor as? DataTool
+            else { return }
+        if !sourceTool.dataMatrices.isEmpty {
+            sourceTool.propagateAlignedData(data: sourceTool.dataMatrices)
         }
     }
     

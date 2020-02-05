@@ -27,6 +27,7 @@ class ReadData: DataTool {
         super.init(coder: aDecoder)
     }
     
+    
     func openFileBrowser() {
         let panel = NSOpenPanel()
         let textType : UInt32 = UInt32(NSHFSTypeCodeFromFileType("TEXT"))

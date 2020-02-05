@@ -21,6 +21,12 @@ class Connection: NSObject, NSCoding {
         self.to = to
         self.from = from
         self.type = to.type
+        switch self.type {
+        case .alignedData:
+            self.from.connectAlignedData(to: self.to)
+        default:
+            print("No action defined for connection type", self.type)
+        }
     }
     
     func encode(with aCoder: NSCoder) {
@@ -35,5 +41,6 @@ class Connection: NSObject, NSCoding {
         type = ConnectorType(rawValue: aDecoder.decodeObject(forKey: "type") as! String) ?? .generic
     }
     
+
     
 }
