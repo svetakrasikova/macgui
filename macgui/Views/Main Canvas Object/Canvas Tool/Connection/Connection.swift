@@ -17,13 +17,13 @@ class Connection: NSObject, NSCoding {
     var type: ConnectorType
     
     
-    init(to: Connector, from: Connector){
+    init(to: Connector, from: Connector) throws {
         self.to = to
         self.from = from
         self.type = to.type
         switch self.type {
         case .alignedData:
-            self.from.connectAlignedData(to: self.to)
+            try self.from.connectAlignedData(to: self.to)
         default:
             print("No action defined for connection type", self.type)
         }

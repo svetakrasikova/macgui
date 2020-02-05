@@ -54,11 +54,18 @@ class Connector: NSObject, NSCoding {
   
       // MARK: - Operations
     
-    func connectAlignedData(to: Connector) {
+    func connectAlignedData(to: Connector) throws {
         guard let sourceTool = to.neighbor as? DataTool
             else { return }
         if !sourceTool.dataMatrices.isEmpty {
-            sourceTool.propagateAlignedData(data: sourceTool.dataMatrices)
+            let alignedMatrices =  sourceTool.dataMatrices.filter{$0.homologyEstablished == true}
+            if alignedMatrices.isEmpty {
+                throw ConnectionError.noAlignedData
+            } else {
+                sourceTool.propagateAlignedData(data: alignedMatrices)
+            }
+        } else {
+            throw ConnectionError.noData
         }
     }
     
@@ -72,4 +79,9 @@ enum ConnectorType: String {
     case magenta = "magenta"
     case purple = "purple"
     case generic = "clear"
+}
+
+enum ConnectionError: Error {
+    case noData
+    case noAlignedData
 }

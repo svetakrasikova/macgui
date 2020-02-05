@@ -107,21 +107,45 @@ class CanvasViewController: NSViewController, NSWindowDelegate {
    
     @objc func didConnectTools(notification: Notification){
         let userInfo = notification.userInfo! as! [String: ConnectorItemView]
-        if userInfo["target"]?.window == self.view.window, let color = userInfo["target"]?.arrowColor, let targetTool = userInfo["target"]?.delegate?.getTool(), let sourceTool = userInfo["source"]?.delegate?.getTool(){
+        if userInfo["target"]?.window == self.view.window, let color = userInfo["target"]?.arrowColor, let targetTool = userInfo["target"]?.delegate?.getTool(), let sourceTool = userInfo["source"]?.delegate?.getTool() as? Connectable{
             let toConnector = userInfo["target"]?.delegate?.getConnector() as! Connector
-            toConnector.setNeighbor(neighbor: sourceTool as! Connectable)
+            toConnector.setNeighbor(neighbor: sourceTool)
             let fromConnector = userInfo["source"]?.delegate?.getConnector() as! Connector
             fromConnector.setNeighbor(neighbor: targetTool as! Connectable)
-            let connection = Connection(to: toConnector, from: fromConnector)
-            let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool as! Connectable, targetTool: targetTool as! Connectable, connection: connection)
-            addChild(arrowController)
-            analysis?.arrows.append(connection)
-            canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
-           
-            let userInfo  = ["sourceTool" : sourceTool, "targetTool" : targetTool]
-            NotificationCenter.default.post(name: .didAddNewArrow, object: self, userInfo: userInfo)
+            do {
+                let connection = try Connection(to: toConnector, from: fromConnector)
+                let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool as! Connectable, connection: connection)
+                addChild(arrowController)
+                analysis?.arrows.append(connection)
+                canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
+                
+                let userInfo  = ["sourceTool" : sourceTool, "targetTool" : targetTool]
+                NotificationCenter.default.post(name: .didAddNewArrow, object: self, userInfo: userInfo)
+            } catch ConnectionError.noData {
+                runNoDataAlert(toolType: sourceTool.descriptiveName)
+            } catch ConnectionError.noAlignedData {
+                runNoAlignedDataAlert(toolType: sourceTool.descriptiveName)
+            } catch  {
+                print("Unexpected error: \(error).")
+            }
+            
         }
     }
+    
+    func runNoDataAlert(toolType: String){
+        let alert = NSAlert()
+        alert.messageText = "No Data on \(toolType)"
+        alert.informativeText = "To establish a data connection between two tools, the source tool needs to have data."
+        alert.runModal()
+    }
+    
+    func runNoAlignedDataAlert(toolType: String){
+        let alert = NSAlert()
+        alert.messageText = "No aligned data on \(toolType)."
+        alert.informativeText = "To establish an aligned data connection between two tools, the source tool needs to have aligned data."
+        alert.runModal()
+    }
+
     
     func setUpConnection(frame: NSRect, color: NSColor, sourceTool: Connectable, targetTool: Connectable, connection: Connection) -> ArrowViewController {
         let arrowController = ArrowViewController()

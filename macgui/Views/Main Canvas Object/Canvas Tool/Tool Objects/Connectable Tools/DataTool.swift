@@ -32,14 +32,14 @@ class DataTool: Connectable {
     
     func propagateAlignedData(data: [DataMatrix]){
         if self.connectedOutlets.isEmpty  {
-            self.dataMatrices = data
+            self.dataMatrices += data
         } else {
             for connector in self.outlets {
                 if connector.type == .alignedData, let tool = connector.neighbor as? DataTool {
                     tool.propagateAlignedData(data: data)
                 }
             }
-            self.dataMatrices = data
+            self.dataMatrices += data
         }
     }
 
