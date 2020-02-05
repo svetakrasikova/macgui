@@ -4326,7 +4326,6 @@
 				14F95D6923569A70009884D2 /* CoreBridge */,
 				14523575220E101400A85186 /* Model */,
 				1452356E220DF5C400A85186 /* Views */,
-				14E69A6B237641330045E283 /* Analysis Palette  */,
 				1452356C220DF55C00A85186 /* Extensions */,
 				14E5857F22A8016200802691 /* ImageHandling */,
 				14E69A6623763D4A0045E283 /* Application */,
@@ -8162,6 +8161,7 @@
 				14D6DE02221F47CD00021607 /* MainSplitViewController.swift */,
 				14E69A622376383D0045E283 /* NavigatorViewController.swift */,
 				1411BEE42208DDBE009BEE1D /* AnalysisViewController.swift */,
+				1411BEE62208FE91009BEE1D /* Tool.swift */,
 			);
 			path = "Main Window";
 			sourceTree = "<group>";
@@ -8273,14 +8273,6 @@
 				1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		14E69A6B237641330045E283 /* Analysis Palette  */ = {
-			isa = PBXGroup;
-			children = (
-				1411BEE62208FE91009BEE1D /* Tool.swift */,
-			);
-			path = "Analysis Palette ";
 			sourceTree = "<group>";
 		};
 		14E69A6C237643200045E283 /* Canvas Tool */ = {
