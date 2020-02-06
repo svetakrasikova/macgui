@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140324B023EB7CF0005F1FC9 /* GenericCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140324AF23EB7CF0005F1FC9 /* GenericCanvasView.swift */; };
+		140324B223EB8088005F1FC9 /* GenericCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140324B123EB8088005F1FC9 /* GenericCanvasViewController.swift */; };
 		1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1407184A22FF5D430098285D /* ModalSheet.storyboard */; };
 		1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */; };
 		141106B9230742D500A8B936 /* ToolTip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141106B8230742D500A8B936 /* ToolTip.storyboard */; };
@@ -1397,6 +1399,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		140324AF23EB7CF0005F1FC9 /* GenericCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCanvasView.swift; sourceTree = "<group>"; };
+		140324B123EB8088005F1FC9 /* GenericCanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCanvasViewController.swift; sourceTree = "<group>"; };
 		1407184A22FF5D430098285D /* ModalSheet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheet.storyboard; sourceTree = "<group>"; };
 		1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheetTabView.storyboard; sourceTree = "<group>"; };
 		141106B8230742D500A8B936 /* ToolTip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ToolTip.storyboard; sourceTree = "<group>"; };
@@ -4293,6 +4297,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		140324B323EC858F005F1FC9 /* Generic Canvas View */ = {
+			isa = PBXGroup;
+			children = (
+				140324AF23EB7CF0005F1FC9 /* GenericCanvasView.swift */,
+				140324B123EB8088005F1FC9 /* GenericCanvasViewController.swift */,
+			);
+			path = "Generic Canvas View";
+			sourceTree = "<group>";
+		};
 		1411BE832203D8FB009BEE1D = {
 			isa = PBXGroup;
 			children = (
@@ -8060,6 +8073,7 @@
 				14E69A64237638770045E283 /* Document */,
 				1495A0AD237C87DA00F46312 /* Main Window */,
 				1495A0AE237C883E00F46312 /* Notebook */,
+				140324B323EC858F005F1FC9 /* Generic Canvas View */,
 				14E69A6D237643BC0045E283 /* Main Canvas View */,
 				1495A0AA237C870E00F46312 /* Main Canvas Object */,
 			);
@@ -8241,8 +8255,8 @@
 			children = (
 				14C618E623E20411001FFFD6 /* ModelToolWindowController.swift */,
 				149F8B3A2363934F003146FD /* ModelToolViewController.swift */,
-				14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */,
 				14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */,
+				14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */,
 				14BF307C23E236F100426D7A /* ModelCanvasView.swift */,
 			);
 			path = "Model Tool";
@@ -9269,6 +9283,7 @@
 				1495A0BC237CBB9F00F46312 /* MatrixViewController.swift in Sources */,
 				144BEFE423A17AC70001B2EF /* RateMatrix_Wag.cpp in Sources */,
 				144BEEB223A17AC60001B2EF /* Dist_categorical.cpp in Sources */,
+				140324B223EB8088005F1FC9 /* GenericCanvasViewController.swift in Sources */,
 				144BEEF823A17AC60001B2EF /* nxstaxablock.cpp in Sources */,
 				144BF0FB23A17AC70001B2EF /* CoalaFunction.cpp in Sources */,
 				144BEE4B23A17AC60001B2EF /* Func_FreeK.cpp in Sources */,
@@ -9703,6 +9718,7 @@
 				144BED4023A17AC60001B2EF /* RlSimplex.cpp in Sources */,
 				144BF10F23A17AC70001B2EF /* Distribution.cpp in Sources */,
 				144BEEC123A17AC60001B2EF /* Dist_FBDRangeMatrix.cpp in Sources */,
+				140324B023EB7CF0005F1FC9 /* GenericCanvasView.swift in Sources */,
 				144BF0A623A17AC70001B2EF /* FloorFunction.cpp in Sources */,
 				144BEF6623A17AC60001B2EF /* SingleElementSlideProposal.cpp in Sources */,
 				144BF16323A17AC80001B2EF /* AbstractPiecewiseConstantFossilizedRangeProcess.cpp in Sources */,

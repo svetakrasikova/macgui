@@ -8,11 +8,28 @@
 
 import Cocoa
 
-class ModelCanvasView: NSView {
+class ModelCanvasView: GenericCanvasView {
+    
+    weak var concreteDelegate: ModelCanvasViewDelegate? = nil
 
+      override var delegate: GenericCanvasViewController? {
+          didSet {
+           concreteDelegate = delegate as? ModelCanvasViewDelegate
+          }
+      }
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         makeGridBackground(dirtyRect: dirtyRect)
     }
+    
+    override func performDragOperation(_ draggingInfo: NSDraggingInfo) -> Bool {
+
+        return false
+
+    }
+    
+}
+
+protocol ModelCanvasViewDelegate: class {
     
 }

@@ -191,7 +191,7 @@
                         <outlet property="canvasView" destination="rFB-ux-jOW" id="0Jl-vv-UE1"/>
                         <outlet property="canvasViewHeightConstraint" destination="Ohi-oz-g1Z" id="ix3-GE-M3g"/>
                         <outlet property="canvasViewWidthConstraint" destination="740-lW-Qcp" id="bZB-K3-UwD"/>
-                        <outlet property="scrollView" destination="uYG-QC-F6p" id="INv-L6-EES"/>
+                        <outlet property="scrollView" destination="uYG-QC-F6p" id="pcl-aw-IP6"/>
                     </connections>
                 </viewController>
                 <customObject id="2SV-IF-2D2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
