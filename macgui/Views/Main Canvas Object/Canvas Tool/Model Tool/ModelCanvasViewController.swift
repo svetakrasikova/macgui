@@ -17,9 +17,8 @@ class ModelCanvasViewController: GenericCanvasViewController{
     
     override func viewDidLayout() {
         super.viewDidLayout()
-        
-        
     }
+    
     
 }
 

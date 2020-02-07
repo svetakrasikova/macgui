@@ -28,6 +28,8 @@ class MainSplitViewController: NSSplitViewController, NavigatorViewControllerDel
            }
        }
     
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

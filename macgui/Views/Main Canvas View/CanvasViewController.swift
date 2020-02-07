@@ -25,11 +25,10 @@ class CanvasViewController: GenericCanvasViewController {
     }
     
     
+    
 // MARK: - Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(deleteSelectedCanvasObjects(notification:)),
@@ -241,6 +240,10 @@ class CanvasViewController: GenericCanvasViewController {
         canvasObjectViewController.removeFromParent()
     }
     
+    func bringCanvasViewToFront(containerView: NSView){
+        containerView.bringSubviewToFront(self.canvasView)
+    }
+    
 }
 
 // MARK: - CanvasViewDelegate
@@ -252,6 +255,9 @@ extension CanvasViewController: CanvasViewDelegate {
         let size = NSSize(width: Appearance.toolDimension, height: Appearance.toolDimension)
         let frame = NSRect(x: center.x - size.width/2, y: center.y - size.height/2, width: size.width, height: size.height)
         addCanvasTool(frame: frame, name: name)
+        if let window = self.view.window {
+            window.makeFirstResponder(canvasView)
+        }
     }
     
 }

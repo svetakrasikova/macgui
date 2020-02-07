@@ -17,6 +17,7 @@ class CanvasView: GenericCanvasView {
         concreteDelegate = delegate as? CanvasViewDelegate
        }
    }
+    
     override func performDragOperation(_ draggingInfo: NSDraggingInfo) -> Bool {
         isReceivingDrag = false
         let pasteBoard = draggingInfo.draggingPasteboard
@@ -25,6 +26,7 @@ class CanvasView: GenericCanvasView {
             concreteDelegate?.processImage(center: point, name: name)
             return true
         }
+
         return false
         
     }

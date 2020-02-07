@@ -21,12 +21,6 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-// The window is empty here. Zoom is not active.
-        if let window = view.window  {
-            window.delegate = self
-        }
-
-        
         canvasView.delegate = self
         
         scrollView.magnification = 1.5
@@ -41,6 +35,12 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
                                                       object: nil)
     }
     
+    override func viewDidAppear() {
+         if let window = view.window  {
+                   window.delegate = self
+               }
+
+    }
     override func viewDidLayout() {
         super.viewDidLayout()
         canvasViewHeightConstraint.constant = scrollView.frame.size.height * 4
