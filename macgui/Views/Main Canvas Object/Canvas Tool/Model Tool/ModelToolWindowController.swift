@@ -13,14 +13,14 @@ class ModelToolWindowController: NSWindowController {
     weak var tool: ToolObject?
     @IBOutlet weak var zoom: NSPopUpButton!
     
-        var canvas: NSSplitViewItem? {
+        weak var canvas: NSSplitViewItem? {
             if let canvas = (contentViewController as? ModelToolViewController)?.splitViewItems[1] {
                 return canvas
             }
             return nil
         }
     
-        var palette: NSSplitViewItem? {
+        weak var palette: NSSplitViewItem? {
             if let palette = (contentViewController as? ModelToolViewController)?.splitViewItems[0] {
                 return palette
             }

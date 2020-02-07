@@ -12,14 +12,32 @@ class ModelToolViewController: NSSplitViewController {
     
     weak var tool: ToolObject?
     
+    weak var paletteViewController: ModelPaletteViewController? {
+        for child in self.children {
+            if child.isKind(of: ModelPaletteViewController.self) {
+                return child as? ModelPaletteViewController
+            }
+        }
+        return nil
+    }
+    
+    weak var canvasViewController: ModelCanvasViewController? {
+        for child in self.children {
+            if child.isKind(of: ModelCanvasViewController.self){
+                return child as? ModelCanvasViewController
+            }
+        }
+        return nil
+    }
+    
     override func viewWillAppear() {
-           super.viewWillAppear()
+        super.viewWillAppear()
         
-           if let modelToolWC = view.window?.windowController as? ModelToolWindowController {
-               self.tool = modelToolWC.tool
-           }
-           
-       }
+        if let modelToolWC = view.window?.windowController as? ModelToolWindowController {
+            self.tool = modelToolWC.tool
+        }
+        
+    }
     
 }
 
