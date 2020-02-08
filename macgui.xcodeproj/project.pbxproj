@@ -22,6 +22,8 @@
 		1411D1632305B18D00A8B936 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411D1622305B18D00A8B936 /* ToolTipView.swift */; };
 		141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */; };
 		142945F723EE44DC0093608F /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 142945F623EE44DC0093608F /* Preferences.storyboard */; };
+		142945F923EF50E40093608F /* PreferencesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142945F823EF50E40093608F /* PreferencesManager.swift */; };
+		142945FB23EF76890093608F /* MainCanvasPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142945FA23EF76890093608F /* MainCanvasPreferencesController.swift */; };
 		1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */; };
 		144BE13C2397797C0001B2EF /* GitVersion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 144BE13B2397797C0001B2EF /* GitVersion.cpp */; };
 		144BE142239B07BA0001B2EF /* DataMatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BE141239B07BA0001B2EF /* DataMatrixTests.swift */; };
@@ -1418,6 +1420,8 @@
 		1411D1622305B18D00A8B936 /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteringClipView.swift; sourceTree = "<group>"; };
 		142945F623EE44DC0093608F /* Preferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		142945F823EF50E40093608F /* PreferencesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesManager.swift; sourceTree = "<group>"; };
+		142945FA23EF76890093608F /* MainCanvasPreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCanvasPreferencesController.swift; sourceTree = "<group>"; };
 		1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolView.swift; sourceTree = "<group>"; };
 		144BE13B2397797C0001B2EF /* GitVersion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GitVersion.cpp; path = ../../revbayes/projects/cmake/GitVersion.cpp; sourceTree = "<group>"; };
 		144BE141239B07BA0001B2EF /* DataMatrixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMatrixTests.swift; sourceTree = "<group>"; };
@@ -4348,6 +4352,15 @@
 				14ECE4DE233BFE2300106EB4 /* aquabayes.icns */,
 			);
 			path = macgui;
+			sourceTree = "<group>";
+		};
+		142945FC23EF76950093608F /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				142945F823EF50E40093608F /* PreferencesManager.swift */,
+				142945FA23EF76890093608F /* MainCanvasPreferencesController.swift */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 		144BE140239B07830001B2EF /* Model Tests */ = {
@@ -8072,6 +8085,7 @@
 		1452356E220DF5C400A85186 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				142945FC23EF76950093608F /* Preferences */,
 				14E69A64237638770045E283 /* Document */,
 				1495A0AD237C87DA00F46312 /* Main Window */,
 				1495A0AE237C883E00F46312 /* Notebook */,
@@ -8862,6 +8876,7 @@
 				144BED3723A17AC60001B2EF /* RealPos.cpp in Sources */,
 				144BED9523A17AC60001B2EF /* SyntaxSubtractionAssignment.cpp in Sources */,
 				144BEFB523A17AC60001B2EF /* Trace.cpp in Sources */,
+				142945FB23EF76890093608F /* MainCanvasPreferencesController.swift in Sources */,
 				144BF04323A17AC70001B2EF /* DistanceMatrixReader.cpp in Sources */,
 				144BF01223A17AC70001B2EF /* ContinuousCharacterData.cpp in Sources */,
 				144BF0EA23A17AC70001B2EF /* PruneTreeFunction.cpp in Sources */,
@@ -9417,6 +9432,7 @@
 				144BF09D23A17AC70001B2EF /* LnFunction.cpp in Sources */,
 				144BF14923A17AC70001B2EF /* MultispeciesCoalescentMigrationODE.cpp in Sources */,
 				144BECBB23A17AC50001B2EF /* Move_BirthDeathEventContinuous.cpp in Sources */,
+				142945F923EF50E40093608F /* PreferencesManager.swift in Sources */,
 				144BF02A23A17AC70001B2EF /* BranchHistory.cpp in Sources */,
 				144BEDEC23A17AC60001B2EF /* Func_min.cpp in Sources */,
 				144BF02D23A17AC70001B2EF /* CharacterHistoryDiscrete.cpp in Sources */,

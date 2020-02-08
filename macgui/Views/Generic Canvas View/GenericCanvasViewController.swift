@@ -10,13 +10,18 @@ import Cocoa
 
 class GenericCanvasViewController: NSViewController, NSWindowDelegate {
     
+
+// MARK: - IB Outlets
+    
     @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var canvasView: GenericCanvasView!
     @IBOutlet weak var transparentToolsView: TransparentToolsView!
     @IBOutlet weak var canvasViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var canvasViewWidthConstraint: NSLayoutConstraint!
     
+    
 
+// MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +107,8 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
           }
     
 }
+
+// MARK: - GenericCanvasViewDelegate
 
 extension GenericCanvasViewController: GenericCanvasViewDelegate {
    

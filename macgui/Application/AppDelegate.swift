@@ -13,6 +13,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let coreBridge: CoreBridge = CoreBridge()
+    let preferencesManager = PreferencesManager()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         

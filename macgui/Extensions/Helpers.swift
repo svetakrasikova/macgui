@@ -71,7 +71,7 @@ extension NSView {
     }
 
     
-    func makeGridBackground(dirtyRect: NSRect){
+    func  makeGridBackground(dirtyRect: NSRect, gridColor: NSColor, backgroundColor: NSColor){
         
         //Fill background with white color
         if let context = NSGraphicsContext.current?.cgContext {
@@ -83,11 +83,11 @@ extension NSView {
         //Draw Lines: Horizontal
         for i in 1...(Int(self.bounds.size.height) / 10) {
             if i % 10 == 0 {
-                NSColor(srgbRed: 100/255.0, green: 149/255.0, blue: 237/255.0, alpha: 0.3).set()
+                gridColor.withAlphaComponent(0.3).set()
             }else if i % 5 == 0 {
-                NSColor(srgbRed: 100/255.0, green: 149/255.0, blue: 237/255.0, alpha: 0.2).set()
+                gridColor.withAlphaComponent(0.2).set()
             }else{
-                NSColor(srgbRed: 100/255.0, green: 149/255.0, blue: 237/255.0, alpha: 0.1).set()
+                gridColor.withAlphaComponent(0.1).set()
             }
             
             NSBezierPath.strokeLine(from: NSMakePoint(0, CGFloat(i) * 10 - 0.5), to: NSMakePoint(self.bounds.size.width, CGFloat(i) * 10 - 0.5))
@@ -97,11 +97,11 @@ extension NSView {
         //Draw Lines: Vertical
         for i in 1...(Int(self.bounds.size.width) / 10) {
             if i % 10 == 0 {
-                NSColor(srgbRed: 100/255.0, green: 149/255.0, blue: 237/255.0, alpha: 0.3).set()
+                gridColor.withAlphaComponent(0.3).set()
             }else if i % 5 == 0 {
-                NSColor(srgbRed: 100/255.0, green: 149/255.0, blue: 237/255.0, alpha: 0.2).set()
+                gridColor.withAlphaComponent(0.2).set()
             }else{
-                NSColor(srgbRed: 100/255.0, green: 149/255.0, blue: 237/255.0, alpha: 0.1).set()
+               gridColor.withAlphaComponent(0.1).set()
             }
             
             NSBezierPath.strokeLine(from: NSMakePoint(CGFloat(i) * 10 - 0.5, 0), to: NSMakePoint(CGFloat(i) * 10 - 0.5, self.bounds.size.height))
@@ -111,7 +111,7 @@ extension NSView {
     
 }
 
-public extension NSBezierPath {
+extension NSBezierPath {
     
     var cgPath: CGPath {
         let path = CGMutablePath()
@@ -129,12 +129,24 @@ public extension NSBezierPath {
         }
         return path
     }
-    
-
-   
 
     
 }
 
 
 
+extension UserDefaults {
+
+    func set(_ value: NSColor?, forKey key: String) {
+
+        guard let color = value else { return }
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
+            set(data, forKey: key)
+        } catch let error {
+            print("error color key data not saved \(error.localizedDescription)")
+        }
+
+    }
+
+}

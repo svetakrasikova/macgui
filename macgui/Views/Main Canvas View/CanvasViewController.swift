@@ -20,9 +20,7 @@ class CanvasViewController: GenericCanvasViewController {
 
     @IBOutlet weak var invitationLabel: NSTextField!
     
-    enum Appearance {
-        static let toolDimension: CGFloat = 50.0
-    }
+   
     
     
     
@@ -240,7 +238,6 @@ class CanvasViewController: GenericCanvasViewController {
         canvasObjectViewController.removeFromParent()
     }
     
-    
 }
 
 // MARK: - CanvasViewDelegate
@@ -248,13 +245,18 @@ extension CanvasViewController: CanvasViewDelegate {
     
     
     func processImage(center: NSPoint, name: String) {
+        guard let toolDimension = self.canvasView.toolDimension
+            else {
+                return
+        }
         invitationLabel.isHidden = true
-        let size = NSSize(width: Appearance.toolDimension, height: Appearance.toolDimension)
+        let size = NSSize(width: toolDimension, height: toolDimension)
         let frame = NSRect(x: center.x - size.width/2, y: center.y - size.height/2, width: size.width, height: size.height)
         addCanvasTool(frame: frame, name: name)
         if let window = self.view.window {
             window.makeFirstResponder(canvasView)
         }
+        
     }
     
 }

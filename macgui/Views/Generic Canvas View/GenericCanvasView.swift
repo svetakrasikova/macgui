@@ -10,9 +10,11 @@ import Cocoa
 
 class GenericCanvasView: NSView {
     
-    enum Appearance {
-        static let selectionWidth: CGFloat = 5.0
-    }
+      
+    // MARK: - View Appearance
+        
+    
+    let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
     
     var acceptableTypes: Set<NSPasteboard.PasteboardType> { return [.string] }
     
@@ -22,7 +24,9 @@ class GenericCanvasView: NSView {
         }
     }
     
- 
+    var toolDimension: CGFloat? {
+        return preferencesManager.toolDimension
+    }
     weak var delegate: GenericCanvasViewController? = nil
     
     let backgroundLayer = CALayer()
@@ -38,6 +42,7 @@ class GenericCanvasView: NSView {
     override func awakeFromNib() {
         setup()
     }
+    
     
     func shouldAllowDrag(_ draggingInfo: NSDraggingInfo) -> Bool {
         var canAccept = false
@@ -72,10 +77,14 @@ class GenericCanvasView: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        if isReceivingDrag {
-            delegate?.selectContentView(width: Appearance.selectionWidth)
-            needsDisplay = true
+        if let backgroundColor = preferencesManager.mainCanvasBackroundColor, let gridColor = preferencesManager.mainCanvasGridColor, let selectionWidth = preferencesManager.canvasSelectionWidth {
+            makeGridBackground(dirtyRect: dirtyRect, gridColor: gridColor, backgroundColor: backgroundColor)
+            if isReceivingDrag {
+                delegate?.selectContentView(width: selectionWidth)
+                needsDisplay = true
+            }
         }
+        
     }
 }
 

@@ -19,7 +19,6 @@ class ModelCanvasView: GenericCanvasView {
       }
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        makeGridBackground(dirtyRect: dirtyRect)
     }
     
     override func performDragOperation(_ draggingInfo: NSDraggingInfo) -> Bool {

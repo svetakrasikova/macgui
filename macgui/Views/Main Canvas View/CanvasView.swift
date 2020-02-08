@@ -33,7 +33,7 @@ class CanvasView: GenericCanvasView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        makeGridBackground(dirtyRect: dirtyRect)
+        
     }
 }
 
