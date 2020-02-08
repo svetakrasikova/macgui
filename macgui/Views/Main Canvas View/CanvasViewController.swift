@@ -240,9 +240,6 @@ class CanvasViewController: GenericCanvasViewController {
         canvasObjectViewController.removeFromParent()
     }
     
-    func bringCanvasViewToFront(containerView: NSView){
-        containerView.bringSubviewToFront(self.canvasView)
-    }
     
 }
 
