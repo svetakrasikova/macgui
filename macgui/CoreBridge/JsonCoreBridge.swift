@@ -62,7 +62,7 @@ class JsonCoreBridge {
         self.jsonStringArray = jsonArray
     }
     
-    func encodeJsonStringArray() throws -> [Data] {
+    func encodeMatrixJsonStringArray() throws -> [Data] {
         var dataArray: [Data] = []
         for jsonString in jsonStringArray {
             do {
@@ -79,6 +79,14 @@ class JsonCoreBridge {
             }
         }
         
+        return dataArray
+    }
+    
+    func encodeJsonStringArray() -> [Data] {
+        var dataArray: [Data] = []
+        for jsonString in jsonStringArray {
+            dataArray.append(jsonString.data(using: .utf8)!)
+        }
         return dataArray
     }
     

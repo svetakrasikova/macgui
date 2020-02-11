@@ -96,7 +96,7 @@ class ReadData: DataTool {
             throw ReadDataError.fetchDataError(fileURL: fileURL)
         }
         do {
-            let matricesData: [Data] = try JsonCoreBridge(jsonArray: jsonStringArray).encodeJsonStringArray()
+            let matricesData: [Data] = try JsonCoreBridge(jsonArray: jsonStringArray).encodeMatrixJsonStringArray()
             for data in matricesData {
                 do {
                     let newMatrix = try JSONDecoder().decode(DataMatrix.self, from: data)
