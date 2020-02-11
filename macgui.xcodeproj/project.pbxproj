@@ -12,6 +12,7 @@
 		1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1407184A22FF5D430098285D /* ModalSheet.storyboard */; };
 		1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */; };
 		140E726023F219D400E86919 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E725E23F219D400E86919 /* PreferencesViewController.swift */; };
+		140E726323F3643400E86919 /* PalettItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E726223F3643400E86919 /* PalettItem.swift */; };
 		141106B9230742D500A8B936 /* ToolTip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141106B8230742D500A8B936 /* ToolTip.storyboard */; };
 		1411BE902203D8FB009BEE1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */; };
 		1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */; };
@@ -1408,6 +1409,7 @@
 		1407184A22FF5D430098285D /* ModalSheet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheet.storyboard; sourceTree = "<group>"; };
 		1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheetTabView.storyboard; sourceTree = "<group>"; };
 		140E725E23F219D400E86919 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		140E726223F3643400E86919 /* PalettItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettItem.swift; sourceTree = "<group>"; };
 		141106B8230742D500A8B936 /* ToolTip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ToolTip.storyboard; sourceTree = "<group>"; };
 		1411BE8C2203D8FB009BEE1D /* macgui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macgui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -8123,6 +8125,7 @@
 			isa = PBXGroup;
 			children = (
 				149F8B2323624E39003146FD /* Data Matrix */,
+				140E726223F3643400E86919 /* PalettItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -9758,6 +9761,7 @@
 				144BEE2A23A17AC60001B2EF /* Func_symmetricDifference.cpp in Sources */,
 				14E58526228C92AB00802691 /* ToolImageView.swift in Sources */,
 				144BED9A23A17AC60001B2EF /* SyntaxConstantAssignment.cpp in Sources */,
+				140E726323F3643400E86919 /* PalettItem.swift in Sources */,
 				144BED5923A17AC60001B2EF /* RlNaturalNumbersState.cpp in Sources */,
 				144BECC823A17AC50001B2EF /* Move_ElementSwapSimplex.cpp in Sources */,
 				144BED8423A17AC60001B2EF /* SyntaxDecrement.cpp in Sources */,
