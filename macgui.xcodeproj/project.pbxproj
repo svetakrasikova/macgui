@@ -11,6 +11,7 @@
 		140324B223EB8088005F1FC9 /* GenericCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140324B123EB8088005F1FC9 /* GenericCanvasViewController.swift */; };
 		1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1407184A22FF5D430098285D /* ModalSheet.storyboard */; };
 		1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */; };
+		140E726023F219D400E86919 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E725E23F219D400E86919 /* PreferencesViewController.swift */; };
 		141106B9230742D500A8B936 /* ToolTip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141106B8230742D500A8B936 /* ToolTip.storyboard */; };
 		1411BE902203D8FB009BEE1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */; };
 		1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */; };
@@ -1406,6 +1407,7 @@
 		140324B123EB8088005F1FC9 /* GenericCanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCanvasViewController.swift; sourceTree = "<group>"; };
 		1407184A22FF5D430098285D /* ModalSheet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheet.storyboard; sourceTree = "<group>"; };
 		1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheetTabView.storyboard; sourceTree = "<group>"; };
+		140E725E23F219D400E86919 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		141106B8230742D500A8B936 /* ToolTip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ToolTip.storyboard; sourceTree = "<group>"; };
 		1411BE8C2203D8FB009BEE1D /* macgui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macgui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -4359,6 +4361,7 @@
 			children = (
 				142945F823EF50E40093608F /* PreferencesManager.swift */,
 				142945FA23EF76890093608F /* MainCanvasPreferencesController.swift */,
+				140E725E23F219D400E86919 /* PreferencesViewController.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -8789,6 +8792,7 @@
 				144BF0B223A17AC70001B2EF /* ContinuousFunction.cpp in Sources */,
 				144BECF923A17AC50001B2EF /* Move_CorrelationMatrixRandomWalk.cpp in Sources */,
 				144BF00E23A17AC70001B2EF /* HomologousCharacterData.cpp in Sources */,
+				140E726023F219D400E86919 /* PreferencesViewController.swift in Sources */,
 				144BF0F323A17AC70001B2EF /* ChromosomesPloidyCladogenicBirthDeathFunction.cpp in Sources */,
 				144BED5E23A17AC60001B2EF /* RlDiscreteCharacterState.cpp in Sources */,
 				144BF03B23A17AC70001B2EF /* RateGeneratorSequenceUsingMatrix.cpp in Sources */,

@@ -36,6 +36,11 @@ class CanvasViewController: GenericCanvasViewController {
                                                selector: #selector(didConnectTools(notification:)),
                                                name: .didConnectTools,
                                                object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateAppearance), name: UserDefaults.didChangeNotification, object: nil)
+    }
+    
+    @objc func updateAppearance(){
+        canvasView.needsDisplay = true
     }
     
    

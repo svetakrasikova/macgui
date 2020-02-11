@@ -30,11 +30,6 @@ class CanvasView: GenericCanvasView {
         return false
         
     }
-    
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-        
-    }
 }
 
 protocol CanvasViewDelegate: class {

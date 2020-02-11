@@ -6,34 +6,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab View Controller-->
-        <scene sceneID="dUu-Je-pXp">
-            <objects>
-                <tabViewController storyboardIdentifier="NSTabViewController-638-e3-wZo" selectedTabViewItemIndex="2" id="638-e3-wZo" sceneMemberID="viewController">
-                    <tabViewItems>
-                        <tabViewItem identifier="" id="i6T-6u-lX2"/>
-                        <tabViewItem identifier="" id="reO-6F-RgL"/>
-                        <tabViewItem id="xZQ-o1-0Er"/>
-                    </tabViewItems>
-                    <tabView key="tabView" type="noTabsNoBorder" id="2bK-Lc-YMf">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="system"/>
-                        <connections>
-                            <outlet property="delegate" destination="638-e3-wZo" id="Brh-uV-CFM"/>
-                        </connections>
-                    </tabView>
-                    <connections>
-                        <outlet property="tabView" destination="2bK-Lc-YMf" id="YsW-bk-meR"/>
-                        <segue destination="7HN-bZ-Xxb" kind="relationship" relationship="tabItems" id="9fr-ez-N6U"/>
-                        <segue destination="aPH-O7-dYf" kind="relationship" relationship="tabItems" id="GuZ-06-D1j"/>
-                        <segue destination="4n7-lm-2jn" kind="relationship" relationship="tabItems" id="vvl-yL-NPi"/>
-                    </connections>
-                </tabViewController>
-                <customObject id="6Rn-L6-6uE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="678" y="-1013"/>
-        </scene>
         <!--Analysis Canvas-->
         <scene sceneID="gJq-iW-uPK">
             <objects>
@@ -888,19 +860,6 @@
                 <customObject id="aIJ-tD-0fj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-230" y="601"/>
-        </scene>
-        <!--Notebook-->
-        <scene sceneID="iGJ-Vg-bbv">
-            <objects>
-                <viewController title="Notebook" id="4n7-lm-2jn" sceneMemberID="viewController">
-                    <view key="view" id="fjV-U4-MYe">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="2em-9W-PKc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="122" y="-1004"/>
         </scene>
         <!--Preferences-->
         <scene sceneID="Qjw-u6-CMY">

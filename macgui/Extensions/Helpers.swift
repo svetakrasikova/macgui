@@ -75,7 +75,7 @@ extension NSView {
         
         //Fill background with white color
         if let context = NSGraphicsContext.current?.cgContext {
-            NSColor.white.setFill()
+            backgroundColor.setFill()
             context.fill(dirtyRect)
             context.flush()
         }
@@ -136,7 +136,19 @@ extension NSBezierPath {
 
 
 extension UserDefaults {
+   
+    func color(forKey key: String) -> NSColor? {
 
+        guard let colorData = data(forKey: key) else { return nil }
+
+        do {
+            return try NSKeyedUnarchiver.unarchivedObject(ofClass: NSColor.self, from: colorData)
+        } catch let error {
+            print("color error \(error.localizedDescription)")
+            return nil
+        }
+
+    }
     func set(_ value: NSColor?, forKey key: String) {
 
         guard let color = value else { return }

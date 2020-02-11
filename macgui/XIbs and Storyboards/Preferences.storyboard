@@ -9,24 +9,107 @@
         <!--Preferences-->
         <scene sceneID="Wam-2v-CAf">
             <objects>
-                <viewController title="Preferences" id="rJO-e0-FMZ" sceneMemberID="viewController">
+                <viewController title="Preferences" storyboardIdentifier="Preferences" id="rJO-e0-FMZ" customClass="PreferencesViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Tq1-5k-ETI">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="325"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s52-M1-0b3">
-                                <rect key="frame" x="20" y="20" width="410" height="260"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="tHB-Uw-tzn">
+                                <rect key="frame" x="20" y="8" width="410" height="53"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="165" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sem-44-W04">
+                                        <rect key="frame" x="14" y="16" width="383" height="21"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HSr-ks-UMA">
+                                                <rect key="frame" x="-6" y="-7" width="87" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Restore" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r6f-yZ-iH1">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="restorePreferencesPushed:" target="rJO-e0-FMZ" id="aVs-qE-HT0"/>
+                                                </connections>
+                                            </button>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8uC-sq-eyz">
+                                                <rect key="frame" x="240" y="0.0" width="143" height="21"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ylc-n3-mbr">
+                                                        <rect key="frame" x="-6" y="-7" width="82" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5Hp-ot-hkB">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="cancelPushed:" target="rJO-e0-FMZ" id="Mfe-Hu-YTc"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sxa-JT-YKk">
+                                                        <rect key="frame" x="79" y="-7" width="70" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Bh2-Wi-Utp">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="savePushed:" target="rJO-e0-FMZ" id="7CF-xd-fMJ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Sem-44-W04" firstAttribute="centerY" secondItem="tHB-Uw-tzn" secondAttribute="centerY" id="GsW-F9-huQ"/>
+                                    <constraint firstItem="Sem-44-W04" firstAttribute="centerX" secondItem="tHB-Uw-tzn" secondAttribute="centerX" id="qVP-xa-wCk"/>
+                                </constraints>
+                            </customView>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="s52-M1-0b3">
+                                <rect key="frame" x="20" y="60" width="410" height="249"/>
                                 <connections>
                                     <segue destination="BRS-mX-eaK" kind="embed" id="Iee-oh-idQ"/>
                                 </connections>
                             </containerView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="s52-M1-0b3" firstAttribute="top" secondItem="Tq1-5k-ETI" secondAttribute="top" constant="16" id="2nh-qq-S83"/>
+                            <constraint firstItem="tHB-Uw-tzn" firstAttribute="leading" secondItem="s52-M1-0b3" secondAttribute="leading" id="HtI-mX-N2D"/>
+                            <constraint firstItem="tHB-Uw-tzn" firstAttribute="trailing" secondItem="s52-M1-0b3" secondAttribute="trailing" id="Q1n-A5-PfB"/>
+                            <constraint firstItem="tHB-Uw-tzn" firstAttribute="top" secondItem="Tq1-5k-ETI" secondAttribute="top" constant="264" id="cSS-wQ-XgH"/>
+                            <constraint firstAttribute="bottom" secondItem="tHB-Uw-tzn" secondAttribute="bottom" constant="8" id="fcX-ng-aQb"/>
+                            <constraint firstItem="tHB-Uw-tzn" firstAttribute="leading" secondItem="Tq1-5k-ETI" secondAttribute="leading" constant="20" symbolic="YES" id="gOD-1r-FsM"/>
+                            <constraint firstAttribute="trailing" secondItem="tHB-Uw-tzn" secondAttribute="trailing" constant="20" symbolic="YES" id="gdd-iS-9pE"/>
+                            <constraint firstAttribute="bottom" secondItem="s52-M1-0b3" secondAttribute="bottom" constant="60" id="yFH-tD-Q10"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="Dvc-Yt-ZqA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="367" y="-596"/>
+            <point key="canvasLocation" x="367" y="-596.5"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="VPL-SH-dGi">
@@ -65,10 +148,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mrc-y3-KxW">
-                                <rect key="frame" x="76" y="77" width="281" height="64"/>
+                                <rect key="frame" x="76" y="77" width="281" height="63"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Y3-RR-pg2">
-                                        <rect key="frame" x="0.0" y="36" width="280" height="28"/>
+                                        <rect key="frame" x="0.0" y="36" width="280" height="27"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ShZ-2z-LZK">
                                                 <rect key="frame" x="-2" y="0.0" width="164" height="25"/>
@@ -84,14 +167,15 @@
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="ERi-sG-LBM">
-                                                <rect key="frame" x="180" y="3" width="100" height="25"/>
+                                                <rect key="frame" x="180" y="2" width="100" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="NTm-xb-Tcp"/>
                                                     <constraint firstAttribute="width" constant="100" id="PdP-WO-RE8"/>
                                                 </constraints>
-                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
-                                                    <binding destination="MVb-dm-UWx" name="value" keyPath="values.mainCanvasBackroundColorKey" id="wHe-qn-Oa0">
+                                                    <action selector="changeBackgroundColor:" target="l0K-EM-D6H" id="iwB-G6-J9K"/>
+                                                    <binding destination="xgO-2f-hPn" name="value" keyPath="values.mainCanvasBackgroundColorKey" id="Ljn-9J-ylr">
                                                         <dictionary key="options">
                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
                                                         </dictionary>
@@ -99,6 +183,9 @@
                                                 </connections>
                                             </colorWell>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ERi-sG-LBM" secondAttribute="bottom" constant="2" id="vaH-3y-vjZ"/>
+                                        </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
@@ -124,15 +211,16 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="8GM-x9-oLp">
+                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="8GM-x9-oLp" userLabel="Grid Color Well">
                                                 <rect key="frame" x="181" y="3" width="100" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="FTa-dk-wOu"/>
                                                     <constraint firstAttribute="height" constant="25" id="HZe-9H-BIr"/>
                                                 </constraints>
-                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="color" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                                                 <connections>
-                                                    <binding destination="MVb-dm-UWx" name="value" keyPath="values.mainCanvasGridColorKey" id="VHQ-hO-vkp">
+                                                    <action selector="changeGridColor:" target="l0K-EM-D6H" id="jNx-Mx-3d2"/>
+                                                    <binding destination="xgO-2f-hPn" name="value" keyPath="values.mainCanvasGridColorKey" id="QPO-lV-o6N">
                                                         <dictionary key="options">
                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
                                                         </dictionary>
@@ -167,7 +255,7 @@
                     </view>
                 </viewController>
                 <customObject id="sF6-0y-WAJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController representsSharedInstance="YES" id="MVb-dm-UWx"/>
+                <userDefaultsController representsSharedInstance="YES" id="xgO-2f-hPn"/>
             </objects>
             <point key="canvasLocation" x="207" y="360.5"/>
         </scene>
