@@ -126,10 +126,10 @@
     for (RevLanguage::FunctionTable::iterator it = funcList.begin(); it != funcList.end(); it++)
         {
         RevLanguage::ConstructorFunction* conFunc = dynamic_cast<RevLanguage::ConstructorFunction*>(it->second);
-        std::cout << it->first << std::endl;
+//        std::cout << it->first << std::endl;
         if (conFunc != NULL)
             {
-            std::cout << "   " << it->first << std::endl;
+//            std::cout << "   " << it->first << std::endl;
             RevLanguage::RevObject* revObj = conFunc->getRevObject();
             RevLanguage::Distribution* distPtr = dynamic_cast<RevLanguage::Distribution*>(revObj);
             if (distPtr != NULL)
