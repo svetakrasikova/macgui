@@ -8,7 +8,7 @@
 
 import Cocoa
 
-enum PalettItemType: String, Codable  {
+enum PalettItemType: String, Codable, CaseIterable {
     
     case move = "Move"
     case variable = "Variable"
