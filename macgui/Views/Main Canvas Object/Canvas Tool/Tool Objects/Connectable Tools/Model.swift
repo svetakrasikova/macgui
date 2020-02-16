@@ -24,8 +24,7 @@ class Model: DataTool {
         let purple = Connector(color:ConnectorType.purple)
         self.inlets = [green]
         self.outlets = [purple]
-//        try! initPalettItemsFromCore()
-//        print ("PalettItems contain \(palettItems.count) elements")
+        print ("PalettItems contain \(palettItems.count) elements")
     }
     
     required init?(coder aDecoder: NSCoder) {
