@@ -18,8 +18,13 @@ class ModelCanvasView: GenericCanvasView {
           }
       }
     override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-    }
+           super.draw(dirtyRect)
+        if let backgroundColor = preferencesManager.mainCanvasBackroundColor {
+            self.wantsLayer = true
+            layer?.backgroundColor = backgroundColor.cgColor
+           }
+           
+       }
     
     override func performDragOperation(_ draggingInfo: NSDraggingInfo) -> Bool {
 

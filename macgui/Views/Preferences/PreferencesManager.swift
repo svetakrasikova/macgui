@@ -15,6 +15,7 @@ enum PreferenceKey: String {
     case mainCanvasGridColor = "mainCanvasGridColor"
     case canvasSelectionWidth = "canvasSelectionWidth"
     case toolDimension = "toolDimension"
+    case modelCanvasBackgroundColor = "modelCanvasBackgroundColor"
 }
 
 class PreferencesManager {
@@ -24,6 +25,7 @@ class PreferencesManager {
     let defaults =
         [PreferenceKey.mainCanvasBackroundColor.rawValue : NSColor.white,
          PreferenceKey.mainCanvasGridColor.rawValue  : NSColor.gray,
+         PreferenceKey.modelCanvasBackgroundColor.rawValue: NSColor.white,
          PreferenceKey.canvasSelectionWidth.rawValue: 5.0,
          PreferenceKey.toolDimension.rawValue: 50.0 ] as [String : Any]
     
@@ -46,6 +48,16 @@ class PreferencesManager {
         }
         get {
             return userDefaults.color(forKey: PreferenceKey.mainCanvasGridColor.rawValue)
+        }
+        
+    }
+    
+    @objc dynamic var modelCanvasBackgroundColor: NSColor? {
+        set (newModelCanvasBackgroundColor) {
+            userDefaults.set(newModelCanvasBackgroundColor, forKey: PreferenceKey.modelCanvasBackgroundColor.rawValue)
+        }
+        get {
+            return userDefaults.color(forKey: PreferenceKey.modelCanvasBackgroundColor.rawValue)
         }
         
     }
@@ -86,6 +98,8 @@ class PreferencesManager {
                 self.cachedPreferences[key] = toolDimension
             case PreferenceKey.canvasSelectionWidth.rawValue:
                  self.cachedPreferences[key] = canvasSelectionWidth
+            case PreferenceKey.modelCanvasBackgroundColor.rawValue:
+                self.cachedPreferences[key] = modelCanvasBackgroundColor
             default:
                 print("Unrecognised preference key")
             }

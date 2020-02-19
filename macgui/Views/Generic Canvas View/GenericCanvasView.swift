@@ -77,8 +77,7 @@ class GenericCanvasView: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        if let backgroundColor = preferencesManager.mainCanvasBackroundColor, let gridColor = preferencesManager.mainCanvasGridColor, let selectionWidth = preferencesManager.canvasSelectionWidth {
-            makeGridBackground(dirtyRect: dirtyRect, gridColor: gridColor, backgroundColor: backgroundColor)
+        if let selectionWidth = preferencesManager.canvasSelectionWidth {
             if isReceivingDrag {
                 delegate?.selectContentView(width: selectionWidth)
                 needsDisplay = true

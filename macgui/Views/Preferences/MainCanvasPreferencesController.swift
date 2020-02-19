@@ -48,14 +48,5 @@ class MainCanvasPreferencesController: NSViewController {
         preferencesManager.mainCanvasBackroundColor = newColor
         didChangeSettings = true
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
-        
-    }
+
 }
