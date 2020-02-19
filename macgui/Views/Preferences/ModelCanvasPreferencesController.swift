@@ -18,7 +18,7 @@ class ModelCanvasPreferencesController: NSViewController {
                                                      object: nil)
           }
       }
-      var willChangeInitialBackgroundColor: Bool = true
+    var willChangeInitialBackgroundColor: Bool = true
     
     @IBAction func changeCanvasBackgroundColor(_ sender: Any) {
         
@@ -30,7 +30,7 @@ class ModelCanvasPreferencesController: NSViewController {
             willChangeInitialBackgroundColor = false
         }
         let newColor = colorWell.color
-        preferencesManager.mainCanvasBackroundColor = newColor
+        preferencesManager.modelCanvasBackgroundColor = newColor
         didChangeSettings = true
     }
     override func viewDidLoad() {

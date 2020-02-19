@@ -40,7 +40,7 @@ class MainCanvasPreferencesController: NSViewController {
         guard let colorWell = sender as? NSColorWell
                    else { return }
         if willChangeInitialBackgroundColor {
-            let userInfo = ["key": PreferenceKey.mainCanvasBackroundColor.rawValue]
+            let userInfo = ["key": PreferenceKey.mainCanvasBackgroundColor.rawValue]
             NotificationCenter.default.post(name: .willChangePreferences, object: nil, userInfo: userInfo)
             willChangeInitialBackgroundColor = false
         }

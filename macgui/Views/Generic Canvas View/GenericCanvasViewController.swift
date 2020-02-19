@@ -38,7 +38,12 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
                                                       selector: #selector(changeCanvasObjectControllersSelection(notification:)),
                                                       name: .didSelectCanvasObjectController,
                                                       object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateAppearance), name: UserDefaults.didChangeNotification, object: nil)
     }
+    @objc func updateAppearance(){
+           canvasView.needsDisplay = true
+       }
+       
     
     override func viewDidAppear() {
          if let window = view.window  {

@@ -296,11 +296,6 @@ DQ
                                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="changeCanvasBackgroundColor:" target="fWe-tg-beU" id="9gA-wE-EOI"/>
-                                                    <binding destination="qZ3-uY-NZb" name="value" keyPath="values.modelCanvasBackgroundColor" id="RTZ-ds-QVI">
-                                                        <dictionary key="options">
-                                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
-                                                        </dictionary>
-                                                    </binding>
                                                 </connections>
                                             </colorWell>
                                         </subviews>

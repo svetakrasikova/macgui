@@ -11,7 +11,7 @@ import Cocoa
 // MARK: - Names for defaults
 
 enum PreferenceKey: String {
-    case mainCanvasBackroundColor = "mainCanvasBackroundColor"
+    case mainCanvasBackgroundColor = "mainCanvasBackgroundColor"
     case mainCanvasGridColor = "mainCanvasGridColor"
     case canvasSelectionWidth = "canvasSelectionWidth"
     case toolDimension = "toolDimension"
@@ -23,7 +23,7 @@ class PreferencesManager {
     private let userDefaults = UserDefaults.standard
     
     let defaults =
-        [PreferenceKey.mainCanvasBackroundColor.rawValue : NSColor.white,
+        [PreferenceKey.mainCanvasBackgroundColor.rawValue : NSColor.white,
          PreferenceKey.mainCanvasGridColor.rawValue  : NSColor.gray,
          PreferenceKey.modelCanvasBackgroundColor.rawValue: NSColor.white,
          PreferenceKey.canvasSelectionWidth.rawValue: 5.0,
@@ -35,10 +35,10 @@ class PreferencesManager {
      
     var mainCanvasBackroundColor: NSColor? {
         set (newMainCanvasBackgroundColor) {
-            userDefaults.set(newMainCanvasBackgroundColor, forKey: PreferenceKey.mainCanvasBackroundColor.rawValue)
+            userDefaults.set(newMainCanvasBackgroundColor, forKey: PreferenceKey.mainCanvasBackgroundColor.rawValue)
         }
         get {
-            return userDefaults.color(forKey: PreferenceKey.mainCanvasBackroundColor.rawValue)
+            return userDefaults.color(forKey: PreferenceKey.mainCanvasBackgroundColor.rawValue)
         }
     }
     
@@ -90,7 +90,7 @@ class PreferencesManager {
     @objc func willChangePreferences(notification: Notification) {
         if let userInfo = notification.userInfo as? [String: String], let key = userInfo["key"] {
             switch key {
-            case PreferenceKey.mainCanvasBackroundColor.rawValue:
+            case PreferenceKey.mainCanvasBackgroundColor.rawValue:
                 self.cachedPreferences[key] = mainCanvasBackroundColor
             case PreferenceKey.mainCanvasGridColor.rawValue:
                 self.cachedPreferences[key] = mainCanvasGridColor

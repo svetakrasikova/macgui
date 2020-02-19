@@ -19,7 +19,7 @@ class ModelCanvasView: GenericCanvasView {
       }
     override func draw(_ dirtyRect: NSRect) {
            super.draw(dirtyRect)
-        if let backgroundColor = preferencesManager.mainCanvasBackroundColor {
+        if let backgroundColor = preferencesManager.modelCanvasBackgroundColor {
             self.wantsLayer = true
             layer?.backgroundColor = backgroundColor.cgColor
            }
