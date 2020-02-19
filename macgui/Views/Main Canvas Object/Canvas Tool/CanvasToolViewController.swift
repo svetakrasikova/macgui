@@ -111,9 +111,10 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
     
     var modelToolWindowController: ModelToolWindowController {
-        if _modelToolWindowController == nil {
+        if _modelToolWindowController == nil, let model = self.tool as? Model {
             _modelToolWindowController = NSStoryboard.loadWC(StoryBoardName.modelTool) as? ModelToolWindowController
-            _modelToolWindowController!.tool = self.tool
+            _modelToolWindowController!.tool = model
+            _modelToolWindowController!.parameters = Parameter.parameterList(palettItemsList: model.palettItems)
         }
         return _modelToolWindowController!
     }

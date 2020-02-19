@@ -24,7 +24,16 @@ class Model: DataTool {
         let purple = Connector(color:ConnectorType.purple)
         self.inlets = [green]
         self.outlets = [purple]
-        print ("PalettItems contain \(palettItems.count) elements")
+        
+        do {
+            try initPalettItemsFromCore()
+        } catch DataToolError.readError {
+            print("Error reading json data from the core. Model Tool palette items could not be loaded.")
+        } catch ReadDataError.dataDecodingError {
+            print("Error decoding Model Tool palette items from json.")
+        } catch {
+            print("Error. Model Tool palette items could not be loaded.")
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

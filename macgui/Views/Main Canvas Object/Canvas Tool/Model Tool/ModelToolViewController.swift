@@ -8,9 +8,10 @@
 
 import Cocoa
 
-class ModelToolViewController: NSSplitViewController {
+class ModelToolViewController: NSSplitViewController, ModelPaletteViewControllerDelegate {
     
     weak var tool: ToolObject?
+    var parameters: [Parameter]?
     
     weak var paletteViewController: ModelPaletteViewController? {
         for child in self.children {
@@ -35,7 +36,10 @@ class ModelToolViewController: NSSplitViewController {
         
         if let modelToolWC = view.window?.windowController as? ModelToolWindowController {
             self.tool = modelToolWC.tool
+            self.parameters = modelToolWC.parameters
         }
+        
+        paletteViewController?.delegate = self
         
     }
     

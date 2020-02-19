@@ -11,6 +11,7 @@ import Cocoa
 class ModelToolWindowController: NSWindowController {
     
     weak var tool: ToolObject?
+    var parameters: [Parameter]?
     @IBOutlet weak var zoom: NSPopUpButton!
     
         weak var canvas: NSSplitViewItem? {

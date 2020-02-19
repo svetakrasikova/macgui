@@ -14,6 +14,7 @@
 		140E726023F219D400E86919 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E725E23F219D400E86919 /* PreferencesViewController.swift */; };
 		140E726323F3643400E86919 /* PalettItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E726223F3643400E86919 /* PalettItem.swift */; };
 		1410C3A523F6048B0044EB48 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3A423F6048B0044EB48 /* Parameter.swift */; };
+		1410C3A723FCC4260044EB48 /* ModelCanvasPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3A623FCC4260044EB48 /* ModelCanvasPreferencesController.swift */; };
 		141106B9230742D500A8B936 /* ToolTip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141106B8230742D500A8B936 /* ToolTip.storyboard */; };
 		1411BE902203D8FB009BEE1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */; };
 		1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */; };
@@ -1412,6 +1413,7 @@
 		140E725E23F219D400E86919 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		140E726223F3643400E86919 /* PalettItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettItem.swift; sourceTree = "<group>"; };
 		1410C3A423F6048B0044EB48 /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
+		1410C3A623FCC4260044EB48 /* ModelCanvasPreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasPreferencesController.swift; sourceTree = "<group>"; };
 		141106B8230742D500A8B936 /* ToolTip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ToolTip.storyboard; sourceTree = "<group>"; };
 		1411BE8C2203D8FB009BEE1D /* macgui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macgui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -4375,6 +4377,7 @@
 				142945F823EF50E40093608F /* PreferencesManager.swift */,
 				142945FA23EF76890093608F /* MainCanvasPreferencesController.swift */,
 				140E725E23F219D400E86919 /* PreferencesViewController.swift */,
+				1410C3A623FCC4260044EB48 /* ModelCanvasPreferencesController.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -8874,6 +8877,7 @@
 				144BF05023A17AC70001B2EF /* NexusWriter.cpp in Sources */,
 				144BEFFD23A17AC70001B2EF /* RateMatrix_FreeK.cpp in Sources */,
 				144BF0BF23A17AC70001B2EF /* MeanFunction.cpp in Sources */,
+				1410C3A723FCC4260044EB48 /* ModelCanvasPreferencesController.swift in Sources */,
 				144BEE2623A17AC60001B2EF /* Func_phyloDiversity.cpp in Sources */,
 				144BEE5423A17AC60001B2EF /* Func_InfiniteSitesRateMatrix.cpp in Sources */,
 				149C5FC52325A52D0060043E /* Tools.swift in Sources */,
