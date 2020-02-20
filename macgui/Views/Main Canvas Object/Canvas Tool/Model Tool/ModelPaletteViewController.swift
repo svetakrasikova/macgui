@@ -15,6 +15,7 @@ class ModelPaletteViewController: NSViewController {
         case parameterTypeCell = "ParameterTypeCell"
     }
     
+    
     @IBOutlet weak var outlineView: NSOutlineView!
     weak var delegate: ModelPaletteViewControllerDelegate?
     
@@ -56,6 +57,10 @@ extension ModelPaletteViewController: NSOutlineViewDataSource {
       }
       return false
     }
+    
+    func outlineView(_ outlineView: NSOutlineView, persistentObjectForItem item: Any?) -> Any? {
+        return nil
+       }
 }
 
 // MARK: - NSOutlineViewDelegate
@@ -78,7 +83,22 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
         }
         return view
     }
+    
+// MARK: - Mouse and key events
+    
+    @IBAction func doubleClickedItem(_ sender: NSOutlineView) {
+         let item = sender.item(atRow: sender.clickedRow)
+         if item is Parameter {
+           if sender.isItemExpanded(item) {
+             sender.collapseItem(item)
+           } else {
+             sender.expandItem(item)
+           }
+         }
+    }
 }
+
+
 
 protocol ModelPaletteViewControllerDelegate: class {
     

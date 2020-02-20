@@ -207,6 +207,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="doubleClickedItem:" target="06Z-q5-krc" id="oG2-EI-oTN"/>
                                                 <outlet property="dataSource" destination="06Z-q5-krc" id="gzt-WV-rtZ"/>
                                                 <outlet property="delegate" destination="06Z-q5-krc" id="QYz-MU-h4j"/>
                                             </connections>
