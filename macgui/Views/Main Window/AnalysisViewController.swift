@@ -11,7 +11,7 @@ import Cocoa
 class AnalysisViewController: NSViewController {
     
     let imageLoader = ImageLoader()
-    var indexPathsOfItemsBeingDragged: Set<NSIndexPath>!
+//    var indexPathsOfItemsBeingDragged: Set<NSIndexPath>!
     
     var canvasViewController: CanvasViewController? {
         return children[0] as? CanvasViewController
