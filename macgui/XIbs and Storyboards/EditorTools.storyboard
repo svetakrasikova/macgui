@@ -142,8 +142,8 @@
                             <constraint firstItem="fPJ-TS-pd4" firstAttribute="leading" secondItem="Vej-Ld-BJf" secondAttribute="leading" priority="750" id="0Od-gm-fW7"/>
                             <constraint firstAttribute="trailing" secondItem="fPJ-TS-pd4" secondAttribute="trailing" priority="750" id="8HX-qk-mxj"/>
                             <constraint firstItem="fPJ-TS-pd4" firstAttribute="top" secondItem="Vej-Ld-BJf" secondAttribute="top" priority="750" id="Stn-AR-yQb"/>
+                            <constraint firstItem="Sq8-aF-l7S" firstAttribute="centerY" secondItem="fPJ-TS-pd4" secondAttribute="centerY" id="VcV-Ie-4NQ"/>
                             <constraint firstAttribute="bottom" secondItem="fPJ-TS-pd4" secondAttribute="bottom" priority="750" id="fHO-0D-llT"/>
-                            <constraint firstItem="Sq8-aF-l7S" firstAttribute="centerY" secondItem="Vej-Ld-BJf" secondAttribute="centerY" id="mjZ-45-tPk"/>
                         </constraints>
                     </view>
                     <connections>
