@@ -20,10 +20,10 @@ class ModelPaletteViewController: NSViewController {
     weak var delegate: ModelPaletteViewControllerDelegate?
     
     weak var tool: Model? {
-     guard let delegate = self.delegate as? ModelToolViewController,  let model = delegate.tool as? Model else {
+        guard let delegate = self.delegate as? ModelToolViewController,  let model = delegate.tool as? Model else {
             return nil
         }
-         return model
+        return model
     }
     
     var parameters: [Parameter] {
@@ -31,6 +31,18 @@ class ModelPaletteViewController: NSViewController {
             return []
         }
         return parameters
+    }
+    
+    func registerForDragAndDrop() {
+        outlineView.registerForDraggedTypes([NSPasteboard.PasteboardType.string])
+        outlineView.setDraggingSourceOperationMask(.every, forLocal: false)
+    }
+    
+    //    MARK: - Controller Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        registerForDragAndDrop()
     }
     
 }
@@ -52,15 +64,15 @@ extension ModelPaletteViewController: NSOutlineViewDataSource {
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-      if let parameter = item as? Parameter {
-        return parameter.children.count > 0
-      }
-      return false
+        if let parameter = item as? Parameter {
+            return parameter.children.count > 0
+        }
+        return false
     }
     
     func outlineView(_ outlineView: NSOutlineView, persistentObjectForItem item: Any?) -> Any? {
         return nil
-       }
+    }
 }
 
 // MARK: - NSOutlineViewDelegate
@@ -75,30 +87,45 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
             }
         } else if let parameter = item as? PalettItem {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.parameterCell.rawValue), owner: self) as? NSTableCellView
-            if let textField = view?.textField , let image = view?.imageView {
-                //set the image
+            if let textField = view?.textField , let imageView = view?.imageView {
+//                
+//                switch parameter.type {
+//                case .distribution:
+//                    imageView.image = NSImage(named: NSImage.touchBarSearchTemplateName)
+//                case .move:
+//                    imageView.image = NSImage(named: NSImage.touchBarRecordStopTemplateName)
+//                case .variable:
+//                     imageView.image = NSImage(named: NSImage.touchBarRecordStartTemplateName)
+//                }
                 textField.stringValue = parameter.name
                 textField.sizeToFit()
-        }
+            }
         }
         return view
     }
     
-// MARK: - Mouse and key events
+    func outlineView(_ outlineView: NSOutlineView, pasteboardWriterForItem item: Any) -> NSPasteboardWriting? {
+        if let parameter = item as? PalettItem {
+            return parameter.name as NSString
+        }
+        return nil
+    }
+    
+    // MARK: - Mouse events
     
     @IBAction func doubleClickedItem(_ sender: NSOutlineView) {
-         let item = sender.item(atRow: sender.clickedRow)
-         if item is Parameter {
-           if sender.isItemExpanded(item) {
-             sender.collapseItem(item)
-           } else {
-             sender.expandItem(item)
-           }
-         }
+        let item = sender.item(atRow: sender.clickedRow)
+        if item is Parameter {
+            if sender.isItemExpanded(item) {
+                sender.collapseItem(item)
+            } else {
+                sender.expandItem(item)
+            }
+        }
     }
 }
 
-
+// MARK: - ModelPaletteViewContorollerDelegate
 
 protocol ModelPaletteViewControllerDelegate: class {
     

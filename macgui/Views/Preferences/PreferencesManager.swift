@@ -14,7 +14,7 @@ enum PreferenceKey: String {
     case mainCanvasBackgroundColor = "mainCanvasBackgroundColor"
     case mainCanvasGridColor = "mainCanvasGridColor"
     case canvasSelectionWidth = "canvasSelectionWidth"
-    case toolDimension = "toolDimension"
+    case canvasObjectDimension = "toolDimension"
     case modelCanvasBackgroundColor = "modelCanvasBackgroundColor"
 }
 
@@ -27,7 +27,7 @@ class PreferencesManager {
          PreferenceKey.mainCanvasGridColor.rawValue  : NSColor.gray,
          PreferenceKey.modelCanvasBackgroundColor.rawValue: NSColor.white,
          PreferenceKey.canvasSelectionWidth.rawValue: 5.0,
-         PreferenceKey.toolDimension.rawValue: 50.0 ] as [String : Any]
+         PreferenceKey.canvasObjectDimension.rawValue: 50.0 ] as [String : Any]
     
     var cachedPreferences: [String: Any] = [:]
 
@@ -70,7 +70,7 @@ class PreferencesManager {
     
     var toolDimension: CGFloat? {
            get {
-            return userDefaults.object(forKey: PreferenceKey.toolDimension.rawValue) as? CGFloat
+            return userDefaults.object(forKey: PreferenceKey.canvasObjectDimension.rawValue) as? CGFloat
            }
        }
     
@@ -94,7 +94,7 @@ class PreferencesManager {
                 self.cachedPreferences[key] = mainCanvasBackroundColor
             case PreferenceKey.mainCanvasGridColor.rawValue:
                 self.cachedPreferences[key] = mainCanvasGridColor
-            case PreferenceKey.toolDimension.rawValue:
+            case PreferenceKey.canvasObjectDimension.rawValue:
                 self.cachedPreferences[key] = toolDimension
             case PreferenceKey.canvasSelectionWidth.rawValue:
                  self.cachedPreferences[key] = canvasSelectionWidth

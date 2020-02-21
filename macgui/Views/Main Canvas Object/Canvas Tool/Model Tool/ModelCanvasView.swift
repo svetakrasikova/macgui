@@ -26,14 +26,23 @@ class ModelCanvasView: GenericCanvasView {
            
        }
     
-    override func performDragOperation(_ draggingInfo: NSDraggingInfo) -> Bool {
+     override func performDragOperation(_ draggingInfo: NSDraggingInfo) -> Bool {
+           isReceivingDrag = false
+           let pasteBoard = draggingInfo.draggingPasteboard
+           let point = convert(draggingInfo.draggingLocation, from: nil)
+           if let pasteboarditems = pasteBoard.readObjects(forClasses: [NSString.self], options: nil) as? [String], pasteboarditems.count != 0, let name =  pasteboarditems.first  {
+               concreteDelegate?.insertParameter(center: point, name: name)
+               return true
+           }
 
-        return false
-
-    }
+           return false
+           
+       }
+       
     
 }
 
 protocol ModelCanvasViewDelegate: class {
+    func insertParameter(center: NSPoint, name: String)
     
 }

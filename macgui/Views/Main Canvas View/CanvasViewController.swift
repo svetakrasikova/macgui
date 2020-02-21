@@ -38,10 +38,6 @@ class CanvasViewController: GenericCanvasViewController {
                                                object: nil)
     }
     
-//    @objc func updateAppearance(){
-//        canvasView.needsDisplay = true
-//    }
-//    
    
 //   MARK: - Connect Tools on Canvas
     
@@ -249,7 +245,7 @@ extension CanvasViewController: CanvasViewDelegate {
     
     
     func processImage(center: NSPoint, name: String) {
-        guard let toolDimension = self.canvasView.toolDimension
+        guard let toolDimension = self.canvasView.canvasObjectDimension
             else {
                 return
         }
