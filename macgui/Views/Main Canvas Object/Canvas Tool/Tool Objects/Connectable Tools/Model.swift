@@ -12,13 +12,18 @@ class Model: DataTool {
     
     let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
     
-    var palettItems: [PalettItem] = []
+    @objc dynamic var palettItems: [PalettItem] = []
+    @objc dynamic var nodes: [ModelNode] = []
+    @objc dynamic var edges: [Connection] = []
     
-    
+    enum Key: String {
+        case palettItems = "palettItems"
+        case nodes = "nodes"
+        case edges = "edges"
+    }
     
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
-        
         
         let green = Connector(color:ConnectorType.alignedData)
         let purple = Connector(color:ConnectorType.purple)
@@ -38,8 +43,17 @@ class Model: DataTool {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        palettItems = aDecoder.decodeObject(forKey: Key.palettItems.rawValue) as! [PalettItem]
+        nodes = aDecoder.decodeObject(forKey: Key.nodes.rawValue) as! [ModelNode]
+        edges = aDecoder.decodeObject(forKey: Key.edges.rawValue) as! [Connection]
     }
     
+    override func encode(with coder: NSCoder) {
+        super.encode(with: coder)
+        coder.encode(palettItems, forKey: Key.palettItems.rawValue)
+        coder.encode(nodes, forKey: Key.nodes.rawValue)
+        coder.encode(edges, forKey: Key.edges.rawValue)
+    }
     func initPalettItemsFromCore() throws {
         
         guard let jsonStringArray = revbayesBridge.getPalletItems() as? [String]
