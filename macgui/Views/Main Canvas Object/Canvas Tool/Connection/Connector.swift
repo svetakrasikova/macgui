@@ -14,6 +14,11 @@ class Connector: NSObject, NSCoding {
     var type: ConnectorType
     var neighbor: Connectable?
     
+    enum Key: String {
+        case type = "type"
+        case neighbor = "neigbor"
+    }
+    
     init(color: ConnectorType, neighbor: Connectable){
         self.type = color
         self.neighbor = neighbor
@@ -24,15 +29,15 @@ class Connector: NSObject, NSCoding {
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(type.rawValue, forKey: "type")
+        aCoder.encode(type.rawValue, forKey: Key.type.rawValue)
         if let neighbor = neighbor {
-            aCoder.encode(neighbor, forKey: "neighbor")
+            aCoder.encode(neighbor, forKey: Key.neighbor.rawValue)
         }
     }
     
     required init?(coder aDecoder: NSCoder) {
-        type = ConnectorType(rawValue: aDecoder.decodeObject(forKey: "type") as! String) ?? .generic
-        neighbor = aDecoder.decodeObject(forKey: "neighbor") as? Connectable
+        type = ConnectorType(rawValue: aDecoder.decodeObject(forKey: Key.type.rawValue) as! String) ?? .generic
+        neighbor = aDecoder.decodeObject(forKey: Key.neighbor.rawValue) as? Connectable
     }
     
     
@@ -48,6 +53,7 @@ class Connector: NSObject, NSCoding {
         case .red: return NSColor.red
         case .magenta: return NSColor.magenta
         case .purple: return NSColor.purple
+        case .modelParameter: return NSColor.black
         case .generic: return NSColor.clear
         }
     }
@@ -78,6 +84,7 @@ enum ConnectorType: String {
     case orange = "orange"
     case magenta = "magenta"
     case purple = "purple"
+    case modelParameter = "black"
     case generic = "clear"
 }
 

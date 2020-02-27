@@ -13,20 +13,25 @@ class Connectable: ToolObject {
     var inlets: [Connector] = []
     var outlets: [Connector] = []
     
+    enum Key: String {
+        case inlets = "inlets"
+        case outlets = "outlets"
+    }
+    
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis){
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
     }
     
     override func encode(with coder: NSCoder) {
         super.encode(with: coder)
-        coder.encode(inlets, forKey: "inlets")
-        coder.encode(outlets, forKey: "outlets")
+        coder.encode(inlets, forKey: Key.inlets.rawValue)
+        coder.encode(outlets, forKey: Key.outlets.rawValue)
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        inlets = aDecoder.decodeObject(forKey: "inlets") as! [Connector]
-        outlets = aDecoder.decodeObject(forKey: "outlets") as! [Connector]
+        inlets = aDecoder.decodeObject(forKey: Key.inlets.rawValue) as! [Connector]
+        outlets = aDecoder.decodeObject(forKey: Key.outlets.rawValue) as! [Connector]
     }
   
     var unconnectedInlets: [Connector] {

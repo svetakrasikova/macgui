@@ -15,11 +15,16 @@ class ToolObject: NSObject, NSCoding {
     var descriptiveName: String {
         return getDescriptiveNameString(name: name)
     }
-    
     unowned let analysis: Analysis
-    
     weak var delegate: ToolObjectDelegate?
-   
+    
+    enum Key: String {
+        case name = "name"
+        case frameOnCanvas = "frameOnCanvas"
+        case descriptiveName = "descriptiveName"
+        case analysis = "analysis"
+    }
+    
     init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         self.name = name
         self.frameOnCanvas = frameOnCanvas
@@ -27,15 +32,15 @@ class ToolObject: NSObject, NSCoding {
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(name, forKey: "name")
-        aCoder.encode(frameOnCanvas, forKey: "frameOnCanvas")
-        aCoder.encode(descriptiveName, forKey: "descriptiveName")
+        aCoder.encode(name, forKey: Key.name.rawValue)
+        aCoder.encode(frameOnCanvas, forKey: Key.frameOnCanvas.rawValue)
+        aCoder.encode(descriptiveName, forKey: Key.descriptiveName.rawValue)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        analysis = aDecoder.decodeObject(forKey: "analysis") as! Analysis
-        frameOnCanvas = aDecoder.decodeRect(forKey: "frameOnCanvas")
-        name = aDecoder.decodeObject(forKey: "name") as! String
+        analysis = aDecoder.decodeObject(forKey: Key.analysis.rawValue) as! Analysis
+        frameOnCanvas = aDecoder.decodeRect(forKey: Key.frameOnCanvas.rawValue)
+        name = aDecoder.decodeObject(forKey: Key.name.rawValue) as! String
         
     }
 }
