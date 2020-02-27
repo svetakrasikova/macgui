@@ -21,7 +21,7 @@
                                 <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="ljy-UR-EcM"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="h83-k2-xR8"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Ta1-B8-2YP"/>
-                                <toolbarItem implicitItemIdentifier="02AF444E-AE5E-4AB4-AFEC-F38DD466FE50" label="" paletteLabel="" image="NSTouchBarSidebarTemplate" id="JoS-Rt-zxa">
+                                <toolbarItem implicitItemIdentifier="02AF444E-AE5E-4AB4-AFEC-F38DD466FE50" label="" paletteLabel="" image="NSTouchBarSidebarTemplate" id="JoS-Rt-zxa" userLabel="Sidebar">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="47" height="24"/>
                                     <size key="maxSize" width="48" height="47"/>
@@ -34,6 +34,22 @@
                                         </buttonCell>
                                         <connections>
                                             <action selector="collapseExpandSidebar:" target="TZL-73-EW0" id="Z5N-AM-GB4"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="A8A1467B-3767-4650-A5CB-8CFFBD337232" label="" paletteLabel="" image="NSShareTemplate" id="dTc-yJ-UM6" userLabel="Sidebar">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="47" height="24"/>
+                                    <size key="maxSize" width="48" height="47"/>
+                                    <button key="view" verticalHuggingPriority="750" id="Yja-pa-1iU">
+                                        <rect key="frame" x="0.0" y="14" width="48" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9I4-qX-5vb">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="shareClicked:" target="lNQ-3N-ZeC" id="uYi-mX-ax3"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -70,6 +86,8 @@
                             <defaultToolbarItems>
                                 <toolbarItem reference="JoS-Rt-zxa"/>
                                 <toolbarItem reference="MfI-2i-fSw"/>
+                                <toolbarItem reference="74G-9w-Oh5"/>
+                                <toolbarItem reference="dTc-yJ-UM6"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -77,6 +95,7 @@
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="share" destination="Yja-pa-1iU" id="uiC-am-TjN"/>
                         <outlet property="zoom" destination="pZa-Yy-dUG" id="28d-kF-PMX"/>
                         <segue destination="Rll-4Z-r3g" kind="relationship" relationship="window.shadowedContentViewController" id="NOq-HM-nYX"/>
                     </connections>
@@ -133,7 +152,7 @@
                                             <tableColumns>
                                                 <tableColumn width="145" minWidth="16" maxWidth="1000" id="uGO-87-8zt">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -324,6 +343,7 @@
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSShareTemplate" width="11" height="16"/>
         <image name="NSTouchBarSidebarTemplate" width="22" height="30"/>
     </resources>
 </document>
