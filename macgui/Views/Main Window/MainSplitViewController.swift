@@ -36,7 +36,7 @@ class MainSplitViewController: NSSplitViewController, NavigatorViewControllerDel
         masterViewController.delegate = self
     }
     
-//    MARK: NavigatorViewControllerDelegate
+//  MARK: - NavigatorViewControllerDelegate
     func navigatorViewController(viewController: NavigatorViewController, selectedAnalysis: Analysis?) {
         if let analysis = selectedAnalysis {
             detailViewController.addAnalysisToCanvas(analysis: analysis)

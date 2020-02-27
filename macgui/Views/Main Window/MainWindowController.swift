@@ -58,7 +58,6 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         (closedWC?.contentViewController as! NotebookViewController).saveText()
         notebooks?.removeAll{$0 == closedWC}
     }
-
     
     override func windowDidLoad() {
         super.windowDidLoad()
