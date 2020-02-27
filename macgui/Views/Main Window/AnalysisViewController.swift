@@ -29,7 +29,6 @@ class AnalysisViewController: NSViewController {
     func registerForDragAndDrop() {
         toolView.registerForDraggedTypes([NSPasteboard.PasteboardType.URL])
         toolView.setDraggingSourceOperationMask(.every, forLocal: true)
-        toolView.setDraggingSourceOperationMask(.every, forLocal: false)
     }
     
 // Setting up the canvas according to the selected analysis in the navigator view
