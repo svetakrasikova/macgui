@@ -9,13 +9,12 @@
 import Cocoa
 
 enum PalettItemType: String, Codable, CaseIterable {
-    
     case move = "Move"
     case variable = "Variable"
     case distribution = "Distribution"
 }
 
-class PalettItem: NSObject, Codable {
+class PalettItem: NSObject, Codable, NSPasteboardWriting, NSPasteboardReading {
     
     enum PalettItemError: Error {
         case decodingError
@@ -62,7 +61,41 @@ class PalettItem: NSObject, Codable {
         }
     }
     
+    required convenience init?(pasteboardPropertyList propertyList: Any, ofType type: NSPasteboard.PasteboardType) {
+        guard let data = propertyList as? Data,
+            let palettItem = try? PropertyListDecoder().decode(PalettItem.self, from: data) else { return nil }
+        self.init(name: palettItem.name, type: palettItem.type, dimension: palettItem.dimension)
+    }
+    
+//    MARK: - NSPasteboardWriting, NSPasteboardReading
 
     
-    
+    public func writingOptions(forType type: NSPasteboard.PasteboardType, pasteboard: NSPasteboard) -> NSPasteboard.WritingOptions {
+        return .promised
+    }
+
+    public func writableTypes(for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
+        return [.palettItem]
+    }
+
+    public func pasteboardPropertyList(forType type: NSPasteboard.PasteboardType) -> Any? {
+        if type == .palettItem {
+            return try? PropertyListEncoder().encode(self)
+        }
+        return nil
+    }
+
+    public static func readableTypes(for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
+        return [.palettItem]
+    }
+
+    public static func readingOptions(forType type: NSPasteboard.PasteboardType, pasteboard: NSPasteboard) -> NSPasteboard.ReadingOptions {
+        return .asData
+    }
 }
+
+extension NSPasteboard.PasteboardType {
+    static let palettItem = NSPasteboard.PasteboardType("macgui.palettItem")
+}
+
+
