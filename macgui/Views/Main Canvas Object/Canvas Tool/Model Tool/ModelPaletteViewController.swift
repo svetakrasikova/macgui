@@ -17,15 +17,10 @@ class ModelPaletteViewController: NSViewController {
     
     
     @IBOutlet weak var outlineView: NSOutlineView!
+    
     weak var delegate: ModelPaletteViewControllerDelegate?
-    
-    weak var tool: Model? {
-        guard let delegate = self.delegate as? ModelToolViewController,  let model = delegate.tool as? Model else {
-            return nil
-        }
-        return model
-    }
-    
+    weak var model: Model?
+   
     var parameters: [Parameter] {
         guard let delegate = self.delegate as? ModelToolViewController, let parameters = delegate.parameters else {
             return []
@@ -60,7 +55,7 @@ extension ModelPaletteViewController: NSOutlineViewDataSource {
         if let parameter = item as? Parameter {
             return parameter.children[index]
         }
-        return parameters[index]
+        return parameters[index] as Any
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
@@ -104,11 +99,13 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
         return view
     }
     
-    func outlineView(_ outlineView: NSOutlineView, pasteboardWriterForItem item: Any) -> NSPasteboardWriting? {
-        if let parameter = item as? PalettItem {
-            return parameter.name as NSString
-        }
-        return nil
+    func outlineView(_ outlineView: NSOutlineView, writeItems items: [Any], to pasteboard: NSPasteboard) -> Bool {
+        if let item = items.first as? PalettItem {
+              pasteboard.clearContents()
+              pasteboard.writeObjects([item])
+              return true
+          }
+          return false
     }
     
     // MARK: - Mouse events
@@ -125,8 +122,7 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
     }
 }
 
-// MARK: - ModelPaletteViewContorollerDelegate
-
 protocol ModelPaletteViewControllerDelegate: class {
     
 }
+

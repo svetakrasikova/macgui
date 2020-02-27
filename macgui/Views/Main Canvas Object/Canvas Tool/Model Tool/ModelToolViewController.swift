@@ -10,13 +10,15 @@ import Cocoa
 
 class ModelToolViewController: NSSplitViewController, ModelPaletteViewControllerDelegate {
     
-    weak var tool: ToolObject?
+    weak var tool: Model?
     var parameters: [Parameter]?
     
     weak var paletteViewController: ModelPaletteViewController? {
         for child in self.children {
             if child.isKind(of: ModelPaletteViewController.self) {
-                return child as? ModelPaletteViewController
+                let paletteVC = child as? ModelPaletteViewController
+                paletteVC?.model = tool
+                return paletteVC
             }
         }
         return nil
@@ -25,7 +27,8 @@ class ModelToolViewController: NSSplitViewController, ModelPaletteViewController
     weak var canvasViewController: ModelCanvasViewController? {
         for child in self.children {
             if child.isKind(of: ModelCanvasViewController.self){
-                return child as? ModelCanvasViewController
+                let canvasVC = child as? ModelCanvasViewController
+                return canvasVC
             }
         }
         return nil
@@ -38,7 +41,6 @@ class ModelToolViewController: NSSplitViewController, ModelPaletteViewController
             self.tool = modelToolWC.tool
             self.parameters = modelToolWC.parameters
         }
-        
         paletteViewController?.delegate = self
         
     }
