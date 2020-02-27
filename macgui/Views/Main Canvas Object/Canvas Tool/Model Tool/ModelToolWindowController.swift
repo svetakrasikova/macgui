@@ -10,11 +10,20 @@ import Cocoa
 
 class ModelToolWindowController: NSWindowController {
     
-    weak var tool: ToolObject?
+    weak var tool: Model?
     var parameters: [Parameter]?
     @IBOutlet weak var zoom: NSPopUpButton!
+    @IBOutlet weak var share: NSButton!
     
-        weak var canvas: NSSplitViewItem? {
+    @IBAction func shareClicked(_ sender: NSButton) {
+        //show a picker pop up menu with the export and import option
+        let model = "This is the model we are working on"
+        let picker = NSSharingServicePicker(items: [model])
+        picker.delegate = self
+        picker.show(relativeTo: .zero, of: sender, preferredEdge: .minY)
+    }
+    
+    weak var canvas: NSSplitViewItem? {
             if let canvas = (contentViewController as? ModelToolViewController)?.splitViewItems[1] {
                 return canvas
             }
@@ -56,4 +65,29 @@ class ModelToolWindowController: NSWindowController {
                                                       object: nil)
     }
     
+}
+
+
+extension ModelToolWindowController: NSSharingServicePickerDelegate {
+    
+    
+    func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker, sharingServicesForItems items: [Any], proposedSharingServices proposedServices: [NSSharingService]) -> [NSSharingService] {
+         
+        guard let image = NSImage(named: "AppIcon") else {
+                   return proposedServices
+               }
+        var share = proposedServices
+        
+        let copyModelService = NSSharingService(title: "Copy model", image: image, alternateImage: image, handler: {
+            if let text = items.first as? String {
+//                TODO: implement export model
+                print("Copy model is not implemented yet.")
+            }
+        })
+
+        share.insert(copyModelService, at: 0)
+        
+        return share
+        
+    }
 }
