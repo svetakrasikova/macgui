@@ -19,6 +19,7 @@ enum StoryBoardName: String {
     case toolTip = "ToolTip"
     case notebook = "Notebook"
     case matrixInspector = "MatrixInspector"
+    case modelCanvasItem = "ModelCanvasItem"
 }
 
 
