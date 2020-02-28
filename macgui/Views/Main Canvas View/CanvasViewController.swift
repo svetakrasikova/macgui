@@ -42,8 +42,8 @@ class CanvasViewController: GenericCanvasViewController {
 //   MARK: - Connect Tools on Canvas
     
     @objc func didConnectTools(notification: Notification){
-        let userInfo = notification.userInfo! as! [String: ConnectorItemView]
-        if userInfo["target"]?.window == self.view.window, let color = userInfo["target"]?.arrowColor, let targetTool = userInfo["target"]?.delegate?.getTool(), let sourceTool = userInfo["source"]?.delegate?.getTool() as? Connectable{
+        let userInfo = notification.userInfo! as! [String: ConnectorItemArrowView]
+        if userInfo["target"]?.window == self.view.window, let color = userInfo["target"]?.connectionColor, let targetTool = userInfo["target"]?.delegate?.getTool(), let sourceTool = userInfo["source"]?.delegate?.getTool() as? Connectable{
             let toConnector = userInfo["target"]?.delegate?.getConnector() as! Connector
             toConnector.setNeighbor(neighbor: sourceTool)
             let fromConnector = userInfo["source"]?.delegate?.getConnector() as! Connector

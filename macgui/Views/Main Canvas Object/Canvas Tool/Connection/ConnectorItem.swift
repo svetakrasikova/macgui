@@ -2,43 +2,25 @@
 //  ConnectorItem.swift
 //  macgui
 //
-//  Created by Svetlana Krasikova on 4/21/19.
-//  Copyright © 2019 Svetlana Krasikova. All rights reserved.
+//  Created by Svetlana Krasikova on 2/28/20.
+//  Copyright © 2020 Svetlana Krasikova. All rights reserved.
 //
 
 import Cocoa
 
 class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
-
     
+    var connector: Connector?
     weak var parentTool: Connectable?
-    
-    var connector: Connector? {
-        didSet{
-            guard isViewLoaded else { return }
-            if let type = connector {
-                let fillColor = type.getColor()
-                (view as! ConnectorItemView).drawArrow(color: fillColor)
-            }
-        }
-    }
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        (view as! ConnectorItemView).delegate = self
-    }
     
     override func mouseDown(with mouseDownEvent: NSEvent) {
         guard
             let window = view.window,
             let source = window.dragEndpoint(at: mouseDownEvent.locationInWindow)
             else { return super.mouseDown(with: mouseDownEvent) }
-//        begin of a dragging session
         let controller = ConnectionDragController()
         controller.trackDrag(forMouseDownEvent: mouseDownEvent, in: source)
     }
-    
     
     func getTool() -> Any? {
         if let parentTool = parentTool {
@@ -54,11 +36,10 @@ class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
     
     func isOutlet() -> Bool {
         if let parentTool = parentTool, let connector = connector {
-           return parentTool.outlets.contains(connector)
+            return parentTool.outlets.contains(connector)
         }
         return false
     }
-    
     
 }
 
@@ -72,5 +53,4 @@ private extension NSWindow {
         }
         return nil
     }
-    
 }

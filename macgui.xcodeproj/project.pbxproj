@@ -19,6 +19,8 @@
 		1410C3AD2404EBE50044EB48 /* ModelCanvasItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */; };
 		1410C3AF2404ECEB0044EB48 /* ModelCanvasItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3AE2404ECEB0044EB48 /* ModelCanvasItemView.swift */; };
 		1410C3B1240594720044EB48 /* ModelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3B0240594720044EB48 /* ModelNode.swift */; };
+		1410C3B32409B2940044EB48 /* ConnectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3B22409B2940044EB48 /* ConnectorItemView.swift */; };
+		1410C3B52409BDCE0044EB48 /* ConnectorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3B42409BDCE0044EB48 /* ConnectorItem.swift */; };
 		141106B9230742D500A8B936 /* ToolTip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141106B8230742D500A8B936 /* ToolTip.storyboard */; };
 		1411BE902203D8FB009BEE1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */; };
 		1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */; };
@@ -1334,9 +1336,9 @@
 		14710521225DA67E00E88657 /* Loop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710520225DA67D00E88657 /* Loop.swift */; };
 		14710523225DA69500E88657 /* Connectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710522225DA69500E88657 /* Connectable.swift */; };
 		147105252265437600E88657 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105242265437600E88657 /* Bootstrap.swift */; };
-		1471052A226CD75300E88657 /* ConnectorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710528226CD75300E88657 /* ConnectorItem.swift */; };
-		1471052B226CD75300E88657 /* ConnectorItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14710529226CD75300E88657 /* ConnectorItem.xib */; };
-		1471052D227B94E200E88657 /* ConnectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052C227B94E200E88657 /* ConnectorItemView.swift */; };
+		1471052A226CD75300E88657 /* ConnectorItemArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710528226CD75300E88657 /* ConnectorItemArrow.swift */; };
+		1471052B226CD75300E88657 /* ConnectorItemArrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14710529226CD75300E88657 /* ConnectorItemArrow.xib */; };
+		1471052D227B94E200E88657 /* ConnectorItemArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052C227B94E200E88657 /* ConnectorItemArrowView.swift */; };
 		1471052F2280E36D00E88657 /* Align.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052E2280E36D00E88657 /* Align.swift */; };
 		147105312280E52300E88657 /* ReadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105302280E52300E88657 /* ReadData.swift */; };
 		147429D722CADDF800FF1963 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429D622CADDF800FF1963 /* SheetViewController.swift */; };
@@ -1422,6 +1424,8 @@
 		1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasItemViewController.swift; sourceTree = "<group>"; };
 		1410C3AE2404ECEB0044EB48 /* ModelCanvasItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasItemView.swift; sourceTree = "<group>"; };
 		1410C3B0240594720044EB48 /* ModelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNode.swift; sourceTree = "<group>"; };
+		1410C3B22409B2940044EB48 /* ConnectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItemView.swift; sourceTree = "<group>"; };
+		1410C3B42409BDCE0044EB48 /* ConnectorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItem.swift; sourceTree = "<group>"; };
 		141106B8230742D500A8B936 /* ToolTip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ToolTip.storyboard; sourceTree = "<group>"; };
 		1411BE8C2203D8FB009BEE1D /* macgui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macgui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1411BE8F2203D8FB009BEE1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -4234,9 +4238,9 @@
 		14710520225DA67D00E88657 /* Loop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loop.swift; sourceTree = "<group>"; };
 		14710522225DA69500E88657 /* Connectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectable.swift; sourceTree = "<group>"; };
 		147105242265437600E88657 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
-		14710528226CD75300E88657 /* ConnectorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItem.swift; sourceTree = "<group>"; };
-		14710529226CD75300E88657 /* ConnectorItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectorItem.xib; sourceTree = "<group>"; };
-		1471052C227B94E200E88657 /* ConnectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItemView.swift; sourceTree = "<group>"; };
+		14710528226CD75300E88657 /* ConnectorItemArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItemArrow.swift; sourceTree = "<group>"; };
+		14710529226CD75300E88657 /* ConnectorItemArrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectorItemArrow.xib; sourceTree = "<group>"; };
+		1471052C227B94E200E88657 /* ConnectorItemArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItemArrowView.swift; sourceTree = "<group>"; };
 		1471052E2280E36D00E88657 /* Align.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Align.swift; sourceTree = "<group>"; };
 		147105302280E52300E88657 /* ReadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadData.swift; sourceTree = "<group>"; };
 		147429D622CADDF800FF1963 /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
@@ -8128,7 +8132,7 @@
 			children = (
 				1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */,
 				147429D822CBA94C00FF1963 /* CanvasTool.storyboard */,
-				14710529226CD75300E88657 /* ConnectorItem.xib */,
+				14710529226CD75300E88657 /* ConnectorItemArrow.xib */,
 				1411BEAD220524E9009BEE1D /* EditorTools.storyboard */,
 				1411BEE122052B7E009BEE1D /* Main.storyboard */,
 				142945F623EE44DC0093608F /* Preferences.storyboard */,
@@ -8249,10 +8253,12 @@
 			children = (
 				14BF307E23E4BD9600426D7A /* LineOverlay.swift */,
 				14E5857122949A0900802691 /* ConnectionDragController.swift */,
-				1471052C227B94E200E88657 /* ConnectorItemView.swift */,
-				14710528226CD75300E88657 /* ConnectorItem.swift */,
-				14E5857D22A8006F00802691 /* Connection.swift */,
+				1410C3B42409BDCE0044EB48 /* ConnectorItem.swift */,
+				1410C3B22409B2940044EB48 /* ConnectorItemView.swift */,
 				14E5858022B0810B00802691 /* Connector.swift */,
+				14E5857D22A8006F00802691 /* Connection.swift */,
+				14710528226CD75300E88657 /* ConnectorItemArrow.swift */,
+				1471052C227B94E200E88657 /* ConnectorItemArrowView.swift */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -8474,7 +8480,7 @@
 				144BEEF523A17AC60001B2EF /* pull.sh in Resources */,
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
 				147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */,
-				1471052B226CD75300E88657 /* ConnectorItem.xib in Resources */,
+				1471052B226CD75300E88657 /* ConnectorItemArrow.xib in Resources */,
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
 				1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */,
 				1452356B220CE9AC00A85186 /* Assets.xcassets in Resources */,
@@ -8794,6 +8800,7 @@
 				144BEF5823A17AC60001B2EF /* LevyJumpSumProposal.cpp in Sources */,
 				144BED9C23A17AC60001B2EF /* Parser.cpp in Sources */,
 				144BEDCE23A17AC60001B2EF /* Func_listOptions.cpp in Sources */,
+				1410C3B52409BDCE0044EB48 /* ConnectorItem.swift in Sources */,
 				144BEEEE23A17AC60001B2EF /* Dist_PhyloOrnsteinUhlenbeckThreePoint.cpp in Sources */,
 				144BF18923A17AC80001B2EF /* PhyloCTMCSiteHomogeneousDollo.cpp in Sources */,
 				144BEF2C23A17AC60001B2EF /* LayeredScaleProposal.cpp in Sources */,
@@ -9396,7 +9403,7 @@
 				144BF17123A17AC80001B2EF /* UniformSerialSampledTimeTreeDistribution.cpp in Sources */,
 				144BED2D23A17AC60001B2EF /* RlMaxIterationStoppingRule.cpp in Sources */,
 				144BF10323A17AC70001B2EF /* AdjacentRateModifierFunction.cpp in Sources */,
-				1471052D227B94E200E88657 /* ConnectorItemView.swift in Sources */,
+				1471052D227B94E200E88657 /* ConnectorItemArrowView.swift in Sources */,
 				14BF307F23E4BD9700426D7A /* LineOverlay.swift in Sources */,
 				144BEF7A23A17AC60001B2EF /* GraphFlipEdgeProposal.cpp in Sources */,
 				144BF05423A17AC70001B2EF /* BranchLengthDistributionReader.cpp in Sources */,
@@ -9469,6 +9476,7 @@
 				144BEF1623A17AC60001B2EF /* MetropolisHastingsMove.cpp in Sources */,
 				144BED1423A17AC50001B2EF /* Mntr_CharacterHistoryNhxFile.cpp in Sources */,
 				144BF09D23A17AC70001B2EF /* LnFunction.cpp in Sources */,
+				1410C3B32409B2940044EB48 /* ConnectorItemView.swift in Sources */,
 				144BF14923A17AC70001B2EF /* MultispeciesCoalescentMigrationODE.cpp in Sources */,
 				144BECBB23A17AC50001B2EF /* Move_BirthDeathEventContinuous.cpp in Sources */,
 				142945F923EF50E40093608F /* PreferencesManager.swift in Sources */,
@@ -9631,7 +9639,7 @@
 				144BEFD723A17AC70001B2EF /* MatrixReal.cpp in Sources */,
 				144BF16723A17AC80001B2EF /* MixedSamplingBirthDeathProcess.cpp in Sources */,
 				144BED5423A17AC60001B2EF /* RlRootedTripletDistribution.cpp in Sources */,
-				1471052A226CD75300E88657 /* ConnectorItem.swift in Sources */,
+				1471052A226CD75300E88657 /* ConnectorItemArrow.swift in Sources */,
 				144BEF5B23A17AC60001B2EF /* ScaleUpDownProposal.cpp in Sources */,
 				144BEE7723A17AC60001B2EF /* Func_concatenateFromVector.cpp in Sources */,
 				144BED2023A17AC60001B2EF /* RlGewekeStoppingRule.cpp in Sources */,
