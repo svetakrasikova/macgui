@@ -10,9 +10,24 @@ import Cocoa
 
 class ModelCanvasItemView: CanvasObjectView {
 
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-        
-    }
+    let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
+    
+       
+   //    MARK: - Layer Drawing
+    
+//    TODO: Define model object specific preferences
+     override func updateLayer() {
+           super.updateLayer()
+           layer?.cornerRadius = preferencesManager.canvasToolSelectionCornerRadius!
+           layer?.borderWidth = preferencesManager.canvasToolBorderWidth!
+           if isSelected {
+               layer?.shadowOpacity = Float(preferencesManager.canvasToolSelectionShadowOpacity!)
+               layer?.shadowRadius = preferencesManager.canvasToolSelectionShadowRadius!
+               layer?.borderColor = preferencesManager.canvasToolSelectionColor?.cgColor
+           } else {
+               layer?.shadowOpacity = Float(preferencesManager.canvasToolDefaultShadowOpacity!)
+               layer?.shadowRadius = preferencesManager.canvasToolDefaultShadowRadius!
+           }
+       }
     
 }

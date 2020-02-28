@@ -9,7 +9,7 @@
 import Cocoa
 import Darwin
 
-class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate, NSWindowDelegate {
+class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
     
     private var observers = [NSKeyValueObservation]()
     
@@ -124,7 +124,7 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate, NSWind
     }
     
     
-    func windowDidResize(_ notification: Notification) {
+    override func windowDidResize(_ notification: Notification) {
         if let canvasView = view.superview as? CanvasView {
             view.setFrameSize(canvasView.frame.size)
         }

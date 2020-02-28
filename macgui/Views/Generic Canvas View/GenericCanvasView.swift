@@ -25,7 +25,7 @@ class GenericCanvasView: NSView {
     }
     
     var canvasObjectDimension: CGFloat? {
-        return preferencesManager.toolDimension
+        return preferencesManager.canvasObjectDimension
     }
     weak var delegate: GenericCanvasViewController? = nil
     

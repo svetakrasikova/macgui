@@ -8,10 +8,7 @@
 
 import Cocoa
 
-class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, CanvasToolViewDelegate, ActionButtonDelegate, ToolTipDelegate, ToolObjectDelegate {
- 
-    
-
+class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelegate, ActionButtonDelegate, ToolTipDelegate, ToolObjectDelegate {
     
     // MARK: -  Interface Builder Outlets
     
@@ -25,8 +22,6 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     @IBOutlet weak var imageView: NSImageView!
     
     // MARK: - Tool Related Properties
-    
-    weak var tool: ToolObject?
     
     
     var image: NSImage {
@@ -59,7 +54,6 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         showPopoverTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(showPopover), userInfo: nil, repeats: false)
     
     }
-
     
     func closePopover(){
         popoverLoopTimer?.invalidate()
@@ -76,7 +70,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     }
        
     
-    // MARK: - Info Button Modal Dialog
+    // MARK: - Info Button Controller
     
     
     lazy var sheetViewController: SheetViewController = {
@@ -121,12 +115,12 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
 
     // MARK: - Mouse Events
     
-    override func keyDown(with event: NSEvent) {
-        if event.charactersIgnoringModifiers == String(Character(UnicodeScalar(NSDeleteCharacter)!)) {
-            let point = event.locationInWindow
-            NotificationCenter.default.post(name: .didSelectDeleteKey, object: self, userInfo: ["point": point])
-        }
-    }
+//    override func keyDown(with event: NSEvent) {
+//        if event.charactersIgnoringModifiers == String(Character(UnicodeScalar(NSDeleteCharacter)!)) {
+//            let point = event.locationInWindow
+//            NotificationCenter.default.post(name: .didSelectDeleteKey, object: self, userInfo: ["point": point])
+//        }
+//    }
     
     override func mouseEntered(with event: NSEvent) {
         infoButton.mouseEntered(with: event)
@@ -158,14 +152,14 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let window = NSApp.windows.first { window.delegate = self}
+//        if let window = NSApp.windows.first { window.delegate = self}
         infoButton.delegate = self
         inspectorButton.delegate = self
         inspectorButton.observeDataChange()
-        (self.view as! CanvasToolView).canvasViewToolDelegate = self
+        (self.view as! CanvasToolView).concreteDelegate = self
         tool?.delegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
         
         NotificationCenter.default.addObserver(self,
                                                      selector: #selector(didAddNewArrow(notification:)),
@@ -206,11 +200,10 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
     
     // MARK: - Canvas Tool View Delegate
     
-    func getConnectorItem(_ sender: NSDraggingInfo) -> ConnectorItemView? {
-        if let connectionDragController = sender.draggingSource as? ConnectionDragController, let color = connectionDragController.sourceEndpoint?.arrowColor {
-            for item in self.inlets.visibleItems() as! [ConnectorItem] {
-                let itemView = item.view as! ConnectorItemView
-                if itemView.arrowColor == color {
+    func getConnectorItemArrowView(_ sender: NSDraggingInfo) -> ConnectorItemArrowView? {
+        if let connectionDragController = sender.draggingSource as? ConnectionDragController, let color = connectionDragController.sourceEndpoint?.connectionColor {
+            for item in self.inlets.visibleItems() as! [ConnectorItemArrow] {
+                if let itemView = item.view as? ConnectorItemArrowView, itemView.connectionColor == color {
                     return itemView
                 }
             }
@@ -218,13 +211,7 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         return nil
     }
     
-    func updateFrame(){
-         let size = tool?.frameOnCanvas.size
-         let origin = view.frame.origin
-         tool?.frameOnCanvas = NSRect(origin: origin, size: size!)
-         
-     }
-    
+   
     
     // MARK: - Tool Object Delegate
     
@@ -301,9 +288,9 @@ class CanvasToolViewController: CanvasObjectViewController, NSWindowDelegate, Ca
         }
     }
     
-    func windowDidResize(_ notification: Notification) {
-           updateFrame()
-       }
+//    func windowDidResize(_ notification: Notification) {
+//           updateFrame()
+//       }
        
 
 }
@@ -323,7 +310,7 @@ extension CanvasToolViewController: NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("ConnectorItem"), for: indexPath) as! ConnectorItem
+        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("ConnectorItemArrow"), for: indexPath) as! ConnectorItemArrow
         item.parentTool = self.tool as? Connectable
         if collectionView == self.inlets {
             item.connector = (self.tool as! Connectable).unconnectedInlets[indexPath.item]

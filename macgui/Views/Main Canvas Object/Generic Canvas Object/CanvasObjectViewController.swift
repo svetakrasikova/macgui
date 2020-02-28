@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CanvasObjectViewController: NSViewController, CanvasObjectViewDelegate {
+class CanvasObjectViewController: NSViewController, NSWindowDelegate {
     
     var shiftKeyPressed: Bool = false
     
@@ -20,23 +20,46 @@ class CanvasObjectViewController: NSViewController, CanvasObjectViewDelegate {
             }
         }
     }
-    func setObjectViewSelected(flag: Bool) {
-        shiftKeyPressed = flag
-        viewSelected = true
-    }
     
+    weak var tool: ToolObject?
+    
+// MARK: - Mouse and Key Events
     
     override func keyDown(with event: NSEvent) {
         if event.charactersIgnoringModifiers == String(Character(UnicodeScalar(NSDeleteCharacter)!)) {
             NotificationCenter.default.post(name: .didSelectDeleteKey, object: self)
         }
-    }
 
+    }
+    
+// MARK: - Selectors for Observed Notifications
+    
+    func windowDidResize(_ notification: Notification) {
+        updateFrame()
+    }
+    
+// MARK: - Controller Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let window = NSApp.windows.first { window.delegate = self}
         (self.view as! CanvasObjectView).delegate = self
+         NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
+    }
+}
+
+
+extension CanvasObjectViewController: CanvasObjectViewDelegate {
+   
+    func setObjectViewSelected(flag: Bool) {
+        shiftKeyPressed = flag
+        viewSelected = true
     }
     
-    
-    
+    func updateFrame(){
+            let size = tool?.frameOnCanvas.size
+            let origin = view.frame.origin
+            tool?.frameOnCanvas = NSRect(origin: origin, size: size!)
+        }
+       
 }
