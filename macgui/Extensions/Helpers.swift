@@ -162,3 +162,17 @@ extension UserDefaults {
     }
 
 }
+
+extension NSWindow {
+    
+    func dragEndpoint(at point: CGPoint) -> CanvasObjectView? {
+        var view = contentView?.hitTest(point)
+        while let candidate = view {
+            if let endpoint = candidate as? CanvasObjectView { return endpoint }
+            view = candidate.superview
+        }
+        return nil
+    }
+}
+
+
