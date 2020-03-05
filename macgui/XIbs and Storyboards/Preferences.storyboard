@@ -114,7 +114,7 @@ DQ
         <!--Tab View Controller-->
         <scene sceneID="VPL-SH-dGi">
             <objects>
-                <tabViewController selectedTabViewItemIndex="2" id="BRS-mX-eaK" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" id="BRS-mX-eaK" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="I8t-V4-x8H"/>
                         <tabViewItem identifier="" id="LMu-fh-d9C"/>
@@ -175,7 +175,7 @@ DQ
                                                 <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="changeBackgroundColor:" target="l0K-EM-D6H" id="iwB-G6-J9K"/>
-                                                    <binding destination="xgO-2f-hPn" name="value" keyPath="values.mainCanvasBackgroundColor" id="5w9-V9-mez">
+                                                    <binding destination="l0K-EM-D6H" name="value" keyPath="defaultsWorkaround.values.mainCanvasBackgroundColor" id="4fF-9l-eNR">
                                                         <dictionary key="options">
                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
                                                         </dictionary>
@@ -220,7 +220,7 @@ DQ
                                                 <color key="color" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                                                 <connections>
                                                     <action selector="changeGridColor:" target="l0K-EM-D6H" id="jNx-Mx-3d2"/>
-                                                    <binding destination="xgO-2f-hPn" name="value" keyPath="values.mainCanvasGridColorKey" id="QPO-lV-o6N">
+                                                    <binding destination="l0K-EM-D6H" name="value" keyPath="defaultsWorkaround.values.mainCanvasGridColor" id="aXV-hE-Ty4">
                                                         <dictionary key="options">
                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
                                                         </dictionary>
@@ -255,7 +255,6 @@ DQ
                     </view>
                 </viewController>
                 <customObject id="sF6-0y-WAJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController representsSharedInstance="YES" id="xgO-2f-hPn"/>
             </objects>
             <point key="canvasLocation" x="207" y="360.5"/>
         </scene>
@@ -267,12 +266,95 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="KaC-ma-2Vm">
-                                <rect key="frame" x="85" y="118" width="281" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7pY-RU-5Oc">
+                                <rect key="frame" x="85" y="94" width="280" height="112"/>
                                 <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geV-uo-h1P">
+                                        <rect key="frame" x="0.0" y="84" width="280" height="28"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ntg-0e-KaB">
+                                                <rect key="frame" x="-2" y="0.0" width="164" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="0Gb-Gc-1Ms"/>
+                                                    <constraint firstAttribute="height" constant="25" id="P7e-IH-EwT"/>
+                                                    <constraint firstAttribute="width" constant="160" id="hka-9R-n1Z"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Clamped  Node Color" id="P93-2E-nGE">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Xd7-YZ-Qh6">
+                                                <rect key="frame" x="180" y="3" width="100" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="QgJ-c1-5zl"/>
+                                                    <constraint firstAttribute="width" constant="100" id="qf5-Xf-6nu"/>
+                                                </constraints>
+                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="changeClampedNodeColor:" target="fWe-tg-beU" id="lxS-Ll-Yv4"/>
+                                                    <binding destination="fWe-tg-beU" name="value" keyPath="defaultsWorkaround.values.modelCanvasClampedNodeColor" id="dBL-Ck-iWA">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </colorWell>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ih4-MR-3JJ">
+                                        <rect key="frame" x="0.0" y="56" width="280" height="28"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8qc-S7-h8k">
+                                                <rect key="frame" x="-2" y="0.0" width="164" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="160" id="6aW-DM-um3"/>
+                                                    <constraint firstAttribute="height" constant="25" id="COK-3n-uV8"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="aIz-XW-gdf"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Arrow Color" id="dbd-h1-ag9">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="gux-Wk-wSp">
+                                                <rect key="frame" x="180" y="3" width="100" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="Xi6-sd-ia6"/>
+                                                    <constraint firstAttribute="width" constant="100" id="q3D-P4-ebL"/>
+                                                </constraints>
+                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="changeArrowColor:" target="fWe-tg-beU" id="D1e-X0-ao4"/>
+                                                    <binding destination="fWe-tg-beU" name="value" keyPath="defaultsWorkaround.values.modelCanvasArrowColor" id="zWE-Uq-9LF">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </colorWell>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r6C-bJ-AMN">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="64"/>
+                                        <rect key="frame" x="0.0" y="28" width="280" height="28"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fVB-um-0zQ">
                                                 <rect key="frame" x="-2" y="0.0" width="164" height="25"/>
@@ -281,7 +363,7 @@ DQ
                                                     <constraint firstAttribute="width" constant="160" id="SjG-Cd-jSe"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="UmC-jA-4FV"/>
                                                 </constraints>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Canvas Background Color" id="xXI-Zt-Cxo">
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Node Border Color " id="xXI-Zt-Cxo">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -295,7 +377,54 @@ DQ
                                                 </constraints>
                                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
-                                                    <action selector="changeCanvasBackgroundColor:" target="fWe-tg-beU" id="9gA-wE-EOI"/>
+                                                    <action selector="changeNodeBorderColor:" target="fWe-tg-beU" id="8WT-6f-WQ2"/>
+                                                    <binding destination="fWe-tg-beU" name="value" keyPath="defaultsWorkaround.values.modelCanvasNodeBorderColor" id="Nmy-hq-1Fq">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </colorWell>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKk-SI-z18">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="28"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qkA-qQ-dkY">
+                                                <rect key="frame" x="-2" y="0.0" width="164" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="31a-D7-OBP"/>
+                                                    <constraint firstAttribute="width" constant="160" id="iIn-FP-tBs"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="xgf-0a-wbo"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Canvas Background Color" id="Kwy-X1-LKD">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="nV3-Oe-22X">
+                                                <rect key="frame" x="180" y="3" width="100" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="g1U-5t-Ht8"/>
+                                                    <constraint firstAttribute="width" constant="100" id="nMo-RE-bO9"/>
+                                                </constraints>
+                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="changeCanvasBackgroundColor:" target="fWe-tg-beU" id="QfP-aM-fxi"/>
+                                                    <binding destination="fWe-tg-beU" name="value" keyPath="defaultsWorkaround.values.modelCanvasBackgroundColor" id="s5p-1p-UbE">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                        </dictionary>
+                                                    </binding>
                                                 </connections>
                                             </colorWell>
                                         </subviews>
@@ -311,16 +440,25 @@ DQ
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="7pY-RU-5Oc" firstAttribute="centerX" secondItem="xBu-pR-unk" secondAttribute="centerX" id="IyZ-or-jgZ"/>
+                            <constraint firstItem="7pY-RU-5Oc" firstAttribute="centerY" secondItem="xBu-pR-unk" secondAttribute="centerY" id="Pql-1a-jIb"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="8SQ-x1-Yn9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController id="qZ3-uY-NZb"/>
             </objects>
             <point key="canvasLocation" x="972" y="-4"/>
         </scene>

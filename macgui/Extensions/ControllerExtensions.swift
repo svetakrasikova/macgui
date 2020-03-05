@@ -97,9 +97,12 @@ extension NavigatorViewController {
         }
         return isCopy ? "\(prefixUntilCopy) copy \(defaultNameIndices.count)": "\(prefix) \(defaultNameIndices.count)"
     }
+
     
 
 }
 
-
+extension NSViewController {
+    @objc dynamic var defaultsWorkaround: NSUserDefaultsController { return NSUserDefaultsController.shared }
+}
 
