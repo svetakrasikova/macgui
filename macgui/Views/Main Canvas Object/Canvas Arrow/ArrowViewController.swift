@@ -18,7 +18,7 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
     weak var sourceTool: Connectable?
     weak var connection: Connection?
     var frame: NSRect?
-    weak var color: NSColor?
+    var color: NSColor?
     
     var endPoint: NSPoint {
         get{
@@ -38,18 +38,23 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
         }
     }
     
-
     var arrowHeadParams: [String: CGFloat] {
         get {
-            let angle = findLineAngle()
-            let end = findEdgePoint(angle: angle, dimension: targetToolFrame.size.width)
-            let begin = findEdgePoint(angle: angle, dimension: targetToolFrame.size.width + 5)
+            let end: NSPoint?
+            let begin: NSPoint?
+            if let targetTool = self.targetTool, targetTool.isKind(of: ModelNode.self) {
+                end = findCircleIntersection(origin: endPoint, radius: targetToolFrame.size.width/2 + 1, end: beginPoint)
+                begin = findCircleIntersection(origin: endPoint, radius: targetToolFrame.size.width/2 + 5, end: beginPoint)
+            } else  {
+                let angle = findLineAngle()
+                end = findEdgePoint(angle: angle, dimension: targetToolFrame.size.width)
+                begin = findEdgePoint(angle: angle, dimension: targetToolFrame.size.width + 5)
+            }
             return [
-                "angle": angle,
-                "endX": end.x,
-                "endY": end.y,
-                "beginX": begin.x,
-                "beginY": begin.y,
+                "endX": end!.x,
+                "endY": end!.y,
+                "beginX": begin!.x,
+                "beginY": begin!.y,
             ]
         }
     }
@@ -118,6 +123,7 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
        NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
         (self.view as! ArrowView).arrowViewDelegate = self
         view.wantsLayer = true
+        self
         drawArrow(width: 2.0, highlight: false)
         setClickArea()
         observeEndPointChanges()
@@ -211,6 +217,15 @@ extension ArrowViewController {
         }
         let convertedIntersection = CGPoint(x: endPoint.x+intersection.x, y: endPoint.y+intersection.y)
         return convertedIntersection
+    }
+    
+    func findCircleIntersection(origin: NSPoint, radius: CGFloat, end: NSPoint) -> CGPoint {
+        var vector = NSPoint(x: end.x - origin.x, y: end.y - origin.y)
+        let length = sqrt(vector.x*vector.x + vector.y*vector.y)
+        guard length > 0 else { return NSZeroPoint }
+        vector = NSPoint(x: vector.x/length, y: vector.y/length)
+        let intersection = NSPoint(x: origin.x + vector.x*radius, y: origin.y + vector.y*radius)
+        return intersection
     }
     
     

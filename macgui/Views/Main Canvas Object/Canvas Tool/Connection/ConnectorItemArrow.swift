@@ -22,11 +22,4 @@ class ConnectorItemArrow: ConnectorItem {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if let view = self.view as? ConnectorItemView {
-            view.delegate = self
-        }
-    }
-    
 }

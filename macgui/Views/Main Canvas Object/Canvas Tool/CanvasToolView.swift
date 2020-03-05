@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CanvasToolView: CanvasObjectView {
+class CanvasToolView: MovingCanvasObjectView {
     
     weak var concreteDelegate: CanvasToolViewDelegate? = nil
 

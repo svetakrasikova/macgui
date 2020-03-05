@@ -10,17 +10,24 @@ import Cocoa
 
 class ConnectionDragController: NSObject, NSDraggingSource {
 
-    var sourceEndpoint: ConnectorItemView?
+    var sourceEndpoint: CanvasObjectView?
     private var lineOverlay: LineOverlay?
     
-    func connect(to target: ConnectorItemView) {
-        print("Connect \(sourceEndpoint!) to \(target)")
-        NotificationCenter.default.post(name: .didConnectTools,
-                                        object: self,
-                                        userInfo: ["source": sourceEndpoint!, "target": target])
+    func connect(to target: CanvasObjectView) {
+        
+        if let source = sourceEndpoint as? ConnectorItemView {
+            NotificationCenter.default.post(name: .didConnectTools,
+            object: self,
+            userInfo: ["source": source, "target": target])
+        } else if let source = sourceEndpoint as? ModelCanvasItemView {
+            NotificationCenter.default.post(name: .didConnectNodes,
+            object: self,
+            userInfo: ["source": source, "target": target])
+        }
     }
+        
     
-    func trackDrag(forMouseDownEvent mouseDownEvent: NSEvent, in sourceEndpoint: ConnectorItemView) {
+    func trackDrag(forMouseDownEvent mouseDownEvent: NSEvent, in sourceEndpoint: CanvasObjectView) {
         self.sourceEndpoint = sourceEndpoint
         let item = NSDraggingItem(pasteboardWriter: NSPasteboardItem(pasteboardPropertyList: "view", ofType: NSPasteboard.PasteboardType(rawValue: kUTTypeData as String as String))!)
 //        setting the frame of dragging item to non-zero to fix the crash after upgrade to Mojave

@@ -57,9 +57,12 @@ extension CanvasObjectViewController: CanvasObjectViewDelegate {
     }
     
     func updateFrame(){
-            let size = tool?.frameOnCanvas.size
-            let origin = view.frame.origin
-            tool?.frameOnCanvas = NSRect(origin: origin, size: size!)
-        }
+        let size = tool?.frameOnCanvas.size
+        let origin = view.frame.origin
+        tool?.frameOnCanvas = NSRect(origin: origin, size: size!)
+    }
        
 }
+
+
+

@@ -201,7 +201,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     // MARK: - Canvas Tool View Delegate
     
     func getConnectorItemArrowView(_ sender: NSDraggingInfo) -> ConnectorItemArrowView? {
-        if let connectionDragController = sender.draggingSource as? ConnectionDragController, let color = connectionDragController.sourceEndpoint?.connectionColor {
+        if let connectionDragController = sender.draggingSource as? ConnectionDragController, let source = connectionDragController.sourceEndpoint as? ConnectorItemView, let color = source.connectionColor {
             for item in self.inlets.visibleItems() as! [ConnectorItemArrow] {
                 if let itemView = item.view as? ConnectorItemArrowView, itemView.connectionColor == color {
                     return itemView

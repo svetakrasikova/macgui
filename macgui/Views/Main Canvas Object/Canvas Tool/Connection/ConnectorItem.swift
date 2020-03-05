@@ -41,16 +41,13 @@ class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
         return false
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let view = self.view as? ConnectorItemView {
+            view.concreteDelegate = self
+        }
+    }
+    
 }
 
-private extension NSWindow {
-    
-    func dragEndpoint(at point: CGPoint) -> ConnectorItemView? {
-        var view = contentView?.hitTest(point)
-        while let candidate = view {
-            if let endpoint = candidate as? ConnectorItemView { return endpoint }
-            view = candidate.superview
-        }
-        return nil
-    }
-}
+

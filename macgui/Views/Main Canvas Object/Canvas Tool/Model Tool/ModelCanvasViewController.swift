@@ -19,19 +19,58 @@ class ModelCanvasViewController: GenericCanvasViewController {
         }
         return nil
     }
+     
+    let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
+    
+    var arrowColor: NSColor? {
+        if  let color = preferencesManager.modelCanvasArrowColor {
+            return color
+        }
+        return nil
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self,
+                                                      selector: #selector(didConnectNodes(notification:)),
+                                                      name: .didConnectNodes,
+                                                      object: nil)
     }
     
     override func viewDidLayout() {
         super.viewDidLayout()
     }
     
+    @objc func didConnectNodes(notification: Notification) {
+        guard let userInfo = notification.userInfo as? [String: ModelCanvasItemView]
+            else { return }
+        
+        guard let target = userInfo["target"]?.delegate as? ModelCanvasItemViewController else { return }
+
+        guard let source = userInfo["source"]?.delegate as? ModelCanvasItemViewController else { return }
+        
+        guard let arrowColor = arrowColor else { return }
+        
+        if userInfo["target"]?.window == self.view.window, let targetNode = target.tool, let sourceNode = source.tool {
+            let arrowController = setUpConnection(frame: canvasView.bounds, color: arrowColor, sourceNode: sourceNode as! Connectable, targetNode: targetNode as! Connectable)
+            addChild(arrowController)
+            canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
+        }
+    }
+    
+    func setUpConnection(frame: NSRect, color: NSColor, sourceNode: Connectable, targetNode: Connectable) -> ArrowViewController {
+        let arrowController = ArrowViewController()
+        arrowController.frame = frame
+        arrowController.color = color
+        arrowController.sourceTool = sourceNode
+        arrowController.targetTool = targetNode
+        return arrowController
+    }
+    
     
     func addParameterView(node: ModelNode) {
         guard let modelCanvasItemVC = NSStoryboard.loadVC(.modelCanvasItem) as? ModelCanvasItemViewController else { return }
-        modelCanvasItemVC.node = node
+        modelCanvasItemVC.tool = node
         addChild(modelCanvasItemVC)
         canvasView.addSubview(modelCanvasItemVC.view)
     }

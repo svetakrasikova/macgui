@@ -19,7 +19,7 @@ class ArrowView: CanvasObjectView {
         if clickAreaContains(point: point) {
             super.mouseDown(with: event)
         } else {
-            if let canvasView = self.superview as? CanvasView {
+            if let canvasView = self.superview as? GenericCanvasView {
                 if canvasView.delegate?.isMouseDownOnArrowView(event: event, point: point) == false {
                     canvasView.mouseDown(with: event)
                 }

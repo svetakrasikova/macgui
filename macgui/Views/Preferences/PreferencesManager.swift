@@ -23,6 +23,9 @@ enum PreferenceKey: String {
     
     //  Model Canvas
     case modelCanvasBackgroundColor = "modelCanvasBackgroundColor"
+    case modelCanvasArrowColor = "modelCanvasArrowColor"
+    case modelCanvasClampedNodeColor = "modelCanvasClampedNodeColor"
+    case modelCanvasNodeBorderColor = "modelCanvasNodeBorderColor"
     
     // Main Canvas Tool
     case canvasToolBorderWidth = "canvasToolBorderWidth"
@@ -45,6 +48,9 @@ class PreferencesManager {
             PreferenceKey.mainCanvasBackgroundColor.rawValue: NSColor.white,
             PreferenceKey.mainCanvasGridColor.rawValue: NSColor.gray,
             PreferenceKey.modelCanvasBackgroundColor.rawValue: NSColor.white,
+            PreferenceKey.modelCanvasArrowColor.rawValue: NSColor.black,
+            PreferenceKey.modelCanvasClampedNodeColor.rawValue: NSColor.yellow,
+            PreferenceKey.modelCanvasNodeBorderColor.rawValue: NSColor.gray,
             PreferenceKey.canvasSelectionWidth.rawValue: 5.0,
             PreferenceKey.canvasObjectDimension.rawValue: 50.0,
             PreferenceKey.canvasToolBorderWidth.rawValue: 1.8,
@@ -58,26 +64,11 @@ class PreferencesManager {
             ] as [String : Any]
     
     
-    enum Appearance {
-        static let borderWidth: CGFloat = 1.8
-        static let selectionCornerRadius: CGFloat = 5.0
-           
-           static let selectionColor: CGColor = NSColor.systemGray.cgColor
-           static let defaultColor: CGColor = NSColor.clear.cgColor
-           
-           static let selectionShadowOpacity: Float = 0.7
-           static let defaultShadowOpacity: Float = 0.0
-          
-           static let selectionShadowRadius: CGFloat = 10.0
-           static let defaultShadowRadius: CGFloat = 3.0
-       }
-    
-    
     var cachedPreferences: [String: Any] = [:]
     
     //    MARK: - Preferences
     
-    var mainCanvasBackroundColor: NSColor? {
+    @objc dynamic var mainCanvasBackroundColor: NSColor? {
         set (newMainCanvasBackgroundColor) {
             userDefaults.set(newMainCanvasBackgroundColor, forKey: PreferenceKey.mainCanvasBackgroundColor.rawValue)
         }
@@ -93,7 +84,6 @@ class PreferencesManager {
         get {
             return userDefaults.color(forKey: PreferenceKey.mainCanvasGridColor.rawValue)
         }
-        
     }
     
     @objc dynamic var modelCanvasBackgroundColor: NSColor? {
@@ -103,8 +93,36 @@ class PreferencesManager {
         get {
             return userDefaults.color(forKey: PreferenceKey.modelCanvasBackgroundColor.rawValue)
         }
-        
     }
+    
+    @objc dynamic var modelCanvasArrowColor: NSColor? {
+        set (newModelCanvasArrowColor) {
+            userDefaults.set(newModelCanvasArrowColor, forKey: PreferenceKey.modelCanvasArrowColor.rawValue)
+        }
+        get {
+            return userDefaults.color(forKey: PreferenceKey.modelCanvasArrowColor.rawValue)
+        }
+    }
+    
+    @objc dynamic var modelCanvasClampedNodeColor: NSColor? {
+        set (newModelCanvasClampedNodeColor) {
+            userDefaults.set(newModelCanvasClampedNodeColor, forKey: PreferenceKey.modelCanvasClampedNodeColor.rawValue)
+        }
+        get {
+            return userDefaults.color(forKey: PreferenceKey.modelCanvasClampedNodeColor.rawValue)
+        }
+    }
+    
+    
+    @objc dynamic var modelCanvasNodeBorderColor: NSColor? {
+        set (newModelCanvasNodeBorderColor) {
+            userDefaults.set(newModelCanvasNodeBorderColor, forKey: PreferenceKey.modelCanvasNodeBorderColor.rawValue)
+        }
+        get {
+            return userDefaults.color(forKey: PreferenceKey.modelCanvasNodeBorderColor.rawValue)
+        }
+    }
+    
     
     var canvasSelectionWidth: CGFloat? {
         get {
@@ -179,6 +197,12 @@ class PreferencesManager {
                 self.cachedPreferences[key] = canvasSelectionWidth
             case PreferenceKey.modelCanvasBackgroundColor.rawValue:
                 self.cachedPreferences[key] = modelCanvasBackgroundColor
+            case PreferenceKey.modelCanvasClampedNodeColor.rawValue:
+                self.cachedPreferences[key] = modelCanvasClampedNodeColor
+            case PreferenceKey.modelCanvasArrowColor.rawValue:
+                self.cachedPreferences[key] = modelCanvasArrowColor
+            case PreferenceKey.modelCanvasNodeBorderColor.rawValue:
+                self.cachedPreferences[key] = modelCanvasNodeBorderColor
             default:
                 print("Unrecognised preference key")
             }

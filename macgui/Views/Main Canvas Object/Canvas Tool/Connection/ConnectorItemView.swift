@@ -1,5 +1,5 @@
 //
-//  ConnectorItemView.swift
+//  ConnectorItemArrowView.swift
 //  macgui
 //
 //  Created by Svetlana Krasikova on 2/28/20.
@@ -8,72 +8,38 @@
 
 import Cocoa
 
-class ConnectorItemView: NSView {
-    
-    enum State {
-        case idle
-        case source
-        case target
-    }
-    
-    var state: State = State.idle { didSet { needsLayout = true } }
+class ConnectorItemView: CanvasObjectView {
     
     let shapeLayer = CAShapeLayer()
     
     var connectionColor: NSColor?
 
-    weak var delegate: ConnectorItemViewDelegate?
-    
-//   MARK: - Initialisation
-    
-    override init(frame: NSRect) {
-           super.init(frame: frame)
-           commonInit()
-       }
-       
-       required init?(coder decoder: NSCoder) {
-           super.init(coder: decoder)
-           commonInit()
-       }
-       
-       private func commonInit() {
-           wantsLayer = true
-           registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: kUTTypeData as String)])
-       }
-    
+    weak var concreteDelegate: ConnectorItemViewDelegate? = nil
+    override var delegate: CanvasObjectViewController?  {
+        didSet{
+            concreteDelegate = delegate as? ConnectorItemViewDelegate
+        }
+    }
     
     override func makeBackingLayer() -> CALayer {
            return shapeLayer
        }
     
+    override func mouseDown(with event: NSEvent) {
+        (concreteDelegate as! ConnectorItem).mouseDown(with: event)
+    }
+    
 //   MARK: - Dragging Source
     
     public override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        guard case .idle = state else { return [] }
         guard (sender.draggingSource as? ConnectionDragController)?.sourceEndpoint != nil else { return [] }
-        guard (sender.draggingSource as? ConnectionDragController)?.sourceEndpoint?.connectionColor == self.connectionColor else { return [] }
-        guard ((sender.draggingSource as? ConnectionDragController)?.sourceEndpoint?.delegate?.isOutlet())!  else { return [] }
-        guard !(self.delegate?.isOutlet())!  else { return [] }
-        state = .target
-        return sender.draggingSourceOperationMask
+        guard let source = (sender.draggingSource as? ConnectionDragController)?.sourceEndpoint as? ConnectorItemView else { return [] }
+        guard source.connectionColor == self.connectionColor else { return [] }
+        guard (source.concreteDelegate?.isOutlet())!  else { return [] }
+        guard !(self.concreteDelegate?.isOutlet())!  else { return [] }
+        return super.draggingEntered(sender)
     }
     
-    public override func draggingExited(_ sender: NSDraggingInfo?) {
-        guard case .target = state else { return }
-        state = .idle
-    }
-    
-    public override func draggingEnded(_ sender: NSDraggingInfo?) {
-        guard case .target = state else { return }
-        state = .idle
-    }
-    
-    public override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        if let controller = sender.draggingSource as? ConnectionDragController {
-            controller.connect(to: self)
-            return true
-        } else { return false }
-    }    
 }
 
 protocol ConnectorItemViewDelegate: class {

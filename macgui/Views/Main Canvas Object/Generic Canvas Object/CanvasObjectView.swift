@@ -11,11 +11,19 @@ import Cocoa
 class CanvasObjectView: NSView {
     
     override var wantsUpdateLayer: Bool {return true}
-    var firstMouseDownPoint: NSPoint?
     var isSelected: Bool = false
-    { didSet { needsDisplay = true } }
+      { didSet { needsDisplay = true } }
     
     weak var delegate: CanvasObjectViewController? = nil
+   
+    enum State {
+        case idle
+        case source
+        case target
+    }
+    
+    
+    var state: State = State.idle { didSet { needsLayout = true } }
     
     
     override init(frame: NSRect) {
@@ -32,6 +40,8 @@ class CanvasObjectView: NSView {
         registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: kUTTypeData as String)])
     }
     
+   
+    
     // MARK: - First Responder
     
     override var acceptsFirstResponder: Bool {
@@ -41,43 +51,38 @@ class CanvasObjectView: NSView {
     override func resignFirstResponder() -> Bool {return true}
     
     
-//   MARK: - Mouse and Key Events
-
+//    MARK: - Mouse and Key Events
+    
     override func mouseDown(with event: NSEvent) {
-        let shiftKeyDown = (event.modifierFlags.rawValue &  NSEvent.ModifierFlags.shift.rawValue) != 0
-        delegate?.setObjectViewSelected(flag: shiftKeyDown)
-        firstMouseDownPoint = (self.window?.contentView?.convert(event.locationInWindow, to: self))!
-    }
-    
-    override func mouseDragged(with event: NSEvent) {
-        if let newPoint = self.window?.contentView?.convert(event.locationInWindow, to: self), let firstMouseDownPoint = firstMouseDownPoint {
-            let offset = NSPoint(x: newPoint.x - firstMouseDownPoint.x, y: newPoint.y - firstMouseDownPoint.y)
-            let origin = self.frame.origin
-            let newOrigin = NSPoint(x: origin.x + offset.x, y: origin.y + offset.y)
-            delegate?.updateFrame()
-            self.setFrameOrigin(newOrigin)
-        }
-    }
-      
-      override func mouseUp(with event: NSEvent) {
-          delegate?.updateFrame()
-      }
-      
-      override func viewDidEndLiveResize() {
-          super.viewDidEndLiveResize()
-          delegate?.updateFrame()
+          let shiftKeyDown = (event.modifierFlags.rawValue &  NSEvent.ModifierFlags.shift.rawValue) != 0
+          delegate?.setObjectViewSelected(flag: shiftKeyDown)
       }
     
-    override func updateLayer() {
-        layer?.masksToBounds =  false
-        layer?.borderColor = NSColor.clear.cgColor
         
-    }
+    //   MARK: - Dragging Source
+        
+        public override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+            guard case .idle = state else { return [] }
+            state = .target
+            return sender.draggingSourceOperationMask
+        }
+        
+        public override func draggingExited(_ sender: NSDraggingInfo?) {
+            guard case .target = state else { return }
+            state = .idle
+        }
+        
+        public override func draggingEnded(_ sender: NSDraggingInfo?) {
+            guard case .target = state else { return }
+            state = .idle
+        }
+        
+        public override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+            if let controller = sender.draggingSource as? ConnectionDragController {
+                controller.connect(to: self)
+                return true
+            } else { return false }
+        }
+    
 }
 
-//   MARK: - CanvasObjectViewDelegate Protocol
-
-protocol CanvasObjectViewDelegate: class {
-    func setObjectViewSelected(flag: Bool)
-    func updateFrame()
-}
