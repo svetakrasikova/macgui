@@ -61,9 +61,12 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
     
     //    deselect all child controllers except the one that sent the notification
     @objc func changeCanvasObjectControllersSelection(notification: Notification){
+        let sender = notification.object as! CanvasObjectViewController
+        guard sender.parent == self
+            else { return }
         for childController in children {
             if childController .isKind(of: CanvasObjectViewController.self) &&
-                childController !== notification.object as! CanvasObjectViewController {
+                childController !== sender {
                     (childController as! CanvasObjectViewController).viewSelected = false
                 }
             }
