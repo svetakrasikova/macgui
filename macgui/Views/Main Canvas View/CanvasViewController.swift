@@ -107,6 +107,7 @@ class CanvasViewController: GenericCanvasViewController {
     
     @objc func deleteSelectedCanvasObjects(notification: NSNotification){
         var numConnectionsToDelete = 0
+        
         for childController in children {
             if childController .isKind(of: ArrowViewController.self) &&
                 (childController as! CanvasObjectViewController).viewSelected == true {
@@ -223,6 +224,7 @@ class CanvasViewController: GenericCanvasViewController {
     func removeConnectionFromAnalysis(arrowViewController: ArrowViewController){
         if let analysis = analysis, let index = analysis.arrows.firstIndex(of: arrowViewController.connection!) {
             arrowViewController.willDeleteView()
+//            todo: update state of downstream tools
             analysis.arrows.remove(at: index)
         }
     }
