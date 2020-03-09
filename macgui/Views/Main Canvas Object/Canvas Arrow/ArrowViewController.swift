@@ -123,7 +123,6 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
        NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
         (self.view as! ArrowView).arrowViewDelegate = self
         view.wantsLayer = true
-        self
         drawArrow(width: 2.0, highlight: false)
         setClickArea()
         observeEndPointChanges()
