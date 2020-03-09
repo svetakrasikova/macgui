@@ -11,8 +11,12 @@ import Cocoa
 class CanvasObjectView: NSView {
     
     override var wantsUpdateLayer: Bool {return true}
-    var isSelected: Bool = false
-      { didSet { needsDisplay = true } }
+    
+    var isSelected: Bool = false {
+        didSet {
+            needsDisplay = true
+        }
+    }
     
     weak var delegate: CanvasObjectViewController? = nil
    
@@ -40,6 +44,12 @@ class CanvasObjectView: NSView {
         registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: kUTTypeData as String)])
     }
     
+    override func updateLayer() {
+        layer?.masksToBounds =  false
+        layer?.borderColor = NSColor.clear.cgColor
+        
+    }
+    
    
     
     // MARK: - First Responder
@@ -55,6 +65,7 @@ class CanvasObjectView: NSView {
     
     override func mouseDown(with event: NSEvent) {
           let shiftKeyDown = (event.modifierFlags.rawValue &  NSEvent.ModifierFlags.shift.rawValue) != 0
+        let delegate = self.delegate
           delegate?.setObjectViewSelected(flag: shiftKeyDown)
       }
     

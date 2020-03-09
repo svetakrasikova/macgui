@@ -38,12 +38,7 @@ class MovingCanvasObjectView: CanvasObjectView {
           super.viewDidEndLiveResize()
           delegate?.updateFrame()
       }
-    
-    override func updateLayer() {
-        layer?.masksToBounds =  false
-        layer?.borderColor = NSColor.clear.cgColor
-        
-    }
+
 }
 
 //   MARK: - CanvasObjectViewDelegate Protocol

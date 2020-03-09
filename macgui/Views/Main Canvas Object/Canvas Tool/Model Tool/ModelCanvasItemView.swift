@@ -11,7 +11,7 @@ import Cocoa
 class ModelCanvasItemView: MovingCanvasObjectView {
 
     let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
-    private let backgroundLayer = CAShapeLayer()
+    private let shapeLayer = CAShapeLayer()
     
 //    MARK: - Keyboard events
     
@@ -30,22 +30,20 @@ class ModelCanvasItemView: MovingCanvasObjectView {
     }
 
     
-    override func makeBackingLayer() -> CALayer {
-              return backgroundLayer
-          }
-    
 //    TODO: Define model object specific preferences
      override func updateLayer() {
-           super.updateLayer()
-           layer?.cornerRadius = preferencesManager.canvasToolSelectionCornerRadius!
-           layer?.borderWidth = preferencesManager.canvasToolBorderWidth!
+        super.updateLayer()
+           shapeLayer.masksToBounds =  false
+           shapeLayer.borderColor = NSColor.clear.cgColor
+//           shapeLayer.cornerRadius = preferencesManager.canvasToolSelectionCornerRadius!
+           shapeLayer.borderWidth = preferencesManager.canvasToolBorderWidth!
            if isSelected {
-               layer?.shadowOpacity = Float(preferencesManager.canvasToolSelectionShadowOpacity!)
-               layer?.shadowRadius = preferencesManager.canvasToolSelectionShadowRadius!
-               layer?.borderColor = preferencesManager.canvasToolSelectionColor?.cgColor
+               shapeLayer.shadowOpacity = Float(preferencesManager.canvasToolSelectionShadowOpacity!)
+               shapeLayer.shadowRadius = preferencesManager.canvasToolSelectionShadowRadius!
+               shapeLayer.borderColor = preferencesManager.canvasToolSelectionColor?.cgColor
            } else {
-               layer?.shadowOpacity = Float(preferencesManager.canvasToolDefaultShadowOpacity!)
-               layer?.shadowRadius = preferencesManager.canvasToolDefaultShadowRadius!
+               shapeLayer.shadowOpacity = Float(preferencesManager.canvasToolDefaultShadowOpacity!)
+               shapeLayer.shadowRadius = preferencesManager.canvasToolDefaultShadowRadius!
            }
        }
     
@@ -56,19 +54,18 @@ class ModelCanvasItemView: MovingCanvasObjectView {
 extension ModelCanvasItemView {
     
     func drawShape(shape: ModelParameterShape, fillColor: NSColor, strokeColor: NSColor, lineWidth: CGFloat) {
-        let layer = CAShapeLayer()
         switch shape {
         case .solidCircle:
-            layer.path = solidCirclePath(layer: layer)
+            shapeLayer.path = solidCirclePath(layer: shapeLayer)
         case .solidRectangle:
-            layer.path = solidRectanglePath(layer: layer)
+            shapeLayer.path = solidRectanglePath(layer: shapeLayer)
         case .dashedCircle:
-            layer.path = dashedCirclePath(layer: layer)
+            shapeLayer.path = dashedCirclePath(layer: shapeLayer)
         }
-        layer.strokeColor = strokeColor.cgColor
-        layer.lineWidth = lineWidth
-        layer.fillColor = fillColor.cgColor
-        backgroundLayer.addSublayer(layer)
+        shapeLayer.strokeColor = strokeColor.cgColor
+        shapeLayer.lineWidth = lineWidth
+        shapeLayer.fillColor = fillColor.cgColor
+        layer?.addSublayer(shapeLayer)
         
     }
     
