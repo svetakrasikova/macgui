@@ -35,6 +35,10 @@ class ModelCanvasViewController: GenericCanvasViewController {
                                                       selector: #selector(didConnectNodes(notification:)),
                                                       name: .didConnectNodes,
                                                       object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(deleteSelectedCanvasObjects(notification:)),
+                                               name: .didSelectDeleteKey,
+                                               object: nil)
     }
     
     override func viewDidLayout() {
@@ -57,6 +61,41 @@ class ModelCanvasViewController: GenericCanvasViewController {
             canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
         }
     }
+    
+    @objc func deleteSelectedCanvasObjects(notification: Notification){
+        for childController in children {
+            if childController .isKind(of: ModelCanvasItemViewController.self) &&
+                (childController as! CanvasObjectViewController).viewSelected == true {
+                removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
+            }
+        }
+    }
+    
+    
+    func removeCanvasObjectView(canvasObjectViewController: CanvasObjectViewController) {
+          if canvasObjectViewController.isKind(of: ArrowViewController.self){
+              removeConnectionFromModel(arrowViewController: canvasObjectViewController as! ArrowViewController)
+          } else {
+              if canvasObjectViewController.isKind(of: ModelCanvasItemViewController.self){
+                  removeNodeFromModel(nodeViewController: canvasObjectViewController as! ModelCanvasItemViewController)
+              }
+          }
+          canvasObjectViewController.view.removeFromSuperview()
+          canvasObjectViewController.removeFromParent()
+      }
+    
+    func removeConnectionFromModel(arrowViewController: ArrowViewController) {
+        
+    }
+    
+    func removeNodeFromModel(nodeViewController: ModelCanvasItemViewController) {
+        if let model = self.model, let index = model.nodes.firstIndex(of: nodeViewController.tool as! ModelNode)
+        {
+//           remove all associated arrows
+            model.nodes.remove(at: index)
+        }
+    }
+    
     
     func setUpConnection(frame: NSRect, color: NSColor, sourceNode: Connectable, targetNode: Connectable) -> ArrowViewController {
         let arrowController = ArrowViewController()
