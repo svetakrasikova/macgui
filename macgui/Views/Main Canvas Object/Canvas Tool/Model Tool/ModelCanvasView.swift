@@ -13,11 +13,11 @@ class ModelCanvasView: GenericCanvasView {
     weak var concreteDelegate: ModelCanvasViewDelegate? = nil
     override var acceptableTypes: Set<NSPasteboard.PasteboardType> { return [.palettItem] }
 
-      override var delegate: GenericCanvasViewController? {
-          didSet {
-           concreteDelegate = delegate as? ModelCanvasViewDelegate
-          }
-      }
+    override var delegate: GenericCanvasViewController? {
+        didSet {
+            concreteDelegate = delegate as? ModelCanvasViewDelegate
+        }
+    }
     override func draw(_ dirtyRect: NSRect) {
            super.draw(dirtyRect)
         if let backgroundColor = preferencesManager.modelCanvasBackgroundColor {
