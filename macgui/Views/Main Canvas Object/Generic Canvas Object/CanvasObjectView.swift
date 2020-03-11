@@ -64,10 +64,10 @@ class CanvasObjectView: NSView {
 //    MARK: - Mouse and Key Events
     
     override func mouseDown(with event: NSEvent) {
-          let shiftKeyDown = (event.modifierFlags.rawValue &  NSEvent.ModifierFlags.shift.rawValue) != 0
+        let shiftKeyDown = (event.modifierFlags.rawValue &  NSEvent.ModifierFlags.shift.rawValue) != 0
         let delegate = self.delegate
-          delegate?.setObjectViewSelected(flag: shiftKeyDown)
-      }
+        delegate?.setObjectViewSelected(flag: shiftKeyDown)
+    }
     
         
     //   MARK: - Dragging Source

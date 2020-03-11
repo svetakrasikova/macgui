@@ -13,6 +13,9 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
     
     private var observers = [NSKeyValueObservation]()
     
+    let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
+    
+    
 
     weak var targetTool: Connectable?
     weak var sourceTool: Connectable?
@@ -84,7 +87,11 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
     func drawArrow(width: CGFloat, highlight: Bool){
         clearSublayers()
         let arrowLayer = CAShapeLayer()
-        arrowLayer.strokeColor = color?.cgColor
+        if let color = self.color {
+            arrowLayer.strokeColor = color.cgColor
+        } else {
+            arrowLayer.strokeColor = preferencesManager.modelCanvasArrowColor?.cgColor
+        }
         arrowLayer.lineWidth = width
         if highlight {
             arrowLayer.shadowOpacity = 0.7

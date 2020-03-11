@@ -16,7 +16,7 @@ class MainCanvasPreferencesController: NSViewController {
     var didChangeSettings: Bool = false {
         didSet {
             NotificationCenter.default.post(name: UserDefaults.didChangeNotification,
-                                                   object: nil)
+                                                   object: self)
         }
     }
     

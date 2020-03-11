@@ -72,6 +72,21 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
             }
         }
     
+// MARK: - Handling Objects on Canvas
+    
+    func findArrowControllersByTool(tool: ToolObject) -> [ArrowViewController] {
+           var arrowControllers: [ArrowViewController] = []
+           for child in children {
+               if child.isKind(of: ArrowViewController.self){
+                   if (child as! ArrowViewController).ownedBy(tool: tool) {
+                       arrowControllers.append(child as! ArrowViewController)
+                   }
+               }
+           }
+           return arrowControllers
+       }
+    
+    
     // MARK: - Magnification
     
     @IBAction func magnify(_ sender: NSPopUpButton) {

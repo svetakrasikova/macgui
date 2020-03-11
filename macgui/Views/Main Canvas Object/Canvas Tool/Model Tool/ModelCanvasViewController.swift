@@ -19,15 +19,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
         }
         return nil
     }
-     
-    let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
     
-    var arrowColor: NSColor? {
-        if  let color = preferencesManager.modelCanvasArrowColor {
-            return color
-        }
-        return nil
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +31,20 @@ class ModelCanvasViewController: GenericCanvasViewController {
                                                selector: #selector(deleteSelectedCanvasObjects(notification:)),
                                                name: .didSelectDeleteKey,
                                                object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateChildViewControllerAppearance), name: UserDefaults.didChangeNotification, object: nil)
     }
     
     override func viewDidLayout() {
         super.viewDidLayout()
+    }
+    
+    @objc func updateChildViewControllerAppearance(notification: Notification){
+        guard ((notification.object as? ModelCanvasPreferencesController) != nil) else {
+            return
+        }
+        for child in children {
+            child.view.needsDisplay = true
+        }
     }
     
     @objc func didConnectNodes(notification: Notification) {
@@ -53,20 +55,41 @@ class ModelCanvasViewController: GenericCanvasViewController {
 
         guard let source = userInfo["source"]?.delegate as? ModelCanvasItemViewController else { return }
         
-        guard let arrowColor = arrowColor else { return }
-        
         if userInfo["target"]?.window == self.view.window, let targetNode = target.tool, let sourceNode = source.tool {
-            let arrowController = setUpConnection(frame: canvasView.bounds, color: arrowColor, sourceNode: sourceNode as! Connectable, targetNode: targetNode as! Connectable)
+            let arrowController = setUpConnection(frame: canvasView.bounds, sourceNode: sourceNode as! Connectable, targetNode: targetNode as! Connectable)
             addChild(arrowController)
             canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
         }
     }
     
     @objc func deleteSelectedCanvasObjects(notification: Notification){
+        var numConnectionsToDelete = 0
         for childController in children {
-            if childController .isKind(of: ModelCanvasItemViewController.self) &&
+            if childController .isKind(of: ArrowViewController.self) &&
                 (childController as! CanvasObjectViewController).viewSelected == true {
-                removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
+                numConnectionsToDelete = numConnectionsToDelete + 1
+            }
+        }
+        if numConnectionsToDelete > 0 {
+            for childController in children {
+                if childController .isKind(of: ModelCanvasItemViewController.self) &&
+                    (childController as! CanvasObjectViewController).viewSelected == true {
+                    removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
+                }
+            }
+            for childController in children {
+                if childController .isKind(of: ArrowViewController.self) &&
+                    (childController as! CanvasObjectViewController).viewSelected == true {
+                    removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
+                }
+            }
+            
+        } else {
+            for childController in children {
+                if childController .isKind(of: ModelCanvasItemViewController.self) &&
+                    (childController as! CanvasObjectViewController).viewSelected == true {
+                    removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
+                }
             }
         }
     }
@@ -85,22 +108,27 @@ class ModelCanvasViewController: GenericCanvasViewController {
       }
     
     func removeConnectionFromModel(arrowViewController: ArrowViewController) {
-        
-    }
-    
-    func removeNodeFromModel(nodeViewController: ModelCanvasItemViewController) {
-        if let model = self.model, let index = model.nodes.firstIndex(of: nodeViewController.tool as! ModelNode)
-        {
-//           remove all associated arrows
-            model.nodes.remove(at: index)
+        if let model = self.model, let connection = arrowViewController.connection, let index = model.edges.firstIndex(of: connection) {
+            arrowViewController.willDeleteView()
+            model.edges.remove(at: index)
         }
     }
     
     
-    func setUpConnection(frame: NSRect, color: NSColor, sourceNode: Connectable, targetNode: Connectable) -> ArrowViewController {
+    func removeNodeFromModel(nodeViewController: ModelCanvasItemViewController) {
+        if let model = self.model, let index = model.nodes.firstIndex(of: nodeViewController.tool as! ModelNode)
+        {
+            let arrowViewControllers = findArrowControllersByTool(tool: nodeViewController.tool!)
+            for arrowViewController in arrowViewControllers {
+                removeCanvasObjectView(canvasObjectViewController: arrowViewController)
+            }
+            model.nodes.remove(at: index)
+        }
+    }
+    
+    func setUpConnection(frame: NSRect, sourceNode: Connectable, targetNode: Connectable) -> ArrowViewController {
         let arrowController = ArrowViewController()
         arrowController.frame = frame
-        arrowController.color = color
         arrowController.sourceTool = sourceNode
         arrowController.targetTool = targetNode
         return arrowController

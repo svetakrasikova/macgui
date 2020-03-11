@@ -30,23 +30,12 @@ class ModelCanvasItemView: MovingCanvasObjectView {
     }
 
     
-//    TODO: Define model object specific preferences
-     override func updateLayer() {
+    override func updateLayer() {
         super.updateLayer()
-           shapeLayer.masksToBounds =  false
-           shapeLayer.borderColor = NSColor.clear.cgColor
-//           shapeLayer.cornerRadius = preferencesManager.canvasToolSelectionCornerRadius!
-           shapeLayer.borderWidth = preferencesManager.canvasToolBorderWidth!
-           if isSelected {
-               shapeLayer.shadowOpacity = Float(preferencesManager.canvasToolSelectionShadowOpacity!)
-               shapeLayer.shadowRadius = preferencesManager.canvasToolSelectionShadowRadius!
-               shapeLayer.borderColor = preferencesManager.canvasToolSelectionColor?.cgColor
-           } else {
-               shapeLayer.shadowOpacity = Float(preferencesManager.canvasToolDefaultShadowOpacity!)
-               shapeLayer.shadowRadius = preferencesManager.canvasToolDefaultShadowRadius!
-           }
-       }
-    
+        if let delegate = delegate as? ModelCanvasItemViewController {
+            delegate.updateShapeLayer(shapeLayer, selected: isSelected)
+        }
+    }    
 }
 
 // MARK: - Shapes

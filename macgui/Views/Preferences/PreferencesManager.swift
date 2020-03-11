@@ -26,6 +26,10 @@ enum PreferenceKey: String {
     case modelCanvasArrowColor = "modelCanvasArrowColor"
     case modelCanvasClampedNodeColor = "modelCanvasClampedNodeColor"
     case modelCanvasNodeBorderColor = "modelCanvasNodeBorderColor"
+    case modelCanvasNodeSelectionShadowOpacity = "modelCanvasNodeSelectionShadowOpacity"
+    case modelCanvasNodeDefaultShadowOpacity = "modelCanvasNodeDefaultShadowOpacity"
+    case modelCanvasNodeSelectionShadowRadius = "modelCanvasNodeSelectionShadowRadius"
+    case modelCanvasNodeDefaultShadowRadius = "modelCanvasNodeDefaultShadowRadius"
     
     // Main Canvas Tool
     case canvasToolBorderWidth = "canvasToolBorderWidth"
@@ -51,6 +55,10 @@ class PreferencesManager {
             PreferenceKey.modelCanvasArrowColor.rawValue: NSColor.black,
             PreferenceKey.modelCanvasClampedNodeColor.rawValue: NSColor.yellow,
             PreferenceKey.modelCanvasNodeBorderColor.rawValue: NSColor.gray,
+            PreferenceKey.modelCanvasNodeSelectionShadowOpacity.rawValue: 0.7,
+            PreferenceKey.modelCanvasNodeDefaultShadowOpacity.rawValue: 0.3,
+            PreferenceKey.modelCanvasNodeSelectionShadowRadius.rawValue: 10.0,
+            PreferenceKey.modelCanvasNodeDefaultShadowRadius.rawValue: 5.0,
             PreferenceKey.canvasSelectionWidth.rawValue: 5.0,
             PreferenceKey.canvasObjectDimension.rawValue: 50.0,
             PreferenceKey.canvasToolBorderWidth.rawValue: 1.8,
@@ -173,6 +181,27 @@ class PreferencesManager {
         }
     }
     
+    var modelCanvasNodeSelectionShadowOpacity: CGFloat? {
+        get {
+            return userDefaults.object(forKey: PreferenceKey.canvasToolSelectionShadowOpacity.rawValue) as? CGFloat
+        }
+    }
+    var modelCanvasNodeDefaultShadowOpacity: CGFloat? {
+        get {
+            return userDefaults.object(forKey: PreferenceKey.modelCanvasNodeDefaultShadowOpacity.rawValue) as? CGFloat
+        }
+    }
+    var modelCanvasNodeSelectionShadowRadius: CGFloat? {
+        get {
+            return userDefaults.object(forKey: PreferenceKey.modelCanvasNodeSelectionShadowRadius.rawValue) as? CGFloat
+        }
+    }
+    var modelCanvasNodeDefaultShadowRadius: CGFloat? {
+        get {
+            return userDefaults.object(forKey: PreferenceKey.modelCanvasNodeDefaultShadowRadius.rawValue) as? CGFloat
+        }
+    }
+    
     
     
     init() {
@@ -209,7 +238,7 @@ class PreferencesManager {
         }
     }
     
-    //     raises non-property-list exception
+    
     func resetDefaults() {
         for (key, value) in self.defaults {
             if let color = value as? NSColor {
@@ -222,7 +251,7 @@ class PreferencesManager {
                                         object: nil)
     }
     
-    //     raises non-property-list exception
+ 
     func resetToCachedPreferences() {
         for (key, value) in self.cachedPreferences {
             if let color = value as? NSColor {
