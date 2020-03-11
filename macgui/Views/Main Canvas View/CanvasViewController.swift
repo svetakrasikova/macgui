@@ -209,18 +209,6 @@ class CanvasViewController: GenericCanvasViewController {
         }
     }
     
-//    func findArrowControllersByTool(tool: ToolObject) -> [ArrowViewController] {
-//        var arrowControllers: [ArrowViewController] = []
-//        for child in children {
-//            if child.isKind(of: ArrowViewController.self){
-//                if (child as! ArrowViewController).ownedBy(tool: tool) {
-//                    arrowControllers.append(child as! ArrowViewController)
-//                }
-//            }
-//        }
-//        return arrowControllers
-//    }
-    
     func removeConnectionFromAnalysis(arrowViewController: ArrowViewController){
         if let analysis = analysis, let index = analysis.arrows.firstIndex(of: arrowViewController.connection!) {
             arrowViewController.willDeleteView()

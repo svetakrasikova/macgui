@@ -10,7 +10,13 @@ import Cocoa
 
 class ModelToolViewController: NSSplitViewController, ModelPaletteViewControllerDelegate {
     
-    weak var tool: Model?
+    weak var tool: Model? {
+        didSet {
+            if let canvasViewController = self.canvasViewController {
+                canvasViewController.resetCanvasView()
+            }
+        }
+    }
     var parameters: [Parameter]?
     
     weak var paletteViewController: ModelPaletteViewController? {

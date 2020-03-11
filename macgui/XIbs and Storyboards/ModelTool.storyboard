@@ -152,7 +152,7 @@
                                             <tableColumns>
                                                 <tableColumn width="145" minWidth="16" maxWidth="1000" id="uGO-87-8zt">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -271,16 +271,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField identifier="invitationLabel" horizontalHuggingPriority="251" verticalHuggingPriority="751" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ah0-aL-S0G" userLabel="Drag Paremeters Here">
-                                <rect key="frame" x="144" y="141" width="162" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" identifier="InvitationLabel" title="Drag Parameters Here" id="eSY-J4-gOU">
-                                    <font key="font" metaFont="systemHeavy" size="14"/>
-                                    <color key="textColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <accessibility identifier="InvitationLabel"/>
-                            </textField>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="6" minMagnification="0.375" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="allowed" verticalScrollElasticity="allowed" findBarPosition="belowContent" translatesAutoresizingMaskIntoConstraints="NO" id="uYG-QC-F6p" userLabel="Scroll View">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="1Qa-Fs-fbe" customClass="CenteringClipView" customModule="macgui" customModuleProvider="target">
@@ -330,7 +320,6 @@
                         <outlet property="canvasView" destination="rFB-ux-jOW" id="0Jl-vv-UE1"/>
                         <outlet property="canvasViewHeightConstraint" destination="Ohi-oz-g1Z" id="ix3-GE-M3g"/>
                         <outlet property="canvasViewWidthConstraint" destination="740-lW-Qcp" id="bZB-K3-UwD"/>
-                        <outlet property="invitationLabel" destination="ah0-aL-S0G" id="znM-Bs-x5q"/>
                         <outlet property="scrollView" destination="uYG-QC-F6p" id="pcl-aw-IP6"/>
                     </connections>
                 </viewController>
