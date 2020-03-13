@@ -154,10 +154,12 @@ class CanvasViewController: GenericCanvasViewController {
             }
         }
             reset(analysis: analysis!)
+
     }
 
     
     func reset(analysis: Analysis){
+        
         for subview in canvasView.subviews{
             if subview.isKind(of: CanvasObjectView.self) {
                 subview.removeFromSuperview()

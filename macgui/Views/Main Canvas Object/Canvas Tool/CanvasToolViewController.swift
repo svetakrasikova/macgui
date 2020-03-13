@@ -151,7 +151,6 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 //        if let window = NSApp.windows.first { window.delegate = self}
         infoButton.delegate = self
         inspectorButton.delegate = self
@@ -278,7 +277,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     
     
     @objc func didAddNewArrow(notification: Notification){
-
+        
         let tools = notification.userInfo as! [String:ToolObject]
         if tool == tools["sourceTool"]{
             outlets.reloadData()
@@ -310,6 +309,7 @@ extension CanvasToolViewController: NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+
         let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("ConnectorItemArrow"), for: indexPath) as! ConnectorItemArrow
         item.parentTool = self.tool as? Connectable
         if collectionView == self.inlets {

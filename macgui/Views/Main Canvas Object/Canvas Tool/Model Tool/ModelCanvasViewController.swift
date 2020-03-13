@@ -179,7 +179,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
     }
     
     func resetCanvasView(){
-       
+    
         guard let model = self.model
             else { return }
         
