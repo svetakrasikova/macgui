@@ -287,10 +287,10 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         }
     }
     
-//    func windowDidResize(_ notification: Notification) {
+//   func windowDidResize(_ notification: Notification) {
 //           updateFrame()
 //       }
-       
+//       
 
 }
 
@@ -298,6 +298,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
 extension CanvasToolViewController: NSCollectionViewDataSource {
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        NSAnimationContext.current.duration = 0
         guard let connectable = tool as? Connectable else {return 0}
         if collectionView == self.inlets {
             let count = connectable.unconnectedInlets.count
@@ -309,7 +310,6 @@ extension CanvasToolViewController: NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-
         let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("ConnectorItemArrow"), for: indexPath) as! ConnectorItemArrow
         item.parentTool = self.tool as? Connectable
         if collectionView == self.inlets {

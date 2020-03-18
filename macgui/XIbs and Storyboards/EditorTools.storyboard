@@ -90,15 +90,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField identifier="invitationLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sq8-aF-l7S">
-                                <rect key="frame" x="142" y="138" width="166" height="24"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" identifier="InvitationLabel" title="Drag Tools Here" id="lW8-mV-Uai">
-                                    <font key="font" metaFont="systemHeavy" size="21"/>
-                                    <color key="textColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <accessibility identifier="InvitationLabel"/>
-                            </textField>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="6" minMagnification="0.375" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="allowed" verticalScrollElasticity="allowed" findBarPosition="belowContent" translatesAutoresizingMaskIntoConstraints="NO" id="fPJ-TS-pd4">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="HRj-1o-szR" customClass="CenteringClipView" customModule="macgui" customModuleProvider="target">
@@ -138,11 +129,9 @@
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Sq8-aF-l7S" firstAttribute="centerX" secondItem="Vej-Ld-BJf" secondAttribute="centerX" id="06h-OW-NsP"/>
                             <constraint firstItem="fPJ-TS-pd4" firstAttribute="leading" secondItem="Vej-Ld-BJf" secondAttribute="leading" priority="750" id="0Od-gm-fW7"/>
                             <constraint firstAttribute="trailing" secondItem="fPJ-TS-pd4" secondAttribute="trailing" priority="750" id="8HX-qk-mxj"/>
                             <constraint firstItem="fPJ-TS-pd4" firstAttribute="top" secondItem="Vej-Ld-BJf" secondAttribute="top" priority="750" id="Stn-AR-yQb"/>
-                            <constraint firstItem="Sq8-aF-l7S" firstAttribute="centerY" secondItem="fPJ-TS-pd4" secondAttribute="centerY" id="VcV-Ie-4NQ"/>
                             <constraint firstAttribute="bottom" secondItem="fPJ-TS-pd4" secondAttribute="bottom" priority="750" id="fHO-0D-llT"/>
                         </constraints>
                     </view>
@@ -150,7 +139,6 @@
                         <outlet property="canvasView" destination="lBV-f8-Awk" id="b6F-E3-h77"/>
                         <outlet property="canvasViewHeightConstraint" destination="mwg-5L-hDZ" id="qQ7-yi-I1t"/>
                         <outlet property="canvasViewWidthConstraint" destination="tJu-dg-TAc" id="h2N-6D-CWe"/>
-                        <outlet property="invitationLabel" destination="Sq8-aF-l7S" id="wPP-d3-Wpu"/>
                         <outlet property="scrollView" destination="fPJ-TS-pd4" id="esq-RD-Tdb"/>
                         <outlet property="transparentToolsView" destination="r5O-Yj-ak6" id="zSd-QL-8Af"/>
                     </connections>

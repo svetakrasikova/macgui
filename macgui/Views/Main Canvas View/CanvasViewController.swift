@@ -18,7 +18,6 @@ class CanvasViewController: GenericCanvasViewController {
         }
     }
 
-    @IBOutlet weak var invitationLabel: NSTextField!
     
    
     
@@ -52,10 +51,10 @@ class CanvasViewController: GenericCanvasViewController {
             do {
                 let connection = try Connection(to: toConnector, from: fromConnector)
                 let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool as! Connectable, connection: connection)
-                addChild(arrowController)
                 analysis?.arrows.append(connection)
+                addChild(arrowController)
                 canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
-                
+              
                 let userInfo  = ["sourceTool" : sourceTool, "targetTool" : targetTool]
                 NotificationCenter.default.post(name: .didAddNewArrow, object: self, userInfo: userInfo)
             } catch ConnectionError.noData {
@@ -170,17 +169,14 @@ class CanvasViewController: GenericCanvasViewController {
                 child.removeFromParent()
             }
         }
-        if analysis.isEmpty(){
-            invitationLabel.isHidden = false
-        } else {
-            invitationLabel.isHidden = true
-            for tool in analysis.tools {
-                addToolView(tool: tool)
-            }
-            for connection in analysis.arrows {
-                addArrowView(connection: connection)
-            }
+        
+        for tool in analysis.tools {
+            addToolView(tool: tool)
         }
+        for connection in analysis.arrows {
+            addArrowView(connection: connection)
+        }
+        
     }
     
    
@@ -241,7 +237,6 @@ extension CanvasViewController: CanvasViewDelegate {
             else {
                 return
         }
-        invitationLabel.isHidden = true
         let size = NSSize(width: toolDimension, height: toolDimension)
         let frame = NSRect(x: center.x - size.width/2, y: center.y - size.height/2, width: size.width, height: size.height)
         addCanvasTool(frame: frame, name: name)

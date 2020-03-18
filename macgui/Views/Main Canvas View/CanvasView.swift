@@ -33,6 +33,7 @@ class CanvasView: GenericCanvasView {
     
     override func draw(_ dirtyRect: NSRect) {
         if let backgroundColor = preferencesManager.mainCanvasBackroundColor, let gridColor = preferencesManager.mainCanvasGridColor {
+              self.wantsLayer = true
             makeGridBackground(dirtyRect: dirtyRect, gridColor: gridColor, backgroundColor: backgroundColor)
         }
          super.draw(dirtyRect)

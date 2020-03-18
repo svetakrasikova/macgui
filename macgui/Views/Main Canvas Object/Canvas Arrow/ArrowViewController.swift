@@ -127,9 +127,10 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
         (self.view as! ArrowView).arrowViewDelegate = self
         view.wantsLayer = true
+        view.unregisterDraggedTypes()
         drawArrow(width: 2.0, highlight: false)
         setClickArea()
         observeEndPointChanges()
@@ -137,7 +138,7 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
     
     
     override func windowDidResize(_ notification: Notification) {
-        if let canvasView = view.superview as? CanvasView {
+        if let canvasView = view.superview as? GenericCanvasView {
             view.setFrameSize(canvasView.frame.size)
         }
     }
