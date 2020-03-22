@@ -38,7 +38,9 @@ class ModelCanvasViewController: GenericCanvasViewController {
     }
     
     @objc func updateChildViewControllerAppearance(notification: Notification){
-        guard ((notification.object as? ModelCanvasPreferencesController) != nil) else {
+        guard ((notification.object as? ModelCanvasPreferencesController) != nil) ||
+        ((notification.object as? PreferencesManager) != nil) 
+        else {
             return
         }
         for child in children {
