@@ -37,7 +37,7 @@ class CanvasView: GenericCanvasView {
             makeGridBackground(dirtyRect: dirtyRect, gridColor: gridColor, backgroundColor: backgroundColor)
         }
          super.draw(dirtyRect)
-        
+
     }
 }
 
