@@ -242,6 +242,7 @@ extension CanvasViewController: CanvasViewDelegate {
         addCanvasTool(frame: frame, name: name)
         if let window = self.view.window {
             window.makeFirstResponder(canvasView)
+
         }
         
     }
