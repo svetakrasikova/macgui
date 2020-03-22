@@ -34,7 +34,7 @@ class ToolObject: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: Key.name.rawValue)
         aCoder.encode(frameOnCanvas, forKey: Key.frameOnCanvas.rawValue)
-        aCoder.encode(descriptiveName, forKey: Key.descriptiveName.rawValue)
+        aCoder.encode(analysis, forKey: Key.analysis.rawValue)
     }
     
     required init?(coder aDecoder: NSCoder) {
