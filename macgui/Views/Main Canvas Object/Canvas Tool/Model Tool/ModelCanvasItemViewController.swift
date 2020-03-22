@@ -49,6 +49,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
         view.wantsLayer = true
         setFrame()
         drawShapeInLayer()
+        addInfoButton()
     }
     func setFrame () {
         view.frame = self.frame
@@ -70,6 +71,19 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
             shapeLayer.shadowOpacity = Float(preferencesManager.modelCanvasNodeDefaultShadowOpacity!)
             shapeLayer.shadowRadius = preferencesManager.modelCanvasNodeDefaultShadowRadius!
         }
+        addInfoButton()
+    }
+    
+    func addInfoButton(){
+        guard let fillColor = self.fillColor else { return }
+        let infoButton = ActionButton()
+        if fillColor.isLight() ?? true { infoButton.labelColor = NSColor.black.cgColor }
+        let buttonOrigin = CGPoint(x: view.bounds.center().x-4, y: view.bounds.center().y-20)
+        infoButton.frame = CGRect(origin: buttonOrigin, size: CGSize(width: 8, height: 8))
+        infoButton.tag = 0
+        infoButton.isTransparent = true
+        infoButton.setButtonType(.momentaryPushIn)
+        self.view.addSubview(infoButton)
     }
     
 }
