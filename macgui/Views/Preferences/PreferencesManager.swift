@@ -248,7 +248,7 @@ class PreferencesManager {
             }
         }
         NotificationCenter.default.post(name: UserDefaults.didChangeNotification,
-                                        object: nil)
+                                        object: self)
     }
     
  
@@ -261,7 +261,7 @@ class PreferencesManager {
             }
         }
         NotificationCenter.default.post(name: UserDefaults.didChangeNotification,
-                                        object: nil)
+                                        object: self)
     }
     
     
