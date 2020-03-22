@@ -158,6 +158,9 @@ extension Color: RawRepresentable {
 
 extension NSColor {
     
+    /**
+      Intialize from a hexadecimal string representation.
+      */
     convenience init(hexString : String)
     {
         if let rgbValue = UInt(hexString, radix: 16) {
@@ -169,4 +172,29 @@ extension NSColor {
             self.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         }
     }
+    
+    /**
+    Check if the color is light or dark, as defined by the injected lightness threshold.
+    
+    - parameter threshold: lightness threshold; default value is 0.7.
+    
+    - returns: true if the color is light; a nil value is returned if the lightness could not be determined.
+    */
+    func isLight(threshold: Float = 0.7) -> Bool? {
+        let originalCGColor = self.cgColor
+
+        let RGBCGColor = originalCGColor.converted(to: CGColorSpaceCreateDeviceRGB(), intent: .defaultIntent, options: nil)
+        guard let components = RGBCGColor?.components else {
+            return nil
+        }
+        guard components.count >= 3 else {
+            return nil
+        }
+
+        let brightness = Float(((components[0] * 299) + (components[1] * 587) + (components[2] * 114)) / 1000)
+        return (brightness > threshold)
+    }
+    
 }
+
+
