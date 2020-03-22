@@ -12,7 +12,7 @@ import Cocoa
 class Connector: NSObject, NSCoding {
     
     var type: ConnectorType
-    var neighbor: Connectable?
+    weak var neighbor: Connectable?
     
     enum Key: String {
         case type = "type"

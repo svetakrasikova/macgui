@@ -10,7 +10,7 @@ import Cocoa
 
 class ConnectorItem: NSCollectionViewItem, ConnectorItemViewDelegate {
     
-    var connector: Connector?
+    weak var connector: Connector?
     weak var parentTool: Connectable?
     
     override func mouseDown(with mouseDownEvent: NSEvent) {
