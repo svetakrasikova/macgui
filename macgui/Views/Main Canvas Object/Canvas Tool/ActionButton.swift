@@ -37,6 +37,8 @@ class ActionButton: NSButton {
     
     var mouseIsInside = false
     
+    var labelColor: CGColor? = NSColor.white.cgColor
+    
     var buttonType: ActionButtonType {
         switch tag {
         case 0:
@@ -141,7 +143,7 @@ class ActionButton: NSButton {
         textLayer.frame = bounds
         textLayer.contentsScale = scaleFactor
         textLayer.font = "Hoefler Text" as CFTypeRef
-        textLayer.foregroundColor = NSColor.white.cgColor
+        textLayer.foregroundColor = self.labelColor
         textLayer.fontSize = 7
         textLayer.string = "i"
         textLayer.allowsFontSubpixelQuantization = true
