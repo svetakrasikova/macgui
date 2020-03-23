@@ -56,7 +56,7 @@ class PreferencesManager {
             PreferenceKey.modelCanvasClampedNodeColor.rawValue: NSColor.yellow,
             PreferenceKey.modelCanvasNodeBorderColor.rawValue: NSColor.gray,
             PreferenceKey.modelCanvasNodeSelectionShadowOpacity.rawValue: 0.7,
-            PreferenceKey.modelCanvasNodeDefaultShadowOpacity.rawValue: 0.3,
+            PreferenceKey.modelCanvasNodeDefaultShadowOpacity.rawValue: 0.1,
             PreferenceKey.modelCanvasNodeSelectionShadowRadius.rawValue: 10.0,
             PreferenceKey.modelCanvasNodeDefaultShadowRadius.rawValue: 5.0,
             PreferenceKey.canvasSelectionWidth.rawValue: 5.0,
