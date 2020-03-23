@@ -78,6 +78,40 @@ extension ModelCanvasItemView {
         path.addRect(self.bounds)
         return path
     }
+    
+    func drawDividerLine(strokeColor: NSColor, lineWidth: CGFloat) {
+        let lineLayer = CAShapeLayer()
+        let linePath = CGMutablePath()
+        let begPoint = CGPoint(x: bounds.minX+7, y: bounds.center().y-8)
+        let endPoint = CGPoint(x: bounds.maxX-7, y: bounds.center().y-8)
+        linePath.move(to: begPoint)
+        linePath.addLine(to: endPoint)
+        lineLayer.path = linePath
+        lineLayer.lineWidth = lineWidth
+        lineLayer.strokeColor = strokeColor.cgColor
+        layer?.addSublayer(lineLayer)
+     }
+    
+    func drawLabel(labelColor: NSColor, label: String) {
+        let textLayer = CATextLayer()
+
+        if  let backingScaleFactor = self.window?.backingScaleFactor {
+            shapeLayer.contentsScale = backingScaleFactor
+            textLayer.contentsScale = backingScaleFactor
+        }
+        textLayer.frame = NSRect(x: bounds.minX, y: bounds.center().y-8, width: bounds.size.width, height: bounds.size.height/2+8)
+        textLayer.font = "System Regular" as CFTypeRef
+        textLayer.backgroundColor = NSColor.clear.cgColor
+        textLayer.foregroundColor = labelColor.cgColor
+        textLayer.fontSize = 18
+        textLayer.string = label
+        textLayer.allowsFontSubpixelQuantization = true
+        textLayer.position = bounds.center()
+        textLayer.alignmentMode = .center;
+        shapeLayer.addSublayer(textLayer)
+    }
+    
+
 }
 
 enum ModelParameterShape{

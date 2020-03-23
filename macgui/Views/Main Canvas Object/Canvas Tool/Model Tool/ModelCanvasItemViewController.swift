@@ -11,6 +11,7 @@ import Cocoa
 class ModelCanvasItemViewController: CanvasObjectViewController {
 
     let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
+    
     var fillColor: NSColor? {
 //        TODO: If a clamped node return the clamped node color
         guard let fillColor = preferencesManager.modelCanvasBackgroundColor
@@ -26,11 +27,13 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
     
     var shape: ModelParameterShape? {
         if let node = self.tool as? ModelNode{
-            // get the type of the parameter from the palettItem
-            let palettItem = node.nodeType
             return .dashedCircle
         }
         return nil
+    }
+    
+    var label: String? {
+        return Symbol.doubleStruckCapitalR.rawValue
     }
     
     var frame: NSRect {
@@ -49,6 +52,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
         view.wantsLayer = true
         setFrame()
         drawShapeInLayer()
+        addDividerLine()
         addInfoButton()
     }
     func setFrame () {
@@ -71,6 +75,8 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
             shapeLayer.shadowOpacity = Float(preferencesManager.modelCanvasNodeDefaultShadowOpacity!)
             shapeLayer.shadowRadius = preferencesManager.modelCanvasNodeDefaultShadowRadius!
         }
+        addDividerLine()
+        addLabel()
         addInfoButton()
     }
     
@@ -85,5 +91,24 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
         infoButton.setButtonType(.momentaryPushIn)
         self.view.addSubview(infoButton)
     }
+    
+    func addDividerLine() {
+        if let view = self.view as? ModelCanvasItemView, let strokeColor = self.strokeColor {
+            view.drawDividerLine(strokeColor: strokeColor, lineWidth: 1.0)
+        }
+    }
+    
+    func addLabel() {
+        if let view = self.view as? ModelCanvasItemView, let fillColor = self.fillColor, let label = self.label {
+            if fillColor.isLight() ?? true {
+                view.drawLabel(labelColor: NSColor.black, label: label)
+            } else {
+                view.drawLabel(labelColor: NSColor.white, label: label)
+            }
+          
+        }
+    }
+    
+ 
     
 }
