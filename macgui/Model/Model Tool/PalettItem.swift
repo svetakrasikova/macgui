@@ -15,57 +15,43 @@ enum PalettItemType: String, Codable, CaseIterable {
     case distribution = "Distribution"
 }
 
-class PalettItem: NSObject, Codable, NSPasteboardWriting, NSPasteboardReading {
-    
-    enum PalettItemError: Error {
-        case decodingError
-        case encodingError
-    }
-    
-    private enum CodingKeys: String, CodingKey {
-        case name
-        case type
-        case dimension
-    }
-    
+class PalettItem: NSObject, Codable, NSCoding, NSPasteboardWriting, NSPasteboardReading {
+
     var name: String
     var type: PalettItemType
     var dimension: Int
+    
+    enum Key: String {
+        case name = "name"
+        case type = "type"
+        case dimension = "dimension"
+    }
     
     init(name: String, type: PalettItemType, dimension: Int) {
         self.name = name
         self.type = type
         self.dimension = dimension
     }
-    
-    required init(from decoder: Decoder) throws {
-        
-        do {
-            let values = try decoder.container(keyedBy: CodingKeys.self)
-            self.name = try values.decode(String.self, forKey: .name)
-            self.type = try values.decode(PalettItemType.self, forKey: .type)
-            self.dimension = try values.decode(Int.self, forKey: .dimension)
-        }
-        catch {
-            throw PalettItemError.decodingError
-        }
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        do {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            try container.encode(name, forKey: .name)
-            try container.encode(type, forKey: .type)
-            try container.encode(dimension, forKey: .dimension)
-        } catch {
-            throw PalettItemError.encodingError
-        }
-    }
-    
+
     required convenience init?(pasteboardPropertyList propertyList: Any, ofType type: NSPasteboard.PasteboardType) {
         guard let data = propertyList as? Data,
             let palettItem = try? PropertyListDecoder().decode(PalettItem.self, from: data) else { return nil }
         self.init(name: palettItem.name, type: palettItem.type, dimension: palettItem.dimension)
+    }
+
+    
+//   MARK: - NSCoding
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(name, forKey: "name")
+        coder.encode(type.rawValue, forKey: "type")
+        coder.encode(dimension, forKey: "dimension")
+    }
+    
+    required init?(coder: NSCoder) {
+        name = coder.decodeObject(forKey: "name") as! String
+        type = PalettItemType(rawValue: coder.decodeObject(forKey: Key.type.rawValue) as! String)!
+        dimension = coder.decodeInteger(forKey: "dimension")
     }
     
 //    MARK: - NSPasteboardWriting, NSPasteboardReading
