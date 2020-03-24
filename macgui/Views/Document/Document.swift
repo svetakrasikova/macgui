@@ -14,11 +14,16 @@ class Document: NSDocument {
    
     override init() {
         super.init()
-        // Add your subclass-specific initialization here.
+        NotificationCenter.default.addObserver(self, selector: #selector(didUpdateDocument(notification:)), name: .didUpdateDocument, object: nil)
+         Swift.print("FromInit:", self, self.isDocumentEdited)
     }
 
     override class var autosavesInPlace: Bool {
         return true
+    }
+    
+    @objc func didUpdateDocument(notification: Notification) {
+        self.updateChangeCount(.changeDone)
     }
 
     override func makeWindowControllers() {

@@ -10,11 +10,23 @@ import Cocoa
 
 class Analysis: NSObject, NSCoding, NSCopying {
 
-    @objc dynamic var name: String = ""
-    @objc dynamic var tools: [ToolObject] = []
+    @objc dynamic var name: String = "" {
+        didSet{
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    @objc dynamic var tools: [ToolObject] = [] {
+        didSet{
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
     @objc dynamic var arrows: [Connection] = []
 
-    var notes: String?
+    var notes: String? {
+        didSet {
+             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
     
     override init(){
         super.init()

@@ -18,4 +18,5 @@ extension NSNotification.Name {
     static let dismissToolSheet = Notification.Name("dismissToolSheet")
     static let didAddNewArrow = Notification.Name("didAddNewArrow")
     static let willChangePreferences = Notification.Name("willChangePreferences")
+    static let didUpdateDocument = Notification.Name("didUpdateDocument")
 }

@@ -9,8 +9,13 @@
 import Cocoa
 
 class DataSource: NSObject, NSCoding {
+
     
-    @objc dynamic var analyses: [Analysis] = [Analysis(name: "untitled analysis")]
+    @objc dynamic var analyses: [Analysis] = [Analysis(name: "untitled analysis")] {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
     @objc dynamic var selectionIndexes: NSIndexSet = NSIndexSet()
     
     
