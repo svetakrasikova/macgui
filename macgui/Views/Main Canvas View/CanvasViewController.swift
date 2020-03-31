@@ -11,17 +11,13 @@ import Cocoa
 class CanvasViewController: GenericCanvasViewController {
 
     weak var analysis: Analysis? {
+        
         didSet{
             if let analysis = analysis {
                 reset(analysis: analysis)
             }
         }
     }
-
-    
-   
-    
-    
     
 // MARK: - Controller Life Cycle
     override func viewDidLoad() {

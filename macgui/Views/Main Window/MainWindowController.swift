@@ -15,12 +15,12 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     var notebooks: [NotebookWindowController]? = []
     
     override var document: AnyObject? {
-           didSet {
+        didSet {
             if let document = self.document as? Document {
-                   self.contentViewController?.representedObject = document
-                }
+                self.contentViewController?.representedObject = document
             }
-       }
+        }
+    }
     
     var activeAnalysis: Analysis {
         if let analysis = (self.contentViewController as! MainSplitViewController).detailViewController.canvasViewController?.analysis {
