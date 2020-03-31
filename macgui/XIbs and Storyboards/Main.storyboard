@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -777,14 +777,14 @@
                                         </connections>
                                     </popUpButton>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="52791819-F0EC-43D7-8D11-843905557167" label="Notebook" paletteLabel="Notebook" image="Notebook" id="Shr-5p-fva" userLabel="Notebook">
+                                <toolbarItem implicitItemIdentifier="52791819-F0EC-43D7-8D11-843905557167" label="Notebook" paletteLabel="Notebook" image="NSTouchBarComposeTemplate" id="Shr-5p-fva" userLabel="Notebook">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="45" height="47"/>
-                                    <size key="maxSize" width="47" height="47"/>
-                                    <button key="view" id="aSq-Nf-4L5">
-                                        <rect key="frame" x="6" y="14" width="47" height="47"/>
+                                    <size key="minSize" width="45" height="24"/>
+                                    <size key="maxSize" width="48" height="47"/>
+                                    <button key="view" toolTip="Open notebook for selected analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="aSq-Nf-4L5">
+                                        <rect key="frame" x="6" y="14" width="48" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Notebook" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="fzQ-t4-J29">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarComposeTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="fzQ-t4-J29">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -793,9 +793,61 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="39986EE7-FDB2-4CBE-8F9B-2583ABBF7082" label="Delete" paletteLabel="Delete" image="NSTouchBarDeleteTemplate" id="OmC-ey-B5j">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="47" height="25"/>
+                                    <size key="maxSize" width="48" height="25"/>
+                                    <button key="view" toolTip="Delete selected analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="P0T-On-rwn">
+                                        <rect key="frame" x="0.0" y="14" width="48" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarDeleteTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qHR-If-88N">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="removeAnalysisClicked:" target="Oky-zY-oP4" id="sO4-AV-NQ9"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="43EFF042-4CF0-4E17-B81F-A4995F1C618D" label="Add" paletteLabel="Add" image="NSTouchBarAddTemplate" id="gVg-Z8-8GD" userLabel="Add">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="47" height="25"/>
+                                    <size key="maxSize" width="48" height="25"/>
+                                    <button key="view" toolTip="Add an analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="2Ak-RN-o5E">
+                                        <rect key="frame" x="0.0" y="14" width="48" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7MJ-DP-Khr">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="addAnalysisClicked:" target="Oky-zY-oP4" id="zYn-Ta-7ed"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="4B5FA07C-CAE2-4F41-A6E9-B6A0F3461B8F" label="Copy" paletteLabel="Copy" image="NSTouchBarAddDetailTemplate" id="oOe-Cn-gDU" userLabel="Copy">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="47" height="25"/>
+                                    <size key="maxSize" width="48" height="25"/>
+                                    <button key="view" toolTip="Copy selected analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="RGq-Vg-fa6">
+                                        <rect key="frame" x="0.0" y="14" width="48" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarAddDetailTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iks-B0-Feg">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="copyAnalysisClicked:" target="Oky-zY-oP4" id="xXC-8d-Op5"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="Shr-5p-fva"/>
+                                <toolbarItem reference="OmC-ey-B5j"/>
+                                <toolbarItem reference="gVg-Z8-8GD"/>
+                                <toolbarItem reference="oOe-Cn-gDU"/>
+                                <toolbarItem reference="Dzc-es-9Az"/>
                                 <toolbarItem reference="GI7-Ow-JbS"/>
                             </defaultToolbarItems>
                         </toolbar>
@@ -871,6 +923,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Notebook" width="512" height="512"/>
+        <image name="NSTouchBarAddDetailTemplate" width="18" height="30"/>
+        <image name="NSTouchBarAddTemplate" width="14" height="30"/>
+        <image name="NSTouchBarComposeTemplate" width="21" height="30"/>
+        <image name="NSTouchBarDeleteTemplate" width="15" height="30"/>
     </resources>
 </document>
