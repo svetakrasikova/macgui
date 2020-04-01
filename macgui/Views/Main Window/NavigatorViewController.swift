@@ -51,25 +51,6 @@ class NavigatorViewController: NSViewController {
         
     }
     
-    @IBAction func deleteAnalysisClicke(_ sender: NSPopUpButton) {
-        if let selectedForRemoval = arrayController.selectedObjects {
-            arrayController.removeSelectedAnalyses(toRemove: selectedForRemoval as! [Analysis])
-            if analyses.isEmpty {
-                addAnalysis()
-            }
-        }
-        setSelectedAnalysisToActive()
-    }
-    
-    @IBAction func addAnalysisClicke(_ sender: NSPopUpButton) {
-        addAnalysis()
-    }
-    
-    @IBAction func copyAnalysisClicke(_ sender: NSPopUpButton) {
-        
-    }
-   
-    
     /**
      Trigger a call on the delegate to update the detail view if a new analysis is selected in the table view
      */
