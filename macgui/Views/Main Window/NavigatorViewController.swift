@@ -83,6 +83,11 @@ class NavigatorViewController: NSViewController, NSTableViewDelegate, NSTableVie
         super.viewDidLoad()
     }
     
+    override func viewDidAppear() {
+        analysesTableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
+        delegate?.navigatorViewController(viewController: self, selectedAnalysis: analyses[0])
+    }
+    
     
     // MARK: - NSTableViewDataSource
     
