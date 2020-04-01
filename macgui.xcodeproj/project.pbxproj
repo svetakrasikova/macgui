@@ -15,7 +15,6 @@
 		140E726323F3643400E86919 /* PalettItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E726223F3643400E86919 /* PalettItem.swift */; };
 		1410C3A523F6048B0044EB48 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3A423F6048B0044EB48 /* Parameter.swift */; };
 		1410C3A723FCC4260044EB48 /* ModelCanvasPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3A623FCC4260044EB48 /* ModelCanvasPreferencesController.swift */; };
-		1410C3AB2404EB780044EB48 /* ModelCanvasItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1410C3AA2404EB780044EB48 /* ModelCanvasItem.storyboard */; };
 		1410C3AD2404EBE50044EB48 /* ModelCanvasItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */; };
 		1410C3AF2404ECEB0044EB48 /* ModelCanvasItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3AE2404ECEB0044EB48 /* ModelCanvasItemView.swift */; };
 		1410C3B1240594720044EB48 /* ModelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3B0240594720044EB48 /* ModelNode.swift */; };
@@ -1335,6 +1334,7 @@
 		14523574220E100B00A85186 /* ImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14523573220E100B00A85186 /* ImageFile.swift */; };
 		14640BAB2383331500358042 /* InspectorViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14640BAA2383331500358042 /* InspectorViewControllerTests.swift */; };
 		14640BB12383716300358042 /* TestDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14640BB02383716300358042 /* TestDataConstants.swift */; };
+		146F4566243419CE00F4AAD2 /* ModelCanvasItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146F4565243419CE00F4AAD2 /* ModelCanvasItem.storyboard */; };
 		14710521225DA67E00E88657 /* Loop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710520225DA67D00E88657 /* Loop.swift */; };
 		14710523225DA69500E88657 /* Connectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710522225DA69500E88657 /* Connectable.swift */; };
 		147105252265437600E88657 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105242265437600E88657 /* Bootstrap.swift */; };
@@ -4239,6 +4239,7 @@
 		14640BA4238332B000358042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14640BAA2383331500358042 /* InspectorViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorViewControllerTests.swift; sourceTree = "<group>"; };
 		14640BB02383716300358042 /* TestDataConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataConstants.swift; sourceTree = "<group>"; };
+		146F4565243419CE00F4AAD2 /* ModelCanvasItem.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ModelCanvasItem.storyboard; path = "macgui/Views/Canvas Object/Canvas Tool/Model Tool/ModelCanvasItem.storyboard"; sourceTree = SOURCE_ROOT; };
 		14710520225DA67D00E88657 /* Loop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loop.swift; sourceTree = "<group>"; };
 		14710522225DA69500E88657 /* Connectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectable.swift; sourceTree = "<group>"; };
 		147105242265437600E88657 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
@@ -8135,6 +8136,7 @@
 		1452356F220DF61600A85186 /* XIbs and Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				146F4565243419CE00F4AAD2 /* ModelCanvasItem.storyboard */,
 				1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */,
 				147429D822CBA94C00FF1963 /* CanvasTool.storyboard */,
 				14710529226CD75300E88657 /* ConnectorItemArrow.xib */,
@@ -8485,6 +8487,7 @@
 				1411BEE322052B7E009BEE1D /* Main.storyboard in Resources */,
 				144BEEF523A17AC60001B2EF /* pull.sh in Resources */,
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
+				146F4566243419CE00F4AAD2 /* ModelCanvasItem.storyboard in Resources */,
 				147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */,
 				1471052B226CD75300E88657 /* ConnectorItemArrow.xib in Resources */,
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
@@ -8494,7 +8497,6 @@
 				14A663BC23186CFE0034EA53 /* Notebook.storyboard in Resources */,
 				14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */,
 				147429D922CBA94C00FF1963 /* CanvasTool.storyboard in Resources */,
-				1410C3AB2404EB780044EB48 /* ModelCanvasItem.storyboard in Resources */,
 				1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */,
 				142945F723EE44DC0093608F /* Preferences.storyboard in Resources */,
 			);

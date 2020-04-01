@@ -47,14 +47,8 @@ class PreferencesManager {
     
     private let userDefaults = UserDefaults.standard
     
-    let defaults =
+    let preferences =
         [
-            PreferenceKey.mainCanvasBackgroundColor.rawValue: NSColor.white,
-            PreferenceKey.mainCanvasGridColor.rawValue: NSColor.gray,
-            PreferenceKey.modelCanvasBackgroundColor.rawValue: NSColor.white,
-            PreferenceKey.modelCanvasArrowColor.rawValue: NSColor.black,
-            PreferenceKey.modelCanvasClampedNodeColor.rawValue: NSColor.yellow,
-            PreferenceKey.modelCanvasNodeBorderColor.rawValue: NSColor.gray,
             PreferenceKey.modelCanvasNodeSelectionShadowOpacity.rawValue: 0.7,
             PreferenceKey.modelCanvasNodeDefaultShadowOpacity.rawValue: 0.1,
             PreferenceKey.modelCanvasNodeSelectionShadowRadius.rawValue: 10.0,
@@ -63,7 +57,6 @@ class PreferencesManager {
             PreferenceKey.canvasObjectDimension.rawValue: 50.0,
             PreferenceKey.canvasToolBorderWidth.rawValue: 1.8,
             PreferenceKey.canvasToolSelectionCornerRadius.rawValue: 5.0,
-            PreferenceKey.canvasToolSelectionColor.rawValue: NSColor.gray,
             PreferenceKey.canvasToolSelectionShadowOpacity.rawValue: 0.7,
             PreferenceKey.canvasToolDefaultShadowOpacity.rawValue: 0.0,
             PreferenceKey.canvasToolSelectionShadowRadius.rawValue: 10.0,
@@ -206,11 +199,22 @@ class PreferencesManager {
     
     init() {
         registerDefaultPreferences()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(willChangePreferences(notification:)), name: .willChangePreferences, object: nil)
     }
     
     func registerDefaultPreferences() {
-        userDefaults.register(defaults: self.defaults)
+        userDefaults.register(defaults: self.preferences)
+        storeDefaultColorPreferences()
+    }
+    
+    func storeDefaultColorPreferences() {
+        userDefaults.set(NSColor.white, forKey: PreferenceKey.mainCanvasBackgroundColor.rawValue)
+        userDefaults.set(NSColor.systemGray, forKey: PreferenceKey.mainCanvasGridColor.rawValue)
+        userDefaults.set(NSColor.white, forKey: PreferenceKey.modelCanvasBackgroundColor.rawValue)
+        userDefaults.set(NSColor.gray, forKey: PreferenceKey.modelCanvasArrowColor.rawValue)
+        userDefaults.set(NSColor.yellow, forKey: PreferenceKey.modelCanvasClampedNodeColor.rawValue)
+        userDefaults.set(NSColor.systemGray, forKey: PreferenceKey.canvasToolSelectionColor.rawValue)
     }
     
     @objc func willChangePreferences(notification: Notification) {
@@ -238,9 +242,8 @@ class PreferencesManager {
         }
     }
     
-    
     func resetDefaults() {
-        for (key, value) in self.defaults {
+        for (key, value) in self.preferences {
             if let color = value as? NSColor {
                 userDefaults.set(color, forKey: key)
             } else {
