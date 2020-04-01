@@ -15,7 +15,6 @@ class Document: NSDocument {
     override init() {
         super.init()
         NotificationCenter.default.addObserver(self, selector: #selector(didUpdateDocument(notification:)), name: .didUpdateDocument, object: nil)
-         Swift.print("FromInit:", self, self.isDocumentEdited)
     }
 
     override class var autosavesInPlace: Bool {
