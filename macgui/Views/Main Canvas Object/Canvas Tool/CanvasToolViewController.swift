@@ -229,9 +229,9 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         if let toolName = tool?.name {
             let toolType = ToolType(rawValue: toolName)
             switch toolType {
-            case  .readdata:
+            case  .readdata?:
                 (tool as! ReadData).openFileBrowser()
-            case .model:
+            case .model?:
                 resetModelToolWindowController()
                 modelToolWindowController.showWindow(self)
             default:
