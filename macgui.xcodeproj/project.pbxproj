@@ -8126,8 +8126,8 @@
 				1495A0AD237C87DA00F46312 /* Main Window */,
 				1495A0AE237C883E00F46312 /* Notebook */,
 				140324B323EC858F005F1FC9 /* Generic Canvas View */,
-				14E69A6D237643BC0045E283 /* Main Canvas View */,
-				1495A0AA237C870E00F46312 /* Main Canvas Object */,
+				14E69A6D237643BC0045E283 /* Canvas View */,
+				1495A0AA237C870E00F46312 /* Canvas Object */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -8204,14 +8204,14 @@
 			path = "Tool Info Dialogue";
 			sourceTree = "<group>";
 		};
-		1495A0AA237C870E00F46312 /* Main Canvas Object */ = {
+		1495A0AA237C870E00F46312 /* Canvas Object */ = {
 			isa = PBXGroup;
 			children = (
 				1495A0AF237C88F300F46312 /* Generic Canvas Object */,
 				14E69A6E2376441D0045E283 /* Canvas Arrow */,
 				14E69A6C237643200045E283 /* Canvas Tool */,
 			);
-			path = "Main Canvas Object";
+			path = "Canvas Object";
 			sourceTree = "<group>";
 		};
 		1495A0AB237C877B00F46312 /* Tool Tip */ = {
@@ -8367,7 +8367,7 @@
 			path = "Canvas Tool";
 			sourceTree = "<group>";
 		};
-		14E69A6D237643BC0045E283 /* Main Canvas View */ = {
+		14E69A6D237643BC0045E283 /* Canvas View */ = {
 			isa = PBXGroup;
 			children = (
 				14E5857722A067A600802691 /* TransparentToolsView.swift */,
@@ -8375,7 +8375,7 @@
 				1452355A220CB79800A85186 /* CanvasView.swift */,
 				14D6DE042220B50800021607 /* CanvasViewController.swift */,
 			);
-			path = "Main Canvas View";
+			path = "Canvas View";
 			sourceTree = "<group>";
 		};
 		14E69A6E2376441D0045E283 /* Canvas Arrow */ = {
