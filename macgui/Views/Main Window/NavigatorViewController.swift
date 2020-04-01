@@ -50,6 +50,24 @@ class NavigatorViewController: NSViewController {
         setSelectedAnalysisToActive()
         
     }
+    
+    @IBAction func deleteAnalysisClicke(_ sender: NSPopUpButton) {
+        if let selectedForRemoval = arrayController.selectedObjects {
+            arrayController.removeSelectedAnalyses(toRemove: selectedForRemoval as! [Analysis])
+            if analyses.isEmpty {
+                addAnalysis()
+            }
+        }
+        setSelectedAnalysisToActive()
+    }
+    
+    @IBAction func addAnalysisClicke(_ sender: NSPopUpButton) {
+        addAnalysis()
+    }
+    
+    @IBAction func copyAnalysisClicke(_ sender: NSPopUpButton) {
+        
+    }
    
     
     /**
