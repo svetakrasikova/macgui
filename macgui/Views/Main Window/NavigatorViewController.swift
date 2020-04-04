@@ -99,6 +99,13 @@ class NavigatorViewController: NSViewController, NSTableViewDelegate, NSTableVie
         return analyses[row]
     }
     
+    func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
+        let analysesAsMutableArray = NSMutableArray(array: analyses)
+        analysesAsMutableArray.sort(using: analysesTableView.sortDescriptors)
+        analyses = analysesAsMutableArray as! [Analysis]
+        analysesTableView.reloadData()
+    }
+    
     // MARK: - NSTableViewDelegate
     
     func tableViewSelectionDidChange(_ notification: Notification) {
