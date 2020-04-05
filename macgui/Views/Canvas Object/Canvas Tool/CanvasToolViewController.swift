@@ -9,10 +9,8 @@
 import Cocoa
 
 class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelegate, ActionButtonDelegate, ToolTipDelegate, ToolObjectDelegate {
+
     
-    // MARK: -  Interface Builder Outlets
-    
-    @IBOutlet weak var progressSpinner: NSProgressIndicator!
     @IBOutlet weak var inspectorButton: ActionButton!
     @IBOutlet weak var infoButton: ActionButton!
     @IBOutlet weak var inletsScrollView: NSScrollView!
@@ -20,9 +18,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     @IBOutlet weak var inlets: NSCollectionView!
     @IBOutlet weak var outlets: NSCollectionView!
     @IBOutlet weak var imageView: NSImageView!
-    
-    // MARK: - Tool Related Properties
-    
+
     
     var image: NSImage {
         guard let tool = self.tool else {
@@ -37,6 +33,8 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
                }
         return tool.frameOnCanvas
     }
+    
+    var progressSpinner: NSProgressIndicator?
     
     // MARK: - Info Popover Related Properties
     
@@ -70,8 +68,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     }
        
     
-    // MARK: - Info Button Controller
-    
+    // MARK: - Tool Controller
     
     lazy var sheetViewController: SheetViewController = {
         let vc = NSStoryboard.loadVC(StoryBoardName.modalSheet)  as! SheetViewController
@@ -172,12 +169,13 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     }
     
     func setUp(){
-           setFrame()
-           setImage()
-           setTrackingArea()
-           setPopOver()
-           if tool!.isKind(of: Connectable.self){ unhideConnectors()}
-       }
+        setFrame()
+        setImage()
+        setTrackingArea()
+        setPopOver()
+        if tool!.isKind(of: Connectable.self){ unhideConnectors()}
+        addProgressSpinner()
+    }
    
     
     // MARK: - View Setup
@@ -210,16 +208,31 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         return nil
     }
     
-   
+    //   MARK: - Progress Indicator
+    
+    func addProgressSpinner() {
+        let center = self.view.bounds.center()
+        let indicator = NSProgressIndicator(frame: NSRect(x: center.x - 5, y: center.y - 5, width: 10, height: 10))
+        indicator.style = .spinning
+        indicator.isHidden = true
+        self.view.addSubview(indicator, positioned: .above, relativeTo: imageView)
+        progressSpinner = indicator
+    }
     
     // MARK: - Tool Object Delegate
     
     func startProgressIndicator() {
+        guard let progressSpinner = self.progressSpinner else {
+            return
+        }
         progressSpinner.isHidden = false
         progressSpinner.startAnimation(self.view)
     }
     
     func endProgressIndicator() {
+        guard let progressSpinner = self.progressSpinner else {
+            return
+        }
         progressSpinner.isHidden = true
         progressSpinner.stopAnimation(self.view)
     }

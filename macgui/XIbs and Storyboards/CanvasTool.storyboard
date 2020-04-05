@@ -111,24 +111,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="7Vm-MJ-DH7">
-                                <rect key="frame" x="9" y="9" width="32" height="32"/>
-                                <contentFilters>
-                                    <ciFilter name="CITemperatureAndTint">
-                                        <configuration>
-                                            <null key="inputImage"/>
-                                            <ciVector key="inputNeutral">
-                                                <real value="6500"/>
-                                                <real value="0.0"/>
-                                            </ciVector>
-                                            <ciVector key="inputTargetNeutral">
-                                                <real value="6500"/>
-                                                <real value="0.0"/>
-                                            </ciVector>
-                                        </configuration>
-                                    </ciFilter>
-                                </contentFilters>
-                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="R8Z-Qm-Ijk" secondAttribute="trailing" id="0FD-zD-Ack"/>
@@ -137,10 +119,8 @@
                             <constraint firstAttribute="bottom" secondItem="Nwy-6C-qMO" secondAttribute="bottom" id="5Is-Zv-WpK"/>
                             <constraint firstItem="ca7-dw-39x" firstAttribute="leading" secondItem="TpE-bo-cSb" secondAttribute="leading" id="73V-h4-3Ci"/>
                             <constraint firstAttribute="bottom" secondItem="eoV-RZ-Dr8" secondAttribute="bottom" constant="2" id="7bQ-Mi-mCJ"/>
-                            <constraint firstItem="7Vm-MJ-DH7" firstAttribute="centerX" secondItem="TpE-bo-cSb" secondAttribute="centerX" id="GKU-1e-QdM"/>
                             <constraint firstItem="ca7-dw-39x" firstAttribute="top" secondItem="TpE-bo-cSb" secondAttribute="top" constant="5" id="Gja-vc-g3y"/>
                             <constraint firstAttribute="bottom" secondItem="ca7-dw-39x" secondAttribute="bottom" constant="20" id="NOz-k0-OTU"/>
-                            <constraint firstItem="7Vm-MJ-DH7" firstAttribute="centerY" secondItem="TpE-bo-cSb" secondAttribute="centerY" id="P87-dp-opM"/>
                             <constraint firstAttribute="trailing" secondItem="F5D-nF-dLg" secondAttribute="trailing" constant="2" id="Wv6-Dq-tbM"/>
                             <constraint firstItem="F5D-nF-dLg" firstAttribute="top" secondItem="R8Z-Qm-Ijk" secondAttribute="bottom" constant="13" id="Y9r-fG-cV3"/>
                             <constraint firstAttribute="trailing" secondItem="Nwy-6C-qMO" secondAttribute="trailing" id="b2g-GD-tW4"/>
@@ -157,7 +137,6 @@
                         <outlet property="inspectorButton" destination="eoV-RZ-Dr8" id="JZf-eU-qEa"/>
                         <outlet property="outlets" destination="HaQ-1X-9xq" id="yq0-Sr-nhz"/>
                         <outlet property="outletsScrollView" destination="R8Z-Qm-Ijk" id="YCV-U2-HIm"/>
-                        <outlet property="progressSpinner" destination="7Vm-MJ-DH7" id="jgN-BI-lh0"/>
                         <outlet property="view" destination="TpE-bo-cSb" id="Ja3-Ic-siF"/>
                     </connections>
                 </viewController>
