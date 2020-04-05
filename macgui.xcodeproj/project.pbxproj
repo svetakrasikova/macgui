@@ -4372,9 +4372,9 @@
 				1411BED722052A5E009BEE1D /* macgui.entitlements */,
 				14F95D6923569A70009884D2 /* CoreBridge */,
 				14523575220E101400A85186 /* Model */,
-				1452356E220DF5C400A85186 /* Views */,
-				1452356C220DF55C00A85186 /* Extensions */,
 				14E69A6623763D4A0045E283 /* Application */,
+				1452356E220DF5C400A85186 /* Views and View Controllers */,
+				1452356C220DF55C00A85186 /* Extensions */,
 				1452356F220DF61600A85186 /* XIbs and Storyboards */,
 				14ECE4DE233BFE2300106EB4 /* aquabayes.icns */,
 			);
@@ -8111,7 +8111,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		1452356E220DF5C400A85186 /* Views */ = {
+		1452356E220DF5C400A85186 /* Views and View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				142945FC23EF76950093608F /* Preferences */,
@@ -8122,7 +8122,7 @@
 				14E69A6D237643BC0045E283 /* Canvas View */,
 				1495A0AA237C870E00F46312 /* Canvas Object */,
 			);
-			path = Views;
+			path = "Views and View Controllers";
 			sourceTree = "<group>";
 		};
 		1452356F220DF61600A85186 /* XIbs and Storyboards */ = {
