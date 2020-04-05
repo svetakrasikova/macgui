@@ -17,36 +17,36 @@ class ModelToolWindowController: NSWindowController {
     
     @IBAction func shareClicked(_ sender: NSButton) {
         //show a picker pop up menu with the export and import option
-        let model = "This is the model we are working on"
+        let model = "Model"
         let picker = NSSharingServicePicker(items: [model])
         picker.delegate = self
         picker.show(relativeTo: .zero, of: sender, preferredEdge: .minY)
     }
     
     weak var canvas: NSSplitViewItem? {
-            if let canvas = (contentViewController as? ModelToolViewController)?.splitViewItems[1] {
-                return canvas
-            }
-            return nil
+        if let canvas = (contentViewController as? ModelToolViewController)?.splitViewItems[1] {
+            return canvas
         }
+        return nil
+    }
     
-        weak var palette: NSSplitViewItem? {
-            if let palette = (contentViewController as? ModelToolViewController)?.splitViewItems[0] {
-                return palette
-            }
-            return nil
+    weak var palette: NSSplitViewItem? {
+        if let palette = (contentViewController as? ModelToolViewController)?.splitViewItems[0] {
+            return palette
         }
+        return nil
+    }
     
-        @IBAction func collapseExpandSidebar(_ sender: NSButton) {
-               guard let  palette = self.palette else {
-                   return
-               }
-               if palette.isCollapsed {
-                   palette.isCollapsed = false
-               } else {
-                   palette.isCollapsed = true
-               }
-           }
+    @IBAction func collapseExpandSidebar(_ sender: NSButton) {
+        guard let  palette = self.palette else {
+            return
+        }
+        if palette.isCollapsed {
+            palette.isCollapsed = false
+        } else {
+            palette.isCollapsed = true
+        }
+    }
     
     @objc func changeModelZoomTitle(notification: Notification){
         let userInfo = notification.userInfo! as! [String : Float]
@@ -55,14 +55,14 @@ class ModelToolWindowController: NSWindowController {
         zoom.setTitle("\(title)%")
     }
     
-
+    
     override func windowDidLoad() {
         super.windowDidLoad()
-
-         NotificationCenter.default.addObserver(self,
-                                                      selector: #selector(changeModelZoomTitle(notification:)),
-                                                      name: .didChangeMagnification,
-                                                      object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(changeModelZoomTitle(notification:)),
+                                               name: .didChangeMagnification,
+                                               object: nil)
     }
     
 }
@@ -72,19 +72,19 @@ extension ModelToolWindowController: NSSharingServicePickerDelegate {
     
     
     func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker, sharingServicesForItems items: [Any], proposedSharingServices proposedServices: [NSSharingService]) -> [NSSharingService] {
-         
-        guard let image = NSImage(named: "AppIcon") else {
-                   return proposedServices
-               }
+        
+        guard let image = NSImage(named: "BlankDocument") else {
+            return proposedServices
+        }
         var share = proposedServices
         
-        let copyModelService = NSSharingService(title: "Copy model", image: image, alternateImage: image, handler: {
+        let copyModelService = NSSharingService(title: "Export", image: image, alternateImage: image, handler: {
             if let text = items.first as? String {
-//                TODO: implement export model
-                print("Copy model is not implemented yet.")
+                // TODO: implement export model
+                print("\(text)")
             }
         })
-
+        
         share.insert(copyModelService, at: 0)
         
         return share
