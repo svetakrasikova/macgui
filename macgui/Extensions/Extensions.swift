@@ -11,10 +11,10 @@ import Cocoa
 
 extension NSRect {
     /**
-    Get the center point of a rectangle
-    
-    - returns: NSPoint in the center of the given rectangle
-    */
+     Get the center point of a rectangle
+     
+     - returns: NSPoint in the center of the given rectangle
+     */
     func center() -> NSPoint {
         let x = origin.x + ( size.width / 2 )
         let y = origin.y + ( size.height / 2 )
@@ -22,24 +22,24 @@ extension NSRect {
     }
 }
 extension NSPoint {
-        /**
-         Mutate an NSPoint with a random amount of noise bounded by maximumDelta
-         
-         - parameter maximumDelta: change range +/-
-         
-         - returns: mutated point
-         */
-        func addRandomNoise(_ maximumDelta: UInt32) -> NSPoint {
-            
-            var newCenter = self
-            let range = 2 * maximumDelta
-            let xdelta = arc4random_uniform(range)
-            let ydelta = arc4random_uniform(range)
-            newCenter.x += (CGFloat(xdelta) - CGFloat(maximumDelta))
-            newCenter.y += (CGFloat(ydelta) - CGFloat(maximumDelta))
-            
-            return newCenter
-        }
+    /**
+     Mutate an NSPoint with a random amount of noise bounded by maximumDelta
+     
+     - parameter maximumDelta: change range +/-
+     
+     - returns: mutated point
+     */
+    func addRandomNoise(_ maximumDelta: UInt32) -> NSPoint {
+        
+        var newCenter = self
+        let range = 2 * maximumDelta
+        let xdelta = arc4random_uniform(range)
+        let ydelta = arc4random_uniform(range)
+        newCenter.x += (CGFloat(xdelta) - CGFloat(maximumDelta))
+        newCenter.y += (CGFloat(ydelta) - CGFloat(maximumDelta))
+        
+        return newCenter
+    }
     
     func CGPointDistanceSquaredTo(to: CGPoint) -> CGFloat {
         return (self.x - to.x) * (self.x - to.x) + (self.y - to.y) * (self.y - to.y)
@@ -47,8 +47,8 @@ extension NSPoint {
     
     func CGPointDistanceTo(to: CGPoint) -> CGFloat {
         return sqrt(self.CGPointDistanceSquaredTo(to: to))
-        }
     }
+}
 
 
 extension NSView {
@@ -69,7 +69,7 @@ extension NSView {
         self.layer?.removeFromSuperlayer()
         superlayer?.addSublayer(self.layer!)
     }
-
+    
     
     func  makeGridBackground(dirtyRect: NSRect, gridColor: NSColor, backgroundColor: NSColor){
         
@@ -101,7 +101,7 @@ extension NSView {
             }else if i % 5 == 0 {
                 gridColor.withAlphaComponent(0.2).set()
             }else{
-               gridColor.withAlphaComponent(0.1).set()
+                gridColor.withAlphaComponent(0.1).set()
             }
             
             NSBezierPath.strokeLine(from: NSMakePoint(CGFloat(i) * 10 - 0.5, 0), to: NSMakePoint(CGFloat(i) * 10 - 0.5, self.bounds.size.height))
@@ -129,28 +129,26 @@ extension NSBezierPath {
         }
         return path
     }
-
+    
     
 }
 
-
-
 extension UserDefaults {
-   
+    
     func color(forKey key: String) -> NSColor? {
-
+        
         guard let colorData = data(forKey: key) else { return nil }
-
+        
         do {
             return try NSKeyedUnarchiver.unarchivedObject(ofClass: NSColor.self, from: colorData)
         } catch let error {
             print("color error \(error.localizedDescription)")
             return nil
         }
-
+        
     }
     func set(_ value: NSColor?, forKey key: String) {
-
+        
         guard let color = value else { return }
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
@@ -158,9 +156,8 @@ extension UserDefaults {
         } catch let error {
             print("error color key data not saved \(error.localizedDescription)")
         }
-
+        
     }
-
 }
 
 extension NSWindow {
@@ -173,6 +170,11 @@ extension NSWindow {
         }
         return nil
     }
+}
+
+
+extension NSViewController {
+    @objc dynamic var defaultsWorkaround: NSUserDefaultsController { return NSUserDefaultsController.shared }
 }
 
 
