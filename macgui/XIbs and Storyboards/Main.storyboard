@@ -186,6 +186,9 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Delete" id="pa3-QI-u2k">
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="delete:" target="Ady-hI-5gd" id="0Mk-Ml-PaM"/>
@@ -797,7 +800,7 @@
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="47" height="25"/>
                                     <size key="maxSize" width="48" height="25"/>
-                                    <button key="view" toolTip="Delete selected analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="P0T-On-rwn">
+                                    <button key="view" toolTip="Delete analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="P0T-On-rwn">
                                         <rect key="frame" x="0.0" y="14" width="48" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarDeleteTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qHR-If-88N">
@@ -813,7 +816,7 @@
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="47" height="25"/>
                                     <size key="maxSize" width="48" height="25"/>
-                                    <button key="view" toolTip="Add an analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="2Ak-RN-o5E">
+                                    <button key="view" toolTip="Add analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="2Ak-RN-o5E">
                                         <rect key="frame" x="0.0" y="14" width="48" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7MJ-DP-Khr">
@@ -829,7 +832,7 @@
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="47" height="25"/>
                                     <size key="maxSize" width="48" height="25"/>
-                                    <button key="view" toolTip="Copy selected analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="RGq-Vg-fa6">
+                                    <button key="view" toolTip="Copy analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="RGq-Vg-fa6">
                                         <rect key="frame" x="0.0" y="14" width="48" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarAddDetailTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iks-B0-Feg">
