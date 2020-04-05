@@ -10,8 +10,7 @@ import Cocoa
 
 class AnalysisViewController: NSViewController {
     
-    let imageLoader = ImageLoader()
-//    var indexPathsOfItemsBeingDragged: Set<NSIndexPath>!
+    let tools: [ToolType]  = ToolType.allCases
     
     var canvasViewController: CanvasViewController? {
         return children[0] as? CanvasViewController
@@ -49,7 +48,7 @@ extension AnalysisViewController: NSCollectionViewDelegate {
         return true
     }
     func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
-        let name = imageLoader.getImageFileForPathIndex(indexPath: indexPath as IndexPath).name.rawValue
+        let name = tools[indexPath.item].rawValue
         return name as NSString
     }
         
@@ -61,13 +60,13 @@ extension AnalysisViewController: NSCollectionViewDelegate {
 extension AnalysisViewController: NSCollectionViewDataSource {
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return the number of images in toolImages
-        return imageLoader.getImagesCount()
+        return ToolType.allCases.count
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let tool = toolView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Tool"), for: indexPath) as! Tool
-        tool.imageFile = imageLoader.getImageFileForPathIndex(indexPath: indexPath)
+        tool.name = tools[indexPath.item].rawValue
+        tool.image = NSImage(named: tools[indexPath.item].rawValue)
         return tool
     }
     

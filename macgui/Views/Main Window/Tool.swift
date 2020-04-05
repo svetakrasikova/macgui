@@ -11,21 +11,23 @@ import Cocoa
 class Tool: NSCollectionViewItem {
     
     var name: String? {
-        guard isViewLoaded else { return ""}
-        if let imageFile = imageFile {
-            return imageFile.name.rawValue
-        } else { return "" }
-    }
-    
-    var imageFile: ImageFile? {
         didSet {
             guard isViewLoaded else { return }
-            if let imageFile = imageFile {
-                imageView?.image = imageFile.image
-                textField?.stringValue = imageFile.name.rawValue
+            if let name = name {
+                textField?.stringValue = name
+            } else {
+                textField?.stringValue = ""
+            }
+        }
+    }
+    
+    var image: NSImage? {
+        didSet {
+            guard isViewLoaded else { return }
+            if let image = image {
+                imageView?.image = image
             } else {
                 imageView?.image = nil
-                textField?.stringValue = ""
             }
         }
     }
