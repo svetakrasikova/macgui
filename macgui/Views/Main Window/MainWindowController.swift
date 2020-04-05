@@ -28,6 +28,13 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         }
         else {return Analysis()}
     }
+    
+    weak var navigator: NSSplitViewItem? {
+        if let navigator = (contentViewController as? MainSplitViewController)?.splitViewItems[0] {
+            return navigator
+        }
+        return nil
+    }
   
     
     @IBAction func openNotebook(_ sender: Any) {
@@ -57,6 +64,19 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         else { return }
         (closedWC?.contentViewController as! NotebookViewController).saveText()
         notebooks?.removeAll{$0 == closedWC}
+    }
+    
+
+    
+    @IBAction func collapseExpandSidebar(_ sender: NSButton) {
+        guard let  navigator = self.navigator else {
+            return
+        }
+        if navigator.isCollapsed {
+            navigator.isCollapsed = false
+        } else {
+            navigator.isCollapsed = true
+        }
     }
     
     override func windowDidLoad() {

@@ -738,28 +738,14 @@ CA
                                         </buttonCell>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="64E76A90-01F1-4415-8C2A-3E6159F797A5" label="" paletteLabel="" sizingBehavior="auto" id="aeO-Gd-B70">
-                                    <nil key="toolTip"/>
-                                    <button key="view" verticalHuggingPriority="750" id="NJn-bf-l8T">
-                                        <rect key="frame" x="0.0" y="14" width="100" height="43"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="Execute" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YBa-Ir-Dd6">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="success:" target="Oky-zY-oP4" id="wRF-lL-Yvm"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="F64DF7CF-819D-4657-8C1C-A656000F793D" label="Zoom" paletteLabel="Zoom" sizingBehavior="auto" id="GI7-Ow-JbS">
                                     <nil key="toolTip"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="1wV-hY-z6B" userLabel="zoom">
-                                        <rect key="frame" x="0.0" y="14" width="65" height="28"/>
+                                        <rect key="frame" x="0.0" y="14" width="65" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" tag="1" imageScaling="axesIndependently" inset="2" pullsDown="YES" selectedItem="p3j-MU-iWT" id="x4u-Va-0Vm" userLabel="zoom">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="controlContent"/>
                                             <menu key="menu" id="JJw-60-Ano">
                                                 <items>
                                                     <menuItem title="100%" tag="1" hidden="YES" id="p3j-MU-iWT" userLabel="100%"/>
@@ -780,14 +766,14 @@ CA
                                         </connections>
                                     </popUpButton>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="52791819-F0EC-43D7-8D11-843905557167" label="Notebook" paletteLabel="Notebook" image="NSTouchBarComposeTemplate" id="Shr-5p-fva" userLabel="Notebook">
+                                <toolbarItem implicitItemIdentifier="52791819-F0EC-43D7-8D11-843905557167" label="Notebook" paletteLabel="Notebook" image="NSBookmarksTemplate" id="Shr-5p-fva" userLabel="Notebook">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="45" height="24"/>
                                     <size key="maxSize" width="48" height="47"/>
                                     <button key="view" toolTip="Open notebook for selected analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="aSq-Nf-4L5">
                                         <rect key="frame" x="6" y="14" width="48" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarComposeTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="fzQ-t4-J29">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSBookmarksTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="fzQ-t4-J29">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -796,14 +782,14 @@ CA
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="39986EE7-FDB2-4CBE-8F9B-2583ABBF7082" label="Delete" paletteLabel="Delete" image="NSTouchBarDeleteTemplate" id="OmC-ey-B5j">
+                                <toolbarItem implicitItemIdentifier="39986EE7-FDB2-4CBE-8F9B-2583ABBF7082" label="Delete" paletteLabel="Delete" image="NSRemoveTemplate" id="OmC-ey-B5j">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="47" height="25"/>
                                     <size key="maxSize" width="48" height="25"/>
                                     <button key="view" toolTip="Delete analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="P0T-On-rwn">
                                         <rect key="frame" x="0.0" y="14" width="48" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarDeleteTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qHR-If-88N">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qHR-If-88N">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -812,14 +798,14 @@ CA
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="43EFF042-4CF0-4E17-B81F-A4995F1C618D" label="Add" paletteLabel="Add" image="NSTouchBarAddTemplate" id="gVg-Z8-8GD" userLabel="Add">
+                                <toolbarItem implicitItemIdentifier="43EFF042-4CF0-4E17-B81F-A4995F1C618D" label="Add" paletteLabel="Add" image="NSAddTemplate" id="gVg-Z8-8GD" userLabel="Add">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="47" height="25"/>
                                     <size key="maxSize" width="48" height="25"/>
                                     <button key="view" toolTip="Add analysis" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="2Ak-RN-o5E">
                                         <rect key="frame" x="0.0" y="14" width="48" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7MJ-DP-Khr">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7MJ-DP-Khr">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -844,8 +830,25 @@ CA
                                         </connections>
                                     </button>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="00E3889F-78CD-47F2-891D-15B23E8D2654" label="Sidebar" paletteLabel="Sidebar" image="NSTouchBarSidebarTemplate" id="1NB-C1-L3U" userLabel="Sidebar">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="47" height="24"/>
+                                    <size key="maxSize" width="48" height="47"/>
+                                    <button key="view" verticalHuggingPriority="750" id="H8a-SK-Df0">
+                                        <rect key="frame" x="0.0" y="14" width="48" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarSidebarTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rge-wW-23R">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="collapseExpandSidebar:" target="Oky-zY-oP4" id="rwJ-AK-Mn3"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
+                                <toolbarItem reference="1NB-C1-L3U"/>
                                 <toolbarItem reference="Shr-5p-fva"/>
                                 <toolbarItem reference="OmC-ey-B5j"/>
                                 <toolbarItem reference="gVg-Z8-8GD"/>
@@ -926,9 +929,10 @@ CA
         </scene>
     </scenes>
     <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSBookmarksTemplate" width="17" height="18"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSTouchBarAddDetailTemplate" width="18" height="30"/>
-        <image name="NSTouchBarAddTemplate" width="14" height="30"/>
-        <image name="NSTouchBarComposeTemplate" width="21" height="30"/>
-        <image name="NSTouchBarDeleteTemplate" width="15" height="30"/>
+        <image name="NSTouchBarSidebarTemplate" width="22" height="30"/>
     </resources>
 </document>
