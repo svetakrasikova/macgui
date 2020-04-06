@@ -1332,7 +1332,6 @@
 		1452356B220CE9AC00A85186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1452356A220CE9AC00A85186 /* Assets.xcassets */; };
 		14640BAB2383331500358042 /* InspectorViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14640BAA2383331500358042 /* InspectorViewControllerTests.swift */; };
 		14640BB12383716300358042 /* TestDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14640BB02383716300358042 /* TestDataConstants.swift */; };
-		146F4566243419CE00F4AAD2 /* ModelCanvasItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146F4565243419CE00F4AAD2 /* ModelCanvasItem.storyboard */; };
 		14710521225DA67E00E88657 /* Loop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710520225DA67D00E88657 /* Loop.swift */; };
 		14710523225DA69500E88657 /* Connectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14710522225DA69500E88657 /* Connectable.swift */; };
 		147105252265437600E88657 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105242265437600E88657 /* Bootstrap.swift */; };
@@ -1379,6 +1378,7 @@
 		14C618E023E0E0CE001FFFD6 /* ModelCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */; };
 		14C618E323E0E0FB001FFFD6 /* ModelPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */; };
 		14C618E823E20411001FFFD6 /* ModelToolWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618E623E20411001FFFD6 /* ModelToolWindowController.swift */; };
+		14CF75A1243BCF560022B3A8 /* ModelCanvasItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14CF75A0243BCF560022B3A8 /* ModelCanvasItem.storyboard */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
 		14D6DE03221F47CD00021607 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE02221F47CD00021607 /* MainSplitViewController.swift */; };
 		14D6DE062220B50800021607 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE042220B50800021607 /* CanvasViewController.swift */; };
@@ -4234,7 +4234,6 @@
 		14640BA4238332B000358042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14640BAA2383331500358042 /* InspectorViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorViewControllerTests.swift; sourceTree = "<group>"; };
 		14640BB02383716300358042 /* TestDataConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataConstants.swift; sourceTree = "<group>"; };
-		146F4565243419CE00F4AAD2 /* ModelCanvasItem.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ModelCanvasItem.storyboard; path = "macgui/Views/Canvas Object/Canvas Tool/Model Tool/ModelCanvasItem.storyboard"; sourceTree = SOURCE_ROOT; };
 		14710520225DA67D00E88657 /* Loop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loop.swift; sourceTree = "<group>"; };
 		14710522225DA69500E88657 /* Connectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectable.swift; sourceTree = "<group>"; };
 		147105242265437600E88657 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
@@ -4281,6 +4280,7 @@
 		14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasViewController.swift; sourceTree = "<group>"; };
 		14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPaletteViewController.swift; sourceTree = "<group>"; };
 		14C618E623E20411001FFFD6 /* ModelToolWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelToolWindowController.swift; sourceTree = "<group>"; };
+		14CF75A0243BCF560022B3A8 /* ModelCanvasItem.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ModelCanvasItem.storyboard; path = "macgui/Views and View Controllers/Canvas Object/Canvas Tool/Model Tool/ModelCanvasItem.storyboard"; sourceTree = SOURCE_ROOT; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
 		14D6DE02221F47CD00021607 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		14D6DE042220B50800021607 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
@@ -8128,7 +8128,7 @@
 		1452356F220DF61600A85186 /* XIbs and Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				146F4565243419CE00F4AAD2 /* ModelCanvasItem.storyboard */,
+				14CF75A0243BCF560022B3A8 /* ModelCanvasItem.storyboard */,
 				1411BEA822051B26009BEE1D /* AnalysisLogView.storyboard */,
 				147429D822CBA94C00FF1963 /* CanvasTool.storyboard */,
 				14710529226CD75300E88657 /* ConnectorItemArrow.xib */,
@@ -8470,7 +8470,7 @@
 				1411BEE322052B7E009BEE1D /* Main.storyboard in Resources */,
 				144BEEF523A17AC60001B2EF /* pull.sh in Resources */,
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
-				146F4566243419CE00F4AAD2 /* ModelCanvasItem.storyboard in Resources */,
+				14CF75A1243BCF560022B3A8 /* ModelCanvasItem.storyboard in Resources */,
 				147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */,
 				1471052B226CD75300E88657 /* ConnectorItemArrow.xib in Resources */,
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
