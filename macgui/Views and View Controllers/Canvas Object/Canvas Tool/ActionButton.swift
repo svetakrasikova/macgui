@@ -128,7 +128,7 @@ class ActionButton: NSButton {
         case .Info:
             if  let backingScaleFactor = self.window?.backingScaleFactor {
                 shapeLayer.contentsScale = backingScaleFactor * 4
-                addInfoLabel(scaleFactor: backingScaleFactor)
+                addInfoLabel(scaleFactor: backingScaleFactor * 4)
             }
         case .Inspector:
             addMagnifierImage()
