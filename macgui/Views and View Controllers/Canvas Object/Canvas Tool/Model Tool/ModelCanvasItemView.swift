@@ -94,20 +94,26 @@ extension ModelCanvasItemView {
     
     func drawLabel(labelColor: NSColor, label: String) {
         let textLayer = CATextLayer()
-
-        if  let backingScaleFactor = self.window?.backingScaleFactor {
+        textLayer.allowsEdgeAntialiasing = false;
+        textLayer.allowsFontSubpixelQuantization = true;
+        
+        
+        if  var backingScaleFactor = self.window?.backingScaleFactor {
+            backingScaleFactor *= 4
+            layer?.contentsScale = backingScaleFactor
             shapeLayer.contentsScale = backingScaleFactor
             textLayer.contentsScale = backingScaleFactor
         }
+
+        textLayer.zPosition = 0
         textLayer.frame = NSRect(x: bounds.minX, y: bounds.center().y-8, width: bounds.size.width, height: bounds.size.height/2+8)
         textLayer.font = "System Regular" as CFTypeRef
         textLayer.backgroundColor = NSColor.clear.cgColor
         textLayer.foregroundColor = labelColor.cgColor
         textLayer.fontSize = 18
         textLayer.string = label
-        textLayer.allowsFontSubpixelQuantization = true
         textLayer.position = bounds.center()
-        textLayer.alignmentMode = .center;
+        textLayer.alignmentMode = .center
         shapeLayer.addSublayer(textLayer)
     }
     
