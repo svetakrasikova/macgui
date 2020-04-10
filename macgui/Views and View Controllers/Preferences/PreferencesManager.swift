@@ -212,6 +212,7 @@ class PreferencesManager {
         userDefaults.set(NSColor.white, forKey: PreferenceKey.mainCanvasBackgroundColor.rawValue)
         userDefaults.set(NSColor.systemGray, forKey: PreferenceKey.mainCanvasGridColor.rawValue)
         userDefaults.set(NSColor.white, forKey: PreferenceKey.modelCanvasBackgroundColor.rawValue)
+        userDefaults.set(NSColor.gray, forKey: PreferenceKey.modelCanvasNodeBorderColor.rawValue)
         userDefaults.set(NSColor.gray, forKey: PreferenceKey.modelCanvasArrowColor.rawValue)
         userDefaults.set(NSColor.yellow, forKey: PreferenceKey.modelCanvasClampedNodeColor.rawValue)
         userDefaults.set(NSColor.systemGray, forKey: PreferenceKey.canvasToolSelectionColor.rawValue)
