@@ -26,10 +26,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
     }
     
     var shape: ModelParameterShape? {
-        if let node = self.tool as? ModelNode{
-            return .dashedCircle
-        }
-        return nil
+        return .dashedCircle
     }
     
     var label: String? {
@@ -38,6 +35,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
     
     var frame: NSRect {
         guard let node = self.tool as? ModelNode else {
+            print("\(self): view frame is undefined.")
             return NSZeroRect
         }
         return node.frameOnCanvas
@@ -51,27 +49,40 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
     func setUp(){
         view.wantsLayer = true
         setFrame()
-        drawShapeInLayer()
+        addShape()
         addDividerLine()
         addInfoButton()
     }
-    func setFrame () {
+    func setFrame() {
         view.frame = self.frame
     }
     
-    func drawShapeInLayer() {
-        if let view = view as? ModelCanvasItemView, let shape = self.shape, let fillColor = self.fillColor, let strokeColor = self.strokeColor {
+    func addShape() {
+        guard let shape = self.shape else {
+             print("drawShapeInLayer: the shape type for the shape layer is undefined.")
+            return
+        }
+        guard let fillColor = self.fillColor else {
+             print("drawShapeInLayer: the fill color for the shape layer is undefined.")
+            return
+        }
+        guard let strokeColor = self.strokeColor else {
+            print("drawShapeInLayer: the stroke color for the shape layer is undefined.")
+            return
+        }
+        if let view = view as? ModelCanvasItemView {
             view.drawShape(shape: shape, fillColor: fillColor, strokeColor: strokeColor, lineWidth: 1.0)
         }
     }
+
     
     func updateShapeLayer(_ shapeLayer: CAShapeLayer, selected:  Bool) {
         if selected {
-            drawShapeInLayer()
+            addShape()
             shapeLayer.shadowOpacity = Float(preferencesManager.modelCanvasNodeSelectionShadowOpacity!)
             shapeLayer.shadowRadius = preferencesManager.modelCanvasNodeSelectionShadowRadius!
         } else {
-            drawShapeInLayer()
+            addShape()
             shapeLayer.shadowOpacity = Float(preferencesManager.modelCanvasNodeDefaultShadowOpacity!)
             shapeLayer.shadowRadius = preferencesManager.modelCanvasNodeDefaultShadowRadius!
         }
@@ -81,7 +92,10 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
     }
     
     func addInfoButton(){
-        guard let fillColor = self.fillColor else { return }
+        guard let fillColor = self.fillColor else {
+            print("addInfoButton: fill color for the shape layer is undefined.")
+            return
+        }
         let infoButton = ActionButton()
         if fillColor.isLight() ?? true { infoButton.labelColor = NSColor.black.cgColor }
         let buttonOrigin = CGPoint(x: view.bounds.center().x-4, y: view.bounds.center().y-20)
@@ -93,13 +107,27 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
     }
     
     func addDividerLine() {
-        if let view = self.view as? ModelCanvasItemView, let strokeColor = self.strokeColor {
+        guard let strokeColor = self.strokeColor else {
+            print("addDividerLine: stroke color for the shape layer is undefined.")
+            return
+        }
+        if let view = self.view as? ModelCanvasItemView {
             view.drawDividerLine(strokeColor: strokeColor, lineWidth: 1.0)
         }
+        
     }
     
     func addLabel() {
-        if let view = self.view as? ModelCanvasItemView, let fillColor = self.fillColor, let label = self.label {
+        guard let fillColor = self.fillColor else {
+            print("addLabel: fill color for the shape layer is undefined.")
+            return
+        }
+        guard let label = self.label else {
+            print("addLabel: label for the shape layer is undefined.")
+            return
+        }
+        if let view = self.view as? ModelCanvasItemView {
+            
             if fillColor.isLight() ?? true {
                 view.drawLabel(labelColor: NSColor.black, label: label)
             } else {
