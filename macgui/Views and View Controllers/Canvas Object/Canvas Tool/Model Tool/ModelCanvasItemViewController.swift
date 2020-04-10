@@ -59,15 +59,15 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
     
     func addShape() {
         guard let shape = self.shape else {
-             print("drawShapeInLayer: the shape type for the shape layer is undefined.")
+             print("drawShapeInLayer: shape type for the shape layer is undefined.")
             return
         }
         guard let fillColor = self.fillColor else {
-             print("drawShapeInLayer: the fill color for the shape layer is undefined.")
+             print("drawShapeInLayer: fill color for the shape layer is undefined.")
             return
         }
         guard let strokeColor = self.strokeColor else {
-            print("drawShapeInLayer: the stroke color for the shape layer is undefined.")
+            print("drawShapeInLayer: stroke color for the shape layer is undefined.")
             return
         }
         if let view = view as? ModelCanvasItemView {
