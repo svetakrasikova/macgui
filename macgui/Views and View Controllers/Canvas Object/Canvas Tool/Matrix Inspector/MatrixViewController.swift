@@ -281,13 +281,13 @@ class MatrixViewController: NSSplitViewController {
     
     func getColorForCharacter(_ char: Character) -> NSColor {
         switch self.dataType {
-        case .DNA:
+        case .DNA?:
             return TaxonDataDNA.nucleotideColorCode(nucChar: String(char))
-        case .RNA:
+        case .RNA?:
             return TaxonDataDNA.nucleotideColorCode(nucChar: String(char))
-        case .Standard:
+        case .Standard?:
             return TaxonDataStandard.characterColorCode(Char: String(char))
-        case .Protein:
+        case .Protein?:
             return TaxonDataProtein.aminoAcidColorCode(Char: String(char))
         default:
             return NSColor.white
