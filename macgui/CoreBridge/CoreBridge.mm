@@ -46,6 +46,56 @@ using json = nlohmann::json;
 
 @implementation CoreBridge : NSObject
 
+- (NSMutableArray*)getVariablesFromCore {
+
+    // query the workspace for all REV language components
+    RevLanguage::Workspace& myWorkspace = RevLanguage::Workspace::globalWorkspace();
+    std::map<std::string, RevLanguage::RevObject*> list = myWorkspace.getTypeTable();
+    
+    // construct the list of variables for the random variable and constants pallets
+    NSMutableArray* variables = [NSMutableArray array];
+    for (std::map<std::string, RevLanguage::RevObject*>::iterator it = list.begin(); it != list.end(); it++)
+        {
+        RevLanguage::AbstractModelObject* varPtr = dynamic_cast<RevLanguage::AbstractModelObject*>(it->second);
+        if (varPtr != NULL)
+            {
+            // is it a vector of a scalar?
+            bool isVector = false;
+            RevLanguage::Container* containerPtr = dynamic_cast<RevLanguage::Container*>(it->second);
+            if (containerPtr != NULL)
+                isVector = true;
+
+            // if it's a vector, find the base class
+            std::string baseName = "";
+            for (size_t i=0; i<it->first.size(); i++)
+                {
+                if (it->first[i] != '[' && it->first[i] != ']')
+                    baseName += it->first[i];
+                }
+            RevLanguage::AbstractModelObject* baseObj = NULL;
+            std::map<std::string, RevLanguage::RevObject*>::iterator itf = list.find(baseName);
+            if (itf != list.end())
+                baseObj = dynamic_cast<RevLanguage::AbstractModelObject*>(itf->second);
+            
+            std::string vType = varPtr->getType();
+            size_t n = std::count(vType.begin(), vType.end(), '['); // dimension of variable
+
+            // get information on the variable
+            std::string varName = (it)->first;
+
+            // fillout JSON string
+            json j;
+            j["name"] = baseName;
+            j["symbol"] = "";
+            j["dimension"] = n;
+            std::string jsonStr = j.dump();
+
+            [variables addObject: [NSString stringWithUTF8String:jsonStr.c_str()]];
+            }
+        }
+    return variables;
+}
+
 - (NSMutableArray*)getPalletItems {
 
     NSMutableArray* palletItems = [NSMutableArray array];
@@ -83,20 +133,12 @@ using json = nlohmann::json;
             // get information on the variable
             std::string varName = (it)->first;
 
+            // fillout JSON string
             json j;
             j["type"] = "Variable";
             j["name"] = baseName;
             j["dimension"] = n;
-            std::cout << j << std::endl;
-
-            // fillout JSON string
-            std::string jsonStr = "{";
-            jsonStr += "\"type\": \"Variable\", ";
-            jsonStr += "\"name\": \"";
-            jsonStr += baseName + "\", ";
-            jsonStr += "\"dimension\": ";
-            jsonStr += std::to_string(n) + ",";
-            jsonStr += "}";
+            std::string jsonStr = j.dump();
 
             [palletItems addObject: [NSString stringWithUTF8String:jsonStr.c_str()]];
             }

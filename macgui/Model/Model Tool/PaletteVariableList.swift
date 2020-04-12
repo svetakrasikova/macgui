@@ -34,6 +34,17 @@ class PaletteVariableList: NSObject, Codable, NSCoding {
         self.variables = coder.decodeObject(forKey: "variables") as! [PaletteVariable]
     }
 
+    override var description: String {
+    
+        var str : String = ""
+        for v in variables {
+            str += "Variable: \(v.name)\n"
+            str += "   Dimension = \(v.dimension)\n"
+            str += "   Symbol    = \(v.symbol)\n"
+        }
+        return str
+    }
+
     // MARK: - Functions -
 
     func addVariableToList(variable: PaletteVariable) {
