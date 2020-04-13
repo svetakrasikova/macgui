@@ -164,9 +164,21 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         setUp()
     }
     
+    override func viewWillDisappear() {
+        if let matrixViewer = _matrixInspectorWindowController, let matrixViewerWindow = matrixViewer.window {
+            matrixViewerWindow.close()
+        }
+        
+        if let modelToolCanvas = _modelToolWindowController, let modelToolCanvasWindow = modelToolCanvas.window {
+            modelToolCanvasWindow.close()
+        }
+        
+    }
     override func viewDidDisappear() {
         closePopover()
     }
+    
+   
     
     func setUp(){
         setFrame()
