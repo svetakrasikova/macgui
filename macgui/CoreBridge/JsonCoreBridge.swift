@@ -83,6 +83,7 @@ class JsonCoreBridge {
     }
     
     func encodeJsonStringArray() -> [Data] {
+    
         var dataArray: [Data] = []
         for jsonString in jsonStringArray {
             dataArray.append(jsonString.data(using: .utf8)!)

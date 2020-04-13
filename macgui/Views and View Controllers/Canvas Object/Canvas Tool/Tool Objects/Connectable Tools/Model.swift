@@ -13,6 +13,7 @@ class Model: DataTool {
     let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
     
     @objc dynamic var palettItems: [PalettItem] = []
+    @objc dynamic var variables = PaletteVariableList()
     @objc dynamic var nodes: [ModelNode] = []
     @objc dynamic var edges: [Connection] = []
     
@@ -23,6 +24,7 @@ class Model: DataTool {
     }
     
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
+    
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
         let green = Connector(color:ConnectorType.alignedData)
@@ -54,8 +56,51 @@ class Model: DataTool {
         coder.encode(nodes, forKey: Key.nodes.rawValue)
         coder.encode(edges, forKey: Key.edges.rawValue)
     }
+    
     func initPalettItemsFromCore() throws {
+    
+        // find all of the variables
+        guard let jsonVariableStringArray = revbayesBridge.getVariablesFromCore() as? [String]
+        else {
+            throw DataToolError.readError
+        }
+        let variableDataArray: [Data] = JsonCoreBridge(jsonArray: jsonVariableStringArray).encodeJsonStringArray()
+
+        for data in variableDataArray {
         
+            do {
+                let newVariable = try JSONDecoder().decode(PaletteVariable.self, from: data)
+                self.variables.addVariableToList(variable: newVariable)
+            } catch  {
+                throw ReadDataError.dataDecodingError
+            }
+        }
+        
+        // match symbols to the varriables
+        for v in self.variables.variables {
+            
+            if v.name == "Real" {
+                v.symbol = Symbol.doubleStruckCapitalR.rawValue
+            } else if v.name == "RealPos" {
+                v.symbol = Symbol.doubleStruckCapitalR.rawValue
+                v.symbol += Symbol.plus.rawValue
+            } else if v.name == "Simplex" {
+                v.symbol = Symbol.capitalDelta.rawValue
+            } else if v.name == "Probability" {
+                v.symbol = Symbol.doubleStruckCapitalP.rawValue
+            } else if v.name == "Natural" {
+                v.symbol = Symbol.doubleStruckCapitalN.rawValue
+            } else if v.name == "Integer" {
+                v.symbol = Symbol.doubleStruckCapitalZ.rawValue
+            }
+        }
+        print(variables)
+        
+        
+        
+        
+        
+
         guard let jsonStringArray = revbayesBridge.getPalletItems() as? [String]
             else {
                 throw DataToolError.readError

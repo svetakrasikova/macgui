@@ -38,18 +38,72 @@
 #include "RlAbstractCharacterData.h"
 #include "RlNonHomologousDiscreteCharacterData.h"
 #include "RlContinuousCharacterData.h"
+#include "json.hpp"
+
+using json = nlohmann::json;
 
 
 
 @implementation CoreBridge : NSObject
 
+- (NSMutableArray*)getVariablesFromCore {
+
+    // query the workspace for all REV language components
+    RevLanguage::Workspace& myWorkspace = RevLanguage::Workspace::globalWorkspace();
+    std::map<std::string, RevLanguage::RevObject*> list = myWorkspace.getTypeTable();
+    
+    // construct the list of variables for the random variable and constants pallets
+    NSMutableArray* variables = [NSMutableArray array];
+    for (std::map<std::string, RevLanguage::RevObject*>::iterator it = list.begin(); it != list.end(); it++)
+        {
+        RevLanguage::AbstractModelObject* varPtr = dynamic_cast<RevLanguage::AbstractModelObject*>(it->second);
+        if (varPtr != NULL)
+            {
+            // is it a vector of a scalar?
+            bool isVector = false;
+            RevLanguage::Container* containerPtr = dynamic_cast<RevLanguage::Container*>(it->second);
+            if (containerPtr != NULL)
+                isVector = true;
+
+            // if it's a vector, find the base class
+            std::string baseName = "";
+            for (size_t i=0; i<it->first.size(); i++)
+                {
+                if (it->first[i] != '[' && it->first[i] != ']')
+                    baseName += it->first[i];
+                }
+            RevLanguage::AbstractModelObject* baseObj = NULL;
+            std::map<std::string, RevLanguage::RevObject*>::iterator itf = list.find(baseName);
+            if (itf != list.end())
+                baseObj = dynamic_cast<RevLanguage::AbstractModelObject*>(itf->second);
+            
+            std::string vType = varPtr->getType();
+            size_t n = std::count(vType.begin(), vType.end(), '['); // dimension of variable
+
+            // get information on the variable
+            std::string varName = (it)->first;
+
+            // fillout JSON string
+            json j;
+            j["name"] = baseName;
+            j["symbol"] = "";
+            j["dimension"] = n;
+            std::string jsonStr = j.dump();
+
+            [variables addObject: [NSString stringWithUTF8String:jsonStr.c_str()]];
+            }
+        }
+    return variables;
+}
+
 - (NSMutableArray*)getPalletItems {
 
     NSMutableArray* palletItems = [NSMutableArray array];
 
-    // construct the list of variables for the random variable and constants pallets
     RevLanguage::Workspace& myWorkspace = RevLanguage::Workspace::globalWorkspace();
     std::map<std::string, RevLanguage::RevObject*> list = myWorkspace.getTypeTable();
+    
+    // construct the list of variables for the random variable and constants pallets
     for (std::map<std::string, RevLanguage::RevObject*>::iterator it = list.begin(); it != list.end(); it++)
         {
         RevLanguage::AbstractModelObject* varPtr = dynamic_cast<RevLanguage::AbstractModelObject*>(it->second);
@@ -78,20 +132,17 @@
 
             // get information on the variable
             std::string varName = (it)->first;
-            
+
             // fillout JSON string
-            std::string jsonStr = "{";
-            jsonStr += "\"type\": \"Variable\", ";
-            jsonStr += "\"name\": \"";
-            jsonStr += baseName + "\", ";
-            jsonStr += "\"dimension\": ";
-            jsonStr += std::to_string(n) + ",";
-            jsonStr += "}";
+            json j;
+            j["type"] = "Variable";
+            j["name"] = baseName;
+            j["dimension"] = n;
+            std::string jsonStr = j.dump();
 
             [palletItems addObject: [NSString stringWithUTF8String:jsonStr.c_str()]];
             }
         }
-
 
     // construct the list of moves
     for (std::map<std::string, RevLanguage::RevObject*>::iterator it = list.begin(); it != list.end(); it++)
@@ -126,7 +177,7 @@
     for (RevLanguage::FunctionTable::iterator it = funcList.begin(); it != funcList.end(); it++)
         {
         RevLanguage::ConstructorFunction* conFunc = dynamic_cast<RevLanguage::ConstructorFunction*>(it->second);
-//        std::cout << it->first << std::endl;
+        std::cout << it->first << std::endl;
         if (conFunc != NULL)
             {
 //            std::cout << "   " << it->first << std::endl;
@@ -142,6 +193,25 @@
                 std::string::size_type i = distName.find(s);
                 if (i != std::string::npos)
                    distName.erase(i, s.length());
+                    
+                    
+                    
+                std::string constructorName = distPtr->getConstructorFunctionName();
+                std::string distributionName = distPtr->getDistributionFunctionName();
+                std::vector<std::string> aliases = distPtr->getDistributionFunctionAliases();
+                TypeSpec typeSpec = distPtr->getVariableTypeSpec();
+                MemberRules memberRules = distPtr->getParameterRules();
+                
+                std::cout << "   constructorName  = " << constructorName << std::endl;
+                std::cout << "   distributionName = " << distributionName << std::endl;
+                std::cout << "   typeSpec         = " << typeSpec << std::endl;
+                std::cout << "   memberRules      = " << &memberRules << std::endl;
+                std::cout << "   aliases          = ";
+                for (int i=0; i<aliases.size(); i++)
+                    std::cout << aliases[i] << " ";
+                std::cout << std::endl;
+
+
 
                 // fillout JSON string
                 std::string jsonStr = "{";
