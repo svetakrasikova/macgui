@@ -30,6 +30,8 @@
 		1411BEE82208FE91009BEE1D /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411BEE62208FE91009BEE1D /* Tool.swift */; };
 		1411BEE92208FE91009BEE1D /* Tool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEE72208FE91009BEE1D /* Tool.xib */; };
 		1411D1632305B18D00A8B936 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411D1622305B18D00A8B936 /* ToolTipView.swift */; };
+		1419FD9A2445160500007232 /* PaletteVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1419FD982445160500007232 /* PaletteVariable.swift */; };
+		1419FD9B2445160500007232 /* PaletteVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1419FD992445160500007232 /* PaletteVariableList.swift */; };
 		141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */; };
 		142945F723EE44DC0093608F /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 142945F623EE44DC0093608F /* Preferences.storyboard */; };
 		142945F923EF50E40093608F /* PreferencesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142945F823EF50E40093608F /* PreferencesManager.swift */; };
@@ -1438,6 +1440,8 @@
 		1411BEE62208FE91009BEE1D /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		1411BEE72208FE91009BEE1D /* Tool.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tool.xib; sourceTree = "<group>"; };
 		1411D1622305B18D00A8B936 /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
+		1419FD982445160500007232 /* PaletteVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteVariable.swift; sourceTree = "<group>"; };
+		1419FD992445160500007232 /* PaletteVariableList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteVariableList.swift; sourceTree = "<group>"; };
 		141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteringClipView.swift; sourceTree = "<group>"; };
 		142945F623EE44DC0093608F /* Preferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		142945F823EF50E40093608F /* PreferencesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesManager.swift; sourceTree = "<group>"; };
@@ -4334,6 +4338,8 @@
 		1410C3A123F6022D0044EB48 /* Model Tool */ = {
 			isa = PBXGroup;
 			children = (
+				1419FD982445160500007232 /* PaletteVariable.swift */,
+				1419FD992445160500007232 /* PaletteVariableList.swift */,
 				140E726223F3643400E86919 /* PalettItem.swift */,
 				1410C3A423F6048B0044EB48 /* Parameter.swift */,
 			);
@@ -8548,6 +8554,7 @@
 				144BF09E23A17AC70001B2EF /* HyperbolicSineFunction.cpp in Sources */,
 				144BF18623A17AC80001B2EF /* PhyloMultiSampleOrnsteinUhlenbeckProcess.cpp in Sources */,
 				144BF11723A17AC70001B2EF /* DecomposedInverseWishartDistribution.cpp in Sources */,
+				1419FD9B2445160500007232 /* PaletteVariableList.swift in Sources */,
 				144BEE2E23A17AC60001B2EF /* Func_treePairwiseNodalDistances.cpp in Sources */,
 				144BECDF23A17AC50001B2EF /* Move_ShrinkExpand.cpp in Sources */,
 				144BEF2E23A17AC60001B2EF /* NearestNeighborInterchange_nonClockProposal.cpp in Sources */,
@@ -9762,6 +9769,7 @@
 				144BEE5B23A17AC60001B2EF /* Func_hky.cpp in Sources */,
 				144BECCA23A17AC50001B2EF /* Move_DPPGibbsConcentration.cpp in Sources */,
 				144BECCC23A17AC50001B2EF /* Move_MultiValueEventScale.cpp in Sources */,
+				1419FD9A2445160500007232 /* PaletteVariable.swift in Sources */,
 				144BF11A23A17AC70001B2EF /* MultinomialDistribution.cpp in Sources */,
 				144BECAC23A17AC50001B2EF /* Move_RateAgeBetaShift.cpp in Sources */,
 				144BEE4223A17AC60001B2EF /* Func_covarion.cpp in Sources */,
