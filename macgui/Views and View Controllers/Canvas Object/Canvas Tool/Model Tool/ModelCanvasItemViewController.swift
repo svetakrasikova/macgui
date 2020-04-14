@@ -68,7 +68,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         setFrame()
         addShape()
         addDividerLine()
-        addInfoButton()
+        setUpActionButton()
     }
     func setFrame() {
         view.frame = self.frame
@@ -94,6 +94,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
 
     
     func updateShapeLayer(_ shapeLayer: CAShapeLayer, selected:  Bool) {
+        clearSublayers()
         if selected {
             addShape()
             shapeLayer.shadowOpacity = Float(preferencesManager.modelCanvasNodeSelectionShadowOpacity!)
@@ -105,10 +106,10 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         }
         addDividerLine()
         addLabel()
-        addInfoButton()
+        addActionButtonView()
     }
     
-    func addInfoButton(){
+    func setUpActionButton(){
         guard let fillColor = self.fillColor else {
             print("addInfoButton: fill color for the shape layer is undefined.")
             return
@@ -121,8 +122,14 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         infoButton.isTransparent = true
         infoButton.setButtonType(.momentaryPushIn)
         self.view.addSubview(infoButton)
+        infoButton.delegate = self
         self.actionButton = infoButton
-        self.actionButton?.delegate = self
+    }
+    
+    func addActionButtonView() {
+        if let button = self.actionButton {
+            view.addSubview(button)
+        }
     }
     
     func addDividerLine() {
@@ -155,6 +162,16 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
           
         }
     }
+    
+    func clearSublayers(){
+        actionButton?.removeFromSuperview()
+        if let sublayers = view.layer?.sublayers {
+            for sublayer in sublayers {
+                sublayer.removeFromSuperlayer()
+            }
+        }
+    }
+    
     
 //    MARK: -- Action Button Delegate
     
