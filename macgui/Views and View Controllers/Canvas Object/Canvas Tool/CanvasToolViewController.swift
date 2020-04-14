@@ -44,7 +44,9 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     var showFirstPopoverTimer: Timer?
     
     @objc func showPopover(){
+        if self.view.window?.isMainWindow ?? true {
         self.toolTipPopover.show(relativeTo: self.view.bounds, of: self.view, preferredEdge: NSRectEdge.minY)
+        }
     }
 
     @objc func popoverLoop(){
@@ -133,15 +135,11 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if let window = NSApp.windows.first { window.delegate = self}
         infoButton.delegate = self
         inspectorButton.delegate = self
         inspectorButton.observeDataChange()
         (self.view as! CanvasToolView).concreteDelegate = self
         tool?.delegate = self
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
-        
         NotificationCenter.default.addObserver(self,
                                                      selector: #selector(didAddNewArrow(notification:)),
                                                      name: .didAddNewArrow,
