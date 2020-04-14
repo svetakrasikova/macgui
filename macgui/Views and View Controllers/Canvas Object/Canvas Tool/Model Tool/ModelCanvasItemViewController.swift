@@ -41,7 +41,21 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
         return node.frameOnCanvas
     }
     
-    override func viewDidLoad() {
+    var infoButton: ActionButton?
+    
+//    MARK: -- Mouse Events
+    
+    override func mouseEntered(with event: NSEvent) {
+        self.infoButton?.mouseEntered(with: event)
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        self.infoButton?.mouseExited(with: event)
+       }
+    
+//    MARK: -- Controller Life Cycle
+    
+    override func viewDidLoad() {	
         super.viewDidLoad()
         setUp()
     }
@@ -104,6 +118,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
         infoButton.isTransparent = true
         infoButton.setButtonType(.momentaryPushIn)
         self.view.addSubview(infoButton)
+        self.infoButton = infoButton
     }
     
     func addDividerLine() {
