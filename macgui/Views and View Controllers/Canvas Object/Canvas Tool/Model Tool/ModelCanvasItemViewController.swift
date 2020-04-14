@@ -127,7 +127,16 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     }
     
     func addActionButtonView() {
+        guard let fillColor = self.fillColor else {
+            print("addInfoButton: fill color for the shape layer is undefined.")
+            return
+        }
         if let button = self.actionButton {
+            if fillColor.isLight() ?? true {
+                button.labelColor = NSColor.black
+            } else {
+                button.labelColor = NSColor.white
+            }
             view.addSubview(button)
         }
     }
