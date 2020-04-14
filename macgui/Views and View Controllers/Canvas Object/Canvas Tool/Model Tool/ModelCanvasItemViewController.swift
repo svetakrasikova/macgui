@@ -138,6 +138,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
                 button.labelColor = NSColor.white
             }
             view.addSubview(button)
+            button.needsLayout = true
         }
     }
     
