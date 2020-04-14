@@ -116,7 +116,6 @@ extension ModelCanvasItemView {
         textLayer.alignmentMode = .center
         shapeLayer.addSublayer(textLayer)
     }
-    
 
 }
 
