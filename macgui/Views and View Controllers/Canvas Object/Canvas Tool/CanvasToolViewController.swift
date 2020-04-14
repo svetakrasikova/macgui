@@ -136,14 +136,6 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         closePopover()
     }
     
-    func setTrackingArea(){
-           let trackingArea = NSTrackingArea(rect: view.bounds,
-                                             options: [NSTrackingArea.Options.activeAlways ,NSTrackingArea.Options.mouseEnteredAndExited],
-                                             owner: self,
-                                             userInfo: nil)
-           view.addTrackingArea(trackingArea)
-       }
-    
     // MARK: - Controller Life Cycle
     
     override func viewDidLoad() {
@@ -183,7 +175,6 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     func setUp(){
         setFrame()
         setImage()
-        setTrackingArea()
         setPopOver()
         if tool!.isKind(of: Connectable.self){ unhideConnectors()}
         addProgressSpinner()
@@ -251,6 +242,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     
     // MARK: - Action Button Delegate
     func infoButtonClicked() {
+        print("info button clicked")
         if let toolName = tool?.name {
             let toolType = ToolType(rawValue: toolName)
             switch toolType {

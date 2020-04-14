@@ -38,7 +38,14 @@ class MovingCanvasObjectView: CanvasObjectView {
           super.viewDidEndLiveResize()
           delegate?.updateFrame()
       }
-
+    
+    override func updateTrackingAreas() {
+        let trackingArea = NSTrackingArea(rect: bounds,
+                                          options: [NSTrackingArea.Options.activeAlways ,NSTrackingArea.Options.mouseEnteredAndExited],
+                                          owner: self,
+                                          userInfo: nil)
+        addTrackingArea(trackingArea)
+    }
 }
 
 //   MARK: - CanvasObjectViewDelegate Protocol
