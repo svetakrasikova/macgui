@@ -22,9 +22,16 @@ class ActionButton: NSButton {
         case Default
     }
     
+    enum Appearance {
+        static let dark = NSColor.darkGray
+        static let light = NSColor.lightGray
+        static let gray = NSColor.systemGray
+        static let clear = NSColor.clear
+    }
+    
     override var isHidden: Bool {
         didSet {
-            if let delegate = self.delegate, delegate.isDisplayDataTool() {
+            if let delegate = self.delegate as? CanvasToolViewController, delegate.isDisplayDataTool() {
                 needsLayout = true
             }
         }
@@ -37,7 +44,7 @@ class ActionButton: NSButton {
     
     var mouseIsInside = false
     
-    var labelColor: CGColor? = NSColor.white.cgColor
+    var labelColor: NSColor? = NSColor.white
     
     var buttonType: ActionButtonType {
         switch tag {
@@ -55,7 +62,7 @@ class ActionButton: NSButton {
     private var observer: NSKeyValueObservation?
     
     func observeDataChange(){
-        if let delegate = self.delegate, delegate.isDisplayDataTool(), let toolVC = delegate as? CanvasToolViewController {
+        if let toolVC = self.delegate as? CanvasToolViewController, toolVC.isDisplayDataTool(){
             let tool = toolVC.tool as! DataTool
             self.observer = tool.observe(\DataTool.dataMatrices, options: [.initial]) {(tool, change) in
                 if self.buttonType == .Inspector {
@@ -82,15 +89,8 @@ class ActionButton: NSButton {
     
     override func mouseUp(with event: NSEvent) {
         if mouseIsInside {
-            switch buttonType {
-            case .Info:
-                print("from mouse up")
-                delegate?.infoButtonClicked()
-            case .Inspector:
-                delegate?.inspectorButtonClicked()
-            default:
-                print("No default action button implemented.")
-            }
+            delegate?.actionButtonClicked(self)
+            
         } else {
             buttonState = .idle
         }
@@ -141,7 +141,7 @@ class ActionButton: NSButton {
         textLayer.frame = bounds
         textLayer.contentsScale = scaleFactor
         textLayer.font = "Hoefler Text" as CFTypeRef
-        textLayer.foregroundColor = self.labelColor
+        textLayer.foregroundColor = self.labelColor?.cgColor
         textLayer.fontSize = 7
         textLayer.string = "i"
         textLayer.allowsFontSubpixelQuantization = true
@@ -171,19 +171,17 @@ class ActionButton: NSButton {
     private func setAppearanceForState() {
         switch buttonState {
         case .pressed:
-            shapeLayer.fillColor = NSColor.lightGray.cgColor
+            shapeLayer.fillColor = (labelColor?.isLight() ?? true) ? Appearance.dark.cgColor : Appearance.gray.cgColor
         case .highlighted:
-            shapeLayer.fillColor = NSColor.darkGray.cgColor
+            shapeLayer.fillColor = (labelColor?.isLight() ?? true) ? Appearance.dark.cgColor : Appearance.light.cgColor
         case .idle:
-            shapeLayer.fillColor = NSColor.clear.cgColor
+            shapeLayer.fillColor = Appearance.clear.cgColor
         }
     }
 }
 
 protocol ActionButtonDelegate: class {
-    func infoButtonClicked()
-    func inspectorButtonClicked()
-    func isDisplayDataTool() -> Bool
+    func actionButtonClicked(_ button: ActionButton)
 }
 
 

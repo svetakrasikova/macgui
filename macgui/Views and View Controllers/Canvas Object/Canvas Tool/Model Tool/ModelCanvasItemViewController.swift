@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class ModelCanvasItemViewController: CanvasObjectViewController {
+class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDelegate {
+    
 
     let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
     
@@ -41,16 +42,16 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
         return node.frameOnCanvas
     }
     
-    var infoButton: ActionButton?
+    var actionButton: ActionButton?
     
 //    MARK: -- Mouse Events
     
     override func mouseEntered(with event: NSEvent) {
-        self.infoButton?.mouseEntered(with: event)
+        self.actionButton?.mouseEntered(with: event)
     }
     
     override func mouseExited(with event: NSEvent) {
-        self.infoButton?.mouseExited(with: event)
+        self.actionButton?.mouseExited(with: event)
        }
     
 //    MARK: -- Controller Life Cycle
@@ -59,6 +60,8 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
         super.viewDidLoad()
         setUp()
     }
+    
+//    MARK: -- Setting up View
     
     func setUp(){
         view.wantsLayer = true
@@ -111,14 +114,15 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
             return
         }
         let infoButton = ActionButton()
-        if fillColor.isLight() ?? true { infoButton.labelColor = NSColor.black.cgColor }
+        if fillColor.isLight() ?? true { infoButton.labelColor = NSColor.black }
         let buttonOrigin = CGPoint(x: view.bounds.center().x-4, y: view.bounds.center().y-20)
         infoButton.frame = CGRect(origin: buttonOrigin, size: CGSize(width: 8, height: 8))
         infoButton.tag = 0
         infoButton.isTransparent = true
         infoButton.setButtonType(.momentaryPushIn)
         self.view.addSubview(infoButton)
-        self.infoButton = infoButton
+        self.actionButton = infoButton
+        self.actionButton?.delegate = self
     }
     
     func addDividerLine() {
@@ -151,6 +155,12 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
           
         }
     }
+    
+//    MARK: -- Action Button Delegate
+    
+    func actionButtonClicked(_ button: ActionButton) {
+//TODO: open a new dialogue sheet
+     }
     
  
     

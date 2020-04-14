@@ -112,13 +112,6 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
 
     // MARK: - Mouse Events
     
-//    override func keyDown(with event: NSEvent) {
-//        if event.charactersIgnoringModifiers == String(Character(UnicodeScalar(NSDeleteCharacter)!)) {
-//            let point = event.locationInWindow
-//            NotificationCenter.default.post(name: .didSelectDeleteKey, object: self, userInfo: ["point": point])
-//        }
-//    }
-    
     override func mouseEntered(with event: NSEvent) {
         infoButton.mouseEntered(with: event)
         inspectorButton.mouseEntered(with: event)
@@ -241,20 +234,33 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     }
     
     // MARK: - Action Button Delegate
-    func infoButtonClicked() {
-        print("info button clicked")
-        if let toolName = tool?.name {
-            let toolType = ToolType(rawValue: toolName)
-            switch toolType {
-            case  .readdata?:
-                (tool as! ReadData).openFileBrowser()
-            case .model?:
-                resetModelToolWindowController()
-                modelToolWindowController.showWindow(self)
-            default:
-                self.presentAsModalWindow(sheetViewController)
+    func actionButtonClicked(_ button: ActionButton) {
+        
+        switch button.buttonType {
+            
+        case .Info:
+            if let toolName = tool?.name {
+                let toolType = ToolType(rawValue: toolName)
+                switch toolType {
+                case  .readdata?:
+                    (tool as! ReadData).openFileBrowser()
+                case .model?:
+                    resetModelToolWindowController()
+                    modelToolWindowController.showWindow(self)
+                default:
+                    self.presentAsModalWindow(sheetViewController)
+                }
             }
+            
+        case .Inspector:
+            resetMatrixInspectorWindowController()
+            matrixInspectorWindowController.showWindow(self)
+            
+        default:
+            print("No default action button implemented.")
         }
+
+        
     }
     
     func inspectorButtonClicked() {

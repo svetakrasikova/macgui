@@ -21,3 +21,4 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+project.pbxproj
