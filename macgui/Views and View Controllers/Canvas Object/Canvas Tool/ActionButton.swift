@@ -65,13 +65,6 @@ class ActionButton: NSButton {
        }
     }
     
-
-    override func awakeFromNib() {
-        let trackingArea = NSTrackingArea(rect: self.bounds, options:NSTrackingArea.Options.init(rawValue: 129), owner: self, userInfo: nil)
-        self.addTrackingArea(trackingArea)
-        observeDataChange()
-    }
-    
     override func mouseEntered(with event: NSEvent) {
         mouseIsInside = true
         buttonState = .highlighted
@@ -91,6 +84,7 @@ class ActionButton: NSButton {
         if mouseIsInside {
             switch buttonType {
             case .Info:
+                print("from mouse up")
                 delegate?.infoButtonClicked()
             case .Inspector:
                 delegate?.inspectorButtonClicked()
@@ -114,8 +108,12 @@ class ActionButton: NSButton {
     
     private func commonInit() {
         wantsLayer = true
+        observeDataChange()
     }
-    
+   
+    override func updateTrackingAreas() {
+        self.addTrackingArea(NSTrackingArea(rect: self.bounds, options: [.mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow], owner: self, userInfo: nil))
+    }
     override func makeBackingLayer() -> CALayer {
         return shapeLayer
     }
