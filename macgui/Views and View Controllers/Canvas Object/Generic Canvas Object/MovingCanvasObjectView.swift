@@ -41,7 +41,8 @@ class MovingCanvasObjectView: CanvasObjectView {
     
     override func updateTrackingAreas() {
         let trackingArea = NSTrackingArea(rect: bounds,
-                                          options: [NSTrackingArea.Options.activeAlways ,NSTrackingArea.Options.mouseEnteredAndExited],
+                                          options: [NSTrackingArea.Options.activeInKeyWindow,
+                                                    NSTrackingArea.Options.mouseEnteredAndExited],
                                           owner: self,
                                           userInfo: nil)
         addTrackingArea(trackingArea)
