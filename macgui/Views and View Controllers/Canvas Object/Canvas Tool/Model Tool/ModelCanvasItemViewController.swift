@@ -51,6 +51,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
         setFrame()
         addShape()
         addDividerLine()
+        addLabelSubview()
         addInfoButton()
     }
     func setFrame() {
@@ -87,7 +88,8 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
             shapeLayer.shadowRadius = preferencesManager.modelCanvasNodeDefaultShadowRadius!
         }
         addDividerLine()
-        addLabel()
+//        addLabel()
+        addLabelSubview()
         addInfoButton()
     }
     
@@ -133,10 +135,20 @@ class ModelCanvasItemViewController: CanvasObjectViewController {
             } else {
                 view.drawLabel(labelColor: NSColor.white, label: label)
             }
-          
+            
         }
     }
     
- 
+    func addLabelSubview() {
+        let bounds = view.bounds
+//        let latexlabel = MTMathUILabel()
+        let latexlabel = NSView()
+        latexlabel.frame = NSRect(x: bounds.minX, y: bounds.center().y-8, width: bounds.size.width, height: bounds.size.height/2+8)
+//        latexlabel.backgroundColor = .white
+//         latexlabel.latex = "\\frac{2}{3}"
+        latexlabel.wantsLayer = true
+        latexlabel.layer?.backgroundColor = NSColor.clear.cgColor
+        self.view.addSubview(latexlabel)
+    }
     
 }

@@ -32,6 +32,11 @@
 		1411D1632305B18D00A8B936 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411D1622305B18D00A8B936 /* ToolTipView.swift */; };
 		1419FD9A2445160500007232 /* PaletteVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1419FD982445160500007232 /* PaletteVariable.swift */; };
 		1419FD9B2445160500007232 /* PaletteVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1419FD992445160500007232 /* PaletteVariableList.swift */; };
+		1419FD9E244517B300007232 /* RlStochasticMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1419FD9D244517B200007232 /* RlStochasticMatrix.cpp */; };
+		1419FDA524452EAB00007232 /* Func_stochasticMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1419FDA124452EAA00007232 /* Func_stochasticMatrix.cpp */; };
+		1419FDA624452EAB00007232 /* Func_sumSimplex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1419FDA224452EAB00007232 /* Func_sumSimplex.cpp */; };
+		1419FDA724452EAB00007232 /* Func_meanSimplex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1419FDA424452EAB00007232 /* Func_meanSimplex.cpp */; };
+		1419FDAA24452F2000007232 /* StochasticMatrixFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1419FDA824452F2000007232 /* StochasticMatrixFunction.cpp */; };
 		141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */; };
 		142945F723EE44DC0093608F /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 142945F623EE44DC0093608F /* Preferences.storyboard */; };
 		142945F923EF50E40093608F /* PreferencesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142945F823EF50E40093608F /* PreferencesManager.swift */; };
@@ -1442,6 +1447,17 @@
 		1411D1622305B18D00A8B936 /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		1419FD982445160500007232 /* PaletteVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteVariable.swift; sourceTree = "<group>"; };
 		1419FD992445160500007232 /* PaletteVariableList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteVariableList.swift; sourceTree = "<group>"; };
+		1419FD9C244517B200007232 /* RlStochasticMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RlStochasticMatrix.h; sourceTree = "<group>"; };
+		1419FD9D244517B200007232 /* RlStochasticMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RlStochasticMatrix.cpp; sourceTree = "<group>"; };
+		1419FD9F24452EAA00007232 /* Func_stochasticMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func_stochasticMatrix.h; sourceTree = "<group>"; };
+		1419FDA024452EAA00007232 /* Func_sumSimplex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func_sumSimplex.h; sourceTree = "<group>"; };
+		1419FDA124452EAA00007232 /* Func_stochasticMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_stochasticMatrix.cpp; sourceTree = "<group>"; };
+		1419FDA224452EAB00007232 /* Func_sumSimplex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_sumSimplex.cpp; sourceTree = "<group>"; };
+		1419FDA324452EAB00007232 /* Func_meanSimplex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func_meanSimplex.h; sourceTree = "<group>"; };
+		1419FDA424452EAB00007232 /* Func_meanSimplex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_meanSimplex.cpp; sourceTree = "<group>"; };
+		1419FDA824452F2000007232 /* StochasticMatrixFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StochasticMatrixFunction.cpp; sourceTree = "<group>"; };
+		1419FDA924452F2000007232 /* StochasticMatrixFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StochasticMatrixFunction.h; sourceTree = "<group>"; };
+		1419FDAB244539C400007232 /* json.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
 		141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteringClipView.swift; sourceTree = "<group>"; };
 		142945F623EE44DC0093608F /* Preferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		142945F823EF50E40093608F /* PreferencesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesManager.swift; sourceTree = "<group>"; };
@@ -4934,6 +4950,8 @@
 		144BE2BF23A17AC30001B2EF /* math */ = {
 			isa = PBXGroup;
 			children = (
+				1419FD9D244517B200007232 /* RlStochasticMatrix.cpp */,
+				1419FD9C244517B200007232 /* RlStochasticMatrix.h */,
 				144BE2C023A17AC30001B2EF /* RlMatrixBoolean.cpp */,
 				144BE2C123A17AC30001B2EF /* RlRateMatrix.h */,
 				144BE2C223A17AC30001B2EF /* RlRateMatrix.cpp */,
@@ -5443,6 +5461,12 @@
 		144BE43F23A17AC30001B2EF /* math */ = {
 			isa = PBXGroup;
 			children = (
+				1419FDA424452EAB00007232 /* Func_meanSimplex.cpp */,
+				1419FDA324452EAB00007232 /* Func_meanSimplex.h */,
+				1419FDA124452EAA00007232 /* Func_stochasticMatrix.cpp */,
+				1419FD9F24452EAA00007232 /* Func_stochasticMatrix.h */,
+				1419FDA224452EAB00007232 /* Func_sumSimplex.cpp */,
+				1419FDA024452EAA00007232 /* Func_sumSimplex.h */,
 				144BE44023A17AC30001B2EF /* Func_discretizeDistribution.cpp */,
 				144BE44123A17AC30001B2EF /* Func_abs.cpp */,
 				144BE44223A17AC30001B2EF /* Func_log.h */,
@@ -6180,6 +6204,7 @@
 		144BE6B523A17AC40001B2EF /* linenoise */ = {
 			isa = PBXGroup;
 			children = (
+				1419FDAB244539C400007232 /* json.hpp */,
 				144BE6B623A17AC40001B2EF /* linenoise.h */,
 				144BE6B723A17AC40001B2EF /* utf8.c */,
 				144BE6B823A17AC40001B2EF /* linenoise.c */,
@@ -7391,6 +7416,8 @@
 		144BEA4823A17AC50001B2EF /* math */ = {
 			isa = PBXGroup;
 			children = (
+				1419FDA824452F2000007232 /* StochasticMatrixFunction.cpp */,
+				1419FDA924452F2000007232 /* StochasticMatrixFunction.h */,
 				144BEA4923A17AC50001B2EF /* ShortestDistanceFunction.cpp */,
 				144BEA4A23A17AC50001B2EF /* ScalarVectorMultiplication.h */,
 				144BEA4B23A17AC50001B2EF /* AssembleOrder1ContinuousMRFFunction.h */,
@@ -8811,6 +8838,7 @@
 				144BF02523A17AC70001B2EF /* CladogeneticProbabilityMatrix_Epoch.cpp in Sources */,
 				144BEEB323A17AC60001B2EF /* Dist_Laplace.cpp in Sources */,
 				144BEF5923A17AC60001B2EF /* SlideProposal.cpp in Sources */,
+				1419FDA624452EAB00007232 /* Func_sumSimplex.cpp in Sources */,
 				144BF15523A17AC70001B2EF /* PiecewiseConstantSerialSampledBirthDeathProcess.cpp in Sources */,
 				149F8B372363927B003146FD /* ToolObject.swift in Sources */,
 				144BF04D23A17AC70001B2EF /* ProgressBar.cpp in Sources */,
@@ -8888,6 +8916,7 @@
 				144BEEBA23A17AC60001B2EF /* RlDistribution.cpp in Sources */,
 				144BEF9423A17AC60001B2EF /* SequentialMoveSchedule.cpp in Sources */,
 				144BED9123A17AC60001B2EF /* SyntaxIndexOperation.cpp in Sources */,
+				1419FDA524452EAB00007232 /* Func_stochasticMatrix.cpp in Sources */,
 				144BED7523A17AC60001B2EF /* Workspace.cpp in Sources */,
 				144BF12723A17AC70001B2EF /* ExponentialWithOffsetDistribution.cpp in Sources */,
 				144BED6A23A17AC60001B2EF /* RevNullObject.cpp in Sources */,
@@ -9142,6 +9171,7 @@
 				144BF16923A17AC80001B2EF /* SSE_ODE.cpp in Sources */,
 				144BEEE423A17AC60001B2EF /* Dist_phyloCTMCDollo.cpp in Sources */,
 				144BF19423A17AC80001B2EF /* RbHelpDistribution.cpp in Sources */,
+				1419FDAA24452F2000007232 /* StochasticMatrixFunction.cpp in Sources */,
 				144BED0823A17AC50001B2EF /* Mntr_SiteMixtureAllocation.cpp in Sources */,
 				144BF13623A17AC70001B2EF /* ChisqDistribution.cpp in Sources */,
 				144BEEBC23A17AC60001B2EF /* Dist_sampledSpeciationBirthDeathProcess.cpp in Sources */,
@@ -9767,6 +9797,7 @@
 				144BECEF23A17AC50001B2EF /* Move_VectorSingleElementScale.cpp in Sources */,
 				144BECDD23A17AC50001B2EF /* Move_RandomDive.cpp in Sources */,
 				144BEE5B23A17AC60001B2EF /* Func_hky.cpp in Sources */,
+				1419FD9E244517B300007232 /* RlStochasticMatrix.cpp in Sources */,
 				144BECCA23A17AC50001B2EF /* Move_DPPGibbsConcentration.cpp in Sources */,
 				144BECCC23A17AC50001B2EF /* Move_MultiValueEventScale.cpp in Sources */,
 				1419FD9A2445160500007232 /* PaletteVariable.swift in Sources */,
@@ -9839,6 +9870,7 @@
 				144BED3223A17AC60001B2EF /* RlMaxTimeStoppingRule.cpp in Sources */,
 				144BEFA523A17AC60001B2EF /* AbstractFileMonitor.cpp in Sources */,
 				144BEEDD23A17AC60001B2EF /* Dist_episodicBirthDeath.cpp in Sources */,
+				1419FDA724452EAB00007232 /* Func_meanSimplex.cpp in Sources */,
 				144BF09C23A17AC70001B2EF /* EmpiricalQuantileFunction.cpp in Sources */,
 				144BECC223A17AC50001B2EF /* Move_AVMVN.cpp in Sources */,
 				144BED4A23A17AC60001B2EF /* WorkspaceObject.cpp in Sources */,
