@@ -29,7 +29,6 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate {
         if event.charactersIgnoringModifiers == String(Character(UnicodeScalar(NSDeleteCharacter)!)) {
             NotificationCenter.default.post(name: .didSelectDeleteKey, object: self)
         }
-
     }
     
 // MARK: - Selectors for Observed Notifications
@@ -46,6 +45,7 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate {
         (self.view as! CanvasObjectView).delegate = self
          NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
     }
+    
 }
 
 
