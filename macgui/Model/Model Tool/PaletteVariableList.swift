@@ -9,6 +9,10 @@
 import Cocoa
 
 class PaletteVariableList: NSObject, Codable, NSCoding {
+    
+    enum Key: String {
+        case variables = "variables"
+    }
 
     // MARK: - Instance variables -
 
@@ -25,13 +29,13 @@ class PaletteVariableList: NSObject, Codable, NSCoding {
     // MARK: - NSCoding -
     
     func encode(with coder: NSCoder) {
-    
-        coder.encode(self.variables, forKey: "variables")
+        
+        coder.encode(self.variables, forKey: Key.variables.rawValue)
     }
     
     required init?(coder: NSCoder) {
     
-        self.variables = coder.decodeObject(forKey: "variables") as! [PaletteVariable]
+        self.variables = coder.decodeObject(forKey: Key.variables.rawValue) as! [PaletteVariable]
     }
 
     override var description: String {
