@@ -11,6 +11,12 @@ import Cocoa
 
 
 class PaletteVariable : NSObject, Codable, NSCoding {
+    
+    enum Key: String {
+        case name = "name"
+        case symbol = "symbol"
+        case dimension = "dimension"
+    }
 
     // MARK: - Instance variables -
 
@@ -53,17 +59,17 @@ class PaletteVariable : NSObject, Codable, NSCoding {
     // MARK: - NSCoding -
     
     func encode(with coder: NSCoder) {
-    
-        coder.encode(self.name,      forKey: "name")
-        coder.encode(self.symbol,    forKey: "symbol")
-        coder.encode(self.dimension, forKey: "dimension")
+        
+        coder.encode(self.name,      forKey: Key.name.rawValue)
+        coder.encode(self.symbol,    forKey: Key.symbol.rawValue)
+        coder.encode(self.dimension, forKey: Key.dimension.rawValue)
     }
     
     required init?(coder: NSCoder) {
     
-        self.name      = coder.decodeObject(forKey: "name") as! String
-        self.symbol    = coder.decodeObject(forKey: "symbol") as! String
-        self.dimension = coder.decodeInteger(forKey: "dimension")
+        self.name      = coder.decodeObject(forKey: Key.name.rawValue) as! String
+        self.symbol    = coder.decodeObject(forKey: Key.symbol.rawValue) as! String
+        self.dimension = coder.decodeInteger(forKey: Key.dimension.rawValue)
     }
 
    override var description: String {
