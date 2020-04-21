@@ -86,7 +86,7 @@ class PaletteVariable : PalettItem {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.symbol = try container.decode(String.self,    forKey: .symbol)
             self.dimension     = try container.decode(Int.self,    forKey: .dimension)
-            try super.init(from: container.superDecoder())
+            try super.init(from: decoder)
         }
         catch {
             throw PaletteVariableError.decodingError
