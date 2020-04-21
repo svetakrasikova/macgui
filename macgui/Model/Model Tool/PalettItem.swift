@@ -8,13 +8,6 @@
 
 import Cocoa
 
-//constant, rv, function
-enum PalettItemType: String, Codable, CaseIterable {
-    case move = "Move"
-    case variable = "Variable"
-    case distribution = "Distribution"
-}
-
 class PalettItem: NSObject, Codable, NSCoding, NSPasteboardWriting, NSPasteboardReading {
 
     var name: String
@@ -43,6 +36,7 @@ class PalettItem: NSObject, Codable, NSCoding, NSPasteboardWriting, NSPasteboard
     required init?(coder: NSCoder) {
         name = coder.decodeObject(forKey: "name") as! String
     }
+
     
 //    MARK: - NSPasteboardWriting, NSPasteboardReading
 
