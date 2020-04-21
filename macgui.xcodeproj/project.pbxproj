@@ -37,6 +37,7 @@
 		1419FDB72446287200007232 /* Func_sumSimplex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1419FDB32446287200007232 /* Func_sumSimplex.cpp */; };
 		1419FDB82446287200007232 /* Func_stochasticMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1419FDB52446287200007232 /* Func_stochasticMatrix.cpp */; };
 		1419FDBB24462AD600007232 /* RlStochasticMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1419FDB924462AD600007232 /* RlStochasticMatrix.cpp */; };
+		1419FDBD244E772900007232 /* VariableController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1419FDBC244E772900007232 /* VariableController.storyboard */; };
 		141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */; };
 		142945F723EE44DC0093608F /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 142945F623EE44DC0093608F /* Preferences.storyboard */; };
 		142945F923EF50E40093608F /* PreferencesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142945F823EF50E40093608F /* PreferencesManager.swift */; };
@@ -1458,6 +1459,7 @@
 		1419FDB52446287200007232 /* Func_stochasticMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_stochasticMatrix.cpp; sourceTree = "<group>"; };
 		1419FDB924462AD600007232 /* RlStochasticMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RlStochasticMatrix.cpp; sourceTree = "<group>"; };
 		1419FDBA24462AD600007232 /* RlStochasticMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RlStochasticMatrix.h; sourceTree = "<group>"; };
+		1419FDBC244E772900007232 /* VariableController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VariableController.storyboard; sourceTree = "<group>"; };
 		141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteringClipView.swift; sourceTree = "<group>"; };
 		142945F623EE44DC0093608F /* Preferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		142945F823EF50E40093608F /* PreferencesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesManager.swift; sourceTree = "<group>"; };
@@ -8176,6 +8178,7 @@
 				1411BEE72208FE91009BEE1D /* Tool.xib */,
 				141106B8230742D500A8B936 /* ToolTip.storyboard */,
 				1410C3AA2404EB780044EB48 /* ModelCanvasItem.storyboard */,
+				1419FDBC244E772900007232 /* VariableController.storyboard */,
 			);
 			path = "XIbs and Storyboards";
 			sourceTree = "<group>";
@@ -8500,6 +8503,7 @@
 			files = (
 				141106B9230742D500A8B936 /* ToolTip.storyboard in Resources */,
 				1411BEE92208FE91009BEE1D /* Tool.xib in Resources */,
+				1419FDBD244E772900007232 /* VariableController.storyboard in Resources */,
 				1411BEE322052B7E009BEE1D /* Main.storyboard in Resources */,
 				144BEEF523A17AC60001B2EF /* pull.sh in Resources */,
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,

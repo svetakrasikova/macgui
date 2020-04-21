@@ -44,6 +44,11 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     
     var actionButton: ActionButton?
     
+    lazy var variableController: NSViewController = {
+           let vc = NSStoryboard.loadVC(StoryBoardName.variableController)
+           return vc
+       }()
+    
 //    MARK: -- Mouse Events
     
     override func mouseEntered(with event: NSEvent) {
@@ -186,7 +191,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
 //    MARK: -- Action Button Delegate
     
     func actionButtonClicked(_ button: ActionButton) {
-//TODO: open a new dialogue sheet
+        self.presentAsModalWindow(variableController)
      }
     
  

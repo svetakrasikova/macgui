@@ -20,6 +20,7 @@ enum StoryBoardName: String {
     case notebook = "Notebook"
     case matrixInspector = "MatrixInspector"
     case modelCanvasItem = "ModelCanvasItem"
+    case variableController = "VariableController"
 }
 
 
