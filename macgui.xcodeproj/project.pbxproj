@@ -1427,7 +1427,6 @@
 		140E726223F3643400E86919 /* PalettItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettItem.swift; sourceTree = "<group>"; };
 		1410C3A423F6048B0044EB48 /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		1410C3A623FCC4260044EB48 /* ModelCanvasPreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasPreferencesController.swift; sourceTree = "<group>"; };
-		1410C3AA2404EB780044EB48 /* ModelCanvasItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ModelCanvasItem.storyboard; path = "macgui/Views/Main Canvas Object/Canvas Tool/Model Tool/ModelCanvasItem.storyboard"; sourceTree = SOURCE_ROOT; };
 		1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasItemViewController.swift; sourceTree = "<group>"; };
 		1410C3AE2404ECEB0044EB48 /* ModelCanvasItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasItemView.swift; sourceTree = "<group>"; };
 		1410C3B0240594720044EB48 /* ModelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNode.swift; sourceTree = "<group>"; };
@@ -8177,7 +8176,6 @@
 				14A663BB23186CFE0034EA53 /* Notebook.storyboard */,
 				1411BEE72208FE91009BEE1D /* Tool.xib */,
 				141106B8230742D500A8B936 /* ToolTip.storyboard */,
-				1410C3AA2404EB780044EB48 /* ModelCanvasItem.storyboard */,
 				1419FDBC244E772900007232 /* VariableController.storyboard */,
 			);
 			path = "XIbs and Storyboards";

@@ -138,13 +138,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzX-73-IOT">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="323"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="318"/>
                                 <clipView key="contentView" drawsBackground="NO" id="3eZ-bW-qyJ">
-                                    <rect key="frame" x="1" y="1" width="148" height="321"/>
+                                    <rect key="frame" x="1" y="1" width="148" height="316"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" autosaveName="OutlineView" rowHeight="24" rowSizeStyle="systemDefault" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="14" autosaveExpandedItems="YES" outlineTableColumn="uGO-87-8zt" id="qa1-j9-JlY">
-                                            <rect key="frame" x="0.0" y="0.0" width="148" height="321"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="148" height="316"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -202,14 +202,19 @@
                                                                 <outlet property="textField" destination="o2L-Gn-HRi" id="UIj-jB-zPj"/>
                                                             </connections>
                                                         </tableCellView>
-                                                        <tableCellView identifier="ShapeCell" id="r0p-Bz-XuS" userLabel="Shape">
+                                                        <tableCellView identifier="ShapeCell" id="kjy-6j-HRh" userLabel="Shape">
                                                             <rect key="frame" x="1" y="43" width="145" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField identifier="ShapeCell" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czL-ap-EZv">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="145" height="17"/>
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oBH-oX-89m">
+                                                                    <rect key="frame" x="3" y="0.0" width="17" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="lQX-Hr-e02"/>
+                                                                </imageView>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JCo-2d-hL2">
+                                                                    <rect key="frame" x="25" y="0.0" width="120" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Ebi-FQ-VRR">
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="GYX-GZ-NyH">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -217,7 +222,8 @@
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
-                                                                <outlet property="textField" destination="czL-ap-EZv" id="mai-XF-V4h"/>
+                                                                <outlet property="imageView" destination="oBH-oX-89m" id="Dmc-pY-F7q"/>
+                                                                <outlet property="textField" destination="JCo-2d-hL2" id="DDM-fe-8XG"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -328,6 +334,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSShareTemplate" width="11" height="16"/>
         <image name="NSTouchBarSidebarTemplate" width="22" height="30"/>
     </resources>

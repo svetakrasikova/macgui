@@ -103,13 +103,16 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
             }
         } else if let parameter = item as? (PalettItem, PaletteVariable.variableType) {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.shapeCell.rawValue), owner: self) as? NSTableCellView
-            if let textField = view?.textField  {
+            if let textField = view?.textField, let imageView = view?.imageView  {
                 switch parameter.1 {
                 case .constant:
+                    imageView.image = NSImage(named: "SolidRectangle")
                     textField.stringValue = "constant"
                 case .function:
+                    imageView.image = NSImage(named: "DashedCircle")
                     textField.stringValue = "function"
                 case .randomVariable:
+                    imageView.image = NSImage(named: "SolidCircle")
                     textField.stringValue = "random variable"
                 default:
                     textField.stringValue = ""
