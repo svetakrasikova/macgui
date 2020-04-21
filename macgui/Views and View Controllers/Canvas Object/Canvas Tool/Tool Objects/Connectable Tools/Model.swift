@@ -13,7 +13,6 @@ class Model: DataTool {
     let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
     
     @objc dynamic var palettItems: [PalettItem] = []
-    @objc dynamic var variables = PaletteVariableList()
     @objc dynamic var nodes: [ModelNode] = []
     @objc dynamic var edges: [Connection] = []
     
@@ -59,7 +58,7 @@ class Model: DataTool {
     
     func initPalettItemsFromCore() throws {
     
-        // find all of the variables
+        let variables = PaletteVariableList()
         guard let jsonVariableStringArray = revbayesBridge.getVariablesFromCore() as? [String]
         else {
             throw DataToolError.readError
@@ -70,14 +69,14 @@ class Model: DataTool {
         
             do {
                 let newVariable = try JSONDecoder().decode(PaletteVariable.self, from: data)
-                self.variables.addVariableToList(variable: newVariable)
+                variables.addVariableToList(variable: newVariable)
             } catch  {
                 throw ReadDataError.dataDecodingError
             }
         }
         
         // match symbols to the variables
-        for v in self.variables.variables {
+        for v in variables.variables {
             
             if v.name == "Real" {
                 v.symbol = Symbol.doubleStruckCapitalR.rawValue
