@@ -12,7 +12,7 @@ class Model: DataTool {
     
     let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
     
-    @objc dynamic var palettItems: [PalettItem] = []
+    @objc dynamic var palettItems: [PaletteItem] = []
     @objc dynamic var variables = PaletteVariableList()
     @objc dynamic var nodes: [ModelNode] = []
     @objc dynamic var edges: [Connection] = []
@@ -45,7 +45,7 @@ class Model: DataTool {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        palettItems = aDecoder.decodeObject(forKey: Key.palettItems.rawValue) as! [PalettItem]
+        palettItems = aDecoder.decodeObject(forKey: Key.palettItems.rawValue) as! [PaletteItem]
         nodes = aDecoder.decodeObject(forKey: Key.nodes.rawValue) as! [ModelNode]
         edges = aDecoder.decodeObject(forKey: Key.edges.rawValue) as! [Connection]
     }
@@ -76,7 +76,7 @@ class Model: DataTool {
             }
         }
         
-        // match symbols to the varriables
+        // match symbols to the variables
         for v in self.variables.variables {
             
             if v.name == "Real" {
@@ -93,29 +93,8 @@ class Model: DataTool {
             } else if v.name == "Integer" {
                 v.symbol = Symbol.doubleStruckCapitalZ.rawValue
             }
-        }
-        print(variables)
-        
-        
-        
-        
-        
-
-        guard let jsonStringArray = revbayesBridge.getPalletItems() as? [String]
-            else {
-                throw DataToolError.readError
-        }
-        
-        let palettItemsData: [Data] = JsonCoreBridge(jsonArray: jsonStringArray).encodeJsonStringArray()
-        
-        for data in palettItemsData {
             
-            do {
-                let newPalettItem = try JSONDecoder().decode(PalettItem.self, from: data)
-                self.palettItems.append(newPalettItem)
-            } catch  {
-                throw ReadDataError.dataDecodingError
-            }
+            palettItems.append(v)
         }
     }
     

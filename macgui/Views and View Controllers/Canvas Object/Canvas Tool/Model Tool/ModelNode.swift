@@ -10,20 +10,20 @@ import Cocoa
 
 class ModelNode: Connectable {
     
-    var nodeType: PalettItem
+    var nodeType: PaletteItem
     
     enum Key: String {
         case nodeType = "nodeType"
     }
     
-    init(name: String, frameOnCanvas: NSRect, analysis: Analysis, nodeType: PalettItem){
+    init(name: String, frameOnCanvas: NSRect, analysis: Analysis, nodeType: PaletteItem){
         self.nodeType = nodeType
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.nodeType = aDecoder.decodeObject(forKey: Key.nodeType.rawValue) as! PalettItem
+        self.nodeType = aDecoder.decodeObject(forKey: Key.nodeType.rawValue) as! PaletteItem
         super.init(coder: aDecoder)
     }
     

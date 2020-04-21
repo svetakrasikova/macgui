@@ -10,10 +10,9 @@ import Cocoa
 
 
 
-class PaletteVariable : NSObject, Codable, NSCoding {
+class PaletteVariable : PaletteItem {
     
     enum Key: String {
-        case name = "name"
         case symbol = "symbol"
         case dimension = "dimension"
     }
@@ -24,29 +23,34 @@ class PaletteVariable : NSObject, Codable, NSCoding {
         case function
         case unknown
     }
+    
+    private enum CodingKeys: String, CodingKey {
+        case symbol
+        case dimension
+    }
+    
+    enum PaletteVariableError: Error {
+        case decodingError
+        case encodingError
+    }
 
     // MARK: - Instance variables -
 
-    var name : String
     var symbol : String
     var dimension : Int
 
     // MARK: - Initializers and operators -
 
-    override init() {
-        
-        self.name = ""
+    init() {
         self.symbol = ""
         self.dimension = 0
-        super.init()
+        super.init(name: "")
     }
 
     init(name: String, symbol: String, dimension: Int) {
-    
-        self.name = name
         self.symbol = symbol
         self.dimension = dimension
-        super.init()
+        super.init(name: name)
     }
 
     static func == (left: PaletteVariable, right: PaletteVariable) -> Bool {
@@ -65,20 +69,37 @@ class PaletteVariable : NSObject, Codable, NSCoding {
 
     // MARK: - NSCoding -
     
-    func encode(with coder: NSCoder) {
-        
-        coder.encode(self.name,      forKey: Key.name.rawValue)
+    override func encode(with coder: NSCoder) {
+        super.encode(with: coder)
         coder.encode(self.symbol,    forKey: Key.symbol.rawValue)
         coder.encode(self.dimension, forKey: Key.dimension.rawValue)
     }
     
     required init?(coder: NSCoder) {
-    
-        self.name      = coder.decodeObject(forKey: Key.name.rawValue) as! String
         self.symbol    = coder.decodeObject(forKey: Key.symbol.rawValue) as! String
         self.dimension = coder.decodeInteger(forKey: Key.dimension.rawValue)
+        super.init(coder: coder)
+    }
+    
+    required init(from decoder: Decoder) throws {
+       do {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.symbol = try container.decode(String.self,    forKey: .symbol)
+            self.dimension     = try container.decode(Int.self,    forKey: .dimension)
+            try super.init(from: container.superDecoder())
+        }
+        catch {
+            throw PaletteVariableError.decodingError
+        }
+    }
+    
+    required convenience init?(pasteboardPropertyList propertyList: Any, ofType type: NSPasteboard.PasteboardType) {
+       guard let data = propertyList as? Data,
+            let paletteVariable = try? PropertyListDecoder().decode(PaletteVariable.self, from: data) else { return nil }
+        self.init(name: paletteVariable.name, symbol: paletteVariable.symbol, dimension: paletteVariable.dimension)
     }
 
+    
    override var description: String {
     
         var str : String = ""

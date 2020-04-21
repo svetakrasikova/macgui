@@ -175,7 +175,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
         canvasView.addSubview(modelCanvasItemVC.view)
     }
     
-    func addNodeToModel(frame: NSRect, item: PalettItem){
+    func addNodeToModel(frame: NSRect, item: PaletteItem){
         if let model = self.model {
             let newModelNode = ModelNode(name: item.name, frameOnCanvas: frame, analysis: model.analysis, nodeType: item)
             model.nodes.append(newModelNode)
@@ -209,7 +209,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
 }
 
 extension ModelCanvasViewController: ModelCanvasViewDelegate {
-    func insertParameter(center: NSPoint, item: PalettItem) {
+    func insertParameter(center: NSPoint, item: PaletteItem) {
         guard let toolDimension = self.canvasView.canvasObjectDimension
             else { return }
         let size = NSSize(width: toolDimension, height: toolDimension)

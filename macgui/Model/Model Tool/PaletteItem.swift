@@ -1,5 +1,5 @@
 //
-//  PalettItem.swift
+//  PaletteItem.swift
 //  macgui
 //
 //  Created by Svetlana Krasikova on 2/11/20.
@@ -15,28 +15,22 @@ enum PalettItemType: String, Codable, CaseIterable {
     case distribution = "Distribution"
 }
 
-class PalettItem: NSObject, Codable, NSCoding, NSPasteboardWriting, NSPasteboardReading {
+class PaletteItem: NSObject, Codable, NSCoding, NSPasteboardWriting, NSPasteboardReading {
 
     var name: String
-    var type: PalettItemType
-    var dimension: Int
     
     enum Key: String {
         case name = "name"
-        case type = "type"
-        case dimension = "dimension"
     }
     
-    init(name: String, type: PalettItemType, dimension: Int) {
+    init(name: String) {
         self.name = name
-        self.type = type
-        self.dimension = dimension
     }
 
     required convenience init?(pasteboardPropertyList propertyList: Any, ofType type: NSPasteboard.PasteboardType) {
         guard let data = propertyList as? Data,
-            let palettItem = try? PropertyListDecoder().decode(PalettItem.self, from: data) else { return nil }
-        self.init(name: palettItem.name, type: palettItem.type, dimension: palettItem.dimension)
+            let palettItem = try? PropertyListDecoder().decode(PaletteItem.self, from: data) else { return nil }
+        self.init(name: palettItem.name)
     }
 
     
@@ -44,14 +38,10 @@ class PalettItem: NSObject, Codable, NSCoding, NSPasteboardWriting, NSPasteboard
     
     func encode(with coder: NSCoder) {
         coder.encode(name, forKey: "name")
-        coder.encode(type.rawValue, forKey: "type")
-        coder.encode(dimension, forKey: "dimension")
     }
     
     required init?(coder: NSCoder) {
         name = coder.decodeObject(forKey: "name") as! String
-        type = PalettItemType(rawValue: coder.decodeObject(forKey: Key.type.rawValue) as! String)!
-        dimension = coder.decodeInteger(forKey: "dimension")
     }
     
 //    MARK: - NSPasteboardWriting, NSPasteboardReading
@@ -62,18 +52,18 @@ class PalettItem: NSObject, Codable, NSCoding, NSPasteboardWriting, NSPasteboard
     }
 
     public func writableTypes(for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
-        return [.palettItem]
+        return [.paletteItem]
     }
 
     public func pasteboardPropertyList(forType type: NSPasteboard.PasteboardType) -> Any? {
-        if type == .palettItem {
+        if type == .paletteItem {
             return try? PropertyListEncoder().encode(self)
         }
         return nil
     }
 
     public static func readableTypes(for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
-        return [.palettItem]
+        return [.paletteItem]
     }
 
     public static func readingOptions(forType type: NSPasteboard.PasteboardType, pasteboard: NSPasteboard) -> NSPasteboard.ReadingOptions {
@@ -82,7 +72,7 @@ class PalettItem: NSObject, Codable, NSCoding, NSPasteboardWriting, NSPasteboard
 }
 
 extension NSPasteboard.PasteboardType {
-    static let palettItem = NSPasteboard.PasteboardType("macgui.palettItem")
+    static let paletteItem = NSPasteboard.PasteboardType("macgui.paletteItem")
 }
 
 

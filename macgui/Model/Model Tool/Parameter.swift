@@ -10,26 +10,30 @@ import Cocoa
 
 class Parameter: NSObject {
     
+    enum ParameterType: String {
+        case variables = "Variables"
+        case trees = "Trees"
+        case plates = "Plates"
+    }
+    
     let name: String
-    var children = [PalettItem]()
+    var children = [PaletteItem]()
+    
     
     init(name: String) {
         self.name = name
     }
     
-    class func parameterList(palettItemsList: [PalettItem]) -> [Parameter] {
-        
-        var parameters = [PalettItemType: Parameter]()
-        
+    class func parameterList(palettItemsList: [PaletteItem]) -> [Parameter] {
+        let variables = Parameter(name: ParameterType.variables.rawValue)
+        let plates = Parameter(name: ParameterType.plates.rawValue)
+        let trees = Parameter(name: ParameterType.trees.rawValue)
         for palettItem in palettItemsList {
-            let type = palettItem.type
-            if let parameter = parameters[type] {
-                parameter.children.append(palettItem)
-            } else {
-                parameters[type] = Parameter(name: type.rawValue)
+            if palettItem.isKind(of: PaletteVariable.self) {
+                variables.children.append(palettItem)
             }
         }
         
-        return Array(parameters.values)
+        return [variables, plates, trees]
     }
 }

@@ -12,7 +12,7 @@
 		1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1407184A22FF5D430098285D /* ModalSheet.storyboard */; };
 		1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */; };
 		140E726023F219D400E86919 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E725E23F219D400E86919 /* PreferencesViewController.swift */; };
-		140E726323F3643400E86919 /* PalettItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E726223F3643400E86919 /* PalettItem.swift */; };
+		140E726323F3643400E86919 /* PaletteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E726223F3643400E86919 /* PaletteItem.swift */; };
 		1410C3A523F6048B0044EB48 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3A423F6048B0044EB48 /* Parameter.swift */; };
 		1410C3A723FCC4260044EB48 /* ModelCanvasPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3A623FCC4260044EB48 /* ModelCanvasPreferencesController.swift */; };
 		1410C3AD2404EBE50044EB48 /* ModelCanvasItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */; };
@@ -1424,7 +1424,7 @@
 		1407184A22FF5D430098285D /* ModalSheet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheet.storyboard; sourceTree = "<group>"; };
 		1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheetTabView.storyboard; sourceTree = "<group>"; };
 		140E725E23F219D400E86919 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
-		140E726223F3643400E86919 /* PalettItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettItem.swift; sourceTree = "<group>"; };
+		140E726223F3643400E86919 /* PaletteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteItem.swift; sourceTree = "<group>"; };
 		1410C3A423F6048B0044EB48 /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		1410C3A623FCC4260044EB48 /* ModelCanvasPreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasPreferencesController.swift; sourceTree = "<group>"; };
 		1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasItemViewController.swift; sourceTree = "<group>"; };
@@ -4355,10 +4355,10 @@
 		1410C3A123F6022D0044EB48 /* Model Tool */ = {
 			isa = PBXGroup;
 			children = (
+				1410C3A423F6048B0044EB48 /* Parameter.swift */,
+				140E726223F3643400E86919 /* PaletteItem.swift */,
 				1419FD982445160500007232 /* PaletteVariable.swift */,
 				1419FD992445160500007232 /* PaletteVariableList.swift */,
-				140E726223F3643400E86919 /* PalettItem.swift */,
-				1410C3A423F6048B0044EB48 /* Parameter.swift */,
 			);
 			path = "Model Tool";
 			sourceTree = "<group>";
@@ -9833,7 +9833,7 @@
 				144BEE2A23A17AC60001B2EF /* Func_symmetricDifference.cpp in Sources */,
 				14E58526228C92AB00802691 /* ToolImageView.swift in Sources */,
 				144BED9A23A17AC60001B2EF /* SyntaxConstantAssignment.cpp in Sources */,
-				140E726323F3643400E86919 /* PalettItem.swift in Sources */,
+				140E726323F3643400E86919 /* PaletteItem.swift in Sources */,
 				144BED5923A17AC60001B2EF /* RlNaturalNumbersState.cpp in Sources */,
 				144BECC823A17AC50001B2EF /* Move_ElementSwapSimplex.cpp in Sources */,
 				144BED8423A17AC60001B2EF /* SyntaxDecrement.cpp in Sources */,
