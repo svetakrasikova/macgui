@@ -17,6 +17,13 @@ class PaletteVariable : NSObject, Codable, NSCoding {
         case symbol = "symbol"
         case dimension = "dimension"
     }
+    
+    enum variableType {
+        case randomVariable
+        case constant
+        case function
+        case unknown
+    }
 
     // MARK: - Instance variables -
 
