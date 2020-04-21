@@ -101,6 +101,9 @@ class CanvasViewController: GenericCanvasViewController {
 // MARK: - Add and Delete Canvas Objects
     
     @objc func deleteSelectedCanvasObjects(notification: NSNotification){
+       
+        guard self.view.window?.isMainWindow ?? true else { return  }
+        
         var numConnectionsToDelete = 0
         
         for childController in children {

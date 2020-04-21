@@ -66,6 +66,9 @@ class ModelCanvasViewController: GenericCanvasViewController {
     }
     
     @objc func deleteSelectedCanvasObjects(notification: Notification){
+        
+        guard self.view.window?.isMainWindow ?? true else { return }
+        
         var numConnectionsToDelete = 0
         for childController in children {
             if childController .isKind(of: ArrowViewController.self) &&
