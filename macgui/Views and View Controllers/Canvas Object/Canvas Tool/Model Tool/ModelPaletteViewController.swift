@@ -13,6 +13,7 @@ class ModelPaletteViewController: NSViewController {
     enum CellType: String {
         case parameterCell = "ParameterCell"
         case parameterTypeCell = "ParameterTypeCell"
+        case shapeCell = "ShapeCell"
     }
     
     
@@ -48,6 +49,9 @@ extension ModelPaletteViewController: NSOutlineViewDataSource {
         if let parameter = item as? Parameter {
             return parameter.children.count
         }
+        if let item = item as? PalettItem, item.type == .variable {
+            return 3
+        }
         return parameters.count
     }
     
@@ -55,12 +59,23 @@ extension ModelPaletteViewController: NSOutlineViewDataSource {
         if let parameter = item as? Parameter {
             return parameter.children[index]
         }
+        if let palettItem = item as? PalettItem, palettItem.type == .variable {
+            switch index {
+            case 0: return (palettItem, PaletteVariable.variableType.constant)
+            case 1: return (palettItem, PaletteVariable.variableType.function)
+            case 2: return (palettItem, PaletteVariable.variableType.randomVariable)
+            default: return (palettItem, PaletteVariable.variableType.unknown)
+            }
+        }
         return parameters[index] as Any
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
         if let parameter = item as? Parameter {
             return parameter.children.count > 0
+        }
+        if let item = item as? PalettItem, item.type == .variable {
+            return true
         }
         return false
     }
@@ -82,17 +97,23 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
             }
         } else if let parameter = item as? PalettItem {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.parameterCell.rawValue), owner: self) as? NSTableCellView
-            if let textField = view?.textField , let imageView = view?.imageView {
-//                
-//                switch parameter.type {
-//                case .distribution:
-//                    imageView.image = NSImage(named: NSImage.touchBarSearchTemplateName)
-//                case .move:
-//                    imageView.image = NSImage(named: NSImage.touchBarRecordStopTemplateName)
-//                case .variable:
-//                     imageView.image = NSImage(named: NSImage.touchBarRecordStartTemplateName)
-//                }
+            if let textField = view?.textField  {
                 textField.stringValue = parameter.name
+                textField.sizeToFit()
+            }
+        } else if let parameter = item as? (PalettItem, PaletteVariable.variableType) {
+            view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.shapeCell.rawValue), owner: self) as? NSTableCellView
+            if let textField = view?.textField  {
+                switch parameter.1 {
+                case .constant:
+                    textField.stringValue = "constant"
+                case .function:
+                    textField.stringValue = "function"
+                case .randomVariable:
+                    textField.stringValue = "random variable"
+                default:
+                    textField.stringValue = ""
+                }
                 textField.sizeToFit()
             }
         }
@@ -100,12 +121,12 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
     }
     
     func outlineView(_ outlineView: NSOutlineView, writeItems items: [Any], to pasteboard: NSPasteboard) -> Bool {
-        if let item = items.first as? PalettItem {
-              pasteboard.clearContents()
-              pasteboard.writeObjects([item])
-              return true
-          }
-          return false
+        if let item = items.first as? (PalettItem, PaletteVariable.variableType) {
+            pasteboard.clearContents()
+            pasteboard.writeObjects([item.0])
+            return true
+        }
+        return false
     }
     
     // MARK: - Mouse events
