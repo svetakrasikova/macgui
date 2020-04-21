@@ -1,5 +1,5 @@
 //
-//  PaletteItem.swift
+//  PalettItem.swift
 //  macgui
 //
 //  Created by Svetlana Krasikova on 2/11/20.
@@ -15,7 +15,7 @@ enum PalettItemType: String, Codable, CaseIterable {
     case distribution = "Distribution"
 }
 
-class PaletteItem: NSObject, Codable, NSCoding, NSPasteboardWriting, NSPasteboardReading {
+class PalettItem: NSObject, Codable, NSCoding, NSPasteboardWriting, NSPasteboardReading {
 
     var name: String
     
@@ -29,7 +29,7 @@ class PaletteItem: NSObject, Codable, NSCoding, NSPasteboardWriting, NSPasteboar
 
     required convenience init?(pasteboardPropertyList propertyList: Any, ofType type: NSPasteboard.PasteboardType) {
         guard let data = propertyList as? Data,
-            let palettItem = try? PropertyListDecoder().decode(PaletteItem.self, from: data) else { return nil }
+            let palettItem = try? PropertyListDecoder().decode(PalettItem.self, from: data) else { return nil }
         self.init(name: palettItem.name)
     }
 

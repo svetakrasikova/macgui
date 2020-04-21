@@ -17,14 +17,14 @@ class Parameter: NSObject {
     }
     
     let name: String
-    var children = [PaletteItem]()
+    var children = [PalettItem]()
     
     
     init(name: String) {
         self.name = name
     }
     
-    class func parameterList(palettItemsList: [PaletteItem]) -> [Parameter] {
+    class func parameterList(palettItemsList: [PalettItem]) -> [Parameter] {
         let variables = Parameter(name: ParameterType.variables.rawValue)
         let plates = Parameter(name: ParameterType.plates.rawValue)
         let trees = Parameter(name: ParameterType.trees.rawValue)

@@ -10,7 +10,7 @@ import Cocoa
 
 
 
-class PaletteVariable : PaletteItem {
+class PaletteVariable : PalettItem {
     
     enum Key: String {
         case symbol = "symbol"

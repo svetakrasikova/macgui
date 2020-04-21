@@ -95,13 +95,13 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
                 textField.stringValue = parameter.name
                 textField.sizeToFit()
             }
-        } else if let parameter = item as? PaletteItem {
+        } else if let parameter = item as? PalettItem {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.parameterCell.rawValue), owner: self) as? NSTableCellView
             if let textField = view?.textField  {
                 textField.stringValue = parameter.name
                 textField.sizeToFit()
             }
-        } else if let parameter = item as? (PaletteItem, PaletteVariable.variableType) {
+        } else if let parameter = item as? (PalettItem, PaletteVariable.variableType) {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.shapeCell.rawValue), owner: self) as? NSTableCellView
             if let textField = view?.textField, let imageView = view?.imageView  {
                 switch parameter.1 {
@@ -124,7 +124,7 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
     }
     
     func outlineView(_ outlineView: NSOutlineView, writeItems items: [Any], to pasteboard: NSPasteboard) -> Bool {
-        if let item = items.first as? (PaletteItem, PaletteVariable.variableType) {
+        if let item = items.first as? (PalettItem, PaletteVariable.variableType) {
             pasteboard.clearContents()
             pasteboard.writeObjects([item.0])
             return true

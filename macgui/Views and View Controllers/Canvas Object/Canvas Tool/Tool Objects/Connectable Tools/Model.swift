@@ -12,7 +12,7 @@ class Model: DataTool {
     
     let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
     
-    @objc dynamic var palettItems: [PaletteItem] = []
+    @objc dynamic var palettItems: [PalettItem] = []
     @objc dynamic var variables = PaletteVariableList()
     @objc dynamic var nodes: [ModelNode] = []
     @objc dynamic var edges: [Connection] = []
@@ -45,7 +45,7 @@ class Model: DataTool {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        palettItems = aDecoder.decodeObject(forKey: Key.palettItems.rawValue) as! [PaletteItem]
+        palettItems = aDecoder.decodeObject(forKey: Key.palettItems.rawValue) as! [PalettItem]
         nodes = aDecoder.decodeObject(forKey: Key.nodes.rawValue) as! [ModelNode]
         edges = aDecoder.decodeObject(forKey: Key.edges.rawValue) as! [Connection]
     }
