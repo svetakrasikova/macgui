@@ -107,7 +107,7 @@ extension ModelCanvasItemView {
 
         textLayer.zPosition = 0
         textLayer.frame = NSRect(x: bounds.minX, y: bounds.center().y-8, width: bounds.size.width, height: bounds.size.height/2+8)
-        textLayer.font = "System Regular" as CFTypeRef
+        textLayer.font = "Hoefler Text" as CFTypeRef
         textLayer.backgroundColor = NSColor.clear.cgColor
         textLayer.foregroundColor = labelColor.cgColor
         textLayer.fontSize = 18
