@@ -31,7 +31,7 @@ class ModelNode: Connectable {
     }
     
     override func encode(with coder: NSCoder) {
-        coder.encode(node, forKey: Key.nodeType.rawValue)
+        coder.encode(node, forKey: Key.node.rawValue)
         coder.encode(nodeType?.rawValue, forKey: Key.nodeType.rawValue)
         super.encode(with: coder)
     }
