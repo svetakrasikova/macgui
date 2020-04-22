@@ -166,7 +166,8 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     func setUp(){
         setFrame()
         setImage()
-        setPopOver()
+//        TODO: Fix popover timers. Currently, too many times, one each time there is a mouseEntered event
+//        setPopOver()
         if tool!.isKind(of: Connectable.self){ unhideConnectors()}
         addProgressSpinner()
     }
