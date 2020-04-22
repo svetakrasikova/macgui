@@ -17,11 +17,10 @@ class PaletteVariable : PalettItem {
         case dimension = "dimension"
     }
     
-    enum variableType {
-        case randomVariable
-        case constant
-        case function
-        case unknown
+    enum VariableType: String {
+        case randomVariable = "randomVariable"
+        case constant = "constant"
+        case function = "function"
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -38,7 +37,7 @@ class PaletteVariable : PalettItem {
 
     var symbol : String
     var dimension : Int
-
+    
     // MARK: - Initializers and operators -
 
     init() {
@@ -81,7 +80,8 @@ class PaletteVariable : PalettItem {
         super.init(coder: coder)
     }
     
-    required init(from decoder: Decoder) throws {
+    
+    required init (from decoder: Decoder) throws {
        do {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.symbol = try container.decode(String.self,    forKey: .symbol)
@@ -93,12 +93,7 @@ class PaletteVariable : PalettItem {
         }
     }
     
-    required convenience init?(pasteboardPropertyList propertyList: Any, ofType type: NSPasteboard.PasteboardType) {
-       guard let data = propertyList as? Data,
-            let paletteVariable = try? PropertyListDecoder().decode(PaletteVariable.self, from: data) else { return nil }
-        self.init(name: paletteVariable.name, symbol: paletteVariable.symbol, dimension: paletteVariable.dimension)
-    }
-
+    
     
    override var description: String {
     
@@ -109,3 +104,5 @@ class PaletteVariable : PalettItem {
         return str
     }
 }
+
+

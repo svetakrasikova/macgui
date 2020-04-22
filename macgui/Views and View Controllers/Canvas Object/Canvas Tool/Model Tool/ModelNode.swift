@@ -10,25 +10,29 @@ import Cocoa
 
 class ModelNode: Connectable {
     
-    var nodeType: PalettItem
+    var node: PalettItem
+    var nodeType: PaletteVariable.VariableType?
     
     enum Key: String {
+        case node = "node"
         case nodeType = "nodeType"
     }
     
-    init(name: String, frameOnCanvas: NSRect, analysis: Analysis, nodeType: PalettItem){
-        self.nodeType = nodeType
+    init(name: String, frameOnCanvas: NSRect, analysis: Analysis, node: PalettItem){
+        self.node = node
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.nodeType = aDecoder.decodeObject(forKey: Key.nodeType.rawValue) as! PalettItem
+        self.node = aDecoder.decodeObject(forKey: Key.node.rawValue) as? PalettItem ?? PaletteVariable()
+        self.nodeType = PaletteVariable.VariableType(rawValue: aDecoder.decodeObject(forKey: Key.nodeType.rawValue) as! String)
         super.init(coder: aDecoder)
     }
     
     override func encode(with coder: NSCoder) {
-        coder.encode(nodeType, forKey: Key.nodeType.rawValue)
+        coder.encode(node, forKey: Key.nodeType.rawValue)
+        coder.encode(nodeType?.rawValue, forKey: Key.nodeType.rawValue)
         super.encode(with: coder)
     }
     

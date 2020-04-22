@@ -27,11 +27,25 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     }
     
     var shape: ModelParameterShape? {
-        return .dashedCircle
+        if let node = self.tool as? ModelNode {
+            if let type = node.nodeType {
+                switch type {
+                case .constant: return .solidRectangle
+                case .randomVariable: return .solidCircle
+                case . function: return .dashedCircle
+                }
+            }
+        }
+        return nil
     }
     
     var label: String? {
-        return Symbol.doubleStruckCapitalR.rawValue
+        if let node = self.tool as? ModelNode {
+            if let variable = node.node as? PaletteVariable {
+                return variable.symbol
+            }
+        }
+        return nil
     }
     
     var frame: NSRect {

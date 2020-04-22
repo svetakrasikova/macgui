@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PaletteVariableList: NSObject, Codable, NSCoding {
+class PaletteVariableList: NSObject, NSCoding {
     
     enum Key: String {
         case variables = "variables"

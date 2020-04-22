@@ -175,9 +175,10 @@ class ModelCanvasViewController: GenericCanvasViewController {
         canvasView.addSubview(modelCanvasItemVC.view)
     }
     
-    func addNodeToModel(frame: NSRect, item: PalettItem){
+    func addVariableToModel(frame: NSRect, item: PaletteVariable, type: PaletteVariable.VariableType){
         if let model = self.model {
-            let newModelNode = ModelNode(name: item.name, frameOnCanvas: frame, analysis: model.analysis, nodeType: item)
+            let newModelNode = ModelNode(name: item.name, frameOnCanvas: frame, analysis: model.analysis, node: item)
+            newModelNode.nodeType = type
             model.nodes.append(newModelNode)
             addNodeView(node: newModelNode)
         }
@@ -206,15 +207,30 @@ class ModelCanvasViewController: GenericCanvasViewController {
         }
     }
     
+    func getPalettVariableWithName(_ name: String) -> PaletteVariable? {
+        if let model = self.model {
+            for item in model.palettItems {
+                guard let item = item as? PaletteVariable else {return nil}
+                if item.name == name {
+                    return item
+                }
+            }
+        }
+        return nil
+    }
+    
 }
 
 extension ModelCanvasViewController: ModelCanvasViewDelegate {
-    func insertParameter(center: NSPoint, item: PalettItem) {
+    func insertParameter(center: NSPoint, item: String) {
         guard let toolDimension = self.canvasView.canvasObjectDimension
             else { return }
         let size = NSSize(width: toolDimension, height: toolDimension)
         let frame = NSRect(x: center.x - size.width/2, y: center.y - size.height/2, width: size.width, height: size.height)
-        addNodeToModel(frame: frame, item: item)
+        let variableData = item.split(separator: ":")
+        guard let variable = getPalettVariableWithName(String(variableData[0])) else { return }
+        guard let variableType = PaletteVariable.VariableType(rawValue: String(variableData[1])) else { return }
+        addVariableToModel(frame: frame, item: variable, type: variableType)
         if let window = self.view.window {
             window.makeFirstResponder(canvasView)
         }

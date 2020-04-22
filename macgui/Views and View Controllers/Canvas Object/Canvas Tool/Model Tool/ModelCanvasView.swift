@@ -11,7 +11,7 @@ import Cocoa
 class ModelCanvasView: GenericCanvasView {
     
     weak var concreteDelegate: ModelCanvasViewDelegate? = nil
-    override var acceptableTypes: Set<NSPasteboard.PasteboardType> { return [.paletteItem] }
+    override var acceptableTypes: Set<NSPasteboard.PasteboardType> { return [.string] }
 
     override var delegate: GenericCanvasViewController? {
         didSet {
@@ -32,9 +32,8 @@ class ModelCanvasView: GenericCanvasView {
         
         let point = convert(draggingInfo.draggingLocation, from: nil)
         let pasteboard = draggingInfo.draggingPasteboard
-        
-        if let palettItem = pasteboard.readObjects(forClasses: [PalettItem.self], options: nil)?.first as? PalettItem {
-            concreteDelegate?.insertParameter(center: point, item: palettItem)
+        if let paletteVariableNameAndType = pasteboard.readObjects(forClasses: [NSString.self], options: nil)?.first as? String {
+            concreteDelegate?.insertParameter(center: point, item: paletteVariableNameAndType)
             return true
         }
         return false
@@ -43,6 +42,6 @@ class ModelCanvasView: GenericCanvasView {
 }
 
 protocol ModelCanvasViewDelegate: class {
-    func insertParameter(center: NSPoint, item: PalettItem)
+    func insertParameter(center: NSPoint, item: String)
     
 }

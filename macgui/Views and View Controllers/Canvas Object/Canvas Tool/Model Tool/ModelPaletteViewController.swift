@@ -59,12 +59,13 @@ extension ModelPaletteViewController: NSOutlineViewDataSource {
         if let parameter = item as? Parameter {
             return parameter.children[index]
         }
-        if let palettItem = item as? PaletteVariable {
+        if let variable = item as? PaletteVariable {
             switch index {
-            case 0: return (palettItem, PaletteVariable.variableType.constant)
-            case 1: return (palettItem, PaletteVariable.variableType.function)
-            case 2: return (palettItem, PaletteVariable.variableType.randomVariable)
-            default: return (palettItem, PaletteVariable.variableType.unknown)
+            case 0: return (variable, PaletteVariable.VariableType.constant)
+            case 1: return (variable, PaletteVariable.VariableType.function)
+            case 2: return (variable, PaletteVariable.VariableType.randomVariable)
+            default:
+                return (variable, PaletteVariable.VariableType.randomVariable)
             }
         }
         return parameters[index] as Any
@@ -101,7 +102,7 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
                 textField.stringValue = parameter.name
                 textField.sizeToFit()
             }
-        } else if let parameter = item as? (PalettItem, PaletteVariable.variableType) {
+        } else if let parameter = item as? (PaletteVariable, PaletteVariable.VariableType) {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.shapeCell.rawValue), owner: self) as? NSTableCellView
             if let textField = view?.textField, let imageView = view?.imageView  {
                 switch parameter.1 {
@@ -114,8 +115,6 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
                 case .randomVariable:
                     imageView.image = NSImage(named: "SolidCircle")
                     textField.stringValue = "random variable"
-                default:
-                    textField.stringValue = ""
                 }
                 textField.sizeToFit()
             }
@@ -124,9 +123,12 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
     }
     
     func outlineView(_ outlineView: NSOutlineView, writeItems items: [Any], to pasteboard: NSPasteboard) -> Bool {
-        if let item = items.first as? (PalettItem, PaletteVariable.variableType) {
+        if let item = items.first as? (PaletteVariable, PaletteVariable.VariableType) {
             pasteboard.clearContents()
-            pasteboard.writeObjects([item.0])
+            let name = item.0.name
+            let type = item.1.rawValue
+            let pasteboardString = "\(name):\(type)"
+            pasteboard.writeObjects([pasteboardString as NSString])
             return true
         }
         return false
