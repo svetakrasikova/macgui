@@ -45,9 +45,13 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
         get {
             let end: NSPoint?
             let begin: NSPoint?
-            if let targetTool = self.targetTool, targetTool.isKind(of: ModelNode.self) {
+            if let targetTool = self.targetTool as? ModelNode, let shape = targetTool.nodeType, shape != PaletteVariable.VariableType.constant {
                 end = findCircleIntersection(origin: endPoint, radius: targetToolFrame.size.width/2 + 1, end: beginPoint)
                 begin = findCircleIntersection(origin: endPoint, radius: targetToolFrame.size.width/2 + 5, end: beginPoint)
+            } else if let targetTool = self.targetTool as? ModelNode, let shape = targetTool.nodeType, shape == PaletteVariable.VariableType.constant {
+                let angle = findLineAngle()
+                end = findEdgePoint(angle: angle, dimension: targetToolFrame.size.width + 3)
+                begin = findEdgePoint(angle: angle, dimension: targetToolFrame.size.width + 5)
             } else  {
                 let angle = findLineAngle()
                 end = findEdgePoint(angle: angle, dimension: targetToolFrame.size.width)
