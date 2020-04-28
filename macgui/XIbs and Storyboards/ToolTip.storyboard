@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,14 +11,14 @@
             <objects>
                 <viewController identifier="ToolTip" storyboardIdentifier="ToolTip" id="0Wb-VI-w5d" customClass="ToolTipViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ZS0-2l-8Uf" customClass="ToolTipView" customModule="macgui" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="80"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="19" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qiD-a6-nv5">
-                                <rect key="frame" x="41" y="7" width="119" height="86"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qiD-a6-nv5">
+                                <rect key="frame" x="16" y="12" width="119" height="56"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="iPL-qh-fN4">
-                                        <rect key="frame" x="-2" y="70" width="69" height="16"/>
+                                        <rect key="frame" x="25" y="40" width="69" height="16"/>
                                         <textFieldCell key="cell" enabled="NO" title="Tool Name" id="ibe-ME-khe">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -26,7 +26,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="kdM-nA-yWH" userLabel="Matrices">
-                                        <rect key="frame" x="-2" y="35" width="69" height="16"/>
+                                        <rect key="frame" x="25" y="20" width="69" height="16"/>
                                         <textFieldCell key="cell" enabled="NO" title="# Matrices" id="yLt-aY-1y8" userLabel="# Matrices">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
