@@ -99,7 +99,7 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
         } else if let parameter = item as? PalettItem {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.parameterCell.rawValue), owner: self) as? NSTableCellView
             if let textField = view?.textField  {
-                textField.stringValue = parameter.name
+                textField.stringValue = parameter.type
                 textField.sizeToFit()
             }
         } else if let parameter = item as? (PaletteVariable, PaletteVariable.VariableType) {
@@ -125,7 +125,7 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
     func outlineView(_ outlineView: NSOutlineView, writeItems items: [Any], to pasteboard: NSPasteboard) -> Bool {
         if let item = items.first as? (PaletteVariable, PaletteVariable.VariableType) {
             pasteboard.clearContents()
-            let name = item.0.name
+            let name = item.0.type
             let type = item.1.rawValue
             let pasteboardString = "\(name):\(type)"
             pasteboard.writeObjects([pasteboardString as NSString])

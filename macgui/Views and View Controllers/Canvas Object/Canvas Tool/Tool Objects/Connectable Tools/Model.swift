@@ -78,18 +78,18 @@ class Model: DataTool {
         // match symbols to the variables
         for v in variables.variables {
             
-            if v.name == "Real" {
+            if v.type == "Real" {
                 v.symbol = Symbol.doubleStruckCapitalR.rawValue
-            } else if v.name == "RealPos" {
+            } else if v.type == "RealPos" {
                 v.symbol = Symbol.doubleStruckCapitalR.rawValue
                 v.symbol += Symbol.plus.rawValue
-            } else if v.name == "Simplex" {
+            } else if v.type == "Simplex" {
                 v.symbol = Symbol.capitalDelta.rawValue
-            } else if v.name == "Probability" {
+            } else if v.type == "Probability" {
                 v.symbol = Symbol.doubleStruckCapitalP.rawValue
-            } else if v.name == "Natural" {
+            } else if v.type == "Natural" {
                 v.symbol = Symbol.doubleStruckCapitalN.rawValue
-            } else if v.name == "Integer" {
+            } else if v.type == "Integer" {
                 v.symbol = Symbol.doubleStruckCapitalZ.rawValue
             }
             

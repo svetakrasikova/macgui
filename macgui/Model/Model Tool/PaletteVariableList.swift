@@ -42,7 +42,7 @@ class PaletteVariableList: NSObject, NSCoding {
     
         var str : String = ""
         for v in variables {
-            str += "Variable: \(v.name)\n"
+            str += "Variable: \(v.type)\n"
             str += "   Dimension = \(v.dimension)\n"
             str += "   Symbol    = \(v.symbol)\n"
         }

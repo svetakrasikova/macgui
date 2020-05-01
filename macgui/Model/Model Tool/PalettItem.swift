@@ -10,24 +10,24 @@ import Cocoa
 
 class PalettItem: NSObject, Codable, NSCoding {
 
-    var name: String
+    var type: String
     
     enum Key: String {
-        case name = "name"
+        case type = "type"
     }
     
     init(name: String) {
-        self.name = name
+        self.type = name
     }
 
 //   MARK: - NSCoding
     
     func encode(with coder: NSCoder) {
-        coder.encode(name, forKey: "name")
+        coder.encode(type, forKey: "name")
     }
     
     required init?(coder: NSCoder) {
-        name = coder.decodeObject(forKey: "name") as! String
+        type = coder.decodeObject(forKey: "name") as! String
     }
 }
 

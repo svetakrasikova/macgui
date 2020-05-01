@@ -54,7 +54,7 @@ class PaletteVariable : PalettItem {
 
     static func == (left: PaletteVariable, right: PaletteVariable) -> Bool {
 
-        if left.name != right.name {
+        if left.type != right.type {
             return false
         }
         if left.symbol != right.symbol {
@@ -98,7 +98,7 @@ class PaletteVariable : PalettItem {
    override var description: String {
     
         var str : String = ""
-        str += "Variable: \(name)\n"
+        str += "Variable: \(type)\n"
         str += "   Dimension = \(dimension)\n"
         str += "   Symbol    = \(symbol)\n"
         return str

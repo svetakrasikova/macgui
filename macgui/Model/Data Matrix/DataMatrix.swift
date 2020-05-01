@@ -415,7 +415,7 @@ class DataMatrix : NSObject,Codable {
         }
 #if false
         for i in 0..<taxonData.count {
-            if let td = getTaxonData(name:taxonNames[i]) {
+            if let td = getTaxonData(type:taxonNames[i]) {
                 str += "   \(paddedTaxonName(index: i, underscore: false))   \(td.bitString())\n"
             }
             else {

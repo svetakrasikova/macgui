@@ -177,7 +177,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
     
     func addVariableToModel(frame: NSRect, item: PaletteVariable, type: PaletteVariable.VariableType){
         if let model = self.model {
-            let newModelNode = ModelNode(name: item.name, frameOnCanvas: frame, analysis: model.analysis, node: item)
+            let newModelNode = ModelNode(name: item.type, frameOnCanvas: frame, analysis: model.analysis, node: item)
             newModelNode.nodeType = type
             model.nodes.append(newModelNode)
             addNodeView(node: newModelNode)
@@ -211,7 +211,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
         if let model = self.model {
             for item in model.palettItems {
                 guard let item = item as? PaletteVariable else {return nil}
-                if item.name == name {
+                if item.type == name {
                     return item
                 }
             }
