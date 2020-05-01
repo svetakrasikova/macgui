@@ -23,11 +23,11 @@ class PalettItem: NSObject, Codable, NSCoding {
 //   MARK: - NSCoding
     
     func encode(with coder: NSCoder) {
-        coder.encode(type, forKey: "name")
+        coder.encode(type, forKey: Key.type.rawValue)
     }
     
     required init?(coder: NSCoder) {
-        type = coder.decodeObject(forKey: "name") as! String
+        type = coder.decodeObject(forKey: Key.type.rawValue) as! String
     }
 }
 

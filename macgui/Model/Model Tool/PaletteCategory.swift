@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Parameter: NSObject {
+class PaletteCategory: NSObject {
     
     enum ParameterType: String {
         case variables = "Variables"
@@ -24,10 +24,10 @@ class Parameter: NSObject {
         self.name = name
     }
     
-    class func parameterList(palettItemsList: [PalettItem]) -> [Parameter] {
-        let variables = Parameter(name: ParameterType.variables.rawValue)
-        let plates = Parameter(name: ParameterType.plates.rawValue)
-        let trees = Parameter(name: ParameterType.trees.rawValue)
+    class func paletteCategoryList(palettItemsList: [PalettItem]) -> [PaletteCategory] {
+        let variables = PaletteCategory(name: ParameterType.variables.rawValue)
+        let plates = PaletteCategory(name: ParameterType.plates.rawValue)
+        let trees = PaletteCategory(name: ParameterType.trees.rawValue)
         for palettItem in palettItemsList {
             if palettItem.isKind(of: PaletteVariable.self) {
                 variables.children.append(palettItem)

@@ -17,7 +17,7 @@ class ModelToolViewController: NSSplitViewController, ModelPaletteViewController
             }
         }
     }
-    var parameters: [Parameter]?
+    var parameters: [PaletteCategory]?
     
     weak var paletteViewController: ModelPaletteViewController? {
         for child in self.children {

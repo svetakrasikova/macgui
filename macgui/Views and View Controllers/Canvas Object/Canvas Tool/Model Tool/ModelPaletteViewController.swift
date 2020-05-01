@@ -22,7 +22,7 @@ class ModelPaletteViewController: NSViewController {
     weak var delegate: ModelPaletteViewControllerDelegate?
     weak var model: Model?
    
-    var parameters: [Parameter] {
+    var parameters: [PaletteCategory] {
         guard let delegate = self.delegate as? ModelToolViewController, let parameters = delegate.parameters else {
             return []
         }
@@ -46,7 +46,7 @@ class ModelPaletteViewController: NSViewController {
 // MARK: - NSOutlineViewDataSource
 extension ModelPaletteViewController: NSOutlineViewDataSource {
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        if let parameter = item as? Parameter {
+        if let parameter = item as? PaletteCategory {
             return parameter.children.count
         }
         if item is PaletteVariable {
@@ -56,7 +56,7 @@ extension ModelPaletteViewController: NSOutlineViewDataSource {
     }
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        if let parameter = item as? Parameter {
+        if let parameter = item as? PaletteCategory {
             return parameter.children[index]
         }
         if let variable = item as? PaletteVariable {
@@ -72,7 +72,7 @@ extension ModelPaletteViewController: NSOutlineViewDataSource {
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        if let parameter = item as? Parameter {
+        if let parameter = item as? PaletteCategory {
             return parameter.children.count > 0
         }
         if item is PaletteVariable {
@@ -90,7 +90,7 @@ extension ModelPaletteViewController: NSOutlineViewDataSource {
 extension ModelPaletteViewController: NSOutlineViewDelegate {
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         var view: NSTableCellView?
-        if let parameter = item as? Parameter {
+        if let parameter = item as? PaletteCategory {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.parameterTypeCell.rawValue), owner: self) as? NSTableCellView
             if let textField = view?.textField {
                 textField.stringValue = parameter.name
@@ -138,7 +138,7 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
     
     @IBAction func doubleClickedItem(_ sender: NSOutlineView) {
         let item = sender.item(atRow: sender.clickedRow)
-        if item is Parameter {
+        if item is PaletteCategory {
             if sender.isItemExpanded(item) {
                 sender.collapseItem(item)
             } else {

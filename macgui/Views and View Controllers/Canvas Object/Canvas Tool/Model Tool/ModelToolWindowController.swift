@@ -11,7 +11,7 @@ import Cocoa
 class ModelToolWindowController: NSWindowController {
     
     weak var tool: Model?
-    var parameters: [Parameter]?
+    var parameters: [PaletteCategory]?
     @IBOutlet weak var zoom: NSPopUpButton!
     @IBOutlet weak var share: NSButton!
     
