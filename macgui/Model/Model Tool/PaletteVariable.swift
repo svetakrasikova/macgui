@@ -35,19 +35,35 @@ class PaletteVariable : PalettItem {
 
     // MARK: - Instance variables -
 
-    var symbol : String
+    var symbol : String {
+        
+        switch self.type {
+        case "Real":
+            return Symbol.doubleStruckCapitalR.rawValue
+        case "RealPos":
+            return Symbol.doubleStruckCapitalR.rawValue + Symbol.plus.rawValue
+        case "Simplex":
+            return  Symbol.capitalDelta.rawValue
+        case "Probability":
+            return Symbol.doubleStruckCapitalP.rawValue
+        case "Natural":
+            return Symbol.doubleStruckCapitalN.rawValue
+        case "Integer":
+            return Symbol.doubleStruckCapitalZ.rawValue
+        default:
+            return ""
+        }
+    }
     var dimension : Int
     
     // MARK: - Initializers and operators -
 
     init() {
-        self.symbol = ""
         self.dimension = 0
         super.init(name: "")
     }
 
-    init(name: String, symbol: String, dimension: Int) {
-        self.symbol = symbol
+    init(name: String, dimension: Int) {
         self.dimension = dimension
         super.init(name: name)
     }
@@ -75,7 +91,6 @@ class PaletteVariable : PalettItem {
     }
     
     required init?(coder: NSCoder) {
-        self.symbol    = coder.decodeObject(forKey: Key.symbol.rawValue) as! String
         self.dimension = coder.decodeInteger(forKey: Key.dimension.rawValue)
         super.init(coder: coder)
     }
@@ -84,7 +99,6 @@ class PaletteVariable : PalettItem {
     required init (from decoder: Decoder) throws {
        do {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.symbol = try container.decode(String.self,    forKey: .symbol)
             self.dimension     = try container.decode(Int.self,    forKey: .dimension)
             try super.init(from: decoder)
         }
