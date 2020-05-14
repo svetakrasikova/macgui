@@ -48,6 +48,10 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         }
     }
 
+    func invalidatePopoverTimers() {
+        startPopoverTimer?.invalidate()
+        closePopoverTimer?.invalidate()
+    }
     
     @objc func closePopover(){
         if self.toolTipPopover.isShown {
@@ -119,9 +123,9 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     override func mouseExited(with event: NSEvent) {
         infoButton.mouseExited(with: event)
         inspectorButton.mouseExited(with: event)
-        startPopoverTimer?.invalidate()
-        closePopoverTimer?.invalidate()
         closePopover()
+        invalidatePopoverTimers()
+        
     }
     
     // MARK: - Controller Life Cycle
@@ -152,6 +156,8 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     }
     override func viewDidDisappear() {
         closePopover()
+        invalidatePopoverTimers()
+        
     }
     
    

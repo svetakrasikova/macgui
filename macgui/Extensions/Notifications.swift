@@ -19,5 +19,6 @@ extension NSNotification.Name {
     static let didAddNewArrow = Notification.Name("didAddNewArrow")
     static let willChangePreferences = Notification.Name("willChangePreferences")
     static let didUpdateDocument = Notification.Name("didUpdateDocument")
+    static let didChangeModelParameterName = Notification.Name("didChangeModelParameterName")
     
 }

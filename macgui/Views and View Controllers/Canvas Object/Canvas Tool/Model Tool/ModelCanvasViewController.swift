@@ -9,7 +9,7 @@
 import Cocoa
 
 class ModelCanvasViewController: GenericCanvasViewController {
-    
+
  
     weak var model: Model? {
         if let modelToolVC = parent as? ModelToolViewController {
@@ -17,6 +17,24 @@ class ModelCanvasViewController: GenericCanvasViewController {
         }
         return nil
     }
+    
+   
+    
+    var parameterNames: [Bool] = Array(repeating: false, count: 10)
+    
+    func getParameterName() -> String {
+        for i in 0...parameterNames.count-1 {
+            if !parameterNames[i] {
+                parameterNames[i] = true
+                return "Parameter \(i+1)"
+            }
+        }
+        let nextAfterHighest = parameterNames.count
+        parameterNames +=  Array(repeating: false, count: 10)
+        parameterNames[nextAfterHighest] = true
+        return "Parameter \(nextAfterHighest)"
+    }
+    
     
     
     override func viewDidLoad() {
@@ -31,6 +49,14 @@ class ModelCanvasViewController: GenericCanvasViewController {
                                                name: .didSelectDeleteKey,
                                                object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateChildViewControllerAppearance), name: UserDefaults.didChangeNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(changeModelParameterName(notification:)), name: .didChangeModelParameterName, object: nil)
+    }
+    
+    @objc func changeModelParameterName(notification: Notification) {
+        if let userInfo = notification.userInfo as? [String : String], let index = Int(userInfo["index"]!) {
+            parameterNames[index-1] = false
+        }
     }
     
     override func viewDidLayout() {
@@ -179,6 +205,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
         if let model = self.model {
             let newModelNode = ModelNode(name: item.type, frameOnCanvas: frame, analysis: model.analysis, node: item)
             newModelNode.nodeType = type
+            newModelNode.parameterName = getParameterName()
             model.nodes.append(newModelNode)
             addNodeView(node: newModelNode)
         }
@@ -237,6 +264,25 @@ extension ModelCanvasViewController: ModelCanvasViewDelegate {
     }
     
    
+    
+}
+
+extension ModelCanvasViewController: ModelVariableControllerDelegate {
+    
+    func getDistributionsForParameter(_ modelNode: ModelNode) -> [Distribution] {
+        
+        guard let distributions = self.model?.distributions else {
+            return []
+        }
+        var resultList: [Distribution] = []
+        for distribution in distributions {
+            if distribution.domain == modelNode.node.type {
+                resultList.append(distribution)
+            }
+        }
+       return resultList
+    }
+    
     
 }
 

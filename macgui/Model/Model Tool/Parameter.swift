@@ -8,13 +8,24 @@
 
 import Cocoa
 
-class Parameter: NSObject, NSCoding {
+class Parameter: NSObject, NSCoding, Codable {
     
     enum Key: String {
         case name = "name"
         case type = "type"
         case descriptiveString = "descriptiveString"
     }
+    
+    private enum CodingKeys: String, CodingKey {
+          case name
+          case type
+          case descriptiveString
+      }
+      
+      enum ParameterError: Error {
+          case decodingError
+          case encodingError
+      }
     
     var name: String
     var type: String
@@ -40,6 +51,19 @@ class Parameter: NSObject, NSCoding {
         type = coder.decodeObject(forKey: Key.type.rawValue) as! String
         descriptiveString = coder.decodeObject(forKey: Key.descriptiveString.rawValue) as! String
     }
+    
+    required init (from decoder: Decoder) throws {
+           do {
+               let container = try decoder.container(keyedBy: CodingKeys.self)
+               self.name = try container.decode(String.self,    forKey: .name)
+               self.type = try container.decode(String.self,    forKey: .type)
+               self.descriptiveString  = try container.decode(String.self,    forKey: .descriptiveString)
+               
+           }
+           catch {
+               throw ParameterError.decodingError
+           }
+       }
     
     
 }

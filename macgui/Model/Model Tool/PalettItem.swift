@@ -16,6 +16,15 @@ class PalettItem: NSObject, Codable, NSCoding {
         case type = "type"
     }
     
+      private enum CodingKeys: String, CodingKey {
+         case type
+     }
+    
+    enum PaletteItemError: Error {
+        case decodingError
+        case encodingError
+    }
+    
     init(name: String) {
         self.type = name
     }
@@ -28,6 +37,16 @@ class PalettItem: NSObject, Codable, NSCoding {
     
     required init?(coder: NSCoder) {
         type = coder.decodeObject(forKey: Key.type.rawValue) as! String
+    }
+    
+    required init (from decoder: Decoder) throws {
+       do {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.type     = try container.decode(String.self,    forKey: .type)
+        }
+        catch {
+            throw PaletteItemError.decodingError
+        }
     }
 }
 

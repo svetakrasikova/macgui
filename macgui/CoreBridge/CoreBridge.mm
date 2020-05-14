@@ -85,7 +85,7 @@ using json = nlohmann::json;
 
             // fillout JSON string
             json j;
-            j["name"] = baseName;
+            j["type"] = baseName;
             j["symbol"] = "";
             j["dimension"] = n;
             std::string jsonStr = j.dump();

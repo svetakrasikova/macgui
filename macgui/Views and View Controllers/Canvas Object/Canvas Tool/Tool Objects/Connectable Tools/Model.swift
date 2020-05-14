@@ -13,6 +13,7 @@ class Model: DataTool {
     let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
     
     @objc dynamic var palettItems: [PalettItem] = []
+    @objc dynamic var distributions: [Distribution] = []
     @objc dynamic var nodes: [ModelNode] = []
     @objc dynamic var edges: [Connection] = []
     
@@ -20,6 +21,7 @@ class Model: DataTool {
         case palettItems = "palettItems"
         case nodes = "nodes"
         case edges = "edges"
+        case distributions = "distributions"
     }
     
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
@@ -33,10 +35,11 @@ class Model: DataTool {
         
         do {
             try initPalettItemsFromCore()
+            try initMockupDistributions()
         } catch DataToolError.readError {
             print("Error reading json data from the core. Model Tool palette items could not be loaded.")
         } catch ReadDataError.dataDecodingError {
-            print("Error decoding Model Tool palette items from json.")
+            print("Error decoding Model Tool items from json.")
         } catch {
             print("Error. Model Tool palette items could not be loaded.")
         }
@@ -44,14 +47,17 @@ class Model: DataTool {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        palettItems = aDecoder.decodeObject(forKey: Key.palettItems.rawValue) as! [PalettItem]
+        palettItems = aDecoder.decodeObject(forKey: Key.palettItems.rawValue) as? [PalettItem] ?? []
+        distributions = aDecoder.decodeObject(forKey: Key.distributions.rawValue) as? [Distribution] ?? []
         nodes = aDecoder.decodeObject(forKey: Key.nodes.rawValue) as! [ModelNode]
         edges = aDecoder.decodeObject(forKey: Key.edges.rawValue) as! [Connection]
+        
     }
     
     override func encode(with coder: NSCoder) {
         super.encode(with: coder)
         coder.encode(palettItems, forKey: Key.palettItems.rawValue)
+        coder.encode(distributions, forKey: Key.distributions.rawValue)
         coder.encode(nodes, forKey: Key.nodes.rawValue)
         coder.encode(edges, forKey: Key.edges.rawValue)
     }
@@ -75,25 +81,23 @@ class Model: DataTool {
             }
         }
         
-        // match symbols to the variables
-        for v in variables.variables {
+        palettItems += variables.variables
+    }
+    
+    func initMockupDistributions() throws {
+        let jsonDistributionStringArray: [String] = [ TestDataConstants.gammaDistribution, TestDataConstants.normalDistribution, TestDataConstants.poissonDistribution, TestDataConstants.exponentialDistribution ]
+
+        let distributionsDataArray: [Data] = JsonCoreBridge(jsonArray: jsonDistributionStringArray).encodeJsonStringArray()
+        
+        for data in distributionsDataArray {
             
-            if v.type == "Real" {
-                v.symbol = Symbol.doubleStruckCapitalR.rawValue
-            } else if v.type == "RealPos" {
-                v.symbol = Symbol.doubleStruckCapitalR.rawValue
-                v.symbol += Symbol.plus.rawValue
-            } else if v.type == "Simplex" {
-                v.symbol = Symbol.capitalDelta.rawValue
-            } else if v.type == "Probability" {
-                v.symbol = Symbol.doubleStruckCapitalP.rawValue
-            } else if v.type == "Natural" {
-                v.symbol = Symbol.doubleStruckCapitalN.rawValue
-            } else if v.type == "Integer" {
-                v.symbol = Symbol.doubleStruckCapitalZ.rawValue
+            do {
+                let newDistribution = try JSONDecoder().decode(Distribution.self, from: data)
+                self.distributions.append(newDistribution)
+                
+            } catch ReadDataError.dataDecodingError {
+                throw ReadDataError.dataDecodingError
             }
-            
-            palettItems.append(v)
         }
     }
     

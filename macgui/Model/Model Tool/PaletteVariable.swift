@@ -51,7 +51,7 @@ class PaletteVariable : PalettItem {
         case "Integer":
             return Symbol.doubleStruckCapitalZ.rawValue
         default:
-            return ""
+            return "#"
         }
     }
     var dimension : Int
@@ -86,7 +86,6 @@ class PaletteVariable : PalettItem {
     
     override func encode(with coder: NSCoder) {
         super.encode(with: coder)
-        coder.encode(self.symbol,    forKey: Key.symbol.rawValue)
         coder.encode(self.dimension, forKey: Key.dimension.rawValue)
     }
     

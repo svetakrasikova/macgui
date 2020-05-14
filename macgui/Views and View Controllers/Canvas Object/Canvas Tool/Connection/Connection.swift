@@ -24,6 +24,8 @@ class Connection: NSObject, NSCoding {
         switch self.type {
         case .alignedData:
             try self.from.connectAlignedData(to: self.to)
+        case .modelParameter:
+            try self.from.connectModelNodes(to: self.to)
         default:
             print("No action defined for connection type", self.type)
         }
@@ -34,6 +36,8 @@ class Connection: NSObject, NSCoding {
         aCoder.encode(from, forKey: "from")
         aCoder.encode(type.rawValue, forKey: "type")
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         to = aDecoder.decodeObject(forKey: "to") as! Connector

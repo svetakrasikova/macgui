@@ -75,6 +75,13 @@ class Connector: NSObject, NSCoding {
         }
     }
     
+    func connectModelNodes(to: Connector) throws {
+        guard let sourceNode = to.neighbor as? ModelNode, let targetNode = self.neighbor as? ModelNode
+            else { throw  ConnectionError.typeError }
+        targetNode.distributionParameters.append(sourceNode)
+        
+    }
+    
 }
 
 enum ConnectorType: String {
@@ -91,4 +98,5 @@ enum ConnectorType: String {
 enum ConnectionError: Error {
     case noData
     case noAlignedData
+    case typeError
 }

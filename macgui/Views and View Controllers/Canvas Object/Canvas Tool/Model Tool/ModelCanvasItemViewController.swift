@@ -58,10 +58,45 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     
     var actionButton: ActionButton?
     
-    lazy var variableController: NSViewController = {
-           let vc = NSStoryboard.loadVC(StoryBoardName.variableController)
-           return vc
-       }()
+    var modelCanvas: ModelCanvasViewController? {
+        if let canvasViewController = self.parent as? ModelCanvasViewController {
+            return canvasViewController
+        }
+        return nil
+    }
+    
+    lazy var variableController: ModelVariableController = {
+        let variableController = NSStoryboard.loadVC(StoryBoardName.variableController) as! ModelVariableController
+        if let node = self.tool as? ModelNode, let canvasVC = self.modelCanvas {
+            variableController.modelNode = node
+            variableController.delegate = canvasVC
+        }
+        return variableController
+    }()
+    
+//    MARK: -- Observers
+    
+    private var observers = [NSKeyValueObservation]()
+    
+    
+    func addNodeNameChangeObservation() {
+        if let model = self.tool as? ModelNode {
+            observers = [
+                model.observe(\ModelNode.parameterName, options: [.old, .new]) {(_, change) in
+                    let pattern: String = "Parameter (\\d+)"
+                    let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+                    if let oldName = change.oldValue as? String, let match = regex?.firstMatch(in: oldName, options: [], range: NSRange(location: 0, length: oldName.utf16.count)) {
+                        if let numberRange = Range(match.range(at:1), in: oldName) {
+                            let index: String = String(oldName[numberRange])
+                            NotificationCenter.default.post(name: .didChangeModelParameterName, object: nil, userInfo: ["index": index])
+                        }
+                    }
+                }
+                
+            ]
+        }
+    }
+             
     
 //    MARK: -- Mouse Events
     
@@ -78,6 +113,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     override func viewDidLoad() {	
         super.viewDidLoad()
         setUp()
+        addNodeNameChangeObservation()
     }
     
 //    MARK: -- Setting up View

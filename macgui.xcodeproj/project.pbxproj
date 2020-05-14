@@ -1381,6 +1381,7 @@
 		14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */; };
 		14ADDC87245BB151000D49DB /* Distribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADDC86245BB151000D49DB /* Distribution.swift */; };
 		14ADDC89245BB62A000D49DB /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADDC88245BB62A000D49DB /* Parameter.swift */; };
+		14ADDC8B2460A3D0000D49DB /* ModelVariableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADDC8A2460A3D0000D49DB /* ModelVariableController.swift */; };
 		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
 		14BF307D23E236F100426D7A /* ModelCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF307C23E236F100426D7A /* ModelCanvasView.swift */; };
 		14BF307F23E4BD9700426D7A /* LineOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF307E23E4BD9600426D7A /* LineOverlay.swift */; };
@@ -4298,6 +4299,7 @@
 		14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookWindowController.swift; sourceTree = "<group>"; };
 		14ADDC86245BB151000D49DB /* Distribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distribution.swift; sourceTree = "<group>"; };
 		14ADDC88245BB62A000D49DB /* Parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
+		14ADDC8A2460A3D0000D49DB /* ModelVariableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVariableController.swift; sourceTree = "<group>"; };
 		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		14BF307C23E236F100426D7A /* ModelCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasView.swift; sourceTree = "<group>"; };
 		14BF307E23E4BD9600426D7A /* LineOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineOverlay.swift; sourceTree = "<group>"; };
@@ -8353,6 +8355,7 @@
 				1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */,
 				1410C3AE2404ECEB0044EB48 /* ModelCanvasItemView.swift */,
 				1410C3B0240594720044EB48 /* ModelNode.swift */,
+				14ADDC8A2460A3D0000D49DB /* ModelVariableController.swift */,
 			);
 			path = "Model Tool";
 			sourceTree = "<group>";
@@ -9021,6 +9024,7 @@
 				144BEC9823A17AC50001B2EF /* Move_SpeciesTreeScale.cpp in Sources */,
 				144BECB423A17AC50001B2EF /* Move_EventTimeBeta.cpp in Sources */,
 				144BED0E23A17AC50001B2EF /* Mntr_StochasticBranchRate.cpp in Sources */,
+				14ADDC8B2460A3D0000D49DB /* ModelVariableController.swift in Sources */,
 				144BF12823A17AC70001B2EF /* SoftBoundUniformNormalDistribution.cpp in Sources */,
 				144BF03523A17AC70001B2EF /* HostSwitchRateModifier.cpp in Sources */,
 				144BEE9323A17AC60001B2EF /* Dist_unifPositive.cpp in Sources */,
