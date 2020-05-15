@@ -11,46 +11,34 @@ import Cocoa
 class MovingCanvasObjectView: CanvasObjectView {
 
     var firstMouseDownPoint: NSPoint?
-  
+    
+    var isMouseDragged = false
+    var isMouseDown = false
     
 //   MARK: - Mouse and Key Events
     
     override func mouseDown(with event: NSEvent) {
         super.mouseDown(with: event)
         firstMouseDownPoint = (self.window?.contentView?.convert(event.locationInWindow, to: self))!
+        isMouseDown = true
     }
     
 
     override func mouseDragged(with event: NSEvent) {
-        if let newPoint = self.window?.contentView?.convert(event.locationInWindow, to: self), let firstMouseDownPoint = firstMouseDownPoint {
+        isMouseDragged = true
+        if let newPoint = self.window?.contentView?.convert(event.locationInWindow, to: self), let firstMouseDownPoint = firstMouseDownPoint, let canvas = self.superview as? GenericCanvasView{
             let offset = NSPoint(x: newPoint.x - firstMouseDownPoint.x, y: newPoint.y - firstMouseDownPoint.y)
             let origin = self.frame.origin
             var newOrigin = NSPoint(x: origin.x + offset.x, y: origin.y + offset.y)
-            newOrigin = clipNewOriginToFitContentSize(newOrigin)
+            newOrigin = newOrigin.adjustOriginToFitContentSize(content: canvas.frame.size , dimension: canvas.canvasObjectDimension ?? 50.0)
             self.setFrameOrigin(newOrigin)
             delegate?.updateFrame()
         }
     }
-    
-    func clipNewOriginToFitContentSize(_ newOrigin: NSPoint) -> NSPoint {
-        var clippedOrigin = newOrigin
-        if let content = self.superview?.frame.size {
-            if newOrigin.x < 0 {
-                clippedOrigin.x = 0
-            } else if newOrigin.x > content.width - 50 {
-                clippedOrigin.x = content.width - 50
-            }
-            
-            if newOrigin.y < 0 {
-                clippedOrigin.y = 0
-            } else if newOrigin.y > content.height - 50 {
-                clippedOrigin.y = content.height - 50
-            }
-        }
-       return clippedOrigin
-    }
       
       override func mouseUp(with event: NSEvent) {
+        isMouseDragged = false
+        isMouseDown = false
         delegate?.updateFrame()
       }
       

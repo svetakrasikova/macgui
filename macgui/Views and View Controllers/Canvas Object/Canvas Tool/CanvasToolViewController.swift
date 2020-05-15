@@ -34,6 +34,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         return tool.frameOnCanvas
     }
     
+   
     var progressSpinner: NSProgressIndicator?
     
     // MARK: - Info Popover Related Properties
@@ -43,7 +44,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     var closePopoverTimer: Timer?
     
     @objc func showPopover(){
-        if self.view.window?.isMainWindow ?? true {
+        if self.view.window?.isMainWindow ?? true, let view = self.view as? MovingCanvasObjectView, view.isMouseDown {
         self.toolTipPopover.show(relativeTo: self.view.bounds, of: self.view, preferredEdge: NSRectEdge.minY)
         }
     }
@@ -53,10 +54,17 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         closePopoverTimer?.invalidate()
     }
     
+    func popOverTimersValid() -> Bool {
+        guard let start = startPopoverTimer, let close = closePopoverTimer else { return false }
+        return start.isValid && close.isValid
+      
+    }
+    
     @objc func closePopover(){
         if self.toolTipPopover.isShown {
             self.toolTipPopover.close()
         }
+        invalidatePopoverTimers()
     }
     
     func setPopOver(){
@@ -114,19 +122,26 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     override func mouseEntered(with event: NSEvent) {
         infoButton.mouseEntered(with: event)
         inspectorButton.mouseEntered(with: event)
-        self.startPopoverTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(showPopover), userInfo: nil, repeats: false)
-        self.closePopoverTimer = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(closePopover), userInfo: nil, repeats: false)
+        if let view = view as? MovingCanvasObjectView {
+            view.isMouseDown = true
+            if !self.toolTipPopover.isShown, !view.isMouseDragged, !popOverTimersValid() {
+                self.startPopoverTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(showPopover), userInfo: nil, repeats: false)
+                self.closePopoverTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(closePopover), userInfo: nil, repeats: false)
+            }
+        }
         
     }
-    
     
     override func mouseExited(with event: NSEvent) {
+        if let view = view as? MovingCanvasObjectView {
+                  view.isMouseDown = false
+        }
         infoButton.mouseExited(with: event)
         inspectorButton.mouseExited(with: event)
-        closePopover()
-        invalidatePopoverTimers()
         
+        closePopover()
     }
+    
     
     // MARK: - Controller Life Cycle
     
@@ -153,12 +168,17 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
             modelToolCanvasWindow.close()
         }
         
-    }
-    override func viewDidDisappear() {
+        
         closePopover()
         invalidatePopoverTimers()
         
+        
     }
+//    override func viewDidDisappear() {
+//        closePopover()
+//        invalidatePopoverTimers()
+//
+//    }
     
    
     
