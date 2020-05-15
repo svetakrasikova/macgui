@@ -237,7 +237,9 @@ extension CanvasViewController: CanvasViewDelegate {
                 return
         }
         let size = NSSize(width: toolDimension, height: toolDimension)
-        let frame = NSRect(x: center.x - size.width/2, y: center.y - size.height/2, width: size.width, height: size.height)
+        let origin = NSPoint(x: center.x - size.width/2, y: center.y - size.height/2)
+        let adjustedOrigin = origin.adjustOriginToFitContentSize(content: self.canvasView.frame.size, dimension: toolDimension)
+        let frame = NSRect(origin: adjustedOrigin       , size: size)
         addCanvasTool(frame: frame, name: name)
         if let window = self.view.window {
             window.makeFirstResponder(canvasView)

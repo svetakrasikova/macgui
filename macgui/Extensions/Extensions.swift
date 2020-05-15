@@ -48,6 +48,24 @@ extension NSPoint {
     func CGPointDistanceTo(to: CGPoint) -> CGFloat {
         return sqrt(self.CGPointDistanceSquaredTo(to: to))
     }
+    
+    func adjustOriginToFitContentSize(content: NSSize, dimension: CGFloat) -> NSPoint {
+        var newOrigin = self
+        if self.x < 0 {
+            newOrigin.x = 0
+        } else if self.x > content.width - dimension {
+            newOrigin.x = content.width - dimension
+        }
+        
+        if self.y < 0 {
+            newOrigin.y = 0
+        } else if self.y > content.height - dimension {
+            newOrigin.y = content.height - dimension
+        }
+        
+        return newOrigin
+    }
+
 }
 
 
@@ -174,7 +192,9 @@ extension NSWindow {
 
 
 extension NSViewController {
+    
     @objc dynamic var defaultsWorkaround: NSUserDefaultsController { return NSUserDefaultsController.shared }
+    
 }
 
 
