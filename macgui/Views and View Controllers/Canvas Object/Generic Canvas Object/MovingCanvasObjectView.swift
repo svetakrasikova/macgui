@@ -20,18 +20,38 @@ class MovingCanvasObjectView: CanvasObjectView {
         firstMouseDownPoint = (self.window?.contentView?.convert(event.locationInWindow, to: self))!
     }
     
+
     override func mouseDragged(with event: NSEvent) {
         if let newPoint = self.window?.contentView?.convert(event.locationInWindow, to: self), let firstMouseDownPoint = firstMouseDownPoint {
             let offset = NSPoint(x: newPoint.x - firstMouseDownPoint.x, y: newPoint.y - firstMouseDownPoint.y)
             let origin = self.frame.origin
-            let newOrigin = NSPoint(x: origin.x + offset.x, y: origin.y + offset.y)
-            delegate?.updateFrame()
+            var newOrigin = NSPoint(x: origin.x + offset.x, y: origin.y + offset.y)
+            newOrigin = clipNewOriginToFitContentSize(newOrigin)
             self.setFrameOrigin(newOrigin)
+            delegate?.updateFrame()
         }
+    }
+    
+    func clipNewOriginToFitContentSize(_ newOrigin: NSPoint) -> NSPoint {
+        var clippedOrigin = newOrigin
+        if let content = self.superview?.frame.size {
+            if newOrigin.x < 0 {
+                clippedOrigin.x = 0
+            } else if newOrigin.x > content.width - 50 {
+                clippedOrigin.x = content.width - 50
+            }
+            
+            if newOrigin.y < 0 {
+                clippedOrigin.y = 0
+            } else if newOrigin.y > content.height - 50 {
+                clippedOrigin.y = content.height - 50
+            }
+        }
+       return clippedOrigin
     }
       
       override func mouseUp(with event: NSEvent) {
-          delegate?.updateFrame()
+        delegate?.updateFrame()
       }
       
       override func viewDidEndLiveResize() {
