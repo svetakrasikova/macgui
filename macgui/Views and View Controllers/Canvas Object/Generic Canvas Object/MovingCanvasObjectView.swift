@@ -34,6 +34,7 @@ class MovingCanvasObjectView: CanvasObjectView {
             self.setFrameOrigin(newOrigin)
             delegate?.updateFrame()
         }
+        self.autoscroll(with: event)
     }
       
       override func mouseUp(with event: NSEvent) {
