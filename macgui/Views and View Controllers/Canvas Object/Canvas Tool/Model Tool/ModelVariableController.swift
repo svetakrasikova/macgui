@@ -15,6 +15,7 @@ class ModelVariableController: NSViewController {
 
     @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var distributionPopup: NSPopUpButton!
+    @IBOutlet weak var distributionLabel: NSTextField!
     @IBOutlet weak var distributionStackView: NSStackView!
     
     @IBOutlet weak var boxContainer: NSBox!
@@ -61,10 +62,12 @@ class ModelVariableController: NSViewController {
         super.viewDidLoad()
         setUpTitle()
         setUpDistribution()
-        print("Initial fitting size:", self.view.fittingSize.height)
     }
     
-//    MARK: -- Distribution and Parameters Setup
+    override func viewWillDisappear() {
+//        reset distribution
+    }
+    
     
     func setUpTitle() {
            if let name = modelNode?.parameterName {
@@ -77,12 +80,13 @@ class ModelVariableController: NSViewController {
        
        func setUpDistribution() {
            guard let modelNode = self.modelNode, let distributionName =  modelNode.distribution?.name, let descriptiveString = modelNode.distribution?.descriptiveString  else { return }
-           distributionStackView.toolTip = descriptiveString
+           distributionLabel.toolTip = descriptiveString
            let itemToSelect = self.distributionPopup.item(withTitle: distributionName)
            self.distributionPopup.select(itemToSelect)
            setDistributionParameters(distributionName: distributionName)
            parametersStackShouldBeHidden = false
        }
+    
        
        
        
@@ -109,32 +113,37 @@ class ModelVariableController: NSViewController {
            }
        }
        
-       func setParameterStackView(_ stackView: NSStackView, parameter: Parameter, index: Int) {
-           stackView.toolTip = parameter.descriptiveString
-           for subview in stackView.subviews {
-               if let label = subview as? NSTextField {
-                   label.stringValue = parameter.name
-               } else if let popup = subview as? NSPopUpButton {
-                   var modelNodes: [ModelNode] = []
-                   if let delegate = self.delegate as? ModelCanvasViewController, let model = delegate.model {
-                       for connection in model.edges {
-                           if modelNode == connection.from.neighbor, let modelNode = connection.to.neighbor as? ModelNode {
-                               if modelNode.node.type == parameter.type {
-                                   modelNodes.append(modelNode)
-                               }
-                           }
-                       }
-                       let modelNodeNames: [String] = modelNodes.map { ($0.parameterName ?? "Unknown") }
-                       popup.removeAllItems()
-                       popup.addItems(withTitles: modelNodeNames)
-                    if index < (modelNode?.distributionParameters.count ?? 0), let selectedNodeName = modelNode?.distributionParameters[index].parameterName {
-                           let itemToSelect = popup.item(withTitle: selectedNodeName)
-                           popup.select(itemToSelect)
-                       }
-                   }
-               }
-           }
-       }
+    func setParameterStackView(_ stackView: NSStackView, parameter: Parameter, index: Int) {
+        stackView.toolTip = parameter.descriptiveString
+        for subview in stackView.subviews {
+            if let label = subview as? NSTextField {
+                label.stringValue = parameter.name
+            } else if let popup = subview as? NSPopUpButton {
+                var modelNodes: [ModelNode] = []
+                if let delegate = self.delegate as? ModelCanvasViewController, let model = delegate.model {
+                    for connection in model.edges {
+                        if modelNode == connection.from.neighbor, let modelNode = connection.to.neighbor as? ModelNode {
+                            if modelNode.node.type == parameter.type {
+                                modelNodes.append(modelNode)
+                            }
+                        }
+                    }
+                    let modelNodeNames: [String] = modelNodes.map { ($0.parameterName ?? "Unknown") }
+                    popup.removeAllItems()
+                    popup.addItem(withTitle: "<no selection>")
+                    popup.addItems(withTitles: modelNodeNames)
+
+                    if let modelNode = self.modelNode, index < modelNode.distributionParameters.count, let selectedNodeName = modelNode.distributionParameters[index].parameterName {
+                        let itemToSelect = popup.item(withTitle: selectedNodeName)
+                        popup.select(itemToSelect)
+                    } else {
+                        let itemToSelect = popup.item(withTitle: "<no selection>")
+                        popup.select(itemToSelect)
+                    }
+                }
+            }
+        }
+    }
 
    
     
@@ -155,17 +164,21 @@ class ModelVariableController: NSViewController {
 //   MARK: -- IB Actions
     
     @IBAction func selectDistribution(_ sender: NSPopUpButton) {
- 
+
+        
         if let distributionName = sender.selectedItem?.title, distributionNames.contains(distributionName) {
             removeHeightConstraintFromBox()
             parametersStackShouldBeHidden = false
+            for distribution in self.distributions {
+                if distribution.name == distributionName {
+                    distributionLabel.toolTip = distribution.descriptiveString
+                }
+            }
             setDistributionParameters(distributionName: distributionName)
-            print("Fitting size on selection of new distribution:", self.view.fittingSize.height)
             addHeightConstraintToBox(height:  boxContainer.fittingSize.height)
             
         } else {
             resetParametersStack()
-            print("Fitting size after reset:", self.view.fittingSize.height)
     
         }
     }

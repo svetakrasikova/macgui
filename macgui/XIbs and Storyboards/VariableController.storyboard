@@ -357,6 +357,7 @@ DQ
                     </view>
                     <connections>
                         <outlet property="boxContainer" destination="aB4-MH-j0Q" id="xdv-Ch-EGO"/>
+                        <outlet property="distributionLabel" destination="UdO-ai-QBJ" id="XFs-g9-ZF6"/>
                         <outlet property="distributionParametersStackView" destination="huH-y0-sRL" id="EXe-Em-84p"/>
                         <outlet property="distributionPopup" destination="ZQ6-6c-LWN" id="b7w-cw-yv1"/>
                         <outlet property="distributionStackView" destination="KNV-gw-yon" id="Jhg-B4-MAZ"/>
