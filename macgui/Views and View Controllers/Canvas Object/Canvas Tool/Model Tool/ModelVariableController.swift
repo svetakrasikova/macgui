@@ -64,8 +64,8 @@ class ModelVariableController: NSViewController {
         setUpDistribution()
     }
     
-    override func viewWillDisappear() {
-//        reset distribution
+    override func viewWillAppear() {
+       resetDistribution()
     }
     
     
@@ -145,7 +145,27 @@ class ModelVariableController: NSViewController {
         }
     }
 
-   
+    func resetDistribution() {
+        if let modelNode = self.modelNode, let distributionName =  modelNode.distribution?.name {
+            removeHeightConstraintFromBox()
+           
+            let itemToSelect = self.distributionPopup.item(withTitle: distributionName)
+            self.distributionPopup.select(itemToSelect)
+            parametersStackShouldBeHidden = false
+            
+            for distribution in self.distributions {
+                if distribution.name == distributionName {
+                    distributionLabel.toolTip = distribution.descriptiveString
+                }
+            }
+            
+            
+            setDistributionParameters(distributionName: distributionName)
+            addHeightConstraintToBox(height:  boxContainer.fittingSize.height)
+        } else {
+            resetParametersStack()
+        }
+    }
     
     func addNodeNameChangeObservation() {
         if let model = self.modelNode {
@@ -165,7 +185,6 @@ class ModelVariableController: NSViewController {
     
     @IBAction func selectDistribution(_ sender: NSPopUpButton) {
 
-        
         if let distributionName = sender.selectedItem?.title, distributionNames.contains(distributionName) {
             removeHeightConstraintFromBox()
             parametersStackShouldBeHidden = false
@@ -209,7 +228,7 @@ class ModelVariableController: NSViewController {
         
     }
     
-    @IBAction func okClicked(_ sender: NSButton) {
+    @IBAction func saveClicked(_ sender: NSButton) {
         
         if let delegate = self.delegate as? ModelCanvasViewController, let modelNode = self.modelNode, let selectedDistribution = distributions.first(where: { $0.name == distributionPopup.selectedItem?.title}) {
             modelNode.distribution = selectedDistribution
@@ -231,7 +250,25 @@ class ModelVariableController: NSViewController {
         }
         dismiss(self)
     }
+    
+    @IBAction func cancelClicked(_ sender: NSButton) {
+        let alert = NSAlert()
+        alert.messageText = "Warning: you are about to discard unsaved changes to the node."
+        alert.addButton(withTitle: "Discard")
+        alert.addButton(withTitle: "Cancel")
+        let result = alert.runModal()
+        switch result {
+        case NSApplication.ModalResponse.alertFirstButtonReturn:
+            dismiss(self)
+        default: break
+            
+        }
+        
+    }
+    
 }
+
+
 
 // MARK: -- ModelVariableControllerDelegate
 
