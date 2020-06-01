@@ -32,7 +32,6 @@ class MovingCanvasObjectView: CanvasObjectView {
             var newOrigin = NSPoint(x: origin.x + offset.x, y: origin.y + offset.y)
             newOrigin = newOrigin.adjustOriginToFitContentSize(content: canvas.frame.size , dimension: canvas.canvasObjectDimension ?? 50.0)
             self.setFrameOrigin(newOrigin)
-            delegate?.updateFrame()
         }
         self.autoscroll(with: event)
     }
