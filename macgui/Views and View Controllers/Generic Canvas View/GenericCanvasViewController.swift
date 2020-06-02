@@ -72,6 +72,7 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
             }
         }
     
+    
 // MARK: - Handling Objects on Canvas
     
     func findArrowControllersByTool(tool: ToolObject) -> [ArrowViewController] {
@@ -85,6 +86,16 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
            }
            return arrowControllers
        }
+ 
+    // MARK: - Key Events
+    
+    override func keyDown(with event: NSEvent) {
+          if event.charactersIgnoringModifiers == String(Character(UnicodeScalar(NSDeleteCharacter)!)) {
+              NotificationCenter.default.post(name: .didSelectDeleteKey, object: self)
+          }
+      }
+      
+    
     
     
     // MARK: - Magnification
@@ -166,6 +177,17 @@ extension GenericCanvasViewController: GenericCanvasViewDelegate {
                }
            }
        }
+ 
+    func selectBySelectionBox(selectedArea: NSRect) {
+        for childController in children {
+            if let canvasObject = childController as? CanvasObjectViewController, !canvasObject.viewSelected {
+                if canvasObject.view.frame.intersects(selectedArea) {
+                    canvasObject.isPartOfMultipleSelection = true
+                    canvasObject.viewSelected = true
+                }
+            }
+        }
+    }
     
     
 }

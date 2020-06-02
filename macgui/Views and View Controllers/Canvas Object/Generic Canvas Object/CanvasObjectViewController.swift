@@ -10,12 +10,12 @@ import Cocoa
 
 class CanvasObjectViewController: NSViewController, NSWindowDelegate {
     
-    var shiftKeyPressed: Bool = false
+    var isPartOfMultipleSelection: Bool = false
     
     var viewSelected: Bool = false {
         didSet {
             (view as! CanvasObjectView).isSelected = viewSelected
-            if viewSelected && !shiftKeyPressed {
+            if viewSelected && !isPartOfMultipleSelection {
                 NotificationCenter.default.post(name: .didSelectCanvasObjectController, object: self)
             }
         }
@@ -52,7 +52,7 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate {
 extension CanvasObjectViewController: CanvasObjectViewDelegate {
    
     func setObjectViewSelected(flag: Bool) {
-        shiftKeyPressed = flag
+        isPartOfMultipleSelection = flag
         viewSelected = true
     }
     

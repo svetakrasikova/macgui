@@ -40,7 +40,7 @@ DQ
 </string>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="okClicked:" target="cKf-d5-poh" id="1Jh-SZ-jVQ"/>
+                                            <action selector="saveClicked:" target="cKf-d5-poh" id="2aP-x8-yph"/>
                                         </connections>
                                     </button>
                                 </subviews>

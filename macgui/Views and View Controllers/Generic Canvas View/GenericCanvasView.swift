@@ -29,19 +29,55 @@ class GenericCanvasView: NSView {
     }
     weak var delegate: GenericCanvasViewController? = nil
     
-    let backgroundLayer = CALayer()
+//    let backgroundLayer = CALayer()
+    var selectionStartPoint: NSPoint!
+    var selectionBox: CAShapeLayer!
     
     override var acceptsFirstResponder: Bool { return true }
     override func becomeFirstResponder() -> Bool { return true }
     override func resignFirstResponder() -> Bool { return true }
     
     func setup() {
+        wantsLayer = true
         registerForDraggedTypes(Array(acceptableTypes))
     }
     
     override func awakeFromNib() {
         setup()
     }
+    
+    override func mouseDown(with event: NSEvent) {
+        
+        delegate?.mouseDownOnCanvasView()
+        
+        selectionStartPoint = self.convert(event.locationInWindow, from: nil)
+        selectionBox = CAShapeLayer()
+        selectionBox.lineWidth = 1.0
+        selectionBox.fillColor = NSColor.lightGray.cgColor
+        selectionBox.opacity = 0.3
+        self.layer?.addSublayer(selectionBox)
+       
+    }
+    
+       
+    
+    override func mouseDragged(with event: NSEvent) {
+        let point : NSPoint = self.convert(event.locationInWindow, from: nil)
+        let path = CGMutablePath()
+        path.move(to: self.selectionStartPoint)
+        path.addLine(to: NSPoint(x: self.selectionStartPoint.x, y: point.y))
+        path.addLine(to: point)
+        path.addLine(to: NSPoint(x:point.x,y:self.selectionStartPoint.y))
+        path.closeSubpath()
+        self.selectionBox.path = path
+        let selectedArea = selectionStartPoint.selectedAreaTo(point: point)
+        delegate?.selectBySelectionBox(selectedArea: selectedArea)
+    }
+
+    override func mouseUp(with event: NSEvent) {
+        self.selectionBox.removeFromSuperlayer()
+    }
+
     
     
     func shouldAllowDrag(_ draggingInfo: NSDraggingInfo) -> Bool {
@@ -70,10 +106,6 @@ class GenericCanvasView: NSView {
     }
     
     
-    override func mouseDown(with event: NSEvent) {
-        delegate?.mouseDownOnCanvasView()
-    }
-    
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -93,4 +125,5 @@ protocol GenericCanvasViewDelegate: class {
     func selectContentView(width: CGFloat)
     func mouseDownOnCanvasView()
     func isMouseDownOnArrowView(event: NSEvent, point: NSPoint) -> Bool
+    func selectBySelectionBox(selectedArea: CGRect)
 }

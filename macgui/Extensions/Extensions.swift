@@ -20,6 +20,8 @@ extension NSRect {
         let y = origin.y + ( size.height / 2 )
         return NSPoint(x: x, y: y)
     }
+    
+ 
 }
 extension NSPoint {
     /**
@@ -65,7 +67,14 @@ extension NSPoint {
         
         return newOrigin
     }
-
+    
+    func selectedAreaTo(point: NSPoint) -> NSRect {
+        let origin = NSPoint(x: min(point.x, self.x), y: min(point.y, self.y))
+        let width = abs(self.x - point.x)
+        let height = abs(self.y - point.y)
+        let size = NSSize(width: width, height: height)
+        return NSRect(origin: origin, size: size)
+     }
 }
 
 
