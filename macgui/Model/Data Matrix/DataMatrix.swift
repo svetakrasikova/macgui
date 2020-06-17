@@ -469,6 +469,48 @@ class DataMatrix : NSObject,Codable {
         return true
     }
     
+    func writeFastaFile(pathName: String, fileName: String) throws {
+
+        var isDirectory = ObjCBool(true)
+        let dirExists : Bool = FileManager.default.fileExists(atPath: pathName, isDirectory: &isDirectory)
+        guard dirExists == true else {
+            print("The directory \"\(pathName)\" does not exist")
+            throw DataMatrixError.writeError
+        }
+        
+        var fileURL = URL(fileURLWithPath: pathName)
+        fileURL.appendPathComponent(fileName)
+        let fileExists = FileManager.default.fileExists(atPath: fileURL.path)
+        if fileExists == true {
+            print("Overwriting file \"\(fileURL.absoluteString)\"")
+        }
+        
+        
+        let fastaString: String  = getFastaString()
+        
+        let data = NSData(data: fastaString.data(using: String.Encoding.utf8, allowLossyConversion: false)!)
+        do {
+            try data.write(to: URL(fileURLWithPath: fileURL.path), options: .atomic)
+        }
+        catch {
+            throw DataMatrixError.writeError
+        }
+    }
+    
+    func getFastaString() -> String {
+        var fastaString: String  = ""
+        let activeTaxonNames: [String] = self.getActiveTaxaNames()
+        for name in activeTaxonNames  {
+            fastaString += "<\(name)\n"
+            if let taxonData = self.getTaxonData(name: name) {
+                fastaString += "\(taxonData.characterDataString())\n"
+            }
+        }
+        return fastaString
+    }
+    
+    
+    
     // write the data matrix to a file in NEXUS format
     func writeNexusFile(pathName: String, fileName: String) throws {
         
