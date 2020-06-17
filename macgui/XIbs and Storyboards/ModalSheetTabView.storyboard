@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,10 +12,10 @@
                 <customObject id="MKF-UK-4bl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <tabViewController identifier="ModalSheetTabView" storyboardIdentifier="ModalSheetTabView" selectedTabViewItemIndex="0" tabStyle="unspecified" id="3V7-fT-kdA" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem identifier="Align" id="E9e-Df-6Vl" userLabel="Align"/>
+                        <tabViewItem label="Align Tool" identifier="AlignTool" id="aNB-se-BiG" userLabel="Align Tool"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="626-6W-VnF">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="system"/>
                         <connections>
@@ -24,24 +24,19 @@
                     </tabView>
                     <connections>
                         <outlet property="tabView" destination="626-6W-VnF" id="fIH-O1-OPa"/>
-                        <segue destination="2x3-Hu-ahN" kind="relationship" relationship="tabItems" id="M07-4D-AJ6"/>
+                        <segue destination="Rrq-Y6-Cvx" kind="relationship" relationship="tabItems" id="frO-Kj-LEN"/>
                     </connections>
                 </tabViewController>
             </objects>
-            <point key="canvasLocation" x="94" y="-701"/>
+            <point key="canvasLocation" x="-42" y="-586"/>
         </scene>
-        <!--Info Tool View Controller-->
-        <scene sceneID="u18-vC-CBW">
+        <!--Align Tool-->
+        <scene sceneID="ip6-6G-0IH">
             <objects>
-                <viewController identifier="Align" storyboardIdentifier="Align" id="2x3-Hu-ahN" customClass="InfoToolViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="i3i-ge-kLC">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="CuU-h4-5lp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <controllerPlaceholder storyboardIdentifier="AlignTool" storyboardName="AlignTool" id="Rrq-Y6-Cvx" userLabel="Align Tool" sceneMemberID="viewController"/>
+                <customObject id="BrN-8v-Jjz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="296" y="157"/>
+            <point key="canvasLocation" x="284" y="-17"/>
         </scene>
     </scenes>
 </document>

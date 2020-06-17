@@ -1360,6 +1360,15 @@
 		1495A0BE237CBBC400F46312 /* InfoInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0BD237CBBC400F46312 /* InfoInspector.swift */; };
 		1495A0C2237DC46600F46312 /* MatrixNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0C1237DC46600F46312 /* MatrixNavigatorViewController.swift */; };
 		1495A0C4237DF99900F46312 /* InspectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0C3237DF99900F46312 /* InspectorWindowController.swift */; };
+		149A4FFE24983B2A007E4D4B /* AlignToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A4FFD24983B2A007E4D4B /* AlignToolViewController.swift */; };
+		149A500024983C61007E4D4B /* AlignTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 149A4FFF24983C61007E4D4B /* AlignTool.storyboard */; };
+		149A500224995A80007E4D4B /* ClustalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A500124995A80007E4D4B /* ClustalViewController.swift */; };
+		149A500624995B8C007E4D4B /* paup4a166_osx in Resources */ = {isa = PBXBuildFile; fileRef = 149A500424995B8C007E4D4B /* paup4a166_osx */; };
+		149A500724995B8C007E4D4B /* clustal in Resources */ = {isa = PBXBuildFile; fileRef = 149A500524995B8C007E4D4B /* clustal */; };
+		149A500B24995CA5007E4D4B /* BinaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A500A24995CA4007E4D4B /* BinaryController.swift */; };
+		149A500D24995D1A007E4D4B /* RunClustal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A500C24995D1A007E4D4B /* RunClustal.swift */; };
+		149A500F24995D4C007E4D4B /* ClustalOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A500E24995D4C007E4D4B /* ClustalOptions.swift */; };
+		149A50132499A995007E4D4B /* Clustal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 149A50122499A995007E4D4B /* Clustal.storyboard */; };
 		149C5FC52325A52D0060043E /* ToolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC42325A52D0060043E /* ToolType.swift */; };
 		149C5FC7232953610060043E /* Simulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC6232953610060043E /* Simulate.swift */; };
 		149C5FC92329538C0060043E /* TreeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC82329538C0060043E /* TreeSet.swift */; };
@@ -4278,6 +4287,15 @@
 		1495A0BD237CBBC400F46312 /* InfoInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoInspector.swift; sourceTree = "<group>"; };
 		1495A0C1237DC46600F46312 /* MatrixNavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixNavigatorViewController.swift; sourceTree = "<group>"; };
 		1495A0C3237DF99900F46312 /* InspectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorWindowController.swift; sourceTree = "<group>"; };
+		149A4FFD24983B2A007E4D4B /* AlignToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignToolViewController.swift; sourceTree = "<group>"; };
+		149A4FFF24983C61007E4D4B /* AlignTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AlignTool.storyboard; sourceTree = "<group>"; };
+		149A500124995A80007E4D4B /* ClustalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClustalViewController.swift; sourceTree = "<group>"; };
+		149A500424995B8C007E4D4B /* paup4a166_osx */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = paup4a166_osx; sourceTree = "<group>"; };
+		149A500524995B8C007E4D4B /* clustal */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = clustal; sourceTree = "<group>"; };
+		149A500A24995CA4007E4D4B /* BinaryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryController.swift; sourceTree = "<group>"; };
+		149A500C24995D1A007E4D4B /* RunClustal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunClustal.swift; sourceTree = "<group>"; };
+		149A500E24995D4C007E4D4B /* ClustalOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClustalOptions.swift; sourceTree = "<group>"; };
+		149A50122499A995007E4D4B /* Clustal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Clustal.storyboard; sourceTree = "<group>"; };
 		149C5FC42325A52D0060043E /* ToolType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolType.swift; sourceTree = "<group>"; };
 		149C5FC6232953610060043E /* Simulate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulate.swift; sourceTree = "<group>"; };
 		149C5FC82329538C0060043E /* TreeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSet.swift; sourceTree = "<group>"; };
@@ -4395,6 +4413,7 @@
 		1411BE8E2203D8FB009BEE1D /* macgui */ = {
 			isa = PBXGroup;
 			children = (
+				149A500324995B44007E4D4B /* Binaries */,
 				14633125244F7FF0002FBD83 /* Assets.xcassets */,
 				144BE13B2397797C0001B2EF /* GitVersion.cpp */,
 				14640BB02383716300358042 /* TestDataConstants.swift */,
@@ -8180,6 +8199,8 @@
 				1495A0B5237C991200F46312 /* MatrixInspector.storyboard */,
 				1407184A22FF5D430098285D /* ModalSheet.storyboard */,
 				1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */,
+				149A4FFF24983C61007E4D4B /* AlignTool.storyboard */,
+				149A50122499A995007E4D4B /* Clustal.storyboard */,
 				147429DD22D154D200FF1963 /* ModelTool.storyboard */,
 				14A663BB23186CFE0034EA53 /* Notebook.storyboard */,
 				1411BEE72208FE91009BEE1D /* Tool.xib */,
@@ -8328,6 +8349,43 @@
 			path = "Matrix Inspector";
 			sourceTree = "<group>";
 		};
+		149A4FFC249834E2007E4D4B /* Align Tool */ = {
+			isa = PBXGroup;
+			children = (
+				149A4FFD24983B2A007E4D4B /* AlignToolViewController.swift */,
+				149A500124995A80007E4D4B /* ClustalViewController.swift */,
+			);
+			path = "Align Tool";
+			sourceTree = "<group>";
+		};
+		149A500324995B44007E4D4B /* Binaries */ = {
+			isa = PBXGroup;
+			children = (
+				149A500A24995CA4007E4D4B /* BinaryController.swift */,
+				149A500924995C62007E4D4B /* Paup */,
+				149A500824995C4C007E4D4B /* Clustal */,
+			);
+			path = Binaries;
+			sourceTree = "<group>";
+		};
+		149A500824995C4C007E4D4B /* Clustal */ = {
+			isa = PBXGroup;
+			children = (
+				149A500E24995D4C007E4D4B /* ClustalOptions.swift */,
+				149A500C24995D1A007E4D4B /* RunClustal.swift */,
+				149A500524995B8C007E4D4B /* clustal */,
+			);
+			path = Clustal;
+			sourceTree = "<group>";
+		};
+		149A500924995C62007E4D4B /* Paup */ = {
+			isa = PBXGroup;
+			children = (
+				149A500424995B8C007E4D4B /* paup4a166_osx */,
+			);
+			path = Paup;
+			sourceTree = "<group>";
+		};
 		149F8B2323624E39003146FD /* Data Matrix */ = {
 			isa = PBXGroup;
 			children = (
@@ -8384,6 +8442,7 @@
 				1495A0B1237C89A200F46312 /* Tool Objects */,
 				1495A0B2237C97F800F46312 /* Matrix Inspector */,
 				14C618E523E0E11E001FFFD6 /* Model Tool */,
+				149A4FFC249834E2007E4D4B /* Align Tool */,
 				1495A0AB237C877B00F46312 /* Tool Tip */,
 				1495A0A9237C86B200F46312 /* Tool Info Dialogue */,
 				1495A0B0237C892A00F46312 /* Connection */,
@@ -8510,17 +8569,21 @@
 			files = (
 				141106B9230742D500A8B936 /* ToolTip.storyboard in Resources */,
 				1411BEE92208FE91009BEE1D /* Tool.xib in Resources */,
+				149A500624995B8C007E4D4B /* paup4a166_osx in Resources */,
 				1419FDBD244E772900007232 /* VariableController.storyboard in Resources */,
 				1411BEE322052B7E009BEE1D /* Main.storyboard in Resources */,
 				144BEEF523A17AC60001B2EF /* pull.sh in Resources */,
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
 				14CF75A1243BCF560022B3A8 /* ModelCanvasItem.storyboard in Resources */,
 				147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */,
+				149A500724995B8C007E4D4B /* clustal in Resources */,
 				1471052B226CD75300E88657 /* ConnectorItemArrow.xib in Resources */,
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
+				149A500024983C61007E4D4B /* AlignTool.storyboard in Resources */,
 				1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */,
 				1495A0B6237C991200F46312 /* MatrixInspector.storyboard in Resources */,
 				14A663BC23186CFE0034EA53 /* Notebook.storyboard in Resources */,
+				149A50132499A995007E4D4B /* Clustal.storyboard in Resources */,
 				14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */,
 				147429D922CBA94C00FF1963 /* CanvasTool.storyboard in Resources */,
 				1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */,
@@ -8688,6 +8751,7 @@
 				144BEE3423A17AC60001B2EF /* Func_combineCharacter.cpp in Sources */,
 				144BF03E23A17AC70001B2EF /* GeographicArea.cpp in Sources */,
 				144BEE3623A17AC60001B2EF /* Func_orderedRateMatrix.cpp in Sources */,
+				149A4FFE24983B2A007E4D4B /* AlignToolViewController.swift in Sources */,
 				144BECAE23A17AC50001B2EF /* Move_IndependentTopology.cpp in Sources */,
 				144BEFCB23A17AC70001B2EF /* DagNode.cpp in Sources */,
 				144BED6523A17AC60001B2EF /* RlDemographicFunction.cpp in Sources */,
@@ -8720,6 +8784,7 @@
 				144BEFC123A17AC70001B2EF /* Mcmc.cpp in Sources */,
 				144BEF5323A17AC60001B2EF /* ScaleProposal.cpp in Sources */,
 				144BEFF923A17AC70001B2EF /* RateMatrix_GTR.cpp in Sources */,
+				149A500D24995D1A007E4D4B /* RunClustal.swift in Sources */,
 				144BF01823A17AC70001B2EF /* BinaryState.cpp in Sources */,
 				144BEFF123A17AC70001B2EF /* RateMatrix_Dayhoff.cpp in Sources */,
 				1419FDB62446287200007232 /* Func_meanSimplex.cpp in Sources */,
@@ -8921,6 +8986,7 @@
 				144BEFFB23A17AC70001B2EF /* TimeReversibleRateMatrix.cpp in Sources */,
 				144BEC9523A17AC50001B2EF /* Move_BurstEvent.cpp in Sources */,
 				144BED5723A17AC60001B2EF /* RlTree.cpp in Sources */,
+				149A500F24995D4C007E4D4B /* ClustalOptions.swift in Sources */,
 				144BEDDE23A17AC60001B2EF /* Func_range.cpp in Sources */,
 				144BEF5623A17AC60001B2EF /* RandomGeometricWalkProposal.cpp in Sources */,
 				144BEDE523A17AC60001B2EF /* Func_abs.cpp in Sources */,
@@ -9235,6 +9301,7 @@
 				149C5FC7232953610060043E /* Simulate.swift in Sources */,
 				144BEE8423A17AC60001B2EF /* Dist_binomial.cpp in Sources */,
 				144BED5323A17AC60001B2EF /* RlClade.cpp in Sources */,
+				149A500B24995CA5007E4D4B /* BinaryController.swift in Sources */,
 				14E5857E22A8006F00802691 /* Connection.swift in Sources */,
 				144BEDAC23A17AC60001B2EF /* Func_mccTree.cpp in Sources */,
 				144BEDC823A17AC60001B2EF /* Func_annotateTree.cpp in Sources */,
@@ -9427,6 +9494,7 @@
 				144BEDF423A17AC60001B2EF /* Func_discretizePositiveDistribution.cpp in Sources */,
 				144BEEFE23A17AC60001B2EF /* nxsreader.cpp in Sources */,
 				144BF03323A17AC70001B2EF /* DistanceRateModifier.cpp in Sources */,
+				149A500224995A80007E4D4B /* ClustalViewController.swift in Sources */,
 				144BEDC123A17AC60001B2EF /* Func_readBranchLengthTrees.cpp in Sources */,
 				144BEE7F23A17AC60001B2EF /* Func_PattersonsD.cpp in Sources */,
 				144BED2723A17AC60001B2EF /* RlTrace.cpp in Sources */,
