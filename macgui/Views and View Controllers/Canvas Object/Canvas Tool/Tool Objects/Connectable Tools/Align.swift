@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Align: Connectable {
+class Align: DataTool {
     
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
