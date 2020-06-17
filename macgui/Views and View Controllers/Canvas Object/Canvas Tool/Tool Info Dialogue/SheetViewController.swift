@@ -12,10 +12,12 @@ class SheetViewController: NSViewController {
 
     weak var tool: ToolObject?
     
-    lazy var tabViewController: NSTabViewController = {
-        return NSStoryboard.loadVC(StoryBoardName.modalSheetTabView)
-        }() as! NSTabViewController
+    var tabViewController: NSTabViewController?
     
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+           if (segue.identifier == "TabViewController")
+           { tabViewController = (segue.destinationController as! NSTabViewController) }    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,7 @@ class SheetViewController: NSViewController {
     }
     
     func addContentController(){
+        guard let tabViewController = tabViewController else { return }
         let tabIndex = findTabIndex()
         tabViewController.selectedTabViewItemIndex = tabIndex
         let contentController = tabViewController.tabViewItems[tabIndex].viewController as! InfoToolViewController
@@ -39,8 +42,9 @@ class SheetViewController: NSViewController {
     }
 
     func findTabIndex() -> Int {
+        guard let tabViewController = tabViewController else { return 0 }
         for (index, tabItem) in tabViewController.tabViewItems.enumerated() {
-            let name = tool?.getStroyboardName()
+            let name = tool?.getStoryboardName()
             if tabItem.identifier as? String == name {
                 return index
             }
