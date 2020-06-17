@@ -21,6 +21,8 @@ enum StoryBoardName: String {
     case matrixInspector = "MatrixInspector"
     case modelCanvasItem = "ModelCanvasItem"
     case variableController = "VariableController"
+    case alignTool = "AlignTool"
+    case alignTabView = "AlignTabView"
 }
 
 
