@@ -10,6 +10,10 @@ import Cocoa
 
 class Align: DataTool {
     
+    let clustal = RunClustal()
+    
+    var unalignedDataCopy: [DataMatrix] = []
+    
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
     
@@ -21,6 +25,10 @@ class Align: DataTool {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func alignWithClustal() {
+        
     }
     
 }

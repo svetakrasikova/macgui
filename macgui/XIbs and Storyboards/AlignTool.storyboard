@@ -160,17 +160,19 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="Xj7-b6-7Nc" userLabel="width = 80"/>
                                                         </constraints>
-                                                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="cPE-IY-JsG" id="TS3-CG-NJy">
+                                                        <popUpButtonCell key="cell" type="push" title="Full" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="cPE-IY-JsG" id="TS3-CG-NJy">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                             <menu key="menu" id="gfx-ba-tOJ">
                                                                 <items>
-                                                                    <menuItem title="Item 1" state="on" id="cPE-IY-JsG"/>
-                                                                    <menuItem title="Item 2" id="Twb-h2-kG5"/>
-                                                                    <menuItem title="Item 3" id="FnS-KD-IUJ"/>
+                                                                    <menuItem title="Full" state="on" id="cPE-IY-JsG"/>
+                                                                    <menuItem title="Fast" id="Twb-h2-kG5"/>
                                                                 </items>
                                                             </menu>
                                                         </popUpButtonCell>
+                                                        <connections>
+                                                            <action selector="selectAlignement:" target="2JL-Ni-oG6" id="BuN-ak-Fb1"/>
+                                                        </connections>
                                                     </popUpButton>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -198,11 +200,18 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="ucp-fV-gXQ"/>
                                                         </constraints>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="hau-Yy-b4z">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="1" drawsBackground="YES" id="hau-Yy-b4z">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="2JL-Ni-oG6" name="value" keyPath="self.options.wordLength" id="L4h-yi-Lw2">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -230,11 +239,18 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="bSj-Kv-JKG"/>
                                                         </constraints>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="0sV-wz-Yiz">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="5" drawsBackground="YES" id="0sV-wz-Yiz">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="2JL-Ni-oG6" name="value" keyPath="self.options.window" id="hsD-Wn-hPc">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -262,17 +278,19 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="aXF-Ha-jWW"/>
                                                         </constraints>
-                                                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="kYc-Hj-o29" id="yei-Kg-hJN">
+                                                        <popUpButtonCell key="cell" type="push" title="Percent" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="kYc-Hj-o29" id="yei-Kg-hJN">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                             <menu key="menu" id="Zuy-xy-vx7">
                                                                 <items>
-                                                                    <menuItem title="Item 1" state="on" id="kYc-Hj-o29"/>
-                                                                    <menuItem title="Item 2" id="hac-YR-dZX"/>
-                                                                    <menuItem title="Item 3" id="hEf-Vl-AhF"/>
+                                                                    <menuItem title="Percent" state="on" id="kYc-Hj-o29"/>
+                                                                    <menuItem title="Absolute" id="hac-YR-dZX"/>
                                                                 </items>
                                                             </menu>
                                                         </popUpButtonCell>
+                                                        <connections>
+                                                            <action selector="selectScoreType:" target="2JL-Ni-oG6" id="Vuk-zi-MNE"/>
+                                                        </connections>
                                                     </popUpButton>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -300,11 +318,18 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="Q2Q-Tl-EW8"/>
                                                         </constraints>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="v9w-au-Qbw">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="5" drawsBackground="YES" id="v9w-au-Qbw">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="2JL-Ni-oG6" name="value" keyPath="self.options.numberDiagonals" id="xOc-rY-avH">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -332,11 +357,18 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="7Vx-vb-Q6B"/>
                                                         </constraints>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Mgo-Or-TN8">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="3" drawsBackground="YES" id="Mgo-Or-TN8">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="2JL-Ni-oG6" name="value" keyPath="self.options.pairGapPenalty" id="4Il-UV-jj4">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -385,17 +417,20 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="Ufi-Fc-YCj" userLabel="width = 80"/>
                                                         </constraints>
-                                                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="jU8-dH-0Pu" id="D6F-Uz-1J7">
+                                                        <popUpButtonCell key="cell" type="push" title="Gonnet" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="jU8-dH-0Pu" id="D6F-Uz-1J7">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                             <menu key="menu" id="uxj-nT-d16">
                                                                 <items>
-                                                                    <menuItem title="Item 1" state="on" id="jU8-dH-0Pu"/>
-                                                                    <menuItem title="Item 2" id="Dag-b6-Ih5"/>
-                                                                    <menuItem title="Item 3" id="hGc-Ph-SV7"/>
+                                                                    <menuItem title="Gonnet" state="on" id="jU8-dH-0Pu"/>
+                                                                    <menuItem title="BLOSUM" id="Dag-b6-Ih5"/>
+                                                                    <menuItem title="Pam" id="hGc-Ph-SV7"/>
                                                                 </items>
                                                             </menu>
                                                         </popUpButtonCell>
+                                                        <connections>
+                                                            <action selector="selectMatrix:" target="2JL-Ni-oG6" id="mXS-Pn-ycM"/>
+                                                        </connections>
                                                     </popUpButton>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -423,11 +458,18 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="Ag9-Im-0Xm"/>
                                                         </constraints>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="caC-eH-Z9l">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="10.0" drawsBackground="YES" id="caC-eH-Z9l">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="2JL-Ni-oG6" name="value" keyPath="self.options.gapOpenPenalty" id="Ljj-WI-Awo">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -455,17 +497,19 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="amy-3R-w9E"/>
                                                         </constraints>
-                                                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1kd-cl-KY8" id="SGd-mj-TVs">
+                                                        <popUpButtonCell key="cell" type="push" title="No" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1kd-cl-KY8" id="SGd-mj-TVs">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                             <menu key="menu" id="ODS-AN-MpA">
                                                                 <items>
-                                                                    <menuItem title="Item 1" state="on" id="1kd-cl-KY8"/>
-                                                                    <menuItem title="Item 2" id="jPw-ue-wJH"/>
-                                                                    <menuItem title="Item 3" id="Tsf-OL-c9f"/>
+                                                                    <menuItem title="No" state="on" id="1kd-cl-KY8"/>
+                                                                    <menuItem title="Yes" id="jPw-ue-wJH"/>
                                                                 </items>
                                                             </menu>
                                                         </popUpButtonCell>
+                                                        <connections>
+                                                            <action selector="selectNoEndGaps:" target="2JL-Ni-oG6" id="Ph0-lk-WPg"/>
+                                                        </connections>
                                                     </popUpButton>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -493,11 +537,18 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="Ozl-gN-v4N"/>
                                                         </constraints>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="jrC-Cx-WyP">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="0.2" drawsBackground="YES" id="jrC-Cx-WyP">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="2JL-Ni-oG6" name="value" keyPath="self.options.gapExtensionCost" id="8u4-2E-FFj">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -525,11 +576,18 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="0b6-7l-Oqb"/>
                                                         </constraints>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Wmd-n3-VYh">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="5" drawsBackground="YES" id="Wmd-n3-VYh">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="2JL-Ni-oG6" name="value" keyPath="self.options.gapSeparationPenalty" id="AbL-sK-KTs">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -557,17 +615,20 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="P2c-sm-0xA"/>
                                                         </constraints>
-                                                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lb7-NR-hX2" id="cZr-HG-wV7">
+                                                        <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lb7-NR-hX2" id="cZr-HG-wV7">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                             <menu key="menu" id="u3v-m2-uEL">
                                                                 <items>
-                                                                    <menuItem title="Item 1" state="on" id="lb7-NR-hX2"/>
-                                                                    <menuItem title="Item 2" id="oYb-EX-uZD"/>
-                                                                    <menuItem title="Item 3" id="442-ei-gwU"/>
+                                                                    <menuItem title="none" state="on" id="lb7-NR-hX2"/>
+                                                                    <menuItem title="tree" id="oYb-EX-uZD"/>
+                                                                    <menuItem title="alignment" id="442-ei-gwU"/>
                                                                 </items>
                                                             </menu>
                                                         </popUpButtonCell>
+                                                        <connections>
+                                                            <action selector="selectIteration:" target="2JL-Ni-oG6" id="5aP-EX-ZmB"/>
+                                                        </connections>
                                                     </popUpButton>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -595,11 +656,18 @@ Gw
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="YLA-Ao-E3Z"/>
                                                         </constraints>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="vdr-YS-1jK">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="1" drawsBackground="YES" id="vdr-YS-1jK">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="2JL-Ni-oG6" name="value" keyPath="self.options.numberOfIterations" id="gYV-Fo-pRy">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -699,19 +767,6 @@ Gw
                     <view key="view" id="YI1-bM-t3n">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2rd-F8-KlK">
-                                <rect key="frame" x="171.5" y="179" width="108" height="23"/>
-                                <buttonCell key="cell" type="roundTextured" title="RUN T-COFFEE" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uXQ-y6-Z00">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="2rd-F8-KlK" firstAttribute="centerX" secondItem="YI1-bM-t3n" secondAttribute="centerX" id="ujm-gH-8gg"/>
-                            <constraint firstItem="2rd-F8-KlK" firstAttribute="centerY" secondItem="YI1-bM-t3n" secondAttribute="centerY" id="yBg-oe-gZN"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="XVc-Ab-YzM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

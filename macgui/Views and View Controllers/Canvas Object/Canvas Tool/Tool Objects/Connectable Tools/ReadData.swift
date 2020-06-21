@@ -11,7 +11,6 @@ import Cocoa
 
 class ReadData: DataTool {
 
-    let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
     
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
@@ -88,27 +87,6 @@ class ReadData: DataTool {
             }
         }
         
-    }
-    
-    func readDataTask(_ fileURL: URL) throws -> [DataMatrix] {
-        var readMatrices: [DataMatrix] = []
-        guard let jsonStringArray: [String] = revbayesBridge.readMatrix(from: fileURL.path) as? [String], jsonStringArray.count != 0 else {
-            throw ReadDataError.fetchDataError(fileURL: fileURL)
-        }
-        do {
-            let matricesData: [Data] = try JsonCoreBridge(jsonArray: jsonStringArray).encodeMatrixJsonStringArray()
-            for data in matricesData {
-                do {
-                    let newMatrix = try JSONDecoder().decode(DataMatrix.self, from: data)
-                    readMatrices.append(newMatrix)
-                } catch  {
-                    throw ReadDataError.dataDecodingError
-                }
-            }
-        } catch ReadDataError.coreJsonError {
-            print("Core JSON data is not well-formatted.")
-        }
-        return readMatrices
     }
 
     func readDataAlert() {
