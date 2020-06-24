@@ -36,6 +36,7 @@ class ToolTipViewController: NSViewController {
                 numberMatricesLabel.isHidden = true
             }
         setDataObserver()
+        preferredContentSize = view.fittingSize
     }
     
     func setConnectionStatus() {
