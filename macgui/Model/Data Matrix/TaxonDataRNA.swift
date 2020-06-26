@@ -35,6 +35,10 @@ class TaxonDataRNA: TaxonDataDNA {
             throw TaxonDataError.decodingError
         }
     }
+    
+    required init?(coder: NSCoder) {
+           super.init(coder: coder)
+       }
 
     /// Initialize from json dictionary.
     required init(jsonDictionary: [String: Any]) throws {
@@ -70,7 +74,8 @@ class TaxonDataRNA: TaxonDataDNA {
             throw TaxonDataError.decodingError
         }
     }
-
+   
+    
    // MARK: NSCopying Protocol
     
     override func copy(with zone: NSZone? = nil) -> Any {

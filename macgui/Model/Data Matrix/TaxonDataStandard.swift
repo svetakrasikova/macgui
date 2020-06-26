@@ -110,6 +110,18 @@ class TaxonDataStandard: TaxonDataDiscrete {
         }
     }
     
+    
+    required init?(coder: NSCoder) {
+//        internal var possibleCharacterStates : String
+//           internal var missingCharacter : String
+//           internal var validCharacters : String
+//
+        possibleCharacterStates = coder.decodeObject(forKey: CodingKeys.possibleCharacterStates.rawValue) as! String
+        missingCharacter = coder.decodeObject(forKey: CodingKeys.missingCharacter.rawValue) as! String
+        validCharacters = coder.decodeObject(forKey: CodingKeys.validCharacters.rawValue) as! String
+        super.init(coder: coder)
+    }
+    
     override func encode(to encoder: Encoder) throws {
         
         do {

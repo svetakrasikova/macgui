@@ -36,18 +36,28 @@ class TaxonDataContinuous: TaxonData {
             self.numCharacters = self.variables.count
       }
       
-      required init(from decoder: Decoder) throws {
-      
-          do {
-              let container = try decoder.container(keyedBy: CodingKeys.self)
-              self.variables = try container.decode([Double].self, forKey: .variables)
-              try super.init(from: container.superDecoder())
-          }
-          catch {
-              throw TaxonDataError.decodingError
-          }
-      }
-
+    required init(from decoder: Decoder) throws {
+        
+        do {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.variables = try container.decode([Double].self, forKey: .variables)
+            try super.init(from: container.superDecoder())
+        }
+        catch {
+            throw TaxonDataError.decodingError
+        }
+    }
+    
+    override func encode(with coder: NSCoder) {
+        super.encode(with: coder)
+        coder.encode(variables, forKey: CodingKeys.variables.rawValue)
+    }
+    
+    required init?(coder: NSCoder) {
+        variables = coder.decodeObject(forKey: CodingKeys.variables.rawValue) as! [Double]
+        super.init(coder: coder)
+    }
+    
       override func encode(to encoder: Encoder) throws {
 
           do {

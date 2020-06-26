@@ -28,7 +28,26 @@ class TaxonData : Bitvector, NSCopying {
     var taxonName: String
     /// The type of data
     internal var dataType: DataType
-
+    
+//    MARK: - NSCoding
+    
+    override func encode(with coder: NSCoder) {
+        super.encode(with: coder)
+        coder.encode(numCharacters, forKey: CodingKeys.numCharacters.rawValue)
+        coder.encode(numStates, forKey: CodingKeys.numStates.rawValue)
+        coder.encode(numFlags, forKey: CodingKeys.numFlags.rawValue)
+        coder.encode(taxonName, forKey: CodingKeys.taxonName.rawValue)
+        coder.encode(dataType.rawValue, forKey: CodingKeys.dataType.rawValue)
+    }
+    
+    required init?(coder: NSCoder) {
+        numCharacters = coder.decodeInteger(forKey: CodingKeys.numCharacters.rawValue)
+        numStates = coder.decodeInteger(forKey: CodingKeys.numStates.rawValue)
+        numFlags = coder.decodeInteger(forKey: CodingKeys.numFlags.rawValue)
+        taxonName = coder.decodeObject(forKey: CodingKeys.taxonName.rawValue) as! String
+        dataType = DataType(rawValue: coder.decodeObject(forKey: CodingKeys.dataType.rawValue) as! String)!
+        super.init(coder: coder)
+    }
     
     // MARK: - Type definitions
     

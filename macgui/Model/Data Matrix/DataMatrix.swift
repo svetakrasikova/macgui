@@ -20,7 +20,8 @@ enum DataType: String, Codable {
 }
 
 
-class DataMatrix : NSObject,Codable {
+class DataMatrix : NSObject,Codable, NSCoding {
+    
     
     /// The number of taxa.
     public var numTaxa : Int
@@ -161,6 +162,35 @@ class DataMatrix : NSObject,Codable {
         catch {
             throw DataMatrixError.encodingError
         }
+    }
+    
+//    MARK: - NSCoding
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(numTaxa, forKey: CodingKeys.numTaxa.rawValue)
+        coder.encode(taxonNames, forKey: CodingKeys.taxonNames.rawValue)
+        coder.encode(taxonData, forKey: CodingKeys.taxonData.rawValue)
+        coder.encode(matrixName, forKey: CodingKeys.matrixName.rawValue)
+        coder.encode(dataFileName, forKey: CodingKeys.dataFileName.rawValue)
+        coder.encode(homologyEstablished, forKey: CodingKeys.homologyEstablished.rawValue)
+        coder.encode(deletedTaxa, forKey: CodingKeys.deletedTaxa.rawValue)
+        coder.encode(isCharacterDeleted, forKey: CodingKeys.isCharacterDeleted.rawValue)
+        coder.encode(dataType.rawValue, forKey: CodingKeys.dataType.rawValue)
+        coder.encode(stateLabels, forKey: CodingKeys.stateLabels.rawValue)
+        
+    }
+    required init?(coder: NSCoder) {
+        numTaxa = coder.decodeInteger(forKey: CodingKeys.numTaxa.rawValue)
+        taxonNames = coder.decodeObject(forKey: CodingKeys.taxonNames.rawValue) as! [String]
+        taxonData = coder.decodeObject(forKey: CodingKeys.taxonData.rawValue) as! [String: TaxonData]
+        matrixName = coder.decodeObject(forKey: CodingKeys.matrixName.rawValue) as! String
+        dataFileName = coder.decodeObject(forKey: CodingKeys.dataFileName.rawValue) as! String
+        homologyEstablished = coder.decodeBool(forKey: CodingKeys.homologyEstablished.rawValue)
+        deletedTaxa = coder.decodeObject(forKey: CodingKeys.deletedTaxa.rawValue) as! [String]
+        isCharacterDeleted = coder.decodeObject(forKey: CodingKeys.isCharacterDeleted.rawValue) as! Bitvector
+        dataType = DataType(rawValue: coder.decodeObject(forKey: CodingKeys.dataType.rawValue) as! String)!
+        stateLabels = coder.decodeObject(forKey: CodingKeys.stateLabels.rawValue) as! String
+        
     }
     
     /// Allow manipulation of the matrix through the subscript operator, e.g. `M[i,j]`
@@ -501,7 +531,7 @@ class DataMatrix : NSObject,Codable {
         var fastaString: String  = ""
         let activeTaxonNames: [String] = self.getActiveTaxaNames()
         for name in activeTaxonNames  {
-            fastaString += "<\(name)\n"
+            fastaString += ">\(name)\n"
             if let taxonData = self.getTaxonData(name: name) {
                 fastaString += "\(taxonData.characterDataString())\n"
             }

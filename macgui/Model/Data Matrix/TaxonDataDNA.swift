@@ -79,7 +79,13 @@ class TaxonDataDNA: TaxonDataDiscrete {
             throw TaxonDataError.decodingError
         }
     }
-
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    
+    
     // MARK: - NSCopying protocol
     
     override func copy(with zone: NSZone? = nil) -> Any {

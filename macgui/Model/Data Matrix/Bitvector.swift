@@ -13,8 +13,7 @@
 import Foundation
 
 
-class Bitvector : CustomStringConvertible, Codable {
-   
+class Bitvector :  NSObject, Codable, NSCoding {
 
     /// The number of bits per Unit.
     private static let bitsPerUint: Int = MemoryLayout<UInt>.size * 8
@@ -30,6 +29,24 @@ class Bitvector : CustomStringConvertible, Codable {
     private var vector: [UInt] = []
     /// A mask for the last Uint in the array.
     private var mask: UInt = 0
+    
+    
+//    MARK: - NSCoding
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(numElements, forKey: CodingKeys.numElements.rawValue)
+        coder.encode(numInts, forKey: CodingKeys.numInts.rawValue)
+        coder.encode(vector, forKey: CodingKeys.vector.rawValue)
+        coder.encode(mask, forKey: CodingKeys.mask.rawValue)
+    }
+    
+    required init?(coder: NSCoder) {
+        numElements = coder.decodeInteger(forKey: CodingKeys.numElements.rawValue)
+        numInts = coder.decodeInteger(forKey: CodingKeys.numInts.rawValue)
+        vector = coder.decodeObject(forKey: CodingKeys.vector.rawValue) as! [UInt]
+        mask = coder.decodeObject(forKey: CodingKeys.mask.rawValue) as! UInt
+    }
+    
 
     // MARK: - Type definitions
     
@@ -51,7 +68,7 @@ class Bitvector : CustomStringConvertible, Codable {
     // MARK: - Initializers
 
     /// Initialize with an empty vector.
-    init () {
+    override init () {
     
         self.numElements = 0
         self.numInts = 0
@@ -146,7 +163,7 @@ class Bitvector : CustomStringConvertible, Codable {
     // MARK: - String representation
 
     /// Print the object's information.
-    var description: String {
+    override var description: String {
     
         var str: String = ""
         str += "Bitvector\n"
