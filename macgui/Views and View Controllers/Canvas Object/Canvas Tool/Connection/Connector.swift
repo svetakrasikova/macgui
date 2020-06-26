@@ -68,8 +68,20 @@ class Connector: NSObject, NSCoding {
             if alignedMatrices.isEmpty {
                 throw ConnectionError.noAlignedData
             } else {
-                sourceTool.propagateAlignedData(data: alignedMatrices)
+                sourceTool.propagateAlignedData(data: alignedMatrices, isSource: true)
             }
+        } else {
+            throw ConnectionError.noData
+        }
+    }
+    
+    func connectUnalignedData(to: Connector) throws {
+        guard let sourceTool = to.neighbor as? DataTool
+                   else { return }
+        if !sourceTool.dataMatrices.isEmpty {
+            
+                sourceTool.propagateUnalignedData(data: sourceTool.dataMatrices, isSource: true)
+
         } else {
             throw ConnectionError.noData
         }

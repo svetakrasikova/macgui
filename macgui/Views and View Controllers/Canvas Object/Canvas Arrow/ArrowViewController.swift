@@ -75,6 +75,10 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
     }
     
     func willDeleteView(){
+        if let sourceTool = sourceTool as? DataTool {
+            sourceTool.propagateAlignedData(isSource: true)
+            sourceTool.propagateUnalignedData(isSource: true)
+        }
         targetTool?.removeNeighbor(neighbor: sourceTool!, linkType: LinkType.inlet)
         sourceTool?.removeNeighbor(neighbor: targetTool!, linkType: LinkType.outlet)
     }

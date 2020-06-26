@@ -24,6 +24,8 @@ class Connection: NSObject, NSCoding {
         switch self.type {
         case .alignedData:
             try self.from.connectAlignedData(to: self.to)
+        case .unalignedData:
+            try self.from.connectUnalignedData(to: self.to)
         default:
             print("No action defined for connection type", self.type)
         }

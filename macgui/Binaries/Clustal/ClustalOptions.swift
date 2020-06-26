@@ -65,24 +65,24 @@ class ClustalOptions: NSObject, Codable {
     var numberOfIterations      = 1
     
     
-    let clustalMultipleAlignArg        = " -ALIGN"
-    let clustalInfileArg               = " -INFILE="
-    let clustalOutfileArg              = " -OUTFILE="
-    let clustalOutputArg               = " -OUTPUT=FASTA"
-    let clustalGuideTreeArg            = " -NEWTREE="
-    let clustalAlignArg                = " -QUICKTREE"
-    let clustalWordLengthArg           = " -KTUPLE="
-    let clustalWindowArg               = " -WINDOW="
-    let clustalScoreTypeArg            = " -SCORE="
-    let clustalNumberDiagonalsArg      = " -TOPDIAGS="
-    let clustalPairGapPenaltyArg       = " -PAIRGAP="
-    let clustalMatrixArg               = " -PWMATRIX="
-    let clustalGapOpenPenaltyAr        = " -PWGAPEXT="
-    let clustalEndGapsArg              = " -ENDGAPS="
-    let clustalGapExtensionCostArg     = " -GAPEXT="
-    let clustalGapSeparationPenaltyArg = " -GAPDIST="
-    let clustalIterationArg            = " -ITERATION="
-    let clustalNumberOfIterationsArg   = " -NUMITER="
+    let clustalMultipleAlignArg        = "-ALIGN"
+    let clustalInfileArg               = "-i"
+    let clustalOutfileArg              = "-o"
+    let clustalOutputArg               = "-OUTPUT=FASTA"
+    let clustalGuideTreeArg            = "-NEWTREE="
+    let clustalAlignArg                = "-QUICKTREE"
+    let clustalWordLengthArg           = "-KTUPLE="
+    let clustalWindowArg               = "-WINDOW="
+    let clustalScoreTypeArg            = "-SCORE="
+    let clustalNumberDiagonalsArg      = "-TOPDIAGS="
+    let clustalPairGapPenaltyArg       = "-PAIRGAP="
+    let clustalMatrixArg               = "-PWMATRIX="
+    let clustalGapOpenPenaltyAr        = "-PWGAPEXT="
+    let clustalEndGapsArg              = "-ENDGAPS="
+    let clustalGapExtensionCostArg     = "-GAPEXT="
+    let clustalGapSeparationPenaltyArg = "-GAPDIST="
+    let clustalIterationArg            = "-ITERATION="
+    let clustalNumberOfIterationsArg   = "-NUMITER="
     
     var args: [String] = []
     
@@ -246,26 +246,26 @@ class ClustalOptions: NSObject, Codable {
     }
     
     func addArgs(inFile: String, outFile: String) {
-        
+        args = []
         addArg(clustalInfileArg, value: inFile)
         addArg(clustalOutfileArg, value: outFile)
-        addArg(clustalOutputArg)
+//        addArg(clustalOutputArg)
         //            addArg(clustalGuideTreeArg, value: )
-        addArg(clustalWordLengthArg, value: String(describing: wordLength))
-        addArg(clustalWindowArg, value: String(describing: window))
-        addArg(clustalScoreTypeArg, value: String(describing: scoreType))
-        addArg(clustalNumberDiagonalsArg, value: String(describing: numberDiagonals))
-        addArg(clustalPairGapPenaltyArg, value: String(describing: pairGapPenalty))
-        addArg(clustalMatrixArg, value: String(describing: matrix))
-        addArg(clustalGapOpenPenaltyAr, value: String(describing: gapOpenPenalty))
-        addArg(clustalEndGapsArg, value: String(describing: endGaps))
-        addArg(clustalGapExtensionCostArg, value: String(describing: gapExtensionCost))
-        addArg(clustalGapSeparationPenaltyArg, value: String(describing: gapSeparationPenalty))
-        addArg(clustalIterationArg, value: String(describing: iteration))
-        addArg(clustalNumberOfIterationsArg, value: String(describing: numberOfIterations))
-        addArg(clustalMultipleAlignArg)
+//        addArg(clustalWordLengthArg, value: String(describing: wordLength))
+//        addArg(clustalWindowArg, value: String(describing: window))
+//        addArg(clustalScoreTypeArg, value: String(describing: scoreType))
+//        addArg(clustalNumberDiagonalsArg, value: String(describing: numberDiagonals))
+//        addArg(clustalPairGapPenaltyArg, value: String(describing: pairGapPenalty))
+//        addArg(clustalMatrixArg, value: String(describing: matrix))
+//        addArg(clustalGapOpenPenaltyAr, value: String(describing: gapOpenPenalty))
+//        addArg(clustalEndGapsArg, value: String(describing: endGaps))
+//        addArg(clustalGapExtensionCostArg, value: String(describing: gapExtensionCost))
+//        addArg(clustalGapSeparationPenaltyArg, value: String(describing: gapSeparationPenalty))
+//        addArg(clustalIterationArg, value: String(describing: iteration))
+//        addArg(clustalNumberOfIterationsArg, value: String(describing: numberOfIterations))
+//        addArg(clustalMultipleAlignArg)
         
-        if align == Align.fast { addArg(clustalAlignArg) }
+//        if align == Align.fast { addArg(clustalAlignArg) }
         
     }
     

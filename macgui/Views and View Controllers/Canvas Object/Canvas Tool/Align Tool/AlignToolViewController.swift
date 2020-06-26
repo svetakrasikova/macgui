@@ -40,8 +40,12 @@ class AlignToolViewController: InfoToolViewController {
         if let index = tabViewController?.selectedTabViewItemIndex {
             switch index {
             case AlignToolTab.clustal.rawValue:
-//               run clustal on the alignTool
-                print(index, alignTool)
+                if let clustalVC = getTabContentController(index: index) as? ClustalViewController, let matrix = alignTool.unalignedDataMatrices.first{
+                    let options = clustalVC.options
+                    alignTool.alignMatrixWithClustal(matrix, options: options)
+                } else {
+                    print("Error: AlignToolViewController can't access clustal or there is no data to be aligned!")
+                }
             default:
                 print("This alignment method is not implemented yet.")
             }
@@ -56,6 +60,10 @@ class AlignToolViewController: InfoToolViewController {
     
     func postDismissNotification() {
        NotificationCenter.default.post(name: .dismissToolSheet, object: self)
+    }
+    
+    func getTabContentController(index: Int) -> NSViewController? {
+        return tabViewController?.tabViewItems[index].viewController
     }
     override func viewDidLoad() {
         super.viewDidLoad()

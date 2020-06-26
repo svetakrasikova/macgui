@@ -11,7 +11,7 @@ class BinaryController: NSObject {
 
      // MARK: -
 
-    func runBinary(binary:String, arguments:[String]) {
+    func runBinary(binary:String, arguments:[String], completion: @escaping () -> Void ) {
       
         // set the flag indicating that the process is running
         isRunning = true
@@ -37,12 +37,14 @@ class BinaryController: NSObject {
             // Process has a terminationHandler property that contains a
             // block which is executed when the task is finished. This
             // updates the UI to reflect that finished status.
+            
             self.task.terminationHandler = {
 
                 task in
                 DispatchQueue.main.async(execute: {
                     // complete any UI stuff that should be updated
                     // on completion of the task
+                    completion()
                     self.isRunning = false
                     print(self.outputText)
                 })

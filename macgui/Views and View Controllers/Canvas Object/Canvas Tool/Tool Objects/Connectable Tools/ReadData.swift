@@ -39,7 +39,7 @@ class ReadData: DataTool {
             result in
             if result == .OK {
                 guard let fileURL = panel.url else { return }
-                if !self.dataMatrices.isEmpty{
+                if !self.unalignedDataMatrices.isEmpty {
                     let alert = NSAlert()
                     alert.messageText = "Warning: Do you want to overwrite the data currently on this tool?"
                     alert.informativeText = "Reading in data will delete the information currently on this tool."
@@ -48,7 +48,7 @@ class ReadData: DataTool {
                     let result = alert.runModal()
                            switch result {
                            case NSApplication.ModalResponse.alertFirstButtonReturn:
-                            self.dataMatrices = []
+                            self.unalignedDataMatrices = []
                            default: break
                            }
                 }
@@ -65,14 +65,15 @@ class ReadData: DataTool {
     func readFromFileURL(_ fileURL: URL) throws {
         
         var readMatrices: [DataMatrix] = []
-        var successfullyReadData:Bool = true
+        var successfullyReadData: Bool = true
         self.delegate?.startProgressIndicator()
         DispatchQueue.global(qos: .background).async {
             do {
                 try readMatrices = self.readDataTask(fileURL)
                 if !readMatrices.isEmpty {
                     DispatchQueue.main.async {
-                        self.dataMatrices = readMatrices
+                        self.unalignedDataMatrices = readMatrices
+                        self.propagateUnalignedData(data: readMatrices, isSource: true)
                     }
                 }
             }

@@ -47,16 +47,13 @@ class GenericCanvasView: NSView {
     }
     
     override func mouseDown(with event: NSEvent) {
-        
         delegate?.mouseDownOnCanvasView()
-        
         selectionStartPoint = self.convert(event.locationInWindow, from: nil)
         selectionBox = CAShapeLayer()
         selectionBox.lineWidth = 1.0
         selectionBox.fillColor = NSColor.lightGray.cgColor
         selectionBox.opacity = 0.3
         self.layer?.addSublayer(selectionBox)
-       
     }
     
        
@@ -69,13 +66,15 @@ class GenericCanvasView: NSView {
         path.addLine(to: point)
         path.addLine(to: NSPoint(x:point.x,y:self.selectionStartPoint.y))
         path.closeSubpath()
-        self.selectionBox.path = path
+        selectionBox.path = path
         let selectedArea = selectionStartPoint.selectedAreaTo(point: point)
         delegate?.selectBySelectionBox(selectedArea: selectedArea)
     }
 
     override func mouseUp(with event: NSEvent) {
-        self.selectionBox.removeFromSuperlayer()
+        if selectionBox != nil {
+            selectionBox.removeFromSuperlayer()
+        }
     }
 
     

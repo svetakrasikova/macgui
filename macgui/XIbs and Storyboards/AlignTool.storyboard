@@ -97,7 +97,7 @@ Gw
         <scene sceneID="XVz-Pl-dt8">
             <objects>
                 <customObject id="oOi-GU-5tP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <tabViewController storyboardIdentifier="AlignTabView" selectedTabViewItemIndex="0" id="9se-As-55x" sceneMemberID="viewController">
+                <tabViewController storyboardIdentifier="AlignTabView" selectedTabViewItemIndex="1" id="9se-As-55x" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="Clustal" id="op0-pP-AxY" userLabel="Clustal"/>
                         <tabViewItem identifier="" id="jOn-fx-iAA"/>

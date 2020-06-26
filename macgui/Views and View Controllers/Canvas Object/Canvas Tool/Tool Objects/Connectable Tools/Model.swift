@@ -10,8 +10,6 @@ import Cocoa
 
 class Model: DataTool {
     
-    let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
-    
     @objc dynamic var palettItems: [PalettItem] = []
     @objc dynamic var distributions: [Distribution] = []
     @objc dynamic var nodes: [ModelNode] = []

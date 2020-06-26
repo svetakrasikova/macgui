@@ -32,8 +32,6 @@ class MatrixViewController: NSSplitViewController {
         return taxaNames.count + 2
     }
    
-
-    
     var taxaNamesWidth: CGFloat? {
         guard let taxaNames = self.taxaNames else {
             return nil
@@ -62,7 +60,6 @@ class MatrixViewController: NSSplitViewController {
     func showSelectedMatrix(matrixIndex: Int) {
         
         if let matrixToShow = self.dataMatrices?[matrixIndex] {
-           
             clearMatrixView()
             setDataFromSelectedMatrix(matrixToShow)
             setTaxaNamesView()
@@ -163,6 +160,8 @@ class MatrixViewController: NSSplitViewController {
         taxaMatrix.leadingAnchor.constraint(equalTo: taxaNamesView.leadingAnchor).isActive = true
         taxaMatrix.topAnchor.constraint(equalTo: taxaNamesView.topAnchor).isActive = true
         taxaMatrix.trailingAnchor.constraint(equalTo: taxaNamesView.trailingAnchor).isActive = true
+       
+        
     }
     
     func setMatrixViewProperties(matrix: NSMatrix) {

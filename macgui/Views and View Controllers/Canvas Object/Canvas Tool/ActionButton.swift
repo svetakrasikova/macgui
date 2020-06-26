@@ -59,16 +59,23 @@ class ActionButton: NSButton {
     
     weak var delegate: ActionButtonDelegate?
     
-    private var observer: NSKeyValueObservation?
+    private var observers = [NSKeyValueObservation]()
     
     func observeDataChange(){
         if let toolVC = self.delegate as? CanvasToolViewController, toolVC.isDisplayDataTool(){
             let tool = toolVC.tool as! DataTool
-            self.observer = tool.observe(\DataTool.dataMatrices, options: [.initial]) {(tool, change) in
+            self.observers = [
+                tool.observe(\DataTool.unalignedDataMatrices, options: [.initial]) {(tool, change) in
                 if self.buttonType == .Inspector {
                     if tool.dataMatrices.isEmpty { self.isHidden = true} else { self.isHidden = false }
+                    }
+                },
+                tool.observe(\DataTool.alignedDataMatrices, options: [.initial]) {(tool, change) in
+                if self.buttonType == .Inspector {
+                    if tool.dataMatrices.isEmpty { self.isHidden = true} else { self.isHidden = false }
+                    }
                 }
-            }
+            ]
        }
     }
     

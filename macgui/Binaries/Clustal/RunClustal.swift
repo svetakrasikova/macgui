@@ -11,14 +11,15 @@ class RunClustal: BinaryController {
          case directoryError
          case writeError
     }
+    
+    var dataFileURL: URL?
+    var exeFileURL: URL?
+    
 
      // MARK: -
-
-    func runClustal(fileURL: URL) throws {
-
-//        let options = ClustalOptions()
-                
-        // create a temporary directory
+    
+    func createTempDir() throws -> String {
+        
         let temporaryDirectory = NSTemporaryDirectory()
         var isDirectory = ObjCBool(true)
         let dirExists : Bool = FileManager.default.fileExists(atPath:temporaryDirectory, isDirectory:&isDirectory)
@@ -26,17 +27,21 @@ class RunClustal: BinaryController {
             print("The directory \"\(temporaryDirectory)\" does not exist")
             throw ClustalError.directoryError
         }
-
-        // get all needed file paths and file names
-        let dataFileName : String = fileURL.lastPathComponent
-        var exeFileURL = URL(fileURLWithPath:temporaryDirectory)
-        exeFileURL.appendPathComponent("execute_" + dataFileName)
-        var dataFileURL : URL = URL(fileURLWithPath:temporaryDirectory)
+        return temporaryDirectory
+    }
+    
+    func createDataFileURL(dataFileName: String) throws {
+        
+        let temporaryDirectory = try createTempDir()
+        
+        var exeFileURL = URL(fileURLWithPath: temporaryDirectory)
+        exeFileURL.appendPathComponent("\(dataFileName)_a")
+        self.exeFileURL = exeFileURL
+        
+        var dataFileURL : URL = URL(fileURLWithPath: temporaryDirectory)
         dataFileURL.appendPathComponent(dataFileName)
-        let curDataFileURL : URL = fileURL
+        self.dataFileURL = dataFileURL
 
-
-        // check the file paths
         var fileExists = FileManager.default.fileExists(atPath:exeFileURL.path)
         if fileExists == true {
             print("Overwriting file \"\(exeFileURL.absoluteString)\"")
@@ -45,38 +50,41 @@ class RunClustal: BinaryController {
         if fileExists == true {
             print("Overwriting file \"\(dataFileURL.absoluteString)\"")
         }
-        fileExists = FileManager.default.fileExists(atPath:curDataFileURL.path)
-        if fileExists != true {
-            print("Could not find data file at \"\(curDataFileURL.path)\"")
+    }
+    
+    func writeMatrixToFastaFile(_ matrix: DataMatrix) throws
+    
+    {
+        let fastaString: String  = matrix.getFastaString()
+        do {
+            try fastaString.write(to: dataFileURL!, atomically: false, encoding: .utf8)
+        } catch  {
+            throw ClustalError.writeError
+        }
+    }
+
+    func runClustal(dataMatrix: DataMatrix, options: ClustalOptions, completion: @escaping () -> Void ) throws {
+        
+        do {
+            try createDataFileURL(dataFileName: dataMatrix.matrixName)
+        } catch  {
             throw ClustalError.directoryError
         }
-                
-        // TEMP: write the data matrix to the temporary directory
-        var s : String?
-        do {
-            let d = try Data(contentsOf:curDataFileURL)
-            s = String(data:d, encoding: .utf8)
-        } catch {
-            throw ClustalError.writeError
-        }
-        do {
-            try s!.write(to:dataFileURL, atomically:false, encoding: .utf8)
-//            print(s!)
-        }
-        catch {
-            throw ClustalError.writeError
-        }
-
-        // get the arguments to be passed to the binary
-        let clustalPath : String? = Bundle.main.path(forResource:"clustal", ofType: nil)
-        var clustalArgs : [String] = []
-        clustalArgs.append("-i")
-        clustalArgs.append(dataFileURL.path)
-        clustalArgs.append("-o")
-        clustalArgs.append(exeFileURL.path)
-
         
-        // run the binary
-        self.runBinary(binary:clustalPath!, arguments:clustalArgs)
+        if let dataFileURL = self.dataFileURL, let exeFileURL = self.exeFileURL {
+            do {
+                try writeMatrixToFastaFile(dataMatrix)
+            } catch {
+                throw ClustalError.writeError
+            }
+            
+            options.addArgs(inFile: dataFileURL.path, outFile: exeFileURL.path)
+           
+            
+            if !options.args.isEmpty, let clustalPath = Bundle.main.path(forResource:"clustal", ofType: nil) {
+            
+                self.runBinary(binary: clustalPath, arguments: options.args, completion: completion)
+            } else { print("args is empty") }
+        }
     }
 }
