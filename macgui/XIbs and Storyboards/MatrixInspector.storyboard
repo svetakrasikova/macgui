@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="OhS-pf-sWI">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="OhS-pf-sWI">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -123,7 +123,6 @@
                                             <tableColumns>
                                                 <tableColumn width="152" minWidth="40" maxWidth="1000" id="NFq-d6-3bq">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -490,7 +489,7 @@
                                             </subviews>
                                         </clipView>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Q2E-NQ-rgW">
-                                            <rect key="frame" x="1" y="194" width="309" height="15"/>
+                                            <rect key="frame" x="1" y="283" width="274" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hhj-Kf-wJv">
@@ -515,6 +514,7 @@
                     <connections>
                         <outlet property="matrixScrollView" destination="n6H-h5-UJE" id="HLm-MI-y0V"/>
                         <outlet property="matrixView" destination="sCB-fN-uYj" id="DLM-fp-IWv"/>
+                        <outlet property="splitView" destination="ObF-Cp-Pq4" id="3iK-w5-tEa"/>
                         <outlet property="taxaNamesScrollView" destination="UAh-dx-nM2" id="uz0-0r-vKn"/>
                         <outlet property="taxaNamesView" destination="1jm-Tk-aXm" id="Afg-1q-xC3"/>
                     </connections>

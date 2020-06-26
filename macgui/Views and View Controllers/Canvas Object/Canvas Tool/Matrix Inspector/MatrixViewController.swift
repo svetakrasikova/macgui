@@ -8,17 +8,20 @@
 
 import Cocoa
 
-class MatrixViewController: NSSplitViewController {
+class MatrixViewController: NSViewController {
     
 
     var taxaMatrix: NSMatrix?
     var dataMatrix: NSMatrix?
     
     
+
+    @IBOutlet weak var splitView: NSSplitView!
     @IBOutlet weak var matrixView: NSView!
     @IBOutlet weak var matrixScrollView: NSScrollView!
     @IBOutlet weak var taxaNamesView: NSView!
     @IBOutlet weak var taxaNamesScrollView: NSScrollView!
+    @IBOutlet weak var matrixViewerSplitView: NSSplitView!
     
     var dataMatrices: [DataMatrix]?
     var taxonData: [String:String]?
@@ -54,6 +57,8 @@ class MatrixViewController: NSSplitViewController {
             matrixScrollView.setSynchronizedScrollView(view: taxaNamesScrollView)
             taxaNamesScrollView.setSynchronizedScrollView(view: matrixScrollView)
         }
+    
+       
     }
     
     
@@ -161,7 +166,9 @@ class MatrixViewController: NSSplitViewController {
         taxaMatrix.topAnchor.constraint(equalTo: taxaNamesView.topAnchor).isActive = true
         taxaMatrix.trailingAnchor.constraint(equalTo: taxaNamesView.trailingAnchor).isActive = true
        
-        
+        if let preferredWidth = taxaNamesWidth {
+            splitView.setPosition(preferredWidth, ofDividerAt: 0)
+        }
     }
     
     func setMatrixViewProperties(matrix: NSMatrix) {
