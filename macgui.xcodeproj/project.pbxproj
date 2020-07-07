@@ -1368,6 +1368,7 @@
 		149A500B24995CA5007E4D4B /* BinaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A500A24995CA4007E4D4B /* BinaryController.swift */; };
 		149A500D24995D1A007E4D4B /* RunClustal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A500C24995D1A007E4D4B /* RunClustal.swift */; };
 		149A500F24995D4C007E4D4B /* ClustalOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A500E24995D4C007E4D4B /* ClustalOptions.swift */; };
+		149B15D424B4FA71006673CB /* ClustalOmegaOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B15D324B4FA71006673CB /* ClustalOmegaOptions.swift */; };
 		149C5FC52325A52D0060043E /* ToolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC42325A52D0060043E /* ToolType.swift */; };
 		149C5FC7232953610060043E /* Simulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC6232953610060043E /* Simulate.swift */; };
 		149C5FC92329538C0060043E /* TreeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC82329538C0060043E /* TreeSet.swift */; };
@@ -4294,6 +4295,7 @@
 		149A500A24995CA4007E4D4B /* BinaryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryController.swift; sourceTree = "<group>"; };
 		149A500C24995D1A007E4D4B /* RunClustal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunClustal.swift; sourceTree = "<group>"; };
 		149A500E24995D4C007E4D4B /* ClustalOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClustalOptions.swift; sourceTree = "<group>"; };
+		149B15D324B4FA71006673CB /* ClustalOmegaOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClustalOmegaOptions.swift; sourceTree = "<group>"; };
 		149C5FC42325A52D0060043E /* ToolType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolType.swift; sourceTree = "<group>"; };
 		149C5FC6232953610060043E /* Simulate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulate.swift; sourceTree = "<group>"; };
 		149C5FC82329538C0060043E /* TreeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSet.swift; sourceTree = "<group>"; };
@@ -8369,6 +8371,7 @@
 			isa = PBXGroup;
 			children = (
 				149A500E24995D4C007E4D4B /* ClustalOptions.swift */,
+				149B15D324B4FA71006673CB /* ClustalOmegaOptions.swift */,
 				149A500C24995D1A007E4D4B /* RunClustal.swift */,
 				149A500524995B8C007E4D4B /* clustal */,
 			);
@@ -8891,6 +8894,7 @@
 				144BED0723A17AC50001B2EF /* RlStringOutputStream.cpp in Sources */,
 				14BF307D23E236F100426D7A /* ModelCanvasView.swift in Sources */,
 				144BEF5523A17AC60001B2EF /* RandomIntegerWalkProposal.cpp in Sources */,
+				149B15D424B4FA71006673CB /* ClustalOmegaOptions.swift in Sources */,
 				144BED0923A17AC50001B2EF /* Mntr_HomeologPhase.cpp in Sources */,
 				144BF00923A17AC70001B2EF /* RateMatrix_MtMam.cpp in Sources */,
 				144BEDCC23A17AC60001B2EF /* Func__and.cpp in Sources */,
