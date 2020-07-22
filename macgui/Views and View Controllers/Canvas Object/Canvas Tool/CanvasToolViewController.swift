@@ -96,6 +96,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         if _matrixInspectorWindowController == nil {
             _matrixInspectorWindowController = NSStoryboard.loadWC(StoryBoardName.matrixInspector) as? InspectorWindowController
             _matrixInspectorWindowController!.dataMatrices = (self.tool as! DataTool).dataMatrices
+            _matrixInspectorWindowController!.toolType = self.tool?.descriptiveName
         }
         return _matrixInspectorWindowController!
     }
