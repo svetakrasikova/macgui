@@ -63,7 +63,9 @@ class RunClustal {
                            throw ClustalError.launchPathError
                        }
             
-            let outFile = self.exeDirURL.appendingPathComponent(dataMatrix.matrixName)
+            
+            let fileName = dataMatrix.matrixName.fileName()
+            let outFile = self.exeDirURL.appendingPathComponent(fileName)
             options.addArgs(inFile: dataFileURL.path, outFile: outFile.path)
             
             let process = BinaryController()
