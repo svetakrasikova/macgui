@@ -10,47 +10,37 @@ import Cocoa
 
 class ClustalViewController: NSViewController {
     
-    @objc dynamic var options: ClustalOptions = ClustalOptions()
+    @objc dynamic var options: ClustalOmegaOptions = ClustalOmegaOptions()
 
-    @IBAction func selectAlignement(_ sender: NSPopUpButton) {
+    @IBAction func selectDealign(_ sender: NSPopUpButton) {
         if sender.indexOfSelectedItem == 0 {
-            self.options.align = ClustalOptions.Align.full
+            self.options.dealign = ClustalOmegaOptions.Dealign.yes
         } else if  sender.indexOfSelectedItem == 1 {
-            self.options.align = ClustalOptions.Align.fast
+            self.options.dealign = ClustalOmegaOptions.Dealign.no
         }
     }
-    @IBAction func selectScoreType(_ sender: NSPopUpButton) {
+    @IBAction func selectMBEDGuideTree(_ sender: NSPopUpButton) {
         if sender.indexOfSelectedItem == 0 {
-            self.options.scoreType = ClustalOptions.ScoreType.percent
+            self.options.mbedClusteringGuideTree = ClustalOmegaOptions.MBEDClusteringGuideTree.yes
         } else if  sender.indexOfSelectedItem == 1 {
-            self.options.scoreType = ClustalOptions.ScoreType.absolute
+            self.options.mbedClusteringGuideTree = ClustalOmegaOptions.MBEDClusteringGuideTree.no
         }
     }
     
-    @IBAction func selectMatrix(_ sender: NSPopUpButton) {
+    @IBAction func selectMBEDIteration(_ sender: NSPopUpButton) {
+           if sender.indexOfSelectedItem == 0 {
+               self.options.mbedClusteringIteration = ClustalOmegaOptions.MBEDClusteringIteration.yes
+           } else if  sender.indexOfSelectedItem == 1 {
+               self.options.mbedClusteringIteration = ClustalOmegaOptions.MBEDClusteringIteration.no
+           }
+       }
+    
+    @IBAction func selectOrder(_ sender: NSPopUpButton) {
         if sender.indexOfSelectedItem == 0 {
-            self.options.matrix = ClustalOptions.Matrix.gonnet
+            self.options.order = ClustalOmegaOptions.Order.aligned
         } else if  sender.indexOfSelectedItem == 1 {
-            self.options.matrix = ClustalOptions.Matrix.blosum
-        } else if sender.indexOfSelectedItem == 2 {
-            self.options.matrix = ClustalOptions.Matrix.pam
+            self.options.order = ClustalOmegaOptions.Order.input
         }
-    }
-    @IBAction func selectIteration(_ sender: NSPopUpButton) {
-        if sender.indexOfSelectedItem == 0 {
-            self.options.iteration = ClustalOptions.Iteration.none
-        } else if  sender.indexOfSelectedItem == 1 {
-            self.options.iteration = ClustalOptions.Iteration.tree
-        } else if sender.indexOfSelectedItem == 2 {
-            self.options.iteration = ClustalOptions.Iteration.alignment
-        }
-    }
-    @IBAction func selectNoEndGaps(_ sender: NSPopUpButton) {
-        if sender.indexOfSelectedItem == 0 {
-            self.options.endGaps = ClustalOptions.EndGaps.no
-               } else if  sender.indexOfSelectedItem == 1 {
-            self.options.endGaps = ClustalOptions.EndGaps.yes
-               }
     }
     
     override func viewDidLoad() {

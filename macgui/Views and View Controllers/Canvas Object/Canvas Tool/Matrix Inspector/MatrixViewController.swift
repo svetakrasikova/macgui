@@ -39,7 +39,7 @@ class MatrixViewController: NSViewController {
         guard let taxaNames = self.taxaNames else {
             return nil
         }
-        return lengthOfLongestName(taxaNames: taxaNames)
+        return String.lengthOfLongestString(taxaNames, fontSize: 12.0)
     }
     
     enum Appearance {

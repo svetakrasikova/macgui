@@ -203,7 +203,64 @@ extension NSWindow {
 extension NSViewController {
     
     @objc dynamic var defaultsWorkaround: NSUserDefaultsController { return NSUserDefaultsController.shared }
+
     
 }
+
+extension String {
+    
+    static func lengthOfLongestString(_ strings: [String], fontSize: CGFloat) -> CGFloat {
+        
+     let attributes: [NSAttributedString.Key: Any] = [
+            .font: NSFont.systemFont(ofSize: fontSize)
+        ]
+        var longestStr: CGFloat = 0.0
+        for str in strings {
+            let attributedString = NSAttributedString(string: str, attributes: attributes)
+            let stringLength = attributedString.size().width
+            if longestStr < stringLength {
+                longestStr = stringLength
+            }
+        }
+        longestStr += 12
+        return longestStr
+        
+    }
+}
+
+extension FileManager {
+    
+    class func clearDir(_ path: String) {
+        let fm = FileManager.default
+        do {
+            let filePaths = try fm.contentsOfDirectory(atPath: path)
+               for filePath in filePaths {
+                   try fm.removeItem(atPath: path + "/" + filePath)
+               }
+           } catch {
+               print("Could not clear temp folder: \(error)")
+           }
+    }
+    
+    class func createExeDirForTool(_ toolName: String) {
+        let fm = FileManager.default
+        let baseUrl = URL(fileURLWithPath: NSTemporaryDirectory())
+        let url = baseUrl.appendingPathComponent(toolName)
+        var isDirectory = ObjCBool(true)
+        let dirExists : Bool = FileManager.default.fileExists(atPath:url.path, isDirectory:&isDirectory)
+        guard !dirExists else {
+            FileManager.clearDir(url.path)
+            return
+        }
+        do {
+            try fm.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+            return
+        } catch let error {
+            print("error: \(error)")
+        }
+    }
+    
+}
+
 
 

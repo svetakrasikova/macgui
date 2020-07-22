@@ -10,11 +10,9 @@ import Cocoa
 
 class Align: DataTool {
     
-    let clustal = RunClustal()
-    
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
-    
+        
         let green = Connector(color:ConnectorType.alignedData)
         let blue = Connector(color: ConnectorType.unalignedData)
         inlets = [blue]
@@ -25,44 +23,42 @@ class Align: DataTool {
         super.init(coder: aDecoder)
     }
     
-    func alignMatrixWithClustal(_ dataMatrix: DataMatrix, options: ClustalOptions) {
-
+    func alignMatricesWithClustal (_ data: [DataMatrix], options: ClustalOmegaOptions) throws {
+        
+        let clustal = RunClustal()
+        
         self.delegate?.startProgressIndicator()
         
         let completionHandler = {
+            
             [unowned self] in
-            if let fileURL = self.clustal.exeFileURL {
-                
-                DispatchQueue.global(qos: .background).async {
-                    do {
-                        let readMatrices = try self.readDataTask(fileURL)
-                        if !readMatrices.isEmpty {
-                            DispatchQueue.main.async {
-                                self.alignedDataMatrices = readMatrices
-                                self.propagateAlignedData(data: readMatrices, isSource: true)
-                            }
-                            
+            
+            var successfullyReadData: Bool = true
+            
+            DispatchQueue.global(qos: .background).async {
+                do {
+                    let readMatrices = try self.readDataTask(clustal.exeDirURL)
+                    if !readMatrices.isEmpty {
+                        DispatchQueue.main.async {
+                            self.alignedDataMatrices = readMatrices
+                            self.propagateAlignedData(data: readMatrices, isSource: true)
                         }
-                    } catch {
-                        print("readDataTask error: \(error)")
+                        
                     }
-                    DispatchQueue.main.async {
-                        self.delegate?.endProgressIndicator()
+                } catch {
+                   successfullyReadData = false
+                }
+                DispatchQueue.main.async {
+                    self.delegate?.endProgressIndicator()
+                    if !successfullyReadData {
+                        self.readDataAlert(informativeText: "Data could not be read")
                     }
                 }
-                
             }
+            
         }
         
-        do {
-             try clustal.runClustal(dataMatrix: dataMatrix, options: options, completion: completionHandler)
-        } catch  {
-            print("runClustal error: \(error)")
-        }
-           
-        
+        try clustal.align(dataMatrices: data, options: options, completion: completionHandler)
     }
-    
-    
     
 }

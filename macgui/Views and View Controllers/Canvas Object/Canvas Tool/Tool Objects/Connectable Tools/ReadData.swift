@@ -83,19 +83,14 @@ class ReadData: DataTool {
             DispatchQueue.main.async {
                 self.delegate?.endProgressIndicator()
                 if !successfullyReadData {
-                    self.readDataAlert()
+                    self.readDataAlert(informativeText: "Data could not be read")
                 }
             }
         }
         
     }
 
-    func readDataAlert() {
-        let alert = NSAlert()
-        alert.messageText = "Problem Reading Data"
-        alert.informativeText = "Data could not be read"
-        alert.runModal()
-    }
+    
     
 }
 

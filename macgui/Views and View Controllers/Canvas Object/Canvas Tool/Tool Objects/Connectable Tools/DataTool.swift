@@ -23,8 +23,17 @@ class DataTool: Connectable {
     
     let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
     
-    @objc dynamic var alignedDataMatrices: [DataMatrix]  = []
-    @objc dynamic var unalignedDataMatrices: [DataMatrix]  = []
+    @objc dynamic var alignedDataMatrices: [DataMatrix]  = [] {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    @objc dynamic var unalignedDataMatrices: [DataMatrix]  = []  {
+           didSet {
+               NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+           }
+       }
+    
     @objc dynamic var dataMatrices: [DataMatrix]  {
         return !alignedDataMatrices.isEmpty ? alignedDataMatrices : unalignedDataMatrices
     }
@@ -96,5 +105,12 @@ class DataTool: Connectable {
           }
           return readMatrices
       }
+    
+    func readDataAlert(informativeText: String) {
+        let alert = NSAlert()
+        alert.messageText = "Problem Reading Data"
+        alert.informativeText =  informativeText
+        alert.runModal()
+    }
 
 }

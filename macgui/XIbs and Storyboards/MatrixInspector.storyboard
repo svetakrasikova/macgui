@@ -90,7 +90,8 @@
                         </connections>
                     </splitView>
                     <connections>
-                        <outlet property="splitView" destination="HrR-fD-0Q1" id="NJC-rY-tR5"/>
+                        <outlet property="inspectorSplitView" destination="HrR-fD-0Q1" id="Xcz-XW-7kx"/>
+                        <outlet property="splitView" destination="HrR-fD-0Q1" id="Alu-Pn-WAi"/>
                         <segue destination="TB5-uD-ZcI" kind="relationship" relationship="splitItems" id="JNO-2J-W6W"/>
                         <segue destination="C3t-OR-5yO" kind="relationship" relationship="splitItems" id="nrL-R8-To7"/>
                         <segue destination="qNv-iW-uPa" kind="relationship" relationship="splitItems" id="a95-Bk-vTF"/>
@@ -105,13 +106,13 @@
             <objects>
                 <viewController showSeguePresentationStyle="single" id="TB5-uD-ZcI" customClass="MatrixNavigatorViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="8ge-nH-BeE">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="383"/>
+                        <rect key="frame" x="0.0" y="0.0" width="147" height="383"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsq-sP-Tzs">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="383"/>
+                                <rect key="frame" x="0.0" y="0.0" width="147" height="383"/>
                                 <clipView key="contentView" id="z73-OG-czp">
-                                    <rect key="frame" x="1" y="1" width="148" height="381"/>
+                                    <rect key="frame" x="1" y="1" width="145" height="381"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="lxP-cg-FXT">
@@ -164,8 +165,8 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="IUA-9P-1F6">
-                                    <rect key="frame" x="1" y="366" width="148" height="16"/>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.29999999999999999" horizontal="YES" id="IUA-9P-1F6">
+                                    <rect key="frame" x="1" y="366" width="145" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="N6d-ww-uYE">

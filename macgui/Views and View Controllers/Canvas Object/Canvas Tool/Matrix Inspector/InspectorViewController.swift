@@ -13,6 +13,8 @@ class InspectorViewController: NSSplitViewController, MatrixNavigatorViewControl
     
     var dataMatrices: [DataMatrix]?
     
+    @IBOutlet weak var inspectorSplitView: NSSplitView!
+    
     var selectedMatrixIndex: Int? {
         didSet{
             if let infoInspector = self.infoInspector {
@@ -87,6 +89,15 @@ class InspectorViewController: NSSplitViewController, MatrixNavigatorViewControl
             self.dataMatrices = inspectorWC.dataMatrices
         }
         
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        if let dataMatrices = self.dataMatrices {
+            let position: CGFloat = String.lengthOfLongestString(dataMatrices.map { $0.matrixName }, fontSize: 13.0)
+            inspectorSplitView.setPosition(position, ofDividerAt: 0)
+        }
+       
     }
    
     

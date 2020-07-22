@@ -4,61 +4,41 @@ import Cocoa
 
 class BinaryController: NSObject {
 
-    var task : Process = Process()
+    var task: Process?
     var outputPipe : Pipe = Pipe()
     var isRunning : Bool = false
     var outputText : String = ""
+    var group: DispatchGroup?
 
      // MARK: -
 
-    func runBinary(binary:String, arguments:[String], completion: @escaping () -> Void ) {
-      
-        // set the flag indicating that the process is running
+    func runBinary(binary:String, arguments:[String]) {
+        
         isRunning = true
         
-        // create a DispatchQueue to run the process on a background thread
         let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
         
-        // make the DispatchQueue async application will continue to process
-        //things like button clicks on the main thread, but the NSTask will
-        //run on the background thread until it is complete
         taskQueue.async {
-
-            // Create a new Process object and assign it to the task property.
-            // The launchPath property is the path to the executable to be run.
-            // Assigns the binary's path to the Process‘s launchPath, then
-            // assigns the arguments that are to be passed to the binary.
-            // Process will pass the arguments to the executable, as though
-            // you had typed them into terminal.
-            self.task = Process()
-            self.task.launchPath = binary
-            self.task.arguments = arguments
-
-            // Process has a terminationHandler property that contains a
-            // block which is executed when the task is finished. This
-            // updates the UI to reflect that finished status.
             
-            self.task.terminationHandler = {
-
+            self.task = Process()
+            self.task!.launchPath = binary
+            self.task!.arguments = arguments
+            self.task!.terminationHandler = {
                 task in
                 DispatchQueue.main.async(execute: {
-                    // complete any UI stuff that should be updated
-                    // on completion of the task
-                    completion()
+        
                     self.isRunning = false
+                    if let group = self.group {
+                        group.leave()
+                    }
                     print(self.outputText)
                 })
             }
+            self.captureStandardOutput(currentTask:self.task!)
 
-            // output handling
-            self.captureStandardOutput(currentTask:self.task)
+            self.task!.launch()
 
-            // run the binary
-            self.task.launch()
-
-            // tell the process object to block any further activity on
-            //the current thread until the task is complete
-            self.task.waitUntilExit()
+            self.task!.waitUntilExit()
         }
     }
 
@@ -110,7 +90,7 @@ class BinaryController: NSObject {
     func stopBinary() {
     
         if isRunning {
-            task.terminate()
+            task!.terminate()
             self.isRunning = false
         }
     }

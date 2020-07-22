@@ -20,6 +20,7 @@ class AlignToolViewController: InfoToolViewController {
         case probcons = 6
     }
     
+    
     var tabViewController: NSTabViewController?
     
 
@@ -33,30 +34,51 @@ class AlignToolViewController: InfoToolViewController {
     }
     
     @IBAction func okPushed(_ sender: NSButton) {
-        guard let alignTool = self.tool as? Align else {
-            postDismissNotification()
-            return
-        }
+        guard let alignTool = self.tool as? Align else { return }
         if let index = tabViewController?.selectedTabViewItemIndex {
             switch index {
             case AlignToolTab.clustal.rawValue:
-                if let clustalVC = getTabContentController(index: index) as? ClustalViewController, let matrix = alignTool.unalignedDataMatrices.first{
-                    let options = clustalVC.options
-                    alignTool.alignMatrixWithClustal(matrix, options: options)
-                } else {
-                    print("Error: AlignToolViewController can't access clustal or there is no data to be aligned!")
-                }
+                alignWithClustal(alignTool)
             default:
                 print("This alignment method is not implemented yet.")
             }
         }
         postDismissNotification()
     }
-   
-    @IBAction func resetPushed(_ sender: NSButton) {
-        postDismissNotification()
+    
+    func alignWithClustal(_ alignTool: Align) {
+        guard let clustalVC = getTabContentController(index: AlignToolTab.clustal.rawValue) as? ClustalViewController else { return }
+       
+        
+        let options = clustalVC.options
+        
+        do {
+            try alignTool.alignMatricesWithClustal(alignTool.dataMatrices, options: options)
+        } catch ClustalError.noData {
+            let message = "There is no data to run alignment on"
+            runAlignmentAlert(tool: ExecutableTool.clustal.rawValue, informativeText: message)
+        } catch ClustalError.writeError {
+            print("ClustalError.writeError: error writing data in fasta format to temp directory")
+        } catch ClustalError.launchPathError {
+            print("ClustalError.launchPathError: wrong path to the binary")
+        } catch {
+            print("Clustal error: \(error)")
+        }
+        
     }
     
+    func runAlignmentAlert(tool: String, informativeText: String) {
+        let alert = NSAlert()
+        alert.messageText = "Problem running alignment with \(tool)"
+        alert.informativeText =  informativeText
+        alert.runModal()
+    }
+   
+    @IBAction func resetPushed(_ sender: NSButton) {
+        guard let alignTool = self.tool as? Align else { return }
+        alignTool.alignedDataMatrices.removeAll()
+        postDismissNotification()
+    }
     
     func postDismissNotification() {
        NotificationCenter.default.post(name: .dismissToolSheet, object: self)
@@ -65,6 +87,7 @@ class AlignToolViewController: InfoToolViewController {
     func getTabContentController(index: Int) -> NSViewController? {
         return tabViewController?.tabViewItems[index].viewController
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

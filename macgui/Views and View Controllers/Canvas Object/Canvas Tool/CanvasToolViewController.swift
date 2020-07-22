@@ -291,6 +291,8 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
             switch toolType {
             case .readdata:
                 return true
+            case .align:
+                return true
             case .model:
                 return false
             default:
