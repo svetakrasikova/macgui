@@ -16,13 +16,18 @@ class ToolTipViewController: NSViewController {
     @IBOutlet weak var connectionsStatusLabel: NSTextField!
     @IBOutlet weak var numberMatricesLabel: NSTextField!
     
-    private var observer: NSKeyValueObservation?
+    private var observers =  [NSKeyValueObservation]()
     
     func setDataObserver(){
         if let delegate = self.delegate as? CanvasToolViewController, let tool = delegate.tool as? DataTool {
-            self.observer = tool.observe(\DataTool.dataMatrices, options: [.initial]) {(tool, change) in
-                self.setNumberOfMatrices(number: tool.dataMatrices.count)
-            }
+            self.observers = [
+                tool.observe(\DataTool.alignedDataMatrices, options: [.initial]) {(tool, change) in
+                    self.setNumberOfMatrices(number: tool.dataMatrices.count)
+                },
+                tool.observe(\DataTool.unalignedDataMatrices, options: [.initial]) {(tool, change) in
+                    self.setNumberOfMatrices(number: tool.dataMatrices.count)
+                } 
+            ]
         }
     }
 
