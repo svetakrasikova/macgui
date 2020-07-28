@@ -101,7 +101,7 @@ class DataTool: Connectable {
                   }
               }
           } catch ReadDataError.coreJsonError {
-              print("Core JSON data is not well-formatted.")
+              print("JSON data is not well-formatted.")
           }
           return readMatrices
       }

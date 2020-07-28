@@ -66,6 +66,7 @@ class ReadData: DataTool {
         
         var readMatrices: [DataMatrix] = []
         var successfullyReadData: Bool = true
+        var message = ""
         self.delegate?.startProgressIndicator()
         DispatchQueue.global(qos: .background).async {
             do {
@@ -79,11 +80,12 @@ class ReadData: DataTool {
             }
             catch {
                 successfullyReadData = false
+                message = "Error parsing data at \(fileURL)"
             }
             DispatchQueue.main.async {
                 self.delegate?.endProgressIndicator()
                 if !successfullyReadData {
-                    self.readDataAlert(informativeText: "Data could not be read")
+                    self.readDataAlert(informativeText: message)
                 }
             }
         }
