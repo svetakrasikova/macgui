@@ -269,6 +269,20 @@ extension FileManager {
         }
     }
     
+    class func createDataFileURL(dataFileName: String) -> URL {
+        let temporaryDataDirectory = NSTemporaryDirectory()
+        var dataFileURL : URL = URL(fileURLWithPath: temporaryDataDirectory)
+        dataFileURL.appendPathComponent(dataFileName)
+        return dataFileURL
+    }
+    
+    class func createExeScript(dataFileName: String) -> URL  {
+        let temporaryDataDirectory = NSTemporaryDirectory()
+        var executeFileURL : URL = URL(fileURLWithPath: temporaryDataDirectory)
+        executeFileURL.appendPathComponent("execute_" + dataFileName)
+        return executeFileURL
+    }
+    
 }
 
 

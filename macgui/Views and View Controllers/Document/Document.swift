@@ -47,6 +47,8 @@ class Document: NSDocument {
             throw NSError(domain: "Document", code: 0, userInfo: nil)
         }
     }
+    
+    
 
 
 }

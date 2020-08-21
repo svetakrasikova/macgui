@@ -10,9 +10,10 @@ import Foundation
 
 enum ExecutableTool: String {
     case clustal
+    case paup
 }
 
-enum ClustalError: Error {
+enum RunBinaryError: Error {
     case noData
     case writeError
     case launchPathError

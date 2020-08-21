@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,6 +13,7 @@
                 <tabViewController identifier="ModalSheetTabView" storyboardIdentifier="ModalSheetTabView" selectedTabViewItemIndex="0" tabStyle="unspecified" id="3V7-fT-kdA" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Align Tool" identifier="AlignTool" id="aNB-se-BiG" userLabel="Align Tool"/>
+                        <tabViewItem label="Parsimony Tool" identifier="ParsimonyTool" id="GCO-oH-boy"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="626-6W-VnF">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="350"/>
@@ -25,10 +26,11 @@
                     <connections>
                         <outlet property="tabView" destination="626-6W-VnF" id="fIH-O1-OPa"/>
                         <segue destination="Rrq-Y6-Cvx" kind="relationship" relationship="tabItems" id="frO-Kj-LEN"/>
+                        <segue destination="gmB-dj-xDz" kind="relationship" relationship="tabItems" id="DGA-Oc-taP"/>
                     </connections>
                 </tabViewController>
             </objects>
-            <point key="canvasLocation" x="-42" y="-586"/>
+            <point key="canvasLocation" x="-158" y="-560"/>
         </scene>
         <!--Align Tool-->
         <scene sceneID="ip6-6G-0IH">
@@ -36,7 +38,15 @@
                 <controllerPlaceholder storyboardIdentifier="AlignTool" storyboardName="AlignTool" id="Rrq-Y6-Cvx" userLabel="Align Tool" sceneMemberID="viewController"/>
                 <customObject id="BrN-8v-Jjz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="284" y="-17"/>
+            <point key="canvasLocation" x="-17" y="-208"/>
+        </scene>
+        <!--ParsimonyTool-->
+        <scene sceneID="0LD-OA-lJJ">
+            <objects>
+                <controllerPlaceholder storyboardName="ParsimonyTool" id="gmB-dj-xDz" sceneMemberID="viewController"/>
+                <customObject id="2jk-bU-PJ2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="353" y="-1060"/>
         </scene>
     </scenes>
 </document>

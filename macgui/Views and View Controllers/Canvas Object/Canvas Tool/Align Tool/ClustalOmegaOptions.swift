@@ -65,8 +65,8 @@ class ClustalOmegaOptions: NSObject, Codable {
     let forceOverwritingArg = "--force"
 
     
-       
-       var args: [String] = []
+    
+    var args: [String] = []
        
     
     // MARK: -

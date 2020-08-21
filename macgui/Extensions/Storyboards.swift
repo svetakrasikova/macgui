@@ -23,6 +23,23 @@ enum StoryBoardName: String {
     case variableController = "VariableController"
     case alignTool = "AlignTool"
     case alignTabView = "AlignTabView"
+    case parsimonyTool = "ParsimonyTool"
+}
+
+extension ToolObject {
+    
+    func getStoryboardName() -> String {
+        switch self {
+        case _ as Model:
+            return StoryBoardName.modelTool.rawValue
+        case _ as Align:
+            return StoryBoardName.alignTool.rawValue
+        case _ as Parsimony:
+            return StoryBoardName.parsimonyTool.rawValue
+        default:
+            return StoryBoardName.modelTool.rawValue
+        }
+    }
 }
 
 

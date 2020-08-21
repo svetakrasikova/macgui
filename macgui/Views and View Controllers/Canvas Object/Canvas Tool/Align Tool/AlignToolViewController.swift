@@ -21,14 +21,6 @@ class AlignToolViewController: InfoToolViewController {
     }
     
     
-    var tabViewController: NSTabViewController?
-    
-
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "TabViewController")
-        { tabViewController = (segue.destinationController as! NSTabViewController) }    }
-    
-    
     @IBAction func cancelPushed(_ sender: NSButton) {
         postDismissNotification()
     }
@@ -54,12 +46,12 @@ class AlignToolViewController: InfoToolViewController {
         
         do {
             try alignTool.alignMatricesWithClustal(alignTool.dataMatrices, options: options)
-        } catch ClustalError.noData {
+        } catch RunBinaryError.noData {
             let message = "There is no data to run alignment on"
             runAlignmentAlert(tool: ExecutableTool.clustal.rawValue, informativeText: message)
-        } catch ClustalError.writeError {
+        } catch RunBinaryError.writeError {
             print("ClustalError.writeError: error writing data in fasta format to temp directory")
-        } catch ClustalError.launchPathError {
+        } catch RunBinaryError.launchPathError {
             print("ClustalError.launchPathError: wrong path to the binary")
         } catch {
             print("Clustal error: \(error)")
@@ -84,14 +76,7 @@ class AlignToolViewController: InfoToolViewController {
        NotificationCenter.default.post(name: .dismissToolSheet, object: self)
     }
     
-    func getTabContentController(index: Int) -> NSViewController? {
-        return tabViewController?.tabViewItems[index].viewController
-    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     
     
 }

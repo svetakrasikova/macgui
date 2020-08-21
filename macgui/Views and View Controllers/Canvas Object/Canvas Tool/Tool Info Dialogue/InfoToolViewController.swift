@@ -11,11 +11,18 @@ import Cocoa
 class InfoToolViewController: NSViewController {
     
     weak var tool: ToolObject?
+    var tabViewController: NSTabViewController?
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "TabViewController"){
+            tabViewController = (segue.destinationController as! NSTabViewController)
+        }
     }
+    
+    func getTabContentController(index: Int) -> NSViewController? {
+        return tabViewController?.tabViewItems[index].viewController
+    }
+    
+       
     
 }

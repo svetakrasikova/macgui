@@ -1337,6 +1337,18 @@
 		145186E32428689900EA9070 /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145186E22428689800EA9070 /* Symbol.swift */; };
 		1452355B220CB79800A85186 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355A220CB79800A85186 /* CanvasView.swift */; };
 		1452355F220CCC5800A85186 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355E220CCC5800A85186 /* Extensions.swift */; };
+		1453184524E207ED00A4656C /* Parsimony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184424E207ED00A4656C /* Parsimony.swift */; };
+		1453184724E217F200A4656C /* ParsimonyTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1453184624E217F200A4656C /* ParsimonyTool.storyboard */; };
+		1453184A24E474C100A4656C /* ParsimonyToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184924E474C100A4656C /* ParsimonyToolViewController.swift */; };
+		1453184C24E487DB00A4656C /* PaupOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184B24E487DB00A4656C /* PaupOptions.swift */; };
+		1453185024E4884D00A4656C /* ClustalOmegaOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184F24E4884D00A4656C /* ClustalOmegaOptions.swift */; };
+		1453185524E489BA00A4656C /* NewickString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185224E489BA00A4656C /* NewickString.swift */; };
+		1453185624E489BA00A4656C /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185324E489BA00A4656C /* Node.swift */; };
+		1453185724E489BA00A4656C /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185424E489BA00A4656C /* Tree.swift */; };
+		1453185924E48B7A00A4656C /* RunPaup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185824E48B7A00A4656C /* RunPaup.swift */; };
+		1453185B24ECAEAF00A4656C /* PaupExhaustiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185A24ECAEAF00A4656C /* PaupExhaustiveViewController.swift */; };
+		1453185D24ECB77600A4656C /* PaupBranchBoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185C24ECB77600A4656C /* PaupBranchBoundViewController.swift */; };
+		1453185F24ECB79300A4656C /* PaupHeuristicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185E24ECB79300A4656C /* PaupHeuristicViewController.swift */; };
 		14633126244F7FF1002FBD83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14633125244F7FF0002FBD83 /* Assets.xcassets */; };
 		14640BAB2383331500358042 /* InspectorViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14640BAA2383331500358042 /* InspectorViewControllerTests.swift */; };
 		14640BB12383716300358042 /* TestDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14640BB02383716300358042 /* TestDataConstants.swift */; };
@@ -1363,11 +1375,10 @@
 		149A4FFE24983B2A007E4D4B /* AlignToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A4FFD24983B2A007E4D4B /* AlignToolViewController.swift */; };
 		149A500024983C61007E4D4B /* AlignTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 149A4FFF24983C61007E4D4B /* AlignTool.storyboard */; };
 		149A500224995A80007E4D4B /* ClustalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A500124995A80007E4D4B /* ClustalViewController.swift */; };
-		149A500624995B8C007E4D4B /* paup4a166_osx in Resources */ = {isa = PBXBuildFile; fileRef = 149A500424995B8C007E4D4B /* paup4a166_osx */; };
+		149A500624995B8C007E4D4B /* paup in Resources */ = {isa = PBXBuildFile; fileRef = 149A500424995B8C007E4D4B /* paup */; };
 		149A500724995B8C007E4D4B /* clustal in Resources */ = {isa = PBXBuildFile; fileRef = 149A500524995B8C007E4D4B /* clustal */; };
 		149A500B24995CA5007E4D4B /* BinaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A500A24995CA4007E4D4B /* BinaryController.swift */; };
 		149A500D24995D1A007E4D4B /* RunClustal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A500C24995D1A007E4D4B /* RunClustal.swift */; };
-		149B15D424B4FA71006673CB /* ClustalOmegaOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B15D324B4FA71006673CB /* ClustalOmegaOptions.swift */; };
 		149B15D624BD1010006673CB /* ExecutableTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B15D524BD100F006673CB /* ExecutableTools.swift */; };
 		149C5FC52325A52D0060043E /* ToolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC42325A52D0060043E /* ToolType.swift */; };
 		149C5FC7232953610060043E /* Simulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C5FC6232953610060043E /* Simulate.swift */; };
@@ -4262,6 +4273,18 @@
 		145186E22428689800EA9070 /* Symbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbol.swift; sourceTree = "<group>"; };
 		1452355A220CB79800A85186 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		1452355E220CCC5800A85186 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1453184424E207ED00A4656C /* Parsimony.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsimony.swift; sourceTree = "<group>"; };
+		1453184624E217F200A4656C /* ParsimonyTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ParsimonyTool.storyboard; sourceTree = "<group>"; };
+		1453184924E474C100A4656C /* ParsimonyToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsimonyToolViewController.swift; sourceTree = "<group>"; };
+		1453184B24E487DB00A4656C /* PaupOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupOptions.swift; sourceTree = "<group>"; };
+		1453184F24E4884D00A4656C /* ClustalOmegaOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClustalOmegaOptions.swift; sourceTree = "<group>"; };
+		1453185224E489BA00A4656C /* NewickString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewickString.swift; sourceTree = "<group>"; };
+		1453185324E489BA00A4656C /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		1453185424E489BA00A4656C /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		1453185824E48B7A00A4656C /* RunPaup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunPaup.swift; sourceTree = "<group>"; };
+		1453185A24ECAEAF00A4656C /* PaupExhaustiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupExhaustiveViewController.swift; sourceTree = "<group>"; };
+		1453185C24ECB77600A4656C /* PaupBranchBoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupBranchBoundViewController.swift; sourceTree = "<group>"; };
+		1453185E24ECB79300A4656C /* PaupHeuristicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupHeuristicViewController.swift; sourceTree = "<group>"; };
 		14633125244F7FF0002FBD83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14640BA0238332B000358042 /* macguiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macguiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14640BA4238332B000358042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -4290,11 +4313,10 @@
 		149A4FFD24983B2A007E4D4B /* AlignToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignToolViewController.swift; sourceTree = "<group>"; };
 		149A4FFF24983C61007E4D4B /* AlignTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AlignTool.storyboard; sourceTree = "<group>"; };
 		149A500124995A80007E4D4B /* ClustalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClustalViewController.swift; sourceTree = "<group>"; };
-		149A500424995B8C007E4D4B /* paup4a166_osx */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = paup4a166_osx; sourceTree = "<group>"; };
-		149A500524995B8C007E4D4B /* clustal */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = clustal; sourceTree = "<group>"; };
+		149A500424995B8C007E4D4B /* paup */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = paup; sourceTree = "<group>"; };
+		149A500524995B8C007E4D4B /* clustal */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = clustal; path = Clustal/clustal; sourceTree = "<group>"; };
 		149A500A24995CA4007E4D4B /* BinaryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryController.swift; sourceTree = "<group>"; };
 		149A500C24995D1A007E4D4B /* RunClustal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunClustal.swift; sourceTree = "<group>"; };
-		149B15D324B4FA71006673CB /* ClustalOmegaOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClustalOmegaOptions.swift; sourceTree = "<group>"; };
 		149B15D524BD100F006673CB /* ExecutableTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutableTools.swift; sourceTree = "<group>"; };
 		149C5FC42325A52D0060043E /* ToolType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolType.swift; sourceTree = "<group>"; };
 		149C5FC6232953610060043E /* Simulate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulate.swift; sourceTree = "<group>"; };
@@ -8200,6 +8222,7 @@
 				1495A0B5237C991200F46312 /* MatrixInspector.storyboard */,
 				1407184A22FF5D430098285D /* ModalSheet.storyboard */,
 				1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */,
+				1453184624E217F200A4656C /* ParsimonyTool.storyboard */,
 				149A4FFF24983C61007E4D4B /* AlignTool.storyboard */,
 				147429DD22D154D200FF1963 /* ModelTool.storyboard */,
 				14A663BB23186CFE0034EA53 /* Notebook.storyboard */,
@@ -8213,10 +8236,34 @@
 		14523575220E101400A85186 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1453185124E4898900A4656C /* Tree */,
 				1410C3A123F6022D0044EB48 /* Model Tool */,
 				149F8B2323624E39003146FD /* Data Matrix */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1453184824E4748800A4656C /* Parsimony Tool */ = {
+			isa = PBXGroup;
+			children = (
+				1453184924E474C100A4656C /* ParsimonyToolViewController.swift */,
+				1453184B24E487DB00A4656C /* PaupOptions.swift */,
+				1453185824E48B7A00A4656C /* RunPaup.swift */,
+				1453185A24ECAEAF00A4656C /* PaupExhaustiveViewController.swift */,
+				1453185C24ECB77600A4656C /* PaupBranchBoundViewController.swift */,
+				1453185E24ECB79300A4656C /* PaupHeuristicViewController.swift */,
+			);
+			path = "Parsimony Tool";
+			sourceTree = "<group>";
+		};
+		1453185124E4898900A4656C /* Tree */ = {
+			isa = PBXGroup;
+			children = (
+				1453185224E489BA00A4656C /* NewickString.swift */,
+				1453185324E489BA00A4656C /* Node.swift */,
+				1453185424E489BA00A4656C /* Tree.swift */,
+			);
+			path = Tree;
 			sourceTree = "<group>";
 		};
 		14640BA1238332B000358042 /* macguiTests */ = {
@@ -8242,6 +8289,7 @@
 			children = (
 				14710522225DA69500E88657 /* Connectable.swift */,
 				149F8B3C23639E46003146FD /* DataTool.swift */,
+				1453184424E207ED00A4656C /* Parsimony.swift */,
 				147105302280E52300E88657 /* ReadData.swift */,
 				1471052E2280E36D00E88657 /* Align.swift */,
 				149C5FC6232953610060043E /* Simulate.swift */,
@@ -8354,6 +8402,8 @@
 			children = (
 				149A4FFD24983B2A007E4D4B /* AlignToolViewController.swift */,
 				149A500124995A80007E4D4B /* ClustalViewController.swift */,
+				1453184F24E4884D00A4656C /* ClustalOmegaOptions.swift */,
+				149A500C24995D1A007E4D4B /* RunClustal.swift */,
 			);
 			path = "Align Tool";
 			sourceTree = "<group>";
@@ -8362,28 +8412,10 @@
 			isa = PBXGroup;
 			children = (
 				149A500A24995CA4007E4D4B /* BinaryController.swift */,
-				149A500924995C62007E4D4B /* Paup */,
-				149A500824995C4C007E4D4B /* Clustal */,
-			);
-			path = Binaries;
-			sourceTree = "<group>";
-		};
-		149A500824995C4C007E4D4B /* Clustal */ = {
-			isa = PBXGroup;
-			children = (
-				149B15D324B4FA71006673CB /* ClustalOmegaOptions.swift */,
-				149A500C24995D1A007E4D4B /* RunClustal.swift */,
+				149A500424995B8C007E4D4B /* paup */,
 				149A500524995B8C007E4D4B /* clustal */,
 			);
-			path = Clustal;
-			sourceTree = "<group>";
-		};
-		149A500924995C62007E4D4B /* Paup */ = {
-			isa = PBXGroup;
-			children = (
-				149A500424995B8C007E4D4B /* paup4a166_osx */,
-			);
-			path = Paup;
+			path = Binaries;
 			sourceTree = "<group>";
 		};
 		149F8B2323624E39003146FD /* Data Matrix */ = {
@@ -8443,6 +8475,7 @@
 				1495A0B2237C97F800F46312 /* Matrix Inspector */,
 				14C618E523E0E11E001FFFD6 /* Model Tool */,
 				149A4FFC249834E2007E4D4B /* Align Tool */,
+				1453184824E4748800A4656C /* Parsimony Tool */,
 				1495A0AB237C877B00F46312 /* Tool Tip */,
 				1495A0A9237C86B200F46312 /* Tool Info Dialogue */,
 				1495A0B0237C892A00F46312 /* Connection */,
@@ -8569,11 +8602,12 @@
 			files = (
 				141106B9230742D500A8B936 /* ToolTip.storyboard in Resources */,
 				1411BEE92208FE91009BEE1D /* Tool.xib in Resources */,
-				149A500624995B8C007E4D4B /* paup4a166_osx in Resources */,
+				149A500624995B8C007E4D4B /* paup in Resources */,
 				1419FDBD244E772900007232 /* VariableController.storyboard in Resources */,
 				1411BEE322052B7E009BEE1D /* Main.storyboard in Resources */,
 				144BEEF523A17AC60001B2EF /* pull.sh in Resources */,
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
+				1453184724E217F200A4656C /* ParsimonyTool.storyboard in Resources */,
 				14CF75A1243BCF560022B3A8 /* ModelCanvasItem.storyboard in Resources */,
 				147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */,
 				149A500724995B8C007E4D4B /* clustal in Resources */,
@@ -8682,6 +8716,7 @@
 				144BEE7A23A17AC60001B2EF /* Func_constructRootedTripletDistribution.cpp in Sources */,
 				144BEF1B23A17AC60001B2EF /* EllipticalSliceSamplingLognormalIIDMove.cpp in Sources */,
 				144BF0B323A17AC70001B2EF /* ChooseFunction.cpp in Sources */,
+				1453185F24ECB79300A4656C /* PaupHeuristicViewController.swift in Sources */,
 				144BEF9723A17AC60001B2EF /* ScreenMonitor.cpp in Sources */,
 				144BF18323A17AC80001B2EF /* PhyloMultivariateBrownianProcessREML.cpp in Sources */,
 				144BF0E923A17AC70001B2EF /* DispersalExtinctionRootStructureFunction.cpp in Sources */,
@@ -8753,6 +8788,7 @@
 				149A4FFE24983B2A007E4D4B /* AlignToolViewController.swift in Sources */,
 				144BECAE23A17AC50001B2EF /* Move_IndependentTopology.cpp in Sources */,
 				144BEFCB23A17AC70001B2EF /* DagNode.cpp in Sources */,
+				1453185024E4884D00A4656C /* ClustalOmegaOptions.swift in Sources */,
 				144BED6523A17AC60001B2EF /* RlDemographicFunction.cpp in Sources */,
 				144BF14F23A17AC70001B2EF /* LinearDemographicFunction.cpp in Sources */,
 				144BECA723A17AC50001B2EF /* Move_TreeScale.cpp in Sources */,
@@ -8782,6 +8818,7 @@
 				144BEFCF23A17AC70001B2EF /* TreeChangeEventHandler.cpp in Sources */,
 				144BEFC123A17AC70001B2EF /* Mcmc.cpp in Sources */,
 				144BEF5323A17AC60001B2EF /* ScaleProposal.cpp in Sources */,
+				1453185D24ECB77600A4656C /* PaupBranchBoundViewController.swift in Sources */,
 				144BEFF923A17AC70001B2EF /* RateMatrix_GTR.cpp in Sources */,
 				149A500D24995D1A007E4D4B /* RunClustal.swift in Sources */,
 				144BF01823A17AC70001B2EF /* BinaryState.cpp in Sources */,
@@ -8894,7 +8931,6 @@
 				144BED0723A17AC50001B2EF /* RlStringOutputStream.cpp in Sources */,
 				14BF307D23E236F100426D7A /* ModelCanvasView.swift in Sources */,
 				144BEF5523A17AC60001B2EF /* RandomIntegerWalkProposal.cpp in Sources */,
-				149B15D424B4FA71006673CB /* ClustalOmegaOptions.swift in Sources */,
 				144BED0923A17AC50001B2EF /* Mntr_HomeologPhase.cpp in Sources */,
 				144BF00923A17AC70001B2EF /* RateMatrix_MtMam.cpp in Sources */,
 				144BEDCC23A17AC60001B2EF /* Func__and.cpp in Sources */,
@@ -8928,6 +8964,7 @@
 				144BED4F23A17AC60001B2EF /* RlContinuousCharacterData.cpp in Sources */,
 				144BEFC823A17AC70001B2EF /* HillClimber.cpp in Sources */,
 				144BEE4D23A17AC60001B2EF /* Func_DECRates.cpp in Sources */,
+				1453184524E207ED00A4656C /* Parsimony.swift in Sources */,
 				144BEDB223A17AC60001B2EF /* Func_writeCharacterDataDelimited.cpp in Sources */,
 				144BED8B23A17AC60001B2EF /* SyntaxForLoop.cpp in Sources */,
 				144BF0B223A17AC70001B2EF /* ContinuousFunction.cpp in Sources */,
@@ -9534,6 +9571,7 @@
 				144BEE6723A17AC60001B2EF /* Func_EpochCladoProbs.cpp in Sources */,
 				144BEDE323A17AC60001B2EF /* Func_decomposedVarianceCovarianceMatrix.cpp in Sources */,
 				144BEF9F23A17AC60001B2EF /* HomeologPhaseMonitor.cpp in Sources */,
+				1453185924E48B7A00A4656C /* RunPaup.swift in Sources */,
 				144BEED723A17AC60001B2EF /* Dist_CharacterDependentBirthDeathProcess.cpp in Sources */,
 				144BF0BC23A17AC70001B2EF /* SumFunction.cpp in Sources */,
 				144BEF9123A17AC60001B2EF /* CorrelationMatrixReparameterizationMove.cpp in Sources */,
@@ -9549,6 +9587,7 @@
 				144BEF9623A17AC60001B2EF /* AbstractGibbsMove.cpp in Sources */,
 				144BEC9323A17AC50001B2EF /* Move_CollapseExpandFossilBranch.cpp in Sources */,
 				144BED2E23A17AC60001B2EF /* RlPosteriorPredictiveAnalysis.cpp in Sources */,
+				1453185724E489BA00A4656C /* Tree.swift in Sources */,
 				144BEE8023A17AC60001B2EF /* UserFunctionDef.cpp in Sources */,
 				144BEF1923A17AC60001B2EF /* PseudoGibbsMetaMove.cpp in Sources */,
 				14D6DE03221F47CD00021607 /* MainSplitViewController.swift in Sources */,
@@ -9646,6 +9685,7 @@
 				144BF01423A17AC70001B2EF /* AbstractCharacterData.cpp in Sources */,
 				144BECAA23A17AC50001B2EF /* Move_RootTimeSlideUniform.cpp in Sources */,
 				144BF10A23A17AC70001B2EF /* TajimasPiFunction.cpp in Sources */,
+				1453185B24ECAEAF00A4656C /* PaupExhaustiveViewController.swift in Sources */,
 				144BEFD223A17AC70001B2EF /* RbBoolean.cpp in Sources */,
 				144BF16623A17AC80001B2EF /* CDCladoSEExtinction.cpp in Sources */,
 				144BECD523A17AC50001B2EF /* Move_Scale.cpp in Sources */,
@@ -9819,6 +9859,7 @@
 				144BEE1A23A17AC60001B2EF /* Func_dppMeanFromConc.cpp in Sources */,
 				144BEFD623A17AC70001B2EF /* MatrixBoolean.cpp in Sources */,
 				144BED7A23A17AC60001B2EF /* TypeSpec.cpp in Sources */,
+				1453184A24E474C100A4656C /* ParsimonyToolViewController.swift in Sources */,
 				144BEED923A17AC60001B2EF /* Dist_conditionedBirthDeathShiftProcessContinuous.cpp in Sources */,
 				144BEE1023A17AC60001B2EF /* Proc_StringToInt.cpp in Sources */,
 				144BEDC423A17AC60001B2EF /* Func_readAtlas.cpp in Sources */,
@@ -9932,12 +9973,14 @@
 				144BEE1623A17AC60001B2EF /* Ellipsis.cpp in Sources */,
 				144BED9823A17AC60001B2EF /* SyntaxLabeledExpr.cpp in Sources */,
 				144BEE8D23A17AC60001B2EF /* Dist_GilbertGraph.cpp in Sources */,
+				1453184C24E487DB00A4656C /* PaupOptions.swift in Sources */,
 				144BED0023A17AC50001B2EF /* Move_CorrelationMatrixExpansion.cpp in Sources */,
 				14E5857822A067A600802691 /* TransparentToolsView.swift in Sources */,
 				144BEEB423A17AC60001B2EF /* Dist_exponentialOffset.cpp in Sources */,
 				144BEFBE23A17AC70001B2EF /* EssMax.cpp in Sources */,
 				144BEF0723A17AC60001B2EF /* utf8.c in Sources */,
 				144BF17923A17AC80001B2EF /* PhyloOrnsteinUhlenbeckProcessMVN.cpp in Sources */,
+				1453185624E489BA00A4656C /* Node.swift in Sources */,
 				144BECCE23A17AC50001B2EF /* Move_RandomGeometricWalk.cpp in Sources */,
 				144BF10C23A17AC70001B2EF /* WattersonThetaFunction.cpp in Sources */,
 				144BED0223A17AC50001B2EF /* Move_LevyJump.cpp in Sources */,
@@ -9951,6 +9994,7 @@
 				144BEE3C23A17AC60001B2EF /* Func_dayhoff.cpp in Sources */,
 				144BED2423A17AC60001B2EF /* RlBurninEstimationConvergenceAssessment.cpp in Sources */,
 				144BED3223A17AC60001B2EF /* RlMaxTimeStoppingRule.cpp in Sources */,
+				1453185524E489BA00A4656C /* NewickString.swift in Sources */,
 				144BEFA523A17AC60001B2EF /* AbstractFileMonitor.cpp in Sources */,
 				144BEEDD23A17AC60001B2EF /* Dist_episodicBirthDeath.cpp in Sources */,
 				144BF09C23A17AC70001B2EF /* EmpiricalQuantileFunction.cpp in Sources */,

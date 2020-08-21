@@ -9,12 +9,13 @@
 import Cocoa
 
 enum ToolType: String, CaseIterable {
-    case align = "align"
-    case bootstrap = "bootstrap"
-    case  model = "model"
-    case  readdata = "readdata"
-    case simulate = "simulate"
-    case treeset = "treeset"
+    case align
+    case bootstrap
+    case model
+    case readdata
+    case simulate
+    case treeset
+    case parsimony
 }
 
 extension CanvasViewController {
@@ -22,7 +23,7 @@ extension CanvasViewController {
     func initToolObjectWithName(_ name: String, frame: NSRect, analysis: Analysis) -> ToolObject {
         let toolType = ToolType(rawValue: name)!
         switch toolType {
-        case  .bootstrap:
+        case .bootstrap:
             return Bootstrap(name: name, frameOnCanvas: frame, analysis: analysis)
         case .align:
             return Align(name: name, frameOnCanvas: frame, analysis: analysis)
@@ -34,6 +35,8 @@ extension CanvasViewController {
             return Simulate(name: name, frameOnCanvas: frame, analysis:analysis)
         case .model:
             return Model(name: name, frameOnCanvas: frame, analysis: analysis)
+        case .parsimony:
+            return Parsimony(name: name, frameOnCanvas: frame, analysis: analysis)
             
         }
     }
@@ -56,7 +59,10 @@ extension ToolObject {
             return "Data Simulation Tool"
         case .model:
             return "Data Model Tool"
+        case .parsimony:
+            return "Parsimony Tool"
             
         }
     }
+    
 }

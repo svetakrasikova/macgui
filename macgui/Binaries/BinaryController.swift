@@ -1,7 +1,5 @@
 import Cocoa
 
-
-
 class BinaryController: NSObject {
 
     var task: Process?

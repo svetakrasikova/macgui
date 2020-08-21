@@ -499,34 +499,6 @@ class DataMatrix : NSObject,Codable, NSCoding {
         return true
     }
     
-    func writeFastaFile(pathName: String, fileName: String) throws {
-
-        var isDirectory = ObjCBool(true)
-        let dirExists : Bool = FileManager.default.fileExists(atPath: pathName, isDirectory: &isDirectory)
-        guard dirExists == true else {
-            print("The directory \"\(pathName)\" does not exist")
-            throw DataMatrixError.writeError
-        }
-        
-        var fileURL = URL(fileURLWithPath: pathName)
-        fileURL.appendPathComponent(fileName)
-        let fileExists = FileManager.default.fileExists(atPath: fileURL.path)
-        if fileExists == true {
-            print("Overwriting file \"\(fileURL.absoluteString)\"")
-        }
-        
-        
-        let fastaString: String  = getFastaString()
-        
-        let data = NSData(data: fastaString.data(using: String.Encoding.utf8, allowLossyConversion: false)!)
-        do {
-            try data.write(to: URL(fileURLWithPath: fileURL.path), options: .atomic)
-        }
-        catch {
-            throw DataMatrixError.writeError
-        }
-    }
-    
     func getFastaString() -> String {
         var fastaString: String  = ""
         let activeTaxonNames: [String] = self.getActiveTaxaNames()
@@ -539,26 +511,19 @@ class DataMatrix : NSObject,Codable, NSCoding {
         return fastaString
     }
     
-    
+    func writeFastaFile(dataFileURL: URL) throws
+      {
+          let fastaString: String  = self.getFastaString()
+          do {
+              try fastaString.write(to: dataFileURL, atomically: false, encoding: .utf8)
+          } catch  {
+              throw DataMatrixError.writeError
+          }
+      }
+      
     
     // write the data matrix to a file in NEXUS format
-    func writeNexusFile(pathName: String, fileName: String) throws {
-        
-        // check that the directory exists
-        var isDirectory = ObjCBool(true)
-        let dirExists : Bool = FileManager.default.fileExists(atPath: pathName, isDirectory: &isDirectory)
-        guard dirExists == true else {
-            print("The directory \"\(pathName)\" does not exist")
-            throw DataMatrixError.writeError
-        }
-        
-        // create the complete name and path and check to see if that exists
-        var fileURL = URL(fileURLWithPath: pathName)
-        fileURL.appendPathComponent(fileName)
-        let fileExists = FileManager.default.fileExists(atPath: fileURL.path)
-        if fileExists == true {
-            print("Overwriting file \"\(fileURL.absoluteString)\"")
-        }
+    func writeNexusFile(dataFileURL: URL) throws {
         
         // get the number of characters
         let (ntR, nt) = getNumCharacters()
@@ -595,7 +560,7 @@ class DataMatrix : NSObject,Codable, NSCoding {
         
         let data = NSData(data: str.data(using: String.Encoding.utf8, allowLossyConversion: false)!)
         do {
-            try data.write(to: URL(fileURLWithPath: fileURL.path), options: .atomic)
+            try data.write(to: dataFileURL, options: .atomic)
         }
         catch {
             throw DataMatrixError.writeError

@@ -45,20 +45,6 @@ class ToolObject: NSObject, NSCoding {
     }
 }
 
-extension ToolObject {
-
-func getStoryboardName() -> String {
-    switch self {
-    case _ as Model:
-        return StoryBoardName.modelTool.rawValue
-    case _ as Align:
-        return StoryBoardName.alignTool.rawValue
-    default:
-        return StoryBoardName.modelTool.rawValue
-        }
-    }
-    
-}
 
 protocol ToolObjectDelegate: class {
     func startProgressIndicator()
