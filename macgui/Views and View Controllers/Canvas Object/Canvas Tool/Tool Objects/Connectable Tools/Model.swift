@@ -16,18 +16,15 @@ class Model: DataTool {
     @objc dynamic var edges: [Connection] = []
     
     enum Key: String {
-        case palettItems = "palettItems"
-        case nodes = "nodes"
-        case edges = "edges"
-        case distributions = "distributions"
+        case palettItems, nodes, edges, distributions
     }
     
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
     
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
-        let green = Connector(color:ConnectorType.alignedData)
-        let purple = Connector(color:ConnectorType.purple)
+        let green = Connector(type: .alignedData)
+        let purple = Connector(type: .purple)
         self.inlets = [green]
         self.outlets = [purple]
         

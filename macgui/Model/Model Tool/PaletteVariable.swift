@@ -13,14 +13,11 @@ import Cocoa
 class PaletteVariable : PalettItem {
     
     enum Key: String {
-        case symbol = "symbol"
-        case dimension = "dimension"
+        case symbol, dimension
     }
     
     enum VariableType: String {
-        case randomVariable = "randomVariable"
-        case constant = "constant"
-        case function = "function"
+        case randomVariable, constant, function
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -109,7 +106,7 @@ class PaletteVariable : PalettItem {
     
     
    override var description: String {
-    
+
         var str : String = ""
         str += "Variable: \(type)\n"
         str += "   Dimension = \(dimension)\n"

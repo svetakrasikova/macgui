@@ -15,8 +15,8 @@ class ReadData: DataTool {
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
-        let green = Connector(color:ConnectorType.alignedData)
-        let blue = Connector(color:ConnectorType.unalignedData)
+        let green = Connector(type: .alignedData)
+        let blue = Connector(type: .unalignedData)
         self.inlets = []
         self.outlets = [green, blue]
     }

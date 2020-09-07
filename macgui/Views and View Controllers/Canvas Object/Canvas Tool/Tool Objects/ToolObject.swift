@@ -19,10 +19,7 @@ class ToolObject: NSObject, NSCoding {
     weak var delegate: ToolObjectDelegate?
     
     enum Key: String {
-        case name = "name"
-        case frameOnCanvas = "frameOnCanvas"
-        case descriptiveName = "descriptiveName"
-        case analysis = "analysis"
+        case name, frameOnCanvas, descriptiveName, analysis
     }
     
     init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {

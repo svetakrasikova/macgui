@@ -14,8 +14,8 @@ class Parsimony: Connectable, ResolveStateOnExecution {
         
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
-        let green = Connector(color: .alignedData)
-        let red = Connector(color: .red)
+        let green = Connector(type: .alignedData)
+        let red = Connector(type: .red)
         self.inlets = [green]
         self.outlets = [red]
     }

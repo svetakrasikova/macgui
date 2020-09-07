@@ -13,8 +13,8 @@ class ConnectorItemArrow: ConnectorItem {
     override var connector: Connector? {
         didSet{
             guard isViewLoaded else { return }
-            if let type = connector {
-                let fillColor = type.getColor()
+            if let type = connector?.type {
+                let fillColor = Connector.getColor(type: type)
                 if let view = self.view as? ConnectorItemArrowView {
                     view.drawArrow(color: fillColor)
                 }

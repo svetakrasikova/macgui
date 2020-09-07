@@ -36,71 +36,75 @@ class Connectable: ToolObject {
   
     var unconnectedInlets: [Connector] {
         get {
-            return inlets.filter{$0.neighbor == nil}
+            return inlets.filter{!$0.isConnected}
         }
         
     }
     
     var unconnectedOutlets: [Connector] {
         get {
-            return outlets.filter{$0.neighbor == nil}
+            return outlets.filter{!$0.isConnected}
         }
     }
     
     var connectedInlets: [Connector] {
         get {
-            return inlets.filter{$0.neighbor != nil}
+            return inlets.filter{$0.isConnected}
         }
     }
     
     var connectedOutlets: [Connector] {
         get {
-            return outlets.filter{$0.neighbor != nil}
+            return outlets.filter{$0.isConnected}
         }
     }
     
     var isConnected: Bool {
         get {
             for link in outlets {
-                if link.neighbor == nil {return false}
+                if !link.isConnected {return false}
             }
             for link in inlets {
-                if link.neighbor == nil {return false}
+                if !link.isConnected {return false}
             }
             return true
         }
     }
     
-    func addNeighbor(color: ConnectorType, neighbor: Connectable, linkType: LinkType){
+    func addNeighbor(connectionType: ConnectorType, linkType: LinkType){
         switch linkType {
         case .inlet:
-             for (index, connector) in inlets.enumerated(){
-                if connector.type == color && connector.neighbor == nil {
-                    inlets[index].neighbor = neighbor
+             for connector in inlets {
+                if connector.type == connectionType && !connector.isConnected {
+                    connector.isConnected = true
+                    break
                 }
             }
         case .outlet:
-            for (index, connector) in outlets.enumerated(){
-                if connector.type == color && connector.neighbor == nil {
-                    outlets[index].neighbor = neighbor
+            for connector in outlets{
+                if connector.type == connectionType && !connector.isConnected {
+                    connector.isConnected = true
+                    break
                 }
             }
         }
 
     }
     
-    func removeNeighbor(neighbor: Connectable, linkType: LinkType){
+    func removeNeighbor(connectionType: ConnectorType, linkType: LinkType){
         switch linkType {
         case .inlet:
-            for (index, connector) in inlets.enumerated(){
-                if connector.neighbor === neighbor {
-                    inlets[index].neighbor = nil
+            for connector in inlets {
+                if connector.type == connectionType && connector.isConnected {
+                    connector.isConnected = false
+                    break
                 }
             }
         case .outlet:
-            for (index, connector) in outlets.enumerated(){
-                if connector.neighbor === neighbor {
-                    outlets[index].neighbor = nil
+            for connector in outlets {
+                if connector.type == connectionType && connector.isConnected {
+                    connector.isConnected = false
+                    break
                 }
             }
         }

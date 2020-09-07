@@ -79,7 +79,7 @@ class NavigatorViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     override func viewDidAppear() {
         analysesTableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
-        delegate?.navigatorViewController(viewController: self, selectedAnalysis: analyses[0])
+//        delegate?.navigatorViewController(viewController: self, selectedAnalysis: analyses[0])
     }
     
     

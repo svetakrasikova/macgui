@@ -13,7 +13,7 @@ class PalettItem: NSObject, Codable, NSCoding {
     var type: String
     
     enum Key: String {
-        case type = "type"
+        case type
     }
     
       private enum CodingKeys: String, CodingKey {

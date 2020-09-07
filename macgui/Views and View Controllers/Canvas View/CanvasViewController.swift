@@ -39,14 +39,11 @@ class CanvasViewController: GenericCanvasViewController {
     @objc func didConnectTools(notification: Notification){
         guard let userInfo = notification.userInfo as? [String: ConnectorItemArrowView]
             else {return}
-        if userInfo["target"]?.window == self.view.window, let color = userInfo["target"]?.connectionColor, let targetTool = userInfo["target"]?.concreteDelegate?.getTool(), let sourceTool = userInfo["source"]?.concreteDelegate?.getTool() as? Connectable {
+        if userInfo["target"]?.window == self.view.window, let color = userInfo["target"]?.connectionColor, let targetTool = userInfo["target"]?.concreteDelegate?.getTool() as? Connectable, let sourceTool = userInfo["source"]?.concreteDelegate?.getTool() as? Connectable {
             let toConnector = userInfo["target"]?.concreteDelegate?.getConnector() as! Connector
-            toConnector.setNeighbor(neighbor: sourceTool)
-            let fromConnector = userInfo["source"]?.concreteDelegate?.getConnector() as! Connector
-            fromConnector.setNeighbor(neighbor: targetTool as! Connectable)
             do {
-                let connection = try Connection(to: toConnector, from: fromConnector)
-                let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool as! Connectable, connection: connection)
+                let connection = try Connection(to: targetTool, from: sourceTool, type: toConnector.type)
+                let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool, connection: connection)
                 analysis?.arrows.append(connection)
                 addChild(arrowController)
                 canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
@@ -90,13 +87,12 @@ class CanvasViewController: GenericCanvasViewController {
     }
     
     func addArrowView(connection: Connection){
-           let color = connection.from.getColor()
-           if let sourceTool = connection.to.neighbor, let targetTool = connection.from.neighbor {
-               let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool, connection: connection)
-               addChild(arrowController)
-               canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
-           }
-       }
+        let color = Connector.getColor(type: connection.type)
+        let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: connection.from, targetTool: connection.to, connection: connection)
+        addChild(arrowController)
+        canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
+        
+    }
     
 // MARK: - Add and Delete Canvas Objects
     

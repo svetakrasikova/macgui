@@ -12,41 +12,49 @@ import Cocoa
 class Connector: NSObject, NSCoding {
     
     var type: ConnectorType
-    weak var neighbor: Connectable?
+//    weak var neighbor: Connectable?
+    var isConnected: Bool = false
     
     enum Key: String {
-        case type = "type"
-        case neighbor = "neigbor"
+        case type, isConnected
+    }
+//
+//    init(color: ConnectorType, neighbor: Connectable){
+//        self.type = color
+//        self.neighbor = neighbor
+//    }
+    
+    init(type: ConnectorType) {
+        self.type = type
     }
     
-    init(color: ConnectorType, neighbor: Connectable){
-        self.type = color
-        self.neighbor = neighbor
-    }
-    init(color: ConnectorType){
-        self.type = color
-        self.neighbor = nil
-    }
+//    init(color: ConnectorType){
+//        self.type = color
+//        self.neighbor = nil
+//    }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(type.rawValue, forKey: Key.type.rawValue)
-        if let neighbor = neighbor {
-            aCoder.encode(neighbor, forKey: Key.neighbor.rawValue)
-        }
+//        if let neighbor = neighbor {
+//            aCoder.encode(neighbor, forKey: Key.neighbor.rawValue)
+//        }
+        
+        aCoder.encode(isConnected, forKey: Key.isConnected.rawValue)
     }
     
     required init?(coder aDecoder: NSCoder) {
         type = ConnectorType(rawValue: aDecoder.decodeObject(forKey: Key.type.rawValue) as! String) ?? .generic
-        neighbor = aDecoder.decodeObject(forKey: Key.neighbor.rawValue) as? Connectable
+        isConnected = aDecoder.decodeBool(forKey: Key.isConnected.rawValue)
+//        neighbor = aDecoder.decodeObject(forKey: Key.neighbor.rawValue) as? Connectable
     }
     
     
-    func setNeighbor(neighbor: Connectable){
-        self.neighbor = neighbor
-    }
+//    func setNeighbor(neighbor: Connectable){
+//        self.neighbor = neighbor
+//    }
 
-    func getColor() -> NSColor {
-        switch self.type {
+    static func getColor(type: ConnectorType) -> NSColor {
+        switch type {
         case .alignedData: return NSColor.green
         case .unalignedData: return NSColor.blue
         case .orange: return NSColor.orange
@@ -58,44 +66,16 @@ class Connector: NSObject, NSCoding {
         }
     }
   
-      // MARK: - Operations
-    
-    func connectAlignedData(to: Connector) throws {
-        guard let sourceTool = to.neighbor as? DataTool
-            else { return }
-        if !sourceTool.dataMatrices.isEmpty {
-            let alignedMatrices =  sourceTool.dataMatrices.filter{$0.homologyEstablished == true}
-            if alignedMatrices.isEmpty {
-                throw ConnectionError.noAlignedData
-            } else {
-                sourceTool.propagateAlignedData(data: alignedMatrices, isSource: true)
-            }
-        } else {
-            throw ConnectionError.noData
-        }
-    }
-    
-    func connectUnalignedData(to: Connector) throws {
-        guard let sourceTool = to.neighbor as? DataTool
-                   else { return }
-        if !sourceTool.dataMatrices.isEmpty {
-            
-                sourceTool.propagateUnalignedData(data: sourceTool.dataMatrices, isSource: true)
-
-        } else {
-            throw ConnectionError.noData
-        }
-    }
     
 }
 
 enum ConnectorType: String {
+    case red
+    case orange
+    case magenta
+    case purple
     case alignedData = "green"
     case unalignedData = "blue"
-    case red = "red"
-    case orange = "orange"
-    case magenta = "magenta"
-    case purple = "purple"
     case modelParameter = "black"
     case generic = "clear"
 }

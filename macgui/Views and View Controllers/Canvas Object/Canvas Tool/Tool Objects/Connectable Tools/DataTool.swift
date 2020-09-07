@@ -9,12 +9,12 @@
 import Cocoa
 
 class DataTool: Connectable {
-
-   enum DataToolError: Error {
-          
-          case readError
-          case jsonError
-      }
+    
+    enum DataToolError: Error {
+        
+        case readError
+        case jsonError
+    }
     
     enum Key: String {
         case alignedDataMatrices
@@ -29,10 +29,10 @@ class DataTool: Connectable {
         }
     }
     @objc dynamic var unalignedDataMatrices: [DataMatrix]  = []  {
-           didSet {
-               NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
-           }
-       }
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
     
     @objc dynamic var dataMatrices: [DataMatrix]  {
         return !alignedDataMatrices.isEmpty ? alignedDataMatrices : unalignedDataMatrices
@@ -56,55 +56,80 @@ class DataTool: Connectable {
     }
     
     func propagateAlignedData(data: [DataMatrix] = [], isSource: Bool){
-            if self.connectedOutlets.isEmpty  {
-                self.alignedDataMatrices = data
-            } else {
-                for connector in self.outlets {
-                    if connector.type == .alignedData, let tool = connector.neighbor as? DataTool {
-                        tool.propagateAlignedData(data: data, isSource: false)
-                    }
+        if self.connectedOutlets.isEmpty  {
+            self.alignedDataMatrices = data
+        } else {
+            
+            for connection in self.analysis.arrows {
+                if connection.type == .alignedData, connection.from === self, let neighbor = connection.to as? DataTool {
+                    neighbor.propagateAlignedData(data: data, isSource: false)
                 }
-                if !isSource { self.alignedDataMatrices = data }
             }
+            
+            if !isSource { self.alignedDataMatrices = data }
+        }
     }
     
     func propagateUnalignedData(data: [DataMatrix] = [], isSource: Bool){
-            if self.connectedOutlets.isEmpty  {
-                self.unalignedDataMatrices = data
-                self.alignedDataMatrices.removeAll()
-            } else {
-                for connector in self.outlets {
-                    if connector.type == .unalignedData, let tool = connector.neighbor as? DataTool {
-                        tool.propagateUnalignedData(data: data, isSource: false)
-                    }
-                }
-                if !isSource {
-                    self.unalignedDataMatrices = data
-                    self.alignedDataMatrices.removeAll()
+        if self.connectedOutlets.isEmpty  {
+            self.unalignedDataMatrices = data
+            self.alignedDataMatrices.removeAll()
+        } else {
+            for connection in self.analysis.arrows {
+                if connection.type == .alignedData, connection.from === self, let neighbor = connection.to as? DataTool {
+                    neighbor.propagateUnalignedData(data: data, isSource: false)
                 }
             }
+            if !isSource {
+                self.unalignedDataMatrices = data
+                self.alignedDataMatrices.removeAll()
+            }
+        }
+    }
+    
+    func connectAlignedData() throws {
+        
+        if !dataMatrices.isEmpty {
+            let alignedMatrices =  dataMatrices.filter{$0.homologyEstablished == true}
+            if alignedMatrices.isEmpty {
+                throw ConnectionError.noAlignedData
+            } else {
+                propagateAlignedData(data: alignedMatrices, isSource: true)
+            }
+        } else {
+            throw ConnectionError.noData
+        }
+    }
+    
+    func connectUnalignedData() throws {
+        if dataMatrices.isEmpty {
+            propagateUnalignedData(data: dataMatrices, isSource: true)
+            
+        } else {
+            throw ConnectionError.noData
+        }
     }
     
     func readDataTask(_ fileURL: URL) throws -> [DataMatrix] {
-          var readMatrices: [DataMatrix] = []
-          guard let jsonStringArray: [String] = revbayesBridge.readMatrix(from: fileURL.path) as? [String], jsonStringArray.count != 0 else {
-               throw ReadDataError.fetchDataError(fileURL: fileURL)
-          }
-          do {
-              let matricesData: [Data] = try JsonCoreBridge(jsonArray: jsonStringArray).encodeMatrixJsonStringArray()
-              for data in matricesData {
-                  do {
-                      let newMatrix = try JSONDecoder().decode(DataMatrix.self, from: data)
-                      readMatrices.append(newMatrix)
-                  } catch  {
-                      throw ReadDataError.dataDecodingError
-                  }
-              }
-          } catch ReadDataError.coreJsonError {
-              print("JSON data is not well-formatted.")
-          }
-          return readMatrices
-      }
+        var readMatrices: [DataMatrix] = []
+        guard let jsonStringArray: [String] = revbayesBridge.readMatrix(from: fileURL.path) as? [String], jsonStringArray.count != 0 else {
+            throw ReadDataError.fetchDataError(fileURL: fileURL)
+        }
+        do {
+            let matricesData: [Data] = try JsonCoreBridge(jsonArray: jsonStringArray).encodeMatrixJsonStringArray()
+            for data in matricesData {
+                do {
+                    let newMatrix = try JSONDecoder().decode(DataMatrix.self, from: data)
+                    readMatrices.append(newMatrix)
+                } catch  {
+                    throw ReadDataError.dataDecodingError
+                }
+            }
+        } catch ReadDataError.coreJsonError {
+            print("JSON data is not well-formatted.")
+        }
+        return readMatrices
+    }
     
     func readDataAlert(informativeText: String) {
         let alert = NSAlert()
@@ -112,5 +137,5 @@ class DataTool: Connectable {
         alert.informativeText =  informativeText
         alert.runModal()
     }
-
+    
 }

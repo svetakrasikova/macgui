@@ -12,37 +12,44 @@ import Cocoa
 
 class Connection: NSObject, NSCoding {
     
-    var to: Connector
-    var from: Connector
+    var to: Connectable
+    var from: Connectable
     var type: ConnectorType
     
+    enum Key: String {
+        case to, from, type
+    }
     
-    init(to: Connector, from: Connector) throws {
+    init(to: Connectable, from: Connectable, type: ConnectorType) throws {
+        to.addNeighbor(connectionType: type, linkType: LinkType.inlet)
+        from.addNeighbor(connectionType: type, linkType: LinkType.outlet)
         self.to = to
         self.from = from
-        self.type = to.type
+        self.type = type
         switch self.type {
         case .alignedData:
-            try self.from.connectAlignedData(to: self.to)
+            guard let from = from as? DataTool else { return }
+            try from.connectAlignedData()
         case .unalignedData:
-            try self.from.connectUnalignedData(to: self.to)
+            guard let from = from as? DataTool else { return }
+            try from.connectUnalignedData()
         default:
             print("No action defined for connection type", self.type)
         }
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(to, forKey: "to")
-        aCoder.encode(from, forKey: "from")
-        aCoder.encode(type.rawValue, forKey: "type")
+        aCoder.encode(to, forKey: Key.to.rawValue)
+        aCoder.encode(from, forKey: Key.from.rawValue)
+        aCoder.encode(type.rawValue, forKey: Key.type.rawValue)
     }
     
     
     
     required init?(coder aDecoder: NSCoder) {
-        to = aDecoder.decodeObject(forKey: "to") as! Connector
-        from = aDecoder.decodeObject(forKey: "from") as! Connector
-        type = ConnectorType(rawValue: aDecoder.decodeObject(forKey: "type") as! String) ?? .generic
+        to = aDecoder.decodeObject(forKey: Key.to.rawValue) as! Connectable
+        from = aDecoder.decodeObject(forKey: Key.from.rawValue ) as! Connectable
+        type = ConnectorType(rawValue: aDecoder.decodeObject(forKey: Key.type.rawValue) as! String) ?? .generic
     }
     
 

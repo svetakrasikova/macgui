@@ -79,8 +79,10 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
             sourceTool.propagateAlignedData(isSource: true)
             sourceTool.propagateUnalignedData(isSource: true)
         }
-        targetTool?.removeNeighbor(neighbor: sourceTool!, linkType: LinkType.inlet)
-        sourceTool?.removeNeighbor(neighbor: targetTool!, linkType: LinkType.outlet)
+        if let type = self.connection?.type {
+            targetTool?.removeNeighbor(connectionType: type, linkType: LinkType.inlet)
+            sourceTool?.removeNeighbor(connectionType: type, linkType: LinkType.outlet)
+        }
     }
 
     

@@ -122,7 +122,7 @@ class ModelVariableController: NSViewController {
                 var modelNodes: [ModelNode] = []
                 if let delegate = self.delegate as? ModelCanvasViewController, let model = delegate.model {
                     for connection in model.edges {
-                        if modelNode == connection.from.neighbor, let modelNode = connection.to.neighbor as? ModelNode {
+                        if modelNode == connection.to, let modelNode = connection.from as? ModelNode {
                             if modelNode.node.type == parameter.type {
                                 modelNodes.append(modelNode)
                             }
