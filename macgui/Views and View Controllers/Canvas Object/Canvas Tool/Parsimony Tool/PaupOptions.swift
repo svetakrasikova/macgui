@@ -1,11 +1,11 @@
 import Cocoa
 
-class PaupOptions: NSObject, Codable, NSCoding {
+class PaupOptions: NSObject, NSCoding {
     
 
     // MARK: - Coding Keys
 
-    private enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String {
         case criterion
         case searchMethod
         case hsSwap
@@ -159,142 +159,10 @@ class PaupOptions: NSObject, Codable, NSCoding {
     var lsPinvarVal     = 0.1
     var lsClock         = LSClock.no
 
-    // MARK: -
-    
-    override init() {
-    
-        super.init()
-    }
-    
-    // initialize from serialized data
-    required init(from decoder: Decoder) throws {
-
-        do {
-            let values           = try decoder.container(keyedBy: CodingKeys.self)
-            self.criterion       = PaupOptions.Criteria(rawValue: try values.decode(Int.self, forKey: .criterion))!
-            self.searchMethod    = PaupOptions.SearchMethod(rawValue: try values.decode(Int.self, forKey: .searchMethod))!
-            self.hsSwap          = PaupOptions.HSSwap(rawValue: try values.decode(Int.self, forKey: .hsSwap))!
-            self.hsKeep          = PaupOptions.HSKeep(rawValue: try values.decode(Int.self, forKey: .hsKeep))!
-            self.hsKeepVal       = try values.decode(Double.self, forKey: .hsKeepVal)
-            self.hsMulTrees      = PaupOptions.HSMulTrees(rawValue: try values.decode(Int.self, forKey: .hsMulTrees))!
-            self.hsReconLimit    = PaupOptions.HSReconLimit(rawValue: try values.decode(Int.self, forKey: .hsReconLimit))!
-            self.hsReconLimitVal = try values.decode(Int.self, forKey: .hsReconLimitVal)
-            self.hsNBest         = PaupOptions.HSNBest(rawValue: try values.decode(Int.self, forKey: .hsNBest))!
-            self.hsNBestVal      = try values.decode(Int.self, forKey: .hsNBestVal)
-            self.hsRetain        = PaupOptions.HSRetain(rawValue: try values.decode(Int.self, forKey: .hsRetain))!
-            self.hsAllSwap       = PaupOptions.HSAllSwap(rawValue: try values.decode(Int.self, forKey: .hsAllSwap))!
-            self.hsUseNonMin     = PaupOptions.HSUseNonMin(rawValue: try values.decode(Int.self, forKey: .hsUseNonMin))!
-            self.hsSteepest      = PaupOptions.HSSteepest(rawValue: try values.decode(Int.self, forKey: .hsSteepest))!
-            self.hsRearrLimit    = PaupOptions.HSRearrLimit(rawValue: try values.decode(Int.self, forKey: .hsRearrLimit))!
-            self.hsRearrLimitVal = try values.decode(Int.self, forKey: .hsRearrLimitVal)
-            self.hsAbortRep      = PaupOptions.HSAbortRep(rawValue: try values.decode(Int.self, forKey: .hsAbortRep))!
-            self.hsRandomize     = PaupOptions.HSRandomize(rawValue: try values.decode(Int.self, forKey: .hsRandomize))!
-            self.hsAddSeq        = PaupOptions.HSAddSeq(rawValue: try values.decode(Int.self, forKey: .hsAddSeq))!
-            self.hsHold          = PaupOptions.HSHold(rawValue: try values.decode(Int.self, forKey: .hsHold))!
-            self.hsHoldVal       = try values.decode(Int.self, forKey: .hsHoldVal)
-            self.hsNChuck        = PaupOptions.HSNChuck(rawValue: try values.decode(Int.self, forKey: .hsNChuck))!
-            self.hsNChuckVal     = try values.decode(Int.self, forKey: .hsNChuckVal)
-            self.hsChuckScore    = PaupOptions.HSChuckScore(rawValue: try values.decode(Int.self, forKey: .hsChuckScore))!
-            self.hsChuckScoreVal = try values.decode(Double.self, forKey: .hsChuckScoreVal)
-            self.hsNreps         = PaupOptions.HSNreps(rawValue: try values.decode(Int.self, forKey: .hsNreps))!
-            self.hsNrepsVal      = try values.decode(Int.self, forKey: .hsNrepsVal)
-            self.bbKeep          = PaupOptions.BBKeep(rawValue: try values.decode(Int.self, forKey: .bbKeep))!
-            self.bbKeepVal       = try values.decode(Double.self, forKey: .bbKeepVal)
-            self.bbMulTrees      = PaupOptions.BBMulTrees(rawValue: try values.decode(Int.self, forKey: .bbMulTrees))!
-            self.bbUpBound       = PaupOptions.BBUpBound(rawValue: try values.decode(Int.self, forKey: .bbUpBound))!
-            self.bbUpBoundVal    = try values.decode(Double.self, forKey: .bbUpBoundVal)
-            self.bbAddSeq        = PaupOptions.BBAddSeq(rawValue: try values.decode(Int.self, forKey: .bbAddSeq))!
-            self.exKeep          = PaupOptions.EXKeep(rawValue: try values.decode(Int.self, forKey: .exKeep))!
-            self.exKeepVal       = try values.decode(Int.self, forKey: .exKeepVal)
-            self.lsNst           = PaupOptions.LSNst(rawValue: try values.decode(Int.self, forKey: .lsNst))!.rawValue
-            self.lsTRatio        = PaupOptions.LSTRatio(rawValue: try values.decode(Int.self, forKey: .lsTRatio))!
-            self.lsTRatioVal     = try values.decode(Double.self, forKey: .lsTRatioVal)
-            self.lsRMatrix       = PaupOptions.LSRMatrix(rawValue: try values.decode(Int.self, forKey: .lsRMatrix))!
-            self.lsRMatrixVal    = try values.decode([Double].self, forKey: .lsRMatrixVal)
-            self.lsBasefreq      = PaupOptions.LSBasefreq(rawValue: try values.decode(Int.self, forKey: .lsBasefreq))!
-            self.lsBasefreqVal   = try values.decode([Double].self, forKey: .lsBasefreqVal)
-            self.lsRates         = PaupOptions.LSRates(rawValue: try values.decode(Int.self, forKey: .lsRates))!
-            self.lsShape         = PaupOptions.LSShape(rawValue: try values.decode(Int.self, forKey: .lsShape))!
-            self.lsShapeVal      = try values.decode(Double.self, forKey: .lsShapeVal)
-            self.lsNCat          = PaupOptions.LSNCat(rawValue: try values.decode(Int.self, forKey: .lsNCat))!
-            self.lsNCatVal       = try values.decode(Int.self, forKey: .lsNCatVal)
-            self.lsReprate       = PaupOptions.LSReprate(rawValue: try values.decode(Int.self, forKey: .lsReprate))!
-            self.lsPinvar        = PaupOptions.LSPinvar(rawValue: try values.decode(Int.self, forKey: .lsPinvar))!
-            self.lsPinvarVal     = try values.decode(Double.self, forKey: .lsPinvarVal)
-            self.lsClock         = PaupOptions.LSClock(rawValue: try values.decode(Int.self, forKey: .lsClock))!
-        }
-        catch {
-            throw PaupOptionsError.decodingError
-        }
-    }
-
-    // encode the object for serialization
-    func encode(to encoder: Encoder) throws {
-
-        do {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            try container.encode(criterion,       forKey: .criterion)
-            try container.encode(searchMethod,    forKey: .searchMethod)
-            try container.encode(hsSwap,          forKey: .hsSwap)
-            try container.encode(hsKeep,          forKey: .hsKeep)
-            try container.encode(hsKeepVal,       forKey: .hsKeepVal)
-            try container.encode(hsMulTrees,      forKey: .hsMulTrees)
-            try container.encode(hsReconLimit,    forKey: .hsReconLimit)
-            try container.encode(hsReconLimitVal, forKey: .hsReconLimitVal)
-            try container.encode(hsNBest,         forKey: .hsNBest)
-            try container.encode(hsNBestVal,      forKey: .hsNBestVal)
-            try container.encode(hsRetain,        forKey: .hsRetain)
-            try container.encode(hsAllSwap,       forKey: .hsAllSwap)
-            try container.encode(hsUseNonMin,     forKey: .hsUseNonMin)
-            try container.encode(hsSteepest,      forKey: .hsSteepest)
-            try container.encode(hsRearrLimit,    forKey: .hsRearrLimit)
-            try container.encode(hsRearrLimitVal, forKey: .hsRearrLimitVal)
-            try container.encode(hsAbortRep,      forKey: .hsAbortRep)
-            try container.encode(hsAbortRep,      forKey: .hsAbortRep)
-            try container.encode(hsRandomize,     forKey: .hsRandomize)
-            try container.encode(hsAddSeq,        forKey: .hsAddSeq)
-            try container.encode(hsHold,          forKey: .hsHold)
-            try container.encode(hsHoldVal,       forKey: .hsHoldVal)
-            try container.encode(hsNChuck,        forKey: .hsNChuck)
-            try container.encode(hsNChuckVal,     forKey: .hsNChuckVal)
-            try container.encode(hsChuckScore,    forKey: .hsChuckScore)
-            try container.encode(hsChuckScoreVal, forKey: .hsChuckScoreVal)
-            try container.encode(hsNreps,         forKey: .hsNreps)
-            try container.encode(hsNrepsVal,      forKey: .hsNrepsVal)
-            try container.encode(bbKeep,          forKey: .bbKeep)
-            try container.encode(bbKeepVal,       forKey: .bbKeepVal)
-            try container.encode(bbMulTrees,      forKey: .bbMulTrees)
-            try container.encode(bbUpBound,       forKey: .bbUpBound)
-            try container.encode(bbUpBoundVal,    forKey: .bbUpBoundVal)
-            try container.encode(bbAddSeq,        forKey: .bbAddSeq)
-            try container.encode(exKeep,          forKey: .exKeep)
-            try container.encode(exKeepVal,       forKey: .exKeepVal)
-            try container.encode(lsNst,           forKey: .lsNst)
-            try container.encode(lsTRatio,        forKey: .lsTRatio)
-            try container.encode(lsTRatioVal,     forKey: .lsTRatioVal)
-            try container.encode(lsRMatrix,       forKey: .lsRMatrix)
-            try container.encode(lsRMatrixVal,    forKey: .lsRMatrixVal)
-            try container.encode(lsRMatrixVal,    forKey: .lsRMatrixVal)
-            try container.encode(lsBasefreq,      forKey: .lsBasefreq)
-            try container.encode(lsBasefreqVal,   forKey: .lsBasefreqVal)
-            try container.encode(lsRates,         forKey: .lsRates)
-            try container.encode(lsShape,         forKey: .lsShape)
-            try container.encode(lsShapeVal,      forKey: .lsShapeVal)
-            try container.encode(lsNCat,          forKey: .lsNCat)
-            try container.encode(lsNCatVal,       forKey: .lsNCatVal)
-            try container.encode(lsReprate,       forKey: .lsReprate)
-            try container.encode(lsPinvar,        forKey: .lsPinvar)
-            try container.encode(lsPinvarVal,     forKey: .lsPinvarVal)
-            try container.encode(lsClock,         forKey: .lsClock)
-        }
-        catch {
-            throw PaupOptionsError.encodingError
-        }
-    }
     
 //    MARK: -- NSCoding
     
-       func encode(with coder: NSCoder) {
+    func encode(with coder: NSCoder) {
         coder.encode(criterion.rawValue, forKey: CodingKeys.criterion.rawValue)
         coder.encode(searchMethod.rawValue, forKey: CodingKeys.searchMethod.rawValue)
         coder.encode(hsSwap.rawValue, forKey: CodingKeys.hsSwap.rawValue)
@@ -303,57 +171,106 @@ class PaupOptions: NSObject, Codable, NSCoding {
         coder.encode(hsMulTrees.rawValue, forKey: CodingKeys.hsMulTrees.rawValue)
         coder.encode(hsReconLimit.rawValue, forKey: CodingKeys.hsReconLimit.rawValue)
         coder.encode(hsReconLimitVal, forKey: CodingKeys.hsReconLimitVal.rawValue)
-
-//        var hsNBest         = HSNBest.all
-//        var hsNBestVal      = 1
-//        var hsRetain        = HSRetain.no
-//        var hsAllSwap       = HSAllSwap.no
-//        var hsUseNonMin     = HSUseNonMin.no
-//        var hsSteepest      = HSSteepest.no
-//        var hsRearrLimit    = HSRearrLimit.none
-//        var hsRearrLimitVal = 1
-//        var hsAbortRep      = HSAbortRep.no
-//        var hsRandomize     = HSRandomize.addSeq
-//        var hsAddSeq        = HSAddSeq.simple
-//        var hsHold          = HSHold.integerValue
-//        var hsHoldVal       = 1
-//        var hsNChuck        = HSNChuck.integerValue
-//        var hsNChuckVal     = 0
-//        var hsChuckScore    = HSChuckScore.no
-//        var hsChuckScoreVal = 0.0
-//        var hsNreps         = HSNreps.integerValue
-//        var hsNrepsVal      = 10
-//        var bbKeep          = BBKeep.no
-//        var bbKeepVal       = 0.0
-//        var bbMulTrees      = BBMulTrees.yes
-//        var bbUpBound       = BBUpBound.realValue
-//        var bbUpBoundVal    = 0.0
-//        var bbAddSeq        = BBAddSeq.furthest
-//        var exKeep          = EXKeep.no
-//        var exKeepVal       = 1
-//        var lsNst           = LSNst.two.rawValue
-//        var lsTRatio        = LSTRatio.estimate
-//        var lsTRatioVal     = 2.0
-//        var lsRMatrix       = LSRMatrix.estimate
-//        var lsRMatrixVal    = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
-//        var lsBasefreq      = LSBasefreq.estimate
-//        var lsBasefreqVal   = [0.25, 0.25, 0.25, 0.25]
-//        var lsRates         = LSRates.equal
-//        var lsShape         = LSShape.estimate
-//        var lsShapeVal      = 0.5
-//        var lsNCat          = LSNCat.integerValue
-//        var lsNCatVal       = 4
-//        var lsReprate       = LSReprate.mean
-//        var lsPinvar        = LSPinvar.estimate
-//        var lsPinvarVal     = 0.1
-//        var lsClock         = LSClock.no
+        coder.encode(hsNBest.rawValue, forKey: CodingKeys.hsNBest.rawValue)
+        coder.encode(hsNBestVal, forKey: CodingKeys.hsNBestVal.rawValue)
+        coder.encode(hsRetain.rawValue, forKey: CodingKeys.hsRetain.rawValue)
+        coder.encode(hsAllSwap.rawValue, forKey: CodingKeys.hsAllSwap.rawValue)
+        coder.encode(hsUseNonMin.rawValue, forKey: CodingKeys.hsUseNonMin.rawValue)
+        coder.encode(hsSteepest.rawValue, forKey: CodingKeys.hsSteepest.rawValue)
+        coder.encode(hsRearrLimit .rawValue, forKey: CodingKeys.hsRearrLimit.rawValue)
+        coder.encode(hsRearrLimitVal, forKey: CodingKeys.hsRearrLimitVal.rawValue)
+        coder.encode(hsAbortRep.rawValue, forKey: CodingKeys.hsAbortRep.rawValue)
+        coder.encode(hsRandomize.rawValue, forKey: CodingKeys.hsRandomize.rawValue)
+        coder.encode(hsAddSeq.rawValue, forKey: CodingKeys.hsAddSeq.rawValue)
+        coder.encode(hsHold.rawValue, forKey: CodingKeys.hsHold.rawValue)
+        coder.encode(hsHoldVal, forKey: CodingKeys.hsHoldVal.rawValue)
+        coder.encode(hsNChuck.rawValue, forKey: CodingKeys.hsNChuck.rawValue)
+        coder.encode(hsNChuckVal, forKey: CodingKeys.hsNChuckVal.rawValue)
+        coder.encode(hsChuckScore.rawValue, forKey: CodingKeys.hsChuckScore.rawValue)
+        coder.encode(hsChuckScoreVal, forKey: CodingKeys.hsChuckScoreVal.rawValue)
+        coder.encode(hsNreps.rawValue, forKey: CodingKeys.hsNreps.rawValue)
+        coder.encode(hsNrepsVal, forKey: CodingKeys.hsNrepsVal.rawValue)
+        coder.encode(bbKeep.rawValue, forKey: CodingKeys.bbKeep.rawValue)
+        coder.encode(bbKeepVal, forKey: CodingKeys.bbKeepVal.rawValue)
+        coder.encode(bbMulTrees.rawValue, forKey: CodingKeys.bbMulTrees.rawValue)
+        coder.encode(bbUpBound.rawValue, forKey: CodingKeys.bbUpBound.rawValue)
+        coder.encode(bbUpBoundVal, forKey: CodingKeys.bbUpBoundVal.rawValue)
+        coder.encode(bbAddSeq.rawValue, forKey: CodingKeys.bbAddSeq.rawValue)
+        coder.encode(exKeep.rawValue, forKey: CodingKeys.exKeep.rawValue)
+        coder.encode(exKeepVal, forKey: CodingKeys.exKeepVal.rawValue)
+        coder.encode(lsNst, forKey: CodingKeys.lsNst.rawValue)
+        coder.encode(lsTRatio.rawValue, forKey: CodingKeys.lsTRatio.rawValue)
+        coder.encode(lsTRatioVal, forKey: CodingKeys.lsTRatioVal.rawValue)
+        coder.encode(lsRMatrix.rawValue, forKey: CodingKeys.lsRMatrix.rawValue)
+        coder.encode(lsRMatrixVal, forKey: CodingKeys.lsRMatrixVal.rawValue)
+        coder.encode(lsBasefreq.rawValue, forKey: CodingKeys.lsBasefreq.rawValue)
+        coder.encode(lsBasefreqVal, forKey: CodingKeys.lsBasefreqVal.rawValue)
+        coder.encode(lsRates.rawValue, forKey: CodingKeys.lsRates.rawValue)
+        coder.encode(lsRates.rawValue, forKey: CodingKeys.lsRates.rawValue)
+        coder.encode(lsShape.rawValue, forKey: CodingKeys.lsShape.rawValue)
+        coder.encode(lsShapeVal, forKey: CodingKeys.lsShapeVal.rawValue)
+        coder.encode(lsNCat.rawValue, forKey: CodingKeys.lsNCat.rawValue)
+        coder.encode(lsNCatVal, forKey: CodingKeys.lsNCatVal.rawValue)
+        coder.encode(lsReprate.rawValue, forKey: CodingKeys.lsReprate.rawValue)
+        coder.encode(lsPinvar.rawValue, forKey: CodingKeys.lsPinvar.rawValue)
+        coder.encode(lsPinvarVal, forKey: CodingKeys.lsPinvarVal.rawValue)
+        coder.encode(lsClock.rawValue, forKey: CodingKeys.lsClock.rawValue)
+    }
+       
+    required init?(coder: NSCoder) {
+        criterion =  Criteria(rawValue: coder.decodeObject(forKey: CodingKeys.criterion.rawValue) as! Int) ?? Criteria.parsimony
+        searchMethod =  SearchMethod(rawValue: coder.decodeObject(forKey: CodingKeys.searchMethod.rawValue) as! Int) ?? SearchMethod.heuristic
+        hsSwap =  HSSwap(rawValue: coder.decodeObject(forKey: CodingKeys.hsSwap.rawValue) as! Int) ?? HSSwap.tbr
+        hsKeep =  HSKeep(rawValue: coder.decodeObject(forKey: CodingKeys.hsKeep.rawValue) as! Int) ?? HSKeep.no
+        hsKeepVal = coder.decodeDouble(forKey: CodingKeys.hsKeepVal.rawValue)
+        hsMulTrees =  HSMulTrees(rawValue: coder.decodeObject(forKey: CodingKeys.hsMulTrees.rawValue) as! Int) ?? HSMulTrees.yes
+        hsReconLimit =  HSReconLimit(rawValue: coder.decodeObject(forKey: CodingKeys.hsReconLimit.rawValue) as! Int) ?? HSReconLimit.integerValue
+        hsReconLimitVal = coder.decodeInteger(forKey: CodingKeys.hsReconLimitVal.rawValue)
+        hsNBest  =  HSNBest(rawValue: coder.decodeObject(forKey: CodingKeys.hsNBest.rawValue) as! Int) ?? HSNBest.all
+        hsNBestVal = coder.decodeInteger(forKey: CodingKeys.hsNBestVal.rawValue)
+        hsRetain  =  HSRetain(rawValue: coder.decodeObject(forKey: CodingKeys.hsRetain.rawValue) as! Int) ?? HSRetain.no
+        hsAllSwap  =  HSAllSwap(rawValue: coder.decodeObject(forKey: CodingKeys.hsAllSwap.rawValue) as! Int) ?? HSAllSwap.no
+        hsUseNonMin  =  HSUseNonMin(rawValue: coder.decodeObject(forKey: CodingKeys.hsUseNonMin.rawValue) as! Int) ?? HSUseNonMin.no
+        hsSteepest  =  HSSteepest(rawValue: coder.decodeObject(forKey: CodingKeys.hsSteepest.rawValue) as! Int) ?? HSSteepest.no
+        hsRearrLimit  =  HSRearrLimit(rawValue: coder.decodeObject(forKey: CodingKeys.hsRearrLimit.rawValue) as! Int) ?? HSRearrLimit.none
+        hsRearrLimitVal = coder.decodeInteger(forKey: CodingKeys.hsRearrLimitVal.rawValue)
+        hsAbortRep  =  HSAbortRep(rawValue: coder.decodeObject(forKey: CodingKeys.hsAbortRep.rawValue) as! Int) ?? HSAbortRep.no
+        hsRandomize  =  HSRandomize(rawValue: coder.decodeObject(forKey: CodingKeys.hsRandomize.rawValue) as! Int) ?? HSRandomize.addSeq
+        hsAddSeq  =  HSAddSeq(rawValue: coder.decodeObject(forKey: CodingKeys.hsAddSeq.rawValue) as! Int) ?? HSAddSeq.simple
+        hsHold  =  HSHold(rawValue: coder.decodeObject(forKey: CodingKeys.hsHold.rawValue) as! Int) ?? HSHold.integerValue
+        hsHoldVal = coder.decodeInteger(forKey: CodingKeys.hsHoldVal.rawValue)
+        hsNChuck  =  HSNChuck(rawValue: coder.decodeObject(forKey: CodingKeys.hsNChuck.rawValue) as! Int) ?? HSNChuck.integerValue
+        hsNChuckVal = coder.decodeInteger(forKey: CodingKeys.hsNChuckVal.rawValue)
+        hsChuckScore =  HSChuckScore(rawValue: coder.decodeObject(forKey: CodingKeys.hsChuckScore.rawValue) as! Int) ?? HSChuckScore.no
+        hsChuckScoreVal = coder.decodeDouble(forKey: CodingKeys.hsChuckScoreVal.rawValue)
+        hsNreps =  HSNreps(rawValue: coder.decodeObject(forKey: CodingKeys.hsNreps.rawValue) as! Int) ?? HSNreps.integerValue
+        hsNrepsVal = coder.decodeInteger(forKey: CodingKeys.hsNrepsVal.rawValue)
+        bbKeep =  BBKeep(rawValue: coder.decodeObject(forKey: CodingKeys.bbKeep.rawValue) as! Int) ?? BBKeep.no
+        bbKeepVal = coder.decodeDouble(forKey: CodingKeys.bbKeep.rawValue)
+        bbMulTrees =  BBMulTrees(rawValue: coder.decodeObject(forKey: CodingKeys.bbMulTrees.rawValue) as! Int) ?? BBMulTrees.yes
+        bbUpBound =  BBUpBound(rawValue: coder.decodeObject(forKey: CodingKeys.bbUpBound.rawValue) as! Int) ?? BBUpBound.realValue
+        bbUpBoundVal = coder.decodeDouble(forKey: CodingKeys.bbUpBoundVal.rawValue)
+        bbAddSeq =  BBAddSeq(rawValue: coder.decodeObject(forKey: CodingKeys.bbAddSeq.rawValue) as! Int) ?? BBAddSeq.furthest
+        exKeep =  EXKeep(rawValue: coder.decodeObject(forKey: CodingKeys.exKeep.rawValue) as! Int) ?? EXKeep.no
+        exKeepVal = coder.decodeInteger(forKey: CodingKeys.exKeepVal.rawValue)
+        lsNst = coder.decodeInteger(forKey: CodingKeys.lsNst.rawValue)
+        lsTRatio =  LSTRatio(rawValue: coder.decodeObject(forKey: CodingKeys.lsTRatio.rawValue) as! Int) ?? LSTRatio.estimate
+        lsTRatioVal = coder.decodeDouble(forKey: CodingKeys.lsTRatioVal.rawValue)
+        lsRMatrix =  LSRMatrix(rawValue: coder.decodeObject(forKey: CodingKeys.lsRMatrix.rawValue) as! Int) ?? LSRMatrix.estimate
+        lsRMatrixVal = coder.decodeObject(forKey: CodingKeys.lsRMatrixVal.rawValue) as! [Double]
+        lsBasefreq  =  LSBasefreq(rawValue: coder.decodeObject(forKey: CodingKeys.lsBasefreq.rawValue) as! Int) ?? LSBasefreq.estimate
+        lsBasefreqVal = coder.decodeObject(forKey: CodingKeys.lsBasefreqVal.rawValue) as! [Double]
+        lsRates  =  LSRates(rawValue: coder.decodeObject(forKey: CodingKeys.lsRates.rawValue) as! Int) ?? LSRates.equal
+        lsShape  =  LSShape(rawValue: coder.decodeObject(forKey: CodingKeys.lsShape.rawValue) as! Int) ?? LSShape.estimate
+        lsShapeVal = coder.decodeDouble(forKey: CodingKeys.lsShapeVal.rawValue)
+        lsNCat  =  LSNCat(rawValue: coder.decodeObject(forKey: CodingKeys.lsNCat.rawValue) as! Int) ?? LSNCat.integerValue
+        lsNCatVal = coder.decodeInteger(forKey: CodingKeys.lsNCatVal.rawValue)
+        lsReprate  =  LSReprate(rawValue: coder.decodeObject(forKey: CodingKeys.lsReprate.rawValue) as! Int) ?? LSReprate.mean
+        lsPinvar  =  LSPinvar(rawValue: coder.decodeObject(forKey: CodingKeys.lsPinvar.rawValue) as! Int) ?? LSPinvar.estimate
+        lsPinvarVal = coder.decodeDouble(forKey: CodingKeys.lsPinvarVal.rawValue)
+        lsClock  =  LSClock(rawValue: coder.decodeObject(forKey: CodingKeys.lsClock.rawValue) as! Int) ?? LSClock.no
+    }
     
-       }
-       
-       required init?(coder: NSCoder) {
-           
-       }
-       
 
     func revertToFactorySettings() {
     
