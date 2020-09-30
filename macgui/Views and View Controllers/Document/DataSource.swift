@@ -10,7 +10,9 @@ import Cocoa
 
 class DataSource: NSObject, NSCoding {
 
-    
+    enum Key: String {
+        case analyses
+    }
     @objc dynamic var analyses: [Analysis] = [Analysis(name: "untitled analysis")] {
         didSet {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
@@ -20,7 +22,7 @@ class DataSource: NSObject, NSCoding {
     
     
     func encode(with coder: NSCoder) {
-         coder.encode(analyses, forKey: "analyses")
+        coder.encode(analyses, forKey: Key.analyses.rawValue)
     }
     
     convenience init(analyses: [Analysis]) {
