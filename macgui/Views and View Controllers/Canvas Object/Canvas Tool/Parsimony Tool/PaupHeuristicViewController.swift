@@ -11,6 +11,5 @@ import Cocoa
 class PaupHeuristicViewController: NSViewController {
    
     @objc dynamic var options: PaupOptions?
-
     
 }

@@ -9,39 +9,103 @@
 import Cocoa
 
 class ParsimonyToolViewController: InfoToolViewController {
-
-    enum SearchMethod: Int {
-        case Exaustive = 0
-        case BranchBound = 1
-        case Heuristic = 2
+    
+    @objc dynamic var options: PaupOptions?
+    
+    @IBOutlet weak var boxView: NSBox!
+    @IBOutlet weak var containerViewHeight: NSLayoutConstraint?
+    var heightConstraint = NSLayoutConstraint()
+   
+    @IBAction func selectSearchMethod(_ sender: NSPopUpButton) {
+        let searchMethodIndex = sender.indexOfSelectedItem
+        setSearchMethodAt(searchMethodIndex)
+        
     }
     
-    @IBAction func selectSearchMethod(_ sender: NSPopUpButton) {
+    
+    func addHeightConstraintToBox(height: CGFloat) {
+   
+        heightConstraint    = NSLayoutConstraint(item: boxView as Any,
+                                                    attribute: NSLayoutConstraint.Attribute.height,
+                                                    relatedBy: NSLayoutConstraint.Relation.equal,
+                                                    toItem: nil,
+                                                    attribute: NSLayoutConstraint.Attribute.notAnAttribute,
+                                                    multiplier: 1,
+                                                    constant: height)
+        boxView.addConstraint(heightConstraint)
+    }
+    
+    func removeHeightConstraintFromBox() {
+        boxView.removeConstraint(heightConstraint)
+    }
+    
+    func setSearchMethodAt(_ index:  Int) {
         
-        guard let parsimonyTool = self.tool as? Parsimony else { return }
+        removeHeightConstraintFromBox()
         
-        switch sender.indexOfSelectedItem {
-        case SearchMethod.Exaustive.rawValue:
-            tabViewController?.selectedTabViewItemIndex = SearchMethod.Exaustive.rawValue
-            guard let contentVC = getTabContentController(index: SearchMethod.Exaustive.rawValue) as? PaupExhaustiveViewController else { return }
-            parsimonyTool.options = contentVC.options
-        case SearchMethod.BranchBound.rawValue:
-            tabViewController?.selectedTabViewItemIndex = SearchMethod.BranchBound.rawValue
-            guard let contentVC = getTabContentController(index: SearchMethod.BranchBound.rawValue) as? PaupBranchBoundViewController else { return }
-                parsimonyTool.options = contentVC.options
-        case SearchMethod.Heuristic.rawValue:
-            tabViewController?.selectedTabViewItemIndex = SearchMethod.Heuristic.rawValue
-            guard let contentVC = getTabContentController(index: SearchMethod.Heuristic.rawValue) as? PaupHeuristicViewController else { return }
-            parsimonyTool.options = contentVC.options
+        switch index {
+            
+        case PaupOptions.SearchMethod.exhaustive.rawValue:
+            tabViewController?.selectedTabViewItemIndex = index
+            guard let contentVC = getTabContentController(index: index) as? PaupExhaustiveViewController else { return }
+            contentVC.options = options
+            contentVC.options?.searchMethod = index
+           
+        case PaupOptions.SearchMethod.branchAndBound.rawValue:
+            tabViewController?.selectedTabViewItemIndex = index
+            guard let contentVC = getTabContentController(index: index) as? PaupBranchBoundViewController else { return }
+            contentVC.options = options
+            contentVC.options?.searchMethod = index
+         
+            
+        case PaupOptions.SearchMethod.heuristic.rawValue:
+            tabViewController?.selectedTabViewItemIndex = index
+            guard let contentVC = getTabContentController(index: index) as? PaupHeuristicViewController else { return }
+            contentVC.options = options
+            contentVC.options?.searchMethod = index
+            
         default:
             print("Search method not implemented")
             return
         }
+        
+        
+        addHeightConstraintToBox(height: boxView.fittingSize.height)
     }
 
+    @IBAction func reset(_ sender: NSButton) {
+        guard let parsimonyTool = self.tool as? Parsimony else { return }
+        parsimonyTool.options = PaupOptions()
+        self.options = parsimonyTool.options
+        setSearchMethodAt(self.options!.searchMethod)
+        view.needsDisplay = true
+    }
     
-    override func viewDidLoad() {
-           super.viewDidLoad()
-       }
+    @IBAction func cancel(_ sender: NSButton) {
+        NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        postDismissNotification()
+    }
+    
+    @IBAction func ok(_ sender: NSButton) {
+//        TODO run PAUP
+        NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+       postDismissNotification()
+     
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        guard let parsimonyTool = self.tool as? Parsimony else { return }
+        self.options = parsimonyTool.options
+        setSearchMethodAt(options!.searchMethod)
+
+    }
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+    }
+    
+   
     
 }

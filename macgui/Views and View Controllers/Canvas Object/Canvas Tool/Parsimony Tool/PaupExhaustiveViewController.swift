@@ -10,7 +10,7 @@ import Cocoa
 
 class PaupExhaustiveViewController: NSViewController {
     
-    @objc dynamic var options: PaupOptions?
-
+    @objc dynamic var options: PaupOptions? 
+    
     
 }

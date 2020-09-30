@@ -23,6 +23,10 @@ class InfoToolViewController: NSViewController {
         return tabViewController?.tabViewItems[index].viewController
     }
     
+    func postDismissNotification() {
+       NotificationCenter.default.post(name: .dismissToolSheet, object: self)
+    }
+    
        
     
 }
