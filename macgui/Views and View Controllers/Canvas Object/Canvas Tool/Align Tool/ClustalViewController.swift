@@ -10,36 +10,13 @@ import Cocoa
 
 class ClustalViewController: NSViewController {
     
-    @objc dynamic var options: ClustalOmegaOptions = ClustalOmegaOptions()
+    @objc dynamic var options: ClustalOmegaOptions?
 
-    @IBAction func selectDealign(_ sender: NSPopUpButton) {
-        if sender.indexOfSelectedItem == 0 {
-            self.options.dealign = ClustalOmegaOptions.Dealign.yes
-        } else if  sender.indexOfSelectedItem == 1 {
-            self.options.dealign = ClustalOmegaOptions.Dealign.no
-        }
-    }
-    @IBAction func selectMBEDGuideTree(_ sender: NSPopUpButton) {
-        if sender.indexOfSelectedItem == 0 {
-            self.options.mbedClusteringGuideTree = ClustalOmegaOptions.MBEDClusteringGuideTree.yes
-        } else if  sender.indexOfSelectedItem == 1 {
-            self.options.mbedClusteringGuideTree = ClustalOmegaOptions.MBEDClusteringGuideTree.no
-        }
-    }
-    
-    @IBAction func selectMBEDIteration(_ sender: NSPopUpButton) {
-           if sender.indexOfSelectedItem == 0 {
-               self.options.mbedClusteringIteration = ClustalOmegaOptions.MBEDClusteringIteration.yes
-           } else if  sender.indexOfSelectedItem == 1 {
-               self.options.mbedClusteringIteration = ClustalOmegaOptions.MBEDClusteringIteration.no
-           }
-       }
-    
     @IBAction func selectOrder(_ sender: NSPopUpButton) {
         if sender.indexOfSelectedItem == 0 {
-            self.options.order = ClustalOmegaOptions.Order.aligned
+            self.options?.order = ClustalOmegaOptions.Order.aligned
         } else if  sender.indexOfSelectedItem == 1 {
-            self.options.order = ClustalOmegaOptions.Order.input
+            self.options?.order = ClustalOmegaOptions.Order.input
         }
     }
     

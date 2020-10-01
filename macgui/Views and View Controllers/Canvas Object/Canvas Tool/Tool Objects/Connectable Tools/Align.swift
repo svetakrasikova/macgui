@@ -10,6 +10,32 @@ import Cocoa
 
 class Align: DataTool {
     
+    enum Method: Int {
+        case clustal = 0
+        case mafft = 1
+        case dialign = 2
+        case muscle = 3
+        case tcoffee = 4
+        case dca = 5
+        case probcons = 6
+    }
+    
+    var selectedAlignMethod: Int = Method.clustal.rawValue {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    
+    var clustalOptions: ClustalOmegaOptions? = ClustalOmegaOptions() {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    
+    enum Key: String {
+        case clustalOptions, selectedAlignMethod
+    }
+    
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
@@ -19,9 +45,19 @@ class Align: DataTool {
         outlets = [green]
     }
     
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        clustalOptions = aDecoder.decodeObject(forKey: Key.clustalOptions.rawValue) as? ClustalOmegaOptions ?? ClustalOmegaOptions()
+        selectedAlignMethod = aDecoder.decodeInteger(forKey: Key.selectedAlignMethod.rawValue)
     }
+    
+    override func encode(with coder: NSCoder) {
+        super.encode(with: coder)
+        coder.encode(clustalOptions, forKey: Key.clustalOptions.rawValue)
+        coder.encode(selectedAlignMethod, forKey: Key.selectedAlignMethod.rawValue)
+    }
+    
     
     func alignMatricesWithClustal (_ data: [DataMatrix], options: ClustalOmegaOptions) throws {
         

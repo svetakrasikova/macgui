@@ -10,27 +10,30 @@ import Cocoa
 
 class AlignToolViewController: InfoToolViewController {
     
-    enum AlignToolTab: Int {
-        case clustal = 0
-        case mafft = 1
-        case dialign = 2
-        case muscle = 3
-        case tcoffee = 4
-        case dca = 5
-        case probcons = 6
+    var alignTool: Align? {
+        return tool as? Align
     }
     
+    var selectedTabIndex: Int {
+        self.alignTool?.selectedAlignMethod ?? 0
+    }
+    
+    var clustalVC: ClustalViewController? {
+        return getTabContentController(index: Align.Method.clustal.rawValue) as? ClustalViewController
+    }
     
     @IBAction func cancelPushed(_ sender: NSButton) {
+        writeOptionsToTool()
         postDismissNotification()
     }
     
     @IBAction func okPushed(_ sender: NSButton) {
-        guard let alignTool = self.tool as? Align else { return }
+        writeOptionsToTool()
+        
         if let index = tabViewController?.selectedTabViewItemIndex {
             switch index {
-            case AlignToolTab.clustal.rawValue:
-                alignWithClustal(alignTool)
+            case Align.Method.clustal.rawValue:
+                alignWithClustal()
             default:
                 print("This alignment method is not implemented yet.")
             }
@@ -38,23 +41,50 @@ class AlignToolViewController: InfoToolViewController {
         postDismissNotification()
     }
     
-    func alignWithClustal(_ alignTool: Align) {
-        guard let clustalVC = getTabContentController(index: AlignToolTab.clustal.rawValue) as? ClustalViewController else { return }
-       
-        
-        let options = clustalVC.options
-        
-        do {
-            try alignTool.alignMatricesWithClustal(alignTool.dataMatrices, options: options)
-        } catch RunBinaryError.noData {
-            let message = "There is no data to run alignment on"
-            runAlignmentAlert(tool: ExecutableTool.clustal.rawValue, informativeText: message)
-        } catch RunBinaryError.writeError {
-            print("ClustalError.writeError: error writing data in fasta format to temp directory")
-        } catch RunBinaryError.launchPathError {
-            print("ClustalError.launchPathError: wrong path to the binary")
-        } catch {
-            print("Clustal error: \(error)")
+    
+     @IBAction func resetPushed(_ sender: NSButton) {
+         runResetAlert()
+     }
+    
+    func runResetAlert(){
+        let alert = NSAlert()
+        alert.messageText = "Warning: you are about to remove aligned data and reset selected options to default."
+        alert.addButton(withTitle: "Reset")
+        alert.addButton(withTitle: "Cancel")
+        let result = alert.runModal()
+        switch result {
+        case NSApplication.ModalResponse.alertFirstButtonReturn:
+            self.alignTool?.alignedDataMatrices.removeAll()
+            switch tabViewController?.selectedTabViewItemIndex {
+            case Align.Method.clustal.rawValue:
+                clustalVC?.options =  ClustalOmegaOptions()
+                view.needsDisplay = true
+            default: break
+            }
+        default: break
+        }
+    }
+     
+    
+    func alignWithClustal() {
+
+        if let options = self.clustalVC?.options, let alignTool = self.alignTool {
+            do {
+                try alignTool.alignMatricesWithClustal(alignTool.dataMatrices, options: options)
+            } catch RunBinaryError.noData {
+                let message = "There is no data to run alignment on"
+                runAlignmentAlert(tool: ExecutableTool.clustal.rawValue, informativeText: message)
+                alignTool.delegate?.endProgressIndicator()
+            } catch RunBinaryError.writeError {
+                print("ClustalError.writeError: error writing data in fasta format to temp directory")
+                alignTool.delegate?.endProgressIndicator()
+            } catch RunBinaryError.launchPathError {
+                print("ClustalError.launchPathError: wrong path to the binary")
+                alignTool.delegate?.endProgressIndicator()
+            } catch {
+                print("Clustal error: \(error)")
+                alignTool.delegate?.endProgressIndicator()
+            }
         }
         
     }
@@ -66,17 +96,28 @@ class AlignToolViewController: InfoToolViewController {
         alert.runModal()
     }
    
-    @IBAction func resetPushed(_ sender: NSButton) {
-        guard let alignTool = self.tool as? Align else { return }
-        alignTool.alignedDataMatrices.removeAll()
-        postDismissNotification()
+    func writeOptionsToTool(){
+        self.alignTool?.clustalOptions = self.clustalVC?.options
+        alignTool?.selectedAlignMethod = tabViewController?.selectedTabViewItemIndex ?? 0
     }
     
-    func postDismissNotification() {
-       NotificationCenter.default.post(name: .dismissToolSheet, object: self)
+    func readOptionsFromTool() {
+        self.clustalVC?.options = self.alignTool?.clustalOptions
+        tabViewController?.selectedTabViewItemIndex = selectedTabIndex
     }
     
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        readOptionsFromTool()
+        tabViewController?.selectedTabViewItemIndex = selectedTabIndex
+    }
     
-    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        writeOptionsToTool()
+       
+        
+    }
+
     
 }

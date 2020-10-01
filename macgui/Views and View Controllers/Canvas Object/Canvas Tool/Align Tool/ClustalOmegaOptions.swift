@@ -9,11 +9,11 @@
 import Cocoa
 
 @objcMembers
-class ClustalOmegaOptions: NSObject, Codable {
-    
+class ClustalOmegaOptions: NSObject, NSCoding {
+   
     // MARK: - Coding Keys
     
-    private enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String {
         
         case dealign
         case mbedClusteringGuideTree
@@ -27,27 +27,26 @@ class ClustalOmegaOptions: NSObject, Codable {
     // MARK: - Errors
        
     enum ClustalOmegaOptionsError: Error {
-           
            case encodingError
            case decodingError
        }
        
        // MARK: - Clustal Command Options
        
-    enum Dealign: Int, Codable { case yes, no }
-    enum Order: String, Codable { case aligned = "tree-order", input = "input-order" }
-    enum MBEDClusteringGuideTree: Int, Codable { case yes, no }
-    enum MBEDClusteringIteration: Int, Codable { case yes, no }
-    enum NumberCombinedIter: Int, Codable { case integerValue }
-    enum MAXGuideTreeIter: Int, Codable { case integerValue }
-    enum MAXHMMIter: Int, Codable { case integerValue }
+    enum Dealign: Int { case yes, no }
+    enum Order: String { case aligned = "tree-order", input = "input-order" }
+    enum MBEDClusteringGuideTree: Int { case yes, no }
+    enum MBEDClusteringIteration: Int { case yes, no }
+    enum NumberCombinedIter: Int { case integerValue }
+    enum MAXGuideTreeIter: Int { case integerValue }
+    enum MAXHMMIter: Int { case integerValue }
        
        // MARK: - Clustal Command Variables
        
-    var dealign = Dealign.no
+    var dealign = Dealign.no.rawValue
     var order = Order.aligned
-    var mbedClusteringGuideTree = MBEDClusteringGuideTree.yes
-    var mbedClusteringIteration = MBEDClusteringIteration.yes
+    var mbedClusteringGuideTree = MBEDClusteringGuideTree.yes.rawValue
+    var mbedClusteringIteration = MBEDClusteringIteration.yes.rawValue
     var numberCombinedIter = 0
     var maxGuideTreeIter = 0
     var maxHMMIter = 0
@@ -76,48 +75,38 @@ class ClustalOmegaOptions: NSObject, Codable {
         super.init()
     }
     
-
-    required init(from decoder: Decoder) throws {
+    
+    func encode(with coder: NSCoder) {
         
-        do {
-            let values = try decoder.container(keyedBy: CodingKeys.self)
-            self.dealign = ClustalOmegaOptions.Dealign(rawValue: try values.decode(Int.self, forKey: .dealign))!
-            self.order = ClustalOmegaOptions.Order(rawValue: try values.decode(String.self, forKey: .order))!
-            self.mbedClusteringGuideTree = ClustalOmegaOptions.MBEDClusteringGuideTree(rawValue: try values.decode(Int.self, forKey: .mbedClusteringGuideTree))!
-            self.mbedClusteringIteration = ClustalOmegaOptions.MBEDClusteringIteration(rawValue: try values.decode(Int.self, forKey: .mbedClusteringIteration))!
-            self.numberCombinedIter = try values.decode(Int.self, forKey: .numberCombinedIter)
-            self.maxHMMIter = try values.decode(Int.self, forKey: .maxHMMIter)
-            self.maxGuideTreeIter = try values.decode(Int.self, forKey: .maxGuideTreeIter)
-        }
-        catch {
-            throw ClustalOmegaOptionsError.decodingError
-        }
+        coder.encode(dealign, forKey: CodingKeys.dealign.rawValue)
+        coder.encode(order.rawValue, forKey: CodingKeys.order.rawValue)
+        coder.encode(mbedClusteringGuideTree, forKey: CodingKeys.mbedClusteringGuideTree.rawValue)
+        coder.encode(mbedClusteringIteration, forKey: CodingKeys.mbedClusteringIteration.rawValue)
+        coder.encode(numberCombinedIter, forKey: CodingKeys.numberCombinedIter.rawValue)
+        coder.encode(maxGuideTreeIter, forKey: CodingKeys.maxGuideTreeIter.rawValue)
+        coder.encode(maxHMMIter, forKey: CodingKeys.maxHMMIter.rawValue)
+        
     }
     
-
-    func encode(to encoder: Encoder) throws {
+    required init?(coder: NSCoder) {
+        dealign =  coder.decodeInteger(forKey: CodingKeys.dealign.rawValue)
+        order =  Order(rawValue: coder.decodeObject(forKey: CodingKeys.order.rawValue) as! String) ?? Order.aligned
+        mbedClusteringGuideTree =  coder.decodeInteger(forKey: CodingKeys.mbedClusteringGuideTree.rawValue)
+        mbedClusteringIteration =  coder.decodeInteger(forKey: CodingKeys.mbedClusteringIteration.rawValue)
+        numberCombinedIter = coder.decodeInteger(forKey: CodingKeys.numberCombinedIter.rawValue)
+        maxHMMIter = coder.decodeInteger(forKey: CodingKeys.maxHMMIter.rawValue)
+        maxGuideTreeIter = coder.decodeInteger(forKey: CodingKeys.maxGuideTreeIter.rawValue)
         
-        do {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            try container.encode(dealign, forKey: .dealign)
-            try container.encode(order, forKey: .order)
-            try container.encode(mbedClusteringIteration, forKey: .mbedClusteringIteration)
-            try container.encode(mbedClusteringGuideTree, forKey: .mbedClusteringGuideTree)
-            try container.encode(numberCombinedIter, forKey: .numberCombinedIter)
-            try container.encode(maxGuideTreeIter, forKey: .maxGuideTreeIter)
-            try container.encode(maxHMMIter, forKey: .maxHMMIter)
-        }
-        catch {
-            throw ClustalOmegaOptionsError.encodingError
-        }
     }
+    
+       
     
     func revertToFactorySettings() {
         
-        dealign = Dealign.no
+        dealign = Dealign.no.rawValue
         order = Order.aligned
-        mbedClusteringGuideTree = MBEDClusteringGuideTree.yes
-        mbedClusteringIteration = MBEDClusteringIteration.yes
+        mbedClusteringGuideTree = MBEDClusteringGuideTree.yes.rawValue
+        mbedClusteringIteration = MBEDClusteringIteration.yes.rawValue
         numberCombinedIter = 0
         maxGuideTreeIter = 0
         maxHMMIter = 0
@@ -138,9 +127,9 @@ class ClustalOmegaOptions: NSObject, Codable {
             args.append(maxHMMIterArg + String(describing: maxHMMIter))
             args.append(forceOverwritingArg)
             
-            if dealign == Dealign.yes { args.append(dealignArg) }
-            if mbedClusteringIteration == MBEDClusteringIteration.yes { args.append(mbedClusteringIterationArg) }
-            if mbedClusteringGuideTree == MBEDClusteringGuideTree.yes { args.append(mbedClusteringGuideTreeArg) }
+            if dealign == Dealign.yes.rawValue { args.append(dealignArg) }
+            if mbedClusteringIteration == MBEDClusteringIteration.yes.rawValue { args.append(mbedClusteringIterationArg) }
+            if mbedClusteringGuideTree == MBEDClusteringGuideTree.yes.rawValue { args.append(mbedClusteringGuideTreeArg) }
             
         }
     
@@ -180,7 +169,6 @@ class ClustalOmegaOptions: NSObject, Codable {
             }
             
         default: break
-            
         }
     }
     
