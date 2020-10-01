@@ -32,7 +32,7 @@ class DataSource: NSObject, NSCoding {
     
     required convenience init(coder: NSCoder) {
         self.init()
-        analyses = coder.decodeObject(forKey: "analyses") as! [Analysis]
+        analyses = coder.decodeObject(forKey: Key.analyses.rawValue) as! [Analysis]
     }
     
   

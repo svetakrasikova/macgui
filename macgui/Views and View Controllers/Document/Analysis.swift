@@ -10,6 +10,10 @@ import Cocoa
 
 class Analysis: NSObject, NSCoding, NSCopying {
 
+    
+    enum Key: String {
+        case name, tools, arrows, notes
+    }
     @objc dynamic var name: String = "" {
         didSet{
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
@@ -38,18 +42,18 @@ class Analysis: NSObject, NSCoding, NSCopying {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        name = aDecoder.decodeObject(forKey: "name") as! String
-        tools = aDecoder.decodeObject(forKey: "tools") as! [ToolObject]
-        arrows = aDecoder.decodeObject(forKey: "arrows") as! [Connection]
-        notes = aDecoder.decodeObject(forKey: "notes") as? String
+        name = aDecoder.decodeObject(forKey: Key.name.rawValue) as! String
+        tools = aDecoder.decodeObject(forKey: Key.tools.rawValue) as! [ToolObject]
+        arrows = aDecoder.decodeObject(forKey: Key.arrows.rawValue) as! [Connection]
+        notes = aDecoder.decodeObject(forKey: Key.notes.rawValue) as? String
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(name, forKey: "name")
-        aCoder.encode(tools, forKey: "tools")
-        aCoder.encode(arrows, forKey: "arrows")
+        aCoder.encode(name, forKey: Key.name.rawValue)
+        aCoder.encode(tools, forKey: Key.tools.rawValue)
+        aCoder.encode(arrows, forKey: Key.arrows.rawValue)
         if let notes = notes {
-            aCoder.encode(notes, forKey: "notes")
+            aCoder.encode(notes, forKey: Key.notes.rawValue)
         }
     }
     
