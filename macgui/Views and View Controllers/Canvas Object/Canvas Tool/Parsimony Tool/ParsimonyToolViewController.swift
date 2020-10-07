@@ -87,10 +87,10 @@ class ParsimonyToolViewController: InfoToolViewController {
     }
     
     @IBAction func ok(_ sender: NSButton) {
-//        TODO run PAUP
+        guard let parsimonyTool = self.tool as? Parsimony else { return }
+        parsimonyTool.execute()
         NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
-       postDismissNotification()
-     
+        postDismissNotification()
     }
     
     override func viewWillAppear() {

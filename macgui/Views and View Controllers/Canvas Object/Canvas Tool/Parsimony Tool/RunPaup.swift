@@ -20,7 +20,7 @@ class RunPaup {
     }
     
     
-    func processDirectory(dataMatrices: [DataMatrix], options: PaupOptions, completion: @escaping ()  -> Void ) throws {
+    func runPaupOnDirectory(dataMatrices: [DataMatrix], options: PaupOptions, completion: @escaping ()  -> Void ) throws {
         guard !dataMatrices.isEmpty else {
             throw RunBinaryError.writeError
         }

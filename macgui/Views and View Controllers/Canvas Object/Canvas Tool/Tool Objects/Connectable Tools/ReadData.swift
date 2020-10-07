@@ -62,6 +62,7 @@ class ReadData: DataTool {
         }
     }
     
+    
     func readFromFileURL(_ fileURL: URL) throws {
         
         var readMatrices: [DataMatrix] = []
@@ -70,11 +71,11 @@ class ReadData: DataTool {
         self.delegate?.startProgressIndicator()
         DispatchQueue.global(qos: .background).async {
             do {
-                try readMatrices = self.readDataTask(fileURL)
+                try readMatrices = self.readMatrixDataTask(fileURL)
                 if !readMatrices.isEmpty {
                     DispatchQueue.main.async {
                         self.unalignedDataMatrices = readMatrices
-                        self.propagateUnalignedData(data: readMatrices, isSource: true)
+                        self.propagateData()
                     }
                 }
             }
@@ -95,4 +96,7 @@ class ReadData: DataTool {
     
     
 }
+
+
+
 
