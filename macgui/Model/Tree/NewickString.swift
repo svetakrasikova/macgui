@@ -97,17 +97,27 @@ class NewickString: NSObject {
         return newickTokens
     }
     
+    func parseNexus(_ nexusString: String) -> String? {
+        var trees: String?
+        let lines = nexusString.split(separator: "\n")
+        let treeLines = lines.filter {$0.hasPrefix("tree") }
+        if !treeLines.isEmpty {
+            trees = treeLines.joined()
+        }
+        return trees
+    }
+    
     func parseNewickStrings(fileURL: URL) throws -> [String] {
     
-        // read the contents of the file into a String
         var s : String?
         do {
             let d = try Data(contentsOf:fileURL)
             s = String(data:d, encoding: .utf8)
+            s = parseNexus(s ?? "")
         } catch {
             throw NewickError.fileParsingError
         }
-
+        
         var newickStrings : [String] = []
         var readingNewick : Bool = false
         var nStr : String = ""
@@ -124,6 +134,8 @@ class NewickString: NSObject {
             if char == ";" {
                 readingNewick = false
                 newickString = nStr
+                print(nStr)
+                nStr = ""
                 if check() == false {
                      print("Error: Improperly formatted Newick string")
                 }
