@@ -20,7 +20,7 @@ class Connection: NSObject, NSCoding {
         case to, from, type
     }
     
-    init(to: Connectable, from: Connectable, type: ConnectorType) throws {
+    init(to: Connectable, from: Connectable, type: ConnectorType) {
         to.addNeighbor(connectionType: type, linkType: LinkType.inlet)
         from.addNeighbor(connectionType: type, linkType: LinkType.outlet)
         self.to = to
@@ -28,11 +28,11 @@ class Connection: NSObject, NSCoding {
         self.type = type
         switch self.type {
         case .alignedData:
-            guard let from = from as? DataTool else { return }
-            try from.connectAlignedData()
+            guard let to = to as? DataTool, let from = from as? DataTool else { return }
+            to.connectAlignedData(from: from)
         case .unalignedData:
-            guard let from = from as? DataTool else { return }
-            try from.connectUnalignedData()
+            guard let to = to as? DataTool, let from = from as? DataTool else { return }
+            to.connectUnalignedData(from: from)
         default:
             print("No action defined for connection type", self.type)
         }

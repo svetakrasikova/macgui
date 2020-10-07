@@ -61,5 +61,6 @@ enum ConnectorType: String {
 enum ConnectionError: Error {
     case noData
     case noAlignedData
+    case noUnalignedData
     case typeError
 }

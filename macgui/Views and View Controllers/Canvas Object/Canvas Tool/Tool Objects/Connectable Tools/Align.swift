@@ -73,11 +73,11 @@ class Align: DataTool {
             
             DispatchQueue.global(qos: .background).async {
                 do {
-                    let readMatrices = try self.readDataTask(clustal.exeDirURL)
+                    let readMatrices = try self.readMatrixDataTask(clustal.exeDirURL)
                     if !readMatrices.isEmpty {
                         DispatchQueue.main.async {
                             self.alignedDataMatrices = readMatrices
-                            self.propagateAlignedData(data: readMatrices, isSource: true)
+                            self.propagateAlignedData(data: readMatrices)
                         }
                         
                     }

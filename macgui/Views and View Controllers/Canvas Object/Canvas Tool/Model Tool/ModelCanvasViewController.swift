@@ -159,13 +159,8 @@ class ModelCanvasViewController: GenericCanvasViewController {
     }
     
     func setUpConnection(sourceNode: Connectable, targetNode: Connectable) -> Connection? {
-        do {
-            let connection = try Connection(to: targetNode, from: sourceNode, type: .modelParameter)
-            return connection
-        } catch {
-            print("Unexpeted exception occured when trying to establish a connection between two nodes")
-        }
-        return nil
+        let connection = Connection(to: targetNode, from: sourceNode, type: .modelParameter)
+        return connection
     }
     
     func setUpArrowViewController(_ connection:  Connection) -> ArrowViewController{

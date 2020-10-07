@@ -30,7 +30,7 @@ class GenericCanvasView: NSView {
     weak var delegate: GenericCanvasViewController? = nil
     
 //    let backgroundLayer = CALayer()
-    var selectionStartPoint: NSPoint!
+    var selectionStartPoint: NSPoint?
     var selectionBox: CAShapeLayer!
     
     override var acceptsFirstResponder: Bool { return true }
@@ -61,10 +61,11 @@ class GenericCanvasView: NSView {
     override func mouseDragged(with event: NSEvent) {
         let point : NSPoint = self.convert(event.locationInWindow, from: nil)
         let path = CGMutablePath()
-        path.move(to: self.selectionStartPoint)
-        path.addLine(to: NSPoint(x: self.selectionStartPoint.x, y: point.y))
+        guard let selectionStartPoint = self.selectionStartPoint else { return }
+        path.move(to: selectionStartPoint)
+        path.addLine(to: NSPoint(x: selectionStartPoint.x, y: point.y))
         path.addLine(to: point)
-        path.addLine(to: NSPoint(x:point.x,y:self.selectionStartPoint.y))
+        path.addLine(to: NSPoint(x:point.x,y:selectionStartPoint.y))
         path.closeSubpath()
         selectionBox.path = path
         let selectedArea = selectionStartPoint.selectedAreaTo(point: point)

@@ -55,62 +55,62 @@ class DataTool: Connectable {
         unalignedDataMatrices = aDecoder.decodeObject(forKey: Key.unalignedDataMatrices.rawValue) as! [DataMatrix]
     }
     
-    func propagateAlignedData(data: [DataMatrix] = [], isSource: Bool){
-        if self.connectedOutlets.isEmpty  {
-            self.alignedDataMatrices = data
-        } else {
-            
+    
+    func propagateAlignedData(data: [DataMatrix] = []){
+        self.alignedDataMatrices = data
+        if !self.connectedOutlets.isEmpty  {
             for connection in self.analysis.arrows {
                 if connection.type == .alignedData, connection.from === self, let neighbor = connection.to as? DataTool {
-                    neighbor.propagateAlignedData(data: data, isSource: false)
+                    neighbor.propagateAlignedData(data: data)
                 }
             }
             
-            if !isSource { self.alignedDataMatrices = data }
         }
     }
     
-    func propagateUnalignedData(data: [DataMatrix] = [], isSource: Bool){
-        if self.connectedOutlets.isEmpty  {
-            self.unalignedDataMatrices = data
-            self.alignedDataMatrices.removeAll()
-        } else {
+    func propagateUnalignedData(data: [DataMatrix] = []){
+        self.unalignedDataMatrices = data
+        if !self.connectedOutlets.isEmpty  {
             for connection in self.analysis.arrows {
                 if connection.type == .alignedData, connection.from === self, let neighbor = connection.to as? DataTool {
-                    neighbor.propagateUnalignedData(data: data, isSource: false)
+                    neighbor.propagateUnalignedData(data: data)
                 }
             }
-            if !isSource {
-                self.unalignedDataMatrices = data
-                self.alignedDataMatrices.removeAll()
+        }
+    }
+    
+    
+    func connectAlignedData(from: DataTool) {
+        if !from.dataMatrices.isEmpty {
+            let alignedMatrices =  from.dataMatrices.filter{$0.homologyEstablished == true}
+            if !alignedMatrices.isEmpty {
+                propagateAlignedData(data: alignedMatrices)
             }
         }
     }
     
-    func connectAlignedData() throws {
-        
-        if !dataMatrices.isEmpty {
-            let alignedMatrices =  dataMatrices.filter{$0.homologyEstablished == true}
-            if alignedMatrices.isEmpty {
-                throw ConnectionError.noAlignedData
-            } else {
-                propagateAlignedData(data: alignedMatrices, isSource: true)
+    func connectUnalignedData(from: DataTool) {
+        if !from.dataMatrices.isEmpty {
+            let unalignedMatrices =  from.dataMatrices.filter{$0.homologyEstablished == false}
+            if !unalignedMatrices.isEmpty {
+                propagateUnalignedData(data: unalignedMatrices)
             }
-        } else {
-            throw ConnectionError.noData
         }
     }
     
-    func connectUnalignedData() throws {
-        if dataMatrices.isEmpty {
-            propagateUnalignedData(data: dataMatrices, isSource: true)
-            
-        } else {
-            throw ConnectionError.noData
+    func propagateData() {
+        let unalignedData = self.unalignedDataMatrices.filter{$0.homologyEstablished == false}
+        let alignedData = self.alignedDataMatrices + unalignedDataMatrices.filter{$0.homologyEstablished == true}
+        for connection in self.analysis.arrows {
+            if connection.type == .alignedData, connection.from === self, let neighbor = connection.to as? DataTool {
+                neighbor.propagateAlignedData(data: alignedData)
+            } else if connection.type == .unalignedData, connection.from === self, let neighbor = connection.to as? DataTool {
+                neighbor.propagateUnalignedData(data: unalignedData)
+            }
         }
     }
     
-    func readDataTask(_ fileURL: URL) throws -> [DataMatrix] {
+    func readMatrixDataTask(_ fileURL: URL) throws -> [DataMatrix] {
         var readMatrices: [DataMatrix] = []
         guard let jsonStringArray: [String] = revbayesBridge.readMatrix(from: fileURL.path) as? [String], jsonStringArray.count != 0 else {
             throw ReadDataError.fetchDataError(fileURL: fileURL)

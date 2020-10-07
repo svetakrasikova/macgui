@@ -34,29 +34,22 @@ class CanvasViewController: GenericCanvasViewController {
     }
     
    
-//   MARK: - Connect Tools on Canvas
+    //   MARK: - Connect Tools on Canvas
     
     @objc func didConnectTools(notification: Notification){
         guard let userInfo = notification.userInfo as? [String: ConnectorItemArrowView]
-            else {return}
+        else {return}
         if userInfo["target"]?.window == self.view.window, let color = userInfo["target"]?.connectionColor, let targetTool = userInfo["target"]?.concreteDelegate?.getTool() as? Connectable, let sourceTool = userInfo["source"]?.concreteDelegate?.getTool() as? Connectable {
             let toConnector = userInfo["target"]?.concreteDelegate?.getConnector() as! Connector
-            do {
-                let connection = try Connection(to: targetTool, from: sourceTool, type: toConnector.type)
-                let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool, connection: connection)
-                analysis?.arrows.append(connection)
-                addChild(arrowController)
-                canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
-              
-                let userInfo  = ["sourceTool" : sourceTool, "targetTool" : targetTool]
-                NotificationCenter.default.post(name: .didAddNewArrow, object: self, userInfo: userInfo)
-            } catch ConnectionError.noData {
-                runNoDataAlert(toolType: sourceTool.descriptiveName)
-            } catch ConnectionError.noAlignedData {
-                runNoAlignedDataAlert(toolType: sourceTool.descriptiveName)
-            } catch  {
-                print("Unexpected error: \(error).")
-            }
+            let connection = Connection(to: targetTool, from: sourceTool, type: toConnector.type)
+            let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool, connection: connection)
+            analysis?.arrows.append(connection)
+            addChild(arrowController)
+            canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
+            
+            let userInfo  = ["sourceTool" : sourceTool, "targetTool" : targetTool]
+            NotificationCenter.default.post(name: .didAddNewArrow, object: self, userInfo: userInfo)
+            
             
         }
     }
@@ -72,6 +65,13 @@ class CanvasViewController: GenericCanvasViewController {
         let alert = NSAlert()
         alert.messageText = "No aligned data on \(toolType)."
         alert.informativeText = "To establish an aligned data connection between two tools, the source tool needs to have aligned data."
+        alert.runModal()
+    }
+    
+    func runNoUnalignedDataAlert(toolType: String){
+        let alert = NSAlert()
+        alert.messageText = "No unaligned data on \(toolType)."
+        alert.informativeText = "To establish an unaligned data connection between two tools, the source tool needs to have unaligned data."
         alert.runModal()
     }
 
