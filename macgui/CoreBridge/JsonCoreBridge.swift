@@ -199,6 +199,7 @@ class JsonCoreBridge {
     
     func encodeTaxonData(_ dict: [String: Any]) throws -> String {
         
+        self.homologyEstablished = true
         var taxonDataDictString: String = "{"
         var numCharacters: Int = 0
         
