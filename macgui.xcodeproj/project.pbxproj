@@ -1427,6 +1427,8 @@
 		14E69A61237638190045E283 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E69A60237638190045E283 /* DataSource.swift */; };
 		14E69A632376383D0045E283 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E69A622376383D0045E283 /* NavigatorViewController.swift */; };
 		14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */ = {isa = PBXBuildFile; fileRef = 14ECE4DE233BFE2300106EB4 /* aquabayes.icns */; };
+		14F29F6B252F7FA0001104A9 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F29F6A252F7F9F001104A9 /* iCarousel.m */; };
+		14F29F70252F7FFF001104A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F29F6F252F7FFF001104A9 /* QuartzCore.framework */; };
 		14F95D6623569913009884D2 /* InfoToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D6523569913009884D2 /* InfoToolViewController.swift */; };
 		14F95D6C23569A70009884D2 /* CoreBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D6A23569A70009884D2 /* CoreBridge.mm */; };
 /* End PBXBuildFile section */
@@ -4365,6 +4367,9 @@
 		14E69A60237638190045E283 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		14E69A622376383D0045E283 /* NavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
 		14ECE4DE233BFE2300106EB4 /* aquabayes.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = aquabayes.icns; sourceTree = "<group>"; };
+		14F29F69252F7F9F001104A9 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		14F29F6A252F7F9F001104A9 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		14F29F6F252F7FFF001104A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		14F95D6523569913009884D2 /* InfoToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoToolViewController.swift; sourceTree = "<group>"; };
 		14F95D6A23569A70009884D2 /* CoreBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CoreBridge.mm; sourceTree = "<group>"; };
 		14F95D6B23569A70009884D2 /* CoreBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreBridge.h; sourceTree = "<group>"; };
@@ -4376,6 +4381,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14F29F70252F7FFF001104A9 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4420,6 +4426,7 @@
 				1411BE8E2203D8FB009BEE1D /* macgui */,
 				14640BA1238332B000358042 /* macguiTests */,
 				1411BE8D2203D8FB009BEE1D /* Products */,
+				14F29F6E252F7FFE001104A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4435,6 +4442,7 @@
 		1411BE8E2203D8FB009BEE1D /* macgui */ = {
 			isa = PBXGroup;
 			children = (
+				14F29F68252F7F87001104A9 /* iCarousel */,
 				149A500324995B44007E4D4B /* Binaries */,
 				14633125244F7FF0002FBD83 /* Assets.xcassets */,
 				144BE13B2397797C0001B2EF /* GitVersion.cpp */,
@@ -8507,6 +8515,23 @@
 			path = "Canvas Arrow";
 			sourceTree = "<group>";
 		};
+		14F29F68252F7F87001104A9 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				14F29F69252F7F9F001104A9 /* iCarousel.h */,
+				14F29F6A252F7F9F001104A9 /* iCarousel.m */,
+			);
+			path = iCarousel;
+			sourceTree = "<group>";
+		};
+		14F29F6E252F7FFE001104A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14F29F6F252F7FFF001104A9 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		14F95D6923569A70009884D2 /* CoreBridge */ = {
 			isa = PBXGroup;
 			children = (
@@ -9349,6 +9374,7 @@
 				144BEEA123A17AC60001B2EF /* Dist_Cauchy.cpp in Sources */,
 				144BEE7123A17AC60001B2EF /* Func_adjacentRateModifier.cpp in Sources */,
 				1410C3A523F6048B0044EB48 /* PaletteCategory.swift in Sources */,
+				14F29F6B252F7FA0001104A9 /* iCarousel.m in Sources */,
 				144BEF3623A17AC60001B2EF /* NodeTimeSlideUniformCharacterHistoryProposal.cpp in Sources */,
 				144BEF1823A17AC60001B2EF /* EllipticalSliceSamplingSimpleMove.cpp in Sources */,
 				149F8B3223624E93003146FD /* TaxonDataDiscrete.swift in Sources */,
