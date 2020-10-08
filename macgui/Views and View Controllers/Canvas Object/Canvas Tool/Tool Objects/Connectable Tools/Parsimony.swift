@@ -63,7 +63,6 @@ class Parsimony: DataTool, ResolveStateOnExecution {
                     let trees = try self.readTreeDataTask(paup.exeDirURL)
                     if !trees.isEmpty {
                         DispatchQueue.main.async {
-                            print("The number of trees added to the parsimony tool are \(trees.count).")
                             self.trees = trees
                         }
                         
@@ -118,6 +117,7 @@ class Parsimony: DataTool, ResolveStateOnExecution {
         do {
             try createTreesWithPaup(self.alignedDataMatrices, options: options)
         } catch  {
+            self.delegate?.endProgressIndicator()
             print("Handling exceptions from PAUP not implemented")
         }
     }

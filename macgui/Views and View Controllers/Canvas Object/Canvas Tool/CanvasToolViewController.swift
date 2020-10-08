@@ -294,6 +294,8 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
                 return true
             case .align:
                 return true
+            case .parsimony:
+                return false
             case .model:
                 return false
             default:
