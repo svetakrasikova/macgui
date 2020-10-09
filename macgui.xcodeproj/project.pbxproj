@@ -1429,6 +1429,8 @@
 		14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */ = {isa = PBXBuildFile; fileRef = 14ECE4DE233BFE2300106EB4 /* aquabayes.icns */; };
 		14F29F6B252F7FA0001104A9 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F29F6A252F7F9F001104A9 /* iCarousel.m */; };
 		14F29F70252F7FFF001104A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F29F6F252F7FFF001104A9 /* QuartzCore.framework */; };
+		14F29F74252F92B2001104A9 /* TreeSetTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */; };
+		14F29F79252FAF9C001104A9 /* TreeSetToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F29F78252FAF9C001104A9 /* TreeSetToolViewController.swift */; };
 		14F95D6623569913009884D2 /* InfoToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D6523569913009884D2 /* InfoToolViewController.swift */; };
 		14F95D6C23569A70009884D2 /* CoreBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D6A23569A70009884D2 /* CoreBridge.mm */; };
 /* End PBXBuildFile section */
@@ -4370,6 +4372,8 @@
 		14F29F69252F7F9F001104A9 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		14F29F6A252F7F9F001104A9 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		14F29F6F252F7FFF001104A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TreeSetTool.storyboard; sourceTree = "<group>"; };
+		14F29F78252FAF9C001104A9 /* TreeSetToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSetToolViewController.swift; sourceTree = "<group>"; };
 		14F95D6523569913009884D2 /* InfoToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoToolViewController.swift; sourceTree = "<group>"; };
 		14F95D6A23569A70009884D2 /* CoreBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CoreBridge.mm; sourceTree = "<group>"; };
 		14F95D6B23569A70009884D2 /* CoreBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreBridge.h; sourceTree = "<group>"; };
@@ -8230,6 +8234,7 @@
 				1495A0B5237C991200F46312 /* MatrixInspector.storyboard */,
 				1407184A22FF5D430098285D /* ModalSheet.storyboard */,
 				1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */,
+				14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */,
 				1453184624E217F200A4656C /* ParsimonyTool.storyboard */,
 				149A4FFF24983C61007E4D4B /* AlignTool.storyboard */,
 				147429DD22D154D200FF1963 /* ModelTool.storyboard */,
@@ -8484,6 +8489,7 @@
 				14C618E523E0E11E001FFFD6 /* Model Tool */,
 				149A4FFC249834E2007E4D4B /* Align Tool */,
 				1453184824E4748800A4656C /* Parsimony Tool */,
+				14F29F77252FAF4D001104A9 /* Tree Set Tool */,
 				1495A0AB237C877B00F46312 /* Tool Tip */,
 				1495A0A9237C86B200F46312 /* Tool Info Dialogue */,
 				1495A0B0237C892A00F46312 /* Connection */,
@@ -8530,6 +8536,14 @@
 				14F29F6F252F7FFF001104A9 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		14F29F77252FAF4D001104A9 /* Tree Set Tool */ = {
+			isa = PBXGroup;
+			children = (
+				14F29F78252FAF9C001104A9 /* TreeSetToolViewController.swift */,
+			);
+			path = "Tree Set Tool";
 			sourceTree = "<group>";
 		};
 		14F95D6923569A70009884D2 /* CoreBridge */ = {
@@ -8647,6 +8661,7 @@
 				1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */,
 				14633126244F7FF1002FBD83 /* Assets.xcassets in Resources */,
 				142945F723EE44DC0093608F /* Preferences.storyboard in Resources */,
+				14F29F74252F92B2001104A9 /* TreeSetTool.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9267,6 +9282,7 @@
 				144BF15123A17AC70001B2EF /* ConstantDemographicFunction.cpp in Sources */,
 				144BEDAB23A17AC60001B2EF /* Func_mapTree.cpp in Sources */,
 				144BEE6023A17AC60001B2EF /* Func_cladogeneticSpeciationRateMatrix.cpp in Sources */,
+				14F29F79252FAF9C001104A9 /* TreeSetToolViewController.swift in Sources */,
 				144BF17623A17AC80001B2EF /* PhyloMultivariateBrownianProcessMultiSampleREML.cpp in Sources */,
 				144BED5123A17AC60001B2EF /* RlAbstractNonHomologousDiscreteCharacterData.cpp in Sources */,
 				144BEE4C23A17AC60001B2EF /* Func_lg.cpp in Sources */,

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,6 +14,7 @@
                     <tabViewItems>
                         <tabViewItem label="Align Tool" identifier="AlignTool" id="aNB-se-BiG" userLabel="Align Tool"/>
                         <tabViewItem label="Parsimony Tool" identifier="ParsimonyTool" id="GCO-oH-boy"/>
+                        <tabViewItem label="Tree Set Tool" identifier="TreeSetTool" id="U0y-i9-mmW" userLabel="Tree Set Tool"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="626-6W-VnF">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="350"/>
@@ -27,10 +28,11 @@
                         <outlet property="tabView" destination="626-6W-VnF" id="fIH-O1-OPa"/>
                         <segue destination="Rrq-Y6-Cvx" kind="relationship" relationship="tabItems" id="frO-Kj-LEN"/>
                         <segue destination="gmB-dj-xDz" kind="relationship" relationship="tabItems" id="DGA-Oc-taP"/>
+                        <segue destination="22G-oc-xpa" kind="relationship" relationship="tabItems" id="mxW-dn-F8z"/>
                     </connections>
                 </tabViewController>
             </objects>
-            <point key="canvasLocation" x="-158" y="-560"/>
+            <point key="canvasLocation" x="-544" y="-1130"/>
         </scene>
         <!--Align Tool-->
         <scene sceneID="ip6-6G-0IH">
@@ -47,6 +49,14 @@
                 <customObject id="2jk-bU-PJ2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="353" y="-1060"/>
+        </scene>
+        <!--TreeSetTool-->
+        <scene sceneID="vB1-He-bAm">
+            <objects>
+                <controllerPlaceholder storyboardIdentifier="TreeSetTool" storyboardName="TreeSetTool" referencedIdentifier="TreeSetTool" id="22G-oc-xpa" sceneMemberID="viewController"/>
+                <customObject id="6m5-S1-b0n" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-17" y="-786"/>
         </scene>
     </scenes>
 </document>

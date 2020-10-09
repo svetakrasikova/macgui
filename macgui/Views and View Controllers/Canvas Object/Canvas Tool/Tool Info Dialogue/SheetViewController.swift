@@ -42,7 +42,7 @@ class SheetViewController: NSViewController {
     }
 
     func findTabIndex() -> Int {
-        guard let tabViewController = tabViewController else { return 0 }
+         guard let tabViewController = tabViewController else { return 0 }
         for (index, tabItem) in tabViewController.tabViewItems.enumerated() {
             let name = tool?.getStoryboardName()
             if tabItem.identifier as? String == name {

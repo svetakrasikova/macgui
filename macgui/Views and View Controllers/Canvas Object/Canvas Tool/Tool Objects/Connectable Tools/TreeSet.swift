@@ -13,7 +13,7 @@ class TreeSet: Connectable {
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
-        self.inlets = [Connector(type: .red)]
+        self.inlets = [Connector(type: .treedata)]
         self.outlets = [Connector(type: .orange)]
     }
     

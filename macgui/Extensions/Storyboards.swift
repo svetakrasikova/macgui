@@ -24,6 +24,7 @@ enum StoryBoardName: String {
     case alignTool = "AlignTool"
     case alignTabView = "AlignTabView"
     case parsimonyTool = "ParsimonyTool"
+    case treesetTool = "TreeSetTool"
 }
 
 extension ToolObject {
@@ -36,6 +37,8 @@ extension ToolObject {
             return StoryBoardName.alignTool.rawValue
         case _ as Parsimony:
             return StoryBoardName.parsimonyTool.rawValue
+        case _ as TreeSet:
+            return StoryBoardName.treesetTool.rawValue
         default:
             return StoryBoardName.modelTool.rawValue
         }

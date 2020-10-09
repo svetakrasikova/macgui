@@ -134,7 +134,6 @@ class NewickString: NSObject {
             if char == ";" {
                 readingNewick = false
                 newickString = nStr
-                print(nStr)
                 nStr = ""
                 if check() == false {
                      print("Error: Improperly formatted Newick string")

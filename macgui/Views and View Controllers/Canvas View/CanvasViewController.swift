@@ -13,9 +13,7 @@ class CanvasViewController: GenericCanvasViewController {
     weak var analysis: Analysis? {
         
         didSet{
-            if let analysis = analysis {
-                reset(analysis: analysis)
-            }
+            reset()
         }
     }
     
@@ -31,9 +29,10 @@ class CanvasViewController: GenericCanvasViewController {
                                                selector: #selector(didConnectTools(notification:)),
                                                name: .didConnectTools,
                                                object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reset), name: .didUpdateAnalysis, object: nil)
     }
     
-   
+    
     //   MARK: - Connect Tools on Canvas
     
     @objc func didConnectTools(notification: Notification){
@@ -147,13 +146,15 @@ class CanvasViewController: GenericCanvasViewController {
                 }
             }
         }
-            reset(analysis: analysis!)
+            reset()
 
     }
 
     
-    func reset(analysis: Analysis){
-        
+    @objc func reset(){
+        guard let analysis = self.analysis else {
+            return
+        }
         for subview in canvasView.subviews{
             if subview.isKind(of: CanvasObjectView.self) {
                 subview.removeFromSuperview()

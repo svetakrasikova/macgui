@@ -30,9 +30,9 @@ class Parsimony: DataTool, ResolveStateOnExecution {
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
         let green = Connector(type: .alignedData)
-        let red = Connector(type: .red)
+        let treedata = Connector(type: .treedata)
         self.inlets = [green]
-        self.outlets = [red]
+        self.outlets = [treedata]
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -20,5 +20,6 @@ extension NSNotification.Name {
     static let willChangePreferences = Notification.Name("willChangePreferences")
     static let didUpdateDocument = Notification.Name("didUpdateDocument")
     static let didChangeModelParameterName = Notification.Name("didChangeModelParameterName")
+    static let didUpdateAnalysis = Notification.Name("didUpdateAnalysis")
     
 }

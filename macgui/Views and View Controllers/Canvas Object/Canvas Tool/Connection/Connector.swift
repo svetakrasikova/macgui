@@ -37,7 +37,7 @@ class Connector: NSObject, NSCoding {
         case .alignedData: return NSColor.green
         case .unalignedData: return NSColor.blue
         case .orange: return NSColor.orange
-        case .red: return NSColor.red
+        case .treedata: return NSColor.red
         case .magenta: return NSColor.magenta
         case .purple: return NSColor.purple
         case .modelParameter: return NSColor.black
@@ -48,7 +48,7 @@ class Connector: NSObject, NSCoding {
 }
 
 enum ConnectorType: String {
-    case red
+    case treedata
     case orange
     case magenta
     case purple
