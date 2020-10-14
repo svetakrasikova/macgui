@@ -4374,6 +4374,7 @@
 		14F29F6F252F7FFF001104A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TreeSetTool.storyboard; sourceTree = "<group>"; };
 		14F29F78252FAF9C001104A9 /* TreeSetToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSetToolViewController.swift; sourceTree = "<group>"; };
+		14F29F7C2533D73C001104A9 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../LearningProjects/MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		14F95D6523569913009884D2 /* InfoToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoToolViewController.swift; sourceTree = "<group>"; };
 		14F95D6A23569A70009884D2 /* CoreBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CoreBridge.mm; sourceTree = "<group>"; };
 		14F95D6B23569A70009884D2 /* CoreBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreBridge.h; sourceTree = "<group>"; };
@@ -4424,6 +4425,7 @@
 		1411BE832203D8FB009BEE1D = {
 			isa = PBXGroup;
 			children = (
+				14F29F7C2533D73C001104A9 /* MyPlayground.playground */,
 				144BE6BB23A17AC40001B2EF /* core */,
 				144BE68423A17AC40001B2EF /* libs */,
 				144BE14523A17AC20001B2EF /* revlanguage */,

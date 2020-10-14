@@ -79,6 +79,10 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
             targetTool.propagateAlignedData()
             targetTool.propagateUnalignedData()
         }
+        if let targetTool = targetTool as? TreeSet {
+            let hash = sourceTool?.description.hashValue
+            targetTool.removeTreesFrom(hash: hash!)
+        }
         if let type = self.connection?.type {
             targetTool?.removeNeighbor(connectionType: type, linkType: LinkType.inlet)
             sourceTool?.removeNeighbor(connectionType: type, linkType: LinkType.outlet)

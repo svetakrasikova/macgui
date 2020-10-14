@@ -175,12 +175,6 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         
         
     }
-//    override func viewDidDisappear() {
-//        closePopover()
-//        invalidatePopoverTimers()
-//
-//    }
-    
    
     
     func setUp(){
@@ -330,12 +324,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         if tool == tools["targetTool"] {
             inlets.reloadData()
         }
-    }
-    
-//   func windowDidResize(_ notification: Notification) {
-//           updateFrame()
-//       }
-//       
+    }      
 
 }
 

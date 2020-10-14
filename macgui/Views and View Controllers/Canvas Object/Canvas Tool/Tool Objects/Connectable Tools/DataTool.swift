@@ -19,9 +19,16 @@ class DataTool: Connectable {
     enum Key: String {
         case alignedDataMatrices
         case unalignedDataMatrices
+        case trees
     }
     
     let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
+    
+    @objc dynamic var trees: [Tree]  = [] {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
     
     @objc dynamic var alignedDataMatrices: [DataMatrix]  = [] {
         didSet {
@@ -47,12 +54,14 @@ class DataTool: Connectable {
         super.encode(with: aCoder)
         aCoder.encode(alignedDataMatrices, forKey: Key.alignedDataMatrices.rawValue)
         aCoder.encode(unalignedDataMatrices, forKey: Key.unalignedDataMatrices.rawValue)
+        aCoder.encode(trees, forKey: Key.trees.rawValue)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        alignedDataMatrices = aDecoder.decodeObject(forKey: Key.alignedDataMatrices.rawValue) as! [DataMatrix]
-        unalignedDataMatrices = aDecoder.decodeObject(forKey: Key.unalignedDataMatrices.rawValue) as! [DataMatrix]
+        alignedDataMatrices = aDecoder.decodeObject(forKey: Key.alignedDataMatrices.rawValue) as? [DataMatrix] ?? []
+        unalignedDataMatrices = aDecoder.decodeObject(forKey: Key.unalignedDataMatrices.rawValue) as? [DataMatrix] ?? []
+        trees = aDecoder.decodeObject(forKey: Key.trees.rawValue) as? [Tree] ?? []
     }
     
     
@@ -79,22 +88,17 @@ class DataTool: Connectable {
         }
     }
     
-    
     func connectAlignedData(from: DataTool) {
-        if !from.dataMatrices.isEmpty {
-            let alignedMatrices =  from.dataMatrices.filter{$0.homologyEstablished == true}
-            if !alignedMatrices.isEmpty {
-                propagateAlignedData(data: alignedMatrices)
-            }
+        let alignedMatrices =  from.dataMatrices.filter{$0.homologyEstablished == true}
+        if !alignedMatrices.isEmpty {
+            propagateAlignedData(data: alignedMatrices)
         }
     }
     
     func connectUnalignedData(from: DataTool) {
-        if !from.dataMatrices.isEmpty {
-            let unalignedMatrices =  from.dataMatrices.filter{$0.homologyEstablished == false}
-            if !unalignedMatrices.isEmpty {
-                propagateUnalignedData(data: unalignedMatrices)
-            }
+        let unalignedMatrices =  from.dataMatrices.filter{$0.homologyEstablished == false}
+        if !unalignedMatrices.isEmpty {
+            propagateUnalignedData(data: unalignedMatrices)
         }
     }
     
@@ -130,6 +134,40 @@ class DataTool: Connectable {
         }
         return readMatrices
     }
+    
+    func readTreeFile(_ fileURL: URL) throws -> [Tree] {
+        var trees: [Tree] = []
+        let ns = NewickString()
+        do {
+            let newickStrings: [String] = try ns.parseNewickStrings(fileURL: fileURL)
+            for newickString in newickStrings {
+                do {
+                    let readTree = try Tree(newickString: newickString)
+                    trees.append(readTree)
+                } catch {
+                    print("Error while creating a tree from a newick string: \(error)")
+                    throw Tree.TreeError.badNewickString
+                }
+            }
+        } catch {
+            print("Error while parsing a newick string formated file: \(error)")
+            throw NewickString.NewickError.fileParsingError
+        }
+        return trees
+    }
+    
+    func readTreeDataTask(_ url: URL) throws -> [Tree] {
+        var readTrees: [Tree] = []
+        if url.hasDirectoryPath {
+            for fileURL in try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil){
+                readTrees += try readTreeFile(fileURL)
+            }
+        } else {
+            readTrees += try readTreeFile(url)
+        }
+        return readTrees
+    }
+    
     
     func readDataAlert(informativeText: String) {
         let alert = NSAlert()

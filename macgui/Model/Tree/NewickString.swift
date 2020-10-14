@@ -99,7 +99,10 @@ class NewickString: NSObject {
     
     func parseNexus(_ nexusString: String) -> String? {
         var trees: String?
-        let lines = nexusString.split(separator: "\n")
+        var lines = nexusString.split(separator: "\n")
+        for line in lines {
+            lines.append(line.filter { !$0.isWhitespace })
+        }
         let treeLines = lines.filter {$0.hasPrefix("tree") }
         if !treeLines.isEmpty {
             trees = treeLines.joined()
@@ -108,42 +111,43 @@ class NewickString: NSObject {
     }
     
     func parseNewickStrings(fileURL: URL) throws -> [String] {
-    
-        var s : String?
+        var newickStrings : [String] = []
         do {
             let d = try Data(contentsOf:fileURL)
-            s = String(data:d, encoding: .utf8)
-            s = parseNexus(s ?? "")
+            if let dataToString = String(data:d, encoding: .utf8), let parsedString = parseNexus(dataToString) {
+                
+                var readingNewick : Bool = false
+                var nStr : String = ""
+                for char in parsedString {
+                    
+                    if char == "(" {
+                        readingNewick = true
+                    }
+                    
+                    if readingNewick == true {
+                        nStr.append(String(char))
+                    }
+                    
+                    if char == ";" {
+                        readingNewick = false
+                        newickString = nStr
+                        nStr = ""
+                        if check() == false {
+                            print("Error: Improperly formatted Newick string")
+                        }
+                        else {
+                            newickStrings.append(newickString)
+                        }
+                    }
+                }
+            }
+            
+            
         } catch {
             throw NewickError.fileParsingError
         }
         
-        var newickStrings : [String] = []
-        var readingNewick : Bool = false
-        var nStr : String = ""
-        for char in s! {
-        
-            if char == "(" {
-                readingNewick = true
-            }
-            
-            if readingNewick == true {
-                nStr.append(String(char))
-            }
-            
-            if char == ";" {
-                readingNewick = false
-                newickString = nStr
-                nStr = ""
-                if check() == false {
-                     print("Error: Improperly formatted Newick string")
-                }
-                else {
-                    newickStrings.append(newickString)
-                }
-            }
-        }
-
         return newickStrings
     }
+
 }

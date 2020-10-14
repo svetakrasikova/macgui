@@ -209,7 +209,7 @@ extension NSViewController {
 
 extension String {
     
-    static func lengthOfLongestString(_ strings: [String], fontSize: CGFloat) -> CGFloat {
+    static func lengthOfLongestString(_ strings: [String], fontSize: CGFloat = 12.0) -> CGFloat {
         
      let attributes: [NSAttributedString.Key: Any] = [
             .font: NSFont.systemFont(ofSize: fontSize)

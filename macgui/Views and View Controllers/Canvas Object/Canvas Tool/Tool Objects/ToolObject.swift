@@ -38,7 +38,6 @@ class ToolObject: NSObject, NSCoding {
         analysis = aDecoder.decodeObject(forKey: Key.analysis.rawValue) as! Analysis
         frameOnCanvas = aDecoder.decodeRect(forKey: Key.frameOnCanvas.rawValue)
         name = aDecoder.decodeObject(forKey: Key.name.rawValue) as! String
-        
     }
 }
 

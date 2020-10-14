@@ -2,13 +2,40 @@ import Cocoa
 
 
 
-class Node: NSObject {
+class Node: NSObject, NSCoding {
+    
 
     var descendants : [Node] = []
     var ancestor : Node? = nil
     var index : Int = 0
     var branchLength : Double = 0.0
     var name : String = ""
+    
+    enum Key: String {
+        case descendants, ancestor, index, branchLength, name
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(descendants, forKey: Key.descendants.rawValue)
+        if let ancestor = self.ancestor {
+            coder.encode(ancestor, forKey: Key.ancestor.rawValue)
+        }
+        coder.encode(index, forKey: Key.index.rawValue)
+        coder.encode(branchLength, forKey: Key.branchLength.rawValue)
+        coder.encode(name, forKey: Key.name.rawValue)
+    }
+    
+    required init?(coder: NSCoder) {
+        descendants = coder.decodeObject(forKey: Key.descendants.rawValue) as? [Node] ?? []
+        ancestor = coder.decodeObject(forKey: Key.ancestor.rawValue) as? Node
+        index = coder.decodeInteger(forKey: Key.index.rawValue)
+        branchLength = coder.decodeDouble(forKey: Key.branchLength.rawValue)
+        name = coder.decodeObject(forKey: Key.name.rawValue) as? String ?? ""
+    }
     
     // MARK: -
 

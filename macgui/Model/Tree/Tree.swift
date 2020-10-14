@@ -1,7 +1,8 @@
 import Cocoa
 
 
-class Tree: NSObject {
+class Tree: NSObject, NSCoding {
+    
 
     var nodes : [Node] = []
     var root : Node? = nil
@@ -14,6 +15,23 @@ class Tree: NSObject {
      
          case badNewickString
     }
+    
+    enum Key: String {
+        case nodes, root
+    }
+    
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(nodes, forKey: Key.nodes.rawValue)
+        coder.encode(root, forKey: Key.root.rawValue)
+    }
+    
+    required init?(coder: NSCoder) {
+        nodes = coder.decodeObject(forKey: Key.nodes.rawValue) as? [Node] ?? []
+        root = coder.decodeObject(forKey: Key.nodes.rawValue) as? Node
+    }
+    
+    
 
     init(newickString: String) throws {
         

@@ -11,12 +11,6 @@ import Cocoa
 class Parsimony: DataTool, ResolveStateOnExecution {
     
     
-    @objc dynamic var trees: [Tree]  = [] {
-        didSet {
-            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
-        }
-    }
-    
     var options: PaupOptions = PaupOptions() {
         didSet {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
@@ -83,32 +77,6 @@ class Parsimony: DataTool, ResolveStateOnExecution {
         try paup.runPaupOnDirectory(dataMatrices: data, options: options, completion: completionHandler)
     }
     
-    
-    func readTreeDataTask(_ url: URL) throws -> [Tree] {
-        var readTrees: [Tree] = []
-        for fileURL in try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil){
-            readTrees += try readTreeFile(fileURL)
-        }
-        return readTrees
-    }
-    
-    func readTreeFile(_ fileURL: URL) throws -> [Tree] {
-        var trees: [Tree] = []
-        let ns = NewickString()
-        do {
-            let newickStrings: [String] = try ns.parseNewickStrings(fileURL: fileURL)
-            for newickString in newickStrings {
-                do {
-                    let readTree = try Tree(newickString: newickString)
-                    trees.append(readTree)
-                } catch {
-                    print("Error while parsing a newick string formated file.")
-                    throw NewickString.NewickError.fileParsingError
-                }
-            }
-        }
-        return trees
-    }
 
     
 //    MARK: -- Resolve State on Execution

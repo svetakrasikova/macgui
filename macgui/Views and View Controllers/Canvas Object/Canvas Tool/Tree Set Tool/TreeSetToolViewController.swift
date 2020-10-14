@@ -9,32 +9,48 @@
 import Cocoa
 
 class TreeSetToolViewController: InfoToolViewController, NSTableViewDelegate, NSTableViewDataSource {
-
+    
+    enum Columns: String {
+        case name, count
+    }
+    
     @IBOutlet weak var inletsTableView: NSTableView!
     
     weak var treeset: TreeSet? {
         return self.tool as? TreeSet
     }
     
-    var inlets: [String] {
-        return currentInlets()
+    var widthConstraint = NSLayoutConstraint()
+    
+    @IBOutlet weak var boxView: NSBox!
+    
+    
+    
+    func addWidthConstraintToBox(width: CGFloat) {
+        removeWidthConstraintFromBox()
+        widthConstraint = NSLayoutConstraint(item: boxView as Any,
+                                             attribute: NSLayoutConstraint.Attribute.width,
+                                             relatedBy: NSLayoutConstraint.Relation.equal,
+                                             toItem: nil,
+                                             attribute: NSLayoutConstraint.Attribute.notAnAttribute,
+                                             multiplier: 1,
+                                             constant: width)
+        boxView.addConstraint(widthConstraint)
     }
     
-    func currentInlets() -> [String] {
-        
-        var inlets: [String] = []
-        if let treeset = treeset {
-            inlets = Array(repeating: "unconnected", count: treeset.unconnectedInlets.count)
-            for connection in treeset.analysis.arrows {
-                if connection.to === treeset {
-                    inlets.append(connection.from.name)
-                }
-            }
+    func removeWidthConstraintFromBox() {
+        boxView.removeConstraint(widthConstraint)
+    }
+    
+    @objc dynamic var sources: [TreeSource] {
+        var sources: [TreeSource] = []
+        if let treeset = self.treeset {
+            sources = treeset.sources
         }
-        return  inlets
+        return sources
     }
     
-    @IBAction func changeInlets(_ sender: NSSegmentedControl) {
+    @IBAction func controlSources(_ sender: NSSegmentedControl) {
         switch sender.selectedSegment{
         case 0:
             addInlet()
@@ -43,20 +59,25 @@ class TreeSetToolViewController: InfoToolViewController, NSTableViewDelegate, NS
         default:
             break
         }
-        NotificationCenter.default.post(name: .didUpdateAnalysis, object: self)
+        inletsTableView.reloadData()
+        resizeColumnsToFitContent()
     }
     
     func addInlet(){
         self.treeset?.inlets.append(Connector(type: .treedata))
-        inletsTableView.reloadData()
+        self.treeset?.sources.append(TreeSource())
+        if let toolVC = self.treeset?.delegate as? CanvasToolViewController {
+            toolVC.inlets.reloadData()
+        }
     }
     
     func removeInlet() {
+        
         guard let treeset = self.treeset else { return }
         let row = inletsTableView.selectedRow
         if row >= 0  && inletsTableView.selectedRowIndexes.count == 1  {
             
-            if inlets[row]  == "unconnected" {
+            if sources[row].key  == "unconnected inlet" {
                 var indexToRemove: Int = -1
                 for (i,v) in treeset.inlets.enumerated() {
                     if !v.isConnected {
@@ -67,35 +88,77 @@ class TreeSetToolViewController: InfoToolViewController, NSTableViewDelegate, NS
                 if indexToRemove >= 0 {
                     treeset.inlets.remove(at: indexToRemove)
                 }
+                self.treeset?.sources.remove(at: row)
+                
+            } else if let tool = sources[row].tool  {
+                for connection in self.treeset!.analysis.arrows {
+                    if connection.from == tool {
+                        if let index = treeset.analysis.arrows.firstIndex(of: connection) {
+                            treeset.analysis.arrows.remove(at: index)
+                            treeset.removeNeighbor(connectionType: .treedata, linkType: .inlet)
+                            tool.removeNeighbor(connectionType: .treedata, linkType: .outlet)
+                            NotificationCenter.default.post(name: .didUpdateAnalysis, object: self)
+                        }
+                        break
+                    }
+                }
+                treeset.removeTreesFrom(hash: tool.description.hashValue)
+                
             } else {
-                let alert = NSAlert()
-                alert.messageText = "Connected Inlet"
-                alert.informativeText =  "Remove the arrow from canvas."
-                alert.runModal()
+                treeset.removeTreesFrom(hash: sources[row].hashVal)
                 
             }
-            inletsTableView.removeRows(at: IndexSet(integer: row), withAnimation: .effectFade)
-            inletsTableView.reloadData()
+            inletsTableView.removeRows(at: IndexSet(integer: row), withAnimation: .slideDown)
         }
     }
     
     // MARK: - NSTableViewDataSource
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return inlets.count
+        return sources.count
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        if tableColumn?.identifier.rawValue == "name" {
-            return inlets[row]
+        
+        if tableColumn?.identifier.rawValue == Columns.name.rawValue {
+            if let tool = sources[row].tool {
+                return tool.name
+            } else {
+                return sources[row].key
+            }
         } else {
-            return row + 1
+            return sources[row].count
         }
     }
+    
+    
+    func resizeColumn(columnName: String) {
+        var longest:CGFloat = 0
+        let columnNumber = inletsTableView.column(withIdentifier: NSUserInterfaceItemIdentifier(columnName))
+        let column = inletsTableView.tableColumns[columnNumber]
+        for row in  0..<inletsTableView.numberOfRows {
+            let view = inletsTableView.view(atColumn: columnNumber, row: row, makeIfNecessary: true) as! NSTableCellView
+            let width = String.lengthOfLongestString([view.textField!.stringValue])
+            if (longest < width) {
+                longest = width
+            }
+        }
+        
+        column.width = longest
+        column.minWidth = longest
+    }
+    
+    func resizeColumnsToFitContent() {
+        resizeColumn(columnName: Columns.name.rawValue)
+        resizeColumn(columnName: Columns.count.rawValue)
+    }
+    
     
     override func viewWillAppear() {
         super.viewWillAppear()
         inletsTableView.reloadData()
+        resizeColumnsToFitContent()
+        addWidthConstraintToBox(width: boxView.fittingSize.width)
         
     }
     @IBAction func okClicked(_ sender: NSButton) {
@@ -103,24 +166,26 @@ class TreeSetToolViewController: InfoToolViewController, NSTableViewDelegate, NS
     }
     
     @IBAction func importTrees(_ sender: NSButton) {
-        postDismissNotification()
-        let panel = NSOpenPanel()
-        panel.allowedFileTypes = ["nex"]
-                panel.allowsMultipleSelection = true
-                panel.canChooseDirectories = true
-                panel.canChooseFiles = true
-        panel.begin {
-                   [unowned self]
-                   result in
-                   if result == .OK {
-                       guard let fileURL = panel.url else { return }
-//                        do something with the trees at the selected url
-                   }
-               }
+        
+        if let treeset = self.treeset {
+            postDismissNotification()
+            treeset.delegate?.startProgressIndicator()
+            let panel = NSOpenPanel()
+            let textType : UInt32 = UInt32(NSHFSTypeCodeFromFileType("TEXT"))
+            panel.allowedFileTypes = ["nex", NSFileTypeForHFSTypeCode(textType)]
+            panel.allowsMultipleSelection = true
+            panel.canChooseDirectories = true
+            panel.canChooseFiles = true
+            panel.begin {
+                result in
+                if result == .OK {
+                    guard let fileURL = panel.url else { return }
+                    treeset.runBackgroundImportTask(url: fileURL)
+                }
+            }
+        }
         
     }
-    
-    
     
 }
 
