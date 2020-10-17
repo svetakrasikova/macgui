@@ -22,11 +22,17 @@ class ToolTipViewController: NSViewController {
         if let delegate = self.delegate as? CanvasToolViewController, let tool = delegate.tool as? DataTool {
             self.observers = [
                 tool.observe(\DataTool.alignedDataMatrices, options: [.initial]) {(tool, change) in
+                    if tool.treeDataTool { return }
                     self.setNumberOfMatrices(number: tool.dataMatrices.count)
                 },
                 tool.observe(\DataTool.unalignedDataMatrices, options: [.initial]) {(tool, change) in
+                    if tool.treeDataTool { return }
                     self.setNumberOfMatrices(number: tool.dataMatrices.count)
-                } 
+                },
+                tool.observe(\DataTool.trees, options: [.initial]) {(tool, change) in
+                    if !tool.treeDataTool { return }
+                    self.setNumberOfTrees(number: tool.trees.count)
+                },
             ]
         }
     }
@@ -35,12 +41,17 @@ class ToolTipViewController: NSViewController {
         super.viewDidLoad()
         self.toolNameLabel.stringValue = delegate?.getDescriptiveToolName() ?? "Unnamed Tool"
         setConnectionStatus()
+  
         if let delegate = self.delegate as? CanvasToolViewController, let tool = delegate.tool as? DataTool {
-            setNumberOfMatrices(number: tool.dataMatrices.count)
+            if tool.treeDataTool {
+                setNumberOfTrees(number: tool.trees.count)
             } else {
-                numberMatricesLabel.isHidden = true
+                setNumberOfMatrices(number: tool.dataMatrices.count)
             }
-        setDataObserver()
+            setDataObserver()
+        } else {
+            numberMatricesLabel.isHidden = true
+        }
         preferredContentSize = view.fittingSize
     }
     
@@ -57,6 +68,11 @@ class ToolTipViewController: NSViewController {
     
     func setNumberOfMatrices(number: Int){
         numberMatricesLabel.stringValue = "# Matrices: \(number)"
+        self.view.needsDisplay = true
+    }
+    
+    func setNumberOfTrees(number: Int){
+        numberMatricesLabel.stringValue = "# Trees in Set: \(number)"
         self.view.needsDisplay = true
     }
     

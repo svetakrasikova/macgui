@@ -67,14 +67,22 @@ class ActionButton: NSButton {
             self.observers = [
                 tool.observe(\DataTool.unalignedDataMatrices, options: [.initial]) {(tool, change) in
                 if self.buttonType == .Inspector {
+                    if tool.treeDataTool { return }
                     if tool.dataMatrices.isEmpty { self.isHidden = true} else { self.isHidden = false }
                     }
                 },
                 tool.observe(\DataTool.alignedDataMatrices, options: [.initial]) {(tool, change) in
                 if self.buttonType == .Inspector {
+                    if tool.treeDataTool { return }
                     if tool.dataMatrices.isEmpty { self.isHidden = true} else { self.isHidden = false }
                     }
-                }
+                },
+                tool.observe(\DataTool.trees, options: [.initial]) {(tool, change) in
+                if self.buttonType == .Inspector {
+                    if !tool.treeDataTool { return }
+                    if tool.trees.isEmpty { self.isHidden = true} else { self.isHidden = false }
+                    }
+                },
             ]
        }
     }

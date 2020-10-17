@@ -25,6 +25,7 @@ enum StoryBoardName: String {
     case alignTabView = "AlignTabView"
     case parsimonyTool = "ParsimonyTool"
     case treesetTool = "TreeSetTool"
+    case treeInspector = "TreeInspector"
 }
 
 extension ToolObject {

@@ -101,6 +101,24 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         return _matrixInspectorWindowController!
     }
     
+    // MARK: - Tree Inspector Window
+    
+    private var _treeInspectorWindowController: TreeInspectorWindowController? = nil
+    
+    func resetTreeInspectorWindowController(){
+        _treeInspectorWindowController = nil
+    }
+    
+    var treeInspectorWindowController: TreeInspectorWindowController {
+        if _treeInspectorWindowController == nil {
+            _treeInspectorWindowController = NSStoryboard.loadWC(StoryBoardName.treeInspector) as? TreeInspectorWindowController
+            _treeInspectorWindowController!.trees = (self.tool as! DataTool).trees
+            _treeInspectorWindowController!.toolType = self.tool?.descriptiveName
+        }
+        return _treeInspectorWindowController!
+    }
+    
+    
     // MARK: - Model Tool Window
     
     private var _modelToolWindowController: ModelToolWindowController? = nil
@@ -265,8 +283,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
             }
             
         case .Inspector:
-            resetMatrixInspectorWindowController()
-            matrixInspectorWindowController.showWindow(self)
+            inspectorButtonClicked()
             
         default:
             print("No default action button implemented.")
@@ -276,8 +293,13 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     }
     
     func inspectorButtonClicked() {
-        resetMatrixInspectorWindowController()
-        matrixInspectorWindowController.showWindow(self)
+        if let tool = self.tool as? DataTool, tool.treeDataTool {
+            resetTreeInspectorWindowController()
+            treeInspectorWindowController.showWindow(self)
+        } else {
+            resetMatrixInspectorWindowController()
+            matrixInspectorWindowController.showWindow(self)
+        }
     }
     
     func isDisplayDataTool() -> Bool {
@@ -288,12 +310,14 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
                 return true
             case .align:
                 return true
+            case .treeset:
+                return true
             case .parsimony:
                 return false
             case .model:
                 return false
             default:
-                return true
+                return false
             }
         } else {
             return false
