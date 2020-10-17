@@ -26,10 +26,11 @@ class TreeSet: DataTool {
         trees.removeAll()
     }
     
-    func removeTreesFrom(hash: Int) {
+    func removeTreeSource(hash: Int) {
         
         var sourceToRemove: TreeSource?
         var index: Int?
+        
         for (i,s) in sources.enumerated() {
             if s.hashVal == hash {
                 sourceToRemove = s
@@ -44,13 +45,38 @@ class TreeSet: DataTool {
         else {
             sources.remove(at: i)
         }
-       
+        
         if let firstTreeIndex = treeSourcesMap.firstIndex(of: hash){
             let lastTreeIndex = firstTreeIndex + source.count
             treeSourcesMap.removeSubrange(firstTreeIndex..<lastTreeIndex)
             trees.removeSubrange(firstTreeIndex..<lastTreeIndex)
         }
         
+    }
+    
+    
+    func emptyTreeSource(hash: Int) {
+        
+        var sourceToEmpty: TreeSource?
+        
+        for s in sources {
+            if s.hashVal == hash {
+                sourceToEmpty = s
+                break
+            }
+        }
+        
+        guard let source = sourceToEmpty, source.tool != nil else { return }
+        
+        
+        if let firstTreeIndex = treeSourcesMap.firstIndex(of: hash){
+            let lastTreeIndex = firstTreeIndex + source.count
+            treeSourcesMap.removeSubrange(firstTreeIndex..<lastTreeIndex)
+            trees.removeSubrange(firstTreeIndex..<lastTreeIndex)
+        }
+        
+        source.count = 0
+
     }
     
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
@@ -93,103 +119,83 @@ class TreeSet: DataTool {
     
     func addTreeSource(tool: AnyObject?, key: String, count: Int) {
         
-        var index = -1
-        if tool != nil {
-            for (i,s) in sources.enumerated() {
-                if s.key == Key.unconnected.rawValue {
-                    index = i
-                    break
-                }
+        var inSources: Bool = false
+        for s in self.sources{
+            if s.key == key {
+                inSources = true
+                s.count = count
+                break
+                
             }
         }
         
-        let newSource = TreeSource(count: count, source: tool, key: key)
-       
-        index >= 0 ? sources[index] = newSource : sources.append(newSource)
-        
+        if !inSources {
+            
+            var index: Int = -1
+            if tool != nil {
+                for (i,s) in sources.enumerated() {
+                    if s.key == Key.unconnected.rawValue {
+                        index = i
+                        break
+                    }
+                }
+            }
+            
+            let newSource = TreeSource(count: count, source: tool, key: key)
+            index >= 0 ? sources[index] = newSource : sources.append(newSource)
+            
+        }
         
         if count > 0 {
             let treesToAppend = [key.hashValue] + Array(repeating: 0, count: count-1)
             treeSourcesMap.append(contentsOf: treesToAppend)
         }
+        
     }
+
     
-//    func printTreeSourcesMap() {
-//        var s = "##### Tree sources map #####: "
-//        for (i,v) in self.treeSourcesMap.enumerated() {
-//            s += "index \(i): tree hash \(v); "
+    //    func printTreeSourcesMap() {
+    //        var s = "##### Tree sources map #####: "
+    //        for (i,v) in self.treeSourcesMap.enumerated() {
+    //            s += "index \(i): tree hash \(v); "
+    //        }
+    //        print(s)
+    //    }
+    //
+    
+//
+//    func printSources() {
+//        var s = "##### Tree sources #####: "
+//        for (i,v) in self.sources.enumerated() {
+//            s += "index \(i): tree hash \(v.key.hashValue); "
 //        }
 //        print(s)
 //    }
-//    
-
-    
+//
     func runBackgroundImportTask(url: URL) {
         
         var successfullyReadData = true
-          DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .background).async {
             [unowned self] in
-                do {
-                    let readTrees = try readTreeDataTask(url)
-            
-                    if !readTrees.isEmpty {
-                        DispatchQueue.main.async {
-                            importTreesFrom(url, trees: readTrees, overwrite: false)
-                        }
+            do {
+                let readTrees = try readTreeDataTask(url)
+                
+                if !readTrees.isEmpty {
+                    DispatchQueue.main.async {
+                        importTreesFrom(url, trees: readTrees, overwrite: false)
                     }
-                } catch {
-                   successfullyReadData = false
                 }
-                DispatchQueue.main.async {
-                    delegate?.endProgressIndicator()
-                    if !successfullyReadData {
-                        readDataAlert(informativeText: "No trees could be imported. An error occurred while parsing the file(s).")
-                    }
+            } catch {
+                successfullyReadData = false
+            }
+            DispatchQueue.main.async {
+                delegate?.endProgressIndicator()
+                if !successfullyReadData {
+                    readDataAlert(informativeText: "No trees could be imported. An error occurred while parsing the file(s).")
                 }
             }
-    }
-
-}
-
-class TreeSource: NSObject, NSCoding {
-    
-    
-    enum Key: String {
-        case hashVal, count, tool, key
-    }
-    
-    var key: String
-    var hashVal: Int {
-       return key.hashValue
-    }
-    var count: Int
-    var tool: DataTool?
-    
-    
-    init(count: Int, source: AnyObject?, key: String) {
-        self.count = count
-        if let tool = source as? DataTool {
-            self.tool = tool
         }
-        self.key = key
-        
     }
     
-    override init() {
-        key = TreeSet.Key.unconnected.rawValue
-        count = 0
-    }
-    
-    func encode(with coder: NSCoder) {
-        coder.encode(key, forKey: Key.key.rawValue)
-        coder.encode(count, forKey: Key.count.rawValue)
-        coder.encode(tool, forKey: Key.tool.rawValue)
-    }
-        
-    required init?(coder: NSCoder) {
-        key = coder.decodeObject(forKey: Key.key.rawValue) as! String
-        count = coder.decodeInteger(forKey: Key.count.rawValue)
-        tool = coder.decodeObject(forKey: Key.tool.rawValue) as? DataTool
-    }
-
 }
+

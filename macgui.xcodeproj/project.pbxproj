@@ -1426,6 +1426,10 @@
 		14E69A5F2375FB830045E283 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E69A5E2375FB830045E283 /* ActionButton.swift */; };
 		14E69A61237638190045E283 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E69A60237638190045E283 /* DataSource.swift */; };
 		14E69A632376383D0045E283 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E69A622376383D0045E283 /* NavigatorViewController.swift */; };
+		14E8A53325377ABE00864375 /* TreeInspector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14E8A53225377ABE00864375 /* TreeInspector.storyboard */; };
+		14E8A53725377B7700864375 /* TreeInspectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8A53625377B7700864375 /* TreeInspectorWindowController.swift */; };
+		14E8A53B25377C3900864375 /* TreeInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8A53A25377C3900864375 /* TreeInspectorViewController.swift */; };
+		14E8A53F253B93B300864375 /* TreeSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8A53E253B93B300864375 /* TreeSource.swift */; };
 		14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */ = {isa = PBXBuildFile; fileRef = 14ECE4DE233BFE2300106EB4 /* aquabayes.icns */; };
 		14F29F6B252F7FA0001104A9 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F29F6A252F7F9F001104A9 /* iCarousel.m */; };
 		14F29F70252F7FFF001104A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F29F6F252F7FFF001104A9 /* QuartzCore.framework */; };
@@ -4368,6 +4372,10 @@
 		14E69A5E2375FB830045E283 /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		14E69A60237638190045E283 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		14E69A622376383D0045E283 /* NavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
+		14E8A53225377ABE00864375 /* TreeInspector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TreeInspector.storyboard; sourceTree = "<group>"; };
+		14E8A53625377B7700864375 /* TreeInspectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeInspectorWindowController.swift; sourceTree = "<group>"; };
+		14E8A53A25377C3900864375 /* TreeInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeInspectorViewController.swift; sourceTree = "<group>"; };
+		14E8A53E253B93B300864375 /* TreeSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TreeSource.swift; path = "macgui/Views and View Controllers/Canvas Object/Canvas Tool/Tree Set Tool/TreeSource.swift"; sourceTree = SOURCE_ROOT; };
 		14ECE4DE233BFE2300106EB4 /* aquabayes.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = aquabayes.icns; sourceTree = "<group>"; };
 		14F29F69252F7F9F001104A9 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		14F29F6A252F7F9F001104A9 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -8236,7 +8244,6 @@
 				1495A0B5237C991200F46312 /* MatrixInspector.storyboard */,
 				1407184A22FF5D430098285D /* ModalSheet.storyboard */,
 				1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */,
-				14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */,
 				1453184624E217F200A4656C /* ParsimonyTool.storyboard */,
 				149A4FFF24983C61007E4D4B /* AlignTool.storyboard */,
 				147429DD22D154D200FF1963 /* ModelTool.storyboard */,
@@ -8244,6 +8251,8 @@
 				1411BEE72208FE91009BEE1D /* Tool.xib */,
 				141106B8230742D500A8B936 /* ToolTip.storyboard */,
 				1419FDBC244E772900007232 /* VariableController.storyboard */,
+				14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */,
+				14E8A53225377ABE00864375 /* TreeInspector.storyboard */,
 			);
 			path = "XIbs and Storyboards";
 			sourceTree = "<group>";
@@ -8315,13 +8324,13 @@
 			path = "Connectable Tools";
 			sourceTree = "<group>";
 		};
-		1495A0A9237C86B200F46312 /* Tool Info Dialogue */ = {
+		1495A0A9237C86B200F46312 /* Tool Controller */ = {
 			isa = PBXGroup;
 			children = (
 				147429D622CADDF800FF1963 /* SheetViewController.swift */,
 				14F95D6523569913009884D2 /* InfoToolViewController.swift */,
 			);
-			path = "Tool Info Dialogue";
+			path = "Tool Controller";
 			sourceTree = "<group>";
 		};
 		1495A0AA237C870E00F46312 /* Canvas Object */ = {
@@ -8487,13 +8496,14 @@
 			isa = PBXGroup;
 			children = (
 				1495A0B1237C89A200F46312 /* Tool Objects */,
+				14E8A531253778EA00864375 /* Tree Inspector */,
 				1495A0B2237C97F800F46312 /* Matrix Inspector */,
 				14C618E523E0E11E001FFFD6 /* Model Tool */,
 				149A4FFC249834E2007E4D4B /* Align Tool */,
 				1453184824E4748800A4656C /* Parsimony Tool */,
 				14F29F77252FAF4D001104A9 /* Tree Set Tool */,
 				1495A0AB237C877B00F46312 /* Tool Tip */,
-				1495A0A9237C86B200F46312 /* Tool Info Dialogue */,
+				1495A0A9237C86B200F46312 /* Tool Controller */,
 				1495A0B0237C892A00F46312 /* Connection */,
 				14E69A5E2375FB830045E283 /* ActionButton.swift */,
 				14E58525228C92AB00802691 /* ToolImageView.swift */,
@@ -8523,6 +8533,15 @@
 			path = "Canvas Arrow";
 			sourceTree = "<group>";
 		};
+		14E8A531253778EA00864375 /* Tree Inspector */ = {
+			isa = PBXGroup;
+			children = (
+				14E8A53625377B7700864375 /* TreeInspectorWindowController.swift */,
+				14E8A53A25377C3900864375 /* TreeInspectorViewController.swift */,
+			);
+			path = "Tree Inspector";
+			sourceTree = "<group>";
+		};
 		14F29F68252F7F87001104A9 /* iCarousel */ = {
 			isa = PBXGroup;
 			children = (
@@ -8543,6 +8562,7 @@
 		14F29F77252FAF4D001104A9 /* Tree Set Tool */ = {
 			isa = PBXGroup;
 			children = (
+				14E8A53E253B93B300864375 /* TreeSource.swift */,
 				14F29F78252FAF9C001104A9 /* TreeSetToolViewController.swift */,
 			);
 			path = "Tree Set Tool";
@@ -8655,6 +8675,7 @@
 				1471052B226CD75300E88657 /* ConnectorItemArrow.xib in Resources */,
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
 				149A500024983C61007E4D4B /* AlignTool.storyboard in Resources */,
+				14E8A53325377ABE00864375 /* TreeInspector.storyboard in Resources */,
 				1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */,
 				1495A0B6237C991200F46312 /* MatrixInspector.storyboard in Resources */,
 				14A663BC23186CFE0034EA53 /* Notebook.storyboard in Resources */,
@@ -9249,6 +9270,7 @@
 				144BEF3923A17AC60001B2EF /* SpeciesSubtreeScaleProposal.cpp in Sources */,
 				144BED8323A17AC60001B2EF /* SyntaxClassDef.cpp in Sources */,
 				144BF0AD23A17AC70001B2EF /* GeographicalDistanceFunction.cpp in Sources */,
+				14E8A53F253B93B300864375 /* TreeSource.swift in Sources */,
 				144BEFD123A17AC70001B2EF /* TopologyNode.cpp in Sources */,
 				144BEFED23A17AC70001B2EF /* RateMatrix_Tamura92.cpp in Sources */,
 				144BEEAC23A17AC60001B2EF /* Dist_exponentialError.cpp in Sources */,
@@ -9551,6 +9573,7 @@
 				144BECCF23A17AC50001B2EF /* Move_RandomIntegerWalk.cpp in Sources */,
 				149B15D624BD1010006673CB /* ExecutableTools.swift in Sources */,
 				144BF0B123A17AC70001B2EF /* LogFunction.cpp in Sources */,
+				14E8A53725377B7700864375 /* TreeInspectorWindowController.swift in Sources */,
 				144BF12323A17AC70001B2EF /* BinomialDistribution.cpp in Sources */,
 				144BED5523A17AC60001B2EF /* RlBranchLengthTree.cpp in Sources */,
 				144BF19023A17AC80001B2EF /* RbHelpArgument.cpp in Sources */,
@@ -9882,6 +9905,7 @@
 				144BF0D723A17AC70001B2EF /* CovarionRateMatrixFunction.cpp in Sources */,
 				144BECD223A17AC50001B2EF /* Move_SliceSampling.cpp in Sources */,
 				144BEE3123A17AC60001B2EF /* Func_chronoToPhylo.cpp in Sources */,
+				14E8A53B25377C3900864375 /* TreeInspectorViewController.swift in Sources */,
 				144BEFA723A17AC60001B2EF /* PosteriorPredictiveAnalysis.cpp in Sources */,
 				144BECD123A17AC50001B2EF /* Move_ScaleBactrian.cpp in Sources */,
 				144BEFC023A17AC70001B2EF /* SemMin.cpp in Sources */,

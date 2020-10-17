@@ -66,9 +66,7 @@ class TreeSetToolViewController: InfoToolViewController, NSTableViewDelegate, NS
     func addInlet(){
         self.treeset?.inlets.append(Connector(type: .treedata))
         self.treeset?.sources.append(TreeSource())
-        if let toolVC = self.treeset?.delegate as? CanvasToolViewController {
-            toolVC.inlets.reloadData()
-        }
+        NotificationCenter.default.post(name: .didUpdateAnalysis, object: self)
     }
     
     func removeInlet() {
@@ -97,18 +95,18 @@ class TreeSetToolViewController: InfoToolViewController, NSTableViewDelegate, NS
                             treeset.analysis.arrows.remove(at: index)
                             treeset.removeNeighbor(connectionType: .treedata, linkType: .inlet)
                             tool.removeNeighbor(connectionType: .treedata, linkType: .outlet)
-                            NotificationCenter.default.post(name: .didUpdateAnalysis, object: self)
                         }
                         break
                     }
                 }
-                treeset.removeTreesFrom(hash: tool.description.hashValue)
+                treeset.removeTreeSource(hash: tool.description.hashValue)
                 
             } else {
-                treeset.removeTreesFrom(hash: sources[row].hashVal)
+                treeset.removeTreeSource(hash: sources[row].hashVal)
                 
             }
-            inletsTableView.removeRows(at: IndexSet(integer: row), withAnimation: .slideDown)
+            inletsTableView.removeRows(at: IndexSet(integer: row))
+            NotificationCenter.default.post(name: .didUpdateAnalysis, object: self)
         }
     }
     

@@ -30,6 +30,14 @@ class DataTool: Connectable {
         }
     }
     
+    var treeDataTool: Bool {
+        let toolType = ToolType(rawValue: name)!
+        switch toolType {
+        case .treeset: return true
+        default: return false
+        }
+    }
+    
     @objc dynamic var alignedDataMatrices: [DataMatrix]  = [] {
         didSet {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
@@ -44,6 +52,7 @@ class DataTool: Connectable {
     @objc dynamic var dataMatrices: [DataMatrix]  {
         return !alignedDataMatrices.isEmpty ? alignedDataMatrices : unalignedDataMatrices
     }
+    
     
     
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
@@ -88,6 +97,33 @@ class DataTool: Connectable {
         }
     }
     
+    func propagateTreeData(data: [Tree] = [], source: DataTool, removeSource: Bool) {
+        
+        if data.isEmpty, let treeset = self as? TreeSet {
+            let hash = source.description.hashValue
+            if removeSource {
+                treeset.removeTreeSource(hash: hash)
+            } else {
+                treeset.emptyTreeSource(hash: hash)
+            }
+        } else if !data.isEmpty, let treeset = self as? TreeSet {
+            
+
+        }  else {
+            
+            self.trees = data
+            if !self.connectedOutlets.isEmpty  {
+                for connection in self.analysis.arrows {
+                    if connection.from === self, let neighbor = connection.to as? DataTool {
+                        neighbor.propagateTreeData(data: data, source: self, removeSource: removeSource)
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    
     func connectAlignedData(from: DataTool) {
         let alignedMatrices =  from.dataMatrices.filter{$0.homologyEstablished == true}
         if !alignedMatrices.isEmpty {
@@ -108,8 +144,10 @@ class DataTool: Connectable {
         for connection in self.analysis.arrows {
             if connection.type == .alignedData, connection.from === self, let neighbor = connection.to as? DataTool {
                 neighbor.propagateAlignedData(data: alignedData)
+                neighbor.propagateTreeData(source: self, removeSource: false)
             } else if connection.type == .unalignedData, connection.from === self, let neighbor = connection.to as? DataTool {
                 neighbor.propagateUnalignedData(data: unalignedData)
+                neighbor.propagateTreeData(source: self, removeSource: false)
             }
         }
     }

@@ -75,13 +75,11 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
     }
     
     func willDeleteView(){
-        if let targetTool = targetTool as? DataTool {
+        
+        if let targetTool = targetTool as? DataTool, let sourceTool = sourceTool as? DataTool {
             targetTool.propagateAlignedData()
             targetTool.propagateUnalignedData()
-        }
-        if let targetTool = targetTool as? TreeSet {
-            let hash = sourceTool?.description.hashValue
-            targetTool.removeTreesFrom(hash: hash!)
+            targetTool.propagateTreeData(source: sourceTool, removeSource: true)
         }
         if let type = self.connection?.type {
             targetTool?.removeNeighbor(connectionType: type, linkType: LinkType.inlet)
@@ -89,7 +87,6 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
         }
     }
 
-    
     func clearSublayers(){
         if let sublayers = view.layer?.sublayers {
             for sublayer in sublayers {
