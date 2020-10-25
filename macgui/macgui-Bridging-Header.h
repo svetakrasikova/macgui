@@ -4,7 +4,3 @@
 
 #import "CoreBridge.h"
 #import "iCarousel.h"
-
-@interface ReadData : NSObject
-- (void)testFunction;
-@end

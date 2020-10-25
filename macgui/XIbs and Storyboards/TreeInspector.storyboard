@@ -35,10 +35,17 @@
         <scene sceneID="4G8-r0-Nlv">
             <objects>
                 <viewController id="bZa-3s-pcm" customClass="TreeInspectorViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="3DO-3f-4TJ">
+                    <view key="view" id="3DO-3f-4TJ" customClass="iCarousel">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="dataSource" destination="bZa-3s-pcm" id="rBj-LF-2t2"/>
+                            <outlet property="delegate" destination="bZa-3s-pcm" id="XOO-b2-yKK"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="Carousel" destination="3DO-3f-4TJ" id="rTz-IP-lge"/>
+                    </connections>
                 </viewController>
                 <customObject id="qdG-DP-Vpe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

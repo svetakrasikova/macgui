@@ -112,6 +112,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     var treeInspectorWindowController: TreeInspectorWindowController {
         if _treeInspectorWindowController == nil {
             _treeInspectorWindowController = NSStoryboard.loadWC(StoryBoardName.treeInspector) as? TreeInspectorWindowController
+            let trees = (self.tool as! DataTool).trees
             _treeInspectorWindowController!.trees = (self.tool as! DataTool).trees
             _treeInspectorWindowController!.toolType = self.tool?.descriptiveName
         }

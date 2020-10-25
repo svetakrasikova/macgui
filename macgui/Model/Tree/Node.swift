@@ -6,13 +6,32 @@ class Node: NSObject, NSCoding {
     
 
     var descendants : [Node] = []
-    var ancestor : Node? = nil
-    var index : Int = 0
-    var branchLength : Double = 0.0
-    var name : String = ""
+    var ancestor : Node?
+    var index: Int = 0
+    var branchLength: Double = 0.0
+    var name: String = ""
+    
+    var isLeaf: Bool {
+        return descendants.isEmpty
+    }
+    var isRoot: Bool {
+        return ancestor == nil
+    }
+    
+    var depthFromTip: Int = 0
+    
+    var x: CGFloat {
+        point.x
+    }
+    var y: CGFloat {
+        point.y
+    }
+    
+    var point: NSPoint = NSPoint(x: 0.0, y: 0.0)
+    
     
     enum Key: String {
-        case descendants, ancestor, index, branchLength, name
+        case descendants, ancestor, index, branchLength, name, depthFromTip, x, y, point
     }
     
     override init() {
@@ -27,6 +46,9 @@ class Node: NSObject, NSCoding {
         coder.encode(index, forKey: Key.index.rawValue)
         coder.encode(branchLength, forKey: Key.branchLength.rawValue)
         coder.encode(name, forKey: Key.name.rawValue)
+        coder.encode(point, forKey: Key.point.rawValue)
+        coder.encode(depthFromTip, forKey: Key.depthFromTip.rawValue)
+    
     }
     
     required init?(coder: NSCoder) {
@@ -35,6 +57,18 @@ class Node: NSObject, NSCoding {
         index = coder.decodeInteger(forKey: Key.index.rawValue)
         branchLength = coder.decodeDouble(forKey: Key.branchLength.rawValue)
         name = coder.decodeObject(forKey: Key.name.rawValue) as? String ?? ""
+        point = coder.decodePoint(forKey: Key.name.rawValue)
+        depthFromTip = coder.decodeInteger(forKey: Key.depthFromTip.rawValue)
+    }
+    
+    func getDepth() -> Int {
+        var depth = 1
+        if let ancestor = self.ancestor {
+            depth += ancestor.getDepth()
+        } else {
+            return depth
+        }
+        return depth
     }
     
     // MARK: -

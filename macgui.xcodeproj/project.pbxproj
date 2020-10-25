@@ -42,6 +42,7 @@
 		142945F723EE44DC0093608F /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 142945F623EE44DC0093608F /* Preferences.storyboard */; };
 		142945F923EF50E40093608F /* PreferencesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142945F823EF50E40093608F /* PreferencesManager.swift */; };
 		142945FB23EF76890093608F /* MainCanvasPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142945FA23EF76890093608F /* MainCanvasPreferencesController.swift */; };
+		142D7BE4253E032A009A1903 /* TreeSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D7BE3253E032A009A1903 /* TreeSetView.swift */; };
 		1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */; };
 		144BE13C2397797C0001B2EF /* GitVersion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 144BE13B2397797C0001B2EF /* GitVersion.cpp */; };
 		144BE142239B07BA0001B2EF /* DataMatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BE141239B07BA0001B2EF /* DataMatrixTests.swift */; };
@@ -1494,6 +1495,7 @@
 		142945F623EE44DC0093608F /* Preferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		142945F823EF50E40093608F /* PreferencesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesManager.swift; sourceTree = "<group>"; };
 		142945FA23EF76890093608F /* MainCanvasPreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCanvasPreferencesController.swift; sourceTree = "<group>"; };
+		142D7BE3253E032A009A1903 /* TreeSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSetView.swift; sourceTree = "<group>"; };
 		1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolView.swift; sourceTree = "<group>"; };
 		144BE13B2397797C0001B2EF /* GitVersion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GitVersion.cpp; path = ../../revbayes/projects/cmake/GitVersion.cpp; sourceTree = "<group>"; };
 		144BE141239B07BA0001B2EF /* DataMatrixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMatrixTests.swift; sourceTree = "<group>"; };
@@ -4382,7 +4384,6 @@
 		14F29F6F252F7FFF001104A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TreeSetTool.storyboard; sourceTree = "<group>"; };
 		14F29F78252FAF9C001104A9 /* TreeSetToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSetToolViewController.swift; sourceTree = "<group>"; };
-		14F29F7C2533D73C001104A9 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../LearningProjects/MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		14F95D6523569913009884D2 /* InfoToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoToolViewController.swift; sourceTree = "<group>"; };
 		14F95D6A23569A70009884D2 /* CoreBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CoreBridge.mm; sourceTree = "<group>"; };
 		14F95D6B23569A70009884D2 /* CoreBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreBridge.h; sourceTree = "<group>"; };
@@ -4433,7 +4434,6 @@
 		1411BE832203D8FB009BEE1D = {
 			isa = PBXGroup;
 			children = (
-				14F29F7C2533D73C001104A9 /* MyPlayground.playground */,
 				144BE6BB23A17AC40001B2EF /* core */,
 				144BE68423A17AC40001B2EF /* libs */,
 				144BE14523A17AC20001B2EF /* revlanguage */,
@@ -8536,6 +8536,7 @@
 		14E8A531253778EA00864375 /* Tree Inspector */ = {
 			isa = PBXGroup;
 			children = (
+				142D7BE3253E032A009A1903 /* TreeSetView.swift */,
 				14E8A53625377B7700864375 /* TreeInspectorWindowController.swift */,
 				14E8A53A25377C3900864375 /* TreeInspectorViewController.swift */,
 			);
@@ -10041,6 +10042,7 @@
 				144BEE1623A17AC60001B2EF /* Ellipsis.cpp in Sources */,
 				144BED9823A17AC60001B2EF /* SyntaxLabeledExpr.cpp in Sources */,
 				144BEE8D23A17AC60001B2EF /* Dist_GilbertGraph.cpp in Sources */,
+				142D7BE4253E032A009A1903 /* TreeSetView.swift in Sources */,
 				1453184C24E487DB00A4656C /* PaupOptions.swift in Sources */,
 				144BED0023A17AC50001B2EF /* Move_CorrelationMatrixExpansion.cpp in Sources */,
 				14E5857822A067A600802691 /* TransparentToolsView.swift in Sources */,
@@ -10261,6 +10263,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P3X4F8B2U7;
 				ENABLE_PREVIEWS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				INFOPLIST_FILE = macgui/Info.plist;
@@ -10289,6 +10292,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P3X4F8B2U7;
 				ENABLE_PREVIEWS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				INFOPLIST_FILE = macgui/Info.plist;

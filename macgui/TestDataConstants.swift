@@ -90,4 +90,7 @@ static let normalDistribution =  """
 
                 }
     """
+    
+    static let sampleNewickString = "(Bovine,((((Carp,Loach),Xenopus),Chicken),(Mouse,Rat)),((Human,Whale),Seal));"
+ 
 }
