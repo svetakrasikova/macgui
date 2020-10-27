@@ -58,6 +58,7 @@ class Parsimony: DataTool, ResolveStateOnExecution {
                     if !trees.isEmpty {
                         DispatchQueue.main.async {
                             self.trees = trees
+                            self.propagateData()
                         }
                         
                     }
