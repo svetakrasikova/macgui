@@ -25,7 +25,7 @@ class NewickString: NSObject {
         
         super.init()
         
-        newickString = nStr
+        newickString = nStr.filter { !$0.isWhitespace }
         
         if check() == false {
             print("Error: Improperly formatted Newick string")
@@ -43,7 +43,7 @@ class NewickString: NSObject {
         return str
     }
     
-    func check() -> Bool {
+    func simpleCheck() -> Bool {
 
         var numLeft : Int = 0
         var numRight : Int = 0
@@ -77,6 +77,35 @@ class NewickString: NSObject {
         return true
     }
     
+    func check() -> Bool {
+        
+        var isSurroundedByParen = false
+        var stack: [Int] = []
+        let lastIndex = newickString.count-1
+        
+        for (index,char) in newickString.enumerated() {
+            
+            switch char {
+            case "(":
+                stack.append(index)
+                isSurroundedByParen = false
+            case ")":
+                guard let top = stack.popLast() else {
+                    return false
+                }
+                isSurroundedByParen = (top == 0)
+            case ";":
+                return isSurroundedByParen && index == lastIndex
+            default:
+                isSurroundedByParen = false
+                break
+            }
+        }
+        
+        return false
+        
+    }
+    
     
     
     func tokenizeNewickString() -> [String] {
@@ -99,11 +128,12 @@ class NewickString: NSObject {
     
     func parseNexus(_ nexusString: String) -> String? {
         var trees: String?
-        var lines = nexusString.split(separator: "\n")
+        let lines = nexusString.split(separator: "\n")
+        var linesWithoutSpace: [String] = []
         for line in lines {
-            lines.append(line.filter { !$0.isWhitespace })
+            linesWithoutSpace.append(line.filter { !$0.isWhitespace })
         }
-        let treeLines = lines.filter {$0.hasPrefix("tree") }
+        let treeLines = linesWithoutSpace.filter {$0.hasPrefix("tree") }
         if !treeLines.isEmpty {
             trees = treeLines.joined()
         }
