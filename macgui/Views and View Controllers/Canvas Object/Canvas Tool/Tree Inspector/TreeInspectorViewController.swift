@@ -13,21 +13,20 @@ class TreeInspectorViewController: NSViewController, iCarouselDelegate, iCarouse
 
     @IBOutlet var Carousel: iCarousel!
     
-    var drawMonophyleticWrOutgroup: Bool = false
+    let carouselViewBackgroundImage = NSImage(named: "page300x625")
 
     var trees: [Tree] = []
-    var rootedTrees: [Tree] = []
 
     
 //    MARK: - iCarouselDataSource
     
     func numberOfItems(in carousel: iCarousel) -> Int {
-        return rootedTrees.count
+        return trees.count
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: NSView?) -> NSView {
-        let frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-        let treeView = TreeSetView(frame: frame, tree: rootedTrees[index])
+
+        let treeView = TreeSetView(image: carouselViewBackgroundImage!, tree: trees[index])
         treeView.delegate = self
         return treeView
         
@@ -37,9 +36,6 @@ class TreeInspectorViewController: NSViewController, iCarouselDelegate, iCarouse
         super.viewWillAppear()
         guard let inspectorWC = view.window?.windowController as? TreeInspectorWindowController, let trees = inspectorWC.trees else { return }
         self.trees = trees
-        for tree in trees {
-            self.rootedTrees.append(tree.rooted())
-        }
         Carousel.reloadData()
         Carousel.type = .coverFlow2
         
@@ -71,20 +67,16 @@ class TreeInspectorViewController: NSViewController, iCarouselDelegate, iCarouse
             }
         }
         
-        
         return biggestNameRect
     }
     
     func nodesWithCoordinates(tree: Tree) -> [Node]? {
         
         if tree.nodeCoordinates.isEmpty {
-            tree.setCoordinates(drawMonophyleticWrOutgroup: drawMonophyleticWrOutgroup)
+            tree.setCoordinates()
         }
         return tree.tSequence
     }
-    
-    func isDrawMonophyleticWrOutgroup() -> Bool {
-        return self.drawMonophyleticWrOutgroup
-    }
+
     
 }
