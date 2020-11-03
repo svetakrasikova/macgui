@@ -107,7 +107,7 @@ class DataTool: Connectable {
                 treeset.emptyTreeSource(hash: hash)
             }
         } else if !data.isEmpty, let treeset = self as? TreeSet {
-            
+//            TODO: write the trees to the trees on the treeset tool
 
         }  else {
             
@@ -175,9 +175,8 @@ class DataTool: Connectable {
     
     func readTreeFile(_ fileURL: URL) throws -> [Tree] {
         var trees: [Tree] = []
-        let ns = NewickString()
         do {
-            let newickStrings: [String] = try ns.parseNewickStrings(fileURL: fileURL)
+            let newickStrings: [String] = try NewickString.parseNewickStrings(fileURL: fileURL)
             for newickString in newickStrings {
                 do {
                     let readTree = try Tree(newickString: newickString)
