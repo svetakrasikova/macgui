@@ -1,12 +1,17 @@
+/**
+ 
+An object that holds a string representation of a tree in Newick format.
+ 
+ */
+
 import Cocoa
-
-
 
 class NewickString: NSObject {
 
-    var newickString : String = ""
+
+    var newickString: String
     
-    var newickTokens : [String] {
+    var newickTokens: [String] {
         return tokenizeNewickString()
     }
 
@@ -17,20 +22,22 @@ class NewickString: NSObject {
     }
 
     override init() {
-    
+        newickString = ""
         super.init()
     }
     
     init(nStr: String) throws {
         
-        super.init()
-        
-        newickString = nStr.filter { !$0.isWhitespace }
-        
-        if check() == false {
+         let inputString = nStr.filter { !$0.isWhitespace }
+
+        if NewickString.check(inputString) == false {
             print("Error: Improperly formatted Newick string")
             throw NewickError.badNewickStringError
         }
+        
+        self.newickString = inputString
+        
+        super.init()
         
     }
     
@@ -43,41 +50,16 @@ class NewickString: NSObject {
         return str
     }
     
-    func simpleCheck() -> Bool {
-
-        var numLeft : Int = 0
-        var numRight : Int = 0
-        var foundSemicolon : Bool = false
-        
-        for char in newickString {
-            
-            switch char {
-            case "(":
-                numLeft += 1
-            case ")":
-                numRight += 1
-            case ";":
-                if foundSemicolon == true {
-                    return false
-                }
-                foundSemicolon = true
-            default:
-                continue
-            }
-        }
-        
-        if numLeft != numRight {
-            return false
-        }
-        
-        if foundSemicolon == false {
-            return false
-        }
-        
-        return true
-    }
+/**
+     
+     Checks the syntax. Three conditions need to be met for a string to be well-formed:
+     
+     * Surrounded by outer parentheses
+     * Parentheses are balanced
+     * Ends with a semicolon
     
-    func check() -> Bool {
+*/
+    class func check(_ newickString: String) -> Bool {
         
         var isSurroundedByParen = false
         var stack: [Int] = []
@@ -106,8 +88,7 @@ class NewickString: NSObject {
         
     }
     
-    
-    
+
     func tokenizeNewickString() -> [String] {
         
         var newickTokens: [String] = []
@@ -126,7 +107,11 @@ class NewickString: NSObject {
         return newickTokens
     }
     
-    func parseNexus(_ nexusString: String) -> String? {
+    /**
+        Keeps the lines from a nexus formated file that begin with *tree*.
+     */
+    
+    class func parseNexus(_ nexusString: String) -> String? {
         var trees: String?
         let lines = nexusString.split(separator: "\n")
         var linesWithoutSpace: [String] = []
@@ -140,7 +125,16 @@ class NewickString: NSObject {
         return trees
     }
     
-    func parseNewickStrings(fileURL: URL) throws -> [String] {
+    /**
+        Reads a nexus formated file and returns a list of Newick formatted strings.
+     
+     - Parameter fileURL: The url for the input file.
+     - Returns: An array of properly formatted Newick strings.
+     - Throws: An error if the contents of the file is not accessible to intialize a `Data` object.
+     
+     */
+    
+    class func parseNewickStrings(fileURL: URL) throws -> [String] {
         var newickStrings : [String] = []
         do {
             let d = try Data(contentsOf:fileURL)
@@ -160,9 +154,9 @@ class NewickString: NSObject {
                     
                     if char == ";" {
                         readingNewick = false
-                        newickString = nStr
+                        let newickString = nStr
                         nStr = ""
-                        if check() == false {
+                        if NewickString.check(newickString) == false {
                             print("Error: Improperly formatted Newick string")
                         }
                         else {
