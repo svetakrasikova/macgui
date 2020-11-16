@@ -101,6 +101,25 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
         return _matrixInspectorWindowController!
     }
     
+    
+    // MARK: - Parsimony Tool Window
+    
+    private var _parsimonyWindowController: TablessWindowController? = nil
+    
+    func resetParsimonyWindowController(){
+        _parsimonyWindowController = nil
+    }
+    
+    var parsimonyWindowController: TablessWindowController {
+        if _parsimonyWindowController == nil {
+            _parsimonyWindowController = NSStoryboard.loadWC(StoryBoardName.paup) as? TablessWindowController
+            _parsimonyWindowController?.tool = self.tool as? Parsimony
+            _parsimonyWindowController!.toolType = self.tool?.descriptiveName
+        }
+        return _parsimonyWindowController!
+    }
+    
+    
     // MARK: - Tree Inspector Window
     
     private var _treeInspectorWindowController: TreeInspectorWindowController? = nil
@@ -277,6 +296,9 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
                 case .model?:
                     resetModelToolWindowController()
                     modelToolWindowController.showWindow(self)
+                case .parsimony?:
+                    resetParsimonyWindowController()
+                    parsimonyWindowController.showWindow(self)
                 default:
                     self.presentAsModalWindow(sheetViewController)
                 }

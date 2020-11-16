@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="P70-4N-NAM">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Parsimony Tool View Controller-->
+        <!--Paup Search Method View Controller-->
         <scene sceneID="7vF-yn-Lel">
             <objects>
-                <viewController storyboardIdentifier="ParsimonyTool" id="P70-4N-NAM" customClass="ParsimonyToolViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ParsimonyTool" id="P70-4N-NAM" customClass="PaupSearchMethodViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="VMT-oi-eqd">
                         <rect key="frame" x="0.0" y="0.0" width="448" height="294"/>
                         <autoresizingMask key="autoresizingMask"/>

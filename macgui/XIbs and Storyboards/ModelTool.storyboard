@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="TZL-73-EW0">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="TZL-73-EW0">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -60,7 +60,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" tag="1" imageScaling="axesIndependently" inset="2" pullsDown="YES" selectedItem="rlK-oL-IeD" id="rZx-iQ-MQJ" userLabel="zoom">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="menu"/>
                                             <menu key="menu" id="0Sy-H0-8PG">
                                                 <items>
                                                     <menuItem title="100%" tag="1" hidden="YES" id="rlK-oL-IeD" userLabel="100%"/>
@@ -138,13 +138,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzX-73-IOT">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="318"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="316"/>
                                 <clipView key="contentView" drawsBackground="NO" id="3eZ-bW-qyJ">
-                                    <rect key="frame" x="1" y="1" width="148" height="316"/>
+                                    <rect key="frame" x="1" y="1" width="148" height="314"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" autosaveName="OutlineView" rowHeight="24" rowSizeStyle="systemDefault" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="14" autosaveExpandedItems="YES" outlineTableColumn="uGO-87-8zt" id="qa1-j9-JlY">
-                                            <rect key="frame" x="0.0" y="0.0" width="148" height="316"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="148" height="314"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>

@@ -108,7 +108,7 @@ Gw
                         <tabViewItem id="nGJ-qm-eRn"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsBezelBorder" id="qvQ-sd-ZoW">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="470" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="system"/>
                         <connections>
@@ -127,7 +127,7 @@ Gw
                     </connections>
                 </tabViewController>
             </objects>
-            <point key="canvasLocation" x="-74" y="-16"/>
+            <point key="canvasLocation" x="-64" y="-16"/>
         </scene>
         <!--CLUSTAL-->
         <scene sceneID="Xdn-Cr-Ltw">

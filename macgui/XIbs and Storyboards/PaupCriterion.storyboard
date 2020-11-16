@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="d8T-xx-jF6">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Criterion Detail-->
+        <scene sceneID="9Ua-Le-r8x">
+            <objects>
+                <tabViewController title="Criterion Detail" selectedTabViewItemIndex="0" tabStyle="unspecified" id="d8T-xx-jF6" customClass="PaupCriterionDetailViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem label="Likelihood" identifier="likelihood" id="uff-2V-lvW"/>
+                        <tabViewItem label="Distance" identifier="distance" id="oOI-dx-OZu"/>
+                        <tabViewItem label="Parsimony" identifier="parsimony" id="aFm-se-hoF"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="MRQ-u2-GVY">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="d8T-xx-jF6" id="c6H-n3-Qo6"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="MRQ-u2-GVY" id="BBe-nZ-6OI"/>
+                        <segue destination="JaO-E1-7n4" kind="relationship" relationship="tabItems" id="3Xh-hs-Tos"/>
+                        <segue destination="0bP-UM-OVv" kind="relationship" relationship="tabItems" id="2Va-lT-wDA"/>
+                        <segue destination="fUX-CK-Dmd" kind="relationship" relationship="tabItems" id="KcX-hd-J0b"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="TCS-CO-lEp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="466" y="-2153"/>
+        </scene>
+        <!--Parsimony-->
+        <scene sceneID="t4I-MI-g1O">
+            <objects>
+                <viewController title="Parsimony" id="JaO-E1-7n4" sceneMemberID="viewController">
+                    <view key="view" id="as4-uO-3RB">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sig-Yv-nw4">
+                                <rect key="frame" x="192" y="142" width="67" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Parsimony" id="Ypu-Pc-xWa">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="sig-Yv-nw4" firstAttribute="centerX" secondItem="as4-uO-3RB" secondAttribute="centerX" id="6WO-g2-6UZ"/>
+                            <constraint firstItem="sig-Yv-nw4" firstAttribute="centerY" secondItem="as4-uO-3RB" secondAttribute="centerY" id="Bed-Cp-XSK"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="qTL-QZ-OrC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1029" y="-2765"/>
+        </scene>
+        <!--Distance-->
+        <scene sceneID="eyb-3Q-Gen">
+            <objects>
+                <viewController title="Distance" id="0bP-UM-OVv" sceneMemberID="viewController">
+                    <view key="view" id="Y7r-Z1-RBG">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fga-CD-iYD">
+                                <rect key="frame" x="197" y="142" width="57" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Distance" id="BCg-3J-O5z">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="fga-CD-iYD" firstAttribute="centerY" secondItem="Y7r-Z1-RBG" secondAttribute="centerY" id="U4C-PM-vdL"/>
+                            <constraint firstItem="fga-CD-iYD" firstAttribute="centerX" secondItem="Y7r-Z1-RBG" secondAttribute="centerX" id="pDg-kh-pSS"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="sCe-Nt-NYL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1029" y="-2204"/>
+        </scene>
+        <!--Likelihood-->
+        <scene sceneID="8Hm-3W-qyS">
+            <objects>
+                <viewController title="Likelihood" id="fUX-CK-Dmd" sceneMemberID="viewController">
+                    <view key="view" id="FfG-T7-Oxb">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WvP-JE-Fh8">
+                                <rect key="frame" x="192" y="142" width="66" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Likelihood" id="HWa-fn-Ph7">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="WvP-JE-Fh8" firstAttribute="centerX" secondItem="FfG-T7-Oxb" secondAttribute="centerX" id="YHn-gu-K8q"/>
+                            <constraint firstItem="WvP-JE-Fh8" firstAttribute="centerY" secondItem="FfG-T7-Oxb" secondAttribute="centerY" id="ksG-8F-LEI"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="XUC-aS-C8f" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="996" y="-1757"/>
+        </scene>
+    </scenes>
+</document>

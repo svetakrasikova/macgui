@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class InspectorViewController: NSSplitViewController, MatrixNavigatorViewControllerDelegate, InfoInspectorDelegate {
+class MatrixInspectorViewController: NSSplitViewController, MatrixNavigatorViewControllerDelegate, InfoInspectorDelegate {
     
     
     var dataMatrices: [DataMatrix]?

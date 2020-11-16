@@ -30,6 +30,8 @@
 		1411BEE82208FE91009BEE1D /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411BEE62208FE91009BEE1D /* Tool.swift */; };
 		1411BEE92208FE91009BEE1D /* Tool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEE72208FE91009BEE1D /* Tool.xib */; };
 		1411D1632305B18D00A8B936 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411D1622305B18D00A8B936 /* ToolTipView.swift */; };
+		141900D9255201F400EDE4DE /* InspectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141900D8255201F400EDE4DE /* InspectorWindowController.swift */; };
+		141900F525531FD000EDE4DE /* PaupCriterionOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141900F425531FD000EDE4DE /* PaupCriterionOverviewViewController.swift */; };
 		1419FD9A2445160500007232 /* PaletteVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1419FD982445160500007232 /* PaletteVariable.swift */; };
 		1419FD9B2445160500007232 /* PaletteVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1419FD992445160500007232 /* PaletteVariableList.swift */; };
 		1419FDAF2446284900007232 /* StochasticMatrixFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1419FDAD2446284900007232 /* StochasticMatrixFunction.cpp */; };
@@ -1339,17 +1341,13 @@
 		1452355B220CB79800A85186 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355A220CB79800A85186 /* CanvasView.swift */; };
 		1452355F220CCC5800A85186 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355E220CCC5800A85186 /* Extensions.swift */; };
 		1453184524E207ED00A4656C /* Parsimony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184424E207ED00A4656C /* Parsimony.swift */; };
-		1453184724E217F200A4656C /* ParsimonyTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1453184624E217F200A4656C /* ParsimonyTool.storyboard */; };
-		1453184A24E474C100A4656C /* ParsimonyToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184924E474C100A4656C /* ParsimonyToolViewController.swift */; };
+		1453184A24E474C100A4656C /* PaupSearchOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184924E474C100A4656C /* PaupSearchOverviewViewController.swift */; };
 		1453184C24E487DB00A4656C /* PaupOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184B24E487DB00A4656C /* PaupOptions.swift */; };
 		1453185024E4884D00A4656C /* ClustalOmegaOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184F24E4884D00A4656C /* ClustalOmegaOptions.swift */; };
 		1453185524E489BA00A4656C /* NewickString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185224E489BA00A4656C /* NewickString.swift */; };
 		1453185624E489BA00A4656C /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185324E489BA00A4656C /* Node.swift */; };
 		1453185724E489BA00A4656C /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185424E489BA00A4656C /* Tree.swift */; };
 		1453185924E48B7A00A4656C /* RunPaup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185824E48B7A00A4656C /* RunPaup.swift */; };
-		1453185B24ECAEAF00A4656C /* PaupExhaustiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185A24ECAEAF00A4656C /* PaupExhaustiveViewController.swift */; };
-		1453185D24ECB77600A4656C /* PaupBranchBoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185C24ECB77600A4656C /* PaupBranchBoundViewController.swift */; };
-		1453185F24ECB79300A4656C /* PaupHeuristicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185E24ECB79300A4656C /* PaupHeuristicViewController.swift */; };
 		14633126244F7FF1002FBD83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14633125244F7FF0002FBD83 /* Assets.xcassets */; };
 		14640BAB2383331500358042 /* InspectorViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14640BAA2383331500358042 /* InspectorViewControllerTests.swift */; };
 		14640BB12383716300358042 /* TestDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14640BB02383716300358042 /* TestDataConstants.swift */; };
@@ -1367,12 +1365,11 @@
 		147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147429DD22D154D200FF1963 /* ModelTool.storyboard */; };
 		148D93C92335406D00FDFAFA /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148D93C82335406C00FDFAFA /* Document.swift */; };
 		149370432303545D00503CCB /* ToolTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149370422303545D00503CCB /* ToolTipViewController.swift */; };
-		1495A0B4237C987600F46312 /* InspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0B3237C987600F46312 /* InspectorViewController.swift */; };
+		1495A0B4237C987600F46312 /* MatrixInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0B3237C987600F46312 /* MatrixInspectorViewController.swift */; };
 		1495A0B6237C991200F46312 /* MatrixInspector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1495A0B5237C991200F46312 /* MatrixInspector.storyboard */; };
 		1495A0BC237CBB9F00F46312 /* MatrixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0BB237CBB9F00F46312 /* MatrixViewController.swift */; };
 		1495A0BE237CBBC400F46312 /* InfoInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0BD237CBBC400F46312 /* InfoInspector.swift */; };
 		1495A0C2237DC46600F46312 /* MatrixNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0C1237DC46600F46312 /* MatrixNavigatorViewController.swift */; };
-		1495A0C4237DF99900F46312 /* InspectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0C3237DF99900F46312 /* InspectorWindowController.swift */; };
 		149A4FFE24983B2A007E4D4B /* AlignToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A4FFD24983B2A007E4D4B /* AlignToolViewController.swift */; };
 		149A500024983C61007E4D4B /* AlignTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 149A4FFF24983C61007E4D4B /* AlignTool.storyboard */; };
 		149A500224995A80007E4D4B /* ClustalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A500124995A80007E4D4B /* ClustalViewController.swift */; };
@@ -1432,6 +1429,12 @@
 		14E8A53B25377C3900864375 /* TreeInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8A53A25377C3900864375 /* TreeInspectorViewController.swift */; };
 		14E8A53F253B93B300864375 /* TreeSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8A53E253B93B300864375 /* TreeSource.swift */; };
 		14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */ = {isa = PBXBuildFile; fileRef = 14ECE4DE233BFE2300106EB4 /* aquabayes.icns */; };
+		14EE87442554A4A60064F290 /* PaupCriterion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14EE87432554A4A60064F290 /* PaupCriterion.storyboard */; };
+		14EE87BC2559FCCA0064F290 /* PaupOverview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14EE87BB2559FCCA0064F290 /* PaupOverview.storyboard */; };
+		14EE87C6255B061C0064F290 /* PaupSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14EE87C5255B061C0064F290 /* PaupSearch.storyboard */; };
+		14EE87CA255B071C0064F290 /* TablessWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EE87C9255B071B0064F290 /* TablessWindowController.swift */; };
+		14EE87DC255B2D280064F290 /* PaupEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EE87DB255B2D280064F290 /* PaupEnum.swift */; };
+		14EE87E0255B2D980064F290 /* PaupSearchOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EE87DF255B2D980064F290 /* PaupSearchOptionsViewController.swift */; };
 		14F29F6B252F7FA0001104A9 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F29F6A252F7F9F001104A9 /* iCarousel.m */; };
 		14F29F70252F7FFF001104A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F29F6F252F7FFF001104A9 /* QuartzCore.framework */; };
 		14F29F74252F92B2001104A9 /* TreeSetTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */; };
@@ -1477,6 +1480,8 @@
 		1411BEE62208FE91009BEE1D /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		1411BEE72208FE91009BEE1D /* Tool.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tool.xib; sourceTree = "<group>"; };
 		1411D1622305B18D00A8B936 /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
+		141900D8255201F400EDE4DE /* InspectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorWindowController.swift; sourceTree = "<group>"; };
+		141900F425531FD000EDE4DE /* PaupCriterionOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupCriterionOverviewViewController.swift; sourceTree = "<group>"; };
 		1419FD982445160500007232 /* PaletteVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteVariable.swift; sourceTree = "<group>"; };
 		1419FD992445160500007232 /* PaletteVariableList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteVariableList.swift; sourceTree = "<group>"; };
 		1419FDAC2446282900007232 /* json.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
@@ -4284,17 +4289,13 @@
 		1452355A220CB79800A85186 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		1452355E220CCC5800A85186 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1453184424E207ED00A4656C /* Parsimony.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsimony.swift; sourceTree = "<group>"; };
-		1453184624E217F200A4656C /* ParsimonyTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ParsimonyTool.storyboard; sourceTree = "<group>"; };
-		1453184924E474C100A4656C /* ParsimonyToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsimonyToolViewController.swift; sourceTree = "<group>"; };
+		1453184924E474C100A4656C /* PaupSearchOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupSearchOverviewViewController.swift; sourceTree = "<group>"; };
 		1453184B24E487DB00A4656C /* PaupOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupOptions.swift; sourceTree = "<group>"; };
 		1453184F24E4884D00A4656C /* ClustalOmegaOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClustalOmegaOptions.swift; sourceTree = "<group>"; };
 		1453185224E489BA00A4656C /* NewickString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewickString.swift; sourceTree = "<group>"; };
 		1453185324E489BA00A4656C /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		1453185424E489BA00A4656C /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		1453185824E48B7A00A4656C /* RunPaup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunPaup.swift; sourceTree = "<group>"; };
-		1453185A24ECAEAF00A4656C /* PaupExhaustiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupExhaustiveViewController.swift; sourceTree = "<group>"; };
-		1453185C24ECB77600A4656C /* PaupBranchBoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupBranchBoundViewController.swift; sourceTree = "<group>"; };
-		1453185E24ECB79300A4656C /* PaupHeuristicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupHeuristicViewController.swift; sourceTree = "<group>"; };
 		14633125244F7FF0002FBD83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14640BA0238332B000358042 /* macguiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macguiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14640BA4238332B000358042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -4314,12 +4315,11 @@
 		147429DD22D154D200FF1963 /* ModelTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModelTool.storyboard; sourceTree = "<group>"; };
 		148D93C82335406C00FDFAFA /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		149370422303545D00503CCB /* ToolTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipViewController.swift; sourceTree = "<group>"; };
-		1495A0B3237C987600F46312 /* InspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorViewController.swift; sourceTree = "<group>"; };
+		1495A0B3237C987600F46312 /* MatrixInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixInspectorViewController.swift; sourceTree = "<group>"; };
 		1495A0B5237C991200F46312 /* MatrixInspector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MatrixInspector.storyboard; sourceTree = "<group>"; };
 		1495A0BB237CBB9F00F46312 /* MatrixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixViewController.swift; sourceTree = "<group>"; };
 		1495A0BD237CBBC400F46312 /* InfoInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoInspector.swift; sourceTree = "<group>"; };
 		1495A0C1237DC46600F46312 /* MatrixNavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixNavigatorViewController.swift; sourceTree = "<group>"; };
-		1495A0C3237DF99900F46312 /* InspectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorWindowController.swift; sourceTree = "<group>"; };
 		149A4FFD24983B2A007E4D4B /* AlignToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignToolViewController.swift; sourceTree = "<group>"; };
 		149A4FFF24983C61007E4D4B /* AlignTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AlignTool.storyboard; sourceTree = "<group>"; };
 		149A500124995A80007E4D4B /* ClustalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClustalViewController.swift; sourceTree = "<group>"; };
@@ -4379,6 +4379,12 @@
 		14E8A53A25377C3900864375 /* TreeInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeInspectorViewController.swift; sourceTree = "<group>"; };
 		14E8A53E253B93B300864375 /* TreeSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TreeSource.swift; path = "macgui/Views and View Controllers/Canvas Object/Canvas Tool/Tree Set Tool/TreeSource.swift"; sourceTree = SOURCE_ROOT; };
 		14ECE4DE233BFE2300106EB4 /* aquabayes.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = aquabayes.icns; sourceTree = "<group>"; };
+		14EE87432554A4A60064F290 /* PaupCriterion.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaupCriterion.storyboard; sourceTree = "<group>"; };
+		14EE87BB2559FCCA0064F290 /* PaupOverview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaupOverview.storyboard; sourceTree = "<group>"; };
+		14EE87C5255B061C0064F290 /* PaupSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaupSearch.storyboard; sourceTree = "<group>"; };
+		14EE87C9255B071B0064F290 /* TablessWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablessWindowController.swift; sourceTree = "<group>"; };
+		14EE87DB255B2D280064F290 /* PaupEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupEnum.swift; sourceTree = "<group>"; };
+		14EE87DF255B2D980064F290 /* PaupSearchOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupSearchOptionsViewController.swift; sourceTree = "<group>"; };
 		14F29F69252F7F9F001104A9 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		14F29F6A252F7F9F001104A9 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		14F29F6F252F7FFF001104A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -8244,7 +8250,9 @@
 				1495A0B5237C991200F46312 /* MatrixInspector.storyboard */,
 				1407184A22FF5D430098285D /* ModalSheet.storyboard */,
 				1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */,
-				1453184624E217F200A4656C /* ParsimonyTool.storyboard */,
+				14EE87BB2559FCCA0064F290 /* PaupOverview.storyboard */,
+				14EE87C5255B061C0064F290 /* PaupSearch.storyboard */,
+				14EE87432554A4A60064F290 /* PaupCriterion.storyboard */,
 				149A4FFF24983C61007E4D4B /* AlignTool.storyboard */,
 				147429DD22D154D200FF1963 /* ModelTool.storyboard */,
 				14A663BB23186CFE0034EA53 /* Notebook.storyboard */,
@@ -8270,12 +8278,12 @@
 		1453184824E4748800A4656C /* Parsimony Tool */ = {
 			isa = PBXGroup;
 			children = (
-				1453184924E474C100A4656C /* ParsimonyToolViewController.swift */,
+				1453184924E474C100A4656C /* PaupSearchOverviewViewController.swift */,
+				141900F425531FD000EDE4DE /* PaupCriterionOverviewViewController.swift */,
 				1453184B24E487DB00A4656C /* PaupOptions.swift */,
 				1453185824E48B7A00A4656C /* RunPaup.swift */,
-				1453185A24ECAEAF00A4656C /* PaupExhaustiveViewController.swift */,
-				1453185C24ECB77600A4656C /* PaupBranchBoundViewController.swift */,
-				1453185E24ECB79300A4656C /* PaupHeuristicViewController.swift */,
+				14EE87DB255B2D280064F290 /* PaupEnum.swift */,
+				14EE87DF255B2D980064F290 /* PaupSearchOptionsViewController.swift */,
 			);
 			path = "Parsimony Tool";
 			sourceTree = "<group>";
@@ -8327,8 +8335,10 @@
 		1495A0A9237C86B200F46312 /* Tool Controller */ = {
 			isa = PBXGroup;
 			children = (
+				141900D8255201F400EDE4DE /* InspectorWindowController.swift */,
 				147429D622CADDF800FF1963 /* SheetViewController.swift */,
 				14F95D6523569913009884D2 /* InfoToolViewController.swift */,
+				14EE87C9255B071B0064F290 /* TablessWindowController.swift */,
 			);
 			path = "Tool Controller";
 			sourceTree = "<group>";
@@ -8411,8 +8421,7 @@
 		1495A0B2237C97F800F46312 /* Matrix Inspector */ = {
 			isa = PBXGroup;
 			children = (
-				1495A0C3237DF99900F46312 /* InspectorWindowController.swift */,
-				1495A0B3237C987600F46312 /* InspectorViewController.swift */,
+				1495A0B3237C987600F46312 /* MatrixInspectorViewController.swift */,
 				1495A0C1237DC46600F46312 /* MatrixNavigatorViewController.swift */,
 				1495A0BB237CBB9F00F46312 /* MatrixViewController.swift */,
 				1451029C23CE6A1300BA88BA /* SynchroScrollView.swift */,
@@ -8669,12 +8678,13 @@
 				1411BEE322052B7E009BEE1D /* Main.storyboard in Resources */,
 				144BEEF523A17AC60001B2EF /* pull.sh in Resources */,
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
-				1453184724E217F200A4656C /* ParsimonyTool.storyboard in Resources */,
 				14CF75A1243BCF560022B3A8 /* ModelCanvasItem.storyboard in Resources */,
 				147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */,
 				149A500724995B8C007E4D4B /* clustal in Resources */,
 				1471052B226CD75300E88657 /* ConnectorItemArrow.xib in Resources */,
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
+				14EE87C6255B061C0064F290 /* PaupSearch.storyboard in Resources */,
+				14EE87BC2559FCCA0064F290 /* PaupOverview.storyboard in Resources */,
 				149A500024983C61007E4D4B /* AlignTool.storyboard in Resources */,
 				14E8A53325377ABE00864375 /* TreeInspector.storyboard in Resources */,
 				1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */,
@@ -8683,6 +8693,7 @@
 				14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */,
 				147429D922CBA94C00FF1963 /* CanvasTool.storyboard in Resources */,
 				1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */,
+				14EE87442554A4A60064F290 /* PaupCriterion.storyboard in Resources */,
 				14633126244F7FF1002FBD83 /* Assets.xcassets in Resources */,
 				142945F723EE44DC0093608F /* Preferences.storyboard in Resources */,
 				14F29F74252F92B2001104A9 /* TreeSetTool.storyboard in Resources */,
@@ -8780,7 +8791,6 @@
 				144BEE7A23A17AC60001B2EF /* Func_constructRootedTripletDistribution.cpp in Sources */,
 				144BEF1B23A17AC60001B2EF /* EllipticalSliceSamplingLognormalIIDMove.cpp in Sources */,
 				144BF0B323A17AC70001B2EF /* ChooseFunction.cpp in Sources */,
-				1453185F24ECB79300A4656C /* PaupHeuristicViewController.swift in Sources */,
 				144BEF9723A17AC60001B2EF /* ScreenMonitor.cpp in Sources */,
 				144BF18323A17AC80001B2EF /* PhyloMultivariateBrownianProcessREML.cpp in Sources */,
 				144BF0E923A17AC70001B2EF /* DispersalExtinctionRootStructureFunction.cpp in Sources */,
@@ -8829,7 +8839,6 @@
 				144BEE5E23A17AC60001B2EF /* Func_PhylogeneticIndependentContrasts.cpp in Sources */,
 				144BEE3F23A17AC60001B2EF /* Func_FreeBinary.cpp in Sources */,
 				144BEF6323A17AC60001B2EF /* SingleElementScaleProposal.cpp in Sources */,
-				1495A0C4237DF99900F46312 /* InspectorWindowController.swift in Sources */,
 				144BEEC723A17AC60001B2EF /* Dist_UltrametricTree.cpp in Sources */,
 				144BF14E23A17AC70001B2EF /* HeterochronousCoalescent.cpp in Sources */,
 				144BED3123A17AC60001B2EF /* RlValidationAnalysis.cpp in Sources */,
@@ -8882,7 +8891,6 @@
 				144BEFCF23A17AC70001B2EF /* TreeChangeEventHandler.cpp in Sources */,
 				144BEFC123A17AC70001B2EF /* Mcmc.cpp in Sources */,
 				144BEF5323A17AC60001B2EF /* ScaleProposal.cpp in Sources */,
-				1453185D24ECB77600A4656C /* PaupBranchBoundViewController.swift in Sources */,
 				144BEFF923A17AC70001B2EF /* RateMatrix_GTR.cpp in Sources */,
 				149A500D24995D1A007E4D4B /* RunClustal.swift in Sources */,
 				144BF01823A17AC70001B2EF /* BinaryState.cpp in Sources */,
@@ -9087,6 +9095,7 @@
 				144BEFFB23A17AC70001B2EF /* TimeReversibleRateMatrix.cpp in Sources */,
 				144BEC9523A17AC50001B2EF /* Move_BurstEvent.cpp in Sources */,
 				144BED5723A17AC60001B2EF /* RlTree.cpp in Sources */,
+				14EE87E0255B2D980064F290 /* PaupSearchOptionsViewController.swift in Sources */,
 				144BEDDE23A17AC60001B2EF /* Func_range.cpp in Sources */,
 				144BEF5623A17AC60001B2EF /* RandomGeometricWalkProposal.cpp in Sources */,
 				144BEDE523A17AC60001B2EF /* Func_abs.cpp in Sources */,
@@ -9152,6 +9161,7 @@
 				144BEE5523A17AC60001B2EF /* Func_rtRev.cpp in Sources */,
 				144BED4523A17AC60001B2EF /* RlRateGeneratorSequence.cpp in Sources */,
 				144BEF6D23A17AC60001B2EF /* VectorSingleElementSlideProposal.cpp in Sources */,
+				14EE87DC255B2D280064F290 /* PaupEnum.swift in Sources */,
 				144BF01623A17AC70001B2EF /* Taxon.cpp in Sources */,
 				144BEED423A17AC60001B2EF /* Dist_uniformTopology.cpp in Sources */,
 				144BEF8823A17AC60001B2EF /* EventBirthDeathFromAgeProposal.cpp in Sources */,
@@ -9287,6 +9297,7 @@
 				144BF01323A17AC70001B2EF /* AbstractTaxonData.cpp in Sources */,
 				144BEF6523A17AC60001B2EF /* ElementScaleProposal.cpp in Sources */,
 				144BEF7F23A17AC60001B2EF /* CorrelationMatrixExpansionProposal.cpp in Sources */,
+				141900F525531FD000EDE4DE /* PaupCriterionOverviewViewController.swift in Sources */,
 				144BEF4523A17AC60001B2EF /* UpDownScaleProposal.cpp in Sources */,
 				144BF13423A17AC70001B2EF /* BimodalNormalDistribution.cpp in Sources */,
 				144BE14423A03E780001B2EF /* JsonCoreBridge.swift in Sources */,
@@ -9518,7 +9529,7 @@
 				1411BE902203D8FB009BEE1D /* AppDelegate.swift in Sources */,
 				14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */,
 				144BEDF123A17AC60001B2EF /* Func_discretizeBeta.cpp in Sources */,
-				1495A0B4237C987600F46312 /* InspectorViewController.swift in Sources */,
+				1495A0B4237C987600F46312 /* MatrixInspectorViewController.swift in Sources */,
 				144BECFE23A17AC50001B2EF /* Move_MatrixSingleElementSlide.cpp in Sources */,
 				144BF14B23A17AC70001B2EF /* ConstantPopulationHeterochronousCoalescent.cpp in Sources */,
 				144BF03A23A17AC70001B2EF /* RateGeneratorSequence.cpp in Sources */,
@@ -9568,6 +9579,7 @@
 				144BEE4B23A17AC60001B2EF /* Func_FreeK.cpp in Sources */,
 				144BF08E23A17AC70001B2EF /* VarianceCovarianceFunction.cpp in Sources */,
 				144BEECF23A17AC60001B2EF /* Dist_Coalescent.cpp in Sources */,
+				14EE87CA255B071C0064F290 /* TablessWindowController.swift in Sources */,
 				144BED8723A17AC60001B2EF /* SyntaxAdditionAssignment.cpp in Sources */,
 				144BF0E523A17AC70001B2EF /* TimRateMatrixFunction.cpp in Sources */,
 				144BEE7623A17AC60001B2EF /* Func_chromosomesCladoEventsBD.cpp in Sources */,
@@ -9753,7 +9765,6 @@
 				144BF01423A17AC70001B2EF /* AbstractCharacterData.cpp in Sources */,
 				144BECAA23A17AC50001B2EF /* Move_RootTimeSlideUniform.cpp in Sources */,
 				144BF10A23A17AC70001B2EF /* TajimasPiFunction.cpp in Sources */,
-				1453185B24ECAEAF00A4656C /* PaupExhaustiveViewController.swift in Sources */,
 				144BEFD223A17AC70001B2EF /* RbBoolean.cpp in Sources */,
 				144BF16623A17AC80001B2EF /* CDCladoSEExtinction.cpp in Sources */,
 				144BECD523A17AC50001B2EF /* Move_Scale.cpp in Sources */,
@@ -9928,7 +9939,7 @@
 				144BEE1A23A17AC60001B2EF /* Func_dppMeanFromConc.cpp in Sources */,
 				144BEFD623A17AC70001B2EF /* MatrixBoolean.cpp in Sources */,
 				144BED7A23A17AC60001B2EF /* TypeSpec.cpp in Sources */,
-				1453184A24E474C100A4656C /* ParsimonyToolViewController.swift in Sources */,
+				1453184A24E474C100A4656C /* PaupSearchOverviewViewController.swift in Sources */,
 				144BEED923A17AC60001B2EF /* Dist_conditionedBirthDeathShiftProcessContinuous.cpp in Sources */,
 				144BEE1023A17AC60001B2EF /* Proc_StringToInt.cpp in Sources */,
 				144BEDC423A17AC60001B2EF /* Func_readAtlas.cpp in Sources */,
@@ -10073,6 +10084,7 @@
 				144BEEA623A17AC60001B2EF /* Dist_geom.cpp in Sources */,
 				144BF02E23A17AC70001B2EF /* CharacterHistoryContinuous.cpp in Sources */,
 				144BEFBB23A17AC70001B2EF /* StationarityTest.cpp in Sources */,
+				141900D9255201F400EDE4DE /* InspectorWindowController.swift in Sources */,
 				144BF06623A17AC70001B2EF /* RandomNumberFactory.cpp in Sources */,
 				144BEE4023A17AC60001B2EF /* Func_f81.cpp in Sources */,
 				144BF0E323A17AC70001B2EF /* ReversiblePoMoRateMatrixFunction.cpp in Sources */,

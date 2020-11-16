@@ -15,7 +15,7 @@ class MatrixNavigatorViewController: NSViewController, NSTableViewDelegate, NSTa
     weak var delegate: MatrixNavigatorViewControllerDelegate?
     
     var dataMatrices: [DataMatrix]? {
-        guard let delegate = self.delegate as? InspectorViewController else {
+        guard let delegate = self.delegate as? MatrixInspectorViewController else {
             return nil
         }
         return delegate.dataMatrices

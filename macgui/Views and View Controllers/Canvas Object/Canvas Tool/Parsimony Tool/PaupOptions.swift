@@ -66,7 +66,7 @@ class PaupOptions: NSObject, NSCoding {
 
     // MARK: - PAUP* Command Options
     
-    enum Criteria     : Int { case parsimony, distance, likelihood }
+    enum Criteria     : Int, CaseIterable { case parsimony, distance, likelihood }
     enum SearchMethod : Int { case exhaustive, branchAndBound, heuristic }
     enum HSSwap       : Int { case none, nni, spr, tbr }
     enum HSKeep       : String { case no }
@@ -104,6 +104,15 @@ class PaupOptions: NSObject, NSCoding {
     enum LSReprate    : Int { case mean, median }
     enum LSPinvar     : String { case estimate }
     enum LSClock      : Int { case no, yes }
+    
+    class func getCriteria() -> [String] {
+        var criteria: [String] = []
+        for c in PaupOptions.Criteria.allCases {
+            let caseAsString = String(describing: PaupOptions.Criteria(rawValue: c.rawValue)!)
+            criteria.append(caseAsString)
+        }
+        return criteria
+    }
 
     // MARK: - PAUP* Command Variables
 

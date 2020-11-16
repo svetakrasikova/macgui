@@ -13,7 +13,6 @@
                 <tabViewController identifier="ModalSheetTabView" storyboardIdentifier="ModalSheetTabView" selectedTabViewItemIndex="0" tabStyle="unspecified" id="3V7-fT-kdA" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Align Tool" identifier="AlignTool" id="aNB-se-BiG" userLabel="Align Tool"/>
-                        <tabViewItem label="Parsimony Tool" identifier="ParsimonyTool" id="GCO-oH-boy"/>
                         <tabViewItem label="Tree Set Tool" identifier="TreeSetTool" id="U0y-i9-mmW" userLabel="Tree Set Tool"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="626-6W-VnF">
@@ -27,7 +26,6 @@
                     <connections>
                         <outlet property="tabView" destination="626-6W-VnF" id="fIH-O1-OPa"/>
                         <segue destination="Rrq-Y6-Cvx" kind="relationship" relationship="tabItems" id="frO-Kj-LEN"/>
-                        <segue destination="gmB-dj-xDz" kind="relationship" relationship="tabItems" id="DGA-Oc-taP"/>
                         <segue destination="22G-oc-xpa" kind="relationship" relationship="tabItems" id="mxW-dn-F8z"/>
                     </connections>
                 </tabViewController>

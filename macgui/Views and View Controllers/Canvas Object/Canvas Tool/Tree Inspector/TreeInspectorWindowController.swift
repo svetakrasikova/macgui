@@ -20,7 +20,6 @@ class TreeInspectorWindowController: NSWindowController {
         }
     }
     
-   
     override func windowDidLoad() {
         super.windowDidLoad()
         adjustFrame(verticalCoverage: verticalCoverage, widthToHeightRatio: widthToHeightRatio)
