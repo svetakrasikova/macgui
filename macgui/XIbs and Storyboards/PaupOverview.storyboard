@@ -245,23 +245,23 @@
                 <customObject id="f3O-xh-CaF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController title="Search Method " id="Zw3-Uh-gTX" customClass="PaupSearchOverviewViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="38O-uf-c0K">
-                        <rect key="frame" x="0.0" y="0.0" width="377" height="305"/>
+                        <rect key="frame" x="0.0" y="0.0" width="377" height="312"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wgj-YD-vRu">
-                                <rect key="frame" x="20" y="100" width="337" height="185"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wgj-YD-vRu">
+                                <rect key="frame" x="20" y="80" width="337" height="212"/>
                                 <subviews>
                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="a4F-FJ-ybw">
-                                        <rect key="frame" x="28" y="35" width="281" height="150"/>
+                                        <rect key="frame" x="28" y="62" width="281" height="150"/>
                                         <connections>
                                             <segue destination="A0d-lf-2ia" kind="embed" identifier="SummaryViewController" id="2rP-uV-oID"/>
                                         </connections>
                                     </containerView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J3m-B4-4TS">
-                                        <rect key="frame" x="26" y="0.0" width="285" height="20"/>
+                                        <rect key="frame" x="26" y="0.0" width="285" height="42"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7jW-PS-Mla">
-                                                <rect key="frame" x="-2" y="2" width="159" height="16"/>
+                                                <rect key="frame" x="-2" y="13" width="159" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Selected search method: " id="FEt-53-2Mr">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -269,7 +269,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j6X-M9-3nB">
-                                                <rect key="frame" x="152" y="-4" width="137" height="25"/>
+                                                <rect key="frame" x="152" y="7" width="137" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="130" id="4F6-8s-cNH"/>
                                                 </constraints>
@@ -330,7 +330,7 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="lpa-Lp-2qM" secondAttribute="bottom" constant="20" id="BDZ-Oi-VwE"/>
                             <constraint firstAttribute="bottom" secondItem="FYp-BY-Eco" secondAttribute="bottom" constant="20" id="Blu-Vt-Z3c"/>
-                            <constraint firstItem="lpa-Lp-2qM" firstAttribute="top" secondItem="wgj-YD-vRu" secondAttribute="bottom" constant="60" id="Gg9-Vq-En6"/>
+                            <constraint firstItem="lpa-Lp-2qM" firstAttribute="top" secondItem="wgj-YD-vRu" secondAttribute="bottom" constant="40" id="Gg9-Vq-En6"/>
                             <constraint firstItem="wgj-YD-vRu" firstAttribute="top" secondItem="38O-uf-c0K" secondAttribute="top" constant="20" id="J8e-9N-IE1"/>
                             <constraint firstItem="wgj-YD-vRu" firstAttribute="leading" secondItem="38O-uf-c0K" secondAttribute="leading" constant="20" id="T5x-3a-1y4"/>
                             <constraint firstAttribute="trailing" secondItem="wgj-YD-vRu" secondAttribute="trailing" constant="20" id="WLZ-xD-3h9"/>

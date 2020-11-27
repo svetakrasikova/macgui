@@ -16,14 +16,23 @@ class PaupSearchOptionsViewController: NSViewController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
+        let fittingSize =  self.view.fittingSize
+        preferredContentSize =  NSSize(width: 450, height: fittingSize.height)
+    }
+    
+    
+    override func viewDidLayout() {
+        super.viewDidLayout()
         if let windowController = view.window?.windowController as? TablessWindowController,  let parsimonyTool = windowController.tool as? Parsimony {
             self.options = parsimonyTool.options
         }
         
-        let fittingSize =  self.view.fittingSize
-        preferredContentSize =  NSSize(width: 450, height: fittingSize.height)
     }
-
+    
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+    }
     
     
     

@@ -46,9 +46,7 @@ class PaupSearchOverviewViewController: NSViewController {
     
 
     @IBAction func selectSearchMethod(_ sender: NSPopUpButton) {
-//        preferredContentSize = NSZeroSize
         summaryViewController?.updateSummary()
-        print(view.fittingSize.height)
         
     }
     @IBAction func openSearchOptionsTab(_ sender: NSButton){
