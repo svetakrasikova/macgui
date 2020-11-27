@@ -1348,6 +1348,7 @@
 		1453185624E489BA00A4656C /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185324E489BA00A4656C /* Node.swift */; };
 		1453185724E489BA00A4656C /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185424E489BA00A4656C /* Tree.swift */; };
 		1453185924E48B7A00A4656C /* RunPaup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185824E48B7A00A4656C /* RunPaup.swift */; };
+		145F3321256897D900BD5916 /* SummaryViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F3320256897D900BD5916 /* SummaryViewConroller.swift */; };
 		14633126244F7FF1002FBD83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14633125244F7FF0002FBD83 /* Assets.xcassets */; };
 		14640BAB2383331500358042 /* InspectorViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14640BAA2383331500358042 /* InspectorViewControllerTests.swift */; };
 		14640BB12383716300358042 /* TestDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14640BB02383716300358042 /* TestDataConstants.swift */; };
@@ -4296,6 +4297,7 @@
 		1453185324E489BA00A4656C /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		1453185424E489BA00A4656C /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		1453185824E48B7A00A4656C /* RunPaup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunPaup.swift; sourceTree = "<group>"; };
+		145F3320256897D900BD5916 /* SummaryViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewConroller.swift; sourceTree = "<group>"; };
 		14633125244F7FF0002FBD83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14640BA0238332B000358042 /* macguiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macguiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14640BA4238332B000358042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -8284,6 +8286,7 @@
 				1453185824E48B7A00A4656C /* RunPaup.swift */,
 				14EE87DB255B2D280064F290 /* PaupEnum.swift */,
 				14EE87DF255B2D980064F290 /* PaupSearchOptionsViewController.swift */,
+				145F3320256897D900BD5916 /* SummaryViewConroller.swift */,
 			);
 			path = "Parsimony Tool";
 			sourceTree = "<group>";
@@ -9720,6 +9723,7 @@
 				144BEDF723A17AC60001B2EF /* Func_shortestDistance.cpp in Sources */,
 				144BED5623A17AC60001B2EF /* RlTimeTree.cpp in Sources */,
 				144BEF6823A17AC60001B2EF /* ShrinkExpandProposal.cpp in Sources */,
+				145F3321256897D900BD5916 /* SummaryViewConroller.swift in Sources */,
 				144BEECB23A17AC60001B2EF /* Dist_constPopMultispCoal.cpp in Sources */,
 				144BED1823A17AC50001B2EF /* Mntr_JointConditionalAncestralState.cpp in Sources */,
 				144BED5A23A17AC60001B2EF /* RlStandardState.cpp in Sources */,

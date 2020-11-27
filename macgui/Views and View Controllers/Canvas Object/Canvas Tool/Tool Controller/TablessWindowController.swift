@@ -18,8 +18,12 @@ class TablessWindowController: NSWindowController {
         }
     }
     
-    var contentVC: NSTabViewController {
-        return contentViewController as! NSTabViewController
+    var contentVC: NSTabViewController? {
+        var tabViewController: NSTabViewController?
+        if let contentVC = contentViewController as? InfoToolViewController {
+            tabViewController =  contentVC.tabViewController
+        }
+        return tabViewController
     }
     
     override func windowDidLoad() {
@@ -27,7 +31,9 @@ class TablessWindowController: NSWindowController {
     }
     
     @IBAction func switchToOverview(_ sender: NSButton) {
-       
+        if let index = contentVC?.findTabIndexBy(identifierString: "Overview") {
+            contentVC?.selectedTabViewItemIndex = index
+        }
     }
 
 }

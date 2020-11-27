@@ -8,16 +8,23 @@
 
 import Cocoa
 
-enum PaupViewControllerError: Error {
-    case UndefinedTabIdentifier
-    case TablessViewControllerError
-}
-
 enum PaupTablessViewItems: String {
     case PaupSearch
     case PaupCriterion
-    case PaupOverview
+    case Overview
 }
+
+enum SummaryType: Int {
+    
+    case heuristicSearch
+    case branchAndBountSearch
+    case exhaustiveSearch
+    case data
+    case likelihood
+    case parsimony
+    case distance
+}
+
 
 enum PaupSearchTabViewItems: String {
     case Heuristic

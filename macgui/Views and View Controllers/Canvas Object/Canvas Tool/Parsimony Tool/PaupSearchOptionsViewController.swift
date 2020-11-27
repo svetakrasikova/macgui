@@ -20,8 +20,7 @@ class PaupSearchOptionsViewController: NSViewController {
             self.options = parsimonyTool.options
         }
         
-       let fittingSize =  self.view.fittingSize
-       
+        let fittingSize =  self.view.fittingSize
         preferredContentSize =  NSSize(width: 450, height: fittingSize.height)
     }
 

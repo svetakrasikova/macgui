@@ -286,4 +286,18 @@ extension FileManager {
 }
 
 
+extension NSTabViewController {
+    
+    func findTabIndexBy(identifierString: String)  -> Int? {
+        var index: Int?
+        for (i, tabItem) in tabViewItems.enumerated() {
+            if tabItem.identifier as! String == identifierString {
+                index = i
+            }
+        }
+        return index
+    }
+   
+}
+
 

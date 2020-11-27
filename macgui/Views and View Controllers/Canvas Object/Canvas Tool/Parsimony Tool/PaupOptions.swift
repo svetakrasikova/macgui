@@ -381,4 +381,43 @@ class PaupOptions: NSObject, NSCoding {
         
         return str
     }
+    
+    func holisticSearchSummary() -> [String] {
+        var options: [String] = []
+        options.append("Keep: \(hsKeep)")
+        options.append("Swap: \(String(describing: HSSwap(rawValue: hsSwap)!))")
+        options.append("Multrees: \(String(describing: HSMulTrees(rawValue: hsMulTrees)!))")
+        options.append("RearrLimit: \(hsRearrLimit)")
+        options.append("ReconLimit: \(hsReconLimit)")
+        options.append("NBest: \(hsNBest)")
+        options.append("Retain: \(String(describing: HSRetain(rawValue: hsRetain)!))")
+        options.append("AllSwap: \(String(describing: HSAllSwap(rawValue: hsAllSwap)!))")
+        options.append("UseNonMin: \(String(describing: HSUseNonMin(rawValue: hsUseNonMin)!))")
+        options.append("Steepest: \(String(describing: HSSteepest(rawValue: hsSteepest)!))")
+        options.append("NChuck: \(hsNChuck)")
+        options.append("ChuckScore: \(hsChuckScore)")
+        options.append("AbortRep: \(String(describing: HSAbortRep(rawValue: hsAbortRep)!))")
+        options.append("NReps: \(hsNreps)")
+        options.append("Randomize: \(String(describing: HSRandomize(rawValue: hsRandomize)!))")
+        options.append("AddSeq: \(String(describing: HSAddSeq(rawValue: hsAddSeq)!))")
+        options.append("Hold: \(String(describing: hsHold))")
+        return options
+    }
+    
+    
+    func branchAndBoundSearchSummary() -> [String] {
+        var options: [String] = []
+        options.append("Keep: \(bbKeep)")
+        options.append("Multrees: \(String(describing: BBMulTrees(rawValue: bbMulTrees)!))")
+        options.append("Addseq: \(String(describing: BBAddSeq(rawValue: bbAddSeq)!))")
+        options.append("Upbound: \(bbUpBound)")
+        return options
+    }
+    
+    func exhaustiveSearchSummary() -> [String] {
+        var options: [String] = []
+        options.append("Alltrees")
+        options.append("Keep: \(exKeep)")
+        return options
+    }
 }
