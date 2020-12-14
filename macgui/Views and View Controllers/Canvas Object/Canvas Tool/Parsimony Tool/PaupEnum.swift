@@ -17,7 +17,7 @@ enum PaupTablessViewItems: String {
 enum SummaryType: Int {
     
     case heuristicSearch
-    case branchAndBountSearch
+    case branchAndBoundSearch
     case exhaustiveSearch
     case data
     case likelihood

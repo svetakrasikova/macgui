@@ -286,6 +286,48 @@ class PaupOptions: NSObject, NSCoding {
         lsClock         = LSClock.no.rawValue
     }
     
+    func revertSearchToFactorySettings() {
+        
+        searchMethod    = SearchMethod.heuristic.rawValue
+        hsSwap          = HSSwap.tbr.rawValue
+        hsKeep          = HSKeep.no.rawValue
+        hsMulTrees      = HSMulTrees.yes.rawValue
+        hsRearrLimit    = HSRearrLimit.none.rawValue
+        hsReconLimit    = HSReconLimit.defaultValue.rawValue
+        hsNBest         = HSNBest.all.rawValue
+        hsRetain        = HSRetain.no.rawValue
+        hsAllSwap       = HSAllSwap.no.rawValue
+        hsUseNonMin     = HSUseNonMin.no.rawValue
+        hsSteepest      = HSSteepest.no.rawValue
+        hsAbortRep      = HSAbortRep.no.rawValue
+        hsRandomize     = HSRandomize.addSeq.rawValue
+        hsAddSeq        = HSAddSeq.simple.rawValue
+        hsHold          = HSHold.defaultValue.rawValue
+        hsNChuck        = HSNChuck.defaultValue.rawValue
+        hsChuckScore    = HSChuckScore.no.rawValue
+        hsNreps         = HSNreps.defaultValue.rawValue
+        bbKeep          = BBKeep.no.rawValue
+        bbMulTrees      = BBMulTrees.yes.rawValue
+        bbUpBound       = BBUpBound.defaultValue.rawValue
+        bbAddSeq        = BBAddSeq.furthest.rawValue
+        exKeep          = EXKeep.no.rawValue
+    }
+    
+    func revertCriterionToFactorySettings() {
+        
+        criterion       = Criteria.parsimony.rawValue
+        lsNst           = LSNst.two.rawValue
+        lsTRatio        = LSTRatio.estimate.rawValue
+        lsRMatrix       = LSRMatrix.estimate.rawValue
+        lsBasefreq      = LSBasefreq.estimate.rawValue
+        lsRates         = LSRates.equal.rawValue
+        lsShape         = LSShape.estimate.rawValue
+        lsNCat          = LSNCat.defaultValue.rawValue
+        lsReprate       = LSReprate.mean.rawValue
+        lsPinvar        = LSPinvar.estimate.rawValue
+        lsClock         = LSClock.no.rawValue
+    }
+    
     func setString() -> String {
     
         var str : String = "set AutoClose=yes WarnReset=no Increase=auto NotifyBeep=no ErrorBeep=no WarnTSave=no"
@@ -419,5 +461,29 @@ class PaupOptions: NSObject, NSCoding {
         options.append("Alltrees")
         options.append("Keep: \(exKeep)")
         return options
+    }
+    
+    func parsimonySummary() -> [String] {
+        return []
+    }
+    
+    
+    func likelihoodSummary() -> [String] {
+        var options: [String] = []
+        options.append("Nst: \(lsNst)")
+        options.append("TRatio: \(String(describing: lsTRatio))")
+        options.append("RMatrix: \(lsRMatrix)")
+        options.append("Basefreq: \(String(describing: LSBasefreq(rawValue: lsBasefreq)!))")
+        options.append("Rates: \(String(describing: LSRates(rawValue: lsRates)!))")
+        options.append("Shape: \(lsShape)")
+        options.append("Ncat: \(lsNCat)")
+        options.append("Reprate: \(String(describing: LSReprate(rawValue: lsReprate)!))")
+        options.append("Pinvar: \(lsPinvar)")
+        options.append("Clock: \(String(describing: LSClock(rawValue: lsClock)!))")
+        return options
+    }
+    
+    func distanceSummary() -> [String] {
+        return []
     }
 }

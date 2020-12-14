@@ -31,7 +31,6 @@
 		1411BEE92208FE91009BEE1D /* Tool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEE72208FE91009BEE1D /* Tool.xib */; };
 		1411D1632305B18D00A8B936 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411D1622305B18D00A8B936 /* ToolTipView.swift */; };
 		141900D9255201F400EDE4DE /* InspectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141900D8255201F400EDE4DE /* InspectorWindowController.swift */; };
-		141900F525531FD000EDE4DE /* PaupCriterionOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141900F425531FD000EDE4DE /* PaupCriterionOverviewViewController.swift */; };
 		1419FD9A2445160500007232 /* PaletteVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1419FD982445160500007232 /* PaletteVariable.swift */; };
 		1419FD9B2445160500007232 /* PaletteVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1419FD992445160500007232 /* PaletteVariableList.swift */; };
 		1419FDAF2446284900007232 /* StochasticMatrixFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1419FDAD2446284900007232 /* StochasticMatrixFunction.cpp */; };
@@ -1341,7 +1340,7 @@
 		1452355B220CB79800A85186 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355A220CB79800A85186 /* CanvasView.swift */; };
 		1452355F220CCC5800A85186 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452355E220CCC5800A85186 /* Extensions.swift */; };
 		1453184524E207ED00A4656C /* Parsimony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184424E207ED00A4656C /* Parsimony.swift */; };
-		1453184A24E474C100A4656C /* PaupSearchOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184924E474C100A4656C /* PaupSearchOverviewViewController.swift */; };
+		1453184A24E474C100A4656C /* PaupOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184924E474C100A4656C /* PaupOverviewViewController.swift */; };
 		1453184C24E487DB00A4656C /* PaupOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184B24E487DB00A4656C /* PaupOptions.swift */; };
 		1453185024E4884D00A4656C /* ClustalOmegaOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453184F24E4884D00A4656C /* ClustalOmegaOptions.swift */; };
 		1453185524E489BA00A4656C /* NewickString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1453185224E489BA00A4656C /* NewickString.swift */; };
@@ -1482,7 +1481,6 @@
 		1411BEE72208FE91009BEE1D /* Tool.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tool.xib; sourceTree = "<group>"; };
 		1411D1622305B18D00A8B936 /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		141900D8255201F400EDE4DE /* InspectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorWindowController.swift; sourceTree = "<group>"; };
-		141900F425531FD000EDE4DE /* PaupCriterionOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupCriterionOverviewViewController.swift; sourceTree = "<group>"; };
 		1419FD982445160500007232 /* PaletteVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteVariable.swift; sourceTree = "<group>"; };
 		1419FD992445160500007232 /* PaletteVariableList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteVariableList.swift; sourceTree = "<group>"; };
 		1419FDAC2446282900007232 /* json.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
@@ -4290,7 +4288,7 @@
 		1452355A220CB79800A85186 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		1452355E220CCC5800A85186 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1453184424E207ED00A4656C /* Parsimony.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsimony.swift; sourceTree = "<group>"; };
-		1453184924E474C100A4656C /* PaupSearchOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupSearchOverviewViewController.swift; sourceTree = "<group>"; };
+		1453184924E474C100A4656C /* PaupOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupOverviewViewController.swift; sourceTree = "<group>"; };
 		1453184B24E487DB00A4656C /* PaupOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupOptions.swift; sourceTree = "<group>"; };
 		1453184F24E4884D00A4656C /* ClustalOmegaOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClustalOmegaOptions.swift; sourceTree = "<group>"; };
 		1453185224E489BA00A4656C /* NewickString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewickString.swift; sourceTree = "<group>"; };
@@ -8280,8 +8278,7 @@
 		1453184824E4748800A4656C /* Parsimony Tool */ = {
 			isa = PBXGroup;
 			children = (
-				1453184924E474C100A4656C /* PaupSearchOverviewViewController.swift */,
-				141900F425531FD000EDE4DE /* PaupCriterionOverviewViewController.swift */,
+				1453184924E474C100A4656C /* PaupOverviewViewController.swift */,
 				1453184B24E487DB00A4656C /* PaupOptions.swift */,
 				1453185824E48B7A00A4656C /* RunPaup.swift */,
 				14EE87DB255B2D280064F290 /* PaupEnum.swift */,
@@ -9300,7 +9297,6 @@
 				144BF01323A17AC70001B2EF /* AbstractTaxonData.cpp in Sources */,
 				144BEF6523A17AC60001B2EF /* ElementScaleProposal.cpp in Sources */,
 				144BEF7F23A17AC60001B2EF /* CorrelationMatrixExpansionProposal.cpp in Sources */,
-				141900F525531FD000EDE4DE /* PaupCriterionOverviewViewController.swift in Sources */,
 				144BEF4523A17AC60001B2EF /* UpDownScaleProposal.cpp in Sources */,
 				144BF13423A17AC70001B2EF /* BimodalNormalDistribution.cpp in Sources */,
 				144BE14423A03E780001B2EF /* JsonCoreBridge.swift in Sources */,
@@ -9943,7 +9939,7 @@
 				144BEE1A23A17AC60001B2EF /* Func_dppMeanFromConc.cpp in Sources */,
 				144BEFD623A17AC70001B2EF /* MatrixBoolean.cpp in Sources */,
 				144BED7A23A17AC60001B2EF /* TypeSpec.cpp in Sources */,
-				1453184A24E474C100A4656C /* PaupSearchOverviewViewController.swift in Sources */,
+				1453184A24E474C100A4656C /* PaupOverviewViewController.swift in Sources */,
 				144BEED923A17AC60001B2EF /* Dist_conditionedBirthDeathShiftProcessContinuous.cpp in Sources */,
 				144BEE1023A17AC60001B2EF /* Proc_StringToInt.cpp in Sources */,
 				144BEDC423A17AC60001B2EF /* Func_readAtlas.cpp in Sources */,

@@ -116,8 +116,8 @@
                 <tabViewController title="Overview" storyboardIdentifier="Overview" selectedTabViewItemIndex="2" tabStyle="unspecified" id="qm1-hf-31G" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="Data" id="rg9-a4-Eat"/>
-                        <tabViewItem identifier="Criterion" id="iMK-GV-Cs0"/>
-                        <tabViewItem identifier="SearchMethod" id="4t5-LI-MXf"/>
+                        <tabViewItem label="Criterion" identifier="PaupCriterion" id="iMK-GV-Cs0"/>
+                        <tabViewItem label="Search" identifier="PaupSearch" id="4t5-LI-MXf"/>
                     </tabViewItems>
                     <tabView key="tabView" id="2Gq-3A-GV8">
                         <rect key="frame" x="0.0" y="0.0" width="437" height="300"/>
@@ -154,9 +154,9 @@
         <!--Criterion-->
         <scene sceneID="5od-A8-xoN">
             <objects>
-                <viewController title="Criterion" id="y8p-tv-I5A" customClass="PaupCriterionOverviewViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Criterion" id="y8p-tv-I5A" customClass="PaupOverviewViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="PAH-az-Le6">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="338"/>
+                        <rect key="frame" x="0.0" y="0.0" width="494" height="338"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xll-yL-occ">
@@ -165,22 +165,28 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="reset:" target="y8p-tv-I5A" id="hBr-Nv-3kZ"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="04j-Nc-sFl">
-                                <rect key="frame" x="316" y="13" width="121" height="32"/>
+                                <rect key="frame" x="360" y="13" width="121" height="32"/>
                                 <buttonCell key="cell" type="push" title="Edit options ..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="n9k-59-oTg">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="openOptionsTab:" target="y8p-tv-I5A" id="jp0-u3-SlR"/>
+                                </connections>
                             </button>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Jg-ea-G4l">
-                                <rect key="frame" x="20" y="100" width="410" height="218"/>
+                                <rect key="frame" x="20" y="80" width="454" height="238"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tjk-lQ-PdM">
-                                        <rect key="frame" x="51" y="0.0" width="308" height="218"/>
+                                        <rect key="frame" x="73" y="165" width="308" height="73"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="24v-xd-bnQ">
-                                                <rect key="frame" x="-2" y="101" width="182" height="16"/>
+                                                <rect key="frame" x="-2" y="29" width="182" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Selected optimality criterion: " id="lOA-0e-WKH">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -188,7 +194,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ai2-ar-nrp">
-                                                <rect key="frame" x="175" y="95" width="137" height="25"/>
+                                                <rect key="frame" x="175" y="23" width="137" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="130" id="Gmk-2t-iPU"/>
                                                 </constraints>
@@ -197,12 +203,16 @@
                                                     <font key="font" metaFont="menu"/>
                                                     <menu key="menu" id="FCP-wo-xfc">
                                                         <items>
-                                                            <menuItem title="Parsimony" state="on" id="mHK-kH-Fp4" userLabel="Exhaustive"/>
-                                                            <menuItem title="Likelihood" id="dvI-6W-IlK" userLabel="Branch &amp; Bound"/>
-                                                            <menuItem title="Distance" id="4kl-xt-dII" userLabel="Heuristic"/>
+                                                            <menuItem title="Parsimony" state="on" id="mHK-kH-Fp4"/>
+                                                            <menuItem title="Distance" id="dvI-6W-IlK"/>
+                                                            <menuItem title="Likelihood" id="4kl-xt-dII"/>
                                                         </items>
                                                     </menu>
                                                 </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="selectKeyOption:" target="y8p-tv-I5A" id="mYS-aD-1hw"/>
+                                                    <binding destination="y8p-tv-I5A" name="selectedIndex" keyPath="self.options.criterion" id="kcY-5I-3ES"/>
+                                                </connections>
                                             </popUpButton>
                                         </subviews>
                                         <visibilityPriorities>
@@ -214,36 +224,48 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
+                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="rfd-YH-Hhy">
+                                        <rect key="frame" x="115" y="0.0" width="225" height="150"/>
+                                        <connections>
+                                            <segue destination="aaH-a8-ygy" kind="embed" identifier="SummaryViewController" id="Bjv-sv-BdK"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="3Jg-ea-G4l" firstAttribute="top" secondItem="PAH-az-Le6" secondAttribute="top" constant="20" id="0tD-ye-mLp"/>
-                            <constraint firstAttribute="trailing" secondItem="04j-Nc-sFl" secondAttribute="trailing" constant="20" id="4lL-Hy-HTi"/>
-                            <constraint firstAttribute="trailing" secondItem="3Jg-ea-G4l" secondAttribute="trailing" constant="20" id="Cdc-Fd-5yK"/>
-                            <constraint firstItem="04j-Nc-sFl" firstAttribute="top" secondItem="3Jg-ea-G4l" secondAttribute="bottom" constant="60" id="JYk-p9-9bj"/>
-                            <constraint firstItem="xll-yL-occ" firstAttribute="leading" secondItem="PAH-az-Le6" secondAttribute="leading" constant="20" id="QU1-6f-dEt"/>
+                            <constraint firstItem="xll-yL-occ" firstAttribute="leading" secondItem="PAH-az-Le6" secondAttribute="leading" constant="20" id="9pa-yW-9dy"/>
+                            <constraint firstAttribute="trailing" secondItem="04j-Nc-sFl" secondAttribute="trailing" constant="20" id="E03-vD-NTc"/>
                             <constraint firstAttribute="bottom" secondItem="04j-Nc-sFl" secondAttribute="bottom" constant="20" id="afo-mN-rBD"/>
-                            <constraint firstItem="3Jg-ea-G4l" firstAttribute="leading" secondItem="PAH-az-Le6" secondAttribute="leading" constant="20" id="ank-bQ-CLl"/>
+                            <constraint firstItem="xll-yL-occ" firstAttribute="top" secondItem="3Jg-ea-G4l" secondAttribute="bottom" constant="40" id="iUW-Cd-KkD"/>
                             <constraint firstAttribute="bottom" secondItem="xll-yL-occ" secondAttribute="bottom" constant="20" id="mqH-41-SHJ"/>
+                            <constraint firstItem="3Jg-ea-G4l" firstAttribute="leading" secondItem="PAH-az-Le6" secondAttribute="leading" constant="20" id="xRW-tu-5bO"/>
+                            <constraint firstAttribute="trailing" secondItem="3Jg-ea-G4l" secondAttribute="trailing" constant="20" id="zud-y4-J8E"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="criterionPopup" destination="Ai2-ar-nrp" id="OmK-ed-dsb"/>
+                        <outlet property="searchMethodPopup" destination="Ai2-ar-nrp" id="HrQ-52-V7A"/>
+                    </connections>
                 </viewController>
                 <customObject id="Dvm-o4-CaK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="522" y="-512"/>
+            <point key="canvasLocation" x="482" y="-512"/>
         </scene>
         <!--Search Method -->
         <scene sceneID="lWs-oD-qUD">
             <objects>
                 <customObject id="f3O-xh-CaF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController title="Search Method " id="Zw3-Uh-gTX" customClass="PaupSearchOverviewViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search Method " id="Zw3-Uh-gTX" customClass="PaupOverviewViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="38O-uf-c0K">
                         <rect key="frame" x="0.0" y="0.0" width="377" height="312"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -251,14 +273,8 @@
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wgj-YD-vRu">
                                 <rect key="frame" x="20" y="80" width="337" height="212"/>
                                 <subviews>
-                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="a4F-FJ-ybw">
-                                        <rect key="frame" x="28" y="62" width="281" height="150"/>
-                                        <connections>
-                                            <segue destination="A0d-lf-2ia" kind="embed" identifier="SummaryViewController" id="2rP-uV-oID"/>
-                                        </connections>
-                                    </containerView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J3m-B4-4TS">
-                                        <rect key="frame" x="26" y="0.0" width="285" height="42"/>
+                                        <rect key="frame" x="26" y="170" width="285" height="42"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7jW-PS-Mla">
                                                 <rect key="frame" x="-2" y="13" width="159" height="16"/>
@@ -285,7 +301,7 @@
                                                     </menu>
                                                 </popUpButtonCell>
                                                 <connections>
-                                                    <action selector="selectSearchMethod:" target="Zw3-Uh-gTX" id="Bt5-Fq-kPz"/>
+                                                    <action selector="selectKeyOption:" target="Zw3-Uh-gTX" id="Lkm-Av-T0r"/>
                                                     <binding destination="Zw3-Uh-gTX" name="selectedIndex" keyPath="self.options.searchMethod" id="2w3-hf-ddp"/>
                                                 </connections>
                                             </popUpButton>
@@ -299,6 +315,12 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
+                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="a4F-FJ-ybw">
+                                        <rect key="frame" x="28" y="0.0" width="281" height="150"/>
+                                        <connections>
+                                            <segue destination="A0d-lf-2ia" kind="embed" identifier="SummaryViewController" id="2rP-uV-oID"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -315,6 +337,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="reset:" target="Zw3-Uh-gTX" id="0dU-c2-SaJ"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FYp-BY-Eco">
                                 <rect key="frame" x="243" y="13" width="121" height="32"/>
@@ -323,7 +348,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="openSearchOptionsTab:" target="Zw3-Uh-gTX" id="AbP-9e-SD4"/>
+                                    <action selector="openOptionsTab:" target="Zw3-Uh-gTX" id="2Fb-be-A4T"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -338,6 +363,9 @@
                             <constraint firstItem="lpa-Lp-2qM" firstAttribute="leading" secondItem="38O-uf-c0K" secondAttribute="leading" constant="20" id="qnB-jI-y3z"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchMethodPopup" destination="j6X-M9-3nB" id="MXo-cZ-KTW"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="450.5" y="-1434.5"/>
@@ -370,6 +398,19 @@
                 <customObject id="oyT-Dd-4W4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="955" y="-1432"/>
+        </scene>
+        <!--Summary View Conroller-->
+        <scene sceneID="LlS-9Y-dcc">
+            <objects>
+                <viewController id="aaH-a8-ygy" customClass="SummaryViewConroller" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="9fh-cM-qUR">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="IBZ-DS-HNJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="-553"/>
         </scene>
     </scenes>
     <resources>

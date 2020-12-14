@@ -30,12 +30,6 @@ class PaupSearchOptionsViewController: NSViewController {
     }
     
     
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
-    }
-    
-    
-    
     
 
 

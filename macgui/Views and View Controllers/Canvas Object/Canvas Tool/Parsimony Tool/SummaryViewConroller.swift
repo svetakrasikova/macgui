@@ -50,8 +50,11 @@ class SummaryViewConroller: NSViewController {
         if let options = self.options {
             switch type {
             case .heuristicSearch: return options.holisticSearchSummary()
-            case .branchAndBountSearch: return options.branchAndBoundSearchSummary()
+            case .branchAndBoundSearch: return options.branchAndBoundSearchSummary()
             case .exhaustiveSearch: return options.exhaustiveSearchSummary()
+            case .likelihood: return options.likelihoodSummary()
+            case .distance: return options.distanceSummary()
+            case .parsimony: return options.parsimonySummary()
             default: break
             }
         }
