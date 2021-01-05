@@ -97,8 +97,8 @@ class PaupOptions: NSObject, NSCoding {
     enum LSNst        : Int { case one, two, six }
     enum LSTRatio     : String { case estimate }
     enum LSRMatrix    : Int { case estimate, vectorValues }
-    enum LSBasefreq   : Int { case empirical, equal, estimate, vectorValues }
-    enum LSRates      : Int { case equal, gamma }
+    enum LSBasefreq   : Int { case empirical = 0, equal = 1, estimate = 2, vectorValues = 3 }
+    enum LSRates      : Int { case equal = 0, gamma = 1}
     enum LSShape      : String { case estimate }
     enum LSNCat       : String { case defaultValue = "4"}
     enum LSReprate    : Int { case mean, median }
@@ -129,6 +129,15 @@ class PaupOptions: NSObject, NSCoding {
             return String(describing: LSRMatrix(rawValue: lsRMatrix)!)
         } else {
             return lsRMatrixVal.stringRepresentation()
+        }
+    }
+    
+    
+    func transformBaseFreqValue() -> String {
+        if lsBasefreq != LSBasefreq.vectorValues.rawValue {
+            return String(describing: LSBasefreq(rawValue: lsBasefreq)!)
+        } else {
+            return lsBasefreqVal.stringRepresentation()
         }
     }
 
@@ -167,6 +176,7 @@ class PaupOptions: NSObject, NSCoding {
     var lsRMatrix       = LSRMatrix.estimate.rawValue
     var lsRMatrixVal    = RMatrix(vectorVal: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
     var lsBasefreq      = LSBasefreq.estimate.rawValue
+    var lsBasefreqVal   = BaseFreq(vectorVal: [0.25, 0.25, 0.25, 0.25])
     var lsRates         = LSRates.equal.rawValue
     var lsShape         = LSShape.estimate.rawValue
     var lsNCat          = LSNCat.defaultValue.rawValue
@@ -215,6 +225,7 @@ class PaupOptions: NSObject, NSCoding {
         coder.encode(lsRMatrix, forKey: CodingKeys.lsRMatrix.rawValue)
         coder.encode(lsRMatrixVal, forKey: CodingKeys.lsRMatrixVal.rawValue)
         coder.encode(lsBasefreq, forKey: CodingKeys.lsBasefreq.rawValue)
+        coder.encode(lsBasefreqVal, forKey: CodingKeys.lsBasefreqVal.rawValue)
         coder.encode(lsRates, forKey: CodingKeys.lsRates.rawValue)
         coder.encode(lsShape, forKey: CodingKeys.lsShape.rawValue)
         coder.encode(lsNCat, forKey: CodingKeys.lsNCat.rawValue)
@@ -253,10 +264,10 @@ class PaupOptions: NSObject, NSCoding {
         exKeep =  coder.decodeObject(forKey: CodingKeys.exKeep.rawValue) as? String ?? EXKeep.no.rawValue
         lsNst = coder.decodeInteger(forKey: CodingKeys.lsNst.rawValue)
         lsTRatio =  coder.decodeObject(forKey: CodingKeys.lsTRatio.rawValue) as? String ?? LSTRatio.estimate.rawValue
-//        lsRMatrix = 1
         lsRMatrix =  coder.decodeInteger(forKey: CodingKeys.lsRMatrix.rawValue)
         lsRMatrixVal =  coder.decodeObject(forKey: CodingKeys.lsRMatrixVal.rawValue) as? RMatrix ?? RMatrix(vectorVal: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
         lsBasefreq  =  coder.decodeInteger(forKey: CodingKeys.lsBasefreq.rawValue)
+        lsBasefreqVal =  coder.decodeObject(forKey: CodingKeys.lsBasefreqVal.rawValue) as? BaseFreq ?? BaseFreq(vectorVal: [0.25, 0.25, 0.25, 0.25])
         lsRates  =  coder.decodeInteger(forKey: CodingKeys.lsRates.rawValue)
         lsShape  = coder.decodeObject(forKey: CodingKeys.lsShape.rawValue) as? String ?? LSShape.estimate.rawValue
         lsNCat  =  coder.decodeObject(forKey: CodingKeys.lsNCat.rawValue) as? String ?? LSNCat.defaultValue.rawValue
@@ -300,6 +311,7 @@ class PaupOptions: NSObject, NSCoding {
         lsRMatrix       = LSRMatrix.estimate.rawValue
         lsRMatrixVal    = RMatrix(vectorVal: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
         lsBasefreq      = LSBasefreq.estimate.rawValue
+        lsBasefreqVal   = BaseFreq(vectorVal: [0.25, 0.25, 0.25, 0.25])
         lsRates         = LSRates.equal.rawValue
         lsShape         = LSShape.estimate.rawValue
         lsNCat          = LSNCat.defaultValue.rawValue
@@ -343,6 +355,7 @@ class PaupOptions: NSObject, NSCoding {
         lsRMatrix       = LSRMatrix.estimate.rawValue
         lsRMatrixVal    = RMatrix(vectorVal: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
         lsBasefreq      = LSBasefreq.estimate.rawValue
+        lsBasefreqVal   = BaseFreq(vectorVal: [0.25, 0.25, 0.25, 0.25])
         lsRates         = LSRates.equal.rawValue
         lsShape         = LSShape.estimate.rawValue
         lsNCat          = LSNCat.defaultValue.rawValue
@@ -556,5 +569,46 @@ class RMatrix: NSObject, NSCoding {
 
     func stringRepresentation() -> String {
         return "( \(ac) \(ag) \(at) \(cg) \(ct) \(gt) )"
+    }
+}
+
+@objcMembers
+class BaseFreq: NSObject, NSCoding {
+
+    dynamic var a: Double
+    dynamic var c: Double
+    dynamic var g: Double
+    dynamic var t: Double {
+       return 1 - (a + c + g)
+    }
+
+    private enum CodingKeys: String {
+        case a, c, g, t
+    }
+
+    init(vectorVal: [Double]) {
+        a = vectorVal[0]
+        c = vectorVal[1]
+        g = vectorVal[2]
+    }
+
+    required init?(coder: NSCoder) {
+
+        a = coder.decodeDouble(forKey: CodingKeys.a.rawValue)
+        c = coder.decodeDouble(forKey: CodingKeys.c.rawValue)
+        g = coder.decodeDouble(forKey: CodingKeys.g.rawValue)
+    }
+
+
+    func encode(with coder: NSCoder) {
+        coder.encode(a, forKey: CodingKeys.a.rawValue)
+        coder.encode(c, forKey: CodingKeys.c.rawValue)
+        coder.encode(g, forKey: CodingKeys.g.rawValue)
+    }
+
+
+
+    func stringRepresentation() -> String {
+        return "( \(a) \(c) \(g) \(t) )"
     }
 }

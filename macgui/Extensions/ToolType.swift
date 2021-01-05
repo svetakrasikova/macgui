@@ -60,7 +60,7 @@ extension ToolObject {
         case .model:
             return "Data Model Tool"
         case .parsimony:
-            return "Parsimony Tool"
+            return "PAUP* Tool"
             
         }
     }

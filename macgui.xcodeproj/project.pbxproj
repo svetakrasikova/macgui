@@ -1397,7 +1397,7 @@
 		14A663BC23186CFE0034EA53 /* Notebook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A663BB23186CFE0034EA53 /* Notebook.storyboard */; };
 		14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BD2319A0950034EA53 /* NotebookViewController.swift */; };
 		14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */; };
-		14AA8FBC2589973700BBEB90 /* PaupCriterionOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA8FBB2589973700BBEB90 /* PaupCriterionOptionsViewController.swift */; };
+		14AA8FBC2589973700BBEB90 /* PaupLikelihoodOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA8FBB2589973700BBEB90 /* PaupLikelihoodOptionsViewController.swift */; };
 		14ADDC87245BB151000D49DB /* Distribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADDC86245BB151000D49DB /* Distribution.swift */; };
 		14ADDC89245BB62A000D49DB /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADDC88245BB62A000D49DB /* Parameter.swift */; };
 		14ADDC8B2460A3D0000D49DB /* ModelVariableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADDC8A2460A3D0000D49DB /* ModelVariableController.swift */; };
@@ -4348,7 +4348,7 @@
 		14A663BB23186CFE0034EA53 /* Notebook.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notebook.storyboard; sourceTree = "<group>"; };
 		14A663BD2319A0950034EA53 /* NotebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookViewController.swift; sourceTree = "<group>"; };
 		14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookWindowController.swift; sourceTree = "<group>"; };
-		14AA8FBB2589973700BBEB90 /* PaupCriterionOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupCriterionOptionsViewController.swift; sourceTree = "<group>"; };
+		14AA8FBB2589973700BBEB90 /* PaupLikelihoodOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupLikelihoodOptionsViewController.swift; sourceTree = "<group>"; };
 		14ADDC86245BB151000D49DB /* Distribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distribution.swift; sourceTree = "<group>"; };
 		14ADDC88245BB62A000D49DB /* Parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		14ADDC8A2460A3D0000D49DB /* ModelVariableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVariableController.swift; sourceTree = "<group>"; };
@@ -8285,7 +8285,7 @@
 				1453185824E48B7A00A4656C /* RunPaup.swift */,
 				14EE87DB255B2D280064F290 /* PaupEnum.swift */,
 				14EE87DF255B2D980064F290 /* PaupSearchOptionsViewController.swift */,
-				14AA8FBB2589973700BBEB90 /* PaupCriterionOptionsViewController.swift */,
+				14AA8FBB2589973700BBEB90 /* PaupLikelihoodOptionsViewController.swift */,
 				145F3320256897D900BD5916 /* SummaryViewConroller.swift */,
 			);
 			path = "Parsimony Tool";
@@ -8636,7 +8636,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "Svetlana Krasikova";
 				TargetAttributes = {
 					1411BE8B2203D8FB009BEE1D = {
@@ -8910,7 +8910,7 @@
 				144BEFC923A17AC70001B2EF /* MaximumLikelihoodAnalysis.cpp in Sources */,
 				144BECA623A17AC50001B2EF /* Move_SpeciesNarrowExchange.cpp in Sources */,
 				144BF09B23A17AC70001B2EF /* RoundFunction.cpp in Sources */,
-				14AA8FBC2589973700BBEB90 /* PaupCriterionOptionsViewController.swift in Sources */,
+				14AA8FBC2589973700BBEB90 /* PaupLikelihoodOptionsViewController.swift in Sources */,
 				144BEF9E23A17AC60001B2EF /* VariableMonitor.cpp in Sources */,
 				144BEE0123A17AC60001B2EF /* Func_standardDeviation.cpp in Sources */,
 				144BEDF823A17AC60001B2EF /* Func_discretizeLognormalQuadrature.cpp in Sources */,
@@ -10172,6 +10172,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -10234,6 +10235,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -10262,7 +10264,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
@@ -10278,6 +10279,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P3X4F8B2U7;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -10307,6 +10309,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P3X4F8B2U7;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
