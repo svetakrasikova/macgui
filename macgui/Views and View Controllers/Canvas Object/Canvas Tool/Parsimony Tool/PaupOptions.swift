@@ -53,6 +53,24 @@ class PaupOptions: NSObject, NSCoding {
         case lsPinvar
         case lsPinvarVal
         case lsClock
+        
+        case dsDistance
+        case dsRates
+        case dsShape
+        case dsPinvar
+        case dsRemoveFreq
+        case dsEstFreq
+        case dsAllSitesMean
+        case dsObjective
+        case dsSubst
+        case dsMissDist
+        case dsNegBrLen
+        case dsDCollapse
+        
+        case psStepMatrix
+        case psStepMatrixVal
+        
+
     }
     
     // MARK: - Errors
@@ -105,6 +123,23 @@ class PaupOptions: NSObject, NSCoding {
     enum LSPinvar     : String { case estimate }
     enum LSClock      : Int { case no, yes }
     
+    enum DSDistance: Int { case total, mean, abs, P, JC, F81, TajNei, K2P, F84, HKY85,
+                                  K3P, TamNei, GTR, logDet, NG86, Upholt, NeiLiSite, NeiLiFrag }
+    
+    enum DSRates: Int { case equal = 0 , gamma = 1 }
+    enum DSPinvar: String { case none }
+    enum DSRemoveFreq: Int { case proportional = 0, equal = 1 }
+    enum DSEstFreq: Int { case all = 0, constant = 1}
+    enum DSAllSitesMean: Int { case yes = 0, no = 1}
+    enum DSObjective: Int { case me, lsFit0, lsFit1, lsFit2}
+    enum DSSubst: Int { case all, tv, ti, tratio }
+    enum DSMissDist: Int { case infer, ignore }
+    enum DSNegBrLen: Int { case prohibit, allow, setZero, setAbsVal }
+    enum DSDCollapse: Int { case no, yes }
+    
+    enum PSStepMatrix: Int { case no, yes}
+    
+    
     class func getCriteria() -> [String] {
         var criteria: [String] = []
         for c in PaupOptions.Criteria.allCases {
@@ -138,6 +173,13 @@ class PaupOptions: NSObject, NSCoding {
             return String(describing: LSBasefreq(rawValue: lsBasefreq)!)
         } else {
             return lsBasefreqVal.stringRepresentation()
+        }
+    }
+    
+    func transformObjectiveFunctionValue() -> String {
+        switch dsObjective {
+        case DSObjective.me.rawValue: return String(describing: DSObjective(rawValue: dsObjective)!)
+        default: return "lsFit"
         }
     }
 
@@ -183,10 +225,38 @@ class PaupOptions: NSObject, NSCoding {
     var lsReprate       = LSReprate.mean.rawValue
     var lsPinvar        = LSPinvar.estimate.rawValue
     var lsClock         = LSClock.no.rawValue
-
+    
+    var dsDistance      = DSDistance.P.rawValue
+    var dsRates         = DSRates.equal.rawValue
+    var dsShape: Float  = 0.5
+    var dsPinvar        = DSPinvar.none.rawValue
+    var dsRemoveFreq    = DSRemoveFreq.proportional.rawValue
+    var dsEstFreq       = DSEstFreq.all.rawValue
+    var dsAllSitesMean  = DSAllSitesMean.yes.rawValue
+    var dsObjective     = DSObjective.lsFit0.rawValue
+    var dsSubst         = DSSubst.all.rawValue
+    var dsMissDist      = DSMissDist.infer.rawValue
+    var dsNegBrLen      = DSNegBrLen.setZero.rawValue
+    var dsDCollapse     = DSDCollapse.no.rawValue
+    var dsPower: Int? {
+        var power: Int?
+        switch dsObjective {
+        case DSObjective.lsFit0.rawValue: power = 0
+        case DSObjective.lsFit1.rawValue: power = 1
+        case DSObjective.lsFit2.rawValue: power = 2
+        default: break
+        }
+        return power
+    }
+    
+    var psStepMatrix    = PSStepMatrix.no.rawValue
+    var psStepMatrixVal = NeucleotideMatrix(vectorVal: [[Double]](repeating: [0.0,0.0,0.0,0.0], count: 4))
+    
+    
     override init() {
         super.init()
     }
+    
     
 //    MARK: -- NSCoding
     
@@ -232,6 +302,20 @@ class PaupOptions: NSObject, NSCoding {
         coder.encode(lsReprate, forKey: CodingKeys.lsReprate.rawValue)
         coder.encode(lsPinvar, forKey: CodingKeys.lsPinvarVal.rawValue)
         coder.encode(lsClock, forKey: CodingKeys.lsClock.rawValue)
+        
+        coder.encode(dsDistance, forKey: CodingKeys.dsDistance.rawValue)
+        coder.encode(dsRates, forKey: CodingKeys.dsRates.rawValue)
+        coder.encode(dsShape, forKey: CodingKeys.dsShape.rawValue)
+        coder.encode(dsPinvar, forKey: CodingKeys.dsPinvar.rawValue)
+        coder.encode(dsRemoveFreq, forKey: CodingKeys.dsRemoveFreq.rawValue)
+        coder.encode(dsAllSitesMean, forKey: CodingKeys.dsAllSitesMean.rawValue)
+        coder.encode(dsSubst, forKey: CodingKeys.dsSubst.rawValue)
+        coder.encode(dsMissDist, forKey: CodingKeys.dsMissDist.rawValue)
+        coder.encode(dsNegBrLen, forKey: CodingKeys.dsNegBrLen.rawValue)
+        coder.encode(dsDCollapse, forKey: CodingKeys.dsDCollapse.rawValue)
+        coder.encode(psStepMatrix, forKey: CodingKeys.psStepMatrix.rawValue)
+        coder.encode(psStepMatrixVal, forKey: CodingKeys.psStepMatrixVal.rawValue)
+
     }
        
     required init?(coder: NSCoder) {
@@ -275,50 +359,30 @@ class PaupOptions: NSObject, NSCoding {
         lsPinvar  =  coder.decodeObject(forKey: CodingKeys.lsPinvar.rawValue) as? String ?? LSPinvar.estimate.rawValue
         lsClock  =  coder.decodeInteger(forKey: CodingKeys.lsClock.rawValue)
         
+        dsDistance = coder.decodeInteger(forKey: CodingKeys.dsDistance.rawValue)
+        dsRates = coder.decodeInteger(forKey: CodingKeys.dsRates.rawValue)
+        dsShape = coder.decodeFloat(forKey: CodingKeys.dsShape.rawValue)
+        dsPinvar = coder.decodeObject(forKey: CodingKeys.dsPinvar.rawValue) as? String ?? DSPinvar.none.rawValue
+        dsRemoveFreq = coder.decodeInteger(forKey: CodingKeys.dsRemoveFreq.rawValue)
+        dsEstFreq = coder.decodeInteger(forKey: CodingKeys.dsEstFreq.rawValue)
+        dsAllSitesMean = coder.decodeInteger(forKey: CodingKeys.dsAllSitesMean.rawValue)
+        
+        dsSubst         = coder.decodeInteger(forKey: CodingKeys.dsSubst.rawValue)
+        dsMissDist      = coder.decodeInteger(forKey: CodingKeys.dsMissDist.rawValue)
+        dsNegBrLen      = coder.decodeInteger(forKey: CodingKeys.dsNegBrLen.rawValue)
+        dsDCollapse     = coder.decodeInteger(forKey: CodingKeys.dsDCollapse.rawValue)
+        psStepMatrix    = coder.decodeInteger(forKey: CodingKeys.psStepMatrix.rawValue)
+        psStepMatrixVal = coder.decodeObject(forKey: CodingKeys.psStepMatrixVal.rawValue) as? NeucleotideMatrix ?? NeucleotideMatrix(vectorVal: [[Double]](repeating: [0.0,0.0,0.0,0.0], count: 4))
+        
+        
     }
 
     func revertToFactorySettings() {
         
-        criterion       = Criteria.parsimony.rawValue
-        searchMethod    = SearchMethod.heuristic.rawValue
-        hsSwap          = HSSwap.tbr.rawValue
-        hsKeep          = HSKeep.no.rawValue
-        hsMulTrees      = HSMulTrees.yes.rawValue
-        hsRearrLimit    = HSRearrLimit.none.rawValue
-        hsReconLimit    = HSReconLimit.defaultValue.rawValue
-        hsNBest         = HSNBest.all.rawValue
-        hsRetain        = HSRetain.no.rawValue
-        hsAllSwap       = HSAllSwap.no.rawValue
-        hsUseNonMin     = HSUseNonMin.no.rawValue
-        hsSteepest      = HSSteepest.no.rawValue
-        hsAbortRep      = HSAbortRep.no.rawValue
-        hsRandomize     = HSRandomize.addSeq.rawValue
-        hsAddSeq        = HSAddSeq.simple.rawValue
-        hsHold          = HSHold.defaultValue.rawValue
-        hsNChuck        = HSNChuck.defaultValue.rawValue
-        hsChuckScore    = HSChuckScore.no.rawValue
-        hsNreps         = HSNreps.defaultValue.rawValue
-        
-        bbKeep          = BBKeep.no.rawValue
-        bbMulTrees      = BBMulTrees.yes.rawValue
-        bbUpBound       = BBUpBound.defaultValue.rawValue
-        bbAddSeq        = BBAddSeq.furthest.rawValue
-        
-        exKeep          = EXKeep.no.rawValue
-        
-        lsNst           = LSNst.two.rawValue
-        lsTRatio        = LSTRatio.estimate.rawValue
-        lsRMatrix       = LSRMatrix.estimate.rawValue
-        lsRMatrixVal    = RMatrix(vectorVal: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
-        lsBasefreq      = LSBasefreq.estimate.rawValue
-        lsBasefreqVal   = BaseFreq(vectorVal: [0.25, 0.25, 0.25, 0.25])
-        lsRates         = LSRates.equal.rawValue
-        lsShape         = LSShape.estimate.rawValue
-        lsNCat          = LSNCat.defaultValue.rawValue
-        lsReprate       = LSReprate.mean.rawValue
-        lsPinvar        = LSPinvar.estimate.rawValue
-        lsClock         = LSClock.no.rawValue
+        revertSearchToFactorySettings()
+        revertCriterionToFactorySettings()
     }
+    
     
     func revertSearchToFactorySettings() {
         
@@ -347,9 +411,25 @@ class PaupOptions: NSObject, NSCoding {
         exKeep          = EXKeep.no.rawValue
     }
     
+    
     func revertCriterionToFactorySettings() {
         
         criterion       = Criteria.parsimony.rawValue
+        revertParsimonyToFactorySettings()
+        revertLikelihoodToFactorySettings()
+        revertDistanceToFactorySetting()
+        
+    }
+    
+    func revertParsimonyToFactorySettings() {
+        
+        psStepMatrix    = PSStepMatrix.no.rawValue
+        psStepMatrixVal = NeucleotideMatrix(vectorVal: [[Double]](repeating: [0.0,0.0,0.0,0.0], count: 4))
+        
+    }
+    
+    func revertLikelihoodToFactorySettings() {
+        
         lsNst           = LSNst.two.rawValue
         lsTRatio        = LSTRatio.estimate.rawValue
         lsRMatrix       = LSRMatrix.estimate.rawValue
@@ -362,6 +442,22 @@ class PaupOptions: NSObject, NSCoding {
         lsReprate       = LSReprate.mean.rawValue
         lsPinvar        = LSPinvar.estimate.rawValue
         lsClock         = LSClock.no.rawValue
+    }
+    
+    func revertDistanceToFactorySetting() {
+        
+        dsDistance      = DSDistance.P.rawValue
+        dsRates         = DSRates.equal.rawValue
+        dsShape         = 0.5
+        dsPinvar        = DSPinvar.none.rawValue
+        dsRemoveFreq    = DSRemoveFreq.proportional.rawValue
+        dsEstFreq       = DSEstFreq.all.rawValue
+        dsAllSitesMean  = DSAllSitesMean.yes.rawValue
+        dsObjective     = DSObjective.lsFit0.rawValue
+        dsSubst         = DSSubst.all.rawValue
+        dsMissDist      = DSMissDist.infer.rawValue
+        dsNegBrLen      = DSNegBrLen.setZero.rawValue
+        dsDCollapse     = DSDCollapse.no.rawValue
     }
     
     func setString() -> String {
@@ -383,11 +479,43 @@ class PaupOptions: NSObject, NSCoding {
         }
         return str
     }
+    
+    func stepMatrixString() -> String {
+        let sm = self.psStepMatrixVal
+        var smString = "\tusertype stepmatrix =4\n"
+        smString += "\t\t[a c g t]\n"
+        smString += "\t\t\(sm.aa) \(sm.ac) \(sm.ag) \(sm.at)"
+        smString += "\t\t\(sm.ca) \(sm.cc) \(sm.cg) \(sm.ct)"
+        smString += "\t\t\(sm.ga) \(sm.gc) \(sm.gg) \(sm.gt)"
+        smString += "\t\t\(sm.ta) \(sm.tc) \(sm.tg) \(sm.tt)"
+        smString += ";"
+        return smString
+    }
 
  
     func dsetString() -> String {
     
-        let str : String = "dset;"
+        var str : String = "dset;"
+        str += " distance=\(String(describing: DSDistance(rawValue: dsDistance)!))"
+        str += " rates=\(String(describing: DSRates(rawValue: dsRates)!))"
+        if dsRates == DSRates.gamma.rawValue {
+            str += " shape=\(String(describing: dsShape))"
+        }
+        if dsPinvar != DSPinvar.none.rawValue {
+            str += " pInvar=\(String(describing: dsPinvar))"
+            str += " removeFreq=\(String(describing: DSRemoveFreq(rawValue: dsRemoveFreq)!))"
+            str += " estFreq=\(String(describing: DSEstFreq(rawValue: dsEstFreq)!))"
+        }
+        str += " allSitesMean=\(String(describing: DSAllSitesMean(rawValue: dsAllSitesMean)!))"
+        str += " objective=\(transformObjectiveFunctionValue())"
+        if let dsPower = dsPower {
+            str += " power=\(String(describing: dsPower))"
+        }
+        str += " subst=\(String(describing: DSSubst(rawValue: dsSubst)!))"
+        str += " missDist=\(String(describing: DSMissDist(rawValue: dsMissDist)!))"
+        str += " negBrLen=\(String(describing: DSNegBrLen(rawValue: dsNegBrLen)!))"
+        str += " dCollapse=\(String(describing: DSDCollapse(rawValue: dsDCollapse)!))"
+        
         return str
     }
 
@@ -500,7 +628,9 @@ class PaupOptions: NSObject, NSCoding {
     }
     
     func parsimonySummary() -> [String] {
-        return []
+        var options: [String] = []
+        options.append("AllowStepMatrix: \(String(describing: PSStepMatrix(rawValue: psStepMatrix)!))")
+        return options
     }
     
     
@@ -520,7 +650,29 @@ class PaupOptions: NSObject, NSCoding {
     }
     
     func distanceSummary() -> [String] {
-        return []
+        var options: [String] = []
+        options.append("Distance: \(String(describing: DSDistance(rawValue: dsDistance)!))")
+        options.append("Rates: \(String(describing: DSRates(rawValue: dsRates)!))")
+        if dsRates == DSRates.gamma.rawValue {
+            options.append("Shape: \(String(describing: dsShape))")
+        }
+        if dsPinvar != DSPinvar.none.rawValue {
+            options.append("PInvar: \(String(describing: dsPinvar))")
+            options.append("RemoveFreq: \(String(describing: DSRemoveFreq(rawValue: dsRemoveFreq)!))")
+            options.append("EstimatedFreq: \(String(describing: DSEstFreq(rawValue: dsEstFreq)!))")
+        }
+        options.append("Objective: \(transformObjectiveFunctionValue())")
+
+        if let dsPower = dsPower {
+            options.append("Power: \(String(describing: dsPower))")
+        }
+        
+        options.append("Subst: \(String(describing: DSSubst(rawValue: dsSubst)!))")
+        options.append("MissDist: \(String(describing: DSMissDist(rawValue: dsMissDist)!))")
+        options.append("NegBrLen: \(String(describing: DSNegBrLen(rawValue: dsNegBrLen)!))")
+        options.append("DCollapse: \(String(describing: DSDCollapse(rawValue: dsDCollapse)!))")
+        
+        return options
     }
 }
 
@@ -611,4 +763,175 @@ class BaseFreq: NSObject, NSCoding {
     func stringRepresentation() -> String {
         return "( \(a) \(c) \(g) \(t) )"
     }
+
 }
+
+@objcMembers
+class NeucleotideMatrix : NSObject, NSCoding {
+    
+    dynamic var aa: Double
+    dynamic var ac: Double
+    dynamic var ag: Double
+    dynamic var at: Double
+    dynamic var ca: Double
+    dynamic var cc: Double
+    dynamic var cg: Double
+    dynamic var ct: Double
+    dynamic var ga: Double
+    dynamic var gc: Double
+    dynamic var gg: Double
+    dynamic var gt: Double
+    dynamic var ta: Double
+    dynamic var tc: Double
+    dynamic var tg: Double
+    dynamic var tt: Double
+
+    private enum CodingKeys: String {
+        case aa, ac, ag, at, ca, cc, cg, ct, ga, gc, gg, gt, ta, tc, tg, tt
+    }
+
+    init(vectorVal: [[Double]]) {
+        aa = vectorVal[0][0]
+        ac = vectorVal[0][1]
+        ag = vectorVal[0][2]
+        at = vectorVal[0][3]
+        ca = vectorVal[1][0]
+        cc = vectorVal[1][1]
+        cg = vectorVal[1][2]
+        ct = vectorVal[1][3]
+        ga = vectorVal[2][0]
+        gc = vectorVal[2][1]
+        gg = vectorVal[2][2]
+        gt = vectorVal[2][3]
+        ta = vectorVal[3][0]
+        tc = vectorVal[3][1]
+        tg = vectorVal[3][2]
+        tt = vectorVal[3][3]
+    }
+
+    required init?(coder: NSCoder) {
+        
+        aa = coder.decodeDouble(forKey: CodingKeys.aa.rawValue)
+        ac = coder.decodeDouble(forKey: CodingKeys.ac.rawValue)
+        ag = coder.decodeDouble(forKey: CodingKeys.ag.rawValue)
+        at = coder.decodeDouble(forKey: CodingKeys.at.rawValue)
+        ca = coder.decodeDouble(forKey: CodingKeys.ca.rawValue)
+        cc = coder.decodeDouble(forKey: CodingKeys.cc.rawValue)
+        cg = coder.decodeDouble(forKey: CodingKeys.cg.rawValue)
+        ct = coder.decodeDouble(forKey: CodingKeys.ct.rawValue)
+        ga = coder.decodeDouble(forKey: CodingKeys.ga.rawValue)
+        gc = coder.decodeDouble(forKey: CodingKeys.gc.rawValue)
+        gg = coder.decodeDouble(forKey: CodingKeys.gg.rawValue)
+        gt = coder.decodeDouble(forKey: CodingKeys.gt.rawValue)
+        ta = coder.decodeDouble(forKey: CodingKeys.ta.rawValue)
+        tc = coder.decodeDouble(forKey: CodingKeys.tc.rawValue)
+        tg = coder.decodeDouble(forKey: CodingKeys.tg.rawValue)
+        tt = coder.decodeDouble(forKey: CodingKeys.tt.rawValue)
+    }
+
+
+    func encode(with coder: NSCoder) {
+        coder.encode(aa, forKey: CodingKeys.aa.rawValue)
+        coder.encode(ac, forKey: CodingKeys.ac.rawValue)
+        coder.encode(ag, forKey: CodingKeys.ag.rawValue)
+        coder.encode(at, forKey: CodingKeys.at.rawValue)
+        coder.encode(ca, forKey: CodingKeys.ca.rawValue)
+        coder.encode(cc, forKey: CodingKeys.cc.rawValue)
+        coder.encode(cg, forKey: CodingKeys.cg.rawValue)
+        coder.encode(ct, forKey: CodingKeys.ct.rawValue)
+        coder.encode(ga, forKey: CodingKeys.ga.rawValue)
+        coder.encode(gc, forKey: CodingKeys.gc.rawValue)
+        coder.encode(gg, forKey: CodingKeys.gg.rawValue)
+        coder.encode(gt, forKey: CodingKeys.gt.rawValue)
+        coder.encode(ta, forKey: CodingKeys.ta.rawValue)
+        coder.encode(tc, forKey: CodingKeys.tc.rawValue)
+        coder.encode(tg, forKey: CodingKeys.tg.rawValue)
+        coder.encode(tt, forKey: CodingKeys.tt.rawValue)
+    }
+  
+    override func validateValue(_ ioValue: AutoreleasingUnsafeMutablePointer<AnyObject?>, forKeyPath inKeyPath: String) throws {
+        let domain = "UserInputValidationErrorDomain"
+        let code = 0
+        
+        switch inKeyPath {
+        
+        case CodingKeys.aa.rawValue:
+            if let s = ioValue.pointee as? String {
+                if Double(s) != 0 {
+                    let userInfo = [NSLocalizedDescriptionKey: "The value must be equal to 0.0"]
+                    throw NSError(domain: domain,
+                                  code: code,
+                                  userInfo: userInfo)
+                }
+            }
+        case CodingKeys.cc.rawValue:
+            if let s = ioValue.pointee as? String {
+                if Double(s) != 0 {
+                    let userInfo = [NSLocalizedDescriptionKey: "The value must be equal to 0.0"]
+                    throw NSError(domain: domain,
+                                  code: code,
+                                  userInfo: userInfo)
+                }
+            }
+        case CodingKeys.gg.rawValue:
+            if let s = ioValue.pointee as? String {
+                if Double(s) != 0 {
+                    let userInfo = [NSLocalizedDescriptionKey: "The value must be equal to 0.0"]
+                    throw NSError(domain: domain,
+                                  code: code,
+                                  userInfo: userInfo)
+                }
+            }
+        case CodingKeys.tt.rawValue:
+            if let s = ioValue.pointee as? String {
+                if Double(s) != 0 {
+                    let userInfo = [NSLocalizedDescriptionKey: "The value must be equal to 0.0"]
+                    throw NSError(domain: domain,
+                                  code: code,
+                                  userInfo: userInfo)
+                }
+            }
+            
+        default: break
+        }
+    }
+}
+  
+  
+
+
+extension PaupOptions {
+    
+    override func validateValue(_ ioValue: AutoreleasingUnsafeMutablePointer<AnyObject?>, forKey inKey: String) throws {
+        
+        let domain = "UserInputValidationErrorDomain"
+        let code = 0
+        
+        switch inKey {
+        
+        case CodingKeys.dsShape.rawValue:
+            if let s = ioValue.pointee as? String, let shape = Double(s) {
+                if shape <= 0 {
+                    let userInfo = [NSLocalizedDescriptionKey: "The shape value must be greater than 0.0"]
+                    throw NSError(domain: domain,
+                                  code: code,
+                                  userInfo: userInfo)
+                }
+            }
+            
+//        case #keyPath(psStepMatrixVal.aa):
+//            if let s = ioValue.pointee as? String, let shape = Double(s) {
+//                if shape != 0 {
+//                    let userInfo = [NSLocalizedDescriptionKey: "The shape value must be greater than 0.0"]
+//                    throw NSError(domain: domain,
+//                                  code: code,
+//                                  userInfo: userInfo)
+//                }
+//            }
+//       
+        default: break
+        }
+    }
+}
+
+

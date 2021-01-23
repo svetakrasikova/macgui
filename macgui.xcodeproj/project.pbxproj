@@ -1364,6 +1364,8 @@
 		147429DB22CBC8C300FF1963 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DA22CBC8C300FF1963 /* Storyboards.swift */; };
 		147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147429DD22D154D200FF1963 /* ModelTool.storyboard */; };
 		148D93C92335406D00FDFAFA /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148D93C82335406C00FDFAFA /* Document.swift */; };
+		148FC1A125A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148FC19F25A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift */; };
+		148FC1A925A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148FC1A725A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift */; };
 		149370432303545D00503CCB /* ToolTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149370422303545D00503CCB /* ToolTipViewController.swift */; };
 		1495A0B4237C987600F46312 /* MatrixInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1495A0B3237C987600F46312 /* MatrixInspectorViewController.swift */; };
 		1495A0B6237C991200F46312 /* MatrixInspector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1495A0B5237C991200F46312 /* MatrixInspector.storyboard */; };
@@ -4315,6 +4317,8 @@
 		147429DA22CBC8C300FF1963 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		147429DD22D154D200FF1963 /* ModelTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModelTool.storyboard; sourceTree = "<group>"; };
 		148D93C82335406C00FDFAFA /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		148FC19F25A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupParsimonyOptionsViewController.swift; sourceTree = "<group>"; };
+		148FC1A725A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupDistanceOptionsViewController.swift; sourceTree = "<group>"; };
 		149370422303545D00503CCB /* ToolTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipViewController.swift; sourceTree = "<group>"; };
 		1495A0B3237C987600F46312 /* MatrixInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixInspectorViewController.swift; sourceTree = "<group>"; };
 		1495A0B5237C991200F46312 /* MatrixInspector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MatrixInspector.storyboard; sourceTree = "<group>"; };
@@ -8286,6 +8290,8 @@
 				14EE87DB255B2D280064F290 /* PaupEnum.swift */,
 				14EE87DF255B2D980064F290 /* PaupSearchOptionsViewController.swift */,
 				14AA8FBB2589973700BBEB90 /* PaupLikelihoodOptionsViewController.swift */,
+				148FC19F25A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift */,
+				148FC1A725A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift */,
 				145F3320256897D900BD5916 /* SummaryViewConroller.swift */,
 			);
 			path = "Parsimony Tool";
@@ -8822,6 +8828,7 @@
 				14E585762298575C00802691 /* ArrowViewController.swift in Sources */,
 				144BEFB323A17AC60001B2EF /* MonteCarloSampler.cpp in Sources */,
 				144BF0D523A17AC70001B2EF /* DECStationaryFrequenciesFunction.cpp in Sources */,
+				148FC1A125A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift in Sources */,
 				144BEDA423A17AC60001B2EF /* Func_summarizeCharacterMaps.cpp in Sources */,
 				144BF19723A17AC80001B2EF /* RbHelpReference.cpp in Sources */,
 				144BEF6F23A17AC60001B2EF /* HSRFHyperpriorsGibbsMove.cpp in Sources */,
@@ -9722,6 +9729,7 @@
 				144BF0F023A17AC70001B2EF /* EpochCladogeneticStateFunction.cpp in Sources */,
 				144BEDF723A17AC60001B2EF /* Func_shortestDistance.cpp in Sources */,
 				144BED5623A17AC60001B2EF /* RlTimeTree.cpp in Sources */,
+				148FC1A925A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift in Sources */,
 				144BEF6823A17AC60001B2EF /* ShrinkExpandProposal.cpp in Sources */,
 				145F3321256897D900BD5916 /* SummaryViewConroller.swift in Sources */,
 				144BEECB23A17AC60001B2EF /* Dist_constPopMultispCoal.cpp in Sources */,

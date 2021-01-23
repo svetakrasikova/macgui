@@ -68,7 +68,7 @@ class RunPaup {
         let outputFileURL: URL = self.exeDirURL.appendingPathComponent(fileName)
         
         
-        let scriptContents: String = """
+        let paupBlock: String = """
         begin paup;
             \(options.setString())
             execute \(dataFileURL.path);
@@ -78,6 +78,15 @@ class RunPaup {
             quit;
         end;
         """
+        
+        let assumptionsBlock: String = """
+        begin assumptions;
+            \(options.stepMatrixString())
+        end;
+        """
+        
+        let scriptContents: String = options.psStepMatrix == PaupOptions.PSStepMatrix.no.rawValue ?  paupBlock : "\(paupBlock)\n\(assumptionsBlock)"
+    
     
         let data = NSData(data: scriptContents.data(using:String.Encoding.utf8, allowLossyConversion:false)!)
         do {
