@@ -13,6 +13,36 @@
 		1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */; };
 		140E726023F219D400E86919 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E725E23F219D400E86919 /* PreferencesViewController.swift */; };
 		140E726323F3643400E86919 /* PalettItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E726223F3643400E86919 /* PalettItem.swift */; };
+		140ECFCA261B82A70044FEDF /* Func_PoMoKN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFB8261B82A50044FEDF /* Func_PoMoKN.cpp */; };
+		140ECFCB261B82A70044FEDF /* Func_revPoMo2N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFBA261B82A50044FEDF /* Func_revPoMo2N.cpp */; };
+		140ECFCC261B82A70044FEDF /* Func_revPoMoBalance4N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFBD261B82A60044FEDF /* Func_revPoMoBalance4N.cpp */; };
+		140ECFCD261B82A70044FEDF /* Func_revPoMo4N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFBE261B82A60044FEDF /* Func_revPoMo4N.cpp */; };
+		140ECFCE261B82A70044FEDF /* Func_PoMo2N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFBF261B82A60044FEDF /* Func_PoMo2N.cpp */; };
+		140ECFCF261B82A70044FEDF /* Func_revPoMoThree4N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFC0261B82A60044FEDF /* Func_revPoMoThree4N.cpp */; };
+		140ECFD0261B82A70044FEDF /* Func_revPoMoKN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFC4261B82A70044FEDF /* Func_revPoMoKN.cpp */; };
+		140ECFD1261B82A70044FEDF /* Func_revPoMoTwo4N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFC5261B82A70044FEDF /* Func_revPoMoTwo4N.cpp */; };
+		140ECFD2261B82A70044FEDF /* Func_PoMo4N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFC6261B82A70044FEDF /* Func_PoMo4N.cpp */; };
+		140ECFD7261B83370044FEDF /* Func__simplexIndexOperator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFD6261B83370044FEDF /* Func__simplexIndexOperator.cpp */; };
+		140ECFEC261B8BF60044FEDF /* PoMo4NRateMatrixFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFDA261B8BF40044FEDF /* PoMo4NRateMatrixFunction.cpp */; };
+		140ECFED261B8BF60044FEDF /* revPoMo2NRateMatrixFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFDB261B8BF40044FEDF /* revPoMo2NRateMatrixFunction.cpp */; };
+		140ECFEE261B8BF60044FEDF /* revPoMoKNRateMatrixFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFDC261B8BF40044FEDF /* revPoMoKNRateMatrixFunction.cpp */; };
+		140ECFEF261B8BF60044FEDF /* revPoMoTwo4NRateMatrixFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFDD261B8BF50044FEDF /* revPoMoTwo4NRateMatrixFunction.cpp */; };
+		140ECFF0261B8BF60044FEDF /* revPoMoThree4NRateMatrixFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFDE261B8BF50044FEDF /* revPoMoThree4NRateMatrixFunction.cpp */; };
+		140ECFF1261B8BF60044FEDF /* PoMo2NRateMatrixFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFDF261B8BF50044FEDF /* PoMo2NRateMatrixFunction.cpp */; };
+		140ECFF2261B8BF60044FEDF /* revPoMo4NRateMatrixFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFE3261B8BF50044FEDF /* revPoMo4NRateMatrixFunction.cpp */; };
+		140ECFF3261B8BF60044FEDF /* PoMoKNRateMatrixFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFE7261B8BF60044FEDF /* PoMoKNRateMatrixFunction.cpp */; };
+		140ECFF4261B8BF60044FEDF /* revPoMoBalance4NRateMatrixFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFE9261B8BF60044FEDF /* revPoMoBalance4NRateMatrixFunction.cpp */; };
+		140ED009261B8CB70044FEDF /* RateMatrix_PoMoKN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFFA261B8CB50044FEDF /* RateMatrix_PoMoKN.cpp */; };
+		140ED00A261B8CB70044FEDF /* RateMatrix_revPoMoBalance4N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFFB261B8CB50044FEDF /* RateMatrix_revPoMoBalance4N.cpp */; };
+		140ED00B261B8CB70044FEDF /* RateMatrix_revPoMo2N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFFC261B8CB60044FEDF /* RateMatrix_revPoMo2N.cpp */; };
+		140ED00C261B8CB70044FEDF /* RateMatrix_PoMo4N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ECFFD261B8CB60044FEDF /* RateMatrix_PoMo4N.cpp */; };
+		140ED00D261B8CB70044FEDF /* RateMatrix_PoMo2N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ED000261B8CB60044FEDF /* RateMatrix_PoMo2N.cpp */; };
+		140ED00E261B8CB70044FEDF /* RateMatrix_revPoMoKN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ED001261B8CB60044FEDF /* RateMatrix_revPoMoKN.cpp */; };
+		140ED00F261B8CB70044FEDF /* RateMatrix_revPoMoTwo4N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ED002261B8CB60044FEDF /* RateMatrix_revPoMoTwo4N.cpp */; };
+		140ED010261B8CB70044FEDF /* RateMatrix_revPoMo4N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ED003261B8CB60044FEDF /* RateMatrix_revPoMo4N.cpp */; };
+		140ED011261B8CB70044FEDF /* RateMatrix_revPoMoThree4N.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ED008261B8CB70044FEDF /* RateMatrix_revPoMoThree4N.cpp */; };
+		140ED018261B8D3D0044FEDF /* Dist_PhylodynamicBDP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ED014261B8D3C0044FEDF /* Dist_PhylodynamicBDP.cpp */; };
+		140ED019261B8D3D0044FEDF /* Dist_FBDP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 140ED017261B8D3D0044FEDF /* Dist_FBDP.cpp */; };
 		1410C3A523F6048B0044EB48 /* PaletteCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3A423F6048B0044EB48 /* PaletteCategory.swift */; };
 		1410C3A723FCC4260044EB48 /* ModelCanvasPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3A623FCC4260044EB48 /* ModelCanvasPreferencesController.swift */; };
 		1410C3AD2404EBE50044EB48 /* ModelCanvasItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */; };
@@ -1463,6 +1493,67 @@
 		1407184C22FF629D0098285D /* ModalSheetTabView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModalSheetTabView.storyboard; sourceTree = "<group>"; };
 		140E725E23F219D400E86919 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		140E726223F3643400E86919 /* PalettItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettItem.swift; sourceTree = "<group>"; };
+		140ECFB5261B7F7C0044FEDF /* IntegerPos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegerPos.h; sourceTree = "<group>"; };
+		140ECFB8261B82A50044FEDF /* Func_PoMoKN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_PoMoKN.cpp; sourceTree = "<group>"; };
+		140ECFB9261B82A50044FEDF /* Func_revPoMoThree4N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func_revPoMoThree4N.h; sourceTree = "<group>"; };
+		140ECFBA261B82A50044FEDF /* Func_revPoMo2N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_revPoMo2N.cpp; sourceTree = "<group>"; };
+		140ECFBB261B82A60044FEDF /* Func_PoMo2N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func_PoMo2N.h; sourceTree = "<group>"; };
+		140ECFBC261B82A60044FEDF /* Func_PoMo4N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func_PoMo4N.h; sourceTree = "<group>"; };
+		140ECFBD261B82A60044FEDF /* Func_revPoMoBalance4N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_revPoMoBalance4N.cpp; sourceTree = "<group>"; };
+		140ECFBE261B82A60044FEDF /* Func_revPoMo4N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_revPoMo4N.cpp; sourceTree = "<group>"; };
+		140ECFBF261B82A60044FEDF /* Func_PoMo2N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_PoMo2N.cpp; sourceTree = "<group>"; };
+		140ECFC0261B82A60044FEDF /* Func_revPoMoThree4N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_revPoMoThree4N.cpp; sourceTree = "<group>"; };
+		140ECFC1261B82A60044FEDF /* Func_revPoMo2N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func_revPoMo2N.h; sourceTree = "<group>"; };
+		140ECFC2261B82A60044FEDF /* Func_revPoMo4N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func_revPoMo4N.h; sourceTree = "<group>"; };
+		140ECFC3261B82A60044FEDF /* Func_revPoMoBalance4N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func_revPoMoBalance4N.h; sourceTree = "<group>"; };
+		140ECFC4261B82A70044FEDF /* Func_revPoMoKN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_revPoMoKN.cpp; sourceTree = "<group>"; };
+		140ECFC5261B82A70044FEDF /* Func_revPoMoTwo4N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_revPoMoTwo4N.cpp; sourceTree = "<group>"; };
+		140ECFC6261B82A70044FEDF /* Func_PoMo4N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func_PoMo4N.cpp; sourceTree = "<group>"; };
+		140ECFC7261B82A70044FEDF /* Func_revPoMoTwo4N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func_revPoMoTwo4N.h; sourceTree = "<group>"; };
+		140ECFC8261B82A70044FEDF /* Func_PoMoKN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func_PoMoKN.h; sourceTree = "<group>"; };
+		140ECFC9261B82A70044FEDF /* Func_revPoMoKN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func_revPoMoKN.h; sourceTree = "<group>"; };
+		140ECFD5261B83370044FEDF /* Func__simplexIndexOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func__simplexIndexOperator.h; sourceTree = "<group>"; };
+		140ECFD6261B83370044FEDF /* Func__simplexIndexOperator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Func__simplexIndexOperator.cpp; sourceTree = "<group>"; };
+		140ECFDA261B8BF40044FEDF /* PoMo4NRateMatrixFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PoMo4NRateMatrixFunction.cpp; sourceTree = "<group>"; };
+		140ECFDB261B8BF40044FEDF /* revPoMo2NRateMatrixFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = revPoMo2NRateMatrixFunction.cpp; sourceTree = "<group>"; };
+		140ECFDC261B8BF40044FEDF /* revPoMoKNRateMatrixFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = revPoMoKNRateMatrixFunction.cpp; sourceTree = "<group>"; };
+		140ECFDD261B8BF50044FEDF /* revPoMoTwo4NRateMatrixFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = revPoMoTwo4NRateMatrixFunction.cpp; sourceTree = "<group>"; };
+		140ECFDE261B8BF50044FEDF /* revPoMoThree4NRateMatrixFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = revPoMoThree4NRateMatrixFunction.cpp; sourceTree = "<group>"; };
+		140ECFDF261B8BF50044FEDF /* PoMo2NRateMatrixFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PoMo2NRateMatrixFunction.cpp; sourceTree = "<group>"; };
+		140ECFE0261B8BF50044FEDF /* revPoMo2NRateMatrixFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = revPoMo2NRateMatrixFunction.h; sourceTree = "<group>"; };
+		140ECFE1261B8BF50044FEDF /* revPoMoBalance4NRateMatrixFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = revPoMoBalance4NRateMatrixFunction.h; sourceTree = "<group>"; };
+		140ECFE2261B8BF50044FEDF /* revPoMoTwo4NRateMatrixFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = revPoMoTwo4NRateMatrixFunction.h; sourceTree = "<group>"; };
+		140ECFE3261B8BF50044FEDF /* revPoMo4NRateMatrixFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = revPoMo4NRateMatrixFunction.cpp; sourceTree = "<group>"; };
+		140ECFE4261B8BF50044FEDF /* revPoMoKNRateMatrixFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = revPoMoKNRateMatrixFunction.h; sourceTree = "<group>"; };
+		140ECFE5261B8BF50044FEDF /* PoMo4NRateMatrixFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoMo4NRateMatrixFunction.h; sourceTree = "<group>"; };
+		140ECFE6261B8BF50044FEDF /* PoMo2NRateMatrixFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoMo2NRateMatrixFunction.h; sourceTree = "<group>"; };
+		140ECFE7261B8BF60044FEDF /* PoMoKNRateMatrixFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PoMoKNRateMatrixFunction.cpp; sourceTree = "<group>"; };
+		140ECFE8261B8BF60044FEDF /* PoMoKNRateMatrixFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoMoKNRateMatrixFunction.h; sourceTree = "<group>"; };
+		140ECFE9261B8BF60044FEDF /* revPoMoBalance4NRateMatrixFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = revPoMoBalance4NRateMatrixFunction.cpp; sourceTree = "<group>"; };
+		140ECFEA261B8BF60044FEDF /* revPoMoThree4NRateMatrixFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = revPoMoThree4NRateMatrixFunction.h; sourceTree = "<group>"; };
+		140ECFEB261B8BF60044FEDF /* revPoMo4NRateMatrixFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = revPoMo4NRateMatrixFunction.h; sourceTree = "<group>"; };
+		140ECFF7261B8CB50044FEDF /* RateMatrix_revPoMo4N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateMatrix_revPoMo4N.h; sourceTree = "<group>"; };
+		140ECFF8261B8CB50044FEDF /* RateMatrix_PoMo4N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateMatrix_PoMo4N.h; sourceTree = "<group>"; };
+		140ECFF9261B8CB50044FEDF /* RateMatrix_PoMo2N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateMatrix_PoMo2N.h; sourceTree = "<group>"; };
+		140ECFFA261B8CB50044FEDF /* RateMatrix_PoMoKN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RateMatrix_PoMoKN.cpp; sourceTree = "<group>"; };
+		140ECFFB261B8CB50044FEDF /* RateMatrix_revPoMoBalance4N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RateMatrix_revPoMoBalance4N.cpp; sourceTree = "<group>"; };
+		140ECFFC261B8CB60044FEDF /* RateMatrix_revPoMo2N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RateMatrix_revPoMo2N.cpp; sourceTree = "<group>"; };
+		140ECFFD261B8CB60044FEDF /* RateMatrix_PoMo4N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RateMatrix_PoMo4N.cpp; sourceTree = "<group>"; };
+		140ECFFE261B8CB60044FEDF /* RateMatrix_revPoMoThree4N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateMatrix_revPoMoThree4N.h; sourceTree = "<group>"; };
+		140ECFFF261B8CB60044FEDF /* RateMatrix_PoMoKN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateMatrix_PoMoKN.h; sourceTree = "<group>"; };
+		140ED000261B8CB60044FEDF /* RateMatrix_PoMo2N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RateMatrix_PoMo2N.cpp; sourceTree = "<group>"; };
+		140ED001261B8CB60044FEDF /* RateMatrix_revPoMoKN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RateMatrix_revPoMoKN.cpp; sourceTree = "<group>"; };
+		140ED002261B8CB60044FEDF /* RateMatrix_revPoMoTwo4N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RateMatrix_revPoMoTwo4N.cpp; sourceTree = "<group>"; };
+		140ED003261B8CB60044FEDF /* RateMatrix_revPoMo4N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RateMatrix_revPoMo4N.cpp; sourceTree = "<group>"; };
+		140ED004261B8CB60044FEDF /* RateMatrix_revPoMoKN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateMatrix_revPoMoKN.h; sourceTree = "<group>"; };
+		140ED005261B8CB60044FEDF /* RateMatrix_revPoMoTwo4N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateMatrix_revPoMoTwo4N.h; sourceTree = "<group>"; };
+		140ED006261B8CB70044FEDF /* RateMatrix_revPoMo2N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateMatrix_revPoMo2N.h; sourceTree = "<group>"; };
+		140ED007261B8CB70044FEDF /* RateMatrix_revPoMoBalance4N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateMatrix_revPoMoBalance4N.h; sourceTree = "<group>"; };
+		140ED008261B8CB70044FEDF /* RateMatrix_revPoMoThree4N.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RateMatrix_revPoMoThree4N.cpp; sourceTree = "<group>"; };
+		140ED014261B8D3C0044FEDF /* Dist_PhylodynamicBDP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dist_PhylodynamicBDP.cpp; sourceTree = "<group>"; };
+		140ED015261B8D3C0044FEDF /* Dist_PhylodynamicBDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dist_PhylodynamicBDP.h; sourceTree = "<group>"; };
+		140ED016261B8D3C0044FEDF /* Dist_FBDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dist_FBDP.h; sourceTree = "<group>"; };
+		140ED017261B8D3D0044FEDF /* Dist_FBDP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dist_FBDP.cpp; sourceTree = "<group>"; };
 		1410C3A423F6048B0044EB48 /* PaletteCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteCategory.swift; sourceTree = "<group>"; };
 		1410C3A623FCC4260044EB48 /* ModelCanvasPreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasPreferencesController.swift; sourceTree = "<group>"; };
 		1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasItemViewController.swift; sourceTree = "<group>"; };
@@ -4447,12 +4538,12 @@
 			isa = PBXGroup;
 			children = (
 				144BE6BB23A17AC40001B2EF /* core */,
+				14F29F6E252F7FFE001104A9 /* Frameworks */,
 				144BE68423A17AC40001B2EF /* libs */,
-				144BE14523A17AC20001B2EF /* revlanguage */,
 				1411BE8E2203D8FB009BEE1D /* macgui */,
 				14640BA1238332B000358042 /* macguiTests */,
 				1411BE8D2203D8FB009BEE1D /* Products */,
-				14F29F6E252F7FFE001104A9 /* Frameworks */,
+				144BE14523A17AC20001B2EF /* revlanguage */,
 			);
 			sourceTree = "<group>";
 		};
@@ -5013,6 +5104,7 @@
 		144BE2AD23A17AC30001B2EF /* basic */ = {
 			isa = PBXGroup;
 			children = (
+				140ECFB5261B7F7C0044FEDF /* IntegerPos.h */,
 				144BE2AE23A17AC30001B2EF /* RlString.h */,
 				144BE2AF23A17AC30001B2EF /* Probability.h */,
 				144BE2B023A17AC30001B2EF /* RealPos.cpp */,
@@ -5454,6 +5546,8 @@
 		144BE3EA23A17AC30001B2EF /* internal */ = {
 			isa = PBXGroup;
 			children = (
+				140ECFD6261B83370044FEDF /* Func__simplexIndexOperator.cpp */,
+				140ECFD5261B83370044FEDF /* Func__simplexIndexOperator.h */,
 				144BE3EB23A17AC30001B2EF /* Func__le.h */,
 				144BE3EC23A17AC30001B2EF /* Func__eq.h */,
 				144BE3ED23A17AC30001B2EF /* Func__or.h */,
@@ -5792,6 +5886,24 @@
 		144BE4F023A17AC30001B2EF /* ratematrix */ = {
 			isa = PBXGroup;
 			children = (
+				140ECFBF261B82A60044FEDF /* Func_PoMo2N.cpp */,
+				140ECFBB261B82A60044FEDF /* Func_PoMo2N.h */,
+				140ECFC6261B82A70044FEDF /* Func_PoMo4N.cpp */,
+				140ECFBC261B82A60044FEDF /* Func_PoMo4N.h */,
+				140ECFB8261B82A50044FEDF /* Func_PoMoKN.cpp */,
+				140ECFC8261B82A70044FEDF /* Func_PoMoKN.h */,
+				140ECFBA261B82A50044FEDF /* Func_revPoMo2N.cpp */,
+				140ECFC1261B82A60044FEDF /* Func_revPoMo2N.h */,
+				140ECFBE261B82A60044FEDF /* Func_revPoMo4N.cpp */,
+				140ECFC2261B82A60044FEDF /* Func_revPoMo4N.h */,
+				140ECFBD261B82A60044FEDF /* Func_revPoMoBalance4N.cpp */,
+				140ECFC3261B82A60044FEDF /* Func_revPoMoBalance4N.h */,
+				140ECFC4261B82A70044FEDF /* Func_revPoMoKN.cpp */,
+				140ECFC9261B82A70044FEDF /* Func_revPoMoKN.h */,
+				140ECFC0261B82A60044FEDF /* Func_revPoMoThree4N.cpp */,
+				140ECFB9261B82A50044FEDF /* Func_revPoMoThree4N.h */,
+				140ECFC5261B82A70044FEDF /* Func_revPoMoTwo4N.cpp */,
+				140ECFC7261B82A70044FEDF /* Func_revPoMoTwo4N.h */,
 				144BE4F123A17AC30001B2EF /* Func_chromosomes.cpp */,
 				144BE4F223A17AC30001B2EF /* Func_orderedRateMatrix.cpp */,
 				144BE4F323A17AC30001B2EF /* Func_DECRoot.h */,
@@ -6084,6 +6196,10 @@
 		144BE60F23A17AC30001B2EF /* tree */ = {
 			isa = PBXGroup;
 			children = (
+				140ED017261B8D3D0044FEDF /* Dist_FBDP.cpp */,
+				140ED016261B8D3C0044FEDF /* Dist_FBDP.h */,
+				140ED014261B8D3C0044FEDF /* Dist_PhylodynamicBDP.cpp */,
+				140ED015261B8D3C0044FEDF /* Dist_PhylodynamicBDP.h */,
 				144BE61023A17AC30001B2EF /* Dist_sampledSpeciationBirthDeathProcess.cpp */,
 				144BE61123A17AC30001B2EF /* Dist_TimeVaryingStateDependentSpeciationExtinctionProcess.h */,
 				144BE61223A17AC30001B2EF /* Dist_HeterochronousConstantCoalescent.cpp */,
@@ -7027,6 +7143,24 @@
 		144BE8BB23A17AC40001B2EF /* ratematrix */ = {
 			isa = PBXGroup;
 			children = (
+				140ED000261B8CB60044FEDF /* RateMatrix_PoMo2N.cpp */,
+				140ECFF9261B8CB50044FEDF /* RateMatrix_PoMo2N.h */,
+				140ECFFD261B8CB60044FEDF /* RateMatrix_PoMo4N.cpp */,
+				140ECFF8261B8CB50044FEDF /* RateMatrix_PoMo4N.h */,
+				140ECFFA261B8CB50044FEDF /* RateMatrix_PoMoKN.cpp */,
+				140ECFFF261B8CB60044FEDF /* RateMatrix_PoMoKN.h */,
+				140ECFFC261B8CB60044FEDF /* RateMatrix_revPoMo2N.cpp */,
+				140ED006261B8CB70044FEDF /* RateMatrix_revPoMo2N.h */,
+				140ED003261B8CB60044FEDF /* RateMatrix_revPoMo4N.cpp */,
+				140ECFF7261B8CB50044FEDF /* RateMatrix_revPoMo4N.h */,
+				140ECFFB261B8CB50044FEDF /* RateMatrix_revPoMoBalance4N.cpp */,
+				140ED007261B8CB70044FEDF /* RateMatrix_revPoMoBalance4N.h */,
+				140ED001261B8CB60044FEDF /* RateMatrix_revPoMoKN.cpp */,
+				140ED004261B8CB60044FEDF /* RateMatrix_revPoMoKN.h */,
+				140ED008261B8CB70044FEDF /* RateMatrix_revPoMoThree4N.cpp */,
+				140ECFFE261B8CB60044FEDF /* RateMatrix_revPoMoThree4N.h */,
+				140ED002261B8CB60044FEDF /* RateMatrix_revPoMoTwo4N.cpp */,
+				140ED005261B8CB60044FEDF /* RateMatrix_revPoMoTwo4N.h */,
 				144BE8BC23A17AC40001B2EF /* RateMatrix_TIM.cpp */,
 				144BE8BD23A17AC40001B2EF /* RateMatrix_F81.cpp */,
 				144BE8BE23A17AC40001B2EF /* RateMatrix_BinaryMutationCoalescent.h */,
@@ -7700,6 +7834,24 @@
 		144BEACB23A17AC50001B2EF /* ratematrix */ = {
 			isa = PBXGroup;
 			children = (
+				140ECFDF261B8BF50044FEDF /* PoMo2NRateMatrixFunction.cpp */,
+				140ECFE6261B8BF50044FEDF /* PoMo2NRateMatrixFunction.h */,
+				140ECFDA261B8BF40044FEDF /* PoMo4NRateMatrixFunction.cpp */,
+				140ECFE5261B8BF50044FEDF /* PoMo4NRateMatrixFunction.h */,
+				140ECFE7261B8BF60044FEDF /* PoMoKNRateMatrixFunction.cpp */,
+				140ECFE8261B8BF60044FEDF /* PoMoKNRateMatrixFunction.h */,
+				140ECFDB261B8BF40044FEDF /* revPoMo2NRateMatrixFunction.cpp */,
+				140ECFE0261B8BF50044FEDF /* revPoMo2NRateMatrixFunction.h */,
+				140ECFE3261B8BF50044FEDF /* revPoMo4NRateMatrixFunction.cpp */,
+				140ECFEB261B8BF60044FEDF /* revPoMo4NRateMatrixFunction.h */,
+				140ECFE9261B8BF60044FEDF /* revPoMoBalance4NRateMatrixFunction.cpp */,
+				140ECFE1261B8BF50044FEDF /* revPoMoBalance4NRateMatrixFunction.h */,
+				140ECFDC261B8BF40044FEDF /* revPoMoKNRateMatrixFunction.cpp */,
+				140ECFE4261B8BF50044FEDF /* revPoMoKNRateMatrixFunction.h */,
+				140ECFDE261B8BF50044FEDF /* revPoMoThree4NRateMatrixFunction.cpp */,
+				140ECFEA261B8BF60044FEDF /* revPoMoThree4NRateMatrixFunction.h */,
+				140ECFDD261B8BF50044FEDF /* revPoMoTwo4NRateMatrixFunction.cpp */,
+				140ECFE2261B8BF50044FEDF /* revPoMoTwo4NRateMatrixFunction.h */,
 				144BEACC23A17AC50001B2EF /* TvmRateMatrixFunction.h */,
 				144BEACD23A17AC50001B2EF /* Kimura81RateMatrixFunction.h */,
 				144BEACE23A17AC50001B2EF /* CovarionFunction.cpp */,
@@ -8803,12 +8955,15 @@
 				144BEF9723A17AC60001B2EF /* ScreenMonitor.cpp in Sources */,
 				144BF18323A17AC80001B2EF /* PhyloMultivariateBrownianProcessREML.cpp in Sources */,
 				144BF0E923A17AC70001B2EF /* DispersalExtinctionRootStructureFunction.cpp in Sources */,
+				140ED010261B8CB70044FEDF /* RateMatrix_revPoMo4N.cpp in Sources */,
 				144BF11223A17AC70001B2EF /* GilbertGraphDistribution.cpp in Sources */,
+				140ECFD7261B83370044FEDF /* Func__simplexIndexOperator.cpp in Sources */,
 				144BECE223A17AC50001B2EF /* Move_SingleElementSlide.cpp in Sources */,
 				144BEE5F23A17AC60001B2EF /* Func_pomoState4Converter.cpp in Sources */,
 				144BED8923A17AC60001B2EF /* SyntaxWorkspaceVariableAssignment.cpp in Sources */,
 				144BF01E23A17AC70001B2EF /* CharacterState.cpp in Sources */,
 				144BEF7823A17AC60001B2EF /* CorrelationMatrixPartialElementBetaProposal.cpp in Sources */,
+				140ECFD2261B82A70044FEDF /* Func_PoMo4N.cpp in Sources */,
 				144BED2823A17AC60001B2EF /* RlTraceTree.cpp in Sources */,
 				144BECC923A17AC50001B2EF /* Move_MultiValueEventBirthDeath.cpp in Sources */,
 				144BED5B23A17AC60001B2EF /* RlDnaState.cpp in Sources */,
@@ -8886,6 +9041,7 @@
 				144BED0A23A17AC50001B2EF /* Mntr_ExtendedNewickFile.cpp in Sources */,
 				145186E32428689900EA9070 /* Symbol.swift in Sources */,
 				144BEDBC23A17AC60001B2EF /* Func_readAncestralStateTreeTrace.cpp in Sources */,
+				140ED00B261B8CB70044FEDF /* RateMatrix_revPoMo2N.cpp in Sources */,
 				144BF07E23A17AC70001B2EF /* DistributionInverseWishart.cpp in Sources */,
 				144BEF3E23A17AC60001B2EF /* SpeciesTreeScaleProposal.cpp in Sources */,
 				1471052F2280E36D00E88657 /* Align.swift in Sources */,
@@ -9027,6 +9183,7 @@
 				144BF18923A17AC80001B2EF /* PhyloCTMCSiteHomogeneousDollo.cpp in Sources */,
 				144BEF2C23A17AC60001B2EF /* LayeredScaleProposal.cpp in Sources */,
 				144BF08B23A17AC70001B2EF /* DistributionMultivariateNormal.cpp in Sources */,
+				140ED009261B8CB70044FEDF /* RateMatrix_PoMoKN.cpp in Sources */,
 				144BF09323A17AC70001B2EF /* BetaBrokenStickFunction.cpp in Sources */,
 				144BEF7323A17AC60001B2EF /* ShrinkExpandScaleProposal.cpp in Sources */,
 				144BED8623A17AC60001B2EF /* SyntaxDeterministicAssignment.cpp in Sources */,
@@ -9040,10 +9197,13 @@
 				144BF04D23A17AC70001B2EF /* ProgressBar.cpp in Sources */,
 				148D93C92335406D00FDFAFA /* Document.swift in Sources */,
 				144BEF6123A17AC60001B2EF /* ScaleBactrianCauchyProposal.cpp in Sources */,
+				140ECFED261B8BF60044FEDF /* revPoMo2NRateMatrixFunction.cpp in Sources */,
+				140ED00F261B8CB70044FEDF /* RateMatrix_revPoMoTwo4N.cpp in Sources */,
 				144BEEA823A17AC60001B2EF /* Dist_bimodalNorm.cpp in Sources */,
 				144BF0AF23A17AC70001B2EF /* AssembleOrder1ContinuousMRFFunction.cpp in Sources */,
 				144BECDB23A17AC50001B2EF /* Move_Mirror.cpp in Sources */,
 				144BED8C23A17AC60001B2EF /* SyntaxFunctionCall.cpp in Sources */,
+				140ECFEC261B8BF60044FEDF /* PoMo4NRateMatrixFunction.cpp in Sources */,
 				144BED4F23A17AC60001B2EF /* RlContinuousCharacterData.cpp in Sources */,
 				144BEFC823A17AC70001B2EF /* HillClimber.cpp in Sources */,
 				144BEE4D23A17AC60001B2EF /* Func_DECRates.cpp in Sources */,
@@ -9126,6 +9286,7 @@
 				1410C3A723FCC4260044EB48 /* ModelCanvasPreferencesController.swift in Sources */,
 				144BEE2623A17AC60001B2EF /* Func_phyloDiversity.cpp in Sources */,
 				144BEE5423A17AC60001B2EF /* Func_InfiniteSitesRateMatrix.cpp in Sources */,
+				140ECFF2261B8BF60044FEDF /* revPoMo4NRateMatrixFunction.cpp in Sources */,
 				149C5FC52325A52D0060043E /* ToolType.swift in Sources */,
 				144BED4323A17AC60001B2EF /* RlCladogeneticSpeciationRateMatrix.cpp in Sources */,
 				144BEFAB23A17AC60001B2EF /* MaxTimeStoppingRule.cpp in Sources */,
@@ -9145,6 +9306,7 @@
 				144BED9523A17AC60001B2EF /* SyntaxSubtractionAssignment.cpp in Sources */,
 				144BEFB523A17AC60001B2EF /* Trace.cpp in Sources */,
 				142945FB23EF76890093608F /* MainCanvasPreferencesController.swift in Sources */,
+				140ED00C261B8CB70044FEDF /* RateMatrix_PoMo4N.cpp in Sources */,
 				144BF04323A17AC70001B2EF /* DistanceMatrixReader.cpp in Sources */,
 				144BF01223A17AC70001B2EF /* ContinuousCharacterData.cpp in Sources */,
 				144BF0EA23A17AC70001B2EF /* PruneTreeFunction.cpp in Sources */,
@@ -9166,6 +9328,7 @@
 				144BEEBB23A17AC60001B2EF /* Dist_MultiValueEvent.cpp in Sources */,
 				147105252265437600E88657 /* Bootstrap.swift in Sources */,
 				144BEF4E23A17AC60001B2EF /* MirrorProposal.cpp in Sources */,
+				140ECFCE261B82A70044FEDF /* Func_PoMo2N.cpp in Sources */,
 				144BEE2023A17AC60001B2EF /* Func_treeScale.cpp in Sources */,
 				144BECEE23A17AC50001B2EF /* Move_HSRFUnevenGridHyperpriorsGibbs.cpp in Sources */,
 				144BED5D23A17AC60001B2EF /* RlPoMoState.cpp in Sources */,
@@ -9202,6 +9365,7 @@
 				144BF07423A17AC70001B2EF /* DistributionLogistic.cpp in Sources */,
 				144BED6E23A17AC60001B2EF /* ModuleSystem.cpp in Sources */,
 				144BEE1723A17AC60001B2EF /* OptionRule.cpp in Sources */,
+				140ED00A261B8CB70044FEDF /* RateMatrix_revPoMoBalance4N.cpp in Sources */,
 				144BEE1223A17AC60001B2EF /* MemberProcedure.cpp in Sources */,
 				144BEF6923A17AC60001B2EF /* SynchronizedVectorFixedSingleElementSlideProposal.cpp in Sources */,
 				144BEE8223A17AC60001B2EF /* RlPositiveContinuousDistribution.cpp in Sources */,
@@ -9225,6 +9389,7 @@
 				144BEFA023A17AC60001B2EF /* NexusMonitor.cpp in Sources */,
 				144BF19523A17AC80001B2EF /* RbHelpMonitor.cpp in Sources */,
 				144BEE9D23A17AC60001B2EF /* Dist_normTruncatedPositive.cpp in Sources */,
+				140ED018261B8D3D0044FEDF /* Dist_PhylodynamicBDP.cpp in Sources */,
 				144BF0C323A17AC70001B2EF /* MaxFunction.cpp in Sources */,
 				144BEE4123A17AC60001B2EF /* Func_TIM.cpp in Sources */,
 				144BF07F23A17AC70001B2EF /* DistributionChisq.cpp in Sources */,
@@ -9275,6 +9440,8 @@
 				144BEED523A17AC60001B2EF /* Dist_HeterochronousCoalescent.cpp in Sources */,
 				1410C3AD2404EBE50044EB48 /* ModelCanvasItemViewController.swift in Sources */,
 				144BEE9A23A17AC60001B2EF /* Dist_lnorm.cpp in Sources */,
+				140ECFF4261B8BF60044FEDF /* revPoMoBalance4NRateMatrixFunction.cpp in Sources */,
+				140ECFF0261B8BF60044FEDF /* revPoMoThree4NRateMatrixFunction.cpp in Sources */,
 				144BEDA923A17AC60001B2EF /* Func_characterMapTree.cpp in Sources */,
 				144BECF823A17AC50001B2EF /* Move_CorrelationMatrixReparameterization.cpp in Sources */,
 				144BED4823A17AC60001B2EF /* RlCorrespondenceAnalysis.cpp in Sources */,
@@ -9299,6 +9466,7 @@
 				144BEFEB23A17AC70001B2EF /* GeneralRateMatrix.cpp in Sources */,
 				144BF05723A17AC70001B2EF /* PoMoCountFileReader.cpp in Sources */,
 				14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */,
+				140ECFCD261B82A70044FEDF /* Func_revPoMo4N.cpp in Sources */,
 				144BF0BA23A17AC70001B2EF /* LogicalOrFunction.cpp in Sources */,
 				14F95D6C23569A70009884D2 /* CoreBridge.mm in Sources */,
 				14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */,
@@ -9343,6 +9511,7 @@
 				144BF17B23A17AC80001B2EF /* AbstractPhyloBrownianProcess.cpp in Sources */,
 				144BEDD123A17AC60001B2EF /* Func_getwd.cpp in Sources */,
 				144BEE0723A17AC60001B2EF /* Func_mean.cpp in Sources */,
+				140ED00D261B8CB70044FEDF /* RateMatrix_PoMo2N.cpp in Sources */,
 				144BED9023A17AC60001B2EF /* SyntaxAssignment.cpp in Sources */,
 				144BEEDF23A17AC60001B2EF /* Dist_MPEST.cpp in Sources */,
 				144BEE4523A17AC60001B2EF /* Func_vt.cpp in Sources */,
@@ -9457,6 +9626,7 @@
 				144BECC523A17AC50001B2EF /* Move_LevyJumpSum.cpp in Sources */,
 				144BF17023A17AC80001B2EF /* NodeOrderConstrainedTreeDistribution.cpp in Sources */,
 				144BF03623A17AC70001B2EF /* RateGeneratorSequence_Biogeography.cpp in Sources */,
+				140ECFCB261B82A70044FEDF /* Func_revPoMo2N.cpp in Sources */,
 				144BED0623A17AC50001B2EF /* RevClient.cpp in Sources */,
 				144BEFBC23A17AC70001B2EF /* GelmanRubinTest.cpp in Sources */,
 				144BEF2723A17AC60001B2EF /* NodeTimeSlideUniformProposal.cpp in Sources */,
@@ -9616,6 +9786,7 @@
 				144BEE3A23A17AC60001B2EF /* Func_chromosomesPloidy.cpp in Sources */,
 				144BEF0A23A17AC60001B2EF /* BranchScoreDistanceStatistic.cpp in Sources */,
 				144BED1D23A17AC60001B2EF /* RlStoppingRule.cpp in Sources */,
+				140ED019261B8D3D0044FEDF /* Dist_FBDP.cpp in Sources */,
 				144BED0C23A17AC50001B2EF /* Mntr_Probability.cpp in Sources */,
 				144BEE2423A17AC60001B2EF /* Func_maximumTree.cpp in Sources */,
 				144BEDF423A17AC60001B2EF /* Func_discretizePositiveDistribution.cpp in Sources */,
@@ -9699,6 +9870,7 @@
 				144BED9D23A17AC60001B2EF /* SyntaxConstant.cpp in Sources */,
 				144BF0FE23A17AC70001B2EF /* DistanceRateModifierFunction.cpp in Sources */,
 				144BF02623A17AC70001B2EF /* CladogeneticSpeciationRateMatrix.cpp in Sources */,
+				140ECFD0261B82A70044FEDF /* Func_revPoMoKN.cpp in Sources */,
 				144BED2123A17AC60001B2EF /* RlModel.cpp in Sources */,
 				144BED7C23A17AC60001B2EF /* RevVariable.cpp in Sources */,
 				144BEDB523A17AC60001B2EF /* Func_readDataDelimitedFile.cpp in Sources */,
@@ -9791,8 +9963,10 @@
 				144BF0BB23A17AC70001B2EF /* ModuloFunction.cpp in Sources */,
 				144BECCD23A17AC50001B2EF /* Move_BinarySwitch.cpp in Sources */,
 				144BECD323A17AC50001B2EF /* Move_SlideBactrian.cpp in Sources */,
+				140ECFEF261B8BF60044FEDF /* revPoMoTwo4NRateMatrixFunction.cpp in Sources */,
 				144BF01023A17AC70001B2EF /* ContinuousTaxonData.cpp in Sources */,
 				144BECD423A17AC50001B2EF /* Move_Slide.cpp in Sources */,
+				140ECFEE261B8BF60044FEDF /* revPoMoKNRateMatrixFunction.cpp in Sources */,
 				144BEF8D23A17AC60001B2EF /* MultiValueEventSlideProposal.cpp in Sources */,
 				144BF0A123A17AC70001B2EF /* PowerFunction.cpp in Sources */,
 				144BEF5123A17AC60001B2EF /* ScaleBactrianProposal.cpp in Sources */,
@@ -9807,6 +9981,7 @@
 				1411BEE82208FE91009BEE1D /* Tool.swift in Sources */,
 				144BF13823A17AC70001B2EF /* InverseGammaDistribution.cpp in Sources */,
 				144BF0D323A17AC70001B2EF /* FreeSymmetricRateMatrixFunction.cpp in Sources */,
+				140ECFF3261B8BF60044FEDF /* PoMoKNRateMatrixFunction.cpp in Sources */,
 				144BEEC823A17AC60001B2EF /* RlBirthDeathProcess.cpp in Sources */,
 				144BED1A23A17AC50001B2EF /* RlBootstrapAnalysis.cpp in Sources */,
 				144BEE3D23A17AC60001B2EF /* Func_wag.cpp in Sources */,
@@ -9863,6 +10038,7 @@
 				144BF0C923A17AC70001B2EF /* ChronoToPhyloFunction.cpp in Sources */,
 				144BF16823A17AC80001B2EF /* CDCladoSE.cpp in Sources */,
 				149F8B3D23639E46003146FD /* DataTool.swift in Sources */,
+				140ECFF1261B8BF60044FEDF /* PoMo2NRateMatrixFunction.cpp in Sources */,
 				144BF07A23A17AC70001B2EF /* DistributionBinomial.cpp in Sources */,
 				144BF11623A17AC70001B2EF /* WishartDistribution.cpp in Sources */,
 				144BF00723A17AC70001B2EF /* RateMatrix_RtRev.cpp in Sources */,
@@ -9943,6 +10119,7 @@
 				144BEEC523A17AC60001B2EF /* Dist_HeterochronousSkylineCoalescent.cpp in Sources */,
 				144BEE5123A17AC60001B2EF /* Func_mtMam.cpp in Sources */,
 				144BEE7E23A17AC60001B2EF /* Func_TajimasD.cpp in Sources */,
+				140ECFCA261B82A70044FEDF /* Func_PoMoKN.cpp in Sources */,
 				144BEDC023A17AC60001B2EF /* Func_readRelativeNodeAgeWeightedConstraints.cpp in Sources */,
 				144BEFD523A17AC70001B2EF /* Simplex.cpp in Sources */,
 				144BEFCE23A17AC70001B2EF /* RootedTripletDistribution.cpp in Sources */,
@@ -9987,12 +10164,14 @@
 				1419FDBB24462AD600007232 /* RlStochasticMatrix.cpp in Sources */,
 				144BED4623A17AC60001B2EF /* RlMatrixReal.cpp in Sources */,
 				144BECA823A17AC50001B2EF /* Move_NarrowExchange.cpp in Sources */,
+				140ECFD1261B82A70044FEDF /* Func_revPoMoTwo4N.cpp in Sources */,
 				144BF0B023A17AC70001B2EF /* AbsoluteValueFunction.cpp in Sources */,
 				144BECBD23A17AC50001B2EF /* Move_EmpiricalTree.cpp in Sources */,
 				144BED0523A17AC50001B2EF /* RlUserInterface.cpp in Sources */,
 				144BEF2923A17AC60001B2EF /* SpeciesSubtreeScaleBetaProposal.cpp in Sources */,
 				144BEF4D23A17AC60001B2EF /* BinarySwitchProposal.cpp in Sources */,
 				144BEF3C23A17AC60001B2EF /* NodeTimeScaleProposal.cpp in Sources */,
+				140ECFCC261B82A70044FEDF /* Func_revPoMoBalance4N.cpp in Sources */,
 				144BF07C23A17AC70001B2EF /* DistributionCauchy.cpp in Sources */,
 				144BECFC23A17AC50001B2EF /* Move_ConjugateInverseWishart.cpp in Sources */,
 				144BEDE023A17AC60001B2EF /* Func_exists.cpp in Sources */,
@@ -10027,6 +10206,7 @@
 				144BEE9B23A17AC60001B2EF /* Dist_exponentialOffsetPositive.cpp in Sources */,
 				144BF13523A17AC70001B2EF /* PoissonDistribution.cpp in Sources */,
 				144BEECA23A17AC60001B2EF /* Dist_BirthDeathBurstProcess.cpp in Sources */,
+				140ED00E261B8CB70044FEDF /* RateMatrix_revPoMoKN.cpp in Sources */,
 				144BED4023A17AC60001B2EF /* RlSimplex.cpp in Sources */,
 				144BF10F23A17AC70001B2EF /* Distribution.cpp in Sources */,
 				144BEEC123A17AC60001B2EF /* Dist_FBDRangeMatrix.cpp in Sources */,
@@ -10093,6 +10273,7 @@
 				144BF09C23A17AC70001B2EF /* EmpiricalQuantileFunction.cpp in Sources */,
 				144BECC223A17AC50001B2EF /* Move_AVMVN.cpp in Sources */,
 				144BED4A23A17AC60001B2EF /* WorkspaceObject.cpp in Sources */,
+				140ED011261B8CB70044FEDF /* RateMatrix_revPoMoThree4N.cpp in Sources */,
 				144BEEA623A17AC60001B2EF /* Dist_geom.cpp in Sources */,
 				144BF02E23A17AC70001B2EF /* CharacterHistoryContinuous.cpp in Sources */,
 				144BEFBB23A17AC70001B2EF /* StationarityTest.cpp in Sources */,
@@ -10115,6 +10296,7 @@
 				144BF0DC23A17AC70001B2EF /* PoMoRateMatrixFunction.cpp in Sources */,
 				144BF14223A17AC70001B2EF /* AbstractMultispeciesCoalescent.cpp in Sources */,
 				144BEF8723A17AC60001B2EF /* ContinuousEventScaleProposal.cpp in Sources */,
+				140ECFCF261B82A70044FEDF /* Func_revPoMoThree4N.cpp in Sources */,
 				144BECCB23A17AC50001B2EF /* Move_MultiValueEventSlide.cpp in Sources */,
 				144BF07323A17AC70001B2EF /* DistributionStudentT.cpp in Sources */,
 				144BEDFA23A17AC60001B2EF /* Func_meanPositive.cpp in Sources */,
