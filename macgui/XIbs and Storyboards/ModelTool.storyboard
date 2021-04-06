@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="TZL-73-EW0">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,10 +20,8 @@
                                 <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="ljy-UR-EcM"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="h83-k2-xR8"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Ta1-B8-2YP"/>
-                                <toolbarItem implicitItemIdentifier="02AF444E-AE5E-4AB4-AFEC-F38DD466FE50" label="" paletteLabel="" image="NSTouchBarSidebarTemplate" id="JoS-Rt-zxa" userLabel="Sidebar">
+                                <toolbarItem implicitItemIdentifier="02AF444E-AE5E-4AB4-AFEC-F38DD466FE50" label="" paletteLabel="" image="NSTouchBarSidebarTemplate" sizingBehavior="auto" id="JoS-Rt-zxa" userLabel="Sidebar">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="47" height="24"/>
-                                    <size key="maxSize" width="48" height="47"/>
                                     <button key="view" verticalHuggingPriority="750" id="kjU-iE-Gow">
                                         <rect key="frame" x="0.0" y="14" width="48" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -37,10 +34,8 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="A8A1467B-3767-4650-A5CB-8CFFBD337232" label="" paletteLabel="" image="NSShareTemplate" id="dTc-yJ-UM6" userLabel="Share">
+                                <toolbarItem implicitItemIdentifier="A8A1467B-3767-4650-A5CB-8CFFBD337232" label="" paletteLabel="" image="NSShareTemplate" sizingBehavior="auto" id="dTc-yJ-UM6" userLabel="Share">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="47" height="24"/>
-                                    <size key="maxSize" width="48" height="47"/>
                                     <button key="view" verticalHuggingPriority="750" id="Yja-pa-1iU">
                                         <rect key="frame" x="0.0" y="14" width="48" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -56,7 +51,7 @@
                                 <toolbarItem implicitItemIdentifier="1D44E6B5-76E1-4C4C-AA1C-6B559AD65A30" label="" paletteLabel="" sizingBehavior="auto" id="MfI-2i-fSw" userLabel="Zoom">
                                     <nil key="toolTip"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="pZa-Yy-dUG" userLabel="zoom">
-                                        <rect key="frame" x="0.0" y="14" width="65" height="28"/>
+                                        <rect key="frame" x="0.0" y="14" width="74" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" tag="1" imageScaling="axesIndependently" inset="2" pullsDown="YES" selectedItem="rlK-oL-IeD" id="rZx-iQ-MQJ" userLabel="zoom">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -138,13 +133,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzX-73-IOT">
-                                <rect key="frame" x="0.0" y="0.0" width="170" height="314"/>
+                                <rect key="frame" x="0.0" y="0.0" width="170" height="312"/>
                                 <clipView key="contentView" drawsBackground="NO" id="3eZ-bW-qyJ">
-                                    <rect key="frame" x="1" y="1" width="168" height="312"/>
+                                    <rect key="frame" x="1" y="1" width="168" height="310"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" autosaveName="OutlineView" rowHeight="28" rowSizeStyle="systemDefault" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="14" autosaveExpandedItems="YES" outlineTableColumn="uGO-87-8zt" id="qa1-j9-JlY">
-                                            <rect key="frame" x="0.0" y="0.0" width="168" height="312"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="168" height="310"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
