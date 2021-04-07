@@ -8,20 +8,24 @@
 
 import Cocoa
 
+@objcMembers
+
 class ModelNode: Connectable {
     
     var node: PalettItem
     var nodeType: PaletteVariable.VariableType?
-    @objc dynamic var parameterName: String?
+    dynamic var parameterName: String?
+    var defaultParameterName: String? {
+        didSet {
+            parameterName = defaultParameterName
+        }
+    }
     var distribution: Distribution?
     var distributionParameters: [ModelNode] = []
+    dynamic var constantValue: Double = 0.0
     
-    enum Key: String {
-        case node = "node"
-        case nodeType = "nodeType"
-        case parameterName = "parameterName"
-        case distribution = "distribution"
-        case distributionParameters = "distributionParameters"
+    enum CodingKeys: String {
+        case node, nodeType, parameterName, distribution, distributionParameters, constantValue
     }
     
     init(name: String, frameOnCanvas: NSRect, analysis: Analysis, node: PalettItem){
@@ -30,22 +34,44 @@ class ModelNode: Connectable {
         
     }
     
+    func resetToDefaults() {
+        constantValue = 0.0
+        distributionParameters = []
+        distribution = nil
+        if let defaultParameterName = self.defaultParameterName {
+            parameterName = defaultParameterName
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
-        self.node = aDecoder.decodeObject(forKey: Key.node.rawValue) as? PalettItem ?? PaletteVariable()
-        self.nodeType = PaletteVariable.VariableType(rawValue: aDecoder.decodeObject(forKey: Key.nodeType.rawValue) as! String)
-        self.parameterName = aDecoder.decodeObject(forKey: Key.parameterName.rawValue) as? String
-        self.distribution = aDecoder.decodeObject(forKey: Key.distribution.rawValue) as? Distribution
-        self.distributionParameters = aDecoder.decodeObject(forKey: Key.distributionParameters.rawValue) as? [ModelNode] ?? []
+        self.node = aDecoder.decodeObject(forKey: CodingKeys.node.rawValue) as? PalettItem ?? PaletteVariable()
+        self.nodeType = PaletteVariable.VariableType(rawValue: aDecoder.decodeObject(forKey: CodingKeys.nodeType.rawValue) as! String)
+        self.parameterName = aDecoder.decodeObject(forKey: CodingKeys.parameterName.rawValue) as? String
+        self.distribution = aDecoder.decodeObject(forKey: CodingKeys.distribution.rawValue) as? Distribution
+        self.distributionParameters = aDecoder.decodeObject(forKey: CodingKeys.distributionParameters.rawValue) as? [ModelNode] ?? []
+        self.constantValue = aDecoder.decodeDouble(forKey: CodingKeys.constantValue.rawValue)
         super.init(coder: aDecoder)
     }
     
     override func encode(with coder: NSCoder) {
-        coder.encode(node, forKey: Key.node.rawValue)
-        coder.encode(nodeType?.rawValue, forKey: Key.nodeType.rawValue)
-        coder.encode(parameterName, forKey: Key.parameterName.rawValue)
-        coder.encode(distribution, forKey: Key.distribution.rawValue)
-        coder.encode(distributionParameters, forKey: Key.distributionParameters.rawValue)
+        coder.encode(node, forKey: CodingKeys.node.rawValue)
+        coder.encode(nodeType?.rawValue, forKey: CodingKeys.nodeType.rawValue)
+        coder.encode(parameterName, forKey: CodingKeys.parameterName.rawValue)
+        coder.encode(distribution, forKey: CodingKeys.distribution.rawValue)
+        coder.encode(distributionParameters, forKey: CodingKeys.distributionParameters.rawValue)
+        coder.encode(constantValue, forKey: CodingKeys.constantValue.rawValue)
         super.encode(with: coder)
     }
+    
+    
+    override func setNilValueForKey(_ key: String) {
+        switch key {
+        case CodingKeys.constantValue.rawValue:
+            self.constantValue = 0.0
+        default: super.setNilValueForKey(key)
+        }
+       
+    }
+    
     
 }

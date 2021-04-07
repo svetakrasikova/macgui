@@ -198,7 +198,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
         if let model = self.model {
             let newModelNode = ModelNode(name: item.type, frameOnCanvas: frame, analysis: model.analysis, node: item)
             newModelNode.nodeType = type
-            newModelNode.parameterName = getParameterName()
+            newModelNode.defaultParameterName = getParameterName()
             model.nodes.append(newModelNode)
             addNodeView(node: newModelNode)
         }

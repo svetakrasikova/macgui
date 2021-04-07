@@ -21,11 +21,14 @@ enum StoryBoardName: String {
     case matrixInspector = "MatrixInspector"
     case modelCanvasItem = "ModelCanvasItem"
     case variableController = "VariableController"
+    case functionController = "FunctionController"
+    case constantController = "ConstantController"
     case alignTool = "AlignTool"
     case alignTabView = "AlignTabView"
     case treesetTool = "TreeSetTool"
     case treeInspector = "TreeInspector"
     case paup = "PaupOverview"
+
 }
 
 extension ToolObject {

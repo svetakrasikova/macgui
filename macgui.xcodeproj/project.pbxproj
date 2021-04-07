@@ -40,6 +40,12 @@
 		142945FB23EF76890093608F /* MainCanvasPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142945FA23EF76890093608F /* MainCanvasPreferencesController.swift */; };
 		142D7BE4253E032A009A1903 /* TreeSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D7BE3253E032A009A1903 /* TreeSetView.swift */; };
 		1435C6D122272B7B00A13AE0 /* CanvasToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */; };
+		144031CB261CCC38007D7BB7 /* ConstantController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144031CA261CCC38007D7BB7 /* ConstantController.storyboard */; };
+		144031CF261CCD86007D7BB7 /* FunctionController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144031CE261CCD86007D7BB7 /* FunctionController.storyboard */; };
+		144031D3261CCE22007D7BB7 /* ModelConstantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031D2261CCE22007D7BB7 /* ModelConstantController.swift */; };
+		144031D8261CCEDE007D7BB7 /* ModelPaletteItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031D6261CCEDE007D7BB7 /* ModelPaletteItemController.swift */; };
+		144031E1261D3091007D7BB7 /* ModelFunctionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031E0261D3091007D7BB7 /* ModelFunctionController.swift */; };
+		144031E7261E62B5007D7BB7 /* OnlyNumbersFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031E6261E62B5007D7BB7 /* OnlyNumbersFormatter.swift */; };
 		144BE142239B07BA0001B2EF /* DataMatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BE141239B07BA0001B2EF /* DataMatrixTests.swift */; };
 		144BE14423A03E780001B2EF /* JsonCoreBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BE14323A03E780001B2EF /* JsonCoreBridge.swift */; };
 		144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */; };
@@ -1517,6 +1523,12 @@
 		142945FA23EF76890093608F /* MainCanvasPreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCanvasPreferencesController.swift; sourceTree = "<group>"; };
 		142D7BE3253E032A009A1903 /* TreeSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSetView.swift; sourceTree = "<group>"; };
 		1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolView.swift; sourceTree = "<group>"; };
+		144031CA261CCC38007D7BB7 /* ConstantController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConstantController.storyboard; sourceTree = "<group>"; };
+		144031CE261CCD86007D7BB7 /* FunctionController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FunctionController.storyboard; sourceTree = "<group>"; };
+		144031D2261CCE22007D7BB7 /* ModelConstantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConstantController.swift; sourceTree = "<group>"; };
+		144031D6261CCEDE007D7BB7 /* ModelPaletteItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPaletteItemController.swift; sourceTree = "<group>"; };
+		144031E0261D3091007D7BB7 /* ModelFunctionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFunctionController.swift; sourceTree = "<group>"; };
+		144031E6261E62B5007D7BB7 /* OnlyNumbersFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnlyNumbersFormatter.swift; path = macgui/Extensions/OnlyNumbersFormatter.swift; sourceTree = SOURCE_ROOT; };
 		144BE141239B07BA0001B2EF /* DataMatrixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMatrixTests.swift; sourceTree = "<group>"; };
 		144BE14323A03E780001B2EF /* JsonCoreBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JsonCoreBridge.swift; path = macgui/CoreBridge/JsonCoreBridge.swift; sourceTree = SOURCE_ROOT; };
 		144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolViewController.swift; sourceTree = "<group>"; };
@@ -4581,6 +4593,7 @@
 		1452356C220DF55C00A85186 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				144031E6261E62B5007D7BB7 /* OnlyNumbersFormatter.swift */,
 				14C618DD23DFC16C001FFFD6 /* Color.swift */,
 				145186E22428689800EA9070 /* Symbol.swift */,
 				147429DA22CBC8C300FF1963 /* Storyboards.swift */,
@@ -4628,6 +4641,8 @@
 				1411BEE72208FE91009BEE1D /* Tool.xib */,
 				141106B8230742D500A8B936 /* ToolTip.storyboard */,
 				1419FDBC244E772900007232 /* VariableController.storyboard */,
+				144031CE261CCD86007D7BB7 /* FunctionController.storyboard */,
+				144031CA261CCC38007D7BB7 /* ConstantController.storyboard */,
 				14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */,
 				14E8A53225377ABE00864375 /* TreeInspector.storyboard */,
 			);
@@ -4850,7 +4865,10 @@
 				1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */,
 				1410C3AE2404ECEB0044EB48 /* ModelCanvasItemView.swift */,
 				1410C3B0240594720044EB48 /* ModelNode.swift */,
+				144031D6261CCEDE007D7BB7 /* ModelPaletteItemController.swift */,
 				14ADDC8A2460A3D0000D49DB /* ModelVariableController.swift */,
+				144031D2261CCE22007D7BB7 /* ModelConstantController.swift */,
+				144031E0261D3091007D7BB7 /* ModelFunctionController.swift */,
 			);
 			path = "Model Tool";
 			sourceTree = "<group>";
@@ -8810,6 +8828,7 @@
 				1411BEE322052B7E009BEE1D /* Main.storyboard in Resources */,
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
 				14CF75A1243BCF560022B3A8 /* ModelCanvasItem.storyboard in Resources */,
+				144031CF261CCD86007D7BB7 /* FunctionController.storyboard in Resources */,
 				147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */,
 				149A500724995B8C007E4D4B /* clustal in Resources */,
 				1471052B226CD75300E88657 /* ConnectorItemArrow.xib in Resources */,
@@ -8824,6 +8843,7 @@
 				14ECE4DF233BFE2300106EB4 /* aquabayes.icns in Resources */,
 				147429D922CBA94C00FF1963 /* CanvasTool.storyboard in Resources */,
 				1407184D22FF629D0098285D /* ModalSheetTabView.storyboard in Resources */,
+				144031CB261CCC38007D7BB7 /* ConstantController.storyboard in Resources */,
 				14EE87442554A4A60064F290 /* PaupCriterion.storyboard in Resources */,
 				14633126244F7FF1002FBD83 /* Assets.xcassets in Resources */,
 				14E00A2A261BCAE700D97E68 /* pull.sh in Resources */,
@@ -8875,6 +8895,7 @@
 				14E007E5261BCAE500D97E68 /* Move_HomeologPhase.cpp in Sources */,
 				14E0094B261BCAE600D97E68 /* Func_treeScale.cpp in Sources */,
 				14E008D4261BCAE600D97E68 /* Func_mapTree.cpp in Sources */,
+				144031E1261D3091007D7BB7 /* ModelFunctionController.swift in Sources */,
 				14E00A1B261BCAE700D97E68 /* Dist_PhyloWhiteNoise.cpp in Sources */,
 				14E00A06261BCAE700D97E68 /* Dist_uniformTopologyBranchLength.cpp in Sources */,
 				14E0089B261BCAE600D97E68 /* MethodTable.cpp in Sources */,
@@ -9966,6 +9987,7 @@
 				14E0083E261BCAE500D97E68 /* Mntr_AncestralState.cpp in Sources */,
 				14E0080B261BCAE500D97E68 /* Move_VectorFixedSingleElementSlide.cpp in Sources */,
 				14E00A36261BCAE700D97E68 /* nxscharactersblock.cpp in Sources */,
+				144031D8261CCEDE007D7BB7 /* ModelPaletteItemController.swift in Sources */,
 				14E00912261BCAE600D97E68 /* Func_sumInteger.cpp in Sources */,
 				14E00749261BCAE500D97E68 /* ScaledDirichletDistribution.cpp in Sources */,
 				14E00735261BCAE500D97E68 /* GilbertGraphDistribution.cpp in Sources */,
@@ -10009,6 +10031,7 @@
 				14E00853261BCAE500D97E68 /* RlMaxIterationStoppingRule.cpp in Sources */,
 				14E5857A22A6F08C00802691 /* CanvasObjectViewController.swift in Sources */,
 				14E00978261BCAE600D97E68 /* Func_DECRoot.cpp in Sources */,
+				144031E7261E62B5007D7BB7 /* OnlyNumbersFormatter.swift in Sources */,
 				149F8B3D23639E46003146FD /* DataTool.swift in Sources */,
 				14E008DA261BCAE600D97E68 /* Func_readStochasticVariableTrace.cpp in Sources */,
 				14E008E4261BCAE600D97E68 /* Func_readMatrix.cpp in Sources */,
@@ -10245,6 +10268,7 @@
 				14E0057E261BCAE400D97E68 /* HSRFHyperpriorsGibbsMove.cpp in Sources */,
 				14E0056D261BCAE400D97E68 /* SlideBactrianProposalContinuous.cpp in Sources */,
 				14E008BE261BCAE600D97E68 /* SyntaxSubtractionAssignment.cpp in Sources */,
+				144031D3261CCE22007D7BB7 /* ModelConstantController.swift in Sources */,
 				142D7BE4253E032A009A1903 /* TreeSetView.swift in Sources */,
 				14E008B7261BCAE600D97E68 /* grammar.tab.cpp in Sources */,
 				14E007E2261BCAE500D97E68 /* Move_EmpiricalTree.cpp in Sources */,

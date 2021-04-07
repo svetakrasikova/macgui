@@ -919,16 +919,6 @@ extension PaupOptions {
                 }
             }
             
-//        case #keyPath(psStepMatrixVal.aa):
-//            if let s = ioValue.pointee as? String, let shape = Double(s) {
-//                if shape != 0 {
-//                    let userInfo = [NSLocalizedDescriptionKey: "The shape value must be greater than 0.0"]
-//                    throw NSError(domain: domain,
-//                                  code: code,
-//                                  userInfo: userInfo)
-//                }
-//            }
-//       
         default: break
         }
     }

@@ -74,6 +74,22 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         return variableController
     }()
     
+    lazy var constantController: ModelConstantController = {
+        let constantController = NSStoryboard.loadVC(StoryBoardName.constantController) as! ModelConstantController
+        if let node = self.tool as? ModelNode, let canvasVC = self.modelCanvas {
+            constantController.modelNode = node
+        }
+        return constantController
+    }()
+    
+    lazy var functionController: ModelFunctionController = {
+        let functionController = NSStoryboard.loadVC(StoryBoardName.functionController) as! ModelFunctionController
+        if let node = self.tool as? ModelNode, let canvasVC = self.modelCanvas {
+            functionController.modelNode = node
+        }
+        return functionController
+    }()
+    
 //    MARK: -- Observers
     
     private var observers = [NSKeyValueObservation]()
@@ -241,7 +257,15 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
 //    MARK: -- Action Button Delegate
     
     func actionButtonClicked(_ button: ActionButton) {
-        self.presentAsModalWindow(variableController)
+        
+        guard let node = self.tool as? ModelNode else { return }
+        switch node.nodeType {
+        case .function: self.presentAsModalWindow(functionController)
+        case .constant: self.presentAsModalWindow(constantController)
+        case .randomVariable: self.presentAsModalWindow(variableController)
+        default: break
+        }
+        
      }
     
  
