@@ -20,6 +20,11 @@ class Loop: ToolObject {
     var upperRange: Int = 1
     
     
+    override init(name: String, frameOnCanvas: NSRect, analysis: Analysis){
+        super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
+    }
+    
+    
     override func encode(with coder: NSCoder) {
         super.encode(with: coder)
         coder.encode(outerLoop, forKey: CodingKeys.outerLoop.rawValue)

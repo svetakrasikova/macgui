@@ -41,6 +41,7 @@ class Connector: NSObject, NSCoding {
         case .magenta: return NSColor.magenta
         case .purple: return NSColor.purple
         case .modelParameter: return NSColor.black
+        case .readnumbers: return Color.olive.rawValue
         case .generic: return NSColor.clear
         }
     }
@@ -55,6 +56,7 @@ enum ConnectorType: String {
     case alignedData = "green"
     case unalignedData = "blue"
     case modelParameter = "black"
+    case readnumbers = "olive"
     case generic = "clear"
 }
 

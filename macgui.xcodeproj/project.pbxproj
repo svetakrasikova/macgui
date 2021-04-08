@@ -46,6 +46,7 @@
 		144031D8261CCEDE007D7BB7 /* ModelPaletteItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031D6261CCEDE007D7BB7 /* ModelPaletteItemController.swift */; };
 		144031E1261D3091007D7BB7 /* ModelFunctionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031E0261D3091007D7BB7 /* ModelFunctionController.swift */; };
 		144031E7261E62B5007D7BB7 /* OnlyNumbersFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031E6261E62B5007D7BB7 /* OnlyNumbersFormatter.swift */; };
+		144031ED261F7AE0007D7BB7 /* ReadNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031EC261F7AE0007D7BB7 /* ReadNumbers.swift */; };
 		144BE142239B07BA0001B2EF /* DataMatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BE141239B07BA0001B2EF /* DataMatrixTests.swift */; };
 		144BE14423A03E780001B2EF /* JsonCoreBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BE14323A03E780001B2EF /* JsonCoreBridge.swift */; };
 		144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */; };
@@ -1529,6 +1530,7 @@
 		144031D6261CCEDE007D7BB7 /* ModelPaletteItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPaletteItemController.swift; sourceTree = "<group>"; };
 		144031E0261D3091007D7BB7 /* ModelFunctionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFunctionController.swift; sourceTree = "<group>"; };
 		144031E6261E62B5007D7BB7 /* OnlyNumbersFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnlyNumbersFormatter.swift; path = macgui/Extensions/OnlyNumbersFormatter.swift; sourceTree = SOURCE_ROOT; };
+		144031EC261F7AE0007D7BB7 /* ReadNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNumbers.swift; sourceTree = "<group>"; };
 		144BE141239B07BA0001B2EF /* DataMatrixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMatrixTests.swift; sourceTree = "<group>"; };
 		144BE14323A03E780001B2EF /* JsonCoreBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JsonCoreBridge.swift; path = macgui/CoreBridge/JsonCoreBridge.swift; sourceTree = SOURCE_ROOT; };
 		144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolViewController.swift; sourceTree = "<group>"; };
@@ -4715,6 +4717,7 @@
 				149C5FCA232953A80060043E /* Model.swift */,
 				149C5FC82329538C0060043E /* TreeSet.swift */,
 				147105242265437600E88657 /* Bootstrap.swift */,
+				144031EC261F7AE0007D7BB7 /* ReadNumbers.swift */,
 			);
 			path = "Connectable Tools";
 			sourceTree = "<group>";
@@ -9586,6 +9589,7 @@
 				14E008A3261BCAE600D97E68 /* RbRegister_Dist.cpp in Sources */,
 				14E00804261BCAE500D97E68 /* Move_ShrinkExpand.cpp in Sources */,
 				14E00A34261BCAE700D97E68 /* nxsreader.cpp in Sources */,
+				144031ED261F7AE0007D7BB7 /* ReadNumbers.swift in Sources */,
 				14E008CA261BCAE600D97E68 /* UserProcedure.cpp in Sources */,
 				14E00666261BCAE400D97E68 /* ProgressBar.cpp in Sources */,
 				14E00689261BCAE400D97E68 /* DistributionLKJ.cpp in Sources */,

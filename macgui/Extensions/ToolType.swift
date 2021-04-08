@@ -16,6 +16,8 @@ enum ToolType: String, CaseIterable {
     case simulate
     case treeset
     case parsimony
+    case loop
+    case readnumbers
 }
 
 extension CanvasViewController {
@@ -37,7 +39,10 @@ extension CanvasViewController {
             return Model(name: name, frameOnCanvas: frame, analysis: analysis)
         case .parsimony:
             return Parsimony(name: name, frameOnCanvas: frame, analysis: analysis)
-            
+        case .loop:
+            return Loop(name: name, frameOnCanvas: frame, analysis: analysis)
+        case .readnumbers:
+            return ReadNumbers(name: name, frameOnCanvas: frame, analysis: analysis)
         }
     }
 }
@@ -61,6 +66,10 @@ extension ToolObject {
             return "Data Model Tool"
         case .parsimony:
             return "PAUP* Tool"
+        case .readnumbers:
+            return "Read Numbers Tool"
+        case .loop:
+            return "Loop Tool"
             
         }
     }

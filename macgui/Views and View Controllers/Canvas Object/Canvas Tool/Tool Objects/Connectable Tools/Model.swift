@@ -25,7 +25,8 @@ class Model: DataTool {
         
         let green = Connector(type: .alignedData)
         let purple = Connector(type: .purple)
-        self.inlets = [green]
+        let olive = Connector(type: .readnumbers)
+        self.inlets = [green, olive]
         self.outlets = [purple]
         
         do {
