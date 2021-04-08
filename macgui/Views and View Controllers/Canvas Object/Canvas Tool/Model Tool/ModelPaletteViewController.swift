@@ -68,6 +68,11 @@ extension ModelPaletteViewController: NSOutlineViewDataSource {
                 return (variable, PaletteVariable.VariableType.randomVariable)
             }
         }
+        
+        if let item = item as? PalettItem, item.type == "Plate" {
+            return item
+        }
+        
         return parameters[index] as Any
     }
     
@@ -88,8 +93,10 @@ extension ModelPaletteViewController: NSOutlineViewDataSource {
 
 // MARK: - NSOutlineViewDelegate
 extension ModelPaletteViewController: NSOutlineViewDelegate {
+    
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         var view: NSTableCellView?
+       
         if let parameter = item as? PaletteCategory {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.parameterTypeCell.rawValue), owner: self) as? NSTableCellView
             if let textField = view?.textField {
@@ -97,10 +104,14 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
                 textField.sizeToFit()
             }
         } else if let parameter = item as? PalettItem {
-            view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.parameterCell.rawValue), owner: self) as? NSTableCellView
+            let identifier = parameter.type == PalettItem.plateType ? NSUserInterfaceItemIdentifier(rawValue: CellType.shapeCell.rawValue) : NSUserInterfaceItemIdentifier(rawValue: CellType.parameterCell.rawValue)
+            view = outlineView.makeView(withIdentifier: identifier, owner: self) as? NSTableCellView
             if let textField = view?.textField  {
                 textField.stringValue = parameter.type
                 textField.sizeToFit()
+            }
+            if let imageView = view?.imageView {
+                imageView.image = NSImage(named: "DashedRectangle")
             }
         } else if let parameter = item as? (PaletteVariable, PaletteVariable.VariableType) {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.shapeCell.rawValue), owner: self) as? NSTableCellView
@@ -128,6 +139,13 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
             let name = item.0.type
             let type = item.1.rawValue
             let pasteboardString = "\(name):\(type)"
+            pasteboard.writeObjects([pasteboardString as NSString])
+            return true
+        }
+        if let item = items.first as? PalettItem, item.type == PalettItem.plateType {
+            pasteboard.clearContents()
+            let type = item.type
+            let pasteboardString = "\(type):\(type)"
             pasteboard.writeObjects([pasteboardString as NSString])
             return true
         }

@@ -33,6 +33,7 @@ class PaletteCategory: NSObject {
                 variables.children.append(palettItem)
             }
         }
+        plates.children.append(PalettItem(name: PalettItem.plateType))
         
         return [variables, plates, trees]
     }

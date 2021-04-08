@@ -16,6 +16,8 @@ class PalettItem: NSObject, Codable, NSCoding {
         case type
     }
     
+    static let plateType: String = "Plate"
+    
       private enum CodingKeys: String, CodingKey {
          case type
      }
