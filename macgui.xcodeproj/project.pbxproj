@@ -47,6 +47,9 @@
 		144031E1261D3091007D7BB7 /* ModelFunctionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031E0261D3091007D7BB7 /* ModelFunctionController.swift */; };
 		144031E7261E62B5007D7BB7 /* OnlyNumbersFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031E6261E62B5007D7BB7 /* OnlyNumbersFormatter.swift */; };
 		144031ED261F7AE0007D7BB7 /* ReadNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031EC261F7AE0007D7BB7 /* ReadNumbers.swift */; };
+		144031F2261FC2B3007D7BB7 /* ResizableCanvasObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031F1261FC2B3007D7BB7 /* ResizableCanvasObjectView.swift */; };
+		144031F6261FD0A7007D7BB7 /* CanvasLoopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031F5261FD0A7007D7BB7 /* CanvasLoopViewController.swift */; };
+		144031FA261FD0C6007D7BB7 /* CanvasLoopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031F9261FD0C6007D7BB7 /* CanvasLoopView.swift */; };
 		144BE142239B07BA0001B2EF /* DataMatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BE141239B07BA0001B2EF /* DataMatrixTests.swift */; };
 		144BE14423A03E780001B2EF /* JsonCoreBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144BE14323A03E780001B2EF /* JsonCoreBridge.swift */; };
 		144CC4BC2213CE8F003311E4 /* CanvasToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */; };
@@ -1531,6 +1534,9 @@
 		144031E0261D3091007D7BB7 /* ModelFunctionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFunctionController.swift; sourceTree = "<group>"; };
 		144031E6261E62B5007D7BB7 /* OnlyNumbersFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnlyNumbersFormatter.swift; path = macgui/Extensions/OnlyNumbersFormatter.swift; sourceTree = SOURCE_ROOT; };
 		144031EC261F7AE0007D7BB7 /* ReadNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNumbers.swift; sourceTree = "<group>"; };
+		144031F1261FC2B3007D7BB7 /* ResizableCanvasObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableCanvasObjectView.swift; sourceTree = "<group>"; };
+		144031F5261FD0A7007D7BB7 /* CanvasLoopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasLoopViewController.swift; sourceTree = "<group>"; };
+		144031F9261FD0C6007D7BB7 /* CanvasLoopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasLoopView.swift; sourceTree = "<group>"; };
 		144BE141239B07BA0001B2EF /* DataMatrixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMatrixTests.swift; sourceTree = "<group>"; };
 		144BE14323A03E780001B2EF /* JsonCoreBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JsonCoreBridge.swift; path = macgui/CoreBridge/JsonCoreBridge.swift; sourceTree = SOURCE_ROOT; };
 		144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolViewController.swift; sourceTree = "<group>"; };
@@ -4778,6 +4784,7 @@
 			children = (
 				14E5857B22A6F16300802691 /* CanvasObjectView.swift */,
 				1410C3BC240EE92A0044EB48 /* MovingCanvasObjectView.swift */,
+				144031F1261FC2B3007D7BB7 /* ResizableCanvasObjectView.swift */,
 				14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */,
 			);
 			path = "Generic Canvas Object";
@@ -8670,6 +8677,8 @@
 				14E58525228C92AB00802691 /* ToolImageView.swift */,
 				1435C6D022272B7B00A13AE0 /* CanvasToolView.swift */,
 				144CC4BA2213CE8F003311E4 /* CanvasToolViewController.swift */,
+				144031F9261FD0C6007D7BB7 /* CanvasLoopView.swift */,
+				144031F5261FD0A7007D7BB7 /* CanvasLoopViewController.swift */,
 			);
 			path = "Canvas Tool";
 			sourceTree = "<group>";
@@ -8903,6 +8912,7 @@
 				14E00A06261BCAE700D97E68 /* Dist_uniformTopologyBranchLength.cpp in Sources */,
 				14E0089B261BCAE600D97E68 /* MethodTable.cpp in Sources */,
 				14E00536261BCAE400D97E68 /* NodeTimeSlideUniformProposal.cpp in Sources */,
+				144031F6261FD0A7007D7BB7 /* CanvasLoopViewController.swift in Sources */,
 				14E00679261BCAE400D97E68 /* BirthDeathForwardSimulator.cpp in Sources */,
 				14E00837261BCAE500D97E68 /* Mntr_CharacterHistorySummary.cpp in Sources */,
 				14E00944261BCAE600D97E68 /* Func_stirling.cpp in Sources */,
@@ -8966,6 +8976,7 @@
 				14E0086F261BCAE500D97E68 /* RlMatrixRealPos.cpp in Sources */,
 				14E006A8261BCAE400D97E68 /* PartialToCorrelationFunction.cpp in Sources */,
 				14E00756261BCAE500D97E68 /* LognormalDistribution.cpp in Sources */,
+				144031F2261FC2B3007D7BB7 /* ResizableCanvasObjectView.swift in Sources */,
 				14E00839261BCAE500D97E68 /* Mntr_CharacterHistoryNhxFile.cpp in Sources */,
 				14E00734261BCAE500D97E68 /* ExponentialErrorDistribution.cpp in Sources */,
 				14E0077F261BCAE500D97E68 /* BirthDeathProcess.cpp in Sources */,
@@ -10205,6 +10216,7 @@
 				14E00746261BCAE500D97E68 /* BinomialDistribution.cpp in Sources */,
 				14E00712261BCAE500D97E68 /* CladogeneticSpeciationRateMatrixFunction.cpp in Sources */,
 				140324B023EB7CF0005F1FC9 /* GenericCanvasView.swift in Sources */,
+				144031FA261FD0C6007D7BB7 /* CanvasLoopView.swift in Sources */,
 				14E006A1261BCAE400D97E68 /* DistributionScaledDirichlet.cpp in Sources */,
 				14E0075B261BCAE500D97E68 /* InverseGammaDistribution.cpp in Sources */,
 				14E00761261BCAE500D97E68 /* UniformTopologyDistribution.cpp in Sources */,

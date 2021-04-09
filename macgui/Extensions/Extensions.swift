@@ -75,6 +75,10 @@ extension NSPoint {
         let size = NSSize(width: width, height: height)
         return NSRect(origin: origin, size: size)
      }
+    
+    func offsetBy(x: CGFloat, y: CGFloat) -> NSPoint {
+        return NSPoint(x: self.x + x, y: self.y + y)
+    }
 }
 
 
