@@ -79,6 +79,13 @@ extension ModelCanvasItemView {
         return path
     }
     
+    func dashedRectanglePath(layer: CAShapeLayer) -> CGPath {
+        let path = CGMutablePath()
+        path.addRect(self.bounds)
+        layer.lineDashPattern = [4,2]
+        return path
+    }
+    
     func drawDividerLine(strokeColor: NSColor, lineWidth: CGFloat) {
         let lineLayer = CAShapeLayer()
         let linePath = CGMutablePath()

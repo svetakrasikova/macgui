@@ -16,62 +16,101 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     
     var frameOffset: CGFloat = 4.0
     
+    var insetFrame: NSRect {
+        bounds.insetBy(dx: frameOffset, dy: frameOffset)
+    }
+    
     var resizeDirection: resizeDirection?
     
     var bottomLeftCorner: NSPoint {
-        return frame.origin
+        return insetFrame.origin
     }
     
     var bottomRightCorner: NSPoint {
-        return frame.origin.offsetBy(x: frame.width, y: 0)
+        return NSPoint(x: insetFrame.maxX, y: insetFrame.minY)
     }
     
     var topLeftCorner: NSPoint {
-        return frame.origin.offsetBy(x: 0, y: frame.height)
+        return NSPoint(x: insetFrame.minX, y: insetFrame.maxY)
     }
     
     var topRightCorner: NSPoint {
-        return frame.origin.offsetBy(x: frame.width, y: frame.height)
+        return NSPoint(x: insetFrame.maxY, y: insetFrame.maxY)
     }
     var bottomLeftAnchor: CGPath {
-        let path = CGMutablePath()
-        path.addRect(NSRect(x: bottomLeftCorner.x, y: bottomLeftCorner.y, width: 4.0, height: 4.0))
-        return path
+       anchorPath(startPoint: bottomLeftCorner)
     }
     
     var bottomRightAnchor: CGPath {
-        let path = CGMutablePath()
-        let origin =  bottomRightCorner.offsetBy(x: -4.0, y: 0)
-        path.addRect(NSRect(x: origin.x, y: origin.y, width: 4.0, height: 4.0))
-        return path
+        anchorPath(startPoint: bottomRightCorner)
     }
    
     var topLeftAnchor: CGPath {
-        let path = CGMutablePath()
-        let origin =  topLeftCorner.offsetBy(x: 0, y: -4.0)
-        path.addRect(NSRect(x: origin.x, y: origin.y, width: 4.0, height: 4.0))
-        return path
+        anchorPath(startPoint: topLeftCorner)
     }
    
     var topRightAnchor: CGPath {
-        let path = CGMutablePath()
-        let origin =  topRightCorner.offsetBy(x: -4.0, y: -4.0)
-        path.addRect(NSRect(x: origin.x, y: origin.y, width: 4.0, height: 4.0))
-        return path
+        anchorPath(startPoint: topRightCorner)
     }
     
-    func drawAnchors(resizeDirection: Bool, color: CGColor, width: CGFloat) {
-        let anchorsLayer = CAShapeLayer()
-        anchorsLayer.strokeColor = color
-        anchorsLayer.lineWidth = width
-        anchorsLayer.shadowOpacity = 0.7
-        anchorsLayer.shadowRadius = 10.0
+    var combinedAnchorPath: CGPath {
         let combined = CGMutablePath()
         combined.addPath(bottomLeftAnchor)
         combined.addPath(bottomRightAnchor)
         combined.addPath(topLeftAnchor)
         combined.addPath(topRightAnchor)
-        anchorsLayer.path = combined
+        return combined
+    }
+    
+    func anchorPath(startPoint: NSPoint) -> CGMutablePath {
+        let path = CGMutablePath()
+        let origin =  startPoint.offsetBy(x: -2.0, y: -2.0)
+        path.addRect(NSRect(x: origin.x, y: origin.y, width: 4.0, height: 4.0))
+        return path
+    }
+
+   
+    
+    func drawBorderAndAnchors(fillcolor: NSColor, strokeColor: NSColor, dash: Bool = false, anchors: Bool) {
+        
+        let borderLayer = CAShapeLayer()
+        let borderPath = NSBezierPath(rect: self.bounds.insetBy(dx: frameOffset, dy: frameOffset)).cgPath
+        borderLayer.path = borderPath
+        if dash { borderLayer.lineDashPattern = [4,2] }
+        borderLayer.strokeColor = strokeColor.cgColor
+        borderLayer.fillColor = fillcolor.cgColor
+        borderLayer.lineWidth = 0.5
+        layer?.addSublayer(borderLayer)
+        if anchors { drawAnchors() }
+    }
+    
+    func drawAnchors() {
+        let anchorsLayer = CAShapeLayer()
+        anchorsLayer.strokeColor = NSColor.black.cgColor
+        anchorsLayer.fillColor = NSColor.white.cgColor
+        anchorsLayer.lineWidth = 0.5
+        
+        if let direction = self.resizeDirection  {
+            switch direction {
+            case .bottomLeft: anchorsLayer.path = bottomLeftAnchor
+            case .bottomRight: anchorsLayer.path = bottomRightAnchor
+            case .topLeft: anchorsLayer.path = topLeftAnchor
+            case .topRight: anchorsLayer.path = topRightAnchor
+            }
+        } else {
+            anchorsLayer.path = combinedAnchorPath
+        }
         layer?.addSublayer(anchorsLayer)
     }
+    
+    func clearSublayers(){
+        if let sublayers = layer?.sublayers {
+            for sublayer in sublayers {
+                sublayer.removeFromSuperlayer()
+            }
+        }
+    }
+    
+    
+    
 }

@@ -13,6 +13,8 @@ import Cocoa
 enum PreferenceKey: String {
     //  Canvas Object
     case canvasObjectDimension = "canvasObjectDimension"
+    case canvasLoopDimension = "canvasLoopDimension"
+    case canvasLoopBackgroundColor
     
     // Generic Canvas
     case canvasSelectionWidth = "canvasSelectionWidth"
@@ -55,6 +57,7 @@ class PreferencesManager {
             PreferenceKey.modelCanvasNodeDefaultShadowRadius.rawValue: 5.0,
             PreferenceKey.canvasSelectionWidth.rawValue: 5.0,
             PreferenceKey.canvasObjectDimension.rawValue: 50.0,
+            PreferenceKey.canvasLoopDimension.rawValue: 100.0,
             PreferenceKey.canvasToolBorderWidth.rawValue: 1.8,
             PreferenceKey.canvasToolSelectionCornerRadius.rawValue: 5.0,
             PreferenceKey.canvasToolSelectionShadowOpacity.rawValue: 0.7,
@@ -137,6 +140,18 @@ class PreferencesManager {
         }
     }
     
+    var canvasLoopDimension: CGFloat? {
+        get {
+            return userDefaults.object(forKey: PreferenceKey.canvasLoopDimension.rawValue) as? CGFloat
+        }
+    }
+    
+    var canvasLoopBackgroundColor: NSColor? {
+        get {
+            return userDefaults.color(forKey: PreferenceKey.canvasLoopBackgroundColor.rawValue)
+        }
+    }
+    
     var canvasToolBorderWidth: CGFloat? {
         get {
             return userDefaults.object(forKey: PreferenceKey.canvasToolBorderWidth.rawValue) as? CGFloat
@@ -216,6 +231,7 @@ class PreferencesManager {
         userDefaults.set(NSColor.white, forKey: PreferenceKey.mainCanvasBackgroundColor.rawValue)
         userDefaults.set(NSColor.systemGray, forKey: PreferenceKey.mainCanvasGridColor.rawValue)
         userDefaults.set(NSColor.systemGray, forKey: PreferenceKey.canvasToolSelectionColor.rawValue)
+        userDefaults.set(NSColor.gray, forKey: PreferenceKey.canvasLoopBackgroundColor.rawValue)
     }
     
 
@@ -229,6 +245,10 @@ class PreferencesManager {
                 self.cachedPreferences[key] = mainCanvasGridColor
             case PreferenceKey.canvasObjectDimension.rawValue:
                 self.cachedPreferences[key] = canvasObjectDimension
+            case PreferenceKey.canvasLoopDimension.rawValue:
+                self.cachedPreferences[key] = canvasLoopDimension
+            case PreferenceKey.canvasLoopBackgroundColor.rawValue:
+                self.cachedPreferences[key] = canvasLoopBackgroundColor
             case PreferenceKey.canvasSelectionWidth.rawValue:
                 self.cachedPreferences[key] = canvasSelectionWidth
             case PreferenceKey.modelCanvasBackgroundColor.rawValue:

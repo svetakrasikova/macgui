@@ -167,7 +167,11 @@ class CanvasViewController: GenericCanvasViewController {
         }
         
         for tool in analysis.tools {
-            addToolView(tool: tool)
+            if let loop = tool as? Loop {
+                addLoopView(loop: loop)
+            } else {
+                addToolView(tool: tool)
+            }
         }
         for connection in analysis.arrows {
             addArrowView(connection: connection)
@@ -184,14 +188,41 @@ class CanvasViewController: GenericCanvasViewController {
         canvasView.addSubview(canvasToolViewController.view)
     }
     
-    func addCanvasTool(frame: NSRect, name: String){
-        if let analysis = analysis {
-            let newTool = initToolObjectWithName(name, frame: frame, analysis: analysis)
-            analysis.tools.append(newTool)
-            addToolView(tool: newTool)
-        }
+    func addLoopView(loop: Loop) {
+        let canvasLoopViewController = CanvasLoopViewController()
+        canvasLoopViewController.tool = loop
+        addChild(canvasLoopViewController)
+        canvasView.addSubview(canvasLoopViewController.view)
     }
     
+    func addCanvasTool(center: NSPoint, name: String){
+        guard let analysis = analysis else { return }
+        switch name {
+        case ToolType.loop.rawValue:
+            guard let loopDimension = self.canvasView.canvasLoopDimension else { return }
+            if let newLoop = createToolFromCenter(center, dimension: loopDimension, name: name) as? Loop {
+                addLoopView(loop: newLoop)
+                analysis.tools.append(newLoop)
+            }
+            
+        default:
+            guard let toolDimension = self.canvasView.canvasObjectDimension else { return }
+            if let newTool = createToolFromCenter(center, dimension: toolDimension, name: name) {
+                addToolView(tool: newTool)
+                analysis.tools.append(newTool)
+            }
+        }
+        
+    }
+    
+    func createToolFromCenter(_ center: NSPoint, dimension: CGFloat, name: String) -> ToolObject? {
+        guard let analysis = analysis else { return nil }
+        let size = NSSize(width: dimension, height: dimension)
+        let origin = NSPoint(x: center.x - size.width/2, y: center.y - size.height/2)
+        let adjustedOrigin = origin.adjustOriginToFitContentSize(content: self.canvasView.frame.size, dimension: dimension)
+        let frame = NSRect(origin: adjustedOrigin, size: size)
+        return initToolObjectWithName(name, frame: frame, analysis: analysis)
+    }
     
     func removeToolFromAnalysis(toolViewController: CanvasToolViewController){
         if let analysis = analysis, let index = analysis.tools.firstIndex(of: toolViewController.tool!) {
@@ -229,20 +260,10 @@ extension CanvasViewController: CanvasViewDelegate {
     
     
     func processImage(center: NSPoint, name: String) {
-        guard let toolDimension = self.canvasView.canvasObjectDimension
-            else {
-                return
-        }
-        let size = NSSize(width: toolDimension, height: toolDimension)
-        let origin = NSPoint(x: center.x - size.width/2, y: center.y - size.height/2)
-        let adjustedOrigin = origin.adjustOriginToFitContentSize(content: self.canvasView.frame.size, dimension: toolDimension)
-        let frame = NSRect(origin: adjustedOrigin       , size: size)
-        addCanvasTool(frame: frame, name: name)
+        addCanvasTool(center: center, name: name)
         if let window = self.view.window {
             window.makeFirstResponder(canvasView)
-
         }
-        
     }
     
 }
