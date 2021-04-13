@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CanvasLoopViewController: CanvasObjectViewController, ActionButtonDelegate {
+class CanvasLoopViewController: ResizableCanvasObjectViewController, ActionButtonDelegate {
    
   
     
@@ -25,7 +25,6 @@ class CanvasLoopViewController: CanvasObjectViewController, ActionButtonDelegate
         view.wantsLayer = true
         if let backgroundColor = view.backgroundColor {
             view.drawBorderAndAnchors(fillcolor: backgroundColor.withAlphaComponent(0.2), strokeColor: NSColor.systemGray, dash: false, anchors: false)
-            
         }
     }
     

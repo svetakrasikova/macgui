@@ -33,7 +33,6 @@ class CanvasLoopView: ResizableCanvasObjectView {
             layer?.shadowRadius = preferencesManager.canvasToolSelectionShadowRadius!
 
         } else {
-           
             drawBorderAndAnchors(fillcolor: backgroundColor.withAlphaComponent(0.2), strokeColor: NSColor.systemGray, anchors: false)
             layer?.shadowOpacity = Float(preferencesManager.canvasToolDefaultShadowOpacity!)
             layer?.shadowRadius = preferencesManager.canvasToolDefaultShadowRadius!

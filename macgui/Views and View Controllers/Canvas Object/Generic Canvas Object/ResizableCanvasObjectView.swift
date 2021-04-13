@@ -14,6 +14,20 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
         case topLeft, topRight, bottomLeft, bottomRight
     }
     
+    var directionCursor: NSCursor? {
+        guard let directionNWSE = NSImage(named: "ResizeNorthWestSouthEast") else { return nil  }
+        guard let directionNESW = NSImage(named: "ResizeNortheEastSouthWest") else { return nil }
+        if let direction = self.resizeDirection {
+            switch direction {
+            case .bottomLeft: return NSCursor(image: directionNWSE, hotSpot: NSPoint(x: 5, y: 5))
+            case .bottomRight: return NSCursor(image: directionNESW, hotSpot: NSPoint(x: 5, y: 5))
+            case .topLeft: return NSCursor(image: directionNESW, hotSpot: NSPoint(x: 5, y: 5))
+            case .topRight: return NSCursor(image: directionNWSE, hotSpot: NSPoint(x: 5, y: 5))
+            }
+        }
+        return nil
+    }
+    
     var frameOffset: CGFloat = 4.0
     
     var insetFrame: NSRect {
@@ -62,14 +76,24 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
         return combined
     }
     
+    var anchorFrames: [NSRect] {
+        let frames = [NSRect]()
+//        frames.append(<#T##newElement: NSRect##NSRect#>)
+    }
+    
     func anchorPath(startPoint: NSPoint) -> CGMutablePath {
         let path = CGMutablePath()
         let origin =  startPoint.offsetBy(x: -2.0, y: -2.0)
-        path.addRect(NSRect(x: origin.x, y: origin.y, width: 4.0, height: 4.0))
+//        path.addRect(anchor)
         return path
     }
-
-   
+    
+    func anchorRect(startPoint: NSPoint) -> NSRect {
+        let origin =  startPoint.offsetBy(x: -2.0, y: -2.0)
+        return NSRect(x: origin.x, y: origin.y, width: 4.0, height: 4.0)
+    }
+    
+    
     
     func drawBorderAndAnchors(fillcolor: NSColor, strokeColor: NSColor, dash: Bool = false, anchors: Bool) {
         
@@ -110,6 +134,67 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
             }
         }
     }
+    
+    
+    //   MARK: - Mouse and Key Events
+    
+    func isMouseOnAnchor(point: NSPoint) -> resizeDirection? {
+        
+        if bottomRightAnchor.contains(point) {
+            return .bottomRight
+        } else if bottomLeftAnchor.contains(point) {
+            return .bottomLeft
+        } else if topRightAnchor.contains(point) {
+            return .topRight
+        } else if topLeftAnchor.contains(point) {
+            return .topLeft
+        }
+        return nil
+    }
+    
+    override func resetCursorRects() {
+        super.resetCursorRects()
+        if isMouseDragged {
+            if let directionCursor = directionCursor {
+                addCursorRect(self.visibleRect, cursor: directionCursor)
+            } else {
+                addCursorRect(self.visibleRect, cursor: NSCursor.closedHand)
+                }
+        }
+        for anchor in
+    }
+    
+    override func mouseDown(with event: NSEvent) {
+        super.mouseDown(with: event)
+        if let point = self.window?.contentView?.convert(event.locationInWindow, to: self) {
+            self.resizeDirection = isMouseOnAnchor(point: point)
+        }
+    }
+    
+  
+    
+    override func mouseDragged(with event: NSEvent) {
+        isMouseDragged = true
+        if let direction = self.resizeDirection {
+//            TODO: resize the frame using the new point
+            self.autoscroll(with: event)
+            window?.invalidateCursorRects(for: self)
+        } else {
+            super.mouseDragged(with: event)
+        }
+        
+    }
+    
+    override func mouseUp(with event: NSEvent) {
+        if let direction = self.resizeDirection {
+            self.resizeDirection = nil
+//            todo resize the frame, change the cursor back to normal
+        } else {
+            super.mouseUp(with: event)
+        }
+    }
+    
+    
     
     
     

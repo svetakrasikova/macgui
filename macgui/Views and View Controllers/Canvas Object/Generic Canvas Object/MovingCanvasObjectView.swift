@@ -10,6 +10,7 @@ import Cocoa
 
 class MovingCanvasObjectView: CanvasObjectView {
 
+    
     var firstMouseDownPoint: NSPoint?
     
     var isMouseDragged = false
@@ -21,8 +22,15 @@ class MovingCanvasObjectView: CanvasObjectView {
         super.mouseDown(with: event)
         firstMouseDownPoint = (self.window?.contentView?.convert(event.locationInWindow, to: self))!
         isMouseDown = true
+
     }
     
+    override func resetCursorRects() {
+        super.resetCursorRects()
+        if isMouseDragged {
+            addCursorRect(self.visibleRect, cursor: NSCursor.closedHand)
+        }
+    }
 
     override func mouseDragged(with event: NSEvent) {
         isMouseDragged = true
@@ -35,10 +43,12 @@ class MovingCanvasObjectView: CanvasObjectView {
         }
         delegate?.updateFrame()
         self.autoscroll(with: event)
+        window?.invalidateCursorRects(for: self)
     }
       
       override func mouseUp(with event: NSEvent) {
         isMouseDragged = false
+        window?.invalidateCursorRects(for: self)
         isMouseDown = false
         delegate?.updateFrame()
       }
