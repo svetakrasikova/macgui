@@ -79,6 +79,9 @@ extension NSPoint {
     func offsetBy(x: CGFloat, y: CGFloat) -> NSPoint {
         return NSPoint(x: self.x + x, y: self.y + y)
     }
+    func insetBy(x: CGFloat, y: CGFloat) -> NSPoint {
+        return NSPoint(x: self.x - x, y: self.y - y)
+    }
 }
 
 

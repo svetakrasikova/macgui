@@ -14,7 +14,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
         case topLeft, topRight, bottomLeft, bottomRight
     }
     
-    var frameOffset: CGFloat = 4.0
+    var frameOffset: CGFloat = 2.0
     
     var insetFrame: NSRect {
         bounds.insetBy(dx: frameOffset, dy: frameOffset)
@@ -35,7 +35,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     }
     
     var topRightCorner: NSPoint {
-        return NSPoint(x: insetFrame.maxY, y: insetFrame.maxY)
+        return NSPoint(x: insetFrame.maxX, y: insetFrame.maxY)
     }
     var bottomLeftAnchor: CGPath {
        anchorPath(startPoint: bottomLeftCorner)
@@ -160,10 +160,10 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
         guard let directionNESW = NSImage(named: "ResizeNorthEastSouthWest") else { return NSCursor.arrow }
         
         switch direction {
-        case .bottomLeft: return NSCursor(image: directionNESW, hotSpot: NSPoint(x: 5, y: 5))
-        case .bottomRight: return NSCursor(image: directionNWSE, hotSpot: NSPoint(x: 5, y: 5))
-        case .topLeft: return NSCursor(image: directionNWSE, hotSpot: NSPoint(x: 5, y: 5))
-        case .topRight: return NSCursor(image: directionNESW, hotSpot: NSPoint(x: 5, y: 5))
+        case .bottomLeft: return NSCursor(image: directionNESW, hotSpot: NSPoint(x: 8, y: 8))
+        case .bottomRight: return NSCursor(image: directionNWSE, hotSpot: NSPoint(x: 8, y: 8))
+        case .topLeft: return NSCursor(image: directionNWSE, hotSpot: NSPoint(x: 8, y: 8))
+        case .topRight: return NSCursor(image: directionNESW, hotSpot: NSPoint(x: 8, y: 8))
         }
         
     }
@@ -179,20 +179,82 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     
     override func mouseDragged(with event: NSEvent) {
         isMouseDragged = true
-        if let direction = self.resizeDirection {
-//            TODO: resize the frame using the new point
-            self.autoscroll(with: event)
+        if let direction = self.resizeDirection,  let canvasView = self.superview as? GenericCanvasView {
+            let point = canvasView.convert(event.locationInWindow, from: nil)
+            resizeFrame(direction: direction, point: point)
             window?.invalidateCursorRects(for: self)
+            self.autoscroll(with: event)
+           
         } else {
             super.mouseDragged(with: event)
         }
         
     }
     
+    func resizeFrame(direction: resizeDirection, point: NSPoint) {
+        switch direction {
+        case .bottomLeft :
+            let offsetPoint = point.offsetBy(x: -frameOffset, y: -frameOffset)
+            if offsetPoint.x < frame.minX && offsetPoint.y < frame.minY {
+                let diffX = frame.minX - offsetPoint.x
+                let diffY = frame.minY - offsetPoint.y
+                self.frame = NSRect(origin: self.frame.origin.insetBy(x: diffX, y: diffY), size: NSSize(width: frame.width + diffX, height: frame.height + diffY))
+                needsDisplay = true
+               
+            } else if offsetPoint.x > frame.minX && offsetPoint.y > frame.minY {
+                let diffX = offsetPoint.x - frame.minX
+                let diffY = offsetPoint.y - frame.minY
+                self.frame = NSRect(origin: self.frame.origin.offsetBy(x: diffX, y: diffY), size: NSSize(width: frame.width - diffX, height: frame.height - diffY))
+                needsDisplay = true
+            }
+        case .bottomRight :
+            let offsetPoint = point.offsetBy(x: frameOffset, y: -frameOffset)
+            if offsetPoint.x > frame.maxX && offsetPoint.y < frame.minY {
+                let diffX = offsetPoint.x - frame.maxX
+                let diffY = frame.minY - offsetPoint.y
+                self.frame = NSRect(origin: self.frame.origin.insetBy(x: 0, y: diffY), size: NSSize(width: frame.width + diffX, height: frame.height + diffY))
+                needsDisplay = true
+            } else if offsetPoint.x < frame.maxX && offsetPoint.y > frame.minY {
+                let diffX = frame.maxX - offsetPoint.x
+                let diffY = offsetPoint.y - frame.minY
+                self.frame = NSRect(origin: self.frame.origin.offsetBy(x: 0, y: diffY), size: NSSize(width: frame.width - diffX, height: frame.height - diffY))
+                needsDisplay = true
+            }
+        case .topRight :
+            let offsetPoint = point.offsetBy(x: frameOffset, y: frameOffset)
+            if offsetPoint.x > frame.maxX && offsetPoint.y > frame.maxY {
+                let diffX = offsetPoint.x - frame.maxX
+                let diffY = offsetPoint.y - frame.maxY
+                self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: frame.width + diffX, height: frame.height + diffY))
+                needsDisplay = true
+               
+            } else if offsetPoint.x < frame.maxX && offsetPoint.y < frame.maxY {
+                let diffX = frame.maxX - offsetPoint.x
+                let diffY = frame.maxY - offsetPoint.y
+                self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: frame.width - diffX, height: frame.height - diffY))
+                needsDisplay = true
+            }
+        case .topLeft :
+            let offsetPoint = point.offsetBy(x: -frameOffset, y: frameOffset)
+            if offsetPoint.x < frame.minX && offsetPoint.y > frame.maxY {
+                let diffX = frame.minX - offsetPoint.x
+                let diffY = offsetPoint.y - frame.maxY
+                self.frame = NSRect(origin: self.frame.origin.insetBy(x: diffX, y: 0), size: NSSize(width: frame.width + diffX, height: frame.height + diffY))
+                needsDisplay = true
+               
+            } else if offsetPoint.x > frame.minX && offsetPoint.y < frame.maxY {
+                let diffX = offsetPoint.x - frame.minX
+                let diffY = frame.maxY - offsetPoint.y
+                self.frame = NSRect(origin: self.frame.origin.offsetBy(x: diffX, y: 0), size: NSSize(width: frame.width - diffX, height: frame.height - diffY))
+                needsDisplay = true
+            }
+        }
+    }
+    
     override func mouseUp(with event: NSEvent) {
-        if let direction = self.resizeDirection {
+        if let _ = self.resizeDirection {
             self.resizeDirection = nil
-//            todo resize the frame, change the cursor back to normal
+            needsDisplay = true
         } else {
             super.mouseUp(with: event)
         }
