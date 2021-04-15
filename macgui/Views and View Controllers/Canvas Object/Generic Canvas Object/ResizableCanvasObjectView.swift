@@ -267,6 +267,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
                 self.frame = NSRect(origin: self.frame.origin.insetBy(x: diffX, y: diffY), size: NSSize(width: frame.width + diffX, height: frame.height + diffY))
                
             } else if offsetPoint.x > frame.minX && offsetPoint.y > frame.minY {
+                guard frame.maxX - offsetPoint.x > 8 && frame.maxY - offsetPoint.y > 8 else { return }
                 let diffX = offsetPoint.x - frame.minX
                 let diffY = offsetPoint.y - frame.minY
                 self.frame = NSRect(origin: self.frame.origin.offsetBy(x: diffX, y: diffY), size: NSSize(width: frame.width - diffX, height: frame.height - diffY))
@@ -279,6 +280,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
                 self.frame = NSRect(origin: self.frame.origin.insetBy(x: 0, y: diffY), size: NSSize(width: frame.width + diffX, height: frame.height + diffY))
                 
             } else if offsetPoint.x < frame.maxX && offsetPoint.y > frame.minY {
+                guard offsetPoint.x - frame.minX > 8 && frame.maxY - offsetPoint.y > 8 else { return }
                 let diffX = frame.maxX - offsetPoint.x
                 let diffY = offsetPoint.y - frame.minY
                 self.frame = NSRect(origin: self.frame.origin.offsetBy(x: 0, y: diffY), size: NSSize(width: frame.width - diffX, height: frame.height - diffY))
@@ -291,6 +293,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
                 self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: frame.width + diffX, height: frame.height + diffY))
                
             } else if offsetPoint.x < frame.maxX && offsetPoint.y < frame.maxY {
+                guard offsetPoint.x - frame.minX > 8 && offsetPoint.y - frame.minY > 8 else { return }
                 let diffX = frame.maxX - offsetPoint.x
                 let diffY = frame.maxY - offsetPoint.y
                 self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: frame.width - diffX, height: frame.height - diffY))
@@ -303,6 +306,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
                 self.frame = NSRect(origin: self.frame.origin.insetBy(x: diffX, y: 0), size: NSSize(width: frame.width + diffX, height: frame.height + diffY))
                
             } else if offsetPoint.x > frame.minX && offsetPoint.y < frame.maxY {
+                guard  frame.maxX - offsetPoint.x > 8 && offsetPoint.y - frame.minY > 8 else  { return }
                 let diffX = offsetPoint.x - frame.minX
                 let diffY = frame.maxY - offsetPoint.y
                 self.frame = NSRect(origin: self.frame.origin.offsetBy(x: diffX, y: 0), size: NSSize(width: frame.width - diffX, height: frame.height - diffY))
@@ -314,6 +318,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
                 self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: frame.width, height: frame.height + diffY))
                
             } else if  offsetPoint.y < frame.maxY {
+                guard offsetPoint.y - frame.minY  > 8 else { return }
                 let diffY = frame.maxY - offsetPoint.y
                 self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: frame.width, height: frame.height - diffY))
             }
@@ -324,6 +329,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
                 self.frame = NSRect(origin: self.frame.origin.insetBy(x: 0, y: diffY), size: NSSize(width: frame.width, height: frame.height + diffY))
                
             } else if  offsetPoint.y > frame.minY {
+                guard  frame.maxY - offsetPoint.y > 8 else { return }
                 let diffY = offsetPoint.y - frame.minY
                 self.frame = NSRect(origin: self.frame.origin.offsetBy(x: 0, y: diffY), size: NSSize(width: frame.width, height: frame.height - diffY))
             }
@@ -335,6 +341,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
 
                
             } else if  offsetPoint.x > frame.minX {
+                guard frame.maxX - offsetPoint.x > 8 else { return }
                 let diffX = offsetPoint.x - frame.minX
                 self.frame = NSRect(origin: self.frame.origin.offsetBy(x: diffX, y: 0), size: NSSize(width: frame.width - diffX, height: frame.height))
             }
@@ -345,6 +352,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
                 self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: frame.width + diffX, height: frame.height))
                
             } else if  offsetPoint.x < frame.maxX {
+                guard offsetPoint.x - frame.minX > 8 else { return }
                 let diffX = frame.maxX - offsetPoint.x
                 self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: frame.width - diffX, height: frame.height))
             }
