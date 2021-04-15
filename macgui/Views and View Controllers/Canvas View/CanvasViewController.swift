@@ -17,6 +17,9 @@ class CanvasViewController: GenericCanvasViewController {
         }
     }
     
+    var bottomMostNode: CanvasToolViewController?
+    var topMostLoop: CanvasLoopViewController?
+    
 // MARK: - Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -185,6 +188,9 @@ class CanvasViewController: GenericCanvasViewController {
         guard let canvasToolViewController = NSStoryboard.loadVC(.canvasTool) as? CanvasToolViewController else {return}
         canvasToolViewController.tool = tool
         addChild(canvasToolViewController)
+        if bottomMostNode == nil {
+            bottomMostNode = canvasToolViewController
+        }
         canvasView.addSubview(canvasToolViewController.view)
     }
     
@@ -192,7 +198,13 @@ class CanvasViewController: GenericCanvasViewController {
         let canvasLoopViewController = CanvasLoopViewController()
         canvasLoopViewController.tool = loop
         addChild(canvasLoopViewController)
-        canvasView.addSubview(canvasLoopViewController.view)
+        if let bottomMostNode = self.bottomMostNode {
+//            canvasView.addSubview(canvasLoopViewController.view)
+            canvasView.addSubview(canvasLoopViewController.view, positioned: .below, relativeTo: bottomMostNode.view)
+        } else {
+            canvasView.addSubview(canvasLoopViewController.view)
+        }
+        topMostLoop = canvasLoopViewController
     }
     
     func addCanvasTool(center: NSPoint, name: String){
@@ -225,12 +237,20 @@ class CanvasViewController: GenericCanvasViewController {
     }
     
     func removeToolFromAnalysis(toolViewController: CanvasToolViewController){
+       
+        if bottomMostNode == toolViewController {
+            if let toolVC = self.children.filter({ $0.isKind(of: CanvasToolViewController.self)}).first as? CanvasToolViewController {
+                bottomMostNode = toolVC
+            } else { bottomMostNode = nil }
+        }
+        
         if let analysis = analysis, let index = analysis.tools.firstIndex(of: toolViewController.tool!) {
             let arrowViewControllers = findArrowControllersByTool(tool: toolViewController.tool!)
             for arrowViewController in arrowViewControllers {
                 removeCanvasObjectView(canvasObjectViewController: arrowViewController)
             }
             analysis.tools.remove(at: index)
+            
         }
     }
     

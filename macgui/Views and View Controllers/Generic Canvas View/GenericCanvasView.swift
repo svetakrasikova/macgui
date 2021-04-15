@@ -32,6 +32,7 @@ class GenericCanvasView: NSView {
         return preferencesManager.canvasLoopDimension
     }
     
+    
     weak var delegate: GenericCanvasViewController? = nil
     
 //    let backgroundLayer = CALayer()

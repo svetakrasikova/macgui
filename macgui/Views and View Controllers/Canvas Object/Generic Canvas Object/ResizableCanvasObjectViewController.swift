@@ -10,5 +10,8 @@ import Cocoa
 
 class ResizableCanvasObjectViewController: CanvasObjectViewController {
 
-  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.unregisterDraggedTypes()
+    }
 }
