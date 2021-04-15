@@ -125,20 +125,22 @@ class CanvasViewController: GenericCanvasViewController {
             
             let result = alert.runModal()
             switch result {
-                case NSApplication.ModalResponse.alertFirstButtonReturn:
-                    for childController in children {
-                        if childController .isKind(of: CanvasToolViewController.self) &&
-                            (childController as! CanvasObjectViewController).viewSelected == true {
-                            removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
-                        }
+            case NSApplication.ModalResponse.alertFirstButtonReturn:
+                for childController in children {
+                    if childController .isKind(of: CanvasToolViewController.self) &&
+                        (childController as! CanvasObjectViewController).viewSelected == true {
+                        removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
                     }
-                    for childController in children {
-                        if childController .isKind(of: ArrowViewController.self) &&
-                            (childController as! CanvasObjectViewController).viewSelected == true {
-                            removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
-                        }
                 }
-                default: break
+                for childController in children {
+                    if childController .isKind(of: ArrowViewController.self) &&
+                        (childController as! CanvasObjectViewController).viewSelected == true {
+                        removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
+                    }
+                    
+                }
+
+            default: break
             }
         }
         else {
@@ -147,6 +149,13 @@ class CanvasViewController: GenericCanvasViewController {
                     (childController as! CanvasObjectViewController).viewSelected == true {
                     removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
                 }
+            }
+            for childController in children {
+                if childController .isKind(of: CanvasLoopViewController.self) &&
+                    (childController as! CanvasObjectViewController).viewSelected == true {
+                    removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
+                }
+                
             }
         }
             reset()
@@ -191,7 +200,11 @@ class CanvasViewController: GenericCanvasViewController {
         if bottomMostNode == nil {
             bottomMostNode = canvasToolViewController
         }
-        canvasView.addSubview(canvasToolViewController.view)
+        if let topMostLoop = topMostLoop {
+            canvasView.addSubview(canvasToolViewController.view, positioned: .above, relativeTo: topMostLoop.view)
+        } else {
+            canvasView.addSubview(canvasToolViewController.view)
+        }
     }
     
     func addLoopView(loop: Loop) {
@@ -199,7 +212,6 @@ class CanvasViewController: GenericCanvasViewController {
         canvasLoopViewController.tool = loop
         addChild(canvasLoopViewController)
         if let bottomMostNode = self.bottomMostNode {
-//            canvasView.addSubview(canvasLoopViewController.view)
             canvasView.addSubview(canvasLoopViewController.view, positioned: .below, relativeTo: bottomMostNode.view)
         } else {
             canvasView.addSubview(canvasLoopViewController.view)
@@ -261,12 +273,28 @@ class CanvasViewController: GenericCanvasViewController {
         }
     }
     
+    func removeLoopFromAnalysis(loopViewController: CanvasLoopViewController) {
+        if topMostLoop == loopViewController {
+            if let loopVC = self.children.filter({ $0.isKind(of: CanvasLoopViewController.self)}).first as? CanvasLoopViewController {
+                topMostLoop = loopVC
+            } else {  topMostLoop = nil }
+        }
+        if let analysis = analysis, let index = analysis.tools.firstIndex(of: loopViewController.tool!) {
+            analysis.tools.remove(at: index)
+        }
+    }
+    
     func removeCanvasObjectView(canvasObjectViewController: CanvasObjectViewController) {
         if canvasObjectViewController.isKind(of: ArrowViewController.self){
             removeConnectionFromAnalysis(arrowViewController: canvasObjectViewController as! ArrowViewController)
-        } else {
+        }
+        else {
             if canvasObjectViewController.isKind(of: CanvasToolViewController.self){
                 removeToolFromAnalysis(toolViewController: canvasObjectViewController as! CanvasToolViewController)
+            } else {
+                if canvasObjectViewController.isKind(of: CanvasLoopViewController.self) {
+                    removeLoopFromAnalysis(loopViewController: canvasObjectViewController as! CanvasLoopViewController)
+                }
             }
         }
         canvasObjectViewController.view.removeFromSuperview()
