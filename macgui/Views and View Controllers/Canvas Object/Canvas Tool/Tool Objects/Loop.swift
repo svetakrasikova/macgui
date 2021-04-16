@@ -16,7 +16,7 @@ class Loop: ToolObject {
   
     var outerLoop: Loop?
     var embeddedLoops: [Loop] = []
-    var index: String?
+    var index: String = "i"
     var upperRange: Int = 1
     
     

@@ -28,12 +28,12 @@ class CanvasLoopView: ResizableCanvasObjectView {
         guard let backgroundColor = backgroundColor else { return }
         
         if isSelected {
-            drawBorderAndAnchors(fillcolor: backgroundColor.withAlphaComponent(0.2), strokeColor: NSColor.darkGray, anchors: true)
+            drawLayerContents(fillcolor: backgroundColor.withAlphaComponent(0.2), strokeColor: NSColor.darkGray, anchors: true)
             layer?.shadowOpacity = Float(preferencesManager.canvasToolSelectionShadowOpacity!)
             layer?.shadowRadius = preferencesManager.canvasToolSelectionShadowRadius!
 
         } else {
-            drawBorderAndAnchors(fillcolor: backgroundColor.withAlphaComponent(0.2), strokeColor: NSColor.systemGray, anchors: false)
+            drawLayerContents(fillcolor: backgroundColor.withAlphaComponent(0.2), strokeColor: NSColor.systemGray, anchors: false)
             layer?.shadowOpacity = Float(preferencesManager.canvasToolDefaultShadowOpacity!)
             layer?.shadowRadius = preferencesManager.canvasToolDefaultShadowRadius!
         }

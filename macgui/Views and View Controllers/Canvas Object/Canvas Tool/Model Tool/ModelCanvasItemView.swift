@@ -112,9 +112,9 @@ extension ModelCanvasItemView {
             textLayer.contentsScale = backingScaleFactor
         }
 
-        textLayer.zPosition = 0
+
         textLayer.frame = NSRect(x: bounds.minX, y: bounds.center().y-8, width: bounds.size.width, height: bounds.size.height/2+8)
-        textLayer.font = "Hoefler Text" as CFTypeRef
+        textLayer.font = NSFont(name: "Hoefler Text", size: 18)
         textLayer.backgroundColor = NSColor.clear.cgColor
         textLayer.foregroundColor = labelColor.cgColor
         textLayer.fontSize = 18

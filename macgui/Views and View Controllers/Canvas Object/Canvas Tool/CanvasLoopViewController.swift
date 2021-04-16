@@ -24,7 +24,7 @@ class CanvasLoopViewController: ResizableCanvasObjectViewController, ActionButto
         guard let view = view as? CanvasLoopView else { return }
         view.wantsLayer = true
         if let backgroundColor = view.backgroundColor {
-            view.drawBorderAndAnchors(fillcolor: backgroundColor.withAlphaComponent(0.2), strokeColor: NSColor.systemGray, dash: false, anchors: false)
+            view.drawLayerContents(fillcolor: backgroundColor.withAlphaComponent(0.2), strokeColor: NSColor.systemGray, dash: false, anchors: false)
         }
     }
     

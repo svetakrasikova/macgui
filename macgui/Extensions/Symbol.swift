@@ -21,4 +21,5 @@ enum Symbol: String {
     case lambda = "\u{039B}"
     case alpha = "\u{03B1}"
     case beta = "\u{03D0}"
+    case element = "\u{2208}"
 }

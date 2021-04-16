@@ -307,4 +307,46 @@ extension NSTabViewController {
    
 }
 
+extension NSFont {
+
+    func withTraits(_ traits: NSFontDescriptor.SymbolicTraits) -> NSFont {
+        let fd = fontDescriptor.withSymbolicTraits(traits)
+        guard let fontWithTraits = NSFont(descriptor: fd, size: pointSize) else {
+            return self
+        }
+        return fontWithTraits
+    }
+
+    func italics() -> NSFont {
+        return withTraits(.italic)
+    }
+
+    func bold() -> NSFont {
+        return withTraits(.bold)
+    }
+
+    func boldItalics() -> NSFont {
+        return withTraits([ .bold, .italic ])
+    }
+}
+
+extension CATextLayer {
+    
+    func setAttributedTextWithSubscripts(text: String, indicesOfSubscripts: [Int]) {
+        guard let font = self.font else { return }
+        let subscriptFont = NSFont(descriptor: font.fontDescriptor, size: font.pointSize * 0.7)
+        let subscriptOffset = -font.pointSize * 0.3
+        let attributedString = NSMutableAttributedString(string: text,
+                                                         attributes: [.font : font])
+        for index in indicesOfSubscripts {
+            let range = NSRange(location: index, length: 1)
+            attributedString.setAttributes([.font: subscriptFont as Any,
+                                            .baselineOffset: subscriptOffset],
+                                           range: range)
+        }
+        self.string = attributedString
+    }
+
+}
+
 
