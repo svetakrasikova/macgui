@@ -8,13 +8,30 @@
 
 import Cocoa
 
-class ResizableCanvasObjectViewController: CanvasObjectViewController {
+class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionButtonDelegate {
+    
+    var actionButton: ActionButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let view = self.view as? ResizableCanvasObjectView else { return }
         view.unregisterDraggedTypes()
-        setLabel()
+        view.wantsLayer = true
+        if let backgroundColor = view.backgroundColor {
+            view.drawLayerContents(fillcolor: backgroundColor, strokeColor: NSColor.systemGray, dash: false, anchors: false)
+        }
+        setUp()
     }
+    
+    func setUp() {
+        setBackgroundColor()
+        setLabel()
+        addActionButton()
+    }
+    
+    func  setBackgroundColor() {
+    }
+    
     
     func setLabel() {
         if let loop = self.tool as? Loop, let view = view as? ResizableCanvasObjectView {
@@ -41,5 +58,82 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController {
             view.labelFrame?.origin = origin
         }
     }
+    
+    func addActionButton(){
+        guard let view = self.view as? ResizableCanvasObjectView else { return }
+        guard let fillColor = view.backgroundColor else { return }
+        let infoButton = ActionButton()
+        let buttonWidth: CGFloat = 8.0
+        let buttonHeight: CGFloat = 8.0
+        
+        if fillColor.isLight() ?? true { infoButton.labelColor = NSColor.black }
+        infoButton.frame = CGRect(origin: .zero, size: CGSize(width: buttonWidth, height: buttonHeight))
+        infoButton.tag = 0
+        infoButton.isTransparent = true
+        infoButton.setButtonType(.momentaryPushIn)
+        self.view.addSubview(infoButton)
+        infoButton.delegate = self
+        actionButton = infoButton
+        setActionButtonOrigin()
+        actionButton?.needsLayout = true
+    }
+    
+    func updateActionButton() {
+        guard let view = self.view as? ResizableCanvasObjectView else { return }
+        guard let fillColor = view.backgroundColor else { return }
+        if let button = self.actionButton {
+            if fillColor.isLight() ?? true {
+                button.labelColor = NSColor.black
+            } else {
+                button.labelColor = NSColor.white
+            }
+            setActionButtonOrigin()
+            view.addSubview(button)
+            button.needsLayout = true
+        }
+    }
+    
+    func setActionButtonOrigin() {
+        guard let button = self.actionButton else { return }
+        guard let view = self.view as? ResizableCanvasObjectView else { return }
+        let width = button.frame.width
+        let height = button.frame.height
+        button.frame.origin = CGPoint(x: view.insetFrame.maxX - width - 2.0, y: view.insetFrame.maxY - height - 2.0)
+    }
+    
+    func addActionButtonView() {
+        guard let view = self.view as? ResizableCanvasObjectView else { return }
+        guard let fillColor = view.backgroundColor else { return }
+        if let button = self.actionButton {
+            if fillColor.isLight() ?? true {
+                button.labelColor = NSColor.black
+            } else {
+                button.labelColor = NSColor.white
+            }
+            view.addSubview(button)
+            button.needsLayout = true
+        }
+    }
+    
+    override func mouseEntered(with event: NSEvent) {
+        guard let view = self.view as? ResizableCanvasObjectView else { return }
+        if !view.isMouseDown {
+            actionButton?.mouseEntered(with: event)
+        }
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        guard let view = self.view as? ResizableCanvasObjectView else { return }
+        if !view.isMouseDown {
+            actionButton?.mouseExited(with: event)
+        }
+       
+    }
+    
+    
+    func actionButtonClicked(_ button: ActionButton) {
+        
+    }
+    
     
 }

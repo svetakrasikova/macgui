@@ -8,27 +8,24 @@
 
 import Cocoa
 
-class CanvasLoopViewController: ResizableCanvasObjectViewController, ActionButtonDelegate {
+class CanvasLoopViewController: ResizableCanvasObjectViewController {
    
   
-    
-    
     override func loadView() {
         if let loop = self.tool as? Loop {
             view = CanvasLoopView(frame: loop.frameOnCanvas)
         }
+        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func  setBackgroundColor() {
         guard let view = view as? CanvasLoopView else { return }
-        view.wantsLayer = true
-        if let backgroundColor = view.backgroundColor {
-            view.drawLayerContents(fillcolor: backgroundColor.withAlphaComponent(0.2), strokeColor: NSColor.systemGray, dash: false, anchors: false)
-        }
+        let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
+        view.backgroundColor = preferencesManager.canvasLoopBackgroundColor?.withAlphaComponent(0.2)
+        
     }
     
-    func actionButtonClicked(_ button: ActionButton) {
+    override func actionButtonClicked(_ button: ActionButton) {
         
     }
 

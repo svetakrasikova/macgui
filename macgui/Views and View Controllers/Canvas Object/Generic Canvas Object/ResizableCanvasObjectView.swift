@@ -9,7 +9,11 @@
 import Cocoa
 
 class ResizableCanvasObjectView: MovingCanvasObjectView {
-
+    
+    let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
+    
+    var backgroundColor: NSColor?
+    
     var labelFrame: NSRect?
     
     var labelFontSize: CGFloat = 8.0
@@ -43,7 +47,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     var topRightCorner: NSPoint {
         return NSPoint(x: insetFrame.maxX, y: insetFrame.maxY)
     }
-
+    
     var topCenter: NSPoint {
         return NSPoint(x: insetFrame.minX + frame.width/2, y: insetFrame.maxY)
     }
@@ -61,17 +65,17 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     }
     
     var bottomLeftAnchor: CGPath {
-       anchorPath(startPoint: bottomLeftCorner)
+        anchorPath(startPoint: bottomLeftCorner)
     }
     
     var bottomRightAnchor: CGPath {
         anchorPath(startPoint: bottomRightCorner)
     }
-   
+    
     var topLeftAnchor: CGPath {
         anchorPath(startPoint: topLeftCorner)
     }
-   
+    
     var topRightAnchor: CGPath {
         anchorPath(startPoint: topRightCorner)
     }
@@ -124,7 +128,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
                  l : anchorRect(startPoint: leftCenter),
                  r : anchorRect(startPoint: rightCenter)
         ]
-                           
+        
     }
     
     func anchorPath(startPoint: NSPoint) -> CGMutablePath {
@@ -136,10 +140,35 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
         return NSRect(x: origin.x, y: origin.y, width: 4.0, height: 4.0)
     }
     
+    
+    override func updateLayer() {
+        super.updateLayer()
+        guard let delegate = delegate as? ResizableCanvasObjectViewController else { return }
+        delegate.setLabelFrameOrigin(self)
+        
+        clearSublayers()
+        
+        guard let backgroundColor = backgroundColor else { return }
+        
+        if isSelected {
+            drawLayerContents(fillcolor: backgroundColor, strokeColor: NSColor.darkGray, anchors: true)
+            layer?.shadowOpacity = Float(preferencesManager.canvasToolSelectionShadowOpacity!)
+            layer?.shadowRadius = preferencesManager.canvasToolSelectionShadowRadius!
+            
+        } else {
+            drawLayerContents(fillcolor: backgroundColor, strokeColor: NSColor.systemGray, anchors: false)
+            layer?.shadowOpacity = Float(preferencesManager.canvasToolDefaultShadowOpacity!)
+            layer?.shadowRadius = preferencesManager.canvasToolDefaultShadowRadius!
+        }
+        delegate.updateActionButton()
+    }
+    
+    
     func drawLayerContents(fillcolor: NSColor, strokeColor: NSColor, dash: Bool = false, anchors: Bool) {
         drawBorder(fillcolor: fillcolor, strokeColor: strokeColor, dash: dash)
         if anchors { drawAnchors() }
         drawLabel()
+        
     }
     
     func drawBorder(fillcolor: NSColor, strokeColor: NSColor, dash: Bool = false) {
@@ -204,7 +233,6 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
         }
     }
     
-    
     //   MARK: - Mouse and Key Events
     
     func isMouseOnAnchor(point: NSPoint) -> resizeDirection? {
@@ -242,7 +270,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     
     func directionCursor(direction: resizeDirection)  -> NSCursor {
         guard let directionNWSE = NSImage(named: "ResizeNorthWestSouthEast") else { return NSCursor.arrow }
-       
+        
         guard let directionNESW = NSImage(named: "ResizeNorthEastSouthWest") else { return NSCursor.arrow }
         
         guard let directionUD = NSImage(named: "ResizeUpDown") else { return NSCursor.arrow }
@@ -269,7 +297,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
         }
     }
     
-  
+    
     
     override func mouseDragged(with event: NSEvent) {
         isMouseDragged = true
@@ -294,13 +322,6 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
         }
     }
     
-    override func updateLayer() {
-        super.updateLayer()
-        if let delegate = self.delegate as? ResizableCanvasObjectViewController {
-            delegate.setLabelFrameOrigin(self)
-        }
-    }
-    
     
 }
 
@@ -317,7 +338,7 @@ extension ResizableCanvasObjectView {
                 let diffX = frame.minX - offsetPoint.x
                 let diffY = frame.minY - offsetPoint.y
                 self.frame = NSRect(origin: self.frame.origin.insetBy(x: diffX, y: diffY), size: NSSize(width: frame.width + diffX, height: frame.height + diffY))
-               
+                
             } else if offsetPoint.x > frame.minX && offsetPoint.y > frame.minY {
                 guard frame.maxX - offsetPoint.x > minWidth && frame.maxY - offsetPoint.y > minHeight else { return }
                 let diffX = offsetPoint.x - frame.minX
@@ -343,7 +364,7 @@ extension ResizableCanvasObjectView {
                 let diffX = offsetPoint.x - frame.maxX
                 let diffY = offsetPoint.y - frame.maxY
                 self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: frame.width + diffX, height: frame.height + diffY))
-               
+                
             } else if offsetPoint.x < frame.maxX && offsetPoint.y < frame.maxY {
                 guard offsetPoint.x - frame.minX > minWidth && offsetPoint.y - frame.minY > minHeight else { return }
                 let diffX = frame.maxX - offsetPoint.x
@@ -356,7 +377,7 @@ extension ResizableCanvasObjectView {
                 let diffX = frame.minX - offsetPoint.x
                 let diffY = offsetPoint.y - frame.maxY
                 self.frame = NSRect(origin: self.frame.origin.insetBy(x: diffX, y: 0), size: NSSize(width: frame.width + diffX, height: frame.height + diffY))
-               
+                
             } else if offsetPoint.x > frame.minX && offsetPoint.y < frame.maxY {
                 guard  frame.maxX - offsetPoint.x > minWidth && offsetPoint.y - frame.minY > minHeight else  { return }
                 let diffX = offsetPoint.x - frame.minX
@@ -368,7 +389,7 @@ extension ResizableCanvasObjectView {
             if offsetPoint.y > frame.maxY {
                 let diffY = offsetPoint.y - frame.maxY
                 self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: frame.width, height: frame.height + diffY))
-               
+                
             } else if  offsetPoint.y < frame.maxY {
                 guard offsetPoint.y - frame.minY  > minHeight else { return }
                 let diffY = frame.maxY - offsetPoint.y
@@ -379,7 +400,7 @@ extension ResizableCanvasObjectView {
             if offsetPoint.y < frame.minY {
                 let diffY = frame.minY - offsetPoint.y
                 self.frame = NSRect(origin: self.frame.origin.insetBy(x: 0, y: diffY), size: NSSize(width: frame.width, height: frame.height + diffY))
-               
+                
             } else if  offsetPoint.y > frame.minY {
                 guard  frame.maxY - offsetPoint.y > minHeight else { return }
                 let diffY = offsetPoint.y - frame.minY
@@ -390,8 +411,8 @@ extension ResizableCanvasObjectView {
             if offsetPoint.x < frame.minX {
                 let diffX = frame.minX - offsetPoint.x
                 self.frame = NSRect(origin: self.frame.origin.insetBy(x: diffX, y: 0), size: NSSize(width: frame.width + diffX, height: frame.height))
-
-               
+                
+                
             } else if  offsetPoint.x > frame.minX {
                 guard frame.maxX - offsetPoint.x > minWidth else { return }
                 let diffX = offsetPoint.x - frame.minX
@@ -402,13 +423,13 @@ extension ResizableCanvasObjectView {
             if offsetPoint.x > frame.maxX {
                 let diffX = offsetPoint.x - frame.maxX
                 self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: frame.width + diffX, height: frame.height))
-               
+                
             } else if  offsetPoint.x < frame.maxX {
                 guard offsetPoint.x - frame.minX > minWidth else { return }
                 let diffX = frame.maxX - offsetPoint.x
                 self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: frame.width - diffX, height: frame.height))
             }
-        
+            
         }
         needsDisplay = true
         

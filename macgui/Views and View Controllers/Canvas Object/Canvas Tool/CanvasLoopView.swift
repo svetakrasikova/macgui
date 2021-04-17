@@ -9,36 +9,6 @@
 import Cocoa
 
 class CanvasLoopView: ResizableCanvasObjectView {
-
-    var backgroundColor: NSColor? {
-        let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
-        return preferencesManager.canvasLoopBackgroundColor
-        
-    }
-    
-    let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
- 
-//    MARK: - Layer Drawing
-    
-    override func updateLayer() {
-        super.updateLayer()
-       
-        clearSublayers()
-       
-        guard let backgroundColor = backgroundColor else { return }
-        
-        if isSelected {
-            drawLayerContents(fillcolor: backgroundColor.withAlphaComponent(0.2), strokeColor: NSColor.darkGray, anchors: true)
-            layer?.shadowOpacity = Float(preferencesManager.canvasToolSelectionShadowOpacity!)
-            layer?.shadowRadius = preferencesManager.canvasToolSelectionShadowRadius!
-
-        } else {
-            drawLayerContents(fillcolor: backgroundColor.withAlphaComponent(0.2), strokeColor: NSColor.systemGray, anchors: false)
-            layer?.shadowOpacity = Float(preferencesManager.canvasToolDefaultShadowOpacity!)
-            layer?.shadowRadius = preferencesManager.canvasToolDefaultShadowRadius!
-        }
-    }
-    
     
    
     

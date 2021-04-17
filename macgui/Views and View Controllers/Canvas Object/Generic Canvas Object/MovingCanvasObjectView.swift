@@ -48,8 +48,8 @@ class MovingCanvasObjectView: CanvasObjectView {
       
       override func mouseUp(with event: NSEvent) {
         isMouseDragged = false
-        window?.invalidateCursorRects(for: self)
         isMouseDown = false
+        window?.invalidateCursorRects(for: self)
         delegate?.updateFrame()
       }
       
