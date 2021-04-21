@@ -10,6 +10,17 @@ import Cocoa
 
 class CanvasLoopViewController: ResizableCanvasObjectViewController {
    
+    
+    lazy var loopController: LoopController = {
+        let loopController = NSStoryboard.loadVC(StoryBoardName.loopController) as! LoopController
+        if let loop = self.tool as? Loop {
+            loopController.loop = loop
+        }
+        if let canvasVC = self.parent as? CanvasViewController {
+            loopController.delegate = canvasVC
+        }
+        return loopController
+    }()
   
     override func loadView() {
         if let loop = self.tool as? Loop {
@@ -17,7 +28,6 @@ class CanvasLoopViewController: ResizableCanvasObjectViewController {
         }
         
     }
-    
     override func  setBackgroundColor() {
         guard let view = view as? CanvasLoopView else { return }
         let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
@@ -26,7 +36,7 @@ class CanvasLoopViewController: ResizableCanvasObjectViewController {
     }
     
     override func actionButtonClicked(_ button: ActionButton) {
-        
+        self.presentAsModalWindow(loopController)
     }
 
     

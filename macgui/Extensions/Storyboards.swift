@@ -28,6 +28,7 @@ enum StoryBoardName: String {
     case treesetTool = "TreeSetTool"
     case treeInspector = "TreeInspector"
     case paup = "PaupOverview"
+    case loopController = "LoopController"
 
 }
 

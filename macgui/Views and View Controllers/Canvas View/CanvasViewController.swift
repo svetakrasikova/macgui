@@ -313,6 +313,7 @@ class CanvasViewController: GenericCanvasViewController {
     
 }
 
+
 // MARK: - CanvasViewDelegate
 extension CanvasViewController: CanvasViewDelegate {
     
@@ -325,6 +326,7 @@ extension CanvasViewController: CanvasViewDelegate {
     }
     
 }
+
 
 
 
