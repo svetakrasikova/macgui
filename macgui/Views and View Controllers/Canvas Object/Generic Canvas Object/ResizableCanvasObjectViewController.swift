@@ -29,9 +29,11 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
         addActionButton()
     }
     
-    func  setBackgroundColor() {
-    }
+   
     
+//    MARK: -- Background and Label
+    
+    func  setBackgroundColor() {}
     
     func setLabel() {
         if let loop = self.tool as? Loop, let view = view as? ResizableCanvasObjectView {
@@ -59,13 +61,14 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
         }
     }
     
+//    MARK: -- Action Button
+    
     func addActionButton(){
         guard let view = self.view as? ResizableCanvasObjectView else { return }
         guard let fillColor = view.backgroundColor else { return }
         let infoButton = ActionButton()
         let buttonWidth: CGFloat = 8.0
         let buttonHeight: CGFloat = 8.0
-        
         if fillColor.isLight() ?? true { infoButton.labelColor = NSColor.black }
         infoButton.frame = CGRect(origin: .zero, size: CGSize(width: buttonWidth, height: buttonHeight))
         infoButton.tag = 0
@@ -115,6 +118,12 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
         }
     }
     
+    func actionButtonClicked(_ button: ActionButton) {
+        
+    }
+    
+    // MARK: -- Key Events
+    
     override func mouseEntered(with event: NSEvent) {
         guard let view = self.view as? ResizableCanvasObjectView else { return }
         if !view.isMouseDown {
@@ -131,9 +140,21 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
     }
     
     
-    func actionButtonClicked(_ button: ActionButton) {
-        
+//    MARK: -- Inclusion
+    
+    override func checkForLoopInclusion(){
+        guard let loop = self.tool as? Loop else { return }
+        guard let canvasVC = self.parent as? GenericCanvasViewController else { return }
+        let loopViewControllers = canvasVC.children.filter {$0.isKind(of: ResizableCanvasObjectViewController.self) && $0 !== self} as! [ResizableCanvasObjectViewController]
+        if let smallestOuterLoop = findSmallestOuterLoopFrom(loopViewControllers) {
+            loop.updateOuterLoop(smallestOuterLoop.tool as! Loop)
+            print(self, "outerloop found: ", smallestOuterLoop)
+        }
+        for node in loop.embeddedNodes {
+            if let toolVC = canvasVC.findVCByTool(node) {
+                toolVC.checkForLoopInclusion()
+            }
+        }
     }
-    
-    
+
 }

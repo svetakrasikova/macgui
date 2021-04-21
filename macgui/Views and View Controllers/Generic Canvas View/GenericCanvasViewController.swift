@@ -189,6 +189,18 @@ extension GenericCanvasViewController: GenericCanvasViewDelegate {
         }
     }
     
+    func findVCByTool(_ tool: ToolObject) -> CanvasObjectViewController? {
+        for vc in self.children {
+            if let canvasObjectVC = vc as? CanvasObjectViewController{
+                let node = canvasObjectVC.tool
+                if node === tool {
+                    return canvasObjectVC
+                }
+            }
+        }
+        return nil
+    }
+    
     
 }
     

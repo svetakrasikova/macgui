@@ -205,6 +205,7 @@ class CanvasViewController: GenericCanvasViewController {
         } else {
             canvasView.addSubview(canvasToolViewController.view)
         }
+        canvasToolViewController.checkForLoopInclusion()
     }
     
     func addLoopView(loop: Loop) {
@@ -217,6 +218,7 @@ class CanvasViewController: GenericCanvasViewController {
             canvasView.addSubview(canvasLoopViewController.view)
         }
         topMostLoop = canvasLoopViewController
+        canvasLoopViewController.checkForLoopInclusion()
     }
     
     func addCanvasTool(center: NSPoint, name: String){

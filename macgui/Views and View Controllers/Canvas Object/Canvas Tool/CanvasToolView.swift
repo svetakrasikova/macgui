@@ -21,6 +21,11 @@ class CanvasToolView: MovingCanvasObjectView {
    let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
 
     
+    override func mouseUp(with event: NSEvent) {
+        if isMouseDragged { delegate?.checkForLoopInclusion() }
+        super.mouseUp(with: event)
+    }
+    
     public override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         return concreteDelegate?.getConnectorItemArrowView(sender)?.draggingEntered(sender) ??  sender.draggingSourceOperationMask
     }

@@ -4786,9 +4786,9 @@
 			children = (
 				14E5857B22A6F16300802691 /* CanvasObjectView.swift */,
 				1410C3BC240EE92A0044EB48 /* MovingCanvasObjectView.swift */,
+				14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */,
 				144031F1261FC2B3007D7BB7 /* ResizableCanvasObjectView.swift */,
 				144032022624DA78007D7BB7 /* ResizableCanvasObjectViewController.swift */,
-				14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */,
 			);
 			path = "Generic Canvas Object";
 			sourceTree = "<group>";

@@ -45,8 +45,29 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate {
         (self.view as! CanvasObjectView).delegate = self
          NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
     }
+//  MARK: -- Loop Inclusion
+    
+    func checkForLoopInclusion() {}
+    
+    func isIncludedInLoop(_ loopVC: ResizableCanvasObjectViewController) -> Bool {
+        return  loopVC.view.frame.intersection(self.view.frame) == self.view.frame
+    }
+    
+    func findSmallestOuterLoopFrom(_ list: [ResizableCanvasObjectViewController]) -> ResizableCanvasObjectViewController? {
+        let newList = list.filter {self.isIncludedInLoop($0)}
+        var smallest: ResizableCanvasObjectViewController?
+        for vc in newList {
+            if let current = smallest {
+                if vc.isIncludedInLoop(current) { smallest = vc }
+            } else { smallest = vc }
+        }
+        
+        return smallest
+    }
     
 }
+
+
 
 
 extension CanvasObjectViewController: CanvasObjectViewDelegate {

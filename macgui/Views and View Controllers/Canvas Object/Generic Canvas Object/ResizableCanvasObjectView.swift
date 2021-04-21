@@ -315,6 +315,9 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     
     
     override func mouseUp(with event: NSEvent) {
+        if isMouseDragged {
+            delegate?.checkForLoopInclusion()
+        }
         super.mouseUp(with: event)
         if let _ = self.resizeDirection {
             self.resizeDirection = nil
@@ -324,6 +327,8 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     
     
 }
+
+// MARK: Resize View on Drag
 
 extension ResizableCanvasObjectView {
     
