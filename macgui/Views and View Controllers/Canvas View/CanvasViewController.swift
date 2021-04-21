@@ -251,17 +251,23 @@ class CanvasViewController: GenericCanvasViewController {
     }
     
     func removeToolFromAnalysis(toolViewController: CanvasToolViewController){
-       
+        
+        guard let tool = toolViewController.tool as? Connectable else { return }
+        
         if bottomMostNode == toolViewController {
             if let toolVC = self.children.filter({ $0.isKind(of: CanvasToolViewController.self)}).first as? CanvasToolViewController {
                 bottomMostNode = toolVC
             } else { bottomMostNode = nil }
         }
         
-        if let analysis = analysis, let index = analysis.tools.firstIndex(of: toolViewController.tool!) {
+        if let analysis = analysis, let index = analysis.tools.firstIndex(of: tool) {
             let arrowViewControllers = findArrowControllersByTool(tool: toolViewController.tool!)
             for arrowViewController in arrowViewControllers {
                 removeCanvasObjectView(canvasObjectViewController: arrowViewController)
+            }
+            
+            if let outerLoopVC = toolViewController.outerLoopViewController, let loop = outerLoopVC.tool as? Loop {
+                loop.removeEmbeddedNode(tool)
             }
             analysis.tools.remove(at: index)
             
@@ -276,12 +282,14 @@ class CanvasViewController: GenericCanvasViewController {
     }
     
     func removeLoopFromAnalysis(loopViewController: CanvasLoopViewController) {
+        guard let loop = loopViewController.tool as? Loop else { return }
         if topMostLoop == loopViewController {
             if let loopVC = self.children.filter({ $0.isKind(of: CanvasLoopViewController.self)}).first as? CanvasLoopViewController {
                 topMostLoop = loopVC
             } else {  topMostLoop = nil }
         }
-        if let analysis = analysis, let index = analysis.tools.firstIndex(of: loopViewController.tool!) {
+        if let analysis = analysis, let index = analysis.tools.firstIndex(of: loop) {
+            loop.embeddedNodes.forEach { findVCByTool($0)?.checkForLoopInclusion()}
             analysis.tools.remove(at: index)
         }
     }
