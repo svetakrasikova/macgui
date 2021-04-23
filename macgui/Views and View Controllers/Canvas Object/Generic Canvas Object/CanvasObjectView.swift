@@ -29,7 +29,7 @@ class CanvasObjectView: NSView {
     
     var state: State = State.idle { didSet { needsLayout = true } }
     
-    
+   
     override init(frame: NSRect) {
         super.init(frame: frame)
         commonInit()

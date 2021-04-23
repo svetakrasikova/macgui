@@ -21,7 +21,7 @@ class Loop: ToolObject {
         }
     }
     var embeddedNodes: [Connectable] = []
-    var index: String
+    dynamic var index: String
     var upperRange: Int = 1
     
     

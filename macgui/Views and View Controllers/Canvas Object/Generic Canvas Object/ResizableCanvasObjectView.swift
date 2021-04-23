@@ -144,7 +144,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     override func updateLayer() {
         super.updateLayer()
         guard let delegate = delegate as? ResizableCanvasObjectViewController else { return }
-        delegate.setLabelFrameOrigin(self)
+        delegate.setLabel()
         
         clearSublayers()
         

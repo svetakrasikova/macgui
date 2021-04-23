@@ -9,7 +9,6 @@
 import Cocoa
 
 @objcMembers
-
 class LoopController: NSViewController {
     
     weak var loop: Loop?
@@ -19,6 +18,7 @@ class LoopController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Loop Controller"
         setUpIndexPopup()
     }
     
@@ -43,21 +43,17 @@ class LoopController: NSViewController {
         
     }
     
-    
     override func viewWillAppear() {
         super.viewWillAppear()
         let fittingSize =  self.view.fittingSize
         preferredContentSize =  NSSize(width: fittingSize.width, height: fittingSize.height)
         setDataForIndexpopup()
     }
-
     
     @IBAction func saveClicked(_ sender: NSButton) {
         NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
         dismiss(self)
     }
-    
-    
 }
 
 protocol LoopControllerDelegate: class {

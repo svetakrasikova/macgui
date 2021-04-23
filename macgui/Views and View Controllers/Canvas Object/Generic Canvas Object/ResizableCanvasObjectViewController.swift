@@ -12,15 +12,34 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
     
     var actionButton: ActionButton?
     
+    var resizableView: ResizableCanvasObjectView { return self.view as! ResizableCanvasObjectView}
+    
+    var loop: Loop { return self.tool as! Loop }
+    
+    private var observers = [NSKeyValueObservation]()
+    
+   func observeLabelChange(){
+        
+        if let loop = tool as? Loop {
+            
+            self.observers = [
+                loop.observe(\Loop.upperRange, options: [.initial]) {_,_  in
+                    self.view.self.needsDisplay = true },
+                loop.observe(\Loop.index, options: [.initial]) {_,_  in
+                    self.view.self.needsDisplay = true },
+            ]
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let view = self.view as? ResizableCanvasObjectView else { return }
         view.unregisterDraggedTypes()
         view.wantsLayer = true
-        if let backgroundColor = view.backgroundColor {
-            view.drawLayerContents(fillcolor: backgroundColor, strokeColor: NSColor.systemGray, dash: false, anchors: false)
+        if let backgroundColor = resizableView.backgroundColor {
+            resizableView.drawLayerContents(fillcolor: backgroundColor, strokeColor: NSColor.systemGray, dash: false, anchors: false)
         }
         setUp()
+        observeLabelChange()
     }
     
     func setUp() {
@@ -36,29 +55,26 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
     func  setBackgroundColor() {}
     
     func setLabel() {
-        if let loop = self.tool as? Loop, let view = view as? ResizableCanvasObjectView {
-            setLabelTextFor(view, loop: loop)
-            let attributes: [NSAttributedString.Key: Any] = [.font: NSFont(name: "Hoefler Text", size: view.labelFontSize) as Any]
-            let attributedString = NSAttributedString(string: view.labelText!, attributes: attributes)
-            view.labelFrame = attributedString.boundingRect(with: NSMakeSize(1e10, 1e10), options: [.usesLineFragmentOrigin], context: nil)
-            setLabelFrameOrigin(view)
-            
-        }
+        setLabelText()
+        setLabelFrameOrigin()
     }
     
-    func setLabelTextFor(_ view: ResizableCanvasObjectView, loop: Loop) {
+    func setLabelText() {
         let upperRange: String = loop.upperRange == 1 ?
             "\(loop.upperRange)" : "(1,...,\(loop.upperRange))"
-        view.labelText = "\(loop.index) \(Symbol.element.rawValue) \(upperRange)"
-
-        
+        resizableView.labelText = "\(loop.index) \(Symbol.element.rawValue) \(upperRange)"
     }
     
-    func setLabelFrameOrigin(_ view: ResizableCanvasObjectView) {
-        if let labelFrame = view.labelFrame {
-            let origin = NSPoint(x: view.insetFrame.maxX - labelFrame.width - 2.0, y: view.insetFrame.minY + 2.0 )
-            view.labelFrame?.origin = origin
-        }
+    
+    func setLabelFrameOrigin() {
+        guard let labelText = resizableView.labelText else { return }
+        let attributes: [NSAttributedString.Key: Any] = [.font: NSFont(name: "Hoefler Text", size: resizableView.labelFontSize) as Any]
+        let attributedString = NSAttributedString(string: labelText, attributes: attributes)
+        let frame = attributedString.boundingRect(with: NSMakeSize(1e10, 1e10), options: [.usesLineFragmentOrigin], context: nil)
+        let origin = NSPoint(x: resizableView.insetFrame.maxX - frame.width - 2.0, y: resizableView.insetFrame.minY + 2.0 )
+        resizableView.labelFrame = frame
+        resizableView.labelFrame?.origin = origin
+        
     }
     
 //    MARK: -- Action Button

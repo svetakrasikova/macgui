@@ -85,6 +85,9 @@ DQ
                                                                     </items>
                                                                 </menu>
                                                             </popUpButtonCell>
+                                                            <connections>
+                                                                <binding destination="K6x-tJ-NWH" name="selectedValue" keyPath="self.loop.index" id="MNk-Kz-43a"/>
+                                                            </connections>
                                                         </popUpButton>
                                                     </subviews>
                                                     <visibilityPriorities>
@@ -115,11 +118,7 @@ DQ
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <connections>
-                                                                <binding destination="K6x-tJ-NWH" name="value" keyPath="self.loop.upperRange" id="M5e-fF-KbN">
-                                                                    <dictionary key="options">
-                                                                        <bool key="NSValidatesImmediately" value="YES"/>
-                                                                    </dictionary>
-                                                                </binding>
+                                                                <binding destination="K6x-tJ-NWH" name="value" keyPath="self.loop.upperRange" id="x2s-MG-JyN"/>
                                                             </connections>
                                                         </textField>
                                                     </subviews>
@@ -170,7 +169,6 @@ DQ
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="boxContainer" destination="0tU-bi-a6H" id="rra-Ns-Ib2"/>
                         <outlet property="indexPopup" destination="QqU-M4-Z59" id="uEJ-kU-RBS"/>
                     </connections>
                 </viewController>
