@@ -21,11 +21,12 @@ class Loop: ToolObject {
         }
     }
     var embeddedNodes: [Connectable] = []
-    var index: String = "i"
+    var index: String
     var upperRange: Int = 1
     
     
-    override init(name: String, frameOnCanvas: NSRect, analysis: Analysis){
+    init(name: String, frameOnCanvas: NSRect, analysis: Analysis, index: String){
+        self.index = index
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
     }
     

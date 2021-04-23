@@ -19,18 +19,36 @@ class LoopController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpIndexPopUp()
+        setUpIndexPopup()
     }
     
     
-    func setUpIndexPopUp() {
+    func setUpIndexPopup() {
         indexPopup.removeAllItems()
-        indexPopup.addItems(withTitles: delegate?.activeLoopIndices() ?? [])
+        indexPopup.addItems(withTitles: delegate?.allIndices() ?? [])
+        setDataForIndexpopup()
     }
+    
+    func setDataForIndexpopup() {
+        guard let delegate = self.delegate else { return }
+        let all = delegate.allIndices()
+        let active = delegate.activeIndices()
+        if let index = loop?.index, let loopIndex = all.firstIndex(of: index) {
+            indexPopup.selectItem(at: loopIndex)
+            for title in active {
+                indexPopup.item(withTitle: title)?.isEnabled = title != index ? false : true
+            }
+        }
+        
+        
+    }
+    
+    
     override func viewWillAppear() {
         super.viewWillAppear()
         let fittingSize =  self.view.fittingSize
         preferredContentSize =  NSSize(width: fittingSize.width, height: fittingSize.height)
+        setDataForIndexpopup()
     }
 
     
@@ -43,5 +61,6 @@ class LoopController: NSViewController {
 }
 
 protocol LoopControllerDelegate: class {
-    func activeLoopIndices() -> [String]
+    func activeIndices() -> [String]
+    func allIndices() -> [String]
 }

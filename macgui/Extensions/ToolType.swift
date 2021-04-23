@@ -22,7 +22,7 @@ enum ToolType: String, CaseIterable {
 
 extension CanvasViewController {
     
-    func initToolObjectWithName(_ name: String, frame: NSRect, analysis: Analysis) -> ToolObject {
+    func initToolObjectWithName(_ name: String, frame: NSRect, analysis: Analysis, index: String?) -> ToolObject {
         let toolType = ToolType(rawValue: name)!
         switch toolType {
         case .bootstrap:
@@ -40,7 +40,7 @@ extension CanvasViewController {
         case .parsimony:
             return Parsimony(name: name, frameOnCanvas: frame, analysis: analysis)
         case .loop:
-            return Loop(name: name, frameOnCanvas: frame, analysis: analysis)
+            return Loop(name: name, frameOnCanvas: frame, analysis: analysis, index: index ?? "i")
         case .readnumbers:
             return ReadNumbers(name: name, frameOnCanvas: frame, analysis: analysis)
         }

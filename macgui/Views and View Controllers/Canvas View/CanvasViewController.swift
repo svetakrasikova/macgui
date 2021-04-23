@@ -9,6 +9,30 @@
 import Cocoa
 
 class CanvasViewController: GenericCanvasViewController {
+    
+    
+    let loopIndices: [String] = ["a","b","c","d","e", "f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    
+    var activeLoopIndices: [Int] {
+        var indexTable = [Int]()
+        var activeIndicesList = [String]()
+       
+        if let analysis = analysis {
+            for tool in analysis.tools {
+                if let loop = tool as? Loop {
+                    activeIndicesList.append(loop.index)
+                }
+            }
+            
+            for index in activeIndicesList {
+                if let i = loopIndices.firstIndex(of: index) {
+                    indexTable.append(i)
+                }
+            }
+        }
+        return indexTable
+    }
+    
 
     weak var analysis: Analysis? {
         
@@ -35,6 +59,21 @@ class CanvasViewController: GenericCanvasViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reset), name: .didUpdateAnalysis, object: nil)
     }
     
+////    MARK: -- Manage Loop Indices
+
+    func generateActiveIndex() -> String? {
+        var index: String?
+        for i in 0..<loopIndices.count {
+            if let _ = activeLoopIndices.firstIndex(of: i) {
+                continue
+            } else {
+                index = loopIndices[i]
+                break
+            }
+        }
+        return index
+    }
+
     
     //   MARK: - Connect Tools on Canvas
     
@@ -226,14 +265,15 @@ class CanvasViewController: GenericCanvasViewController {
         switch name {
         case ToolType.loop.rawValue:
             guard let loopDimension = self.canvasView.canvasLoopDimension else { return }
-            if let newLoop = createToolFromCenter(center, dimension: loopDimension, name: name) as? Loop {
+            let newLoopIndex = generateActiveIndex()
+            if let newLoop = createToolFromCenter(center, dimension: loopDimension, name: name, index: newLoopIndex) as? Loop {
                 addLoopView(loop: newLoop)
                 analysis.tools.append(newLoop)
             }
             
         default:
             guard let toolDimension = self.canvasView.canvasObjectDimension else { return }
-            if let newTool = createToolFromCenter(center, dimension: toolDimension, name: name) {
+            if let newTool = createToolFromCenter(center, dimension: toolDimension, name: name, index: nil) {
                 addToolView(tool: newTool)
                 analysis.tools.append(newTool)
             }
@@ -241,13 +281,13 @@ class CanvasViewController: GenericCanvasViewController {
         
     }
     
-    func createToolFromCenter(_ center: NSPoint, dimension: CGFloat, name: String) -> ToolObject? {
+    func createToolFromCenter(_ center: NSPoint, dimension: CGFloat, name: String, index: String?) -> ToolObject? {
         guard let analysis = analysis else { return nil }
         let size = NSSize(width: dimension, height: dimension)
         let origin = NSPoint(x: center.x - size.width/2, y: center.y - size.height/2)
         let adjustedOrigin = origin.adjustOriginToFitContentSize(content: self.canvasView.frame.size, dimension: dimension)
         let frame = NSRect(origin: adjustedOrigin, size: size)
-        return initToolObjectWithName(name, frame: frame, analysis: analysis)
+        return initToolObjectWithName(name, frame: frame, analysis: analysis, index: index)
     }
     
     func removeToolFromAnalysis(toolViewController: CanvasToolViewController){
@@ -325,6 +365,21 @@ extension CanvasViewController: CanvasViewDelegate {
         }
     }
     
+}
+
+extension CanvasViewController: LoopControllerDelegate {
+    
+    func activeIndices() -> [String] {
+        var activeIndices = [String]()
+        for i in activeLoopIndices {
+            activeIndices.append(loopIndices[i])
+        }
+        return activeIndices
+    }
+    
+    func allIndices() -> [String] {
+        return loopIndices
+    }
 }
 
 

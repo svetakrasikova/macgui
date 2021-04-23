@@ -74,10 +74,10 @@ DQ
                                                         </textField>
                                                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QqU-M4-Z59">
                                                             <rect key="frame" x="35" y="-2" width="103" height="25"/>
-                                                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="95J-5q-6eh" id="M4W-M8-O0s">
+                                                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="95J-5q-6eh" id="M4W-M8-O0s">
                                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="menu"/>
-                                                                <menu key="menu" id="EuS-0I-9Vm">
+                                                                <menu key="menu" autoenablesItems="NO" id="EuS-0I-9Vm">
                                                                     <items>
                                                                         <menuItem title="Item 1" state="on" id="95J-5q-6eh"/>
                                                                         <menuItem title="Item 2" id="VVd-M8-KLl"/>
@@ -114,6 +114,13 @@ DQ
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <binding destination="K6x-tJ-NWH" name="value" keyPath="self.loop.upperRange" id="M5e-fF-KbN">
+                                                                    <dictionary key="options">
+                                                                        <bool key="NSValidatesImmediately" value="YES"/>
+                                                                    </dictionary>
+                                                                </binding>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
@@ -164,8 +171,6 @@ DQ
                     </view>
                     <connections>
                         <outlet property="boxContainer" destination="0tU-bi-a6H" id="rra-Ns-Ib2"/>
-                        <outlet property="distributionLabel" destination="MJC-f4-4xB" id="4IL-e9-ezY"/>
-                        <outlet property="distributionStackView" destination="Pkl-Tg-T4c" id="aTE-Um-XbN"/>
                         <outlet property="indexPopup" destination="QqU-M4-Z59" id="uEJ-kU-RBS"/>
                     </connections>
                 </viewController>
