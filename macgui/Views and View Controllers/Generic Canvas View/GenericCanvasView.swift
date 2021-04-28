@@ -35,7 +35,6 @@ class GenericCanvasView: NSView {
     
     weak var delegate: GenericCanvasViewController? = nil
     
-//    let backgroundLayer = CALayer()
     var selectionStartPoint: NSPoint?
     var selectionBox: CAShapeLayer!
     

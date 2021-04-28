@@ -9,7 +9,7 @@
 import Cocoa
 
 class ModelCanvasViewController: GenericCanvasViewController {
-
+   
  
     weak var model: Model? {
         if let modelToolVC = parent as? ModelToolViewController {
@@ -17,8 +17,6 @@ class ModelCanvasViewController: GenericCanvasViewController {
         }
         return nil
     }
-    
-   
     
     var parameterNames: [Bool] = Array(repeating: false, count: 10)
     
@@ -191,16 +189,44 @@ class ModelCanvasViewController: GenericCanvasViewController {
         guard let modelCanvasItemVC = NSStoryboard.loadVC(.modelCanvasItem) as? ModelCanvasItemViewController else { return }
         modelCanvasItemVC.tool = node
         addChild(modelCanvasItemVC)
-        canvasView.addSubview(modelCanvasItemVC.view)
+        if bottomMostNode == nil {
+            bottomMostNode = modelCanvasItemVC
+        }
+        if let topMostPlate = topMostLoop {
+            canvasView.addSubview(modelCanvasItemVC.view, positioned: .above, relativeTo: topMostPlate.view)
+        } else {
+            canvasView.addSubview(modelCanvasItemVC.view)
+        }
+        modelCanvasItemVC.checkForLoopInclusion()
     }
     
     func addVariableToModel(frame: NSRect, item: PaletteVariable, type: PaletteVariable.VariableType){
-        if let model = self.model {
-            let newModelNode = ModelNode(name: item.type, frameOnCanvas: frame, analysis: model.analysis, node: item)
-            newModelNode.nodeType = type
-            newModelNode.defaultParameterName = getParameterName()
-            model.nodes.append(newModelNode)
-            addNodeView(node: newModelNode)
+        guard let model = self.model else { return }
+        let newModelNode = ModelNode(name: item.type, frameOnCanvas: frame, analysis: model.analysis, node: item)
+        newModelNode.nodeType = type
+        newModelNode.defaultParameterName = getParameterName()
+        model.nodes.append(newModelNode)
+    }
+    
+    func addPlateView(plate: Loop) {
+        let plateViewController = ModelCanvasPlateViewController()
+        plateViewController.tool = plate
+        addChild(plateViewController)
+        if let bottomMostNode = self.bottomMostNode {
+            canvasView.addSubview(plateViewController.view, positioned: .below, relativeTo: bottomMostNode.view)
+        } else {
+            canvasView.addSubview(plateViewController.view)
+        }
+        topMostLoop = plateViewController
+        plateViewController.checkForLoopInclusion()
+    }
+    
+    func addPlateToModel(frame: NSRect) {
+        guard let model = self.model else { return }
+        if let index = generateActiveIndex() {
+            let plate = Loop(frameOnCanvas: frame, analysis: model.analysis, index: index)
+            model.plates.append(plate)
+            addPlateView(plate: plate)
         }
     }
     
@@ -214,7 +240,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
                 subview.removeFromSuperview()
             }
         }
-        for child in children{
+        for child in children {
             if child.isKind(of: CanvasObjectViewController.self) {
                 child.removeFromParent()
             }
@@ -239,24 +265,70 @@ class ModelCanvasViewController: GenericCanvasViewController {
         return nil
     }
     
+    
+//    MARK: -- Plate Management
+
+    let plateIndices: [String] = ["a","b","c","d","e", "f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    
+    var activePlateIndices: [Int] {
+        var indexTable = [Int]()
+        var activeIndicesList = [String]()
+        
+        if let model = self.model {
+            for plate in model.plates {
+                activeIndicesList.append(plate.index)
+            }
+        }
+        for index in activeIndicesList {
+            if let i = plateIndices.firstIndex(of: index) {
+                indexTable.append(i)
+            }
+        }
+        return indexTable
+    }
+    
+    func generateActiveIndex() -> String? {
+        var index: String?
+        for i in 0..<plateIndices.count {
+            if let _ = activePlateIndices.firstIndex(of: i) {
+                continue
+            } else {
+                index = plateIndices[i]
+                break
+            }
+        }
+        return index
+    }
+
+    
 }
 
 extension ModelCanvasViewController: ModelCanvasViewDelegate {
-    func insertParameter(center: NSPoint, item: String) {
-        guard let toolDimension = self.canvasView.canvasObjectDimension
-            else { return }
-        let size = NSSize(width: toolDimension, height: toolDimension)
-        let frame = NSRect(x: center.x - size.width/2, y: center.y - size.height/2, width: size.width, height: size.height)
-        let variableData = item.split(separator: ":")
-        guard let variable = getPalettVariableWithName(String(variableData[0])) else { return }
-        guard let variableType = PaletteVariable.VariableType(rawValue: String(variableData[1])) else { return }
-        addVariableToModel(frame: frame, item: variable, type: variableType)
+    
+    func insertPaletteItem(center: NSPoint, item: String) {
+        addCanvasItem(center: center, data: item)
         if let window = self.view.window {
             window.makeFirstResponder(canvasView)
         }
     }
     
-   
+    func addCanvasItem(center: NSPoint, data: String ){
+        let variableData = data.split(separator: ":")
+        if variableData[0] != PalettItem.plateType {
+            guard let nodeDimension = self.canvasView.canvasObjectDimension else { return }
+            guard let variableName = getPalettVariableWithName(String(variableData[0])) else { return }
+            guard let variableType = PaletteVariable.VariableType(rawValue: String(variableData[1])) else { return }
+            addVariableToModel(frame: canvasItemFrame(center: center, dimension: nodeDimension), item: variableName, type: variableType)
+        } else {
+            guard let plateDimension = self.canvasView.canvasLoopDimension else { return }
+            addPlateToModel(frame: canvasItemFrame(center: center, dimension: plateDimension))
+        }
+    }
+    
+    func canvasItemFrame(center: NSPoint, dimension: CGFloat) -> NSRect {
+        return NSRect(x: center.x - dimension/2, y: center.y - dimension/2, width: dimension, height: dimension)
+    }
+    
     
 }
 

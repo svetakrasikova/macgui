@@ -32,8 +32,8 @@ class ModelCanvasView: GenericCanvasView {
         
         let point = convert(draggingInfo.draggingLocation, from: nil)
         let pasteboard = draggingInfo.draggingPasteboard
-        if let paletteVariableNameAndType = pasteboard.readObjects(forClasses: [NSString.self], options: nil)?.first as? String {
-            concreteDelegate?.insertParameter(center: point, item: paletteVariableNameAndType)
+        if let paletteItemType = pasteboard.readObjects(forClasses: [NSString.self], options: nil)?.first as? String {
+            concreteDelegate?.insertPaletteItem(center: point, item: paletteItemType)
             return true
         }
         return false
@@ -42,6 +42,6 @@ class ModelCanvasView: GenericCanvasView {
 }
 
 protocol ModelCanvasViewDelegate: class {
-    func insertParameter(center: NSPoint, item: String)
+    func insertPaletteItem(center: NSPoint, item: String)
     
 }

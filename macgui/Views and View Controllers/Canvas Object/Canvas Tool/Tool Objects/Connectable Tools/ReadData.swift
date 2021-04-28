@@ -12,8 +12,8 @@ import Cocoa
 class ReadData: DataTool {
 
     
-    override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
-        super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
+    init(frameOnCanvas: NSRect, analysis: Analysis) {
+        super.init(name: ToolType.readdata.rawValue, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
         let green = Connector(type: .alignedData)
         let blue = Connector(type: .unalignedData)

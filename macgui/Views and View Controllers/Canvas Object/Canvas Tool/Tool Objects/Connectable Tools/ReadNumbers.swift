@@ -11,9 +11,9 @@ import Cocoa
 class ReadNumbers: DataTool {
 
     
-    override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
+    init(frameOnCanvas: NSRect, analysis: Analysis) {
       
-        super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
+        super.init(name: ToolType.readnumbers.rawValue, frameOnCanvas: frameOnCanvas, analysis: analysis)
         let readnumbers = Connector(type: .readnumbers)
         self.inlets = []
         self.outlets = [readnumbers]

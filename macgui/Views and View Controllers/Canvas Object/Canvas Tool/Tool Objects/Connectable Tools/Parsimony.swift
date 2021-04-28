@@ -21,8 +21,8 @@ class Parsimony: DataTool, ResolveStateOnExecution {
         case options
     }
         
-    override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
-        super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
+    init(frameOnCanvas: NSRect, analysis: Analysis) {
+        super.init(name: ToolType.parsimony.rawValue, frameOnCanvas: frameOnCanvas, analysis: analysis)
         let green = Connector(type: .alignedData)
         let treedata = Connector(type: .treedata)
         self.inlets = [green]

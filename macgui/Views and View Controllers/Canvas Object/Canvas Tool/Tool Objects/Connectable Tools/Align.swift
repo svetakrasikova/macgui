@@ -36,8 +36,8 @@ class Align: DataTool {
         case clustalOptions, selectedAlignMethod
     }
     
-    override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
-        super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
+    init(frameOnCanvas: NSRect, analysis: Analysis) {
+        super.init(name: ToolType.align.rawValue, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
         let green = Connector(type: ConnectorType.alignedData)
         let blue = Connector(type: ConnectorType.unalignedData)

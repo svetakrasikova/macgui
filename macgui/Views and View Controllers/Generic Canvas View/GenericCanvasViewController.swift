@@ -10,7 +10,11 @@ import Cocoa
 
 class GenericCanvasViewController: NSViewController, NSWindowDelegate {
     
-
+//    MARK: -- Loop/Plate Handling
+    
+    var bottomMostNode: CanvasObjectViewController?
+    var topMostLoop: ResizableCanvasObjectViewController?
+    
 // MARK: - IB Outlets
     
     @IBOutlet weak var scrollView: NSScrollView!

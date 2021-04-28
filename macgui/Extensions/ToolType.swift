@@ -26,23 +26,23 @@ extension CanvasViewController {
         let toolType = ToolType(rawValue: name)!
         switch toolType {
         case .bootstrap:
-            return Bootstrap(name: name, frameOnCanvas: frame, analysis: analysis)
+            return Bootstrap(frameOnCanvas: frame, analysis: analysis)
         case .align:
-            return Align(name: name, frameOnCanvas: frame, analysis: analysis)
+            return Align(frameOnCanvas: frame, analysis: analysis)
         case .readdata:
-            return ReadData(name: name, frameOnCanvas: frame, analysis: analysis)
+            return ReadData(frameOnCanvas: frame, analysis: analysis)
         case .treeset:
-            return TreeSet(name: name, frameOnCanvas: frame, analysis: analysis)
+            return TreeSet(frameOnCanvas: frame, analysis: analysis)
         case .simulate:
-            return Simulate(name: name, frameOnCanvas: frame, analysis:analysis)
+            return Simulate(frameOnCanvas: frame, analysis:analysis)
         case .model:
-            return Model(name: name, frameOnCanvas: frame, analysis: analysis)
+            return Model(frameOnCanvas: frame, analysis: analysis)
         case .parsimony:
-            return Parsimony(name: name, frameOnCanvas: frame, analysis: analysis)
+            return Parsimony(frameOnCanvas: frame, analysis: analysis)
         case .loop:
-            return Loop(name: name, frameOnCanvas: frame, analysis: analysis, index: index ?? "i")
+            return Loop(frameOnCanvas: frame, analysis: analysis, index: index ?? "i")
         case .readnumbers:
-            return ReadNumbers(name: name, frameOnCanvas: frame, analysis: analysis)
+            return ReadNumbers(frameOnCanvas: frame, analysis: analysis)
         }
     }
 }

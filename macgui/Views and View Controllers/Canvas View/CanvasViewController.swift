@@ -41,8 +41,6 @@ class CanvasViewController: GenericCanvasViewController {
         }
     }
     
-    var bottomMostNode: CanvasToolViewController?
-    var topMostLoop: CanvasLoopViewController?
     
 // MARK: - Controller Life Cycle
     override func viewDidLoad() {
@@ -59,7 +57,7 @@ class CanvasViewController: GenericCanvasViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reset), name: .didUpdateAnalysis, object: nil)
     }
     
-////    MARK: -- Manage Loop Indices
+//   MARK: -- Manage Loop Indices
 
     func generateActiveIndex() -> String? {
         var index: String?

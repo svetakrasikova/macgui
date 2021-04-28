@@ -126,7 +126,7 @@ extension ModelCanvasItemView {
 
 }
 
-enum ModelParameterShape{
+enum ModelParameterShape {
     case solidCircle
     case solidRectangle
     case dashedCircle

@@ -25,9 +25,9 @@ class Loop: ToolObject {
     var upperRange: Int = 1
     
     
-    init(name: String, frameOnCanvas: NSRect, analysis: Analysis, index: String){
+    init(frameOnCanvas: NSRect, analysis: Analysis, index: String){
         self.index = index
-        super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
+        super.init(name: ToolType.loop.rawValue, frameOnCanvas: frameOnCanvas, analysis: analysis)
     }
     
     

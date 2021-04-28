@@ -8,20 +8,23 @@
 
 import Cocoa
 
+@objcMembers
+
 class Model: DataTool {
     
-    @objc dynamic var palettItems: [PalettItem] = []
-    @objc dynamic var distributions: [Distribution] = []
-    @objc dynamic var nodes: [ModelNode] = []
-    @objc dynamic var edges: [Connection] = []
+    dynamic var palettItems: [PalettItem] = []
+    dynamic var distributions: [Distribution] = []
+    dynamic var nodes: [ModelNode] = []
+    dynamic var edges: [Connection] = []
+    dynamic var plates: [Loop] = []
     
     enum Key: String {
-        case palettItems, nodes, edges, distributions
+        case palettItems, nodes, edges, distributions, plates
     }
     
-    override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
-    
-        super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
+    init(frameOnCanvas: NSRect, analysis: Analysis) {
+        
+        super.init(name: ToolType.model.rawValue, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
         let green = Connector(type: .alignedData)
         let purple = Connector(type: .purple)
@@ -45,8 +48,9 @@ class Model: DataTool {
         super.init(coder: aDecoder)
         palettItems = aDecoder.decodeObject(forKey: Key.palettItems.rawValue) as? [PalettItem] ?? []
         distributions = aDecoder.decodeObject(forKey: Key.distributions.rawValue) as? [Distribution] ?? []
-        nodes = aDecoder.decodeObject(forKey: Key.nodes.rawValue) as! [ModelNode]
-        edges = aDecoder.decodeObject(forKey: Key.edges.rawValue) as! [Connection]
+        nodes = aDecoder.decodeObject(forKey: Key.nodes.rawValue) as? [ModelNode] ?? []
+        edges = aDecoder.decodeObject(forKey: Key.edges.rawValue) as? [Connection] ?? []
+        plates = aDecoder.decodeObject(forKey: Key.plates.rawValue) as? [Loop] ?? []
         
     }
     
@@ -56,6 +60,7 @@ class Model: DataTool {
         coder.encode(distributions, forKey: Key.distributions.rawValue)
         coder.encode(nodes, forKey: Key.nodes.rawValue)
         coder.encode(edges, forKey: Key.edges.rawValue)
+        coder.encode(plates, forKey: Key.plates.rawValue)
     }
     
     func initPalettItemsFromCore() throws {

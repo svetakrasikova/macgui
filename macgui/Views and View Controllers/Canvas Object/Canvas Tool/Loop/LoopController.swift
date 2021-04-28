@@ -39,8 +39,6 @@ class LoopController: NSViewController {
                 indexPopup.item(withTitle: title)?.isEnabled = title != index ? false : true
             }
         }
-        
-        
     }
     
     override func viewWillAppear() {

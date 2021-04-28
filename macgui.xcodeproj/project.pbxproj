@@ -120,6 +120,8 @@
 		14A663BC23186CFE0034EA53 /* Notebook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A663BB23186CFE0034EA53 /* Notebook.storyboard */; };
 		14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BD2319A0950034EA53 /* NotebookViewController.swift */; };
 		14A663C02319C54C0034EA53 /* NotebookWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */; };
+		14A705CA2633956B006B7F6B /* ModelCanvasPlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A705C92633956B006B7F6B /* ModelCanvasPlateViewController.swift */; };
+		14A705CE2639D83E006B7F6B /* ModelCanvasPlateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A705CD2639D83E006B7F6B /* ModelCanvasPlateView.swift */; };
 		14AA8FBC2589973700BBEB90 /* PaupLikelihoodOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA8FBB2589973700BBEB90 /* PaupLikelihoodOptionsViewController.swift */; };
 		14ADDC87245BB151000D49DB /* Distribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADDC86245BB151000D49DB /* Distribution.swift */; };
 		14ADDC89245BB62A000D49DB /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADDC88245BB62A000D49DB /* Parameter.swift */; };
@@ -1612,6 +1614,8 @@
 		14A663BB23186CFE0034EA53 /* Notebook.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notebook.storyboard; sourceTree = "<group>"; };
 		14A663BD2319A0950034EA53 /* NotebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookViewController.swift; sourceTree = "<group>"; };
 		14A663BF2319C54C0034EA53 /* NotebookWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookWindowController.swift; sourceTree = "<group>"; };
+		14A705C92633956B006B7F6B /* ModelCanvasPlateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasPlateViewController.swift; sourceTree = "<group>"; };
+		14A705CD2639D83E006B7F6B /* ModelCanvasPlateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasPlateView.swift; sourceTree = "<group>"; };
 		14AA8FBB2589973700BBEB90 /* PaupLikelihoodOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupLikelihoodOptionsViewController.swift; sourceTree = "<group>"; };
 		14ADDC86245BB151000D49DB /* Distribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distribution.swift; sourceTree = "<group>"; };
 		14ADDC88245BB62A000D49DB /* Parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
@@ -4890,13 +4894,15 @@
 				14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */,
 				14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */,
 				14BF307C23E236F100426D7A /* ModelCanvasView.swift */,
-				1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */,
-				1410C3AE2404ECEB0044EB48 /* ModelCanvasItemView.swift */,
 				1410C3B0240594720044EB48 /* ModelNode.swift */,
 				144031D6261CCEDE007D7BB7 /* ModelPaletteItemController.swift */,
 				14ADDC8A2460A3D0000D49DB /* ModelVariableController.swift */,
 				144031D2261CCE22007D7BB7 /* ModelConstantController.swift */,
 				144031E0261D3091007D7BB7 /* ModelFunctionController.swift */,
+				1410C3AE2404ECEB0044EB48 /* ModelCanvasItemView.swift */,
+				1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */,
+				14A705CD2639D83E006B7F6B /* ModelCanvasPlateView.swift */,
+				14A705C92633956B006B7F6B /* ModelCanvasPlateViewController.swift */,
 			);
 			path = "Model Tool";
 			sourceTree = "<group>";
@@ -9179,6 +9185,7 @@
 				14E0086E261BCAE500D97E68 /* RlMatrixReal.cpp in Sources */,
 				14E008F1261BCAE600D97E68 /* Func_annotateTree.cpp in Sources */,
 				14E0057A261BCAE400D97E68 /* VectorSingleElementScaleProposal.cpp in Sources */,
+				14A705CE2639D83E006B7F6B /* ModelCanvasPlateView.swift in Sources */,
 				14E0093B261BCAE600D97E68 /* Proc_StringToInt.cpp in Sources */,
 				14BF307D23E236F100426D7A /* ModelCanvasView.swift in Sources */,
 				14E009E8261BCAE700D97E68 /* Dist_exponentialOffset.cpp in Sources */,
@@ -9301,6 +9308,7 @@
 				14E0099A261BCAE600D97E68 /* Func_avgDistanceMatrix.cpp in Sources */,
 				14E00533261BCAE400D97E68 /* SpeciesTreeNodeSlideProposal.cpp in Sources */,
 				14E00896261BCAE600D97E68 /* ModuleSystem.cpp in Sources */,
+				14A705CA2633956B006B7F6B /* ModelCanvasPlateViewController.swift in Sources */,
 				14E5857C22A6F16300802691 /* CanvasObjectView.swift in Sources */,
 				147105252265437600E88657 /* Bootstrap.swift in Sources */,
 				14EE87DC255B2D280064F290 /* PaupEnum.swift in Sources */,

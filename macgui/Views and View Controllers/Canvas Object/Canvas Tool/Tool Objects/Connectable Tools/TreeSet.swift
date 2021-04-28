@@ -79,9 +79,9 @@ class TreeSet: DataTool {
 
     }
     
-    override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
+    init(frameOnCanvas: NSRect, analysis: Analysis) {
         
-        super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
+        super.init(name: ToolType.treeset.rawValue, frameOnCanvas: frameOnCanvas, analysis: analysis)
         
         self.inlets = [Connector(type: .treedata)]
         self.outlets = [Connector(type: .orange)]

@@ -144,22 +144,9 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     override func updateLayer() {
         super.updateLayer()
         guard let delegate = delegate as? ResizableCanvasObjectViewController else { return }
+        delegate.setBackgroundColor()
         delegate.setLabel()
-        
         clearSublayers()
-        
-        guard let backgroundColor = backgroundColor else { return }
-        
-        if isSelected {
-            drawLayerContents(fillcolor: backgroundColor, strokeColor: NSColor.darkGray, anchors: true)
-            layer?.shadowOpacity = Float(preferencesManager.canvasToolSelectionShadowOpacity!)
-            layer?.shadowRadius = preferencesManager.canvasToolSelectionShadowRadius!
-            
-        } else {
-            drawLayerContents(fillcolor: backgroundColor, strokeColor: NSColor.systemGray, anchors: false)
-            layer?.shadowOpacity = Float(preferencesManager.canvasToolDefaultShadowOpacity!)
-            layer?.shadowRadius = preferencesManager.canvasToolDefaultShadowRadius!
-        }
         delegate.updateActionButton()
     }
     

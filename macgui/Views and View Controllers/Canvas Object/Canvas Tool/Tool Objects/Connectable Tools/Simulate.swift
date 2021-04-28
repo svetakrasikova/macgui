@@ -10,8 +10,8 @@ import Cocoa
 
 class Simulate: Connectable {
 
-   override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
-        super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)
+   init(frameOnCanvas: NSRect, analysis: Analysis) {
+    super.init(name: ToolType.simulate.rawValue, frameOnCanvas: frameOnCanvas, analysis: analysis)
     
         let green = Connector(type: .alignedData)
         self.inlets = []
