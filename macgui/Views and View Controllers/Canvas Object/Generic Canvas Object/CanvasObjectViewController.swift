@@ -23,6 +23,8 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate {
     
     weak var tool: ToolObject?
     
+    weak var outerLoopViewController: ResizableCanvasObjectViewController?
+    
 // MARK: - Mouse and Key Events
     
     override func keyDown(with event: NSEvent) {
@@ -47,7 +49,18 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate {
     }
 //  MARK: -- Loop Inclusion
     
-    func checkForLoopInclusion() {}
+    func checkForLoopInclusion() {
+        guard let tool = self.tool as? Connectable else { return }
+        guard let canvasVC = self.parent as? GenericCanvasViewController else { return }
+        let loopViewControllers = canvasVC.children.filter {$0.isKind(of: ResizableCanvasObjectViewController.self)} as! [ResizableCanvasObjectViewController]
+        if let smallestOuterLoop = findSmallestOuterLoopFrom(loopViewControllers), let newLoop = smallestOuterLoop.tool as? Loop {
+            newLoop.addEmbeddedNode(tool)
+            if let outerloopViewController = outerLoopViewController, let currentLoop = outerloopViewController.tool as? Loop {
+                currentLoop.removeEmbeddedNode(tool)
+            }
+            outerLoopViewController = smallestOuterLoop
+        }
+    }
     
     func isIncludedInLoop(_ loopVC: ResizableCanvasObjectViewController) -> Bool {
         return  loopVC.view.frame.intersection(self.view.frame) == self.view.frame
@@ -61,7 +74,6 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate {
                 if vc.isIncludedInLoop(current) { smallest = vc }
             } else { smallest = vc }
         }
-        
         return smallest
     }
     

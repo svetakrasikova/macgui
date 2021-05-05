@@ -41,7 +41,7 @@ class ModelCanvasView: GenericCanvasView {
     }
 }
 
-protocol ModelCanvasViewDelegate: class {
+protocol ModelCanvasViewDelegate: AnyObject {
     func insertPaletteItem(center: NSPoint, item: String)
     
 }

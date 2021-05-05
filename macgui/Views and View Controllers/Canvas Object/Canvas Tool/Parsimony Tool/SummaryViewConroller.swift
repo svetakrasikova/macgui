@@ -146,7 +146,7 @@ extension SummaryViewConroller {
 }
 
 
-protocol SummaryViewControllerDelegate: class {
+protocol SummaryViewControllerDelegate: AnyObject {
     func summaryType() -> SummaryType
     func getSummaryData() -> Any?
 }

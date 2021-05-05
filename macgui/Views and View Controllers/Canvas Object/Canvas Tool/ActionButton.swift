@@ -195,7 +195,7 @@ class ActionButton: NSButton {
     }
 }
 
-protocol ActionButtonDelegate: class {
+protocol ActionButtonDelegate: AnyObject {
     func actionButtonClicked(_ button: ActionButton)
 }
 

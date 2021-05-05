@@ -65,6 +65,6 @@ class CanvasToolView: MovingCanvasObjectView {
     }
 }
 
-protocol CanvasToolViewDelegate: class {
+protocol CanvasToolViewDelegate: AnyObject {
     func getConnectorItemArrowView(_ sender: NSDraggingInfo) -> ConnectorItemArrowView?
 }

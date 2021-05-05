@@ -70,7 +70,7 @@ class MovingCanvasObjectView: CanvasObjectView {
 
 //   MARK: - CanvasObjectViewDelegate Protocol
 
-protocol CanvasObjectViewDelegate: class {
+protocol CanvasObjectViewDelegate: AnyObject {
     func setObjectViewSelected(flag: Bool)
     func updateFrame()
 }

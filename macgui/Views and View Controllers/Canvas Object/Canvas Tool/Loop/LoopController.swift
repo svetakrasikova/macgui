@@ -9,6 +9,7 @@
 import Cocoa
 
 @objcMembers
+
 class LoopController: NSViewController {
     
     weak var loop: Loop?
@@ -54,7 +55,7 @@ class LoopController: NSViewController {
     }
 }
 
-protocol LoopControllerDelegate: class {
+protocol LoopControllerDelegate: AnyObject {
     func activeIndices() -> [String]
     func allIndices() -> [String]
 }

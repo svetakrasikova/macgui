@@ -78,7 +78,7 @@ class ToolTipViewController: NSViewController {
     
 }
 
-protocol ToolTipDelegate: class {
+protocol ToolTipDelegate: AnyObject {
     func getDescriptiveToolName() -> String
     func isConnected() -> Bool
 }

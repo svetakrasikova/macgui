@@ -90,6 +90,18 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         return functionController
     }()
     
+    override weak var outerLoopViewController: ResizableCanvasObjectViewController? {
+        didSet {
+            if let outerLoop = self.outerLoopViewController?.tool as? Loop {
+                plateIndex = outerLoop.indexPath()
+                view.needsDisplay = true
+            }
+          }
+    }
+    
+    var plateIndex: String?
+    
+    
 //    MARK: -- Observers
     
     private var observers = [NSKeyValueObservation]()
@@ -181,10 +193,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     }
     
     func setUpActionButton(){
-        guard let fillColor = self.fillColor else {
-            print("addInfoButton: fill color for the shape layer is undefined.")
-            return
-        }
+        guard let fillColor = self.fillColor else { return }
         let infoButton = ActionButton()
         if fillColor.isLight() ?? true { infoButton.labelColor = NSColor.black }
         let buttonOrigin = CGPoint(x: view.bounds.center().x-4, y: view.bounds.center().y-20)
@@ -198,10 +207,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     }
     
     func addActionButtonView() {
-        guard let fillColor = self.fillColor else {
-            print("addInfoButton: fill color for the shape layer is undefined.")
-            return
-        }
+        guard let fillColor = self.fillColor else { return }
         if let button = self.actionButton {
             if fillColor.isLight() ?? true {
                 button.labelColor = NSColor.black
@@ -225,22 +231,14 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     }
     
     func addLabel() {
-        guard let fillColor = self.fillColor else {
-            print("addLabel: fill color for the shape layer is undefined.")
-            return
-        }
-        guard let label = self.label else {
-            print("addLabel: label for the shape layer is undefined.")
-            return
-        }
+        guard let fillColor = self.fillColor else { return }
+        guard let label = self.label else { return }
         if let view = self.view as? ModelCanvasItemView {
-            
             if fillColor.isLight() ?? true {
-                view.drawLabel(labelColor: NSColor.black, label: label)
+                view.drawLabel(labelColor: NSColor.black, label: label, plateIndex: plateIndex)
             } else {
-                view.drawLabel(labelColor: NSColor.white, label: label)
+                view.drawLabel(labelColor: NSColor.white, label: label, plateIndex: plateIndex)
             }
-          
         }
     }
     

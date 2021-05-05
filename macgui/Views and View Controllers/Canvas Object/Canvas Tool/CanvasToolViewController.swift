@@ -19,12 +19,6 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     @IBOutlet weak var outlets: NSCollectionView!
     @IBOutlet weak var imageView: NSImageView!
 
-    var outerLoopViewController: ResizableCanvasObjectViewController? {
-        didSet {
-  //            update the index on the node view conroller of the model canvas
-            print(self, " embedded in loop ", outerLoopViewController)
-          }
-    }
     
     var image: NSImage {
         guard let tool = self.tool else {
@@ -42,30 +36,6 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     
    
     var progressSpinner: NSProgressIndicator?
-    
-//   MARK: -- Loop Inclusion
-    
-    //    check if the node is included on a loop, find the smallest one and update embedded nodes on that loop, update embedded nodes on the previous loop if there was one
-    //    is called on every node when a loop moves or a new loop is dropped on canvas
-    //    called on the node that is dropped on canvas or moved
-
-    
-    override func checkForLoopInclusion() {
-        print(self, "checking for inclusion ...")
-        guard let tool = self.tool as? Connectable else { return }
-        guard let canvasVC = self.parent as? GenericCanvasViewController else { return }
-        let loopViewControllers = canvasVC.children.filter {$0.isKind(of: ResizableCanvasObjectViewController.self)} as! [ResizableCanvasObjectViewController]
-        if let smallestOuterLoop = findSmallestOuterLoopFrom(loopViewControllers), let newLoop = smallestOuterLoop.tool as? Loop {
-            print(self, "embedded in loop: ", smallestOuterLoop)
-            newLoop.addEmbeddedNode(tool)
-            if let outerloopViewController = outerLoopViewController, let currentLoop = outerloopViewController.tool as? Loop {
-                currentLoop.removeEmbeddedNode(tool)
-            }
-            outerLoopViewController = smallestOuterLoop
-        }
-        
-        
-    }
 
     
 // MARK: -- Info Popover Related Properties

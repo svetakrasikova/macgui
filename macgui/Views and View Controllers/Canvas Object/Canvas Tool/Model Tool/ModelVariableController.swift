@@ -234,6 +234,6 @@ class ModelVariableController: ModelPaletteItemController {
 
 // MARK: -- ModelVariableControllerDelegate
 
-protocol ModelVariableControllerDelegate: class {
+protocol ModelVariableControllerDelegate: AnyObject {
     func getDistributionsForParameter(_ modelNode: ModelNode) -> [Distribution]
 }

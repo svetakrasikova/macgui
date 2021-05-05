@@ -10,12 +10,12 @@ import Cocoa
 
 class ModelCanvasPlateViewController: ResizableCanvasObjectViewController {
 
-    lazy var loopController: LoopController = {
-         let loopController = NSStoryboard.loadVC(StoryBoardName.loopController) as! LoopController
+    lazy var loopController: ModelPlateController = {
+        let loopController = NSStoryboard.loadVC(StoryBoardName.plateController) as! ModelPlateController
          if let loop = self.tool as? Loop {
              loopController.loop = loop
          }
-         if let canvasVC = self.parent as? CanvasViewController {
+         if let canvasVC = self.parent as? GenericCanvasViewController {
              loopController.delegate = canvasVC
          }
          return loopController

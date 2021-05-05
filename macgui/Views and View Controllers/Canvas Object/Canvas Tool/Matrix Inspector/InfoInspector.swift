@@ -31,6 +31,6 @@ class InfoInspector: NSViewController {
     
 }
 
-protocol InfoInspectorDelegate: class {
+protocol InfoInspectorDelegate: AnyObject {
     func setInfoInspectorValues(inspector: InfoInspector)
 }

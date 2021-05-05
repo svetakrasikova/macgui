@@ -12,9 +12,13 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
     
 //    MARK: -- Loop/Plate Handling
     
-    var bottomMostNode: CanvasObjectViewController?
-    var topMostLoop: ResizableCanvasObjectViewController?
+    weak var bottomMostNode: CanvasObjectViewController?
+    weak var topMostLoop: ResizableCanvasObjectViewController?
+    let loopIndices: [String] = ["a","b","c","d","e", "f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     
+    var activeLoopIndices: [Int] {
+        return []
+    }
 // MARK: - IB Outlets
     
     @IBOutlet weak var scrollView: NSScrollView!
@@ -61,7 +65,7 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
         canvasViewWidthConstraint.constant = scrollView.frame.size.width * 4
     }
     
-// MARK: Selection of objects on Canvas
+// MARK: Selection of Objects on Canvas
     
     //    deselect all child controllers except the one that sent the notification
     @objc func changeCanvasObjectControllersSelection(notification: Notification){
@@ -77,32 +81,173 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
         }
     
     
-// MARK: - Handling Objects on Canvas
+// MARK: - Locating Objects on Canvas
     
     func findArrowControllersByTool(tool: ToolObject) -> [ArrowViewController] {
-           var arrowControllers: [ArrowViewController] = []
-           for child in children {
-               if child.isKind(of: ArrowViewController.self){
-                   if (child as! ArrowViewController).ownedBy(tool: tool) {
-                       arrowControllers.append(child as! ArrowViewController)
-                   }
-               }
-           }
-           return arrowControllers
-       }
+        var arrowControllers: [ArrowViewController] = []
+        for child in children {
+            if child.isKind(of: ArrowViewController.self){
+                if (child as! ArrowViewController).ownedBy(tool: tool) {
+                    arrowControllers.append(child as! ArrowViewController)
+                }
+            }
+        }
+        return arrowControllers
+    }
+    
+    func findVCByTool(_ tool: ToolObject) -> CanvasObjectViewController? {
+        for vc in self.children {
+            if let canvasObjectVC = vc as? CanvasObjectViewController{
+                let node = canvasObjectVC.tool
+                if node === tool {
+                    return canvasObjectVC
+                }
+            }
+        }
+        return nil
+    }
+    
+//    MARK: -- Removing Objects from Canvas
+   
+    func removeCanvasObjectView(canvasObjectViewController: CanvasObjectViewController) {
+        
+        if let arrowViewController = canvasObjectViewController as? ArrowViewController {
+            removeConnection(arrowViewController: arrowViewController)
+        } else if let resizableViewController = canvasObjectViewController as? ResizableCanvasObjectViewController {
+            removeResizable(viewController: resizableViewController)
+        } else {
+            removeConnectable(viewController: canvasObjectViewController)
+        }
+        canvasObjectViewController.view.removeFromSuperview()
+        canvasObjectViewController.removeFromParent()
+    }
+    
+    func removeConnection(arrowViewController: ArrowViewController){
+        arrowViewController.willDeleteView()
+    }
+    
+    func removeConnectable(viewController: CanvasObjectViewController){
+        
+        guard let connectable = viewController.tool as? Connectable else { return }
+        
+        if bottomMostNode == viewController {
+            if let toolVC = self.children.filter({ $0.isKind(of: CanvasObjectViewController.self)}).first as? CanvasObjectViewController {
+                bottomMostNode = toolVC
+            } else { bottomMostNode = nil }
+        }
+        
+        let arrowViewControllers = findArrowControllersByTool(tool: connectable)
+        for arrowViewController in arrowViewControllers {
+            removeCanvasObjectView(canvasObjectViewController: arrowViewController)
+        }
+        
+        if let outerLoopVC = viewController.outerLoopViewController, let loop = outerLoopVC.tool as? Loop {
+            loop.removeEmbeddedNode(connectable)
+        }
+    }
+    
+    func removeResizable(viewController: ResizableCanvasObjectViewController) {
+        guard let loop = viewController.tool as? Loop else { return }
+        
+        if topMostLoop == viewController {
+            if let loopVC = self.children.filter({ $0.isKind(of: ResizableCanvasObjectViewController.self)}).first as? ResizableCanvasObjectViewController {
+                topMostLoop = loopVC
+            } else {  topMostLoop = nil }
+        }
+        loop.embeddedNodes.forEach { findVCByTool($0)?.checkForLoopInclusion()}
+    }
+    
+    func deleteSelectedCanvasObjects() {
+        for childController in children {
+            if let canvasObject = childController as? CanvasObjectViewController, canvasObject.viewSelected == true {
+                removeCanvasObjectView(canvasObjectViewController: canvasObject)
+            }
+        }
+    }
+    
+    @objc func deleteSelectedCanvasObjects(notification: NSNotification){
+        
+        var numConnectionsToDelete = 0
+        
+        for childController in children {
+            if childController .isKind(of: ArrowViewController.self) &&
+                (childController as! CanvasObjectViewController).viewSelected == true {
+                numConnectionsToDelete = numConnectionsToDelete + 1
+            }
+        }
+        if numConnectionsToDelete > 0 {
+            let alert = NSAlert()
+            if numConnectionsToDelete > 1 {
+                alert.messageText = "Warning: Removing connections between tools"
+                alert.informativeText = "Removing connections can lead to loss of information in downstream tools"
+            } else {
+                alert.messageText = "Warning: Removing a connection between tools"
+                alert.informativeText = "Removing a connection can lead to loss of information in downstream tools"
+            }
+            
+            alert.addButton(withTitle: "Delete")
+            alert.addButton(withTitle: "Cancel")
+            
+            let result = alert.runModal()
+            switch result {
+            case NSApplication.ModalResponse.alertFirstButtonReturn:
+                deleteSelectedCanvasObjects()
+            default: break
+            }
+        } else { deleteSelectedCanvasObjects() }
+    }
+    
+//    MARK: -- Adding objects to Canvas
+    
+    func addLoopView(loop: Loop) {
+        guard let canvasLoopViewController = resizableObjectViewController() else { return }
+        canvasLoopViewController.tool = loop
+        addChild(canvasLoopViewController)
+        if let bottomMostNode = self.bottomMostNode {
+            canvasView.addSubview(canvasLoopViewController.view, positioned: .below, relativeTo: bottomMostNode.view)
+        } else {
+            canvasView.addSubview(canvasLoopViewController.view)
+        }
+        topMostLoop = canvasLoopViewController
+        canvasLoopViewController.checkForLoopInclusion()
+    }
+    
+    func addToolView(tool: ToolObject){
+        guard let viewController = toolViewController() else { return }
+        viewController.tool = tool
+        addChild(viewController)
+        if let bottomMostNode = self.bottomMostNode {
+            canvasView.addSubview(viewController.view, positioned: .above, relativeTo: bottomMostNode.view)
+        } else {
+            bottomMostNode = viewController
+            if let topMostLoop = topMostLoop {
+                canvasView.addSubview(viewController.view, positioned: .above, relativeTo: topMostLoop.view)
+            } else {
+                canvasView.addSubview(viewController.view)
+            }
+        }
+        
+        viewController.checkForLoopInclusion()
+    }
+    
+    func toolViewController() -> CanvasObjectViewController? {
+        return nil
+    }
+    
+    func resizableObjectViewController() -> ResizableCanvasObjectViewController? {
+        return nil
+    }
  
-    // MARK: - Key Events
+    // MARK: -- Key Events
     
     override func keyDown(with event: NSEvent) {
           if event.charactersIgnoringModifiers == String(Character(UnicodeScalar(NSDeleteCharacter)!)) {
               NotificationCenter.default.post(name: .didSelectDeleteKey, object: self)
           }
       }
-      
+
     
-    
-    
-    // MARK: - Magnification
+    // MARK: -- Magnification
     
     @IBAction func magnify(_ sender: NSPopUpButton) {
            switch sender.indexOfSelectedItem {
@@ -163,7 +308,6 @@ extension GenericCanvasViewController: GenericCanvasViewDelegate {
         }
         return false
     }
-    
    
     func selectContentView(width: CGFloat) {
         NSColor.lightGray.set()
@@ -193,19 +337,23 @@ extension GenericCanvasViewController: GenericCanvasViewDelegate {
         }
     }
     
-    func findVCByTool(_ tool: ToolObject) -> CanvasObjectViewController? {
-        for vc in self.children {
-            if let canvasObjectVC = vc as? CanvasObjectViewController{
-                let node = canvasObjectVC.tool
-                if node === tool {
-                    return canvasObjectVC
-                }
-            }
+    
+    
+    
+}
+
+extension GenericCanvasViewController: LoopControllerDelegate {
+    
+    func activeIndices() -> [String] {
+        var activeIndices = [String]()
+        for i in activeLoopIndices {
+            activeIndices.append(loopIndices[i])
         }
-        return nil
+        return activeIndices
     }
     
-    
-    
+    func allIndices() -> [String] {
+        return loopIndices
+    }
 }
     

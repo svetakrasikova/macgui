@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol NavigatorViewControllerDelegate: class {
+protocol NavigatorViewControllerDelegate: AnyObject {
     func navigatorViewController(viewController: NavigatorViewController,
                                  selectedAnalysis: Analysis?) -> Void
 }

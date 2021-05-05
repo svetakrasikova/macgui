@@ -79,7 +79,7 @@ class TreeSetView: NSView {
     
 }
 
-protocol TreeSetViewDelegate: class {
+protocol TreeSetViewDelegate: AnyObject {
     
     func biggestNameRect(attributes: [NSAttributedString.Key: Any], tree: Tree) -> NSRect
     func nodesWithCoordinates(tree: Tree) -> [Node]?

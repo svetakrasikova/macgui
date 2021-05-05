@@ -80,6 +80,8 @@
 		1471052D227B94E200E88657 /* ConnectorItemArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052C227B94E200E88657 /* ConnectorItemArrowView.swift */; };
 		1471052F2280E36D00E88657 /* Align.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052E2280E36D00E88657 /* Align.swift */; };
 		147105312280E52300E88657 /* ReadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105302280E52300E88657 /* ReadData.swift */; };
+		147175932643125100117EC0 /* PlateController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147175922643125100117EC0 /* PlateController.storyboard */; };
+		14717595264312D900117EC0 /* ModelPlateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14717594264312D900117EC0 /* ModelPlateController.swift */; };
 		147429D722CADDF800FF1963 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429D622CADDF800FF1963 /* SheetViewController.swift */; };
 		147429D922CBA94C00FF1963 /* CanvasTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147429D822CBA94C00FF1963 /* CanvasTool.storyboard */; };
 		147429DB22CBC8C300FF1963 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DA22CBC8C300FF1963 /* Storyboards.swift */; };
@@ -1574,6 +1576,8 @@
 		1471052C227B94E200E88657 /* ConnectorItemArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItemArrowView.swift; sourceTree = "<group>"; };
 		1471052E2280E36D00E88657 /* Align.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Align.swift; sourceTree = "<group>"; };
 		147105302280E52300E88657 /* ReadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadData.swift; sourceTree = "<group>"; };
+		147175922643125100117EC0 /* PlateController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlateController.storyboard; sourceTree = "<group>"; };
+		14717594264312D900117EC0 /* ModelPlateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPlateController.swift; sourceTree = "<group>"; };
 		147429D622CADDF800FF1963 /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
 		147429D822CBA94C00FF1963 /* CanvasTool.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CanvasTool.storyboard; sourceTree = "<group>"; };
 		147429DA22CBC8C300FF1963 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
@@ -4671,6 +4675,7 @@
 				141106B8230742D500A8B936 /* ToolTip.storyboard */,
 				1419FDBC244E772900007232 /* VariableController.storyboard */,
 				1440320A2630908B007D7BB7 /* LoopController.storyboard */,
+				147175922643125100117EC0 /* PlateController.storyboard */,
 				144031CE261CCD86007D7BB7 /* FunctionController.storyboard */,
 				144031CA261CCC38007D7BB7 /* ConstantController.storyboard */,
 				14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */,
@@ -4903,6 +4908,7 @@
 				1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */,
 				14A705CD2639D83E006B7F6B /* ModelCanvasPlateView.swift */,
 				14A705C92633956B006B7F6B /* ModelCanvasPlateViewController.swift */,
+				14717594264312D900117EC0 /* ModelPlateController.swift */,
 			);
 			path = "Model Tool";
 			sourceTree = "<group>";
@@ -8861,6 +8867,7 @@
 				149A500624995B8C007E4D4B /* paup in Resources */,
 				1419FDBD244E772900007232 /* VariableController.storyboard in Resources */,
 				1411BEE322052B7E009BEE1D /* Main.storyboard in Resources */,
+				147175932643125100117EC0 /* PlateController.storyboard in Resources */,
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
 				14CF75A1243BCF560022B3A8 /* ModelCanvasItem.storyboard in Resources */,
 				144031CF261CCD86007D7BB7 /* FunctionController.storyboard in Resources */,
@@ -9388,6 +9395,7 @@
 				14E00908261BCAE600D97E68 /* Func_range.cpp in Sources */,
 				14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */,
 				14E00A26261BCAE700D97E68 /* Dist_PhyloBrownian.cpp in Sources */,
+				14717595264312D900117EC0 /* ModelPlateController.swift in Sources */,
 				14E005C0261BCAE400D97E68 /* PosteriorPredictiveSimulation.cpp in Sources */,
 				14E0071D261BCAE500D97E68 /* CheckNodeOrderConstraintsFunction.cpp in Sources */,
 				14E00673261BCAE400D97E68 /* MpiUtilities.cpp in Sources */,

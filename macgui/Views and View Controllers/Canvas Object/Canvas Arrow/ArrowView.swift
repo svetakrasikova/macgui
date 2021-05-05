@@ -47,7 +47,7 @@ class ArrowView: CanvasObjectView {
     
 }
 
-protocol ArrowViewDelegate: class {
+protocol ArrowViewDelegate: AnyObject {
     func updateArrowInLayer(selected: Bool)
     func setClickArea()
 }

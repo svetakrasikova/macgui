@@ -166,7 +166,7 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
     }
 }
 
-protocol ModelPaletteViewControllerDelegate: class {
+protocol ModelPaletteViewControllerDelegate: AnyObject {
     
 }
 

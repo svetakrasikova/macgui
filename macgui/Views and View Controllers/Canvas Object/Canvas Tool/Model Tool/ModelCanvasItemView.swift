@@ -99,29 +99,46 @@ extension ModelCanvasItemView {
         layer?.addSublayer(lineLayer)
      }
     
-    func drawLabel(labelColor: NSColor, label: String) {
+    func drawLabel(labelColor: NSColor, label: String, plateIndex: String?) {
         let textLayer = CATextLayer()
         textLayer.allowsEdgeAntialiasing = false;
         textLayer.allowsFontSubpixelQuantization = true;
-        
-        
         if  var backingScaleFactor = self.window?.backingScaleFactor {
             backingScaleFactor *= 4
             layer?.contentsScale = backingScaleFactor
             shapeLayer.contentsScale = backingScaleFactor
             textLayer.contentsScale = backingScaleFactor
         }
-
-
         textLayer.frame = NSRect(x: bounds.minX, y: bounds.center().y-8, width: bounds.size.width, height: bounds.size.height/2+8)
         textLayer.font = NSFont(name: "Hoefler Text", size: 18)
         textLayer.backgroundColor = NSColor.clear.cgColor
         textLayer.foregroundColor = labelColor.cgColor
         textLayer.fontSize = 18
-        textLayer.string = label
+        setLabelStringOn(textLayer, label: label, plateIndex: plateIndex)
         textLayer.position = bounds.center()
         textLayer.alignmentMode = .center
         shapeLayer.addSublayer(textLayer)
+    }
+    
+    func setLabelStringOn(_ textLayer: CATextLayer, label: String, plateIndex: String?) {
+        var indicesOfSubscripts: [Int] = []
+        var text = label
+        if let plateIndex = plateIndex {
+            indicesOfSubscripts = findIndicesOfSubscripts(label: label, plateIndex: plateIndex)
+            text += plateIndex
+        }
+        textLayer.setAttributedTextWithSubscripts(text: text, indicesOfSubscripts: indicesOfSubscripts)
+    }
+    
+    func findIndicesOfSubscripts(label: String, plateIndex: String) -> [Int] {
+        var indices = [Int]()
+        let text = label + plateIndex
+        for i in 0..<text.count {
+            if i >= label.count {
+                indices.append(i)
+            }
+        }
+        return indices
     }
 
 }

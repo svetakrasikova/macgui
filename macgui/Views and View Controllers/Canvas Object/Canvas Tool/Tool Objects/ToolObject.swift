@@ -42,7 +42,7 @@ class ToolObject: NSObject, NSCoding {
 }
 
 
-protocol ToolObjectDelegate: class {
+protocol ToolObjectDelegate: AnyObject {
     func startProgressIndicator()
     func endProgressIndicator()
 }

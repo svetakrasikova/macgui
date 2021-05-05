@@ -119,7 +119,7 @@ enum LinkType {
     case inlet, outlet
 }
 
-protocol ResolveStateOnExecution: class {
+protocol ResolveStateOnExecution: AnyObject {
     func execute()
 }
 

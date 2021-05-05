@@ -15,11 +15,8 @@ class Loop: ToolObject {
         case outerLoop, embeddedNodes, index, upperRange
     }
   
-    var outerLoop: Loop? {
-        didSet {
-//            check all nodes for inclusion
-        }
-    }
+    var outerLoop: Loop?
+    
     var embeddedNodes: [Connectable] = []
     dynamic var index: String
     var upperRange: Int = 1
@@ -49,7 +46,13 @@ class Loop: ToolObject {
     }
     
     func indexPath() -> String {
-        return ""
+        var path = index
+        if let outerLoop = self.outerLoop {
+            path = outerLoop.indexPath() + path
+            return path
+        } else {
+            return path
+        }
     }
     
     func updateOuterLoop(_ loop: Loop) {

@@ -126,7 +126,7 @@ class GenericCanvasView: NSView {
 
 // MARK: - GenericCanvasViewDelegate
 
-protocol GenericCanvasViewDelegate: class {
+protocol GenericCanvasViewDelegate: AnyObject {
     func selectContentView(width: CGFloat)
     func mouseDownOnCanvasView()
     func isMouseDownOnArrowView(event: NSEvent, point: NSPoint) -> Bool

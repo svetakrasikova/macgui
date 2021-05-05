@@ -33,7 +33,23 @@ class ModelCanvasViewController: GenericCanvasViewController {
         return "Parameter \(nextAfterHighest)"
     }
     
-    
+    override var activeLoopIndices: [Int] {
+        var indexTable = [Int]()
+        var activeIndicesList = [String]()
+       
+        if let model = model {
+            for plate in model.plates {
+                activeIndicesList.append(plate.index)
+            }
+            
+            for index in activeIndicesList {
+                if let i = loopIndices.firstIndex(of: index) {
+                    indexTable.append(i)
+                }
+            }
+        }
+        return indexTable
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,70 +105,26 @@ class ModelCanvasViewController: GenericCanvasViewController {
         }
     }
     
-    @objc func deleteSelectedCanvasObjects(notification: Notification){
-        
-        guard self.view.window?.isMainWindow ?? true else { return }
-        
-        var numConnectionsToDelete = 0
-        for childController in children {
-            if childController .isKind(of: ArrowViewController.self) &&
-                (childController as! CanvasObjectViewController).viewSelected == true {
-                numConnectionsToDelete = numConnectionsToDelete + 1
-            }
-        }
-        if numConnectionsToDelete > 0 {
-            for childController in children {
-                if childController .isKind(of: ModelCanvasItemViewController.self) &&
-                    (childController as! CanvasObjectViewController).viewSelected == true {
-                    removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
-                }
-            }
-            for childController in children {
-                if childController .isKind(of: ArrowViewController.self) &&
-                    (childController as! CanvasObjectViewController).viewSelected == true {
-                    removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
-                }
-            }
-            
-        } else {
-            for childController in children {
-                if childController .isKind(of: ModelCanvasItemViewController.self) &&
-                    (childController as! CanvasObjectViewController).viewSelected == true {
-                    removeCanvasObjectView(canvasObjectViewController: childController as! CanvasObjectViewController)
-                }
-            }
-        }
-    }
-    
-    
-    func removeCanvasObjectView(canvasObjectViewController: CanvasObjectViewController) {
-          if canvasObjectViewController.isKind(of: ArrowViewController.self){
-              removeConnectionFromModel(arrowViewController: canvasObjectViewController as! ArrowViewController)
-          } else {
-              if canvasObjectViewController.isKind(of: ModelCanvasItemViewController.self){
-                  removeNodeFromModel(nodeViewController: canvasObjectViewController as! ModelCanvasItemViewController)
-              }
-          }
-          canvasObjectViewController.view.removeFromSuperview()
-          canvasObjectViewController.removeFromParent()
-      }
-    
-    func removeConnectionFromModel(arrowViewController: ArrowViewController) {
+    override func removeConnection(arrowViewController: ArrowViewController) {
+        super.removeConnection(arrowViewController: arrowViewController)
         if let model = self.model, let connection = arrowViewController.connection, let index = model.edges.firstIndex(of: connection) {
-            arrowViewController.willDeleteView()
             model.edges.remove(at: index)
         }
     }
     
-    
-    func removeNodeFromModel(nodeViewController: ModelCanvasItemViewController) {
-        if let model = self.model, let index = model.nodes.firstIndex(of: nodeViewController.tool as! ModelNode)
-        {
-            let arrowViewControllers = findArrowControllersByTool(tool: nodeViewController.tool!)
-            for arrowViewController in arrowViewControllers {
-                removeCanvasObjectView(canvasObjectViewController: arrowViewController)
-            }
+    override func removeConnectable(viewController: CanvasObjectViewController) {
+        super.removeConnectable(viewController: viewController)
+        guard let node = viewController.tool as? ModelNode else { return }
+        if let model = self.model, let index = model.nodes.firstIndex(of: node){
             model.nodes.remove(at: index)
+        }
+    }
+    
+    override func removeResizable(viewController: ResizableCanvasObjectViewController) {
+        super.removeResizable(viewController: viewController)
+        guard let plate = viewController.tool as? Loop else { return }
+        if let model = self.model, let index = model.plates.firstIndex(of: plate) {
+            model.plates.remove(at: index)
         }
     }
     
@@ -184,41 +156,21 @@ class ModelCanvasViewController: GenericCanvasViewController {
         }
     }
     
+    override func toolViewController() -> CanvasObjectViewController? {
+        return NSStoryboard.loadVC(.modelCanvasItem) as? ModelCanvasItemViewController
+    }
     
-    func addNodeView(node: ModelNode) {
-        guard let modelCanvasItemVC = NSStoryboard.loadVC(.modelCanvasItem) as? ModelCanvasItemViewController else { return }
-        modelCanvasItemVC.tool = node
-        addChild(modelCanvasItemVC)
-        if bottomMostNode == nil {
-            bottomMostNode = modelCanvasItemVC
-        }
-        if let topMostPlate = topMostLoop {
-            canvasView.addSubview(modelCanvasItemVC.view, positioned: .above, relativeTo: topMostPlate.view)
-        } else {
-            canvasView.addSubview(modelCanvasItemVC.view)
-        }
-        modelCanvasItemVC.checkForLoopInclusion()
+    override func resizableObjectViewController() -> ResizableCanvasObjectViewController? {
+        return ModelCanvasPlateViewController()
     }
     
     func addVariableToModel(frame: NSRect, item: PaletteVariable, type: PaletteVariable.VariableType){
         guard let model = self.model else { return }
-        let newModelNode = ModelNode(name: item.type, frameOnCanvas: frame, analysis: model.analysis, node: item)
-        newModelNode.nodeType = type
-        newModelNode.defaultParameterName = getParameterName()
-        model.nodes.append(newModelNode)
-    }
-    
-    func addPlateView(plate: Loop) {
-        let plateViewController = ModelCanvasPlateViewController()
-        plateViewController.tool = plate
-        addChild(plateViewController)
-        if let bottomMostNode = self.bottomMostNode {
-            canvasView.addSubview(plateViewController.view, positioned: .below, relativeTo: bottomMostNode.view)
-        } else {
-            canvasView.addSubview(plateViewController.view)
-        }
-        topMostLoop = plateViewController
-        plateViewController.checkForLoopInclusion()
+        let node = ModelNode(name: item.type, frameOnCanvas: frame, analysis: model.analysis, node: item)
+        node.nodeType = type
+        node.defaultParameterName = getParameterName()
+        model.nodes.append(node)
+        addToolView(tool: node)
     }
     
     func addPlateToModel(frame: NSRect) {
@@ -226,12 +178,11 @@ class ModelCanvasViewController: GenericCanvasViewController {
         if let index = generateActiveIndex() {
             let plate = Loop(frameOnCanvas: frame, analysis: model.analysis, index: index)
             model.plates.append(plate)
-            addPlateView(plate: plate)
+            addLoopView(loop: plate)
         }
     }
     
     func resetCanvasView(){
-    
         guard let model = self.model
             else { return }
         
@@ -246,7 +197,10 @@ class ModelCanvasViewController: GenericCanvasViewController {
             }
         }
         for node in model.nodes {
-            addNodeView(node: node)
+            addToolView(tool: node)
+        }
+        for plate in model.plates {
+            addLoopView(loop: plate)
         }
         for edge in model.edges {
             addArrowView(connection: edge)

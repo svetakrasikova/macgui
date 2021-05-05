@@ -15,7 +15,7 @@ class CanvasLoopViewController: ResizableCanvasObjectViewController {
         if let loop = self.tool as? Loop {
             loopController.loop = loop
         }
-        if let canvasVC = self.parent as? CanvasViewController {
+        if let canvasVC = self.parent as? GenericCanvasViewController {
             loopController.delegate = canvasVC
         }
         return loopController

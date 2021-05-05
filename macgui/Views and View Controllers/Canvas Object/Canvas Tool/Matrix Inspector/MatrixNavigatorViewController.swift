@@ -71,7 +71,7 @@ class MatrixNavigatorViewController: NSViewController, NSTableViewDelegate, NSTa
     
 }
 
-protocol MatrixNavigatorViewControllerDelegate: class {
+protocol MatrixNavigatorViewControllerDelegate: AnyObject {
     func matrixNavigatorViewController(selectedMatrixIndex: Int)
 }
 
