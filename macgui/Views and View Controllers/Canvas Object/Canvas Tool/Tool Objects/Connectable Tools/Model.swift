@@ -14,9 +14,21 @@ class Model: DataTool {
     
     dynamic var palettItems: [PalettItem] = []
     dynamic var distributions: [Distribution] = []
-    dynamic var nodes: [ModelNode] = []
-    dynamic var edges: [Connection] = []
-    dynamic var plates: [Loop] = []
+    dynamic var nodes: [ModelNode] = [] {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    dynamic var edges: [Connection] = [] {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    dynamic var plates: [Loop] = [] {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
     
     enum Key: String {
         case palettItems, nodes, edges, distributions, plates
