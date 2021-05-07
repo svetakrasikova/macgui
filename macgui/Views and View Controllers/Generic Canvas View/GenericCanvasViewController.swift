@@ -14,7 +14,7 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
     
     weak var bottomMostNode: CanvasObjectViewController?
     weak var topMostLoop: ResizableCanvasObjectViewController?
-    let loopIndices: [String] = ["a","b","c","d","e", "f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    let loopIndices: [String] = ["i","j","k","l","m","n","u","v","w","x","y","z", "a","b","c","d","e","f","g","h","o","p","q","r","s","t"]
     
     var activeLoopIndices: [Int] {
         return []
