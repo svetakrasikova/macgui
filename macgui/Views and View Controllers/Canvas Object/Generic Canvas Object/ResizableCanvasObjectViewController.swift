@@ -164,7 +164,6 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
         let loopViewControllers = canvasVC.children.filter {$0.isKind(of: ResizableCanvasObjectViewController.self) && $0 !== self} as! [ResizableCanvasObjectViewController]
         if let smallestOuterLoop = findSmallestOuterLoopFrom(loopViewControllers) {
             loop.updateOuterLoop(smallestOuterLoop.tool as! Loop)
-            print(self, "outerloop found: ", smallestOuterLoop)
         }
         for node in loop.embeddedNodes {
             if let toolVC = canvasVC.findVCByTool(node) {

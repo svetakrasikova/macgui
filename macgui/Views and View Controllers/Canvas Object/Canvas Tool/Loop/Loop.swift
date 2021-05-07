@@ -9,6 +9,7 @@
 import Cocoa
 
 @objcMembers
+
 class Loop: ToolObject {
     
     enum CodingKeys: String {
@@ -16,7 +17,6 @@ class Loop: ToolObject {
     }
   
     var outerLoop: Loop?
-    
     var embeddedNodes: [Connectable] = []
     dynamic var index: String
     var upperRange: Int = 1
@@ -29,15 +29,14 @@ class Loop: ToolObject {
     
     
     override func encode(with coder: NSCoder) {
-        super.encode(with: coder)
         coder.encode(outerLoop, forKey: CodingKeys.outerLoop.rawValue)
         coder.encode(embeddedNodes, forKey: CodingKeys.embeddedNodes.rawValue)
         coder.encode(index, forKey: CodingKeys.index.rawValue)
         coder.encode(upperRange, forKey: CodingKeys.upperRange.rawValue)
+        super.encode(with: coder)
     }
     
     required init?(coder decoder: NSCoder) {
-        
         outerLoop = decoder.decodeObject(forKey: CodingKeys.outerLoop.rawValue) as? Loop
         embeddedNodes = decoder.decodeObject(forKey: CodingKeys.embeddedNodes.rawValue) as? [Connectable] ?? []
         index = decoder.decodeObject(forKey: CodingKeys.index.rawValue) as? String ?? "i"

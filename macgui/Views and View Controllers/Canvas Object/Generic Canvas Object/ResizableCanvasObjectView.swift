@@ -305,6 +305,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
         if isMouseDragged {
             delegate?.checkForLoopInclusion()
         }
+        
         super.mouseUp(with: event)
         if let _ = self.resizeDirection {
             self.resizeDirection = nil
