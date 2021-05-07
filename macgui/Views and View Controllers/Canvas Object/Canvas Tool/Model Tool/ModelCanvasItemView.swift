@@ -12,6 +12,7 @@ class ModelCanvasItemView: MovingCanvasObjectView {
 
     let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
     private let shapeLayer = CAShapeLayer()
+    let textLayer = CATextLayer()
     
 //    MARK: - Keyboard events
     
@@ -28,6 +29,12 @@ class ModelCanvasItemView: MovingCanvasObjectView {
             super.mouseDown(with: mouseDownEvent)
         }
     }
+    
+    override func mouseUp(with event: NSEvent) {
+        if isMouseDragged { delegate?.checkForLoopInclusion() }
+        super.mouseUp(with: event)
+    }
+    
 
     
     override func updateLayer() {
@@ -100,7 +107,6 @@ extension ModelCanvasItemView {
      }
     
     func drawLabel(labelColor: NSColor, label: String, plateIndex: String?) {
-        let textLayer = CATextLayer()
         textLayer.allowsEdgeAntialiasing = false;
         textLayer.allowsFontSubpixelQuantization = true;
         if  var backingScaleFactor = self.window?.backingScaleFactor {
@@ -119,6 +125,7 @@ extension ModelCanvasItemView {
         textLayer.alignmentMode = .center
         shapeLayer.addSublayer(textLayer)
     }
+    
     
     func setLabelStringOn(_ textLayer: CATextLayer, label: String, plateIndex: String?) {
         var indicesOfSubscripts: [Int] = []

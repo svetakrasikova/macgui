@@ -94,8 +94,11 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         didSet {
             if let outerLoop = self.outerLoopViewController?.tool as? Loop {
                 plateIndex = outerLoop.indexPath()
-                view.needsDisplay = true
+                
+            } else {
+                plateIndex = nil
             }
+            view.needsDisplay = true
           }
     }
     
@@ -191,6 +194,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         addLabel()
         addActionButtonView()
     }
+    
     
     func setUpActionButton(){
         guard let fillColor = self.fillColor else { return }

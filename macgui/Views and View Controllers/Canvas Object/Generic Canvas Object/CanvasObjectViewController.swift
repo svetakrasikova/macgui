@@ -47,6 +47,7 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate {
         (self.view as! CanvasObjectView).delegate = self
          NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
     }
+    
 //  MARK: -- Loop Inclusion
     
     func checkForLoopInclusion() {
@@ -55,17 +56,19 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate {
         let loopViewControllers = canvasVC.children.filter {$0.isKind(of: ResizableCanvasObjectViewController.self)} as! [ResizableCanvasObjectViewController]
         if let smallestOuterLoop = findSmallestOuterLoopFrom(loopViewControllers), let newLoop = smallestOuterLoop.tool as? Loop {
             newLoop.addEmbeddedNode(tool)
-            if let outerloopViewController = outerLoopViewController, let currentLoop = outerloopViewController.tool as? Loop {
+            if let outerloopViewController = outerLoopViewController, let currentLoop = outerloopViewController.tool as? Loop, currentLoop !== newLoop {
                 currentLoop.removeEmbeddedNode(tool)
             }
             outerLoopViewController = smallestOuterLoop
+        } else {
+            outerLoopViewController = nil
         }
     }
     
     func isIncludedInLoop(_ loopVC: ResizableCanvasObjectViewController) -> Bool {
-        return  loopVC.view.frame.intersection(self.view.frame) == self.view.frame
+        let isIncluded = loopVC.view.frame.intersection(self.view.frame) == self.view.frame
+        return  isIncluded
     }
-    
     func findSmallestOuterLoopFrom(_ list: [ResizableCanvasObjectViewController]) -> ResizableCanvasObjectViewController? {
         let newList = list.filter {self.isIncludedInLoop($0)}
         var smallest: ResizableCanvasObjectViewController?
@@ -90,9 +93,9 @@ extension CanvasObjectViewController: CanvasObjectViewDelegate {
     }
     
     func updateFrame(){
-        let size = tool?.frameOnCanvas.size
+        let size = view.frame.size
         let origin = view.frame.origin
-        tool?.frameOnCanvas = NSRect(origin: origin, size: size!)
+        tool?.frameOnCanvas = NSRect(origin: origin, size: size)
     }
        
 }
