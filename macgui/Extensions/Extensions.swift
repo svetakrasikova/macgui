@@ -334,7 +334,7 @@ extension CATextLayer {
     
     func setAttributedTextWithSubscripts(text: String, indicesOfSubscripts: [Int]) {
         guard let font = self.font else { return }
-        let subscriptFont = NSFont(descriptor: font.fontDescriptor, size: font.pointSize * 0.7)?.italics()
+        let subscriptFont = NSFont(descriptor: font.fontDescriptor, size: font.pointSize * 0.6)?.italics()
         let subscriptOffset = -font.pointSize * 0.3
         let attributedString = NSMutableAttributedString(string: text,
                                                          attributes: [.font : font])
