@@ -205,8 +205,6 @@ class ModelCanvasViewController: GenericCanvasViewController {
         for edge in model.edges {
             addArrowView(connection: edge)
         }
-        
-        print("From reset", self.model?.plates.count)
     }
     
     func getPalettVariableWithName(_ name: String) -> PaletteVariable? {
