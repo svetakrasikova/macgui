@@ -49,7 +49,7 @@ class ReadData: DataTool {
                            switch result {
                            case NSApplication.ModalResponse.alertFirstButtonReturn:
                             self.unalignedDataMatrices = []
-                           default: break
+                           default: return
                            }
                 }
                 do {

@@ -22,6 +22,10 @@ class DataTool: Connectable {
         case trees
     }
     
+    enum DataToolType: String {
+        case treeData, matrixData, numberData
+    }
+    
     let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
     
     @objc dynamic var trees: [Tree]  = [] {
@@ -51,6 +55,12 @@ class DataTool: Connectable {
     
     @objc dynamic var dataMatrices: [DataMatrix]  {
         return !alignedDataMatrices.isEmpty ? alignedDataMatrices : unalignedDataMatrices
+    }
+    
+    @objc dynamic var numberData: NumberData = NumberData() {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
     }
     
     

@@ -37,29 +37,69 @@ class ReadNumbers: DataTool {
             result in
             if result == .OK {
                 guard let fileURL = panel.url else { return }
-                if !self.unalignedDataMatrices.isEmpty {
+                if !self.numberData.isEmpty {
                     let alert = NSAlert()
-                    alert.messageText = "Warning: Do you want to overwrite the data currently on this tool?"
-                    alert.informativeText = "Reading in data will delete the information currently on this tool."
-                    alert.addButton(withTitle: "Overwrite")
+                    alert.messageText = "The tool is not empty"
+                    alert.informativeText = "Do you want to overwrite the data currently on the tool?"
                     alert.addButton(withTitle: "Cancel")
+                    alert.addButton(withTitle: "Overwrite Data")
+                    alert.addButton(withTitle: "Load More Data")
                     let result = alert.runModal()
-                           switch result {
-                           case NSApplication.ModalResponse.alertFirstButtonReturn:
-                            self.unalignedDataMatrices = []
-                           default: break
-                           }
+                    switch result {
+                    case NSApplication.ModalResponse.alertFirstButtonReturn:
+                        return
+                    case NSApplication.ModalResponse.alertSecondButtonReturn:
+                        self.numberData.emptyList()
+                    default:
+                        break
+                    }
                 }
-                do {
-//                    TODO: code to read in the numbers data
+                self.readFromFileURL(fileURL)
+            }
+        }
+    }
+    
+    
+    func readFromFileURL(_ fileURL: URL) {
+        
+        var successfullyReadData: Bool = true
+        var message = ""
+        self.delegate?.startProgressIndicator()
+        DispatchQueue.global(qos: .background).async {
+            do {
+                let readData = try self.readNumberDataTask(fileURL)
+                if !readData.isEmpty {
+                    DispatchQueue.main.async {
+                        self.numberData.append(data: readData)
+                    }
                 }
-                catch {
-                
+            }
+            catch {
+                successfullyReadData = false
+                message = "Error reading data from \(fileURL)"
+            }
+            DispatchQueue.main.async {
+                self.delegate?.endProgressIndicator()
+                if !successfullyReadData {
+                    self.readDataAlert(informativeText: message)
                 }
             }
         }
     }
     
+    func readNumberDataTask(_ url: URL) throws -> NumberData {
+        let numberData = NumberData()
+        if url.hasDirectoryPath {
+            for fileURL in try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil){
+                numberData.append(data: try NumberData(url: fileURL))
+            }
+        } else {
+            numberData.append(data: try NumberData(url: url))
+        }
+
+        print(numberData.descriptionString)
+        return numberData
+    }
 
 
 }

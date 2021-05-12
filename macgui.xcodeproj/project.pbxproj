@@ -1455,6 +1455,8 @@
 		14E00A3C261BCAE700D97E68 /* nxsdistancesblock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14E00512261BCAE400D97E68 /* nxsdistancesblock.cpp */; };
 		14E00A3D261BCAE700D97E68 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = 14E00515261BCAE400D97E68 /* utf8.c */; };
 		14E00A3E261BCAE700D97E68 /* linenoise.c in Sources */ = {isa = PBXBuildFile; fileRef = 14E00516261BCAE400D97E68 /* linenoise.c */; };
+		14E22D482645AAA40090B860 /* NumberData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E22D472645AAA40090B860 /* NumberData.swift */; };
+		14E22D4A2645ABA70090B860 /* NumberList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E22D492645ABA70090B860 /* NumberList.swift */; };
 		14E58526228C92AB00802691 /* ToolImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E58525228C92AB00802691 /* ToolImageView.swift */; };
 		14E58528228DF92F00802691 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E58527228DF92F00802691 /* Notifications.swift */; };
 		14E5857222949A0900802691 /* ConnectionDragController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857122949A0900802691 /* ConnectionDragController.swift */; };
@@ -4474,6 +4476,8 @@
 		14E0FFFD261BCAE200D97E68 /* Move_MultiValueEventSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Move_MultiValueEventSlide.h; sourceTree = "<group>"; };
 		14E0FFFE261BCAE200D97E68 /* Move_MultiValueEventSlide.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Move_MultiValueEventSlide.cpp; sourceTree = "<group>"; };
 		14E0FFFF261BCAE200D97E68 /* Move_DPPGibbsConcentration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Move_DPPGibbsConcentration.h; sourceTree = "<group>"; };
+		14E22D472645AAA40090B860 /* NumberData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberData.swift; sourceTree = "<group>"; };
+		14E22D492645ABA70090B860 /* NumberList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberList.swift; sourceTree = "<group>"; };
 		14E58525228C92AB00802691 /* ToolImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolImageView.swift; sourceTree = "<group>"; };
 		14E58527228DF92F00802691 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		14E5857122949A0900802691 /* ConnectionDragController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDragController.swift; sourceTree = "<group>"; };
@@ -4687,6 +4691,7 @@
 		14523575220E101400A85186 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				14E22D462645AA7B0090B860 /* Number Data */,
 				1453185124E4898900A4656C /* Tree */,
 				1410C3A123F6022D0044EB48 /* Model Tool */,
 				149F8B2323624E39003146FD /* Data Matrix */,
@@ -4745,12 +4750,12 @@
 				149F8B3C23639E46003146FD /* DataTool.swift */,
 				1453184424E207ED00A4656C /* Parsimony.swift */,
 				147105302280E52300E88657 /* ReadData.swift */,
+				144031EC261F7AE0007D7BB7 /* ReadNumbers.swift */,
 				1471052E2280E36D00E88657 /* Align.swift */,
 				149C5FC6232953610060043E /* Simulate.swift */,
 				149C5FCA232953A80060043E /* Model.swift */,
 				149C5FC82329538C0060043E /* TreeSet.swift */,
 				147105242265437600E88657 /* Bootstrap.swift */,
-				144031EC261F7AE0007D7BB7 /* ReadNumbers.swift */,
 			);
 			path = "Connectable Tools";
 			sourceTree = "<group>";
@@ -8672,6 +8677,15 @@
 			path = mixture;
 			sourceTree = "<group>";
 		};
+		14E22D462645AA7B0090B860 /* Number Data */ = {
+			isa = PBXGroup;
+			children = (
+				14E22D472645AAA40090B860 /* NumberData.swift */,
+				14E22D492645ABA70090B860 /* NumberList.swift */,
+			);
+			path = "Number Data";
+			sourceTree = "<group>";
+		};
 		14E69A64237638770045E283 /* Document */ = {
 			isa = PBXGroup;
 			children = (
@@ -9210,6 +9224,7 @@
 				14E00766261BCAE500D97E68 /* AbstractRootedTreeDistribution.cpp in Sources */,
 				14E0056B261BCAE400D97E68 /* SlideUpDownProposal.cpp in Sources */,
 				14E005D5261BCAE400D97E68 /* Mcmcmc.cpp in Sources */,
+				14E22D482645AAA40090B860 /* NumberData.swift in Sources */,
 				14E00A17261BCAE700D97E68 /* Dist_phyloCTMCDASiteIID.cpp in Sources */,
 				14E0059B261BCAE400D97E68 /* Move.cpp in Sources */,
 				14E006A2261BCAE400D97E68 /* DistributionGamma.cpp in Sources */,
@@ -9856,6 +9871,7 @@
 				14E009CC261BCAE700D97E68 /* Dist_normTruncated.cpp in Sources */,
 				14E0091D261BCAE600D97E68 /* Func_vectorFlatten.cpp in Sources */,
 				14E005A4261BCAE400D97E68 /* MoveSchedule.cpp in Sources */,
+				14E22D4A2645ABA70090B860 /* NumberList.swift in Sources */,
 				14E00906261BCAE600D97E68 /* Func_help.cpp in Sources */,
 				14E00619261BCAE400D97E68 /* RateMatrix_revPoMoThree4N.cpp in Sources */,
 				14E00655261BCAE400D97E68 /* CharacterHistoryRateModifier.cpp in Sources */,

@@ -294,6 +294,8 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
                 switch toolType {
                 case  .readdata?:
                     (tool as! ReadData).openFileBrowser()
+                case .readnumbers:
+                    (tool as! ReadNumbers).openFileBrowser()
                 case .model?:
                     resetModelToolWindowController()
                     modelToolWindowController.showWindow(self)
