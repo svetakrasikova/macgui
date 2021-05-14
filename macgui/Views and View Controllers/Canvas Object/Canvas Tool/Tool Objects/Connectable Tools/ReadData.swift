@@ -11,6 +11,9 @@ import Cocoa
 
 class ReadData: DataTool {
 
+    override var dataToolType: DataTool.DataToolType {
+        return .matrixData
+    }
     
     init(frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: ToolType.readdata.rawValue, frameOnCanvas: frameOnCanvas, analysis: analysis)

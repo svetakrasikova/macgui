@@ -17,6 +17,8 @@ class InspectorWindowController: NSWindowController {
     
     var dataMatrices: [DataMatrix]?
     
+    var numberData: NumberData?
+    
     var toolType: String? {
         didSet {
             self.window?.title = (toolType ?? "Data Tool") + " Inspector"

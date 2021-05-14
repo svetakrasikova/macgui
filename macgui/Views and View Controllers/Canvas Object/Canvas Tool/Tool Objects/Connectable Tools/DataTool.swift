@@ -23,7 +23,7 @@ class DataTool: Connectable {
     }
     
     enum DataToolType: String {
-        case treeData, matrixData, numberData
+        case treeData, matrixData, numberData, genericData
     }
     
     let revbayesBridge =  (NSApp.delegate as! AppDelegate).coreBridge
@@ -34,12 +34,8 @@ class DataTool: Connectable {
         }
     }
     
-    var treeDataTool: Bool {
-        let toolType = ToolType(rawValue: name)!
-        switch toolType {
-        case .treeset: return true
-        default: return false
-        }
+    var dataToolType: DataToolType {
+        return .genericData
     }
     
     @objc dynamic var alignedDataMatrices: [DataMatrix]  = [] {

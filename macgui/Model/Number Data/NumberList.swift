@@ -143,7 +143,6 @@ class NumberList: NSObject, NSCoding {
     
 }
 
-
 enum NumberListType: String {
     case Integer
     case Natural

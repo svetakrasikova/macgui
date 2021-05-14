@@ -30,6 +30,7 @@ enum StoryBoardName: String {
     case paup = "PaupOverview"
     case loopController = "LoopController"
     case plateController = "PlateController"
+    case readNumbersInspector = "ReadNumbersInspector"
 
 }
 

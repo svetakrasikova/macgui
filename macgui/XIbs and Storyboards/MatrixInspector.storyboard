@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="OhS-pf-sWI">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="OhS-pf-sWI">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,12 +21,12 @@
                                 <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="7aL-T2-aa5"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="bFV-RO-x42"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="95M-pZ-bjf"/>
-                                <toolbarItem implicitItemIdentifier="F143E2EF-BA0B-4995-8640-F18318AF13EE" label="" paletteLabel="" image="leftsidebar" sizingBehavior="auto" id="fzI-WN-xBe">
+                                <toolbarItem implicitItemIdentifier="F143E2EF-BA0B-4995-8640-F18318AF13EE" label="" paletteLabel="" image="NSTouchBarSidebarTemplate" sizingBehavior="auto" id="fzI-WN-xBe" userLabel="Left Sidebar">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="c3g-rR-bJ3">
-                                        <rect key="frame" x="0.0" y="14" width="48" height="24"/>
+                                        <rect key="frame" x="0.0" y="14" width="30" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="leftsidebar" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bUh-VG-z5k">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarSidebarTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bUh-VG-z5k">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -35,10 +35,10 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="4E98F243-5BAF-4363-9C39-15D4DE807612" label="" paletteLabel="" image="NSTouchBarGetInfoTemplate" sizingBehavior="auto" id="6Ff-Jl-pMw">
+                                <toolbarItem implicitItemIdentifier="4E98F243-5BAF-4363-9C39-15D4DE807612" label="" paletteLabel="" image="NSTouchBarGetInfoTemplate" sizingBehavior="auto" id="6Ff-Jl-pMw" userLabel="Info Button">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="fV7-Lp-qTh">
-                                        <rect key="frame" x="0.0" y="14" width="48" height="24"/>
+                                        <rect key="frame" x="0.0" y="14" width="27" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarGetInfoTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4mb-0w-FuE">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -521,6 +521,6 @@
     </scenes>
     <resources>
         <image name="NSTouchBarGetInfoTemplate" width="15" height="15"/>
-        <image name="leftsidebar" width="923" height="685"/>
+        <image name="NSTouchBarSidebarTemplate" width="18" height="14"/>
     </resources>
 </document>

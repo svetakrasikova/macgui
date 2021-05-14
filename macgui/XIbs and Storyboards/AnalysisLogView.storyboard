@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="zIC-UL-v7m">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="zIC-UL-v7m">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,24 +9,24 @@
         <scene sceneID="xBN-lo-QfV">
             <objects>
                 <viewController id="zIC-UL-v7m" customClass="NavigatorViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="8XU-F7-TRZ">
-                        <rect key="frame" x="0.0" y="0.0" width="289" height="368"/>
+                    <view key="view" misplaced="YES" id="8XU-F7-TRZ">
+                        <rect key="frame" x="0.0" y="0.0" width="309" height="344"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kH3-y3-DJd">
-                                <rect key="frame" x="0.0" y="0.0" width="289" height="368"/>
+                                <rect key="frame" x="0.0" y="0.0" width="309" height="320"/>
                                 <clipView key="contentView" drawsBackground="NO" id="f06-yZ-zIx">
-                                    <rect key="frame" x="1" y="0.0" width="287" height="367"/>
+                                    <rect key="frame" x="1" y="1" width="307" height="318"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="9NU-YZ-rMa" viewBased="YES" id="TNo-lx-0sx">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="344"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="307" height="295"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="284" minWidth="40" maxWidth="1000" id="5DZ-I7-2E7">
+                                                <tableColumn width="275" minWidth="40" maxWidth="1000" id="5DZ-I7-2E7">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Active Analyses">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -41,7 +40,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="SCi-Av-KA4">
-                                                            <rect key="frame" x="1" y="1" width="284" height="17"/>
+                                                            <rect key="frame" x="11" y="1" width="284" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="4ya-BD-5zw">
@@ -84,8 +83,8 @@
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <tableHeaderView key="headerView" id="9NU-YZ-rMa">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="23"/>
+                                <tableHeaderView key="headerView" wantsLayer="YES" id="9NU-YZ-rMa">
+                                    <rect key="frame" x="0.0" y="0.0" width="307" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>

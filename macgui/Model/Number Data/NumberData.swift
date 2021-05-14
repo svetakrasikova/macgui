@@ -8,6 +8,7 @@
 
 import Cocoa
 
+
 class NumberData: NSObject, NSCoding {
     
     enum NumberDataError: Error {
@@ -17,7 +18,7 @@ class NumberData: NSObject, NSCoding {
         case numberLists
     }
    
-    var numberLists: [NumberList] = []
+    @objc dynamic var numberLists: [NumberList] = []
     
     var isEmpty: Bool {
         return numberLists.isEmpty

@@ -10,6 +10,9 @@ import Cocoa
 
 class ReadNumbers: DataTool {
 
+    override var dataToolType: DataTool.DataToolType {
+        return .numberData
+    }
     
     init(frameOnCanvas: NSRect, analysis: Analysis) {
       

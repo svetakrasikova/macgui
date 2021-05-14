@@ -17,6 +17,10 @@ class TreeSet: DataTool {
         case sources
     }
     
+    override var dataToolType: DataTool.DataToolType {
+        return .treeData
+    }
+    
     var treeSourcesMap: [Int] = []
     @objc dynamic var sources: [TreeSource] = [TreeSource()]
     

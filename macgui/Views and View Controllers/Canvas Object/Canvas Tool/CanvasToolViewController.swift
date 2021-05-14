@@ -103,6 +103,25 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     }
     
     
+    // MARK: - Read Numbers Window
+    
+    private var _readNumbersWindowController: InspectorWindowController? = nil
+    
+    func resetReadNumbersWindowController(){
+        _readNumbersWindowController = nil
+    }
+    
+    var readNumbersWindowController: InspectorWindowController {
+        if _readNumbersWindowController == nil {
+            _readNumbersWindowController = NSStoryboard.loadWC(StoryBoardName.readNumbersInspector) as? InspectorWindowController
+            _readNumbersWindowController!.numberData = (self.tool as! DataTool).numberData
+            _readNumbersWindowController!.toolType = self.tool?.descriptiveName
+        }
+        return _readNumbersWindowController!
+    }
+    
+    
+    
     // MARK: - Parsimony Tool Window
     
     private var _parsimonyWindowController: TablessWindowController? = nil
@@ -318,12 +337,18 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     }
     
     func inspectorButtonClicked() {
-        if let tool = self.tool as? DataTool, tool.treeDataTool {
+        guard let tool = self.tool as? DataTool else { return }
+        switch tool.dataToolType {
+        case .treeData:
             resetTreeInspectorWindowController()
             treeInspectorWindowController.showWindow(self)
-        } else {
+        case .matrixData:
             resetMatrixInspectorWindowController()
             matrixInspectorWindowController.showWindow(self)
+        case .numberData:
+            resetReadNumbersWindowController()
+            readNumbersWindowController.showWindow(self)
+        default: break
         }
     }
     
@@ -332,6 +357,8 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
             let toolType = ToolType(rawValue: tool.name)!
             switch toolType {
             case .readdata:
+                return true
+            case .readnumbers:
                 return true
             case .align:
                 return true
