@@ -13,11 +13,11 @@ Controlls a window with a three-pane split view and the left and right sidebar b
  */
 class InspectorWindowController: NSWindowController {
 
-    var tool: Connectable?
+    weak var tool: Connectable?
     
     var dataMatrices: [DataMatrix]?
     
-    var numberData: NumberData?
+    weak var numberData: NumberData?
     
     var toolType: String? {
         didSet {

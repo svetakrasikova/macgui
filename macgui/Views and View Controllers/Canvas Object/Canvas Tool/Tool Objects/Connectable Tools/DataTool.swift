@@ -20,6 +20,7 @@ class DataTool: Connectable {
         case alignedDataMatrices
         case unalignedDataMatrices
         case trees
+        case numberData
     }
     
     enum DataToolType: String {
@@ -70,6 +71,7 @@ class DataTool: Connectable {
         aCoder.encode(alignedDataMatrices, forKey: Key.alignedDataMatrices.rawValue)
         aCoder.encode(unalignedDataMatrices, forKey: Key.unalignedDataMatrices.rawValue)
         aCoder.encode(trees, forKey: Key.trees.rawValue)
+        aCoder.encode(numberData, forKey: Key.numberData.rawValue)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -77,6 +79,7 @@ class DataTool: Connectable {
         alignedDataMatrices = aDecoder.decodeObject(forKey: Key.alignedDataMatrices.rawValue) as? [DataMatrix] ?? []
         unalignedDataMatrices = aDecoder.decodeObject(forKey: Key.unalignedDataMatrices.rawValue) as? [DataMatrix] ?? []
         trees = aDecoder.decodeObject(forKey: Key.trees.rawValue) as? [Tree] ?? []
+        numberData = aDecoder.decodeObject(forKey: Key.numberData.rawValue) as? NumberData ?? NumberData()
     }
     
     

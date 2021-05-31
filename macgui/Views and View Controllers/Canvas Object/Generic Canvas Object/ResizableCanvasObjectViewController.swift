@@ -141,6 +141,7 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
     // MARK: -- Key Events
     
     override func mouseEntered(with event: NSEvent) {
+        super.mouseEntered(with: event)
         guard let view = self.view as? ResizableCanvasObjectView else { return }
         if !view.isMouseDown {
             actionButton?.mouseEntered(with: event)
@@ -148,6 +149,7 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
     }
     
     override func mouseExited(with event: NSEvent) {
+        super.mouseExited(with: event)
         guard let view = self.view as? ResizableCanvasObjectView else { return }
         if !view.isMouseDown {
             actionButton?.mouseExited(with: event)

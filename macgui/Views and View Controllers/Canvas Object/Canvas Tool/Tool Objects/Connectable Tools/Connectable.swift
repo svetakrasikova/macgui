@@ -8,6 +8,7 @@
 
 import Cocoa
 
+
 class Connectable: ToolObject {
     
     var inlets: [Connector] = []

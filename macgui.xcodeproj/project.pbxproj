@@ -1458,10 +1458,9 @@
 		14E22D482645AAA40090B860 /* NumberData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E22D472645AAA40090B860 /* NumberData.swift */; };
 		14E22D4A2645ABA70090B860 /* NumberList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E22D492645ABA70090B860 /* NumberList.swift */; };
 		14E22D4C264C7C640090B860 /* ReadNumbersInspector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14E22D4B264C7C640090B860 /* ReadNumbersInspector.storyboard */; };
-		14E22D4F264DF5BF0090B860 /* ReadNumbersWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E22D4E264DF5BF0090B860 /* ReadNumbersWindowController.swift */; };
 		14E22D51264DF8720090B860 /* ReadNumbersNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E22D50264DF8720090B860 /* ReadNumbersNavigatorViewController.swift */; };
 		14E22D54264DF89A0090B860 /* ReadNumbersViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E22D52264DF89A0090B860 /* ReadNumbersViewerViewController.swift */; };
-		14E22D55264DF89A0090B860 /* ReadNumbersViewerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14E22D53264DF89A0090B860 /* ReadNumbersViewerViewController.xib */; };
+		14E22D58264EFD350090B860 /* ReadNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E22D56264EFD350090B860 /* ReadNumbersViewController.swift */; };
 		14E58526228C92AB00802691 /* ToolImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E58525228C92AB00802691 /* ToolImageView.swift */; };
 		14E58528228DF92F00802691 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E58527228DF92F00802691 /* Notifications.swift */; };
 		14E5857222949A0900802691 /* ConnectionDragController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857122949A0900802691 /* ConnectionDragController.swift */; };
@@ -4484,10 +4483,9 @@
 		14E22D472645AAA40090B860 /* NumberData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberData.swift; sourceTree = "<group>"; };
 		14E22D492645ABA70090B860 /* NumberList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberList.swift; sourceTree = "<group>"; };
 		14E22D4B264C7C640090B860 /* ReadNumbersInspector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReadNumbersInspector.storyboard; sourceTree = "<group>"; };
-		14E22D4E264DF5BF0090B860 /* ReadNumbersWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNumbersWindowController.swift; sourceTree = "<group>"; };
 		14E22D50264DF8720090B860 /* ReadNumbersNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNumbersNavigatorViewController.swift; sourceTree = "<group>"; };
 		14E22D52264DF89A0090B860 /* ReadNumbersViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNumbersViewerViewController.swift; sourceTree = "<group>"; };
-		14E22D53264DF89A0090B860 /* ReadNumbersViewerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadNumbersViewerViewController.xib; sourceTree = "<group>"; };
+		14E22D56264EFD350090B860 /* ReadNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNumbersViewController.swift; sourceTree = "<group>"; };
 		14E58525228C92AB00802691 /* ToolImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolImageView.swift; sourceTree = "<group>"; };
 		14E58527228DF92F00802691 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		14E5857122949A0900802691 /* ConnectionDragController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDragController.swift; sourceTree = "<group>"; };
@@ -4624,6 +4622,7 @@
 				14710520225DA67D00E88657 /* Loop.swift */,
 				14403210263098A5007D7BB7 /* LoopController.swift */,
 				144031F9261FD0C6007D7BB7 /* CanvasLoopView.swift */,
+				14E8A531253778EA00864375 /* Tree Inspector */,
 				144031F5261FD0A7007D7BB7 /* CanvasLoopViewController.swift */,
 			);
 			path = Loop;
@@ -8700,10 +8699,9 @@
 		14E22D4D264DF5540090B860 /* Read Numbers Tool */ = {
 			isa = PBXGroup;
 			children = (
-				14E22D4E264DF5BF0090B860 /* ReadNumbersWindowController.swift */,
+				14E22D56264EFD350090B860 /* ReadNumbersViewController.swift */,
 				14E22D50264DF8720090B860 /* ReadNumbersNavigatorViewController.swift */,
 				14E22D52264DF89A0090B860 /* ReadNumbersViewerViewController.swift */,
-				14E22D53264DF89A0090B860 /* ReadNumbersViewerViewController.xib */,
 			);
 			path = "Read Numbers Tool";
 			sourceTree = "<group>";
@@ -8731,7 +8729,6 @@
 			children = (
 				1495A0B1237C89A200F46312 /* Tool Objects */,
 				1440320F26309863007D7BB7 /* Loop */,
-				14E8A531253778EA00864375 /* Tree Inspector */,
 				1495A0B2237C97F800F46312 /* Matrix Inspector */,
 				14C618E523E0E11E001FFFD6 /* Model Tool */,
 				149A4FFC249834E2007E4D4B /* Align Tool */,
@@ -8901,7 +8898,6 @@
 				141106B9230742D500A8B936 /* ToolTip.storyboard in Resources */,
 				14E00A2B261BCAE700D97E68 /* CMakeLists.txt in Resources */,
 				1411BEE92208FE91009BEE1D /* Tool.xib in Resources */,
-				14E22D55264DF89A0090B860 /* ReadNumbersViewerViewController.xib in Resources */,
 				149A500624995B8C007E4D4B /* paup in Resources */,
 				1419FDBD244E772900007232 /* VariableController.storyboard in Resources */,
 				14E22D4C264C7C640090B860 /* ReadNumbersInspector.storyboard in Resources */,
@@ -9432,7 +9428,6 @@
 				14E0098C261BCAE600D97E68 /* Func_TamuraNei.cpp in Sources */,
 				14E0067B261BCAE400D97E68 /* CholeskyDecomposition.cpp in Sources */,
 				14E00695261BCAE400D97E68 /* DistributionCauchy.cpp in Sources */,
-				14E22D4F264DF5BF0090B860 /* ReadNumbersWindowController.swift in Sources */,
 				14E00908261BCAE600D97E68 /* Func_range.cpp in Sources */,
 				14A663BE2319A0950034EA53 /* NotebookViewController.swift in Sources */,
 				14E00A26261BCAE700D97E68 /* Dist_PhyloBrownian.cpp in Sources */,
@@ -10311,6 +10306,7 @@
 				14E009D5261BCAE700D97E68 /* Dist_Cauchy.cpp in Sources */,
 				14E0067E261BCAE400D97E68 /* RbMathVector.cpp in Sources */,
 				14E007F9261BCAE500D97E68 /* Move_Slide.cpp in Sources */,
+				14E22D58264EFD350090B860 /* ReadNumbersViewController.swift in Sources */,
 				14E0092D261BCAE600D97E68 /* Func_exp.cpp in Sources */,
 				14E0070E261BCAE500D97E68 /* DispersalExtinctionRateStructureFunction.cpp in Sources */,
 				14E009E2261BCAE700D97E68 /* Dist_studentT.cpp in Sources */,

@@ -63,8 +63,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="connectionsStatusLabel" destination="kKF-WK-t9o" id="Fbe-An-6dv"/>
                         <outlet property="dataCountLabel" destination="kdM-nA-yWH" id="rqH-zz-YFb"/>
+                        <outlet property="statusLabel" destination="kKF-WK-t9o" id="Fbe-An-6dv"/>
                         <outlet property="toolNameLabel" destination="iPL-qh-fN4" id="QRa-yc-d4j"/>
                     </connections>
                 </viewController>

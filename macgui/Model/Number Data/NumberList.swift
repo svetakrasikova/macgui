@@ -8,6 +8,7 @@
 
 import Cocoa
 
+@objcMembers
 class NumberList: NSObject, NSCoding {
     
     enum CodingKeys: String {
@@ -18,8 +19,12 @@ class NumberList: NSObject, NSCoding {
         case ConversionToNumberError, MatchingParenError, NumberListDimensionError
     }
     
-    var name: String?
-    var type: NumberListType
+    dynamic var name: String?
+    var type: NumberListType {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
     var dimension: Int
     var valueList: [Any]
     
@@ -32,6 +37,45 @@ class NumberList: NSObject, NSCoding {
     init(dataAsString: String) throws {
         (self.dimension, self.type, self.valueList) = try NumberList.parseNumberList(dataAsString, dimension: 0, type: NumberListType.Real)
         
+    }
+    
+    func stringValue(index: Int) -> String {
+        var stringValue: String = ""
+        let value = self.valueList[index]
+            switch dimension {
+            case 0: stringValue = NumberList.numToString(value: value)
+            case 1: stringValue = NumberList.vectorToString(value: value as! [Any])
+            case 2: stringValue = NumberList.matrixToString(value: value as! [Any])
+            default: break
+            }
+        return stringValue
+    }
+    
+    class func numToString(value: Any) -> String {
+        if let integerValue = value as? Int {
+            return String(integerValue)
+        } else if let decimalValue = value as? NSDecimalNumber{
+            return decimalValue.stringValue
+        }
+        return ""
+    }
+    
+    class func vectorToString(value: [Any]) -> String {
+        var str = "["
+        for (index, num) in value.enumerated() {
+            str += index == value.count - 1 ? "\(numToString(value: num))" : "\(numToString(value: num)), "
+        }
+        str += "]"
+        return str
+    }
+    
+    class func matrixToString(value: [Any]) -> String {
+        var str = "["
+        for (index, num) in value.enumerated() {
+            str += index == value.count - 1 ? "\(vectorToString(value: num as! [Any]))" : "\(vectorToString(value: num as! [Any])), "
+        }
+        str += "]"
+        return str
     }
     
     class func parseNumberList(_ str: String, dimension: Int, type: NumberListType) throws -> (Int, NumberListType, [Any]){
@@ -123,6 +167,17 @@ class NumberList: NSObject, NSCoding {
                 self.type = type
             }
         default: break
+            
+        }
+    }
+    
+    class func typesCompatibleWith(_ type: NumberListType) -> [NumberListType] {
+        switch type {
+        case .Integer: return [.Integer, .Natural, .PosReal, .Real]
+        case .Natural: return [.Integer, .Natural, .PosReal, .Real]
+        case .PosReal: return [.PosReal, .Real]
+        case .Real: return [.PosReal, .Real]
+        case .Simplex: return [.Integer, .Natural, .PosReal, .Real]
             
         }
     }

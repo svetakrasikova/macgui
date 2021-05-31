@@ -19,7 +19,7 @@ class Loop: ToolObject {
     var outerLoop: Loop?
     var embeddedNodes: [Connectable] = []
     dynamic var index: String
-    var upperRange: Int = 1
+    dynamic var upperRange: Int = 1
     
     
     init(frameOnCanvas: NSRect, analysis: Analysis, index: String){

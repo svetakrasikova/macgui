@@ -28,6 +28,17 @@ class CanvasLoopViewController: ResizableCanvasObjectViewController {
         
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setPopOver()
+    }
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        closePopover()
+        invalidatePopoverTimers()
+    }
+    
     override func  setBackgroundColor() {
         guard let view = view as? CanvasLoopView else { return }
         let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
@@ -38,6 +49,6 @@ class CanvasLoopViewController: ResizableCanvasObjectViewController {
     override func actionButtonClicked(_ button: ActionButton) {
         self.presentAsModalWindow(loopController)
     }
-
+    
     
 }

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CanvasObjectViewController: NSViewController, NSWindowDelegate {
+class CanvasObjectViewController: NSViewController, NSWindowDelegate, ToolTipDelegate {
     
     var isPartOfMultipleSelection: Bool = false
     
@@ -33,6 +33,25 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate {
         }
     }
     
+    override func mouseEntered(with event: NSEvent) {
+        if let view = view as? MovingCanvasObjectView {
+            view.isMouseDown = true
+            if !self.toolTipPopover.isShown, !view.isMouseDragged, !popOverTimersValid() {
+                self.startPopoverTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(showPopover), userInfo: nil, repeats: false)
+                self.closePopoverTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(closePopover), userInfo: nil, repeats: false)
+            }
+        }
+        
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        if let view = view as? MovingCanvasObjectView {
+                  view.isMouseDown = false
+        }
+        closePopover()
+    }
+
+    
 // MARK: - Selectors for Observed Notifications
     
     func windowDidResize(_ notification: Notification) {
@@ -47,6 +66,57 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate {
         (self.view as! CanvasObjectView).delegate = self
          NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
     }
+    
+// MARK: -- Tooltip Popover
+    let toolTipPopover: NSPopover = NSPopover()
+    var startPopoverTimer: Timer?
+    var closePopoverTimer: Timer?
+    
+    @objc func showPopover(){
+        if self.view.window?.isMainWindow ?? true, let view = self.view as? MovingCanvasObjectView, view.isMouseDown {
+        self.toolTipPopover.show(relativeTo: self.view.bounds, of: self.view, preferredEdge: NSRectEdge.minY)
+        }
+    }
+
+    func invalidatePopoverTimers() {
+        startPopoverTimer?.invalidate()
+        closePopoverTimer?.invalidate()
+    }
+    
+    func popOverTimersValid() -> Bool {
+        guard let start = startPopoverTimer, let close = closePopoverTimer else { return false }
+        return start.isValid && close.isValid
+      
+    }
+    
+    @objc func closePopover(){
+        if self.toolTipPopover.isShown {
+            self.toolTipPopover.close()
+        }
+        invalidatePopoverTimers()
+    }
+    
+    func setPopOver(){
+        toolTipPopover.contentViewController = NSStoryboard.loadVC(StoryBoardName.toolTip)
+        if let toolTipPopoverVC = toolTipPopover.contentViewController as? ToolTipViewController{
+            toolTipPopoverVC.delegate = self
+        }
+    }
+    
+    // MARK: - Tooltip Delegate
+    
+    func isConnected() -> Bool? {
+        guard let connectable = self.tool as? Connectable else {
+            return nil
+        }
+       return connectable.isConnected
+    }
+    
+    func getDescriptiveToolName() -> String {
+           if let toolName = self.tool?.descriptiveName { return toolName }
+           return "Unnamed Tool"
+       }
+
     
 //  MARK: -- Loop Inclusion
     
