@@ -14,7 +14,9 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate, ToolTipDel
     
     var viewSelected: Bool = false {
         didSet {
-            (view as! CanvasObjectView).isSelected = viewSelected
+            if let view = view as? CanvasObjectView {
+                view.isSelected = viewSelected
+            }
             if viewSelected && !isPartOfMultipleSelection {
                 NotificationCenter.default.post(name: .didSelectCanvasObjectController, object: self)
             }
@@ -36,10 +38,7 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate, ToolTipDel
     override func mouseEntered(with event: NSEvent) {
         if let view = view as? MovingCanvasObjectView {
             view.isMouseDown = true
-            if !self.toolTipPopover.isShown, !view.isMouseDragged, !popOverTimersValid() {
-                self.startPopoverTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(showPopover), userInfo: nil, repeats: false)
-                self.closePopoverTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(closePopover), userInfo: nil, repeats: false)
-            }
+            setPopoverTimers()
         }
         
     }
@@ -67,10 +66,20 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate, ToolTipDel
          NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
     }
     
+    
 // MARK: -- Tooltip Popover
     let toolTipPopover: NSPopover = NSPopover()
     var startPopoverTimer: Timer?
     var closePopoverTimer: Timer?
+    
+    func setPopoverTimers(){
+        guard let view = view as? MovingCanvasObjectView else { return }
+        guard toolTipPopover.contentViewController != nil else { return }
+        if !self.toolTipPopover.isShown, !view.isMouseDragged, !popOverTimersValid() {
+            self.startPopoverTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(showPopover), userInfo: nil, repeats: false)
+            self.closePopoverTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(closePopover), userInfo: nil, repeats: false)
+        }
+    }
     
     @objc func showPopover(){
         if self.view.window?.isMainWindow ?? true, let view = self.view as? MovingCanvasObjectView, view.isMouseDown {

@@ -34,7 +34,6 @@ class CanvasLoopViewController: ResizableCanvasObjectViewController {
     }
     
     override func viewWillDisappear() {
-        super.viewWillDisappear()
         closePopover()
         invalidatePopoverTimers()
     }

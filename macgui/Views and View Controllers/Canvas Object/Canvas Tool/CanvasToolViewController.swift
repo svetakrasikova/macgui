@@ -170,6 +170,7 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
     }
     
     override func viewWillDisappear() {
+      
         if let matrixViewer = _matrixInspectorWindowController, let matrixViewerWindow = matrixViewer.window {
             matrixViewerWindow.close()
         }
@@ -178,10 +179,8 @@ class CanvasToolViewController: CanvasObjectViewController, CanvasToolViewDelega
             modelToolCanvasWindow.close()
         }
         
-        
         closePopover()
         invalidatePopoverTimers()
-        
         
     }
    

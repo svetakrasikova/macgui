@@ -122,7 +122,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
     
     override func removeResizable(viewController: ResizableCanvasObjectViewController) {
         super.removeResizable(viewController: viewController)
-        guard let plate = viewController.tool as? Loop else { return }
+        guard let plate = viewController.tool as? Plate else { return }
         if let model = self.model, let index = model.plates.firstIndex(of: plate) {
             model.plates.remove(at: index)
         }
@@ -176,7 +176,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
     func addPlateToModel(frame: NSRect) {
         guard let model = self.model else { return }
         if let index = generateActiveIndex() {
-            let plate = Loop(frameOnCanvas: frame, analysis: model.analysis, index: index)
+            let plate = Plate(frameOnCanvas: frame, analysis: model.analysis, index: index)
             model.plates.append(plate)
             addLoopView(loop: plate)
         }

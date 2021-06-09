@@ -80,6 +80,7 @@
 		1471052D227B94E200E88657 /* ConnectorItemArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052C227B94E200E88657 /* ConnectorItemArrowView.swift */; };
 		1471052F2280E36D00E88657 /* Align.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471052E2280E36D00E88657 /* Align.swift */; };
 		147105312280E52300E88657 /* ReadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147105302280E52300E88657 /* ReadData.swift */; };
+		1471746B2668122400D921E6 /* Plate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471746A2668122400D921E6 /* Plate.swift */; };
 		147175932643125100117EC0 /* PlateController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147175922643125100117EC0 /* PlateController.storyboard */; };
 		14717595264312D900117EC0 /* ModelPlateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14717594264312D900117EC0 /* ModelPlateController.swift */; };
 		147429D722CADDF800FF1963 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429D622CADDF800FF1963 /* SheetViewController.swift */; };
@@ -1582,6 +1583,7 @@
 		1471052C227B94E200E88657 /* ConnectorItemArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorItemArrowView.swift; sourceTree = "<group>"; };
 		1471052E2280E36D00E88657 /* Align.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Align.swift; sourceTree = "<group>"; };
 		147105302280E52300E88657 /* ReadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadData.swift; sourceTree = "<group>"; };
+		1471746A2668122400D921E6 /* Plate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plate.swift; sourceTree = "<group>"; };
 		147175922643125100117EC0 /* PlateController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlateController.storyboard; sourceTree = "<group>"; };
 		14717594264312D900117EC0 /* ModelPlateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPlateController.swift; sourceTree = "<group>"; };
 		147429D622CADDF800FF1963 /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
@@ -4622,7 +4624,6 @@
 				14710520225DA67D00E88657 /* Loop.swift */,
 				14403210263098A5007D7BB7 /* LoopController.swift */,
 				144031F9261FD0C6007D7BB7 /* CanvasLoopView.swift */,
-				14E8A531253778EA00864375 /* Tree Inspector */,
 				144031F5261FD0A7007D7BB7 /* CanvasLoopViewController.swift */,
 			);
 			path = Loop;
@@ -4924,6 +4925,7 @@
 				14A705CD2639D83E006B7F6B /* ModelCanvasPlateView.swift */,
 				14A705C92633956B006B7F6B /* ModelCanvasPlateViewController.swift */,
 				14717594264312D900117EC0 /* ModelPlateController.swift */,
+				1471746A2668122400D921E6 /* Plate.swift */,
 			);
 			path = "Model Tool";
 			sourceTree = "<group>";
@@ -8730,6 +8732,7 @@
 				1495A0B1237C89A200F46312 /* Tool Objects */,
 				1440320F26309863007D7BB7 /* Loop */,
 				1495A0B2237C97F800F46312 /* Matrix Inspector */,
+				14E8A531253778EA00864375 /* Tree Inspector */,
 				14C618E523E0E11E001FFFD6 /* Model Tool */,
 				149A4FFC249834E2007E4D4B /* Align Tool */,
 				1453184824E4748800A4656C /* Parsimony Tool */,
@@ -10126,6 +10129,7 @@
 				14E00963261BCAE600D97E68 /* Func_blosum62.cpp in Sources */,
 				14E007DE261BCAE500D97E68 /* Move_NodeTimeSlideUniformCharacterHistory.cpp in Sources */,
 				14E22D51264DF8720090B860 /* ReadNumbersNavigatorViewController.swift in Sources */,
+				1471746B2668122400D921E6 /* Plate.swift in Sources */,
 				144032032624DA78007D7BB7 /* ResizableCanvasObjectViewController.swift in Sources */,
 				14E00608261BCAE400D97E68 /* RateGenerator.cpp in Sources */,
 				14E0066D261BCAE400D97E68 /* BranchLengthDistributionReader.cpp in Sources */,

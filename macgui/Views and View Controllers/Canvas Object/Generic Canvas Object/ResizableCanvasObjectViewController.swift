@@ -60,9 +60,14 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
     }
     
     func setLabelText() {
-        let upperRange: String = loop.upperRange == 1 ?
-            "\(loop.upperRange)" : "(1,...,\(loop.upperRange))"
+        guard let upperRange = upperRangeString() else { return }
         resizableView.labelText = "\(loop.index) \(Symbol.element.rawValue) \(upperRange)"
+    }
+    
+    func upperRangeString() -> String? {
+        let range: String = loop.upperRange == 1 ?
+            "\(loop.upperRange)" : "(1,...,\(loop.upperRange))"
+        return range
     }
     
     

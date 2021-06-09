@@ -10,20 +10,20 @@ import Cocoa
 
 class ModelCanvasPlateViewController: ResizableCanvasObjectViewController {
 
-    lazy var loopController: ModelPlateController = {
-        let loopController = NSStoryboard.loadVC(StoryBoardName.plateController) as! ModelPlateController
-         if let loop = self.tool as? Loop {
-             loopController.loop = loop
+    lazy var plateController: ModelPlateController = {
+        let plateController = NSStoryboard.loadVC(StoryBoardName.plateController) as! ModelPlateController
+         if let plate = self.tool as? Plate {
+             plateController.loop = plate
          }
          if let canvasVC = self.parent as? GenericCanvasViewController {
-             loopController.delegate = canvasVC
+             plateController.delegate = canvasVC
          }
-         return loopController
+         return plateController
      }()
    
      override func loadView() {
-         if let loop = self.tool as? Loop {
-             view = ModelCanvasPlateView(frame: loop.frameOnCanvas)
+         if let plate = self.tool as? Plate {
+             view = ModelCanvasPlateView(frame: plate.frameOnCanvas)
          }
          
      }
@@ -36,6 +36,35 @@ class ModelCanvasPlateViewController: ResizableCanvasObjectViewController {
      }
      
      override func actionButtonClicked(_ button: ActionButton) {
-         self.presentAsModalWindow(loopController)
+         self.presentAsModalWindow(plateController)
      }
+    
+    override func upperRangeString() -> String? {
+        var range: String?
+        guard let plate = tool as? Plate else { return range }
+        switch plate.rangeType {
+        case Plate.IteratorRange.numberChar.rawValue:
+            guard let index = outerLoopIndex() else { return range}
+            range = "(1,...,N[\(index)]"
+        case Plate.IteratorRange.numberTaxa.rawValue:
+            guard let index = outerLoopIndex() else { return range}
+            range = "(1,...,T[\(index)]"
+        case Plate.IteratorRange.numberMatrices.rawValue:
+            range = "M"
+        case Plate.IteratorRange.number.rawValue:
+            range =  loop.upperRange == 1 ?
+                "\(loop.upperRange)" : "(1,...,\(loop.upperRange))"
+        default: break
+        }
+        return range
+    }
+    
+    func outerLoopIndex() -> String? {
+        var index: String?
+        guard let plate = tool as? Plate else { return index }
+        if let outerLoopIndex = plate.outerLoop?.index {
+            index = outerLoopIndex
+        }
+        return index
+    }
 }
