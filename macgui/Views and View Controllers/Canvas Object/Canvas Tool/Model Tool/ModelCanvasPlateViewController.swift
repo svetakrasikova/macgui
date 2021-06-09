@@ -12,17 +12,20 @@ class ModelCanvasPlateViewController: ResizableCanvasObjectViewController {
 
     lazy var plateController: ModelPlateController = {
         let plateController = NSStoryboard.loadVC(StoryBoardName.plateController) as! ModelPlateController
-         if let plate = self.tool as? Plate {
-             plateController.loop = plate
-         }
-         if let canvasVC = self.parent as? GenericCanvasViewController {
-             plateController.delegate = canvasVC
-         }
-         return plateController
-     }()
-   
-     override func loadView() {
-         if let plate = self.tool as? Plate {
+        if let plate = self.tool as? Plate {
+            plateController.loop = plate
+        }
+        if let canvas = self.parent as? ModelCanvasViewController, let model = canvas.model {
+            plateController.matricesCount = model.dataMatrices.count
+        }
+        if let canvasVC = self.parent as? GenericCanvasViewController {
+            plateController.delegate = canvasVC
+        }
+        return plateController
+    }()
+    
+    override func loadView() {
+        if let plate = self.tool as? Plate {
              view = ModelCanvasPlateView(frame: plate.frameOnCanvas)
          }
          
