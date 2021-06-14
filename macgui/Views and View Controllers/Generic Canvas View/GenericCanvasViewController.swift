@@ -19,6 +19,20 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
     var activeLoopIndices: [Int] {
         return []
     }
+    
+    func generateActiveIndex() -> String? {
+        var index: String?
+        for i in 0..<loopIndices.count {
+            if let _ = activeLoopIndices.firstIndex(of: i) {
+                continue
+            } else {
+                index = loopIndices[i]
+                break
+            }
+        }
+        return index
+    }
+
 // MARK: - IB Outlets
     
     @IBOutlet weak var scrollView: NSScrollView!

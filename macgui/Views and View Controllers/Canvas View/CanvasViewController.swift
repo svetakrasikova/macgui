@@ -53,21 +53,6 @@ class CanvasViewController: GenericCanvasViewController {
                                                object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reset), name: .didUpdateAnalysis, object: nil)
     }
-    
-//   MARK: -- Manage Loop Indices
-
-    func generateActiveIndex() -> String? {
-        var index: String?
-        for i in 0..<loopIndices.count {
-            if let _ = activeLoopIndices.firstIndex(of: i) {
-                continue
-            } else {
-                index = loopIndices[i]
-                break
-            }
-        }
-        return index
-    }
 
     
     //   MARK: - Connect Tools on Canvas

@@ -50,6 +50,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
         }
         return indexTable
     }
+     
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -222,38 +223,8 @@ class ModelCanvasViewController: GenericCanvasViewController {
     
 //    MARK: -- Plate Management
 
-    let plateIndices: [String] = ["a","b","c","d","e", "f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     
-    var activePlateIndices: [Int] {
-        var indexTable = [Int]()
-        var activeIndicesList = [String]()
-        
-        if let model = self.model {
-            for plate in model.plates {
-                activeIndicesList.append(plate.index)
-            }
-        }
-        for index in activeIndicesList {
-            if let i = plateIndices.firstIndex(of: index) {
-                indexTable.append(i)
-            }
-        }
-        return indexTable
-    }
-    
-    func generateActiveIndex() -> String? {
-        var index: String?
-        for i in 0..<plateIndices.count {
-            if let _ = activePlateIndices.firstIndex(of: i) {
-                continue
-            } else {
-                index = plateIndices[i]
-                break
-            }
-        }
-        return index
-    }
-
+   
     
 }
 
