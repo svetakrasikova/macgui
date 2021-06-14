@@ -214,6 +214,7 @@ DQ
                         <outlet property="box" destination="YJN-ta-MHT" id="3a7-td-44s"/>
                         <outlet property="helpField" destination="wtB-cp-oU4" id="Sf3-d9-Us1"/>
                         <outlet property="indexPopup" destination="MqV-uC-dL6" id="opT-hQ-gkP"/>
+                        <outlet property="rangePopup" destination="H2j-7V-1cO" id="F6l-Sn-Tjk"/>
                         <outlet property="valueStack" destination="ThA-rs-VXM" id="bVu-IP-JhY"/>
                         <outlet property="valueTopConstraint" destination="5L8-hZ-YMK" id="BTR-j4-DEh"/>
                     </connections>
