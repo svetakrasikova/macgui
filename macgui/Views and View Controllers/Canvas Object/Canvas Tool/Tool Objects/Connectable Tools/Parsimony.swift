@@ -17,6 +17,11 @@ class Parsimony: DataTool, ResolveStateOnExecution {
         }
     }
     
+    override var dataToolType: DataTool.DataToolType {
+        return .matrixData
+    }
+    
+    
     enum Key: String {
         case options
     }

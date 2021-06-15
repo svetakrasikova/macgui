@@ -12,6 +12,10 @@ import Cocoa
 
 class Model: DataTool {
     
+    override var dataToolType: DataTool.DataToolType {
+        return .matrixData
+    }
+    
     dynamic var palettItems: [PalettItem] = []
     dynamic var distributions: [Distribution] = []
     dynamic var nodes: [ModelNode] = [] {
@@ -24,9 +28,27 @@ class Model: DataTool {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
         }
     }
-    dynamic var plates: [Loop] = [] {
+    dynamic var plates: [Plate] = [] {
         didSet {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    
+    override dynamic var alignedDataMatrices: [DataMatrix] {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+            if unalignedDataMatrices.count == 0 && alignedDataMatrices.count == 0 {
+                plates.forEach {$0.rangeType = Plate.IteratorRange.number.rawValue}
+            }
+        }
+    }
+   
+    override dynamic var unalignedDataMatrices: [DataMatrix] {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+            if unalignedDataMatrices.count == 0 && alignedDataMatrices.count == 0 {
+                plates.forEach {$0.rangeType = Plate.IteratorRange.number.rawValue}
+            }
         }
     }
     
@@ -62,7 +84,7 @@ class Model: DataTool {
         distributions = aDecoder.decodeObject(forKey: Key.distributions.rawValue) as? [Distribution] ?? []
         nodes = aDecoder.decodeObject(forKey: Key.nodes.rawValue) as? [ModelNode] ?? []
         edges = aDecoder.decodeObject(forKey: Key.edges.rawValue) as? [Connection] ?? []
-        plates = aDecoder.decodeObject(forKey: Key.plates.rawValue) as? [Loop] ?? []
+        plates = aDecoder.decodeObject(forKey: Key.plates.rawValue) as? [Plate] ?? []
         
     }
     

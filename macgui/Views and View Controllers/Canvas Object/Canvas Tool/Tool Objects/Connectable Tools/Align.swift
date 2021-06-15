@@ -20,6 +20,11 @@ class Align: DataTool {
         case probcons = 6
     }
     
+    override var dataToolType: DataTool.DataToolType {
+        return .matrixData
+    }
+    
+    
     var selectedAlignMethod: Int = Method.clustal.rawValue {
         didSet {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)

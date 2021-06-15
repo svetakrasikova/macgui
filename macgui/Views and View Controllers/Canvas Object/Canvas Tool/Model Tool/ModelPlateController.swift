@@ -9,10 +9,6 @@
 import Cocoa
 
 class ModelPlateController: LoopController {
-
-//TODO:
-// update help and toggle value and update range selection if matrices are removed from the model tool
-// check setting up of the index popup
     
     
     @IBOutlet weak var box: NSBox!
@@ -30,10 +26,22 @@ class ModelPlateController: LoopController {
     
     func setDataObserver(){
         guard let plate = self.plate else { return }
+        guard let matricesCount = self.matricesCount else { return }
         self.observers = [
             plate.observe(\Plate.upperRange, options: [.initial]) {(plate, _) in
                 self.setHelpText()
                 self.view.needsDisplay = true
+            },
+            plate.observe(\Plate.rangeType, options: [.old, .new]) {(plate, change) in
+                switch change.newValue {
+                case Plate.IteratorRange.number.rawValue:
+                    if change.oldValue != Plate.IteratorRange.number.rawValue {
+                        plate.upperRange = 1
+                    }
+                case Plate.IteratorRange.numberMatrices.rawValue:
+                    plate.upperRange = matricesCount
+                default: plate.upperRange = -1
+                }
             }
         ]
     }
@@ -41,6 +49,13 @@ class ModelPlateController: LoopController {
     @IBOutlet weak var rangePopup: NSPopUpButton!
     
     var matricesCount: Int?
+    
+    func setUpperRangeToNumMatrices() {
+        guard let plate = self.plate else { return }
+        guard let matricesCount = self.matricesCount else { return }
+        plate.upperRange = matricesCount
+    }
+    
     
     var isEmbeddedInOuterLoopWithMatrixRange: Bool {
         guard let plate = self.plate else { return false }

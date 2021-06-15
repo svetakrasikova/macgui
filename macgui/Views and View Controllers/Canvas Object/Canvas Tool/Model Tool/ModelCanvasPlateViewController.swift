@@ -24,6 +24,7 @@ class ModelCanvasPlateViewController: ResizableCanvasObjectViewController {
         return plateController
     }()
     
+   
     override func loadView() {
         if let plate = self.tool as? Plate {
              view = ModelCanvasPlateView(frame: plate.frameOnCanvas)
@@ -53,7 +54,7 @@ class ModelCanvasPlateViewController: ResizableCanvasObjectViewController {
             guard let index = outerLoopIndex() else { return range}
             range = "(1,...,T[\(index)]"
         case Plate.IteratorRange.numberMatrices.rawValue:
-            range = "M"
+            range = "\(loop.upperRange)"
         case Plate.IteratorRange.number.rawValue:
             range =  loop.upperRange == 1 ?
                 "\(loop.upperRange)" : "(1,...,\(loop.upperRange))"

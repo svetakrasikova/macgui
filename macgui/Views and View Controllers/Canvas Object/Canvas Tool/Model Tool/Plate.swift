@@ -23,17 +23,7 @@ class Plate: Loop {
         case rangeType
     }
     
-    dynamic var rangeType: Int = IteratorRange.number.rawValue {
-        didSet {
-            switch rangeType {
-            case IteratorRange.number.rawValue:
-                if oldValue != IteratorRange.number.rawValue {
-                    self.upperRange = 1
-                }
-            default: self.upperRange = -1
-            }
-        }
-    }
+    dynamic var rangeType: Int = IteratorRange.number.rawValue
     
     override init(frameOnCanvas: NSRect, analysis: Analysis, index: String){
         super.init(frameOnCanvas: frameOnCanvas, analysis: analysis, index: index)

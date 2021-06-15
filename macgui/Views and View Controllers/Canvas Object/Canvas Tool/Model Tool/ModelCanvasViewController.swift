@@ -9,13 +9,17 @@
 import Cocoa
 
 class ModelCanvasViewController: GenericCanvasViewController {
-   
- 
+    
     weak var model: Model? {
         if let modelToolVC = parent as? ModelToolViewController {
             return modelToolVC.tool ?? nil
         }
         return nil
+    }
+    
+    var allPlates: [Plate] {
+        guard let model = self.model else { return []}
+        return model.plates
     }
     
     var parameterNames: [Bool] = Array(repeating: false, count: 10)
@@ -50,7 +54,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
         }
         return indexTable
     }
-     
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
