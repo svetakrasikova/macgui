@@ -14,9 +14,12 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
     
     var fillColor: NSColor? {
-//        TODO: If a clamped node return the clamped node color
-        guard let fillColor = preferencesManager.modelCanvasBackgroundColor
+        guard var fillColor = preferencesManager.modelCanvasBackgroundColor
             else { return nil }
+        guard let node = tool as? ModelNode else { return nil }
+        if node.clamped {
+            fillColor = fillColor.isLight() ?? true ? fillColor.darker(componentDelta: 0.2) : fillColor.lighter(componentDelta: 0.2)
+        }
         return fillColor
     }
     
@@ -65,8 +68,8 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         return nil
     }
     
-    lazy var variableController: ModelVariableController = {
-        let variableController = NSStoryboard.loadVC(StoryBoardName.variableController) as! ModelVariableController
+    lazy var variableController: ModelStochasticVariableController = {
+        let variableController = NSStoryboard.loadVC(StoryBoardName.variableController) as! ModelStochasticVariableController
         if let node = self.tool as? ModelNode, let canvasVC = self.modelCanvas {
             variableController.modelNode = node
             variableController.delegate = canvasVC
@@ -82,8 +85,8 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         return constantController
     }()
     
-    lazy var functionController: ModelFunctionController = {
-        let functionController = NSStoryboard.loadVC(StoryBoardName.functionController) as! ModelFunctionController
+    lazy var functionController: ModelVariableController = {
+        let functionController = NSStoryboard.loadVC(StoryBoardName.functionController) as! ModelVariableController
         if let node = self.tool as? ModelNode, let canvasVC = self.modelCanvas {
             functionController.modelNode = node
         }
@@ -110,10 +113,11 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     private var observers = [NSKeyValueObservation]()
     
     
-    func addNodeNameChangeObservation() {
-        if let model = self.tool as? ModelNode {
+    func addObservations() {
+        
+        if let node = self.tool as? ModelNode {
             observers = [
-                model.observe(\ModelNode.parameterName, options: [.old, .new]) {(_, change) in
+                node.observe(\ModelNode.parameterName, options: [.old, .new]) {(_, change) in
                     let pattern: String = "Parameter (\\d+)"
                     let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
                     if let oldName = change.oldValue as? String, let match = regex?.firstMatch(in: oldName, options: [], range: NSRange(location: 0, length: oldName.utf16.count)) {
@@ -122,7 +126,11 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
                             NotificationCenter.default.post(name: .didChangeModelParameterName, object: nil, userInfo: ["index": index])
                         }
                     }
-                }
+                },
+                node.observe(\ModelNode.clamped, options: [.old, .new], changeHandler: { (node, _) in
+                    if node.clamped { self.view.needsLayout = true }
+                    
+                })
                 
             ]
         }
@@ -144,7 +152,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     override func viewDidLoad() {	
         super.viewDidLoad()
         setUp()
-        addNodeNameChangeObservation()
+        addObservations()
     }
     
 //    MARK: -- Setting up View

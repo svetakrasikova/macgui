@@ -33,6 +33,9 @@ class Connection: NSObject, NSCoding {
         case .unalignedData:
             guard let to = to as? DataTool, let from = from as? DataTool else { return }
             to.connectUnalignedData(from: from)
+        case .readnumbers:
+            guard let to = to as? DataTool, let from = from as? DataTool else { return }
+            to.connectNumberData(from: from)
         case .treedata:
             guard let to = to as? TreeSet, let from = from as? DataTool else { return }
             to.connectTreeData(from: from)

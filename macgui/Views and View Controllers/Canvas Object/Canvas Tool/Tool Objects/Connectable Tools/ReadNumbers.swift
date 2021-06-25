@@ -74,6 +74,7 @@ class ReadNumbers: DataTool {
                 if !readData.isEmpty {
                     DispatchQueue.main.async {
                         self.numberData.append(data: readData)
+                        self.propagateNumberData(data: self.numberData)
                     }
                 }
             }

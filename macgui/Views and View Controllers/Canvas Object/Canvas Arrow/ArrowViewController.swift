@@ -79,6 +79,7 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
         if let targetTool = targetTool as? DataTool, let sourceTool = sourceTool as? DataTool {
             targetTool.propagateAlignedData()
             targetTool.propagateUnalignedData()
+            targetTool.propagateNumberData()
             targetTool.propagateTreeData(source: sourceTool, removeSource: true)
         }
         if let type = self.connection?.type {

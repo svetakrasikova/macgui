@@ -106,6 +106,18 @@ class DataTool: Connectable {
         }
     }
     
+    
+    func propagateNumberData(data: NumberData = NumberData()){
+        self.numberData = data
+        if !self.connectedOutlets.isEmpty  {
+            for connection in self.analysis.arrows {
+                if connection.type == .readnumbers, connection.from === self, let neighbor = connection.to as? DataTool {
+                    neighbor.propagateNumberData(data: data)
+                }
+            }
+        }
+    }
+    
     func propagateTreeData(data: [Tree] = [], source: DataTool, removeSource: Bool) {
         
         if data.isEmpty, let treeset = self as? TreeSet {
@@ -132,6 +144,8 @@ class DataTool: Connectable {
         
     }
     
+   
+    
     
     func connectAlignedData(from: DataTool) {
         let alignedMatrices =  from.dataMatrices.filter{$0.homologyEstablished == true}
@@ -147,6 +161,15 @@ class DataTool: Connectable {
         }
     }
     
+    func connectNumberData(from: DataTool) {
+        let numberData = from.numberData
+        if !numberData.isEmpty {
+            propagateNumberData(data: numberData)
+        }
+    }
+    
+    
+    
     func propagateData() {
         let unalignedData = self.unalignedDataMatrices.filter{$0.homologyEstablished == false}
         let alignedData = self.alignedDataMatrices + unalignedDataMatrices.filter{$0.homologyEstablished == true}
@@ -156,6 +179,9 @@ class DataTool: Connectable {
                 neighbor.propagateTreeData(source: self, removeSource: false)
             } else if connection.type == .unalignedData, connection.from === self, let neighbor = connection.to as? DataTool {
                 neighbor.propagateUnalignedData(data: unalignedData)
+                neighbor.propagateTreeData(source: self, removeSource: false)
+            } else if connection.type == .readnumbers,connection.from === self, let neighbor = connection.to as? DataTool {
+                neighbor.propagateNumberData(data: self.numberData)
                 neighbor.propagateTreeData(source: self, removeSource: false)
             }
         }

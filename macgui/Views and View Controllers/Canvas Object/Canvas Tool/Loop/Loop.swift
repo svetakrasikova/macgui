@@ -54,6 +54,14 @@ class Loop: ToolObject {
         }
     }
     
+    func embedLevel() -> Int {
+        if outerLoop == nil {
+            return 0
+        } else {
+            return embedLevel() + 1
+        }
+    }
+    
     func updateOuterLoop(_ loop: Loop) {
         if outerLoop !== loop {
             outerLoop = loop
@@ -70,6 +78,10 @@ class Loop: ToolObject {
         if let index = embeddedNodes.firstIndex(of: node) {
             embeddedNodes.remove(at: index)
         }
+    }
+    
+    func contains(node: Connectable) -> Bool {
+        return embeddedNodes.contains(node)
     }
 
 }

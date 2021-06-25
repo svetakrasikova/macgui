@@ -45,7 +45,11 @@ class TestDataConstants {
  }
 """.data(using: .utf8)!
     
-//    MARK: -- Model Tool
+    
+    static let sampleNewickString = "(Bovine,((((Carp,Loach),Xenopus),Chicken),(Mouse,Rat)),((Human,Whale),Seal));"
+    
+    
+//    MARK: -- Model Tool: Mock Distributions
     
     static let exponentialDistribution = """
             {
@@ -56,6 +60,19 @@ class TestDataConstants {
 
             }
 """
+    
+    static let logNormalDistribution = """
+        {
+        
+            "name": "Lognormal Distribution",
+            "domain": "RealPos",
+            "descriptiveString": "Lognormal distribution is the distribution for a log-transformed normally distributed random variable with mean 'mu' and standard deviation 'sigma'.",
+            "parameters": [{"name": "\u{03BC}", "type": "Real", "descriptiveString": "The mean in log-space (observed mean is exp(m))."},
+                            {"name": "\u{03C3}", "type": "RealPos", "descriptiveString": "The standard deviation in log-space."}
+                                        ],
+        }
+        
+        """
 static let normalDistribution =  """
             {
                 "name": "Normal Distribution",
@@ -91,6 +108,32 @@ static let normalDistribution =  """
                 }
     """
     
-    static let sampleNewickString = "(Bovine,((((Carp,Loach),Xenopus),Chicken),(Mouse,Rat)),((Human,Whale),Seal));"
+//    MARK: -- Model Tool: Mock Palette Items
+    
+    static let Integer =  """
+                {
+                    "type": "Integer",
+                    "dimension": 0
+                }
+    """
+    static let Real =  """
+                {
+                    "type": "\(NumberListType.Real.rawValue)",
+                    "dimension": 0,
+                }
+    """
+    
+    static let RealPos =  """
+                {
+                    "type": "\(NumberListType.RealPos.rawValue)",
+                    "dimension": 0,
+                }
+    """
+    
+//    MARK: -- Model Tool: Mock Functions
+    
  
 }
+
+
+

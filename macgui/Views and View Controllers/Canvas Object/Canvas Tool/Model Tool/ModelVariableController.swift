@@ -19,6 +19,7 @@ class ModelVariableController: ModelPaletteItemController {
     @IBOutlet weak var boxContainer: NSBox!
     @IBOutlet weak var distributionParametersStackView: NSStackView!
     
+    @IBOutlet weak var distributionParametersTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var param1StackView: NSStackView!
     @IBOutlet weak var param2StackView: NSStackView!
     @IBOutlet weak var param3StackView: NSStackView!
@@ -27,7 +28,6 @@ class ModelVariableController: ModelPaletteItemController {
     
     var boxHeightConstraint = NSLayoutConstraint()
     
-    
     var parametersStack: [NSStackView] {
         return [param1StackView, param2StackView, param3StackView, param4StackView, param5StackView]
     }
@@ -35,6 +35,7 @@ class ModelVariableController: ModelPaletteItemController {
     
     var parametersStackShouldBeHidden: Bool = true {
         didSet {
+            distributionParametersTopConstraint.constant = parametersStackShouldBeHidden ? 0 : 15.0
             self.distributionParametersStackView.isHidden = parametersStackShouldBeHidden
         }
     }
@@ -52,7 +53,6 @@ class ModelVariableController: ModelPaletteItemController {
     
     var parameters: [Parameter] = []
     
-    
     //    MARK: -- View Controller Life Cycle
     
     
@@ -66,9 +66,6 @@ class ModelVariableController: ModelPaletteItemController {
         resetDistribution()
     }
     
-    
-    
-    
     func setUpDistribution() {
         guard let modelNode = self.modelNode, let distributionName =  modelNode.distribution?.name, let descriptiveString = modelNode.distribution?.descriptiveString  else { return }
         distributionLabel.toolTip = descriptiveString
@@ -77,9 +74,6 @@ class ModelVariableController: ModelPaletteItemController {
         setDistributionParameters(distributionName: distributionName)
         parametersStackShouldBeHidden = false
     }
-    
-    
-    
     
     func setDistributionParameters(distributionName: String) {
         
@@ -175,7 +169,7 @@ class ModelVariableController: ModelPaletteItemController {
             addHeightConstraintToBox(height:  boxContainer.fittingSize.height)
             
         } else {
-            resetParametersStack()
+//            resetParametersStack()
             
         }
     }
@@ -229,8 +223,6 @@ class ModelVariableController: ModelPaletteItemController {
     }
     
 }
-
-
 
 // MARK: -- ModelVariableControllerDelegate
 

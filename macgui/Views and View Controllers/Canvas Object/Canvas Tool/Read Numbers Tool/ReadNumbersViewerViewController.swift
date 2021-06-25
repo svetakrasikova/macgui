@@ -87,8 +87,8 @@ class ReadNumbersViewerViewController: NSViewController, NSTableViewDelegate, NS
             self.numberList?.type = NumberListType.Natural
         case NumberListType.Real.rawValue:
             self.numberList?.type = NumberListType.Real
-        case NumberListType.PosReal.rawValue:
-            self.numberList?.type = NumberListType.PosReal
+        case NumberListType.RealPos.rawValue:
+            self.numberList?.type = NumberListType.RealPos
         case NumberListType.Simplex.rawValue:
             self.numberList?.type = NumberListType.Simplex
         default: break

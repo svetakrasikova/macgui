@@ -19,19 +19,38 @@ class NumberList: NSObject, NSCoding {
         case ConversionToNumberError, MatchingParenError, NumberListDimensionError
     }
     
-    dynamic var name: String?
+    dynamic var name: String = "unnamed"
     var type: NumberListType {
         didSet {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
         }
     }
     var dimension: Int
+    var dimensionSymbol: String {
+        switch dimension {
+        case 0: return "\(self.type.rawValue)"
+        case 1: return "[\(self.type.rawValue)]"
+        case 2: return "[[\(self.type.rawValue)]]"
+        default: return ""
+        }
+    }
     var valueList: [Any]
+    
+    var isEmpty: Bool {
+        return valueList.isEmpty
+    }
     
     init(type: NumberListType, dimension: Int, valueList: [Any]) {
         self.type = type
         self.dimension = dimension
         self.valueList = valueList
+    }
+    
+    override init() {
+        self.type = .Real
+        self.dimension = 0
+        self.valueList = []
+        super.init()
     }
     
     init(dataAsString: String) throws {
@@ -141,7 +160,7 @@ class NumberList: NSObject, NSCoding {
             result = str.first == "-" ? (NumberListType.Integer, value) : (NumberListType.Natural, value)
         } else if let _ = Double(str){
             let value =  NSDecimalNumber(string: str)
-            result = str.first == "-" ? (NumberListType.Real, value) : (NumberListType.PosReal, value)
+            result = str.first == "-" ? (NumberListType.Real, value) : (NumberListType.RealPos, value)
         }
         return result
     }
@@ -162,7 +181,7 @@ class NumberList: NSObject, NSCoding {
             if type != .Natural {
                 self.type = type
             }
-        case .PosReal:
+        case .RealPos:
             if type == .Real {
                 self.type = type
             }
@@ -171,13 +190,14 @@ class NumberList: NSObject, NSCoding {
         }
     }
     
+    
     class func typesCompatibleWith(_ type: NumberListType) -> [NumberListType] {
         switch type {
-        case .Integer: return [.Integer, .Natural, .PosReal, .Real]
-        case .Natural: return [.Integer, .Natural, .PosReal, .Real]
-        case .PosReal: return [.PosReal, .Real]
-        case .Real: return [.PosReal, .Real]
-        case .Simplex: return [.Integer, .Natural, .PosReal, .Real]
+        case .Integer: return [.Integer, .Natural, .RealPos, .Real]
+        case .Natural: return [.Integer, .Natural, .RealPos, .Real]
+        case .RealPos: return [.RealPos, .Real]
+        case .Real: return [.RealPos, .Real]
+        case .Simplex: return [.Integer, .Natural, .RealPos, .Real]
             
         }
     }
@@ -192,7 +212,7 @@ class NumberList: NSObject, NSCoding {
     required init?(coder: NSCoder) {
         dimension = coder.decodeInteger(forKey: CodingKeys.dimension.rawValue)
         type = NumberListType(rawValue: coder.decodeObject(forKey: CodingKeys.type.rawValue) as! String) ?? NumberListType.Real
-        name = coder.decodeObject(forKey: CodingKeys.name.rawValue) as? String
+        name = coder.decodeObject(forKey: CodingKeys.name.rawValue) as? String ?? "unnamed"
         valueList = coder.decodeObject(forKey: CodingKeys.valueList.rawValue) as? [Any] ?? []
     }
     
@@ -202,7 +222,7 @@ enum NumberListType: String {
     case Integer
     case Natural
     case Real
-    case PosReal
+    case RealPos
     case Simplex
 }
 

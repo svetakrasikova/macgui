@@ -9,7 +9,6 @@
 import Cocoa
 
 @objcMembers
-
 class ModelNode: Connectable {
     
     var node: PalettItem
@@ -23,9 +22,14 @@ class ModelNode: Connectable {
     var distribution: Distribution?
     var distributionParameters: [ModelNode] = []
     dynamic var constantValue: Double = 0.0
+    dynamic var observedValue: NumberList = NumberList()
+    
+    dynamic var clamped: Bool {
+        return !observedValue.isEmpty
+    }
     
     enum CodingKeys: String {
-        case node, nodeType, parameterName, distribution, distributionParameters, constantValue
+        case node, nodeType, parameterName, distribution, distributionParameters, constantValue, observedValue
     }
     
     init(name: String, frameOnCanvas: NSRect, analysis: Analysis, node: PalettItem){
@@ -50,6 +54,7 @@ class ModelNode: Connectable {
         self.distribution = aDecoder.decodeObject(forKey: CodingKeys.distribution.rawValue) as? Distribution
         self.distributionParameters = aDecoder.decodeObject(forKey: CodingKeys.distributionParameters.rawValue) as? [ModelNode] ?? []
         self.constantValue = aDecoder.decodeDouble(forKey: CodingKeys.constantValue.rawValue)
+        self.observedValue = aDecoder.decodeObject(forKey: CodingKeys.observedValue.rawValue) as? NumberList ?? NumberList()
         super.init(coder: aDecoder)
     }
     
@@ -60,6 +65,7 @@ class ModelNode: Connectable {
         coder.encode(distribution, forKey: CodingKeys.distribution.rawValue)
         coder.encode(distributionParameters, forKey: CodingKeys.distributionParameters.rawValue)
         coder.encode(constantValue, forKey: CodingKeys.constantValue.rawValue)
+        coder.encode(observedValue, forKey: CodingKeys.observedValue.rawValue)
         super.encode(with: coder)
     }
     

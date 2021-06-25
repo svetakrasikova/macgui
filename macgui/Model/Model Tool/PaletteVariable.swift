@@ -35,18 +35,18 @@ class PaletteVariable : PalettItem {
     var symbol : String {
         
         switch self.type {
-        case "Real":
+        case NumberListType.Real.rawValue:
             return Symbol.doubleStruckCapitalR.rawValue
-        case "RealPos":
+        case NumberListType.RealPos.rawValue:
             return Symbol.doubleStruckCapitalR.rawValue + Symbol.plus.rawValue
-        case "Simplex":
+        case NumberListType.Simplex.rawValue:
             return  Symbol.capitalDelta.rawValue
+        case NumberListType.Natural.rawValue:
+            return Symbol.doubleStruckCapitalN.rawValue
+        case NumberListType.Integer.rawValue:
+            return Symbol.doubleStruckCapitalZ.rawValue
         case "Probability":
             return Symbol.doubleStruckCapitalP.rawValue
-        case "Natural":
-            return Symbol.doubleStruckCapitalN.rawValue
-        case "Integer":
-            return Symbol.doubleStruckCapitalZ.rawValue
         default:
             return "#"
         }

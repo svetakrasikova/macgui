@@ -20,6 +20,7 @@ class NumberData: NSObject, NSCoding {
    
     @objc dynamic var numberLists: [NumberList] = []
     
+    var unnamedListsIndices: [String : Int] = [:]
     var isEmpty: Bool {
         return numberLists.isEmpty
     }
@@ -31,7 +32,7 @@ class NumberData: NSObject, NSCoding {
     var descriptionString: String {
         var str = "Number data with \(self.numberLists.count) number lists\n"
         for list in numberLists {
-            str += "\(list.name ?? "-")\t\(list.dimension)\t\(list.type.rawValue)\t \(list.valueList.description)\n"
+            str += "\(list.name)\t\(list.dimension)\t\(list.type.rawValue)\t \(list.valueList.description)\n"
         }
         return str
     }
@@ -81,12 +82,29 @@ class NumberData: NSObject, NSCoding {
                     }
                     
                 }
+                if names.isEmpty { names = descriptiveNames(lists: lists) }
                 try self.init(names: names, lists: lists)
             }
         } catch {
             throw NumberDataError.DataError
         }
         
+    }
+    
+    func descriptiveNames(lists: [NumberList]) -> [String] {
+        var names = [String]()
+        for l in lists {
+            var descriptiveName = "unnamed \(l.dimensionSymbol)"
+            if let index = unnamedListsIndices[l.type.rawValue] {
+                descriptiveName += " \(index)"
+                unnamedListsIndices[l.type.rawValue]! += 1
+            } else {
+                unnamedListsIndices[l.type.rawValue]! = 1
+                descriptiveName = " 1"
+            }
+            names.append(descriptiveName)
+        }
+        return names
     }
      
     func emptyList() {

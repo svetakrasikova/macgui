@@ -67,7 +67,8 @@ class Model: DataTool {
         self.outlets = [purple]
         
         do {
-            try initPalettItemsFromCore()
+//            try initPalettItemsFromCore()
+            try initMockupPaletteItems()
             try initMockupDistributions()
         } catch DataToolError.readError {
             print("Error reading json data from the core. Model Tool palette items could not be loaded.")
@@ -120,7 +121,7 @@ class Model: DataTool {
     }
     
     func initMockupDistributions() throws {
-        let jsonDistributionStringArray: [String] = [ TestDataConstants.gammaDistribution, TestDataConstants.normalDistribution, TestDataConstants.poissonDistribution, TestDataConstants.exponentialDistribution ]
+        let jsonDistributionStringArray: [String] = [ TestDataConstants.gammaDistribution, TestDataConstants.normalDistribution, TestDataConstants.poissonDistribution, TestDataConstants.exponentialDistribution, TestDataConstants.logNormalDistribution ]
 
         let distributionsDataArray: [Data] = JsonCoreBridge(jsonArray: jsonDistributionStringArray).encodeJsonStringArray()
         
@@ -134,6 +135,26 @@ class Model: DataTool {
                 throw ReadDataError.dataDecodingError
             }
         }
+    }
+    
+    
+    func initMockupPaletteItems() throws {
+        let variables = PaletteVariableList()
+        let jsonPaletteItemsStringArray: [String] = [TestDataConstants.Integer, TestDataConstants.Real, TestDataConstants.RealPos]
+
+        let paletteItemsDataArray: [Data] = JsonCoreBridge(jsonArray: jsonPaletteItemsStringArray).encodeJsonStringArray()
+        
+        for data in paletteItemsDataArray {
+            
+            do {
+                let newVariable = try JSONDecoder().decode(PaletteVariable.self, from: data)
+                variables.addVariableToList(variable: newVariable)
+                
+            } catch ReadDataError.dataDecodingError {
+                throw ReadDataError.dataDecodingError
+            }
+        }
+        palettItems += variables.variables
     }
     
     
