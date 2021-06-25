@@ -218,7 +218,7 @@ class NumberList: NSObject, NSCoding {
     
 }
 
-enum NumberListType: String {
+enum NumberListType: String, CaseIterable {
     case Integer
     case Natural
     case Real

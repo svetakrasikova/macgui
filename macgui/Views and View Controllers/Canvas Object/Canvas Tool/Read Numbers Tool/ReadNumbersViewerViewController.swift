@@ -65,6 +65,10 @@ class ReadNumbersViewerViewController: NSViewController, NSTableViewDelegate, NS
 //    MARK: -- UI elements
     
     func setUpTypePopup() {
+        typePopup.removeAllItems()
+        for type in NumberListType.allCases {
+            typePopup.addItem(withTitle: type.rawValue)
+        }
         if let type = self.numberList?.type, let selectedItem = typePopup.item(withTitle: type.rawValue) {
             typePopup.select(selectedItem)
             let compatibleTypes = NumberList.typesCompatibleWith(type)
