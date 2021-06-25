@@ -140,7 +140,7 @@ class Model: DataTool {
     
     func initMockupPaletteItems() throws {
         let variables = PaletteVariableList()
-        let jsonPaletteItemsStringArray: [String] = [TestDataConstants.Integer, TestDataConstants.Real, TestDataConstants.RealPos]
+        let jsonPaletteItemsStringArray: [String] = TestDataConstants.mockPaletteItems
 
         let paletteItemsDataArray: [Data] = JsonCoreBridge(jsonArray: jsonPaletteItemsStringArray).encodeJsonStringArray()
         

@@ -123,12 +123,39 @@ static let normalDistribution =  """
                 }
     """
     
+    static let RealVector =  """
+                {
+                    "type": "\(NumberListType.Real.rawValue)",
+                    "dimension": 1,
+                }
+    """
+    static let RealMatrix =  """
+                {
+                    "type": "\(NumberListType.Real.rawValue)",
+                    "dimension": 2,
+                }
+    """
+    
     static let RealPos =  """
                 {
                     "type": "\(NumberListType.RealPos.rawValue)",
                     "dimension": 0,
                 }
     """
+    static let RealPosVector =  """
+                {
+                    "type": "\(NumberListType.RealPos.rawValue)",
+                    "dimension": 1,
+                }
+    """
+    static let RealPosMatrix =  """
+                {
+                    "type": "\(NumberListType.RealPos.rawValue)",
+                    "dimension": 2,
+                }
+    """
+    
+    static let mockPaletteItems = [Integer, Real, RealPos, RealVector, RealMatrix, RealPosVector, RealPosMatrix]
     
 //    MARK: -- Model Tool: Mock Functions
     
