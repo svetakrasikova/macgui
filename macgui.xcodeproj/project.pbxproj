@@ -30,6 +30,8 @@
 		1411BEE82208FE91009BEE1D /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411BEE62208FE91009BEE1D /* Tool.swift */; };
 		1411BEE92208FE91009BEE1D /* Tool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1411BEE72208FE91009BEE1D /* Tool.xib */; };
 		1411D1632305B18D00A8B936 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411D1622305B18D00A8B936 /* ToolTipView.swift */; };
+		141461672684DAF4006CEE54 /* ModelStochasticVariableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141461662684DAF4006CEE54 /* ModelStochasticVariableController.swift */; };
+		141461692684DB17006CEE54 /* ModelDeterministicVariableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141461682684DB17006CEE54 /* ModelDeterministicVariableController.swift */; };
 		141900D9255201F400EDE4DE /* InspectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141900D8255201F400EDE4DE /* InspectorWindowController.swift */; };
 		1419FD9A2445160500007232 /* PaletteVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1419FD982445160500007232 /* PaletteVariable.swift */; };
 		1419FD9B2445160500007232 /* PaletteVariableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1419FD992445160500007232 /* PaletteVariableList.swift */; };
@@ -1531,6 +1533,8 @@
 		1411BEE62208FE91009BEE1D /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		1411BEE72208FE91009BEE1D /* Tool.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tool.xib; sourceTree = "<group>"; };
 		1411D1622305B18D00A8B936 /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
+		141461662684DAF4006CEE54 /* ModelStochasticVariableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelStochasticVariableController.swift; sourceTree = "<group>"; };
+		141461682684DB17006CEE54 /* ModelDeterministicVariableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDeterministicVariableController.swift; sourceTree = "<group>"; };
 		141900D8255201F400EDE4DE /* InspectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorWindowController.swift; sourceTree = "<group>"; };
 		1419FD982445160500007232 /* PaletteVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteVariable.swift; sourceTree = "<group>"; };
 		1419FD992445160500007232 /* PaletteVariableList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteVariableList.swift; sourceTree = "<group>"; };
@@ -4688,9 +4692,9 @@
 				1411BEE72208FE91009BEE1D /* Tool.xib */,
 				141106B8230742D500A8B936 /* ToolTip.storyboard */,
 				1419FDBC244E772900007232 /* VariableController.storyboard */,
+				144031CE261CCD86007D7BB7 /* FunctionController.storyboard */,
 				1440320A2630908B007D7BB7 /* LoopController.storyboard */,
 				147175922643125100117EC0 /* PlateController.storyboard */,
-				144031CE261CCD86007D7BB7 /* FunctionController.storyboard */,
 				144031CA261CCC38007D7BB7 /* ConstantController.storyboard */,
 				14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */,
 				14E22D4B264C7C640090B860 /* ReadNumbersInspector.storyboard */,
@@ -4918,6 +4922,8 @@
 				1410C3B0240594720044EB48 /* ModelNode.swift */,
 				144031D6261CCEDE007D7BB7 /* ModelPaletteItemController.swift */,
 				14ADDC8A2460A3D0000D49DB /* ModelVariableController.swift */,
+				141461682684DB17006CEE54 /* ModelDeterministicVariableController.swift */,
+				141461662684DAF4006CEE54 /* ModelStochasticVariableController.swift */,
 				144031D2261CCE22007D7BB7 /* ModelConstantController.swift */,
 				144031E0261D3091007D7BB7 /* ModelFunctionController.swift */,
 				1410C3AE2404ECEB0044EB48 /* ModelCanvasItemView.swift */,
@@ -9371,6 +9377,7 @@
 				14ADDC8B2460A3D0000D49DB /* ModelVariableController.swift in Sources */,
 				14E0076E261BCAE500D97E68 /* ConstantPopulationHeterochronousCoalescent.cpp in Sources */,
 				14E006AD261BCAE400D97E68 /* DiscretizeGammaQuadratureFunction.cpp in Sources */,
+				141461692684DB17006CEE54 /* ModelDeterministicVariableController.swift in Sources */,
 				14E0055A261BCAE400D97E68 /* BetaProbabilityProposal.cpp in Sources */,
 				14E00826261BCAE500D97E68 /* Move_UpDownTreeScale.cpp in Sources */,
 				141CAC602244B4E100B63DDD /* CenteringClipView.swift in Sources */,
@@ -9400,6 +9407,7 @@
 				14E0073C261BCAE500D97E68 /* CompoundPoissonNormalDistribution.cpp in Sources */,
 				14E00741261BCAE500D97E68 /* LKJDistribution.cpp in Sources */,
 				14E005EE261BCAE400D97E68 /* DagNodeMap.cpp in Sources */,
+				141461672684DAF4006CEE54 /* ModelStochasticVariableController.swift in Sources */,
 				1410C3AD2404EBE50044EB48 /* ModelCanvasItemViewController.swift in Sources */,
 				14E009A8261BCAE600D97E68 /* Func_concatenate.cpp in Sources */,
 				14E008ED261BCAE600D97E68 /* Func_readAtlas.cpp in Sources */,

@@ -127,8 +127,10 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
                         }
                     }
                 },
-                node.observe(\ModelNode.clamped, options: [.old, .new], changeHandler: { (node, _) in
-                    if node.clamped { self.view.needsLayout = true }
+                node.observe(\ModelNode.observedValue, options: [.old, .new], changeHandler: { (node, _) in
+                        self.view.needsDisplay = true
+    
+                  
                     
                 })
                 

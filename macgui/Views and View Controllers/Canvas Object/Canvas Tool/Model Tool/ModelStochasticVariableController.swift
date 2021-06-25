@@ -68,7 +68,7 @@ class ModelStochasticVariableController: ModelVariableController {
         guard let delegate = self.delegate as? ModelCanvasViewController, let model = delegate.model else { return nil}
         for p in model.plates {
             if p.contains(node: modelNode) {
-                return p.embedLevel()
+                return p.embedLevel() + 1
             }
         }
        return 0
