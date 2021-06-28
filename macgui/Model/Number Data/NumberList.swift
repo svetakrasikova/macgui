@@ -26,14 +26,21 @@ class NumberList: NSObject, NSCoding {
         }
     }
     var dimension: Int
-    var dimensionSymbol: String {
+    var dimensionSymbolWithType: String {
+        return NumberList.dimensionSymbol(dimension: dimension, type: type.rawValue)
+    }
+    var dimensionSymbolWithoutType: String {
+        return NumberList.dimensionSymbol(dimension: dimension)
+    }
+    class func dimensionSymbol(dimension: Int, type: String = " ") -> String{
         switch dimension {
-        case 0: return "\(self.type.rawValue)"
-        case 1: return "[\(self.type.rawValue)]"
-        case 2: return "[[\(self.type.rawValue)]]"
-        default: return ""
+        case 1: return "[\(type)]"
+        case 2: return "[[\(type)]]"
+        default: return "\(type)"
         }
     }
+    
+    
     var valueList: [Any]
     
     var isEmpty: Bool {
@@ -215,7 +222,7 @@ class NumberList: NSObject, NSCoding {
         name = coder.decodeObject(forKey: CodingKeys.name.rawValue) as? String ?? "unnamed"
         valueList = coder.decodeObject(forKey: CodingKeys.valueList.rawValue) as? [Any] ?? []
     }
-    
+        
 }
 
 enum NumberListType: String, CaseIterable {

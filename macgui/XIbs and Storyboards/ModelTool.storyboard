@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="TZL-73-EW0">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="TZL-73-EW0">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,7 +24,7 @@
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="kjU-iE-Gow">
                                         <rect key="frame" x="0.0" y="14" width="48" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarSidebarTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wwi-7V-juA">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -38,7 +38,7 @@
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="Yja-pa-1iU">
                                         <rect key="frame" x="0.0" y="14" width="48" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9I4-qX-5vb">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -48,7 +48,7 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="1D44E6B5-76E1-4C4C-AA1C-6B559AD65A30" label="" paletteLabel="" sizingBehavior="auto" id="MfI-2i-fSw" userLabel="Zoom">
+                                <toolbarItem implicitItemIdentifier="1D44E6B5-76E1-4C4C-AA1C-6B559AD65A30" label="" paletteLabel="" title="100%" sizingBehavior="auto" id="MfI-2i-fSw" userLabel="Zoom">
                                     <nil key="toolTip"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="pZa-Yy-dUG" userLabel="zoom">
                                         <rect key="frame" x="0.0" y="14" width="74" height="25"/>
@@ -129,17 +129,17 @@
             <objects>
                 <viewController title="Model Canvas" id="06Z-q5-krc" userLabel="Model Palette" customClass="ModelPaletteViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" misplaced="YES" id="P6C-Ex-qkH">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="332"/>
+                        <rect key="frame" x="0.0" y="0.0" width="170" height="307"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzX-73-IOT">
-                                <rect key="frame" x="0.0" y="0.0" width="170" height="312"/>
+                                <rect key="frame" x="0.0" y="0.0" width="170" height="306"/>
                                 <clipView key="contentView" drawsBackground="NO" id="3eZ-bW-qyJ">
-                                    <rect key="frame" x="1" y="1" width="168" height="310"/>
+                                    <rect key="frame" x="1" y="1" width="168" height="304"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" autosaveName="OutlineView" rowHeight="28" rowSizeStyle="systemDefault" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="14" autosaveExpandedItems="YES" outlineTableColumn="uGO-87-8zt" id="qa1-j9-JlY">
-                                            <rect key="frame" x="0.0" y="0.0" width="168" height="310"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="168" height="304"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -261,7 +261,7 @@
                 </viewController>
                 <customObject id="jA3-JO-Knq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="-10877"/>
+            <point key="canvasLocation" x="315" y="-10877.5"/>
         </scene>
         <!--Model Canvas-->
         <scene sceneID="JoO-NE-eoC">

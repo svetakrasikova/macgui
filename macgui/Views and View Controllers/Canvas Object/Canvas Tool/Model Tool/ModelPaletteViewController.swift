@@ -107,7 +107,11 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
             let identifier = parameter.type == PalettItem.plateType ? NSUserInterfaceItemIdentifier(rawValue: CellType.shapeCell.rawValue) : NSUserInterfaceItemIdentifier(rawValue: CellType.parameterCell.rawValue)
             view = outlineView.makeView(withIdentifier: identifier, owner: self) as? NSTableCellView
             if let textField = view?.textField  {
-                textField.stringValue = parameter.type
+                var dimension: Int?
+                if let variable = parameter as? PaletteVariable {
+                    dimension =  variable.dimension
+                    textField.stringValue = "\(parameter.type) \(NumberList.dimensionSymbol(dimension: dimension!))"
+                } else { textField.stringValue = parameter.type }
                 textField.sizeToFit()
             }
             if let imageView = view?.imageView {

@@ -20,13 +20,7 @@ class ReadNumbersViewerViewController: NSViewController, NSTableViewDelegate, NS
     
     @objc dynamic var numberList: NumberList? {
         didSet {
-            switch numberList?.dimension {
-            case 0: dimensionLabel.stringValue = ""
-            case 1: dimensionLabel.stringValue = "[ ]"
-            case 2: dimensionLabel.stringValue = "[[ ]]"
-            default: break
-                
-            }
+            dimensionLabel.stringValue = numberList?.dimensionSymbolWithoutType ?? ""
         }
     }
 

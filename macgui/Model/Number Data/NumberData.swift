@@ -94,7 +94,7 @@ class NumberData: NSObject, NSCoding {
     func descriptiveNames(lists: [NumberList]) -> [String] {
         var names = [String]()
         for l in lists {
-            var descriptiveName = "unnamed \(l.dimensionSymbol)"
+            var descriptiveName = "unnamed \(l.dimensionSymbolWithType)"
             if let index = unnamedListsIndices[l.type.rawValue] {
                 descriptiveName += " \(index)"
                 unnamedListsIndices[l.type.rawValue]! += 1
