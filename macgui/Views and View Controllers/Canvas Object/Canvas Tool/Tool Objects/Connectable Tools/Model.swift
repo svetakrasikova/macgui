@@ -18,6 +18,7 @@ class Model: DataTool {
     
     dynamic var palettItems: [PalettItem] = []
     dynamic var distributions: [Distribution] = []
+    dynamic var functions: [Distribution] = []
     dynamic var nodes: [ModelNode] = [] {
         didSet {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
@@ -53,7 +54,7 @@ class Model: DataTool {
     }
     
     enum Key: String {
-        case palettItems, nodes, edges, distributions, plates
+        case palettItems, nodes, edges, distributions, functions, plates
     }
     
     init(frameOnCanvas: NSRect, analysis: Analysis) {
@@ -70,6 +71,7 @@ class Model: DataTool {
 //            try initPalettItemsFromCore()
             try initMockupPaletteItems()
             try initMockupDistributions()
+            try initMockupFunctions()
         } catch DataToolError.readError {
             print("Error reading json data from the core. Model Tool palette items could not be loaded.")
         } catch ReadDataError.dataDecodingError {
@@ -83,6 +85,7 @@ class Model: DataTool {
         super.init(coder: aDecoder)
         palettItems = aDecoder.decodeObject(forKey: Key.palettItems.rawValue) as? [PalettItem] ?? []
         distributions = aDecoder.decodeObject(forKey: Key.distributions.rawValue) as? [Distribution] ?? []
+        functions = aDecoder.decodeObject(forKey: Key.functions.rawValue) as? [Distribution] ?? []
         nodes = aDecoder.decodeObject(forKey: Key.nodes.rawValue) as? [ModelNode] ?? []
         edges = aDecoder.decodeObject(forKey: Key.edges.rawValue) as? [Connection] ?? []
         plates = aDecoder.decodeObject(forKey: Key.plates.rawValue) as? [Plate] ?? []
@@ -93,6 +96,7 @@ class Model: DataTool {
         super.encode(with: coder)
         coder.encode(palettItems, forKey: Key.palettItems.rawValue)
         coder.encode(distributions, forKey: Key.distributions.rawValue)
+        coder.encode(functions, forKey: Key.functions.rawValue)
         coder.encode(nodes, forKey: Key.nodes.rawValue)
         coder.encode(edges, forKey: Key.edges.rawValue)
         coder.encode(plates, forKey: Key.plates.rawValue)
@@ -130,6 +134,23 @@ class Model: DataTool {
             do {
                 let newDistribution = try JSONDecoder().decode(Distribution.self, from: data)
                 self.distributions.append(newDistribution)
+                
+            } catch ReadDataError.dataDecodingError {
+                throw ReadDataError.dataDecodingError
+            }
+        }
+    }
+    
+    func initMockupFunctions() throws {
+        let jsonDistributionStringArray: [String] = [ TestDataConstants.mockFunction]
+
+        let distributionsDataArray: [Data] = JsonCoreBridge(jsonArray: jsonDistributionStringArray).encodeJsonStringArray()
+        
+        for data in distributionsDataArray {
+            
+            do {
+                let newDistribution = try JSONDecoder().decode(Distribution.self, from: data)
+                self.functions.append(newDistribution)
                 
             } catch ReadDataError.dataDecodingError {
                 throw ReadDataError.dataDecodingError

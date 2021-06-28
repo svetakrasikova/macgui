@@ -140,6 +140,11 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate, ToolTipDel
             }
             outerLoopViewController = smallestOuterLoop
         } else {
+            for loopVC in loopViewControllers {
+                if let loop = loopVC.tool as? Loop {
+                    loop.removeEmbeddedNode(tool)
+                }
+            }
             outerLoopViewController = nil
         }
     }

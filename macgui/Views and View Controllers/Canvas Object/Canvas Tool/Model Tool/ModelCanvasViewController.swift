@@ -262,6 +262,21 @@ extension ModelCanvasViewController: ModelCanvasViewDelegate {
 }
 
 extension ModelCanvasViewController: ModelVariableControllerDelegate {
+   
+    func getFunctionsForParameter(_ modelNode: ModelNode) -> [Distribution] {
+        
+        guard let functions = self.model?.functions else {
+            return []
+        }
+        var resultList: [Distribution] = []
+        for function in functions {
+            if function.domain == modelNode.node.type {
+                resultList.append(function)
+            }
+        }
+       return resultList
+    }
+    
     
     func getDistributionsForParameter(_ modelNode: ModelNode) -> [Distribution] {
         

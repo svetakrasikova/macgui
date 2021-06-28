@@ -85,27 +85,36 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         return constantController
     }()
     
-    lazy var functionController: ModelVariableController = {
-        let functionController = NSStoryboard.loadVC(StoryBoardName.functionController) as! ModelVariableController
+    lazy var functionController: ModelDeterministicVariableController = {
+        let functionController = NSStoryboard.loadVC(StoryBoardName.functionController) as! ModelDeterministicVariableController
         if let node = self.tool as? ModelNode, let canvasVC = self.modelCanvas {
             functionController.modelNode = node
+            functionController.delegate = canvasVC
         }
         return functionController
     }()
     
     override weak var outerLoopViewController: ResizableCanvasObjectViewController? {
         didSet {
+            guard let modelNode =  self.tool as? ModelNode else { return }
             if let outerLoop = self.outerLoopViewController?.tool as? Loop {
                 plateIndex = outerLoop.indexPath()
+                if oldValue == nil {
+                    modelNode.observedValue = NumberList()
+                }
                 
             } else {
                 plateIndex = nil
+                if oldValue != nil {
+                    modelNode.observedValue = NumberList()
+                }
             }
             view.needsDisplay = true
           }
     }
     
     var plateIndex: String?
+    
     
     
 //    MARK: -- Observers

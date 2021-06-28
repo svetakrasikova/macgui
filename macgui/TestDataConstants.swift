@@ -160,6 +160,17 @@ static let normalDistribution =  """
 //    MARK: -- Model Tool: Mock Functions
     
  
+    static let mockFunction =  """
+                {
+                    "name": "Location",
+                    "domain": "Real",
+                    "descriptiveString": "ln(M) - Sq(sigma)/2",
+                    "parameters": [{"name": "M", "type": "RealPos", "descriptiveString": "Mean."},
+                                    {"name": "\u{03C3}", "type": "RealPos", "descriptiveString": "Starndard deviation."}
+                                    ]
+
+                }
+    """
 }
 
 

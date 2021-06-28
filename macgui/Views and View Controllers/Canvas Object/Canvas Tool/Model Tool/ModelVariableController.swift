@@ -43,8 +43,7 @@ class ModelVariableController: ModelPaletteItemController {
     weak var delegate: ModelVariableControllerDelegate?
     
     var distributions: [Distribution] {
-        guard let delegate = self.delegate, let modelNode = self.modelNode else { return [] }
-        return delegate.getDistributionsForParameter(modelNode)
+        return []
     }
     
     @objc dynamic var distributionNames: [String] {
@@ -80,6 +79,7 @@ class ModelVariableController: ModelPaletteItemController {
         for distribution in self.distributions {
             if distribution.name == distributionName {
                 self.parameters = distribution.parameters
+                break
             }
         }
         
@@ -228,4 +228,5 @@ class ModelVariableController: ModelPaletteItemController {
 
 protocol ModelVariableControllerDelegate: AnyObject {
     func getDistributionsForParameter(_ modelNode: ModelNode) -> [Distribution]
+    func getFunctionsForParameter(_ modelNode: ModelNode) -> [Distribution]
 }

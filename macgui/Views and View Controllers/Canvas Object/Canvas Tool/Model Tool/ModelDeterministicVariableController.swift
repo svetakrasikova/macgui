@@ -9,7 +9,12 @@
 import Cocoa
 
 class ModelDeterministicVariableController: ModelVariableController {
-
+    
+    override var distributions: [Distribution] {
+        guard let delegate = self.delegate, let modelNode = self.modelNode else { return [] }
+        return delegate.getFunctionsForParameter(modelNode)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.

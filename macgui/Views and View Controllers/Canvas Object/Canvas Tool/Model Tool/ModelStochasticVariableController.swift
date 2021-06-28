@@ -74,6 +74,11 @@ class ModelStochasticVariableController: ModelVariableController {
        return 0
     }
     
+    override var distributions: [Distribution] {
+        guard let delegate = self.delegate, let modelNode = self.modelNode else { return [] }
+        return delegate.getDistributionsForParameter(modelNode)
+    }
+    
     func setClampingUI() {
         guard let node = self.modelNode else { return }
         guard enableClamping else { return }
@@ -84,8 +89,6 @@ class ModelStochasticVariableController: ModelVariableController {
     override func viewWillAppear() {
         super.viewWillAppear()
         setClampingUI()
-      
-        
     }
    
     

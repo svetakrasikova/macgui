@@ -5,10 +5,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Model Variable Controller-->
+        <!--Model Deterministic Variable Controller-->
         <scene sceneID="SJJ-W1-Wuk">
             <objects>
-                <viewController storyboardIdentifier="FunctionController" id="jey-Kf-MkT" customClass="ModelVariableController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FunctionController" id="jey-Kf-MkT" customClass="ModelDeterministicVariableController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="pIU-5M-a50">
                         <rect key="frame" x="0.0" y="0.0" width="345" height="353"/>
                         <autoresizingMask key="autoresizingMask"/>
