@@ -55,9 +55,12 @@ class ModelCanvasViewController: GenericCanvasViewController {
         return indexTable
     }
     
+    var resettingCanvasView: Bool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         NotificationCenter.default.addObserver(self,
                                                       selector: #selector(didConnectNodes(notification:)),
@@ -76,10 +79,6 @@ class ModelCanvasViewController: GenericCanvasViewController {
         if let userInfo = notification.userInfo as? [String : String], let index = Int(userInfo["index"]!) {
             parameterNames[index-1] = false
         }
-    }
-    
-    override func viewDidLayout() {
-        super.viewDidLayout()
     }
     
     @objc func updateChildViewControllerAppearance(notification: Notification){
@@ -188,6 +187,9 @@ class ModelCanvasViewController: GenericCanvasViewController {
     }
     
     func resetCanvasView(){
+        
+        resettingCanvasView = true
+        
         guard let model = self.model
             else { return }
         
@@ -210,6 +212,8 @@ class ModelCanvasViewController: GenericCanvasViewController {
         for edge in model.edges {
             addArrowView(connection: edge)
         }
+        
+        resettingCanvasView = false
     }
     
     func getPalettVariableWithName(_ name: String) -> PaletteVariable? {

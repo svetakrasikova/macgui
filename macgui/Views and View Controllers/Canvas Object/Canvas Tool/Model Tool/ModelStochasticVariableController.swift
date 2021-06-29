@@ -40,13 +40,28 @@ class ModelStochasticVariableController: ModelVariableController {
         case .on:
           if let observedDataList = clampArrayController.selectedObjects.first as? NumberList {
             node.observedValue = observedDataList
-            
+            guard let size = observedDataList.size else { return }
+            updatePlateRange(size)
           }
         case .off: node.observedValue = NumberList()
         default: break
         }
     }
     
+    func updatePlateRange(_ newRange: (Int, Int)) {
+        guard let canvasVC = self.delegate as? ModelCanvasViewController else { return }
+        guard let modelNode = self.modelNode else { return }
+        let nodeVC = canvasVC.findVCByTool(modelNode)
+        if let smallestLoopVC = nodeVC?.outerLoopViewController, let plate = smallestLoopVC.loop as? Plate {
+            plate.upperRange = newRange.0
+            smallestLoopVC.view.needsLayout = true
+            if let outerPlate = plate.outerLoop {
+                outerPlate.upperRange = newRange.1
+                let outerLoopVC = canvasVC.findVCByTool(outerPlate)
+                outerLoopVC?.view.needsLayout = true
+            }
+        }
+    }
     
     @objc dynamic var observedData: [NumberList] {
         guard let modelNode = modelNode, modelNode.nodeType == .randomVariable else { return [] }
@@ -88,7 +103,13 @@ class ModelStochasticVariableController: ModelVariableController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
+        guard let node = self.modelNode else { return }
         setClampingUI()
+    }
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        guard let node = self.modelNode else { return }
     }
    
     

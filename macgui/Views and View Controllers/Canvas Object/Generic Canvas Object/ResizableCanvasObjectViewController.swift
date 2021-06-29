@@ -47,6 +47,7 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
         setLabel()
         addActionButton()
     }
+
     
    
     

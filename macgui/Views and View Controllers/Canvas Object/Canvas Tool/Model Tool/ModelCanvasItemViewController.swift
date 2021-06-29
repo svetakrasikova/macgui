@@ -97,15 +97,16 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     override weak var outerLoopViewController: ResizableCanvasObjectViewController? {
         didSet {
             guard let modelNode =  self.tool as? ModelNode else { return }
+            guard let canvasVC = self.parent as? ModelCanvasViewController else { return }
             if let outerLoop = self.outerLoopViewController?.tool as? Loop {
                 plateIndex = outerLoop.indexPath()
-                if oldValue == nil {
+                if oldValue == nil && !canvasVC.resettingCanvasView {
                     modelNode.observedValue = NumberList()
                 }
                 
             } else {
                 plateIndex = nil
-                if oldValue != nil {
+                if oldValue != nil && !canvasVC.resettingCanvasView {
                     modelNode.observedValue = NumberList()
                 }
             }

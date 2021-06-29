@@ -55,11 +55,8 @@ class Loop: ToolObject {
     }
     
     func embedLevel() -> Int {
-        if outerLoop == nil {
-            return 0
-        } else {
-            return embedLevel() + 1
-        }
+        guard let outerLoop = outerLoop else { return 0 }
+        return outerLoop.embedLevel() + 1
     }
     
     func updateOuterLoop(_ loop: Loop) {

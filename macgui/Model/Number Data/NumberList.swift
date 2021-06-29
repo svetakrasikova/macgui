@@ -43,6 +43,22 @@ class NumberList: NSObject, NSCoding {
     
     var valueList: [Any]
     
+    var size: (Int, Int)? {
+        switch dimension {
+        case 0: return (1,0)
+        case 1:
+            guard let vector = (valueList.first as? [Any]) else { return nil }
+            let numberRows = vector.count
+            return (numberRows,0)
+        case 2:
+            guard let matrix = (valueList.first as? [Any]) else { return nil }
+            let numberRows = matrix.count
+            guard let numberColums = (matrix.first as? [Any])?.count else { return nil}
+            return (numberRows, numberColums)
+        default: return nil
+        }
+    }
+    
     var isEmpty: Bool {
         return valueList.isEmpty
     }
@@ -64,6 +80,7 @@ class NumberList: NSObject, NSCoding {
         (self.dimension, self.type, self.valueList) = try NumberList.parseNumberList(dataAsString, dimension: 0, type: NumberListType.Real)
         
     }
+
     
     func stringValue(index: Int) -> String {
         var stringValue: String = ""
