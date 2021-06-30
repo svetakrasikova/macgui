@@ -9,20 +9,47 @@
 import Cocoa
 
 @objcMembers
+
 class ModelNode: Connectable {
     
     var node: PalettItem
+    
     var nodeType: PaletteVariable.VariableType?
-    dynamic var parameterName: String?
+   
+    dynamic var parameterName: String? {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    
     var defaultParameterName: String? {
         didSet {
             parameterName = defaultParameterName
         }
     }
-    var distribution: Distribution?
-    var distributionParameters: [ModelNode] = []
-    dynamic var constantValue: Double = 0.0
-    dynamic var observedValue: NumberList = NumberList()
+    var distribution: Distribution? {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+   
+    var distributionParameters: [ModelNode] = [] {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+   
+    dynamic var constantValue: Double = 0.0 {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    
+    dynamic var observedValue: NumberList = NumberList() {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
     
     dynamic var clamped: Bool {
         return !observedValue.isEmpty
