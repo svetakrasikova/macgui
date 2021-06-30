@@ -16,10 +16,29 @@ class Loop: ToolObject {
         case outerLoop, embeddedNodes, index, upperRange
     }
   
-    var outerLoop: Loop?
-    var embeddedNodes: [Connectable] = []
-    dynamic var index: String
-    dynamic var upperRange: Int = 1
+    var outerLoop: Loop? {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    
+    var embeddedNodes: [Connectable] = [] {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    
+    dynamic var index: String {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    
+    dynamic var upperRange: Int = 1 {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
     
     
     init(frameOnCanvas: NSRect, analysis: Analysis, index: String){

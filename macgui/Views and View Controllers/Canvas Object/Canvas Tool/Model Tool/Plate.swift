@@ -23,7 +23,11 @@ class Plate: Loop {
         case rangeType
     }
     
-    dynamic var rangeType: Int = IteratorRange.number.rawValue
+    dynamic var rangeType: Int = IteratorRange.number.rawValue {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
     
     override init(frameOnCanvas: NSRect, analysis: Analysis, index: String){
         super.init(frameOnCanvas: frameOnCanvas, analysis: analysis, index: index)
