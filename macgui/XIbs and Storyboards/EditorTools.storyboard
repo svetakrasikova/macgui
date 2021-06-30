@@ -97,16 +97,7 @@
                                     <subviews>
                                         <view identifier="CanvasView" autoresizesSubviews="NO" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-f8-Awk" customClass="CanvasView" customModule="macgui" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                            <subviews>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="r5O-Yj-ak6" customClass="TransparentToolsView" customModule="macgui" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                                </customView>
-                                            </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="r5O-Yj-ak6" secondAttribute="bottom" id="AfA-Eg-pWY"/>
-                                                <constraint firstAttribute="trailing" secondItem="r5O-Yj-ak6" secondAttribute="trailing" id="FwM-am-bQZ"/>
-                                                <constraint firstItem="r5O-Yj-ak6" firstAttribute="top" secondItem="lBV-f8-Awk" secondAttribute="top" id="dHz-qM-iRg"/>
-                                                <constraint firstItem="r5O-Yj-ak6" firstAttribute="leading" secondItem="lBV-f8-Awk" secondAttribute="leading" id="hda-Od-Sth"/>
                                                 <constraint firstAttribute="height" constant="300" id="mwg-5L-hDZ"/>
                                                 <constraint firstAttribute="width" constant="450" id="tJu-dg-TAc"/>
                                             </constraints>
@@ -139,7 +130,6 @@
                         <outlet property="canvasViewHeightConstraint" destination="mwg-5L-hDZ" id="qQ7-yi-I1t"/>
                         <outlet property="canvasViewWidthConstraint" destination="tJu-dg-TAc" id="h2N-6D-CWe"/>
                         <outlet property="scrollView" destination="fPJ-TS-pd4" id="esq-RD-Tdb"/>
-                        <outlet property="transparentToolsView" destination="r5O-Yj-ak6" id="zSd-QL-8Af"/>
                     </connections>
                 </viewController>
                 <customObject id="wz6-5F-dTq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

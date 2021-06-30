@@ -42,6 +42,15 @@ class ArrowView: CanvasObjectView {
         arrowViewDelegate?.setClickArea()
         arrowViewDelegate?.updateArrowInLayer(selected: isSelected)
     }
+    
+    override func hitTest(_ point: NSPoint) -> NSView? {
+        if !clickAreaContains(point: point) {
+            return nil
+        } else {
+            return self
+        }
+    }
+
 
 
     

@@ -1469,7 +1469,6 @@
 		14E5857222949A0900802691 /* ConnectionDragController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857122949A0900802691 /* ConnectionDragController.swift */; };
 		14E585742298574100802691 /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E585732298574100802691 /* ArrowView.swift */; };
 		14E585762298575C00802691 /* ArrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E585752298575C00802691 /* ArrowViewController.swift */; };
-		14E5857822A067A600802691 /* TransparentToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857722A067A600802691 /* TransparentToolsView.swift */; };
 		14E5857A22A6F08C00802691 /* CanvasObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */; };
 		14E5857C22A6F16300802691 /* CanvasObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857B22A6F16300802691 /* CanvasObjectView.swift */; };
 		14E5857E22A8006F00802691 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5857D22A8006F00802691 /* Connection.swift */; };
@@ -4497,7 +4496,6 @@
 		14E5857122949A0900802691 /* ConnectionDragController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDragController.swift; sourceTree = "<group>"; };
 		14E585732298574100802691 /* ArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowView.swift; sourceTree = "<group>"; };
 		14E585752298575C00802691 /* ArrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowViewController.swift; sourceTree = "<group>"; };
-		14E5857722A067A600802691 /* TransparentToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentToolsView.swift; sourceTree = "<group>"; };
 		14E5857922A6F08C00802691 /* CanvasObjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasObjectViewController.swift; sourceTree = "<group>"; };
 		14E5857B22A6F16300802691 /* CanvasObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasObjectView.swift; sourceTree = "<group>"; };
 		14E5857D22A8006F00802691 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
@@ -8758,7 +8756,6 @@
 		14E69A6D237643BC0045E283 /* Canvas View */ = {
 			isa = PBXGroup;
 			children = (
-				14E5857722A067A600802691 /* TransparentToolsView.swift */,
 				141CAC5F2244B4E100B63DDD /* CenteringClipView.swift */,
 				1452355A220CB79800A85186 /* CanvasView.swift */,
 				14D6DE042220B50800021607 /* CanvasViewController.swift */,
@@ -10380,7 +10377,6 @@
 				1453184C24E487DB00A4656C /* PaupOptions.swift in Sources */,
 				14E008E9261BCAE600D97E68 /* Func_readRelativeNodeAgeWeightedConstraints.cpp in Sources */,
 				14E00931261BCAE600D97E68 /* Func_mean.cpp in Sources */,
-				14E5857822A067A600802691 /* TransparentToolsView.swift in Sources */,
 				14E00801261BCAE500D97E68 /* Move_BetaProbability.cpp in Sources */,
 				14E008A8261BCAE600D97E68 /* RbVersion.cpp in Sources */,
 				14E006C7261BCAE400D97E68 /* GeographicalDistanceFunction.cpp in Sources */,

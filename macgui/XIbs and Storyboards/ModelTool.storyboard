@@ -133,13 +133,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzX-73-IOT">
-                                <rect key="frame" x="0.0" y="0.0" width="170" height="306"/>
+                                <rect key="frame" x="0.0" y="0.0" width="170" height="297"/>
                                 <clipView key="contentView" drawsBackground="NO" id="3eZ-bW-qyJ">
-                                    <rect key="frame" x="1" y="1" width="168" height="304"/>
+                                    <rect key="frame" x="1" y="1" width="168" height="295"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" autosaveName="OutlineView" rowHeight="28" rowSizeStyle="systemDefault" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="14" autosaveExpandedItems="YES" outlineTableColumn="uGO-87-8zt" id="qa1-j9-JlY">
-                                            <rect key="frame" x="0.0" y="0.0" width="168" height="304"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="168" height="295"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -279,18 +279,9 @@
                                     <subviews>
                                         <view autoresizesSubviews="NO" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rFB-ux-jOW" customClass="ModelCanvasView" customModule="macgui" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                            <subviews>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Kg5-LM-zRC" customClass="TransparentToolsView" customModule="macgui" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                                </customView>
-                                            </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Kg5-LM-zRC" secondAttribute="trailing" id="5WN-79-Qhi"/>
                                                 <constraint firstAttribute="width" constant="450" id="740-lW-Qcp"/>
-                                                <constraint firstItem="Kg5-LM-zRC" firstAttribute="top" secondItem="rFB-ux-jOW" secondAttribute="top" id="C9x-jY-x9g"/>
-                                                <constraint firstAttribute="bottom" secondItem="Kg5-LM-zRC" secondAttribute="bottom" id="FgY-9l-0r2"/>
                                                 <constraint firstAttribute="height" constant="300" id="Ohi-oz-g1Z"/>
-                                                <constraint firstItem="Kg5-LM-zRC" firstAttribute="leading" secondItem="rFB-ux-jOW" secondAttribute="leading" id="TI0-Cx-0Mv"/>
                                             </constraints>
                                         </view>
                                     </subviews>

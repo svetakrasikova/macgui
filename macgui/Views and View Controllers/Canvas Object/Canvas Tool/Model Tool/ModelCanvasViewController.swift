@@ -150,7 +150,8 @@ class ModelCanvasViewController: GenericCanvasViewController {
     func addArrowView(connection: Connection) {
         let arrowController = setUpArrowViewController(connection)
         addChild(arrowController)
-        canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
+        canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: bottomMostNonResizableObject?.view)
+        bottomMostNonResizableObject = arrowController
     }
     
     func addEdgeToModel(connection: Connection){

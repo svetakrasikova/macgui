@@ -66,8 +66,8 @@ class CanvasViewController: GenericCanvasViewController {
             let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool, connection: connection)
             analysis?.arrows.append(connection)
             addChild(arrowController)
-            canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
-            
+            canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: bottomMostNonResizableObject?.view)
+            bottomMostNonResizableObject = arrowController
             let userInfo  = ["sourceTool" : sourceTool, "targetTool" : targetTool]
             NotificationCenter.default.post(name: .didAddNewArrow, object: self, userInfo: userInfo)
             
@@ -111,8 +111,8 @@ class CanvasViewController: GenericCanvasViewController {
         let color = Connector.getColor(type: connection.type)
         let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: connection.from, targetTool: connection.to, connection: connection)
         addChild(arrowController)
-        canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: transparentToolsView)
-        
+        canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: bottomMostNonResizableObject?.view)
+        bottomMostNonResizableObject = arrowController
     }
     
 // MARK: - Add and Delete Canvas Objects

@@ -12,7 +12,7 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
     
 //    MARK: -- Loop/Plate Handling
     
-    weak var bottomMostNode: CanvasObjectViewController?
+    weak var bottomMostNonResizableObject: CanvasObjectViewController?
     weak var topMostLoop: ResizableCanvasObjectViewController?
     let loopIndices: [String] = ["i","j","k","l","m","n","u","v","w","x","y","z", "a","b","c","d","e","f","g","h","o","p","q","r","s","t"]
     
@@ -37,7 +37,6 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
     
     @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var canvasView: GenericCanvasView!
-    @IBOutlet weak var transparentToolsView: TransparentToolsView!
     @IBOutlet weak var canvasViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var canvasViewWidthConstraint: NSLayoutConstraint!
     
@@ -144,10 +143,10 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
         
         guard let connectable = viewController.tool as? Connectable else { return }
         
-        if bottomMostNode == viewController {
+        if bottomMostNonResizableObject == viewController {
             if let toolVC = self.children.filter({ $0.isKind(of: CanvasObjectViewController.self)}).first as? CanvasObjectViewController {
-                bottomMostNode = toolVC
-            } else { bottomMostNode = nil }
+                bottomMostNonResizableObject = toolVC
+            } else { bottomMostNonResizableObject = nil }
         }
         
         let arrowViewControllers = findArrowControllersByTool(tool: connectable)
@@ -217,7 +216,7 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
         guard let canvasLoopViewController = resizableObjectViewController() else { return }
         canvasLoopViewController.tool = loop
         addChild(canvasLoopViewController)
-        if let bottomMostNode = self.bottomMostNode {
+        if let bottomMostNode = self.bottomMostNonResizableObject {
             canvasView.addSubview(canvasLoopViewController.view, positioned: .below, relativeTo: bottomMostNode.view)
         } else {
             canvasView.addSubview(canvasLoopViewController.view)
@@ -230,10 +229,10 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
         guard let viewController = toolViewController() else { return }
         viewController.tool = tool
         addChild(viewController)
-        if let bottomMostNode = self.bottomMostNode {
+        if let bottomMostNode = self.bottomMostNonResizableObject {
             canvasView.addSubview(viewController.view, positioned: .above, relativeTo: bottomMostNode.view)
         } else {
-            bottomMostNode = viewController
+            bottomMostNonResizableObject = viewController
             if let topMostLoop = topMostLoop {
                 canvasView.addSubview(viewController.view, positioned: .above, relativeTo: topMostLoop.view)
             } else {
