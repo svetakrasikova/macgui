@@ -23,6 +23,11 @@ class ReadNumbersViewerViewController: NSViewController, NSTableViewDelegate, NS
             dimensionLabel.stringValue = numberList?.dimensionSymbolWithoutType ?? ""
         }
     }
+    
+    @objc dynamic var enableTypeSelection: Bool {
+        guard let list = numberList else { return true }
+        return !list.observed
+    }
 
     func showSelectedNumberData(listIndex: Int) {
         guard let delegate = self.delegate as? ReadNumbersViewController else { return }
@@ -54,6 +59,11 @@ class ReadNumbersViewerViewController: NSViewController, NSTableViewDelegate, NS
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTypePopup()
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        typePopup.bind(.enabled, to: self, withKeyPath: "enableTypeSelection", options: [:])
     }
     
 //    MARK: -- UI elements

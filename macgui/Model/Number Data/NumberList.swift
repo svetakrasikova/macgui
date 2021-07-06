@@ -12,7 +12,7 @@ import Cocoa
 class NumberList: NSObject, NSCoding {
     
     enum CodingKeys: String {
-        case name, type, dimension, valueList
+        case name, type, dimension, valueList, observed
     }
     
     enum NumberListError: Error {
@@ -42,6 +42,8 @@ class NumberList: NSObject, NSCoding {
     
     
     var valueList: [Any]
+    
+    dynamic var observed: Bool = false
     
     var size: (Int, Int)? {
         switch dimension {
@@ -231,6 +233,7 @@ class NumberList: NSObject, NSCoding {
         coder.encode(type.rawValue, forKey: CodingKeys.type.rawValue)
         coder.encode(valueList, forKey: CodingKeys.valueList.rawValue)
         coder.encode(name, forKey: CodingKeys.name.rawValue)
+        coder.encode(observed, forKey: CodingKeys.observed.rawValue)
     }
     
     required init?(coder: NSCoder) {
@@ -238,6 +241,7 @@ class NumberList: NSObject, NSCoding {
         type = NumberListType(rawValue: coder.decodeObject(forKey: CodingKeys.type.rawValue) as! String) ?? NumberListType.Real
         name = coder.decodeObject(forKey: CodingKeys.name.rawValue) as? String ?? "unnamed"
         valueList = coder.decodeObject(forKey: CodingKeys.valueList.rawValue) as? [Any] ?? []
+        observed = coder.decodeBool(forKey: CodingKeys.observed.rawValue)
     }
         
 }
