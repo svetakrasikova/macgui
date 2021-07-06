@@ -123,6 +123,7 @@ DQ
                                                     </popUpButtonCell>
                                                     <connections>
                                                         <action selector="selectRange:" target="vAX-Ig-4xC" id="R5Z-Xc-Lmr"/>
+                                                        <binding destination="vAX-Ig-4xC" name="enabled" keyPath="self.enableIteratorRange" id="CRf-Ov-KO7"/>
                                                         <binding destination="vAX-Ig-4xC" name="selectedIndex" keyPath="self.loop.rangeType" id="Feh-Af-JeH"/>
                                                     </connections>
                                                 </popUpButton>
@@ -155,6 +156,7 @@ DQ
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <connections>
+                                                        <binding destination="vAX-Ig-4xC" name="editable" keyPath="self.enableValueEdit" id="efd-xc-gOo"/>
                                                         <binding destination="vAX-Ig-4xC" name="value" keyPath="self.loop.upperRange" id="nfw-fG-LeB"/>
                                                     </connections>
                                                 </textField>

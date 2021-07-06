@@ -9,7 +9,7 @@
 import Cocoa
 
 class ModelCanvasPlateViewController: ResizableCanvasObjectViewController {
-
+    
     lazy var plateController: ModelPlateController = {
         let plateController = NSStoryboard.loadVC(StoryBoardName.plateController) as! ModelPlateController
         if let plate = self.tool as? Plate {
@@ -24,24 +24,31 @@ class ModelCanvasPlateViewController: ResizableCanvasObjectViewController {
         return plateController
     }()
     
-   
+    func toggleUpperRangeEdit(enable: Bool) {
+        plateController.enableValueEdit = enable
+        plateController.enableIteratorRange = enable
+    }
+    
+    
     override func loadView() {
         if let plate = self.tool as? Plate {
-             view = ModelCanvasPlateView(frame: plate.frameOnCanvas)
-         }
-         
-     }
-     
-     override func  setBackgroundColor() {
-         guard let view = view as? ModelCanvasPlateView else { return }
-         let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
-         view.backgroundColor = preferencesManager.modelCanvasBackgroundColor
-         
-     }
-     
-     override func actionButtonClicked(_ button: ActionButton) {
-         self.presentAsModalWindow(plateController)
-     }
+            view = ModelCanvasPlateView(frame: plate.frameOnCanvas)
+        }
+        
+    }
+    
+    override func  setBackgroundColor() {
+        guard let view = view as? ModelCanvasPlateView else { return }
+        let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
+        view.backgroundColor = preferencesManager.modelCanvasBackgroundColor
+        
+    }
+    
+    override func actionButtonClicked(_ button: ActionButton) {
+        self.presentAsModalWindow(plateController)
+    }
+    
+    
     
     override func upperRangeString() -> String? {
         var range: String?
@@ -71,4 +78,5 @@ class ModelCanvasPlateViewController: ResizableCanvasObjectViewController {
         }
         return index
     }
+    
 }

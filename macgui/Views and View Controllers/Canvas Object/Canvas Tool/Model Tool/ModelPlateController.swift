@@ -22,6 +22,9 @@ class ModelPlateController: LoopController {
         self.loop as? Plate
     }
     
+    @objc dynamic var enableValueEdit: Bool = true
+    @objc dynamic var enableIteratorRange: Bool = true
+    
     private var observers =  [NSKeyValueObservation]()
     
     func setDataObserver(){

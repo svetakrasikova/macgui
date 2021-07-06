@@ -39,25 +39,30 @@ class ModelStochasticVariableController: ModelVariableController {
         switch clampButton.state {
         case .on:
           if let observedDataList = clampArrayController.selectedObjects.first as? NumberList {
-            node.observedValue = observedDataList
+            node.changeObservedValueTo(observedDataList)
             guard let size = observedDataList.size else { return }
-            updatePlateRange(size)
+            updatePlateRange(size, clampedRange: true)
           }
-        case .off: node.observedValue = NumberList()
+        case .off:
+            updatePlateRange((1,1), clampedRange: false)
+            node.changeObservedValueTo(nil)
+            
         default: break
         }
     }
     
-    func updatePlateRange(_ newRange: (Int, Int)) {
+    func updatePlateRange(_ newRange: (Int, Int), clampedRange: Bool) {
         guard let canvasVC = self.delegate as? ModelCanvasViewController else { return }
         guard let modelNode = self.modelNode else { return }
         let nodeVC = canvasVC.findVCByTool(modelNode)
-        if let smallestLoopVC = nodeVC?.outerLoopViewController, let plate = smallestLoopVC.loop as? Plate {
+        if let smallestLoopVC = nodeVC?.outerLoopViewController as? ModelCanvasPlateViewController, let plate = smallestLoopVC.loop as? Plate {
             plate.upperRange = newRange.0
+            smallestLoopVC.toggleUpperRangeEdit(enable: !clampedRange)
             smallestLoopVC.view.needsLayout = true
             if let outerPlate = plate.outerLoop {
                 outerPlate.upperRange = newRange.1
-                let outerLoopVC = canvasVC.findVCByTool(outerPlate)
+                let outerLoopVC = canvasVC.findVCByTool(outerPlate) as? ModelCanvasPlateViewController
+                outerLoopVC?.toggleUpperRangeEdit(enable: !clampedRange)
                 outerLoopVC?.view.needsLayout = true
             }
         }
@@ -103,14 +108,9 @@ class ModelStochasticVariableController: ModelVariableController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        guard let node = self.modelNode else { return }
         setClampingUI()
     }
-    
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
-        guard let node = self.modelNode else { return }
-    }
+
    
     
 }

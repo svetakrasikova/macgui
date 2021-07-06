@@ -106,5 +106,14 @@ class ModelNode: Connectable {
        
     }
     
+    func changeObservedValueTo(_ value: NumberList?) {
+        if let list = value {
+            list.observed = true
+            observedValue = list
+        } else {
+            observedValue = NumberList()
+        }
+    }
+    
     
 }
