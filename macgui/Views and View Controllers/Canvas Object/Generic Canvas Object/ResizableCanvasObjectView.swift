@@ -193,6 +193,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     }
     
     func drawLabel() {
+        guard let text = labelText else { return }
         let textLayer = CATextLayer()
         textLayer.allowsEdgeAntialiasing = false;
         textLayer.allowsFontSubpixelQuantization = true;
@@ -203,12 +204,12 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
             textLayer.contentsScale = backingScaleFactor
         }
         textLayer.frame = labelFrame ?? NSZeroRect
-        textLayer.font = NSFont(name: "Hoefler Text", size: labelFontSize)?.italics()
+        textLayer.font = NSFont(name: "Hoefler Text", size: labelFontSize)
         textLayer.backgroundColor = NSColor.clear.cgColor
         textLayer.foregroundColor = NSColor.black.cgColor
         textLayer.alignmentMode = .center
         textLayer.fontSize = labelFontSize
-        textLayer.string = labelText
+        textLayer.setAttributedTextWithItalics(text: text, indicesOfSubscripts: [0])
         layer?.addSublayer(textLayer)
     }
     
