@@ -346,6 +346,20 @@ extension CATextLayer {
         }
         self.string = attributedString
     }
+    
+    func setAttributedTextWithItalics(text: String, indicesOfSubscripts: [Int]) {
+        guard let font = self.font else { return }
+        let italicsFont = NSFont(descriptor: font.fontDescriptor, size: font.pointSize)?.italics()
+        let attributedString = NSMutableAttributedString(string: text,
+                                                         attributes: [.font : font])
+        for index in indicesOfSubscripts {
+            let range = NSRange(location: index, length: 1)
+            attributedString.setAttributes([.font: italicsFont as Any],
+                                           range: range)
+        }
+        self.string = attributedString
+    }
+
 
 }
 
