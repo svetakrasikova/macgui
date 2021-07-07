@@ -133,13 +133,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzX-73-IOT">
-                                <rect key="frame" x="0.0" y="0.0" width="170" height="297"/>
+                                <rect key="frame" x="0.0" y="0.0" width="170" height="284"/>
                                 <clipView key="contentView" drawsBackground="NO" id="3eZ-bW-qyJ">
-                                    <rect key="frame" x="1" y="1" width="168" height="295"/>
+                                    <rect key="frame" x="1" y="1" width="168" height="282"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" autosaveName="OutlineView" rowHeight="28" rowSizeStyle="systemDefault" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="14" autosaveExpandedItems="YES" outlineTableColumn="uGO-87-8zt" id="qa1-j9-JlY">
-                                            <rect key="frame" x="0.0" y="0.0" width="168" height="295"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="168" height="282"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -278,10 +278,10 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view autoresizesSubviews="NO" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rFB-ux-jOW" customClass="ModelCanvasView" customModule="macgui" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                            <rect key="frame" x="0.0" y="-500" width="800" height="800"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="450" id="740-lW-Qcp"/>
-                                                <constraint firstAttribute="height" constant="300" id="Ohi-oz-g1Z"/>
+                                                <constraint firstAttribute="width" constant="800" id="740-lW-Qcp"/>
+                                                <constraint firstAttribute="height" constant="800" id="Ohi-oz-g1Z"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -301,10 +301,10 @@
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="uYG-QC-F6p" firstAttribute="leading" secondItem="F9n-Q0-EER" secondAttribute="leading" priority="750" id="BpW-3L-lqI" userLabel="Scroll View.leading = leading @750"/>
-                            <constraint firstAttribute="bottom" secondItem="uYG-QC-F6p" secondAttribute="bottom" priority="750" id="Qwd-JG-3gh" userLabel="bottom = Scroll View.bottom @750"/>
-                            <constraint firstItem="uYG-QC-F6p" firstAttribute="top" secondItem="F9n-Q0-EER" secondAttribute="top" priority="750" id="wg9-wb-Unc" userLabel="Scroll View.top = top @750"/>
-                            <constraint firstAttribute="trailing" secondItem="uYG-QC-F6p" secondAttribute="trailing" priority="750" id="zbf-tS-Fie" userLabel="trailing = Scroll View.trailing @750"/>
+                            <constraint firstItem="uYG-QC-F6p" firstAttribute="leading" secondItem="F9n-Q0-EER" secondAttribute="leading" id="KzY-yt-WNp"/>
+                            <constraint firstAttribute="trailing" secondItem="uYG-QC-F6p" secondAttribute="trailing" id="Oyt-AD-KJq"/>
+                            <constraint firstItem="uYG-QC-F6p" firstAttribute="top" secondItem="F9n-Q0-EER" secondAttribute="top" id="Wqv-3Z-dwM"/>
+                            <constraint firstAttribute="bottom" secondItem="uYG-QC-F6p" secondAttribute="bottom" id="gM2-ek-pwb"/>
                         </constraints>
                     </view>
                     <connections>

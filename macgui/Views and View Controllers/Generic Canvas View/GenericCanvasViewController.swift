@@ -72,11 +72,7 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
                }
 
     }
-    override func viewDidLayout() {
-        super.viewDidLayout()
-        canvasViewHeightConstraint.constant = scrollView.frame.size.height * 4
-        canvasViewWidthConstraint.constant = scrollView.frame.size.width * 4
-    }
+   
     
 // MARK: Selection of Objects on Canvas
     
@@ -281,7 +277,7 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
                sender.setTitle("125%")
            case 6:
                scrollView.magnification = 2.25
-               sender.setTitle("1500%")
+               sender.setTitle("150%")
            case 7:
                scrollView.magnification = 3.0
                sender.setTitle("200%")

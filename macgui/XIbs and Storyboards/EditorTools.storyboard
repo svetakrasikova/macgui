@@ -96,10 +96,10 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view identifier="CanvasView" autoresizesSubviews="NO" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-f8-Awk" customClass="CanvasView" customModule="macgui" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                            <rect key="frame" x="0.0" y="-500" width="800" height="800"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="300" id="mwg-5L-hDZ"/>
-                                                <constraint firstAttribute="width" constant="450" id="tJu-dg-TAc"/>
+                                                <constraint firstAttribute="height" constant="800" id="mwg-5L-hDZ"/>
+                                                <constraint firstAttribute="width" constant="800" id="tJu-dg-TAc"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -129,6 +129,7 @@
                         <outlet property="canvasView" destination="lBV-f8-Awk" id="b6F-E3-h77"/>
                         <outlet property="canvasViewHeightConstraint" destination="mwg-5L-hDZ" id="qQ7-yi-I1t"/>
                         <outlet property="canvasViewWidthConstraint" destination="tJu-dg-TAc" id="h2N-6D-CWe"/>
+                        <outlet property="centeringClipView" destination="HRj-1o-szR" id="qNW-F0-bfg"/>
                         <outlet property="scrollView" destination="fPJ-TS-pd4" id="esq-RD-Tdb"/>
                     </connections>
                 </viewController>
