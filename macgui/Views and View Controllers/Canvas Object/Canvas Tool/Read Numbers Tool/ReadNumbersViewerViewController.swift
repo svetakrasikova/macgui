@@ -18,6 +18,10 @@ class ReadNumbersViewerViewController: NSViewController, NSTableViewDelegate, NS
     @IBOutlet weak var listNameLabel: NSTextField!
     @IBOutlet weak var typePopup: NSPopUpButton!
     
+    enum TableViewColumn: String {
+        case NumberList
+    }
+    
     @objc dynamic var numberList: NumberList? {
         didSet {
             dimensionLabel.stringValue = numberList?.dimensionSymbolWithoutType ?? ""
@@ -33,6 +37,7 @@ class ReadNumbersViewerViewController: NSViewController, NSTableViewDelegate, NS
         guard let delegate = self.delegate as? ReadNumbersViewController else { return }
         numberList = delegate.numberData?.numberLists[listIndex]
         tableView.reloadData()
+        tableView.resizeColumnToFit(columnName: TableViewColumn.NumberList.rawValue)
         setUpTypePopup()
         view.needsDisplay = true
     }
@@ -44,13 +49,15 @@ class ReadNumbersViewerViewController: NSViewController, NSTableViewDelegate, NS
         return numberList.valueList.count
     }
     
-    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
        
-        if tableColumn?.identifier.rawValue == "NumberList" {
-            if let list = self.numberList  {
-                let str = list.stringValue(index: row)
-                return str
-            }
+        guard tableColumn?.identifier.rawValue == TableViewColumn.NumberList.rawValue else { return nil }
+        guard let list = self.numberList else { return nil }
+        
+        let str = list.stringValue(index: row)
+        if let cellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "NumberListCell"), owner: self) as? NSTableCellView {
+            cellView.textField?.stringValue = str
+            return cellView
         }
         return nil
     }
@@ -61,6 +68,8 @@ class ReadNumbersViewerViewController: NSViewController, NSTableViewDelegate, NS
         setUpTypePopup()
     }
     
+
+
     override func viewDidAppear() {
         super.viewDidAppear()
         typePopup.bind(.enabled, to: self, withKeyPath: "enableTypeSelection", options: [:])

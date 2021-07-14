@@ -363,6 +363,30 @@ extension CATextLayer {
 
 }
 
+extension NSTableView {
+    
+    func resizeColumnToFit(columnName: String) {
+        
+        var longest:CGFloat = 0
+        let columnNumber = self.column(withIdentifier: NSUserInterfaceItemIdentifier(columnName))
+        let column = self.tableColumns[columnNumber]
+        for row in  0..<self.numberOfRows {
+            if let view = self.view(atColumn: columnNumber, row: row, makeIfNecessary: true) as? NSTableCellView {
+                let width = String.lengthOfLongestString([view.textField!.stringValue])
+                if (longest < width) {
+                    longest = width
+                }
+                
+            }
+           
+        }
+        
+        
+        column.width = longest + 20.00
+        column.minWidth = longest
+    }
+}
+
 
 
 

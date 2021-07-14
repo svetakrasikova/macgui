@@ -147,8 +147,8 @@ class TreeSetToolViewController: InfoToolViewController, NSTableViewDelegate, NS
     }
     
     func resizeColumnsToFitContent() {
-        resizeColumn(columnName: Columns.name.rawValue)
-        resizeColumn(columnName: Columns.count.rawValue)
+        inletsTableView.resizeColumnToFit(columnName: Columns.name.rawValue)
+        inletsTableView.resizeColumnToFit(columnName: Columns.count.rawValue)
     }
     
     

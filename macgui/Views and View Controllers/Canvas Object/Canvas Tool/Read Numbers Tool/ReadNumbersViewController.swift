@@ -13,8 +13,18 @@ class ReadNumbersViewController: NSSplitViewController, ReadNumbersNavigatorView
 
     weak var numberData: NumberData?
     
+    var minNavigatorWidth: CGFloat {
+        let margin: CGFloat = 60.0
+        if let numberData = self.numberData {
+            let listNames = numberData.numberLists.map {$0.name}
+            return margin + String.lengthOfLongestString(listNames)
+        }
+        return margin
+    }
+    
     @IBOutlet weak var inspectorSplitView: NSSplitView!
     
+
     var navigator: ReadNumbersNavigatorViewController? {
         for item in splitViewItems {
             if let navigator = item.viewController as? ReadNumbersNavigatorViewController {
@@ -46,12 +56,17 @@ class ReadNumbersViewController: NSSplitViewController, ReadNumbersNavigatorView
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        navigator?.delegate = self
+        guard let navigator = self.navigator else { return }
+        navigator.delegate = self
         readNumbersViewer?.delegate = self
         if let inspectorWC = view.window?.windowController as? InspectorWindowController {
             self.numberData = inspectorWC.numberData
         }
+
+        NSLayoutConstraint(item: navigator.view as Any, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: minNavigatorWidth).isActive = true
         
     }
+    
+   
     
 }

@@ -112,7 +112,7 @@
                                     <rect key="frame" x="0.0" y="284" width="450" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="ern-Nz-irE">
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ern-Nz-irE">
                                     <rect key="frame" x="434" y="0.0" width="16" height="300"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -129,7 +129,6 @@
                         <outlet property="canvasView" destination="lBV-f8-Awk" id="b6F-E3-h77"/>
                         <outlet property="canvasViewHeightConstraint" destination="mwg-5L-hDZ" id="qQ7-yi-I1t"/>
                         <outlet property="canvasViewWidthConstraint" destination="tJu-dg-TAc" id="h2N-6D-CWe"/>
-                        <outlet property="centeringClipView" destination="HRj-1o-szR" id="qNW-F0-bfg"/>
                         <outlet property="scrollView" destination="fPJ-TS-pd4" id="esq-RD-Tdb"/>
                     </connections>
                 </viewController>

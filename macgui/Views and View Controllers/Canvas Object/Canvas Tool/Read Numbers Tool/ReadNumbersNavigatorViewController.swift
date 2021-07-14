@@ -55,7 +55,7 @@ class ReadNumbersNavigatorViewController: NSViewController, NSOutlineViewDataSou
         let view: NSTableCellView? = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "NumberListCell"), owner: self) as? NSTableCellView
         
         if let numberList = item as? NumberList {
-            view?.textField?.stringValue = numberList.name ?? "unnamed list"
+            view?.textField?.stringValue = numberList.name
             view?.imageView?.image = numberListCellImageViewBy(dimension: numberList.dimension)
         }
         return view

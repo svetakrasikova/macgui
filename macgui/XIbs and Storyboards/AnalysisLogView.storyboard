@@ -13,14 +13,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="309" height="344"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kH3-y3-DJd">
-                                <rect key="frame" x="0.0" y="0.0" width="309" height="320"/>
+                            <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kH3-y3-DJd">
+                                <rect key="frame" x="0.0" y="0.0" width="309" height="344"/>
                                 <clipView key="contentView" drawsBackground="NO" id="f06-yZ-zIx">
-                                    <rect key="frame" x="1" y="1" width="307" height="318"/>
+                                    <rect key="frame" x="1" y="1" width="307" height="342"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="9NU-YZ-rMa" viewBased="YES" id="TNo-lx-0sx">
-                                            <rect key="frame" x="0.0" y="0.0" width="307" height="295"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="307" height="319"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -102,7 +102,7 @@
                 </viewController>
                 <customObject id="QsT-Jm-rUI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258.5" y="634.5"/>
+            <point key="canvasLocation" x="258.5" y="634"/>
         </scene>
     </scenes>
 </document>
