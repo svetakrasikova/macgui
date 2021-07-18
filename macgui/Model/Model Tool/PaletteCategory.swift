@@ -12,7 +12,6 @@ class PaletteCategory: NSObject {
     
     enum ParameterType: String {
         case variables = "Variables"
-        case trees = "Trees"
         case plates = "Plates"
     }
     
@@ -25,16 +24,19 @@ class PaletteCategory: NSObject {
     }
     
     class func paletteCategoryList(palettItemsList: [PalettItem]) -> [PaletteCategory] {
+        
         let variables = PaletteCategory(name: ParameterType.variables.rawValue)
         let plates = PaletteCategory(name: ParameterType.plates.rawValue)
-        let trees = PaletteCategory(name: ParameterType.trees.rawValue)
+
+        
         for palettItem in palettItemsList {
             if palettItem.isKind(of: PaletteVariable.self) {
                 variables.children.append(palettItem)
             }
         }
         plates.children.append(PalettItem(name: PalettItem.plateType))
+        plates.children.append(PalettItem(name: PalettItem.treePlateType))
         
-        return [variables, plates, trees]
+        return [variables, plates]
     }
 }

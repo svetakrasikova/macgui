@@ -32,11 +32,20 @@ class NumberList: NSObject, NSCoding {
     var dimensionSymbolWithoutType: String {
         return NumberList.dimensionSymbol(dimension: dimension)
     }
-    class func dimensionSymbol(dimension: Int, type: String = " ") -> String{
+   
+    class func dimensionSymbol(dimension: Int, type: String = " ") -> String {
         switch dimension {
         case 1: return "[\(type)]"
         case 2: return "[[\(type)]]"
         default: return "\(type)"
+        }
+    }
+    
+    class func dimensionImageName(dimension: Int) -> String {
+        switch dimension {
+        case 1: return "number.square"
+        case 2: return "number.square.fill"
+        default: return "number"
         }
     }
     

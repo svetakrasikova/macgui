@@ -29,6 +29,7 @@ class ModelPaletteViewController: NSViewController {
         return parameters
     }
     
+    
     func registerForDragAndDrop() {
         outlineView.registerForDraggedTypes([NSPasteboard.PasteboardType.string])
         outlineView.setDraggingSourceOperationMask(.every, forLocal: false)
@@ -69,7 +70,7 @@ extension ModelPaletteViewController: NSOutlineViewDataSource {
             }
         }
         
-        if let item = item as? PalettItem, item.type == "Plate" {
+        if let item = item as? PalettItem, item.isPlate() {
             return item
         }
         
@@ -104,31 +105,35 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
                 textField.sizeToFit()
             }
         } else if let parameter = item as? PalettItem {
-            let identifier = parameter.type == PalettItem.plateType ? NSUserInterfaceItemIdentifier(rawValue: CellType.shapeCell.rawValue) : NSUserInterfaceItemIdentifier(rawValue: CellType.parameterCell.rawValue)
+            let identifier = NSUserInterfaceItemIdentifier(rawValue: CellType.shapeCell.rawValue)
             view = outlineView.makeView(withIdentifier: identifier, owner: self) as? NSTableCellView
+            var imageName: String?
             if let textField = view?.textField  {
-                var dimension: Int?
+               
                 if let variable = parameter as? PaletteVariable {
-                    dimension =  variable.dimension
-                    textField.stringValue = "\(parameter.type) \(NumberList.dimensionSymbol(dimension: dimension!))"
-                } else { textField.stringValue = parameter.type }
+                    imageName = NumberList.dimensionImageName(dimension: variable.dimension)
+                    textField.stringValue = "\(parameter.type)"
+                } else {
+                    textField.stringValue = parameter.type
+                    imageName = parameter.type == PalettItem.treePlateType ? "rectangle.dashed.badge.record" : "rectangle.dashed"
+                }
                 textField.sizeToFit()
             }
             if let imageView = view?.imageView {
-                imageView.image = NSImage(named: "DashedRectangle")
+                imageView.image = NSImage(systemSymbolName: imageName ?? "NSActionTemplate", accessibilityDescription: .none)
             }
         } else if let parameter = item as? (PaletteVariable, PaletteVariable.VariableType) {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellType.shapeCell.rawValue), owner: self) as? NSTableCellView
             if let textField = view?.textField, let imageView = view?.imageView  {
                 switch parameter.1 {
                 case .constant:
-                    imageView.image = NSImage(named: "SolidRectangle")
+                    imageView.image = NSImage(systemSymbolName: "square", accessibilityDescription: .none)
                     textField.stringValue = "constant"
                 case .function:
-                    imageView.image = NSImage(named: "DashedCircle")
+                    imageView.image = NSImage(systemSymbolName: "circle.dashed", accessibilityDescription: .none)
                     textField.stringValue = "function"
                 case .randomVariable:
-                    imageView.image = NSImage(named: "SolidCircle")
+                    imageView.image = NSImage(systemSymbolName: "circle", accessibilityDescription: .none)
                     textField.stringValue = "random variable"
                 }
                 textField.sizeToFit()
@@ -136,6 +141,7 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
         }
         return view
     }
+
     
     func outlineView(_ outlineView: NSOutlineView, writeItems items: [Any], to pasteboard: NSPasteboard) -> Bool {
         if let item = items.first as? (PaletteVariable, PaletteVariable.VariableType) {
