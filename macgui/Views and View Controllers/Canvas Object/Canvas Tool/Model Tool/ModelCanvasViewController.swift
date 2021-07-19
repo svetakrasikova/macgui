@@ -187,6 +187,29 @@ class ModelCanvasViewController: GenericCanvasViewController {
         }
     }
     
+    func addTreePlateToModel(frame: NSRect) {
+        guard let model = self.model else { return }
+        if let index = generateActiveIndex() {
+            let treePlate = TreePlate(frameOnCanvas: frame, analysis: model.analysis, index: index)
+            model.plates.append(treePlate)
+            addTreePlateView(treePlate)
+        }
+    }
+    
+    func addTreePlateView(_ treePlate: TreePlate) {
+        let treePlateViewController = TreePlateViewController()
+        treePlateViewController.toop = treePlate
+        addChild(treePlateViewController)
+        if let bottomMostNode = self.bottomMostNonResizableObject {
+            canvasView.addSubview(treePlateViewController.view, positioned: .below, relativeTo: bottomMostNode.view)
+        } else {
+            canvasView.addSubview(treePlateViewController.view)
+        }
+        topMostLoop = treePlateViewController
+     
+        
+    }
+    
     func resetCanvasView(){
         
         resettingCanvasView = true
@@ -229,12 +252,6 @@ class ModelCanvasViewController: GenericCanvasViewController {
         return nil
     }
     
-    
-//    MARK: -- Plate Management
-
-    
-   
-    
 }
 
 extension ModelCanvasViewController: ModelCanvasViewDelegate {
@@ -247,20 +264,31 @@ extension ModelCanvasViewController: ModelCanvasViewDelegate {
     }
     
     func addCanvasItem(center: NSPoint, data: String ){
+        guard let view = self.canvasView as? ModelCanvasView else { return }
         let variableData = data.split(separator: ":")
-        if variableData[0] != PalettItem.plateType {
+        let paletteItemType = variableData[0]
+        switch paletteItemType {
+        case PalettItem.plateType:
+            guard let plateDimension = view.canvasLoopDimension else { return }
+            addPlateToModel(frame: canvasItemFrame(center: center, dimension: plateDimension))
+        case PalettItem.treePlateType:
+            guard let height = view.canvasTreePlateHeight else { return }
+            guard let width = view.canvasTreePlateWidth else { return }
+            addTreePlateToModel(frame: canvasTreePlateFrame(center: center, width: width, height: height))
+        default:
             guard let nodeDimension = self.canvasView.canvasObjectDimension else { return }
             guard let variableName = getPalettVariableWithName(String(variableData[0])) else { return }
             guard let variableType = PaletteVariable.VariableType(rawValue: String(variableData[1])) else { return }
             addVariableToModel(frame: canvasItemFrame(center: center, dimension: nodeDimension), item: variableName, type: variableType)
-        } else {
-            guard let plateDimension = self.canvasView.canvasLoopDimension else { return }
-            addPlateToModel(frame: canvasItemFrame(center: center, dimension: plateDimension))
         }
     }
     
     func canvasItemFrame(center: NSPoint, dimension: CGFloat) -> NSRect {
         return NSRect(x: center.x - dimension/2, y: center.y - dimension/2, width: dimension, height: dimension)
+    }
+    
+    func canvasTreePlateFrame(center: NSPoint, width: CGFloat, height: CGFloat) -> NSRect {
+        return NSRect(x: center.x - width/2, y: center.y - height/2, width: width, height: height)
     }
     
     

@@ -18,6 +18,13 @@ class ModelCanvasView: GenericCanvasView {
             concreteDelegate = delegate as? ModelCanvasViewDelegate
         }
     }
+    var canvasTreePlateHeight: CGFloat? {
+        return preferencesManager.canvasTreePlateHeight
+    }
+    var canvasTreePlateWidth: CGFloat? {
+        return preferencesManager.canvasTreePlateWidth
+    }
+    
     override func draw(_ dirtyRect: NSRect) {
            super.draw(dirtyRect)
         if let backgroundColor = preferencesManager.modelCanvasBackgroundColor {

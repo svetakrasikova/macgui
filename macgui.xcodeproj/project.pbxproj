@@ -90,6 +90,9 @@
 		147429DB22CBC8C300FF1963 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DA22CBC8C300FF1963 /* Storyboards.swift */; };
 		147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147429DD22D154D200FF1963 /* ModelTool.storyboard */; };
 		148D93C92335406D00FDFAFA /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148D93C82335406C00FDFAFA /* Document.swift */; };
+		148F650026A4E2DB003F8846 /* TreePlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F64FF26A4E2DB003F8846 /* TreePlate.swift */; };
+		148F650226A4E310003F8846 /* TreePlateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650126A4E310003F8846 /* TreePlateView.swift */; };
+		148F650426A4E350003F8846 /* TreePlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650326A4E350003F8846 /* TreePlateViewController.swift */; };
 		148FC1A125A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148FC19F25A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift */; };
 		148FC1A925A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148FC1A725A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift */; };
 		149370432303545D00503CCB /* ToolTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149370422303545D00503CCB /* ToolTipViewController.swift */; };
@@ -1594,6 +1597,9 @@
 		147429DA22CBC8C300FF1963 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		147429DD22D154D200FF1963 /* ModelTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModelTool.storyboard; sourceTree = "<group>"; };
 		148D93C82335406C00FDFAFA /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		148F64FF26A4E2DB003F8846 /* TreePlate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlate.swift; sourceTree = "<group>"; };
+		148F650126A4E310003F8846 /* TreePlateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlateView.swift; sourceTree = "<group>"; };
+		148F650326A4E350003F8846 /* TreePlateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlateViewController.swift; sourceTree = "<group>"; };
 		148FC19F25A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupParsimonyOptionsViewController.swift; sourceTree = "<group>"; };
 		148FC1A725A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupDistanceOptionsViewController.swift; sourceTree = "<group>"; };
 		149370422303545D00503CCB /* ToolTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipViewController.swift; sourceTree = "<group>"; };
@@ -4773,6 +4779,16 @@
 			path = "Connectable Tools";
 			sourceTree = "<group>";
 		};
+		148F64FE26A4DF39003F8846 /* TreePlate */ = {
+			isa = PBXGroup;
+			children = (
+				148F64FF26A4E2DB003F8846 /* TreePlate.swift */,
+				148F650126A4E310003F8846 /* TreePlateView.swift */,
+				148F650326A4E350003F8846 /* TreePlateViewController.swift */,
+			);
+			path = TreePlate;
+			sourceTree = "<group>";
+		};
 		1495A0A9237C86B200F46312 /* Tool Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -4912,6 +4928,7 @@
 		14C618E523E0E11E001FFFD6 /* Model Tool */ = {
 			isa = PBXGroup;
 			children = (
+				148F64FE26A4DF39003F8846 /* TreePlate */,
 				14C618E623E20411001FFFD6 /* ModelToolWindowController.swift */,
 				149F8B3A2363934F003146FD /* ModelToolViewController.swift */,
 				14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */,
@@ -9345,6 +9362,7 @@
 				14E00941261BCAE600D97E68 /* Ellipsis.cpp in Sources */,
 				14E00821261BCAE500D97E68 /* Move_ConjugateInverseWishart.cpp in Sources */,
 				14E007AE261BCAE500D97E68 /* RbHelpArgument.cpp in Sources */,
+				148F650226A4E310003F8846 /* TreePlateView.swift in Sources */,
 				14E0089C261BCAE600D97E68 /* FunctionTable.cpp in Sources */,
 				14E008DE261BCAE600D97E68 /* Func_readDataDelimitedFile.cpp in Sources */,
 				14E007CC261BCAE500D97E68 /* Move_TreeScale.cpp in Sources */,
@@ -9766,6 +9784,7 @@
 				14E007A3261BCAE500D97E68 /* AbstractPhyloContinuousCharacterProcess.cpp in Sources */,
 				14E00892261BCAE600D97E68 /* RevNullObject.cpp in Sources */,
 				14E0086D261BCAE500D97E68 /* RlRateGeneratorSequence.cpp in Sources */,
+				148F650026A4E2DB003F8846 /* TreePlate.swift in Sources */,
 				14E006C2261BCAE400D97E68 /* GammaFunction.cpp in Sources */,
 				14E0058C261BCAE400D97E68 /* GraphFlipCliqueProposal.cpp in Sources */,
 				14E006FF261BCAE500D97E68 /* PoMoRateMatrixFunction.cpp in Sources */,
@@ -10401,6 +10420,7 @@
 				14E00808261BCAE500D97E68 /* Move_VectorScale.cpp in Sources */,
 				14E00964261BCAE600D97E68 /* Func_TVM.cpp in Sources */,
 				14E005C7261BCAE400D97E68 /* TraceTree.cpp in Sources */,
+				148F650426A4E350003F8846 /* TreePlateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

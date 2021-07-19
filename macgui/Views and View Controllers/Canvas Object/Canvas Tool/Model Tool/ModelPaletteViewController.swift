@@ -152,7 +152,7 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
             pasteboard.writeObjects([pasteboardString as NSString])
             return true
         }
-        if let item = items.first as? PalettItem, item.type == PalettItem.plateType {
+        if let item = items.first as? PalettItem, item.isPlate() {
             pasteboard.clearContents()
             let type = item.type
             let pasteboardString = "\(type):\(type)"
