@@ -21,5 +21,6 @@ extension NSNotification.Name {
     static let didUpdateDocument = Notification.Name("didUpdateDocument")
     static let didChangeModelParameterName = Notification.Name("didChangeModelParameterName")
     static let didUpdateAnalysis = Notification.Name("didUpdateAnalysis")
+    static let didMarkForDeletion = Notification.Name("didMarkForDeletion")
     
 }

@@ -9,7 +9,7 @@
 import Cocoa
 import Darwin
 
-class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate{
+class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
     
     private var observers = [NSKeyValueObservation]()
     

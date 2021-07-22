@@ -18,6 +18,7 @@ class PalettItem: NSObject, Codable, NSCoding {
     
     static let plateType: String = "Plate"
     static let treePlateType: String = "Tree Plate"
+    static let treeTopologyType: String = "Tree Topology"
     
       private enum CodingKeys: String, CodingKey {
          case type

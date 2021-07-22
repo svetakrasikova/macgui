@@ -61,7 +61,7 @@ class PreferencesManager {
             PreferenceKey.canvasObjectDimension.rawValue: 50.0,
             PreferenceKey.canvasLoopDimension.rawValue: 100.0,
             PreferenceKey.canvasTreePlateHeight.rawValue: 200.0,
-            PreferenceKey.canvasTreePlateHeight.rawValue: 400.0,
+            PreferenceKey.canvasTreePlateWidth.rawValue: 300.0,
             PreferenceKey.canvasToolBorderWidth.rawValue: 1.8,
             PreferenceKey.canvasToolSelectionCornerRadius.rawValue: 5.0,
             PreferenceKey.canvasToolSelectionShadowOpacity.rawValue: 0.7,

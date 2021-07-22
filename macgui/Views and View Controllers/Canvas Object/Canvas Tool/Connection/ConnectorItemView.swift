@@ -42,7 +42,7 @@ class ConnectorItemView: CanvasObjectView {
     
 }
 
-protocol ConnectorItemViewDelegate: class {
+protocol ConnectorItemViewDelegate: AnyObject {
     func getTool() -> Any?
     func getConnector() -> Any?
     func isOutlet() -> Bool

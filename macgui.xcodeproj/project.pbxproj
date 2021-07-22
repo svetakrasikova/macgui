@@ -46,7 +46,6 @@
 		144031CF261CCD86007D7BB7 /* FunctionController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144031CE261CCD86007D7BB7 /* FunctionController.storyboard */; };
 		144031D3261CCE22007D7BB7 /* ModelConstantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031D2261CCE22007D7BB7 /* ModelConstantController.swift */; };
 		144031D8261CCEDE007D7BB7 /* ModelPaletteItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031D6261CCEDE007D7BB7 /* ModelPaletteItemController.swift */; };
-		144031E1261D3091007D7BB7 /* ModelFunctionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031E0261D3091007D7BB7 /* ModelFunctionController.swift */; };
 		144031E7261E62B5007D7BB7 /* OnlyNumbersFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031E6261E62B5007D7BB7 /* OnlyNumbersFormatter.swift */; };
 		144031ED261F7AE0007D7BB7 /* ReadNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031EC261F7AE0007D7BB7 /* ReadNumbers.swift */; };
 		144031F2261FC2B3007D7BB7 /* ResizableCanvasObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144031F1261FC2B3007D7BB7 /* ResizableCanvasObjectView.swift */; };
@@ -93,6 +92,13 @@
 		148F650026A4E2DB003F8846 /* TreePlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F64FF26A4E2DB003F8846 /* TreePlate.swift */; };
 		148F650226A4E310003F8846 /* TreePlateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650126A4E310003F8846 /* TreePlateView.swift */; };
 		148F650426A4E350003F8846 /* TreePlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650326A4E350003F8846 /* TreePlateViewController.swift */; };
+		148F650626A50274003F8846 /* EdgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650526A50274003F8846 /* EdgeViewController.swift */; };
+		148F650826A776AB003F8846 /* EdgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650726A776AB003F8846 /* EdgeView.swift */; };
+		148F650A26A8D8B3003F8846 /* TreePlateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650926A8D8B3003F8846 /* TreePlateController.swift */; };
+		148F650C26A8DA14003F8846 /* TreePlateController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148F650B26A8DA14003F8846 /* TreePlateController.storyboard */; };
+		148F650E26A8EB69003F8846 /* TreeTopologyController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148F650D26A8EB69003F8846 /* TreeTopologyController.storyboard */; };
+		148F651126A8ECD7003F8846 /* TreeTopologyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650F26A8ECD7003F8846 /* TreeTopologyController.swift */; };
+		148F651526A91733003F8846 /* TreePlateNodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F651326A91733003F8846 /* TreePlateNodeViewController.swift */; };
 		148FC1A125A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148FC19F25A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift */; };
 		148FC1A925A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148FC1A725A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift */; };
 		149370432303545D00503CCB /* ToolTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149370422303545D00503CCB /* ToolTipViewController.swift */; };
@@ -1551,7 +1557,6 @@
 		144031CE261CCD86007D7BB7 /* FunctionController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FunctionController.storyboard; sourceTree = "<group>"; };
 		144031D2261CCE22007D7BB7 /* ModelConstantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConstantController.swift; sourceTree = "<group>"; };
 		144031D6261CCEDE007D7BB7 /* ModelPaletteItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPaletteItemController.swift; sourceTree = "<group>"; };
-		144031E0261D3091007D7BB7 /* ModelFunctionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFunctionController.swift; sourceTree = "<group>"; };
 		144031E6261E62B5007D7BB7 /* OnlyNumbersFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnlyNumbersFormatter.swift; path = macgui/Extensions/OnlyNumbersFormatter.swift; sourceTree = SOURCE_ROOT; };
 		144031EC261F7AE0007D7BB7 /* ReadNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNumbers.swift; sourceTree = "<group>"; };
 		144031F1261FC2B3007D7BB7 /* ResizableCanvasObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableCanvasObjectView.swift; sourceTree = "<group>"; };
@@ -1600,6 +1605,13 @@
 		148F64FF26A4E2DB003F8846 /* TreePlate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlate.swift; sourceTree = "<group>"; };
 		148F650126A4E310003F8846 /* TreePlateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlateView.swift; sourceTree = "<group>"; };
 		148F650326A4E350003F8846 /* TreePlateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlateViewController.swift; sourceTree = "<group>"; };
+		148F650526A50274003F8846 /* EdgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeViewController.swift; sourceTree = "<group>"; };
+		148F650726A776AB003F8846 /* EdgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeView.swift; sourceTree = "<group>"; };
+		148F650926A8D8B3003F8846 /* TreePlateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlateController.swift; sourceTree = "<group>"; };
+		148F650B26A8DA14003F8846 /* TreePlateController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TreePlateController.storyboard; sourceTree = "<group>"; };
+		148F650D26A8EB69003F8846 /* TreeTopologyController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TreeTopologyController.storyboard; sourceTree = "<group>"; };
+		148F650F26A8ECD7003F8846 /* TreeTopologyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTopologyController.swift; sourceTree = "<group>"; };
+		148F651326A91733003F8846 /* TreePlateNodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlateNodeViewController.swift; sourceTree = "<group>"; };
 		148FC19F25A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupParsimonyOptionsViewController.swift; sourceTree = "<group>"; };
 		148FC1A725A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupDistanceOptionsViewController.swift; sourceTree = "<group>"; };
 		149370422303545D00503CCB /* ToolTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipViewController.swift; sourceTree = "<group>"; };
@@ -4703,6 +4715,8 @@
 				14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */,
 				14E22D4B264C7C640090B860 /* ReadNumbersInspector.storyboard */,
 				14E8A53225377ABE00864375 /* TreeInspector.storyboard */,
+				148F650B26A8DA14003F8846 /* TreePlateController.storyboard */,
+				148F650D26A8EB69003F8846 /* TreeTopologyController.storyboard */,
 			);
 			path = "XIbs and Storyboards";
 			sourceTree = "<group>";
@@ -4785,6 +4799,11 @@
 				148F64FF26A4E2DB003F8846 /* TreePlate.swift */,
 				148F650126A4E310003F8846 /* TreePlateView.swift */,
 				148F650326A4E350003F8846 /* TreePlateViewController.swift */,
+				148F650526A50274003F8846 /* EdgeViewController.swift */,
+				148F650726A776AB003F8846 /* EdgeView.swift */,
+				148F650926A8D8B3003F8846 /* TreePlateController.swift */,
+				148F650F26A8ECD7003F8846 /* TreeTopologyController.swift */,
+				148F651326A91733003F8846 /* TreePlateNodeViewController.swift */,
 			);
 			path = TreePlate;
 			sourceTree = "<group>";
@@ -4940,7 +4959,6 @@
 				141461682684DB17006CEE54 /* ModelDeterministicVariableController.swift */,
 				141461662684DAF4006CEE54 /* ModelStochasticVariableController.swift */,
 				144031D2261CCE22007D7BB7 /* ModelConstantController.swift */,
-				144031E0261D3091007D7BB7 /* ModelFunctionController.swift */,
 				1410C3AE2404ECEB0044EB48 /* ModelCanvasItemView.swift */,
 				1410C3AC2404EBE50044EB48 /* ModelCanvasItemViewController.swift */,
 				14A705CD2639D83E006B7F6B /* ModelCanvasPlateView.swift */,
@@ -8880,7 +8898,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "Svetlana Krasikova";
 				TargetAttributes = {
 					1411BE8B2203D8FB009BEE1D = {
@@ -8935,8 +8953,10 @@
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
 				14EE87C6255B061C0064F290 /* PaupSearch.storyboard in Resources */,
 				14EE87BC2559FCCA0064F290 /* PaupOverview.storyboard in Resources */,
+				148F650E26A8EB69003F8846 /* TreeTopologyController.storyboard in Resources */,
 				149A500024983C61007E4D4B /* AlignTool.storyboard in Resources */,
 				14E8A53325377ABE00864375 /* TreeInspector.storyboard in Resources */,
+				148F650C26A8DA14003F8846 /* TreePlateController.storyboard in Resources */,
 				1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */,
 				1495A0B6237C991200F46312 /* MatrixInspector.storyboard in Resources */,
 				14A663BC23186CFE0034EA53 /* Notebook.storyboard in Resources */,
@@ -8996,7 +9016,6 @@
 				14E007E5261BCAE500D97E68 /* Move_HomeologPhase.cpp in Sources */,
 				14E0094B261BCAE600D97E68 /* Func_treeScale.cpp in Sources */,
 				14E008D4261BCAE600D97E68 /* Func_mapTree.cpp in Sources */,
-				144031E1261D3091007D7BB7 /* ModelFunctionController.swift in Sources */,
 				14E00A1B261BCAE700D97E68 /* Dist_PhyloWhiteNoise.cpp in Sources */,
 				14E00A06261BCAE700D97E68 /* Dist_uniformTopologyBranchLength.cpp in Sources */,
 				14E0089B261BCAE600D97E68 /* MethodTable.cpp in Sources */,
@@ -9342,6 +9361,7 @@
 				14E00902261BCAE600D97E68 /* Func_ls.cpp in Sources */,
 				14E009C4261BCAE600D97E68 /* Dist_scaledDirichlet.cpp in Sources */,
 				142945FB23EF76890093608F /* MainCanvasPreferencesController.swift in Sources */,
+				148F651526A91733003F8846 /* TreePlateNodeViewController.swift in Sources */,
 				14E009C6261BCAE600D97E68 /* Dist_chisq.cpp in Sources */,
 				14E0051C261BCAE400D97E68 /* TreePairwiseNodalDistances.cpp in Sources */,
 				14E009C9261BCAE600D97E68 /* Dist_unifProbability.cpp in Sources */,
@@ -9589,6 +9609,7 @@
 				14E00594261BCAE400D97E68 /* ContinuousEventBirthDeathProposal.cpp in Sources */,
 				14E00915261BCAE600D97E68 /* Func_power.cpp in Sources */,
 				14E00A08261BCAE700D97E68 /* Dist_PhylodynamicBDP.cpp in Sources */,
+				148F650626A50274003F8846 /* EdgeViewController.swift in Sources */,
 				14E0060B261BCAE400D97E68 /* RateGenerator_Epoch.cpp in Sources */,
 				149A500B24995CA5007E4D4B /* BinaryController.swift in Sources */,
 				14E009C0261BCAE600D97E68 /* Dist_multinomial.cpp in Sources */,
@@ -9697,6 +9718,7 @@
 				14E00804261BCAE500D97E68 /* Move_ShrinkExpand.cpp in Sources */,
 				14E00A34261BCAE700D97E68 /* nxsreader.cpp in Sources */,
 				144031ED261F7AE0007D7BB7 /* ReadNumbers.swift in Sources */,
+				148F650A26A8D8B3003F8846 /* TreePlateController.swift in Sources */,
 				14E008CA261BCAE600D97E68 /* UserProcedure.cpp in Sources */,
 				14E00666261BCAE400D97E68 /* ProgressBar.cpp in Sources */,
 				14E00689261BCAE400D97E68 /* DistributionLKJ.cpp in Sources */,
@@ -9871,6 +9893,7 @@
 				149B15D624BD1010006673CB /* ExecutableTools.swift in Sources */,
 				14E007A4261BCAE500D97E68 /* PhyloMultiSampleOrnsteinUhlenbeckProcess.cpp in Sources */,
 				14E007D8261BCAE500D97E68 /* Move_WeightedNodeTimeSlide.cpp in Sources */,
+				148F650826A776AB003F8846 /* EdgeView.swift in Sources */,
 				14E008A1261BCAE600D97E68 /* RbRegister_DemographicFunction.cpp in Sources */,
 				14E00971261BCAE600D97E68 /* Func_epoch.cpp in Sources */,
 				14E0051B261BCAE400D97E68 /* SymmetricDifferenceStatistic.cpp in Sources */,
@@ -10260,6 +10283,7 @@
 				14E00612261BCAE400D97E68 /* RateMatrix_PoMo2N.cpp in Sources */,
 				14E007D1261BCAE500D97E68 /* Move_RateAgeBetaShift.cpp in Sources */,
 				14E005E9261BCAE400D97E68 /* MatrixComplex.cpp in Sources */,
+				148F651126A8ECD7003F8846 /* TreeTopologyController.swift in Sources */,
 				14E00887261BCAE600D97E68 /* RlTaxon.cpp in Sources */,
 				14E005DC261BCAE400D97E68 /* ContinuousStochasticNode.cpp in Sources */,
 				14E008BB261BCAE600D97E68 /* lex.yy.cpp in Sources */,
@@ -10567,6 +10591,7 @@
 				MTL_FAST_MATH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-lboost_program_options";
 				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;

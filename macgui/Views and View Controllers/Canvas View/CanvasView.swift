@@ -41,6 +41,6 @@ class CanvasView: GenericCanvasView {
     }
 }
 
-protocol CanvasViewDelegate: class {
+protocol CanvasViewDelegate: AnyObject {
     func processImage(center: NSPoint, name: String)
 }

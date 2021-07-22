@@ -5,32 +5,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Analysis Canvas-->
-        <scene sceneID="gJq-iW-uPK">
-            <objects>
-                <viewController title="Analysis Canvas" id="7HN-bZ-Xxb" sceneMemberID="viewController">
-                    <view key="view" id="dfp-DY-b08">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="rnT-tJ-RDM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1287" y="-955"/>
-        </scene>
-        <!--Model Tool-->
-        <scene sceneID="UlG-dN-DTq">
-            <objects>
-                <viewController title="Model Tool" id="aPH-O7-dYf" sceneMemberID="viewController">
-                    <view key="view" id="k8T-My-7dj">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="tEI-Ns-6mr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1287" y="-583"/>
-        </scene>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
             <objects>
@@ -740,11 +714,11 @@ CA
                                 <toolbarItem implicitItemIdentifier="F64DF7CF-819D-4657-8C1C-A656000F793D" label="Zoom" paletteLabel="Zoom" title="100%" sizingBehavior="auto" id="GI7-Ow-JbS">
                                     <nil key="toolTip"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="1wV-hY-z6B" userLabel="zoom">
-                                        <rect key="frame" x="0.0" y="14" width="67" height="25"/>
+                                        <rect key="frame" x="0.0" y="14" width="70" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" tag="1" imageScaling="axesIndependently" inset="2" pullsDown="YES" selectedItem="p3j-MU-iWT" id="x4u-Va-0Vm" userLabel="zoom">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="controlContent"/>
+                                            <font key="font" metaFont="system"/>
                                             <menu key="menu" id="JJw-60-Ano">
                                                 <items>
                                                     <menuItem title="100%" tag="1" hidden="YES" id="p3j-MU-iWT" userLabel="100%"/>
@@ -810,7 +784,7 @@ CA
                                 <toolbarItem implicitItemIdentifier="00E3889F-78CD-47F2-891D-15B23E8D2654" label="Sidebar" paletteLabel="Sidebar" image="NSTouchBarSidebarTemplate" sizingBehavior="auto" id="1NB-C1-L3U" userLabel="Sidebar">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="H8a-SK-Df0">
-                                        <rect key="frame" x="6" y="14" width="36" height="23"/>
+                                        <rect key="frame" x="9" y="14" width="30" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarSidebarTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rge-wW-23R">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

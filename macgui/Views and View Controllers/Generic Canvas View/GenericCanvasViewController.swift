@@ -12,7 +12,7 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
     
 //    MARK: -- Loop/Plate Handling
     
-    weak var bottomMostNonResizableObject: CanvasObjectViewController?
+    weak var bottomMostNonResizableObject: NSViewController?
     weak var topMostLoop: ResizableCanvasObjectViewController?
     let loopIndices: [String] = ["i","j","k","l","m","n","u","v","w","x","y","z", "a","b","c","d","e","f","g","h","o","p","q","r","s","t"]
     
@@ -127,12 +127,12 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
         } else {
             removeConnectable(viewController: canvasObjectViewController)
         }
-        canvasObjectViewController.view.removeFromSuperview()
-        canvasObjectViewController.removeFromParent()
     }
     
     func removeConnection(arrowViewController: ArrowViewController){
         arrowViewController.willDeleteView()
+        arrowViewController.view.removeFromSuperview()
+        arrowViewController.removeFromParent()
     }
     
     func removeConnectable(viewController: CanvasObjectViewController){
@@ -153,6 +153,9 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
         if let outerLoopVC = viewController.outerLoopViewController, let loop = outerLoopVC.tool as? Loop {
             loop.removeEmbeddedNode(connectable)
         }
+        
+        viewController.view.removeFromSuperview()
+        viewController.removeFromParent()
     }
     
     func removeResizable(viewController: ResizableCanvasObjectViewController) {
@@ -164,6 +167,9 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
             } else {  topMostLoop = nil }
         }
         loop.embeddedNodes.forEach { findVCByTool($0)?.checkForLoopInclusion()}
+        viewController.view.removeFromSuperview()
+        viewController.removeFromParent()
+        
     }
     
     func deleteSelectedCanvasObjects() {
@@ -177,13 +183,13 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
     @objc func deleteSelectedCanvasObjects(notification: NSNotification){
         
         var numConnectionsToDelete = 0
-        
         for childController in children {
-            if childController .isKind(of: ArrowViewController.self) &&
-                (childController as! CanvasObjectViewController).viewSelected == true {
+            if let childController = childController as? ArrowViewController,
+               childController.viewSelected == true {
                 numConnectionsToDelete = numConnectionsToDelete + 1
             }
         }
+        
         if numConnectionsToDelete > 0 {
             let alert = NSAlert()
             if numConnectionsToDelete > 1 {
@@ -203,7 +209,7 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
                 deleteSelectedCanvasObjects()
             default: break
             }
-        } else { deleteSelectedCanvasObjects() }
+        }  else { deleteSelectedCanvasObjects() }
     }
     
 //    MARK: -- Adding objects to Canvas
@@ -221,7 +227,7 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
         canvasLoopViewController.checkForLoopInclusion()
     }
     
-    func addToolView(tool: ToolObject){
+    func addToolView(tool: ToolObject) {
         guard let viewController = toolViewController() else { return }
         viewController.tool = tool
         addChild(viewController)

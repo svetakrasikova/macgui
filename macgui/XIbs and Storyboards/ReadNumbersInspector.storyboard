@@ -293,7 +293,7 @@
                                             </textField>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xM9-N0-20n">
                                                 <rect key="frame" x="36" y="36" width="88" height="25"/>
-                                                <popUpButtonCell key="cell" type="push" title="Integer" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="NSh-Oy-pKp" id="gxa-KJ-CeM">
+                                                <popUpButtonCell key="cell" type="push" title="Integer" bezelStyle="rounded" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="NSh-Oy-pKp" id="gxa-KJ-CeM">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
                                                     <menu key="menu" autoenablesItems="NO" id="0mQ-uA-Mgh">

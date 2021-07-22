@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tree Plate Controller-->
+        <scene sceneID="Bej-bO-GpL">
+            <objects>
+                <viewController storyboardIdentifier="TreePlateController" id="ump-vo-x8m" customClass="TreePlateController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="mEI-F8-Kae">
+                        <rect key="frame" x="0.0" y="0.0" width="305" height="205"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JoY-mf-svj" userLabel="OK Cancel Button Stack View">
+                                <rect key="frame" x="149" y="20" width="136" height="20"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SBS-tu-9TP">
+                                        <rect key="frame" x="-7" y="-7" width="76" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="K53-Hf-cz1">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="dismissController:" target="ump-vo-x8m" id="S3s-a8-Al2"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aIj-Hv-5TU">
+                                        <rect key="frame" x="67" y="-7" width="76" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FlG-nE-PW8">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="saveClicked:" target="ump-vo-x8m" id="ba6-tV-yiF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <box placeholderIntrinsicWidth="265" placeholderIntrinsicHeight="117" borderType="bezel" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="wSV-04-0Mb">
+                                <rect key="frame" x="17" y="56" width="271" height="131"/>
+                                <view key="contentView" id="LmF-ND-BaB">
+                                    <rect key="frame" x="3" y="3" width="265" height="125"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DRL-S6-swJ">
+                                            <rect key="frame" x="20" y="20" width="225" height="85"/>
+                                            <subviews>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c71-CQ-lS9" userLabel="Index Stack">
+                                                    <rect key="frame" x="91" y="61" width="134" height="24"/>
+                                                    <subviews>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Oks-me-kws">
+                                                            <rect key="frame" x="-2" y="4" width="37" height="16"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Index" id="lGz-ER-dEV">
+                                                                <font key="font" usesAppearanceFont="YES"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i0e-Ls-dg4">
+                                                            <rect key="frame" x="35" y="-2" width="103" height="25"/>
+                                                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="Ewp-Ey-Ql6" id="xeu-aL-vFK">
+                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="menu"/>
+                                                                <menu key="menu" autoenablesItems="NO" id="png-70-PG6">
+                                                                    <items>
+                                                                        <menuItem title="Item 1" state="on" id="Ewp-Ey-Ql6"/>
+                                                                        <menuItem title="Item 2" id="v1P-vC-bDK"/>
+                                                                        <menuItem title="Item 3" id="d3u-dP-beL"/>
+                                                                    </items>
+                                                                </menu>
+                                                            </popUpButtonCell>
+                                                            <connections>
+                                                                <binding destination="ump-vo-x8m" name="selectedValue" keyPath="self.loop.index" id="e6r-4o-BLG"/>
+                                                            </connections>
+                                                        </popUpButton>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRF-ln-Qhe" userLabel="Upper Range Stack">
+                                                    <rect key="frame" x="44" y="0.0" width="181" height="46"/>
+                                                    <subviews>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="65X-gR-Ch5" userLabel="Distribution Label">
+                                                            <rect key="frame" x="-2" y="15" width="84" height="16"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Upper Range" id="DXb-Vo-q18">
+                                                                <font key="font" usesAppearanceFont="YES"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q1n-5q-ziS">
+                                                            <rect key="frame" x="85" y="13" width="96" height="21"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="4Qb-nk-1Mz">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                            <connections>
+                                                                <binding destination="ump-vo-x8m" name="value" keyPath="self.loop.upperRange" id="lPY-XE-SVE"/>
+                                                            </connections>
+                                                        </textField>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="65X-gR-Ch5" firstAttribute="centerY" secondItem="hRF-ln-Qhe" secondAttribute="centerY" id="EKW-mk-NrS"/>
+                                                        <constraint firstItem="65X-gR-Ch5" firstAttribute="top" secondItem="hRF-ln-Qhe" secondAttribute="top" constant="15" id="FMe-Zb-Cze"/>
+                                                    </constraints>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="q1n-5q-ziS" firstAttribute="width" secondItem="i0e-Ls-dg4" secondAttribute="width" id="6i9-eH-VUR"/>
+                                            </constraints>
+                                            <visibilityPriorities>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                            </visibilityPriorities>
+                                            <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                            </customSpacing>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="DRL-S6-swJ" firstAttribute="top" secondItem="LmF-ND-BaB" secondAttribute="top" constant="20" id="4ej-ZA-nl2"/>
+                                        <constraint firstAttribute="trailing" secondItem="DRL-S6-swJ" secondAttribute="trailing" constant="20" id="7JL-s2-rtr"/>
+                                        <constraint firstItem="DRL-S6-swJ" firstAttribute="leading" secondItem="LmF-ND-BaB" secondAttribute="leading" constant="20" id="IIF-j0-rYK"/>
+                                        <constraint firstAttribute="bottom" secondItem="DRL-S6-swJ" secondAttribute="bottom" constant="20" id="jdW-vO-3Q9"/>
+                                    </constraints>
+                                </view>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="wSV-04-0Mb" secondAttribute="trailing" constant="20" id="0q5-jL-zI0"/>
+                            <constraint firstItem="wSV-04-0Mb" firstAttribute="leading" secondItem="mEI-F8-Kae" secondAttribute="leading" constant="20" id="9i6-VC-XNs"/>
+                            <constraint firstAttribute="trailing" secondItem="JoY-mf-svj" secondAttribute="trailing" constant="20" id="T4J-ZF-5k2"/>
+                            <constraint firstItem="JoY-mf-svj" firstAttribute="top" secondItem="wSV-04-0Mb" secondAttribute="bottom" constant="20" id="ftS-wK-MmH"/>
+                            <constraint firstAttribute="bottom" secondItem="wSV-04-0Mb" secondAttribute="bottom" constant="60" id="iYP-OQ-a07"/>
+                            <constraint firstAttribute="bottom" secondItem="JoY-mf-svj" secondAttribute="bottom" constant="20" id="yne-MU-ms4"/>
+                            <constraint firstItem="wSV-04-0Mb" firstAttribute="top" secondItem="mEI-F8-Kae" secondAttribute="top" constant="20" id="zkm-b8-ZLn" userLabel="Box.top = top + 20"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="indexPopup" destination="i0e-Ls-dg4" id="HsR-RI-3db"/>
+                    </connections>
+                </viewController>
+                <customObject id="yf2-l1-JEq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="840.5" y="-713.5"/>
+        </scene>
+    </scenes>
+</document>

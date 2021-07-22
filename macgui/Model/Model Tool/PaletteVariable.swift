@@ -60,7 +60,7 @@ class PaletteVariable : PalettItem {
         super.init(name: "")
     }
 
-    init(name: String, dimension: Int) {
+    init(name: String, dimension: Int = 0) {
         self.dimension = dimension
         super.init(name: name)
     }

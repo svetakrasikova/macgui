@@ -23,7 +23,7 @@
                                 <toolbarItem implicitItemIdentifier="02AF444E-AE5E-4AB4-AFEC-F38DD466FE50" label="" paletteLabel="" image="NSTouchBarSidebarTemplate" sizingBehavior="auto" id="JoS-Rt-zxa" userLabel="Sidebar">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="kjU-iE-Gow">
-                                        <rect key="frame" x="0.0" y="14" width="48" height="24"/>
+                                        <rect key="frame" x="0.0" y="14" width="30" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarSidebarTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wwi-7V-juA">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -37,7 +37,7 @@
                                 <toolbarItem implicitItemIdentifier="A8A1467B-3767-4650-A5CB-8CFFBD337232" label="" paletteLabel="" image="NSShareTemplate" sizingBehavior="auto" id="dTc-yJ-UM6" userLabel="Share">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="Yja-pa-1iU">
-                                        <rect key="frame" x="0.0" y="14" width="48" height="24"/>
+                                        <rect key="frame" x="0.0" y="14" width="27" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9I4-qX-5vb">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -51,7 +51,7 @@
                                 <toolbarItem implicitItemIdentifier="1D44E6B5-76E1-4C4C-AA1C-6B559AD65A30" label="" paletteLabel="" title="100%" sizingBehavior="auto" id="MfI-2i-fSw" userLabel="Zoom">
                                     <nil key="toolTip"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="pZa-Yy-dUG" userLabel="zoom">
-                                        <rect key="frame" x="0.0" y="14" width="74" height="25"/>
+                                        <rect key="frame" x="0.0" y="14" width="70" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <popUpButtonCell key="cell" type="roundTextured" title="100%" bezelStyle="texturedRounded" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" tag="1" imageScaling="axesIndependently" inset="2" pullsDown="YES" selectedItem="rlK-oL-IeD" id="rZx-iQ-MQJ" userLabel="zoom">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -129,17 +129,17 @@
             <objects>
                 <viewController title="Model Canvas" id="06Z-q5-krc" userLabel="Model Palette" customClass="ModelPaletteViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" misplaced="YES" id="P6C-Ex-qkH">
-                        <rect key="frame" x="0.0" y="0.0" width="170" height="307"/>
+                        <rect key="frame" x="0.0" y="0.0" width="170" height="301"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzX-73-IOT">
-                                <rect key="frame" x="0.0" y="0.0" width="170" height="274"/>
+                                <rect key="frame" x="0.0" y="0.0" width="170" height="300"/>
                                 <clipView key="contentView" drawsBackground="NO" id="3eZ-bW-qyJ">
-                                    <rect key="frame" x="1" y="1" width="168" height="272"/>
+                                    <rect key="frame" x="1" y="1" width="168" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" autosaveName="OutlineView" rowHeight="28" rowSizeStyle="systemDefault" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="14" autosaveExpandedItems="YES" outlineTableColumn="uGO-87-8zt" id="qa1-j9-JlY">
-                                            <rect key="frame" x="0.0" y="0.0" width="168" height="272"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="168" height="298"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -268,17 +268,17 @@
             <objects>
                 <viewController title="Model Canvas" id="0Bp-Sd-gTW" customClass="ModelCanvasViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="F9n-Q0-EER">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="6" minMagnification="0.375" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="allowed" verticalScrollElasticity="allowed" findBarPosition="belowContent" translatesAutoresizingMaskIntoConstraints="NO" id="uYG-QC-F6p" userLabel="Scroll View">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="1Qa-Fs-fbe" customClass="CenteringClipView" customModule="macgui" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view autoresizesSubviews="NO" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rFB-ux-jOW" customClass="ModelCanvasView" customModule="macgui" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="-500" width="800" height="800"/>
+                                            <rect key="frame" x="0.0" y="-150" width="800" height="800"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="800" id="740-lW-Qcp"/>
                                                 <constraint firstAttribute="height" constant="800" id="Ohi-oz-g1Z"/>
@@ -291,11 +291,11 @@
                                     </constraints>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="h3I-06-RKT">
-                                    <rect key="frame" x="0.0" y="284" width="450" height="16"/>
+                                    <rect key="frame" x="0.0" y="634" width="1000" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="oVH-TQ-M5d">
-                                    <rect key="frame" x="434" y="0.0" width="16" height="300"/>
+                                    <rect key="frame" x="984" y="0.0" width="16" height="650"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -316,7 +316,7 @@
                 </viewController>
                 <customObject id="2SV-IF-2D2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="702" y="-10841"/>
+            <point key="canvasLocation" x="922" y="-10788"/>
         </scene>
     </scenes>
     <resources>

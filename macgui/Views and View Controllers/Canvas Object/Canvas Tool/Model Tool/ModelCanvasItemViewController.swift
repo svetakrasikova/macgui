@@ -94,6 +94,15 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         return functionController
     }()
     
+    
+    lazy var topologyController: TreeTopologyController = {
+        let controller = NSStoryboard.loadVC(StoryBoardName.treeTopologyController) as! TreeTopologyController
+        if let node = self.tool as? ModelNode, let canvasVC = self.modelCanvas {
+            controller.modelNode = node
+        }
+        return controller
+    }()
+    
     override weak var outerLoopViewController: ResizableCanvasObjectViewController? {
         didSet {
             guard let modelNode =  self.tool as? ModelNode else { return }
@@ -281,14 +290,17 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     func actionButtonClicked(_ button: ActionButton) {
         
         guard let node = self.tool as? ModelNode else { return }
-        switch node.nodeType {
-        case .function: self.presentAsModalWindow(functionController)
-        case .constant: self.presentAsModalWindow(constantController)
-        case .randomVariable: self.presentAsModalWindow(variableController)
-        default: break
+        if node.treePlate != nil {
+            self.presentAsModalWindow(topologyController)
+        } else {
+            switch node.nodeType {
+            case .function: self.presentAsModalWindow(functionController)
+            case .constant: self.presentAsModalWindow(constantController)
+            case .randomVariable: self.presentAsModalWindow(variableController)
+            default: break
+            }
         }
-        
-     }
+    }
     
  
     

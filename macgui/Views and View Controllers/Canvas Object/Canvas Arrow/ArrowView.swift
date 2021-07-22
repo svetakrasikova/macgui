@@ -26,8 +26,7 @@ class ArrowView: CanvasObjectView {
             }
         }
     }
-    
-    
+        
     func clickAreaContains(point: NSPoint) -> Bool {
         if let clickArea = clickArea {
             let contains = clickArea.contains(point)
@@ -50,9 +49,6 @@ class ArrowView: CanvasObjectView {
             return self
         }
     }
-
-
-
     
 }
 
