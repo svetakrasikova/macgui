@@ -156,7 +156,23 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
             ]
         }
     }
-             
+     
+//    MARK: -- Interaction with Tree Plate
+    
+    func checkTreePlateInclusion(mouseDragged: Bool) {
+        guard let canvasVC = self.parent as? GenericCanvasViewController else { return }
+        for case let treePlateController as TreePlateViewController in canvasVC.children.filter({$0.isKind(of: TreePlateViewController.self)}) {
+            guard let treePlateView = treePlateController.view as? TreePlateView else { return }
+            if mouseDragged {
+                treePlateView.receivingDragLocation =  treePlateView.frame.intersection(self.view.frame)
+            } else {
+                treePlateView.receivingDragLocation =  nil
+            }
+        }
+        
+    }
+    
+    
     
 //    MARK: -- Mouse Events
     
@@ -167,6 +183,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     override func mouseExited(with event: NSEvent) {
         self.actionButton?.mouseExited(with: event)
        }
+
     
 //    MARK: -- Controller Life Cycle
     

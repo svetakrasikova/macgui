@@ -267,7 +267,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
         to.edgeViewController = edgeViewController
         addChild(edgeViewController)
         canvasView.addSubview(edgeViewController.view, positioned: .below, relativeTo: to.view)
-        bottomMostNonResizableObject = edgeViewController
+//        bottomMostNonResizableObject = edgeViewController
     }
     
     func resetCanvasView(){

@@ -33,6 +33,16 @@ class ModelCanvasItemView: MovingCanvasObjectView {
     override func mouseUp(with event: NSEvent) {
         if isMouseDragged { delegate?.checkForLoopInclusion() }
         super.mouseUp(with: event)
+        if let delegate = delegate as? ModelCanvasItemViewController {
+            delegate.checkTreePlateInclusion(mouseDragged: false)
+        }
+    }
+    
+    override func mouseDragged(with event: NSEvent) {
+        super.mouseDragged(with: event)
+        if let delegate = delegate as? ModelCanvasItemViewController {
+            delegate.checkTreePlateInclusion(mouseDragged: true)
+        }
     }
     
 

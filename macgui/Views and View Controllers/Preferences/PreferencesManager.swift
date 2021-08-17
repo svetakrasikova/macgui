@@ -24,6 +24,7 @@ enum PreferenceKey: String {
     //  Main Canvas
     case mainCanvasBackgroundColor = "mainCanvasBackgroundColor"
     case mainCanvasGridColor = "mainCanvasGridColor"
+    case mainCanvasLoopBorderColor
     
     //  Model Canvas
     case modelCanvasBackgroundColor = "modelCanvasBackgroundColor"
@@ -82,6 +83,15 @@ class PreferencesManager {
         }
         get {
             return userDefaults.color(forKey: PreferenceKey.mainCanvasBackgroundColor.rawValue)
+        }
+    }
+    
+    @objc dynamic var mainCanvasLoopBorderColor: NSColor? {
+        set (newMainCanvasLoopBorderColor) {
+            userDefaults.set(newMainCanvasLoopBorderColor, forKey: PreferenceKey.mainCanvasLoopBorderColor.rawValue)
+        }
+        get {
+            return userDefaults.color(forKey: PreferenceKey.mainCanvasLoopBorderColor.rawValue)
         }
     }
     
@@ -242,6 +252,7 @@ class PreferencesManager {
     
     func storeDefaultColorSettings() {
         userDefaults.set(NSColor.white, forKey: PreferenceKey.modelCanvasBackgroundColor.rawValue)
+        userDefaults.set(NSColor.gray, forKey: PreferenceKey.mainCanvasLoopBorderColor.rawValue)
         userDefaults.set(NSColor.gray, forKey: PreferenceKey.modelCanvasNodeBorderColor.rawValue)
         userDefaults.set(NSColor.gray, forKey: PreferenceKey.modelCanvasArrowColor.rawValue)
         userDefaults.set(NSColor.yellow, forKey: PreferenceKey.modelCanvasClampedNodeColor.rawValue)
@@ -280,6 +291,8 @@ class PreferencesManager {
                 self.cachedPreferences[key] = modelCanvasArrowColor
             case PreferenceKey.modelCanvasNodeBorderColor.rawValue:
                 self.cachedPreferences[key] = modelCanvasNodeBorderColor
+            case PreferenceKey.mainCanvasLoopBorderColor.rawValue:
+                self.cachedPreferences[key] = mainCanvasLoopBorderColor
             default:
                 print("Unrecognised preference key")
             }

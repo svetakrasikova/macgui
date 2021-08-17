@@ -12,6 +12,10 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     
     let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
     
+    var borderColor: NSColor? {
+        return nil
+    }
+    
     var backgroundColor: NSColor?
     
     var labelFrame: NSRect?
@@ -151,10 +155,12 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
     }
     
     
-    func drawLayerContents(fillcolor: NSColor, strokeColor: NSColor, dash: Bool = false, anchors: Bool) {
+    func drawLayerContents(fillcolor: NSColor, strokeColor: NSColor, dash: Bool = false, anchors: Bool, label: Bool = true) {
         drawBorder(fillcolor: fillcolor, strokeColor: strokeColor, dash: dash)
         if anchors { drawAnchors() }
-        drawLabel()
+        if label {
+            drawLabel()
+        }
         
     }
     
