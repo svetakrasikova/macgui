@@ -86,6 +86,15 @@ extension NSPoint {
 
 
 extension NSView {
+    
+    func clearSublayers(){
+        if let sublayers = layer?.sublayers {
+            for sublayer in sublayers {
+                sublayer.removeFromSuperlayer()
+            }
+        }
+    }
+    
     /**
      Take a snapshot of a current state NSView and return an NSImage
      

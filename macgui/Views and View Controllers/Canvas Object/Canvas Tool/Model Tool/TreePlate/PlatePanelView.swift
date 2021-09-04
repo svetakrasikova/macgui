@@ -11,6 +11,10 @@ import Cocoa
 class PlatePanelView: NSView {
     
     
+    enum PanelType: Int, CaseIterable {
+        case root, internals, tips
+    }
+    
     override var frame: CGRect {
         didSet {
             if let delegate = self.delegate, let labelFrame = delegate.platePanelViewFrame(view: self){
@@ -20,12 +24,27 @@ class PlatePanelView: NSView {
             }
         }
     }
-    
+
     var label =  CATextLayer()
    
     var nodeType: Int?
     
+    var nodeTypeString: String {
+        var str = ""
+        switch nodeType {
+        case PanelType.root.rawValue:
+            str = "root node"
+        case PanelType.internals.rawValue:
+            str = branchPanel ? "branches to internal nodes" : "internal nodes"
+        case PanelType.tips.rawValue:
+            str = branchPanel ? "branches to tips" : "tip nodes"
+        default: break
+        }
+        return str
+    }
+
     var branchPanel: Bool = false
+    
     
     weak var delegate: PlatePanelViewDelegate?
     
@@ -54,6 +73,7 @@ class PlatePanelView: NSView {
         setLabelFrame()
         layer?.addSublayer(label)
     }
+
     
     
     func setUpTextLabel(_ label: CATextLayer, fontSize: CGFloat) {
@@ -67,7 +87,6 @@ class PlatePanelView: NSView {
         label.foregroundColor = NSColor.black.cgColor
         label.alignmentMode = .center
     }
-
     
     
     func setLabelText() {
@@ -80,13 +99,15 @@ class PlatePanelView: NSView {
         guard let frame = labelFrame else { return }
         label.frame = frame
     }
-  
+
+    
     
     override func updateLayer() {
         super.updateLayer()
-        if branchPanel == true {
+        if branchPanel {
             label.string = labelText
         }
+     
     }
     
 

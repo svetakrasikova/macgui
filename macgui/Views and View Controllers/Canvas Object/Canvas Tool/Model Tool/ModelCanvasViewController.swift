@@ -122,6 +122,16 @@ class ModelCanvasViewController: GenericCanvasViewController {
     
     override func removeConnectable(viewController: CanvasObjectViewController) {
         guard let node = viewController.tool as? ModelNode else { return }
+        guard let canvasVC = self.parent as? GenericCanvasViewController else { return }
+        if let modelCanvasVC = viewController as? ModelCanvasItemViewController, node.name != PalettItem.treeTopologyType {
+            modelCanvasVC.checkForTreePlateInclusion()
+            for case let treePlateController as TreePlateViewController in canvasVC.children.filter({$0.isKind(of: TreePlateViewController.self)}) {
+                if !treePlateController.view.frame.intersection(view.frame).isNull {
+                    treePlateController.removeNodeFromTreePlate(nodeVC: modelCanvasVC)
+                }
+            }
+        }
+    
         super.removeConnectable(viewController: viewController)
         if let model = self.model, let index = model.nodes.firstIndex(of: node){
             model.nodes.remove(at: index)

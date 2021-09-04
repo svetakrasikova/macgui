@@ -10,10 +10,6 @@ import Cocoa
 
 class TreePlateViewController: ResizableCanvasObjectViewController {
     
-    enum BasePanel: Int, CaseIterable {
-        case root, internals, tips
-    }
-    
     lazy var plateController: TreePlateController = {
         let plateController = NSStoryboard.loadVC(StoryBoardName.treePlateController) as! TreePlateController
         
@@ -36,32 +32,27 @@ class TreePlateViewController: ResizableCanvasObjectViewController {
     }
     
     var topologyNodeViewController: ModelCanvasItemViewController?
+   
     var edgeViewController: EdgeViewController?
     
     var rootPanel: PlatePanelView!
-   
-    var rootPanelFocusRingFrame: NSRect {
-        let origin = rootPanel.frame.insetBy(dx: treePlateView.frameOffset, dy: treePlateView.frameOffset).origin
-        let size = CGSize(width: rootPanel.frame.width + treePlateView.frameOffset, height: rootPanel.frame.height - treePlateView.frameOffset*2)
-        return NSRect(origin: origin, size: size)
-    }
     
     var internalsBranchesPanel: PlatePanelView!
-    
-    var internalsBranchesPanelFocusRingFrame: NSRect {
-        let origin = internalsBranchesPanel.frame.origin
-        let size = CGSize(width: internalsBranchesPanel.frame.width, height: internalsBranchesPanel.frame.height)
-        return NSRect(origin: origin, size: size)
-    }
+
     var tipsBranchesPanel: PlatePanelView!
     
-    var tipsBranchesPanelFocusRingFrame: NSRect {
-        let origin = tipsBranchesPanel.frame.origin
-        let size = CGSize(width: tipsBranchesPanel.frame.width, height: tipsBranchesPanel.frame.height)
-        return NSRect(origin: origin, size: size)
-    }
     var internalsNodesPanel: PlatePanelView!
+   
     var tipsNodesPanel: PlatePanelView!
+    
+    var panels: [PlatePanelView] {
+            return [rootPanel,
+                    internalsNodesPanel,
+                    internalsBranchesPanel,
+                    tipsNodesPanel,
+                    tipsBranchesPanel]
+    }
+    
     
     var rootInternalsTipsStack: NSStackView!
     
@@ -82,8 +73,7 @@ class TreePlateViewController: ResizableCanvasObjectViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         addLabelLayer()
-        guard let canvasVC = self.parent as? GenericCanvasViewController else { return }
-        print(rootPanel.convert(rootPanel.bounds, to: canvasVC.canvasView), internalsBranchesPanel.convert(internalsNodesPanel.bounds, to: canvasVC.canvasView))
+        
     }
     
     override func  setBackgroundColor() {
@@ -95,6 +85,7 @@ class TreePlateViewController: ResizableCanvasObjectViewController {
     override func actionButtonClicked(_ button: ActionButton) {
         self.presentAsModalWindow(plateController)
     }
+    
 
 }
 
@@ -108,6 +99,7 @@ extension TreePlateViewController {
         panel.translatesAutoresizingMaskIntoConstraints = false
         panel.wantsLayer = true
         panel.layer?.backgroundColor = NSColor.clear.cgColor
+        panel.toolTip = panel.nodeTypeString
         return panel
     }
     
@@ -120,7 +112,7 @@ extension TreePlateViewController {
     }
     
     func addHorizontalStack() {
-        rootPanel = makePanelViewWithLabel(type: BasePanel.root.rawValue)
+        rootPanel = makePanelViewWithLabel(type: PlatePanelView.PanelType.root.rawValue)
         rootInternalsTipsStack = NSStackView(views: [rootPanel!, makeBasePanelView(), makeBasePanelView()])
         rootInternalsTipsStack.spacing = 0.5
         setupStackView(rootInternalsTipsStack, horizontal: true)
@@ -130,8 +122,8 @@ extension TreePlateViewController {
     
     func addBranchesNodesStacks() {
         let internals = rootInternalsTipsStack.arrangedSubviews[1]
-        internalsNodesPanel = makePanelViewWithLabel(type: BasePanel.internals.rawValue)
-        internalsBranchesPanel = makePanelViewWithLabel(type: BasePanel.internals.rawValue, branchNode: true)
+        internalsNodesPanel = makePanelViewWithLabel(type: PlatePanelView.PanelType.internals.rawValue)
+        internalsBranchesPanel = makePanelViewWithLabel(type: PlatePanelView.PanelType.internals.rawValue, branchNode: true)
         let internalsBranchesNodesStack = NSStackView(views: [internalsBranchesPanel, internalsNodesPanel])
         internalsBranchesNodesStack.setCustomSpacing(0.5, after: internalsBranchesPanel)
         setupStackView(internalsBranchesNodesStack, horizontal: false)
@@ -139,8 +131,8 @@ extension TreePlateViewController {
         setConstraintsForStackView(internalsBranchesNodesStack, view: internals)
         
         let tips = rootInternalsTipsStack.arrangedSubviews[2]
-        tipsNodesPanel = makePanelViewWithLabel(type: BasePanel.tips.rawValue)
-        tipsBranchesPanel = makePanelViewWithLabel(type: BasePanel.tips.rawValue, branchNode: true)
+        tipsNodesPanel = makePanelViewWithLabel(type: PlatePanelView.PanelType.tips.rawValue)
+        tipsBranchesPanel = makePanelViewWithLabel(type: PlatePanelView.PanelType.tips.rawValue, branchNode: true)
         let tipsBranchesNodesStack = NSStackView(views: [tipsBranchesPanel, tipsNodesPanel])
         tipsBranchesNodesStack.setCustomSpacing(0.5, after: tipsBranchesPanel)
         setupStackView(tipsBranchesNodesStack, horizontal: false)
@@ -181,6 +173,53 @@ extension TreePlateViewController {
         return path
     }
     
+    func embedNodeInTreePlate(nodeVC: ModelCanvasItemViewController) {
+        guard let node = nodeVC.tool as? ModelNode else { return }
+        guard let plate = self.tool as? TreePlate else { return }
+        guard let canvasVC = self.parent as? GenericCanvasViewController else { return }
+        plate.addEmbeddedNode(node)
+        plate.removeFromPanels(node)
+        var foundPanel = false
+        for panel in panels {
+        let convertedFrame = panel.convert(panel.bounds, to: canvasVC.canvasView)
+            if convertedFrame.intersection(node.frameOnCanvas) == node.frameOnCanvas {
+                switch panel.nodeType {
+                case PlatePanelView.PanelType.root.rawValue:
+                    plate.root = node
+                case PlatePanelView.PanelType.internals.rawValue:
+                    if panel.branchPanel {
+                        plate.internalBranches.append(node)
+                    } else {
+                        plate.internalNodes.append(node)
+                    }
+                case PlatePanelView.PanelType.tips.rawValue:
+                    if panel.branchPanel {
+                        plate.tipBranches.append(node)
+                    } else {
+                        plate.tipNodes.append(node)
+                    }
+                default: break
+                }
+                foundPanel = true
+                break
+            }
+        }
+        if !foundPanel {
+            nodeVC.outerLoopViewController = nil
+            let alert = NSAlert()
+            alert.messageText = "Problem adding the node to the tree plate."
+            alert.informativeText =  "Adjust the node position so that it is fully included in one of the 5 plate panels."
+            alert.runModal()
+        }
+    }
+    
+    func removeNodeFromTreePlate(nodeVC: ModelCanvasItemViewController) {
+        guard let node = nodeVC.tool as? ModelNode else { return }
+        guard let plate = self.tool as? TreePlate else { return }
+        plate.removeEmbeddedNode(node)
+    }
+    
+    
 }
 
 
@@ -194,7 +233,7 @@ extension TreePlateViewController: PlatePanelViewDelegate {
         case 2: range = "tips"
         default: break
         }
-        let sign = nodeType == BasePanel.root.rawValue ? "=" : "\(Symbol.element.rawValue)"
+        let sign = nodeType == PlatePanelView.PanelType.root.rawValue ? "=" : "\(Symbol.element.rawValue)"
         return "\(loop.index) \(sign) \(range)"
     }
     
@@ -207,38 +246,5 @@ extension TreePlateViewController: PlatePanelViewDelegate {
         frame.origin = origin
         return frame
     }
-    
-    func drawFocusRingAroundReceivingDragPanel(dragLocation: NSRect) {
-        
-        let focusRingLayer = CAShapeLayer()
-        focusRingLayer.strokeColor = NSColor.lightGray.cgColor
-        focusRingLayer.fillColor = NSColor.clear.cgColor
-        focusRingLayer.lineWidth = 2.0
-        let focusRingPath = CGMutablePath()
-       
-        if  dragIntoPanel(rootPanel, dragLocation: dragLocation) {
-            focusRingPath.addRect(rootPanelFocusRingFrame)
-            focusRingLayer.path = focusRingPath
-        }
-        if dragIntoPanel(internalsBranchesPanel, dragLocation: dragLocation) {
-            focusRingPath.addRect(internalsBranchesPanelFocusRingFrame)
-            focusRingLayer.path = focusRingPath
-        }
-        
-        if dragIntoPanel(tipsBranchesPanel, dragLocation: dragLocation) {
-            focusRingPath.addRect(tipsBranchesPanelFocusRingFrame)
-            focusRingLayer.path = focusRingPath
-        }
-        view.layer?.addSublayer(focusRingLayer)
-        
-    }
-    
-    func dragIntoPanel(_ panel: NSView, dragLocation: NSRect) -> Bool {
-        guard let canvasVC = self.parent as? GenericCanvasViewController else { return false }
-        let convertedOrigin = self.view.convert(panel.frame.origin, to: canvasVC.canvasView)
-        let newFrame = NSRect(origin: convertedOrigin, size: panel.frame.size)
-        return  newFrame.intersects(dragLocation)
-    }
-    
     
 }

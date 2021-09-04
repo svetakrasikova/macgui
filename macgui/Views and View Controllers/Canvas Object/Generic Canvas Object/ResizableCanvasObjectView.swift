@@ -218,14 +218,7 @@ class ResizableCanvasObjectView: MovingCanvasObjectView {
         textLayer.setAttributedTextWithItalics(text: text, indicesOfSubscripts: [0])
         layer?.addSublayer(textLayer)
     }
-    
-    func clearSublayers(){
-        if let sublayers = layer?.sublayers {
-            for sublayer in sublayers {
-                sublayer.removeFromSuperlayer()
-            }
-        }
-    }
+
     
     //   MARK: - Mouse and Key Events
     

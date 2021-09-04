@@ -158,18 +158,21 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     }
      
 //    MARK: -- Interaction with Tree Plate
-    
-    func checkTreePlateInclusion(mouseDragged: Bool) {
+    func checkForTreePlateInclusion() {
         guard let canvasVC = self.parent as? GenericCanvasViewController else { return }
         for case let treePlateController as TreePlateViewController in canvasVC.children.filter({$0.isKind(of: TreePlateViewController.self)}) {
-            guard let treePlateView = treePlateController.view as? TreePlateView else { return }
-            if mouseDragged {
-                treePlateView.receivingDragLocation =  treePlateView.frame.intersection(self.view.frame)
+            if treePlateController.view.frame.intersection(view.frame) == view.frame {
+                treePlateController.embedNodeInTreePlate(nodeVC: self)
             } else {
-                treePlateView.receivingDragLocation =  nil
+                treePlateController.removeNodeFromTreePlate(nodeVC: self)
             }
         }
-        
+    }
+    
+    
+    override func checkForLoopInclusion() {
+        super.checkForLoopInclusion()
+        checkForTreePlateInclusion()
     }
     
     

@@ -150,6 +150,7 @@ class CanvasObjectViewController: NSViewController, NSWindowDelegate, ToolTipDel
     }
     
     func isIncludedInLoop(_ loopVC: ResizableCanvasObjectViewController) -> Bool {
+        
         let isIncluded = loopVC.view.frame.intersection(self.view.frame) == self.view.frame
         return  isIncluded
     }

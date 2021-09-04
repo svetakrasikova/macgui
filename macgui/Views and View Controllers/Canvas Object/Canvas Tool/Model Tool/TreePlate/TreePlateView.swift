@@ -9,13 +9,7 @@
 import Cocoa
 
 class TreePlateView: ResizableCanvasObjectView {
-    
-    var receivingDragLocation: NSRect? {
-        didSet {
-            needsDisplay = true
-        }
-    }
-    
+        
     override var borderColor: NSColor? {
         return preferencesManager.modelCanvasNodeBorderColor
     }
@@ -37,12 +31,8 @@ class TreePlateView: ResizableCanvasObjectView {
             layer?.shadowOpacity = Float(preferencesManager.canvasToolDefaultShadowOpacity!)
             layer?.shadowRadius = preferencesManager.canvasToolDefaultShadowRadius!
         }
-      
-        guard let delegate = self.delegate as? TreePlateViewController else { return }
+
         
-        if let receivingDragLocation = receivingDragLocation {
-            delegate.drawFocusRingAroundReceivingDragPanel(dragLocation: receivingDragLocation)
-        }
     }
     
     
