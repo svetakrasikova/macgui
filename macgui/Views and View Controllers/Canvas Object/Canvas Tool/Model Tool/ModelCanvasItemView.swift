@@ -149,6 +149,74 @@ extension ModelCanvasItemView {
         }
         return indices
     }
+    
+    func drawTreeTopologyImage(strokeColor: NSColor, lineWidth: CGFloat, rooted: Bool) {
+        let w = self.bounds.size.width * 0.8
+        let h = w * 2.0 / 3.0
+        let origin = NSMakePoint(bounds.origin.x + (bounds.size.width - w)*0.5, bounds.origin.y + (bounds.size.height - h)*0.5)
+        let imageLayer = CAShapeLayer()
+        let imagePath = rooted ? rootedTreeTopologyPath(origin: origin, w: w, h: h) : unrootedTreeTopologyPath(origin: origin, w: w, h: h)
+        imageLayer.path = imagePath
+        imageLayer.lineWidth = lineWidth
+        imageLayer.strokeColor = strokeColor.cgColor
+        layer?.addSublayer(imageLayer)
+    }
+    
+    func rootedTreeTopologyPath(origin: NSPoint, w: CGFloat, h: CGFloat) -> CGMutablePath {
+        let tPath = CGMutablePath()
+        var tp: [NSPoint] = Array(repeating: NSZeroPoint, count: 14)
+        tp[0] = NSMakePoint(0.0, 1.0)
+        tp[1] = NSMakePoint(0.5, 1.0)
+        tp[2] = NSMakePoint(1.0, 1.0)
+        tp[3] = NSMakePoint(1.5, 1.0)
+        tp[4] = NSMakePoint(0.00, 0.4)
+        tp[5] = NSMakePoint(0.25, 0.4)
+        tp[6] = NSMakePoint(0.50, 0.4)
+        tp[7] = NSMakePoint(1.00, 0.6)
+        tp[8] = NSMakePoint(1.25, 0.6)
+        tp[9] = NSMakePoint(1.50, 0.6)
+        tp[10] = NSMakePoint(0.25, 0.15)
+        tp[11] = NSMakePoint(0.75, 0.15)
+        tp[12] = NSMakePoint(1.25, 0.15)
+        tp[13] = NSMakePoint(0.75, 0.00)
+        for i in 0..<tp.count {
+            tp[i].x *= (1.0/1.5)*w
+            tp[i].y *= (1.0/1.5)*w
+            tp[i].x += origin.x
+            tp[i].y += origin.y
+        }
+        tPath.addLines(between: [tp[0], tp[4]])
+        tPath.addLines(between: [tp[4], tp[6]])
+        tPath.addLines(between: [tp[6], tp[1]])
+        tPath.addLines(between: [tp[2], tp[7]])
+        tPath.addLines(between: [tp[7], tp[9]])
+        tPath.addLines(between: [tp[9], tp[3]])
+        tPath.addLines(between: [tp[5], tp[10]])
+        tPath.addLines(between: [tp[10], tp[12]])
+        tPath.addLines(between: [tp[12], tp[8]])
+        tPath.addLines(between: [tp[11], tp[13]])
+        return tPath
+    }
+    
+    func unrootedTreeTopologyPath(origin: NSPoint, w: CGFloat, h: CGFloat) -> CGMutablePath {
+        let tPath = CGMutablePath()
+        var points: [NSPoint] = Array(repeating: origin, count: 6)
+        let seg = w / 3.0
+        points[1].x += seg
+        points[1].y += seg
+        points[2].y += h
+        points[3].x += h
+        points[3].y += seg
+        points[4].x += w
+        points[4].y += h
+        points[5].x += w
+        tPath.addLines(between: [points[0], points[1]])
+        tPath.addLines(between: [points[1], points[2]])
+        tPath.addLines(between: [points[1], points[3]])
+        tPath.addLines(between: [points[3], points[4]])
+        tPath.addLines(between: [points[3], points[5]])
+        return tPath
+    }
 
 }
 

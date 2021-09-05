@@ -59,6 +59,11 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         return node.frameOnCanvas
     }
     
+    var drawLabelAndDivider: Bool? {
+        guard let node = self.tool as? ModelNode else { return nil }
+        return node.name == PalettItem.treeTopologyType ? false : true
+    }
+    
     var actionButton: ActionButton?
     
     var modelCanvas: ModelCanvasViewController? {
@@ -202,14 +207,37 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         view.wantsLayer = true
         setFrame()
         addShape()
-        addDividerLine()
+        if self.drawLabelAndDivider ?? true
+        {
+            addDividerLine()
+        } else {
+            addImage()
+        }
         setUpActionButton()
     }
     func setFrame() {
         view.frame = self.frame
     }
     
+    func addImage() {
+        guard let node = self.tool as? ModelNode, node.treePlate != nil
+        else {
+            print("Tree topolgy node is not pointing to tree plate.")
+            return
+            
+        }
+        guard let strokeColor = self.strokeColor else {
+            print("drawShapeInLayer: stroke color for the shape layer is undefined.")
+            return
+        }
+        let drawAsRooted = false
+        if let view = view as? ModelCanvasItemView {
+            view.drawTreeTopologyImage(strokeColor: strokeColor, lineWidth: 1.5, rooted: drawAsRooted)
+        }
+    }
+    
     func addShape() {
+        
         guard let shape = self.shape else {
              print("drawShapeInLayer: shape type for the shape layer is undefined.")
             return
@@ -229,6 +257,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
 
     
     func updateShapeLayer(_ shapeLayer: CAShapeLayer, selected:  Bool) {
+        
         clearSublayers()
         if selected {
             addShape()
@@ -239,8 +268,12 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
             shapeLayer.shadowOpacity = Float(preferencesManager.modelCanvasNodeDefaultShadowOpacity!)
             shapeLayer.shadowRadius = preferencesManager.modelCanvasNodeDefaultShadowRadius!
         }
-        addDividerLine()
-        addLabel()
+        if drawLabelAndDivider ?? true {
+            addDividerLine()
+            addLabel()
+        } else {
+            addImage()
+        }
         addActionButtonView()
     }
     
