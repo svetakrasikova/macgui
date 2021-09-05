@@ -113,7 +113,9 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
             guard let modelNode =  self.tool as? ModelNode else { return }
             guard let canvasVC = self.parent as? ModelCanvasViewController else { return }
             if let outerLoop = self.outerLoopViewController?.tool as? Loop {
-                plateIndex = outerLoop.indexPath()
+                if modelNode.nodeType != .constant {
+                    plateIndex = outerLoop.indexPath()
+                }
                 if oldValue == nil && !canvasVC.resettingCanvasView {
                     modelNode.observedValue = NumberList()
                 }
