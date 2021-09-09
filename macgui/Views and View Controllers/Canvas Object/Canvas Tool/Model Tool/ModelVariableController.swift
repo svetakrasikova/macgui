@@ -104,22 +104,39 @@ class ModelVariableController: ModelPaletteItemController {
             if let label = subview as? NSTextField {
                 label.stringValue = parameter.name
             } else if let popup = subview as? NSPopUpButton {
-                var modelNodes: [ModelNode] = []
                 if let delegate = self.delegate as? ModelCanvasViewController, let model = delegate.model {
-                    for connection in model.edges {
-                        if modelNode == connection.to, let modelNode = connection.from as? ModelNode {
-                            if modelNode.node.type == parameter.type {
-                                modelNodes.append(modelNode)
+                    var selectionItemNames: [String] = []
+                    switch parameter.type {
+                    case "Taxon[]":
+                        selectionItemNames = Array(model.taxaDict.keys)
+                    default:
+                        var modelNodes: [ModelNode] = []
+                        for connection in model.edges {
+                            if modelNode == connection.to, let modelNode = connection.from as? ModelNode {
+                                if modelNode.node.type == parameter.type {
+                                    modelNodes.append(modelNode)
+                                }
                             }
                         }
+                        selectionItemNames = modelNodes.map { ($0.parameterName ?? "Unknown") }
                     }
-                    let modelNodeNames: [String] = modelNodes.map { ($0.parameterName ?? "Unknown") }
+                    
+                    
                     popup.removeAllItems()
                     popup.addItem(withTitle: "<no selection>")
-                    popup.addItems(withTitles: modelNodeNames)
+                    popup.addItems(withTitles: selectionItemNames)
                     
-                    if let modelNode = self.modelNode, index < modelNode.distributionParameters.count, let selectedNodeName = modelNode.distributionParameters[index].parameterName {
-                        let itemToSelect = popup.item(withTitle: selectedNodeName)
+                    if let modelNode = self.modelNode {
+                        guard index < modelNode.distributionParameters.count else { return }
+                        var itemToSelect: NSMenuItem?
+                        if let selectedNode = modelNode.distributionParameters[index] as? ModelNode, let selectedNodeName = selectedNode.parameterName {
+                            itemToSelect = popup.item(withTitle: selectedNodeName)
+                        } else {
+                            if let matrixTaxaPair = modelNode.distributionParameters[index] as? (String, [String]) {
+                                itemToSelect = popup.item(withTitle: matrixTaxaPair.0)
+                            }
+                           
+                        }
                         popup.select(itemToSelect)
                     } else {
                         let itemToSelect = popup.item(withTitle: "<no selection>")
@@ -130,7 +147,10 @@ class ModelVariableController: ModelPaletteItemController {
         }
     }
     
+    
+    
     func resetDistribution() {
+        
         if let modelNode = self.modelNode, let distributionName =  modelNode.distribution?.name {
             removeHeightConstraintFromBox()
             
@@ -141,6 +161,7 @@ class ModelVariableController: ModelPaletteItemController {
             for distribution in self.distributions {
                 if distribution.name == distributionName {
                     distributionLabel.toolTip = distribution.descriptiveString
+                    break
                 }
             }
             
@@ -212,6 +233,11 @@ class ModelVariableController: ModelPaletteItemController {
                     if let parameterPopup = subview as? NSPopUpButton {
                         if let parameterNode = delegate.model?.nodes.first(where: {$0.parameterName == parameterPopup.selectedItem?.title}) {
                             modelNode.distributionParameters.append(parameterNode)
+                        } else {
+                            if let matrixName = parameterPopup.selectedItem?.title, let taxa = delegate.model?.taxaDict[matrixName] {
+                                let matrixTaxaPair = (matrixName, taxa)
+                                modelNode.distributionParameters.append(matrixTaxaPair)
+                            }
                         }
                         break
                     }

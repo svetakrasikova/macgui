@@ -25,7 +25,7 @@ class Distribution: NSObject, Codable, NSCoding {
         case parameters
     }
     
-    enum DimensionError: Error {
+    enum DistributionError: Error {
         case decodingError
         case encodingError
     }
@@ -62,9 +62,10 @@ class Distribution: NSObject, Codable, NSCoding {
             self.domain = try container.decode(String.self,    forKey: .domain)
             self.descriptiveString  = try container.decode(String.self,    forKey: .descriptiveString)
             self.parameters = try container.decode([Parameter].self,    forKey: .parameters)
+            
         }
         catch {
-            throw DimensionError.decodingError
+            throw DistributionError.decodingError
         }
     }
     

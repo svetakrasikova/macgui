@@ -61,6 +61,14 @@ class DataTool: Connectable {
     }
     
     
+    var taxaDict: [String: [String]] {
+        var matrixTaxaDict: [String: [String]]  = [:]
+        for dm in dataMatrices {
+            matrixTaxaDict[dm.matrixName] = dm.taxonNames
+        }
+        return matrixTaxaDict
+    }
+    
     
     override init(name: String, frameOnCanvas: NSRect, analysis: Analysis) {
         super.init(name: name, frameOnCanvas: frameOnCanvas, analysis: analysis)

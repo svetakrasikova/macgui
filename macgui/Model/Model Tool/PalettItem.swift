@@ -29,6 +29,10 @@ class PalettItem: NSObject, Codable, NSCoding {
         case encodingError
     }
     
+    enum PaletteVariableType: String {
+        case BranchLengthTree
+    }
+    
     init(name: String) {
         self.type = name
     }

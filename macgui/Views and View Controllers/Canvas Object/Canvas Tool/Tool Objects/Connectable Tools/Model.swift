@@ -125,7 +125,7 @@ class Model: DataTool {
     }
     
     func initMockupDistributions() throws {
-        let jsonDistributionStringArray: [String] = [ TestDataConstants.gammaDistribution, TestDataConstants.normalDistribution, TestDataConstants.poissonDistribution, TestDataConstants.exponentialDistribution, TestDataConstants.logNormalDistribution ]
+        let jsonDistributionStringArray: [String] = TestDataConstants.mockDistributions
 
         let distributionsDataArray: [Data] = JsonCoreBridge(jsonArray: jsonDistributionStringArray).encodeJsonStringArray()
         

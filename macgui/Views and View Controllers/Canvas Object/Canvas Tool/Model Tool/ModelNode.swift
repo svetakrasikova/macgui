@@ -36,7 +36,7 @@ class ModelNode: Connectable {
         }
     }
    
-    var distributionParameters: [ModelNode] = [] {
+    var distributionParameters: [Any] = [] {
         didSet {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
         }

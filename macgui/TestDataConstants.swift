@@ -108,6 +108,19 @@ static let normalDistribution =  """
                 }
     """
     
+    static let uniformTopology =  """
+                {
+                    "name": "Uniform Topology",
+                    "domain": "BranchLengthTree",
+                    "descriptiveString": "to be added",
+                    "parameters": [{"name": "taxa", "type": "Taxon[]", "descriptiveString": "The vector of taxa that will be used for the tips."}]
+
+                }
+    """
+    
+    static let mockDistributions = [ gammaDistribution, normalDistribution, poissonDistribution, exponentialDistribution, logNormalDistribution, uniformTopology]
+
+    
 //    MARK: -- Model Tool: Mock Palette Items
     
     static let Integer =  """
@@ -155,7 +168,14 @@ static let normalDistribution =  """
                 }
     """
     
-    static let mockPaletteItems = [Integer, Real, RealPos, RealVector, RealMatrix, RealPosVector, RealPosMatrix]
+    static let BranchLengthTree =  """
+                {
+                    "type": "\(PalettItem.PaletteVariableType.BranchLengthTree.rawValue)",
+                    "dimension": 0,
+                }
+    """
+    
+    static let mockPaletteItems = [Integer, Real, RealPos, RealVector, RealMatrix, RealPosVector, RealPosMatrix, BranchLengthTree]
     
 //    MARK: -- Model Tool: Mock Functions
     
