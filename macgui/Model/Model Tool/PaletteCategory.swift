@@ -34,8 +34,8 @@ class PaletteCategory: NSObject {
                 variables.children.append(palettItem)
             }
         }
-        plates.children.append(PalettItem(name: PalettItem.plateType))
-        plates.children.append(PalettItem(name: PalettItem.treePlateType))
+        plates.children.append(PalettItem(name: PalettItem.plateType, superclasses: nil))
+        plates.children.append(PalettItem(name: PalettItem.treePlateType, superclasses: nil))
         
         return [variables, plates]
     }

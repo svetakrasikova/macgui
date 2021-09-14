@@ -57,12 +57,12 @@ class PaletteVariable : PalettItem {
 
     init() {
         self.dimension = 0
-        super.init(name: "")
+        super.init(name: "", superclasses: [])
     }
 
     init(name: String, dimension: Int = 0) {
         self.dimension = dimension
-        super.init(name: name)
+        super.init(name: name, superclasses: [])
     }
 
     static func == (left: PaletteVariable, right: PaletteVariable) -> Bool {

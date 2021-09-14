@@ -409,7 +409,7 @@ extension ModelCanvasViewController: ModelVariableControllerDelegate {
         }
         var resultList: [Distribution] = []
         for function in functions {
-            if function.domain == modelNode.node.type {
+            if function.domain == modelNode.node.type || modelNode.node.superclasses.contains(function.domain) {
                 resultList.append(function)
             }
         }
@@ -424,7 +424,7 @@ extension ModelCanvasViewController: ModelVariableControllerDelegate {
         }
         var resultList: [Distribution] = []
         for distribution in distributions {
-            if distribution.domain == modelNode.node.type {
+            if distribution.domain == modelNode.node.type || modelNode.node.superclasses.contains(distribution.domain) {
                 resultList.append(distribution)
             }
         }

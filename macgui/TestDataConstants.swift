@@ -111,7 +111,7 @@ static let normalDistribution =  """
     static let uniformTopology =  """
                 {
                     "name": "Uniform Topology",
-                    "domain": "BranchLengthTree",
+                    "domain": "Tree",
                     "descriptiveString": "to be added",
                     "parameters": [{"name": "taxa", "type": "Taxon[]", "descriptiveString": "The vector of taxa that will be used for the tips."}]
 
@@ -126,12 +126,14 @@ static let normalDistribution =  """
     static let Integer =  """
                 {
                     "type": "Integer",
+                    "superclasses": [],
                     "dimension": 0
                 }
     """
     static let Real =  """
                 {
                     "type": "\(NumberListType.Real.rawValue)",
+                    "superclasses": [],
                     "dimension": 0,
                 }
     """
@@ -139,12 +141,14 @@ static let normalDistribution =  """
     static let RealVector =  """
                 {
                     "type": "\(NumberListType.Real.rawValue)",
+                    "superclasses": [],
                     "dimension": 1,
                 }
     """
     static let RealMatrix =  """
                 {
                     "type": "\(NumberListType.Real.rawValue)",
+                    "superclasses": [],
                     "dimension": 2,
                 }
     """
@@ -152,18 +156,21 @@ static let normalDistribution =  """
     static let RealPos =  """
                 {
                     "type": "\(NumberListType.RealPos.rawValue)",
+                    "superclasses": [],
                     "dimension": 0,
                 }
     """
     static let RealPosVector =  """
                 {
                     "type": "\(NumberListType.RealPos.rawValue)",
+                    "superclasses": [],
                     "dimension": 1,
                 }
     """
     static let RealPosMatrix =  """
                 {
                     "type": "\(NumberListType.RealPos.rawValue)",
+                    "superclasses": [],
                     "dimension": 2,
                 }
     """
@@ -171,6 +178,7 @@ static let normalDistribution =  """
     static let BranchLengthTree =  """
                 {
                     "type": "\(PalettItem.PaletteVariableType.BranchLengthTree.rawValue)",
+                    "superclasses": ["Tree"],
                     "dimension": 0,
                 }
     """
