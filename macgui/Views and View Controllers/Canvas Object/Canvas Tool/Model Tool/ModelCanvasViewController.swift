@@ -123,14 +123,6 @@ class ModelCanvasViewController: GenericCanvasViewController {
     override func removeConnectable(viewController: CanvasObjectViewController) {
         guard let node = viewController.tool as? ModelNode else { return }
         guard let canvasVC = viewController.parent as? GenericCanvasViewController else { return }
-        if let modelCanvasVC = viewController as? ModelCanvasItemViewController, node.name != PalettItem.treeTopologyType {
-            modelCanvasVC.checkForTreePlateInclusion()
-            for case let treePlateController as TreePlateViewController in canvasVC.children.filter({$0.isKind(of: TreePlateViewController.self)}) {
-                if !treePlateController.view.frame.intersection(view.frame).isNull {
-                    treePlateController.removeNodeFromTreePlate(nodeVC: modelCanvasVC)
-                }
-            }
-        }
     
         super.removeConnectable(viewController: viewController)
         if let model = self.model, let index = model.nodes.firstIndex(of: node){
@@ -139,27 +131,12 @@ class ModelCanvasViewController: GenericCanvasViewController {
     }
     
     @objc override func deleteSelectedCanvasObjects(notification: NSNotification){
-        var topologyNodeSelected = false
-        for childController in children {
-            if let childController = childController as? ModelCanvasItemViewController,
-               childController.viewSelected == true, let model = childController.tool as? ModelNode, model.treePlate != nil {
-                topologyNodeSelected = true
-                
-            }
-        }
-        if !topologyNodeSelected {
             super.deleteSelectedCanvasObjects(notification: notification)
-        }
+
     }
     
     override func removeResizable(viewController: ResizableCanvasObjectViewController) {
         super.removeResizable(viewController: viewController)
-        if let treePlateVC = viewController as? TreePlateViewController, let edge = treePlateVC.edgeViewController, let topologyVC = treePlateVC.topologyNodeViewController {
-            edge.view.removeFromSuperview()
-            edge.removeFromParent()
-            removeConnectable(viewController: topologyVC)
-        
-        }
         guard let plate = viewController.tool as? Plate else { return }
         if let model = self.model, let index = model.plates.firstIndex(of: plate) {
             model.plates.remove(at: index)
@@ -203,14 +180,11 @@ class ModelCanvasViewController: GenericCanvasViewController {
         return ModelCanvasPlateViewController()
     }
     
-    func addVariableToModel(frame: NSRect, item: PaletteVariable, type: PaletteVariable.VariableType, treePlate: TreePlate?) {
+    func addVariableToModel(frame: NSRect, item: PaletteVariable, type: PaletteVariable.VariableType) {
         guard let model = self.model else { return }
         let node = ModelNode(name: item.type, frameOnCanvas: frame, analysis: model.analysis, node: item)
         node.nodeType = type
         node.defaultParameterName = getParameterName()
-        if let treePlate = treePlate {
-            node.treePlate = treePlate
-        }
         model.nodes.append(node)
         addToolView(tool: node)
     }
@@ -224,61 +198,8 @@ class ModelCanvasViewController: GenericCanvasViewController {
         }
     }
     
-    func addTreePlateToModel(plateFrame: NSRect, topologyFrame: NSRect) {
-        guard let model = self.model else { return }
-        guard let index = generateActiveIndex() else { return }
-       
-        let treePlate = TreePlate(frameOnCanvas: plateFrame, analysis: model.analysis, index: index)
-        model.plates.append(treePlate)
-        addTreePlateView(treePlate, topologyFrame: topologyFrame)
-        
-        
-    }
     
-    func addTreePlateView(_ treePlate: TreePlate , topologyFrame: NSRect?) {
-        let treePlateViewController = TreePlateViewController()
-        treePlateViewController.tool = treePlate
-        addChild(treePlateViewController)
-        let view = treePlateViewController.view
-        if let bottomMostNode = self.bottomMostNonResizableObject {
-            canvasView.addSubview(view, positioned: .below, relativeTo: bottomMostNode.view)
-        } else {
-            canvasView.addSubview(view)
-        }
-        topMostLoop = treePlateViewController
-        
-        if let topologyFrame = topologyFrame {
-            addVariableToModel(frame: topologyFrame, item: PaletteVariable(name: PalettItem.treeTopologyType), type: .constant, treePlate: treePlate)
-        }
-        if let topologyNode = findTopologyNode(treePlate) {
-            treePlateViewController.topologyNodeViewController = topologyNode
-            addTreePlateEdge(from: topologyNode, to: treePlateViewController)
-        }
-        
-    }
     
-    func findTopologyNode(_ treePlate: TreePlate) -> ModelCanvasItemViewController? {
-        for vc in children {
-            if let nodeVC = vc as? ModelCanvasItemViewController, let node = nodeVC.tool as? ModelNode {
-                if node.treePlate === treePlate {
-                    return nodeVC
-                }
-            }
-        }
-        return nil
-        
-    }
-    
-    func addTreePlateEdge(from: CanvasObjectViewController, to: TreePlateViewController) {
-        let edgeViewController = EdgeViewController()
-        edgeViewController.frame = canvasView.bounds
-        edgeViewController.sourceTool = from.tool
-        edgeViewController.targetTool = to.tool
-        to.edgeViewController = edgeViewController
-        addChild(edgeViewController)
-        canvasView.addSubview(edgeViewController.view, positioned: .below, relativeTo: to.view)
-//        bottomMostNonResizableObject = edgeViewController
-    }
     
     func resetCanvasView(){
         
@@ -301,11 +222,8 @@ class ModelCanvasViewController: GenericCanvasViewController {
            addToolView(tool: node)
         }
         for plate in model.plates {
-            if let treePlate = plate as? TreePlate {
-                addTreePlateView(treePlate, topologyFrame: nil)
-            } else {
-                addLoopView(loop: plate)
-            }
+            addLoopView(loop: plate)
+      
         }
         for edge in model.edges {
             addArrowView(connection: edge)
@@ -346,56 +264,18 @@ extension ModelCanvasViewController: ModelCanvasViewDelegate {
         case PalettItem.plateType:
             guard let plateDimension = view.canvasLoopDimension else { return }
             addPlateToModel(frame: canvasItemFrame(center: center, dimension: plateDimension))
-        case PalettItem.treePlateType:
-            guard let height = view.canvasTreePlateHeight else { return }
-            guard let width = view.canvasTreePlateWidth else { return }
-            guard let nodeDimension = self.canvasView.canvasObjectDimension else { return }
-            let plateFrame = canvasTreePlateFrame(center: center, width: width, height: height)
-            let topologyFrame = canvasTreeTopologyFrame(plateFrame: plateFrame, dimension: nodeDimension)
-            addTreePlateToModel(plateFrame: plateFrame, topologyFrame: topologyFrame)
         default:
             guard let nodeDimension = self.canvasView.canvasObjectDimension else { return }
             guard let variableName = getPalettVariableWithName(String(variableData[0])) else { return }
             guard let variableType = PaletteVariable.VariableType(rawValue: String(variableData[1])) else { return }
-            addVariableToModel(frame: canvasItemFrame(center: center, dimension: nodeDimension), item: variableName, type: variableType, treePlate: nil)
+            addVariableToModel(frame: canvasItemFrame(center: center, dimension: nodeDimension), item: variableName, type: variableType)
         }
     }
     
     func canvasItemFrame(center: NSPoint, dimension: CGFloat) -> NSRect {
         return NSRect(x: center.x - dimension/2, y: center.y - dimension/2, width: dimension, height: dimension)
     }
-    
-    func canvasTreePlateFrame(center: NSPoint, width: CGFloat, height: CGFloat) -> NSRect {
-       
-        let distanceToLeftEdge = (center.x - width/2) - canvasView.frame.minX
-        let distanceToRightEdge = canvasView.frame.maxX - (center.x + width/2)
-        let distanceToTopEdge = canvasView.frame.maxY - (center.y + height/2)
-        let distanceToBottomEdge = center.y - height/2
-        
-        var x = center.x
-        var y = center.y
-        
-        if distanceToLeftEdge < 0 {
-            x -= distanceToLeftEdge
-        }
-        if distanceToRightEdge < 0 {
-            x += distanceToRightEdge
-        }
-        if distanceToTopEdge < 0 {
-            y += distanceToTopEdge
-        }
-        if distanceToBottomEdge < 0 {
-            y -= distanceToBottomEdge
-        }
 
-        return NSRect(x: x - width/2, y: y - height/2, width: width, height: height)
-    }
-    
-    func canvasTreeTopologyFrame(plateFrame: NSRect, dimension: CGFloat) -> NSRect {
-        let edge: CGFloat = plateFrame.minX - 80 > canvasView.frame.minX ? plateFrame.minX - 80 : plateFrame.maxX + 80
-        let origin = NSPoint(x: edge, y: plateFrame.minY + plateFrame.height/2 - dimension/2)
-        return NSRect(origin: origin, size: NSSize(width: dimension, height: dimension))
-    }
     
     
 }

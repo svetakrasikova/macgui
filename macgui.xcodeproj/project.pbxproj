@@ -89,17 +89,6 @@
 		147429DB22CBC8C300FF1963 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147429DA22CBC8C300FF1963 /* Storyboards.swift */; };
 		147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147429DD22D154D200FF1963 /* ModelTool.storyboard */; };
 		148D93C92335406D00FDFAFA /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148D93C82335406C00FDFAFA /* Document.swift */; };
-		148F650026A4E2DB003F8846 /* TreePlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F64FF26A4E2DB003F8846 /* TreePlate.swift */; };
-		148F650226A4E310003F8846 /* TreePlateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650126A4E310003F8846 /* TreePlateView.swift */; };
-		148F650426A4E350003F8846 /* TreePlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650326A4E350003F8846 /* TreePlateViewController.swift */; };
-		148F650626A50274003F8846 /* EdgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650526A50274003F8846 /* EdgeViewController.swift */; };
-		148F650826A776AB003F8846 /* EdgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650726A776AB003F8846 /* EdgeView.swift */; };
-		148F650A26A8D8B3003F8846 /* TreePlateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650926A8D8B3003F8846 /* TreePlateController.swift */; };
-		148F650C26A8DA14003F8846 /* TreePlateController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148F650B26A8DA14003F8846 /* TreePlateController.storyboard */; };
-		148F650E26A8EB69003F8846 /* TreeTopologyController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148F650D26A8EB69003F8846 /* TreeTopologyController.storyboard */; };
-		148F651126A8ECD7003F8846 /* TreeTopologyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F650F26A8ECD7003F8846 /* TreeTopologyController.swift */; };
-		148F651526A91733003F8846 /* TreePlateNodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F651326A91733003F8846 /* TreePlateNodeViewController.swift */; };
-		148F651826AC695F003F8846 /* PlatePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F651726AC695F003F8846 /* PlatePanelView.swift */; };
 		148FC1A125A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148FC19F25A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift */; };
 		148FC1A925A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148FC1A725A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift */; };
 		149370432303545D00503CCB /* ToolTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149370422303545D00503CCB /* ToolTipViewController.swift */; };
@@ -1603,17 +1592,6 @@
 		147429DA22CBC8C300FF1963 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		147429DD22D154D200FF1963 /* ModelTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModelTool.storyboard; sourceTree = "<group>"; };
 		148D93C82335406C00FDFAFA /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		148F64FF26A4E2DB003F8846 /* TreePlate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlate.swift; sourceTree = "<group>"; };
-		148F650126A4E310003F8846 /* TreePlateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlateView.swift; sourceTree = "<group>"; };
-		148F650326A4E350003F8846 /* TreePlateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlateViewController.swift; sourceTree = "<group>"; };
-		148F650526A50274003F8846 /* EdgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeViewController.swift; sourceTree = "<group>"; };
-		148F650726A776AB003F8846 /* EdgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeView.swift; sourceTree = "<group>"; };
-		148F650926A8D8B3003F8846 /* TreePlateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlateController.swift; sourceTree = "<group>"; };
-		148F650B26A8DA14003F8846 /* TreePlateController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TreePlateController.storyboard; sourceTree = "<group>"; };
-		148F650D26A8EB69003F8846 /* TreeTopologyController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TreeTopologyController.storyboard; sourceTree = "<group>"; };
-		148F650F26A8ECD7003F8846 /* TreeTopologyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTopologyController.swift; sourceTree = "<group>"; };
-		148F651326A91733003F8846 /* TreePlateNodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePlateNodeViewController.swift; sourceTree = "<group>"; };
-		148F651726AC695F003F8846 /* PlatePanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatePanelView.swift; sourceTree = "<group>"; };
 		148FC19F25A67EC600590FE4 /* PaupParsimonyOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupParsimonyOptionsViewController.swift; sourceTree = "<group>"; };
 		148FC1A725A68ECC00590FE4 /* PaupDistanceOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupDistanceOptionsViewController.swift; sourceTree = "<group>"; };
 		149370422303545D00503CCB /* ToolTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipViewController.swift; sourceTree = "<group>"; };
@@ -4717,8 +4695,6 @@
 				14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */,
 				14E22D4B264C7C640090B860 /* ReadNumbersInspector.storyboard */,
 				14E8A53225377ABE00864375 /* TreeInspector.storyboard */,
-				148F650B26A8DA14003F8846 /* TreePlateController.storyboard */,
-				148F650D26A8EB69003F8846 /* TreeTopologyController.storyboard */,
 			);
 			path = "XIbs and Storyboards";
 			sourceTree = "<group>";
@@ -4793,22 +4769,6 @@
 				147105242265437600E88657 /* Bootstrap.swift */,
 			);
 			path = "Connectable Tools";
-			sourceTree = "<group>";
-		};
-		148F64FE26A4DF39003F8846 /* TreePlate */ = {
-			isa = PBXGroup;
-			children = (
-				148F64FF26A4E2DB003F8846 /* TreePlate.swift */,
-				148F650126A4E310003F8846 /* TreePlateView.swift */,
-				148F650326A4E350003F8846 /* TreePlateViewController.swift */,
-				148F651726AC695F003F8846 /* PlatePanelView.swift */,
-				148F650926A8D8B3003F8846 /* TreePlateController.swift */,
-				148F650526A50274003F8846 /* EdgeViewController.swift */,
-				148F650726A776AB003F8846 /* EdgeView.swift */,
-				148F651326A91733003F8846 /* TreePlateNodeViewController.swift */,
-				148F650F26A8ECD7003F8846 /* TreeTopologyController.swift */,
-			);
-			path = TreePlate;
 			sourceTree = "<group>";
 		};
 		1495A0A9237C86B200F46312 /* Tool Controller */ = {
@@ -4950,7 +4910,6 @@
 		14C618E523E0E11E001FFFD6 /* Model Tool */ = {
 			isa = PBXGroup;
 			children = (
-				148F64FE26A4DF39003F8846 /* TreePlate */,
 				14C618E623E20411001FFFD6 /* ModelToolWindowController.swift */,
 				149F8B3A2363934F003146FD /* ModelToolViewController.swift */,
 				14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */,
@@ -8956,10 +8915,8 @@
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
 				14EE87C6255B061C0064F290 /* PaupSearch.storyboard in Resources */,
 				14EE87BC2559FCCA0064F290 /* PaupOverview.storyboard in Resources */,
-				148F650E26A8EB69003F8846 /* TreeTopologyController.storyboard in Resources */,
 				149A500024983C61007E4D4B /* AlignTool.storyboard in Resources */,
 				14E8A53325377ABE00864375 /* TreeInspector.storyboard in Resources */,
-				148F650C26A8DA14003F8846 /* TreePlateController.storyboard in Resources */,
 				1407184B22FF5D430098285D /* ModalSheet.storyboard in Resources */,
 				1495A0B6237C991200F46312 /* MatrixInspector.storyboard in Resources */,
 				14A663BC23186CFE0034EA53 /* Notebook.storyboard in Resources */,
@@ -9206,7 +9163,6 @@
 				14E008CC261BCAE600D97E68 /* Func_convertToPhylowood.cpp in Sources */,
 				14E00921261BCAE600D97E68 /* Func_shortestDistance.cpp in Sources */,
 				14E007FB261BCAE500D97E68 /* Move_GammaScale.cpp in Sources */,
-				148F651826AC695F003F8846 /* PlatePanelView.swift in Sources */,
 				14E007BC261BCAE500D97E68 /* Move_GibbsDrawCharacterHistory.cpp in Sources */,
 				14E0066E261BCAE400D97E68 /* MatrixReader.cpp in Sources */,
 				14E0061F261BCAE400D97E68 /* RateMatrix_LG.cpp in Sources */,
@@ -9365,7 +9321,6 @@
 				14E00902261BCAE600D97E68 /* Func_ls.cpp in Sources */,
 				14E009C4261BCAE600D97E68 /* Dist_scaledDirichlet.cpp in Sources */,
 				142945FB23EF76890093608F /* MainCanvasPreferencesController.swift in Sources */,
-				148F651526A91733003F8846 /* TreePlateNodeViewController.swift in Sources */,
 				14E009C6261BCAE600D97E68 /* Dist_chisq.cpp in Sources */,
 				14E0051C261BCAE400D97E68 /* TreePairwiseNodalDistances.cpp in Sources */,
 				14E009C9261BCAE600D97E68 /* Dist_unifProbability.cpp in Sources */,
@@ -9386,7 +9341,6 @@
 				14E00941261BCAE600D97E68 /* Ellipsis.cpp in Sources */,
 				14E00821261BCAE500D97E68 /* Move_ConjugateInverseWishart.cpp in Sources */,
 				14E007AE261BCAE500D97E68 /* RbHelpArgument.cpp in Sources */,
-				148F650226A4E310003F8846 /* TreePlateView.swift in Sources */,
 				14E0089C261BCAE600D97E68 /* FunctionTable.cpp in Sources */,
 				14E008DE261BCAE600D97E68 /* Func_readDataDelimitedFile.cpp in Sources */,
 				14E007CC261BCAE500D97E68 /* Move_TreeScale.cpp in Sources */,
@@ -9613,7 +9567,6 @@
 				14E00594261BCAE400D97E68 /* ContinuousEventBirthDeathProposal.cpp in Sources */,
 				14E00915261BCAE600D97E68 /* Func_power.cpp in Sources */,
 				14E00A08261BCAE700D97E68 /* Dist_PhylodynamicBDP.cpp in Sources */,
-				148F650626A50274003F8846 /* EdgeViewController.swift in Sources */,
 				14E0060B261BCAE400D97E68 /* RateGenerator_Epoch.cpp in Sources */,
 				149A500B24995CA5007E4D4B /* BinaryController.swift in Sources */,
 				14E009C0261BCAE600D97E68 /* Dist_multinomial.cpp in Sources */,
@@ -9722,7 +9675,6 @@
 				14E00804261BCAE500D97E68 /* Move_ShrinkExpand.cpp in Sources */,
 				14E00A34261BCAE700D97E68 /* nxsreader.cpp in Sources */,
 				144031ED261F7AE0007D7BB7 /* ReadNumbers.swift in Sources */,
-				148F650A26A8D8B3003F8846 /* TreePlateController.swift in Sources */,
 				14E008CA261BCAE600D97E68 /* UserProcedure.cpp in Sources */,
 				14E00666261BCAE400D97E68 /* ProgressBar.cpp in Sources */,
 				14E00689261BCAE400D97E68 /* DistributionLKJ.cpp in Sources */,
@@ -9810,7 +9762,6 @@
 				14E007A3261BCAE500D97E68 /* AbstractPhyloContinuousCharacterProcess.cpp in Sources */,
 				14E00892261BCAE600D97E68 /* RevNullObject.cpp in Sources */,
 				14E0086D261BCAE500D97E68 /* RlRateGeneratorSequence.cpp in Sources */,
-				148F650026A4E2DB003F8846 /* TreePlate.swift in Sources */,
 				14E006C2261BCAE400D97E68 /* GammaFunction.cpp in Sources */,
 				14E0058C261BCAE400D97E68 /* GraphFlipCliqueProposal.cpp in Sources */,
 				14E006FF261BCAE500D97E68 /* PoMoRateMatrixFunction.cpp in Sources */,
@@ -9897,7 +9848,6 @@
 				149B15D624BD1010006673CB /* ExecutableTools.swift in Sources */,
 				14E007A4261BCAE500D97E68 /* PhyloMultiSampleOrnsteinUhlenbeckProcess.cpp in Sources */,
 				14E007D8261BCAE500D97E68 /* Move_WeightedNodeTimeSlide.cpp in Sources */,
-				148F650826A776AB003F8846 /* EdgeView.swift in Sources */,
 				14E008A1261BCAE600D97E68 /* RbRegister_DemographicFunction.cpp in Sources */,
 				14E00971261BCAE600D97E68 /* Func_epoch.cpp in Sources */,
 				14E0051B261BCAE400D97E68 /* SymmetricDifferenceStatistic.cpp in Sources */,
@@ -10287,7 +10237,6 @@
 				14E00612261BCAE400D97E68 /* RateMatrix_PoMo2N.cpp in Sources */,
 				14E007D1261BCAE500D97E68 /* Move_RateAgeBetaShift.cpp in Sources */,
 				14E005E9261BCAE400D97E68 /* MatrixComplex.cpp in Sources */,
-				148F651126A8ECD7003F8846 /* TreeTopologyController.swift in Sources */,
 				14E00887261BCAE600D97E68 /* RlTaxon.cpp in Sources */,
 				14E005DC261BCAE400D97E68 /* ContinuousStochasticNode.cpp in Sources */,
 				14E008BB261BCAE600D97E68 /* lex.yy.cpp in Sources */,
@@ -10448,7 +10397,6 @@
 				14E00808261BCAE500D97E68 /* Move_VectorScale.cpp in Sources */,
 				14E00964261BCAE600D97E68 /* Func_TVM.cpp in Sources */,
 				14E005C7261BCAE400D97E68 /* TraceTree.cpp in Sources */,
-				148F650426A4E350003F8846 /* TreePlateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

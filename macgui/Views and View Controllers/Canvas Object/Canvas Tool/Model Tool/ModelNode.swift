@@ -15,8 +15,6 @@ class ModelNode: Connectable {
     var node: PalettItem
     
     var nodeType: PaletteVariable.VariableType?
-    
-    var treePlate: TreePlate?
 
    
     dynamic var parameterName: String? {
@@ -59,7 +57,7 @@ class ModelNode: Connectable {
     }
     
     enum CodingKeys: String {
-        case node, nodeType, parameterName, distribution, distributionParameters, constantValue, observedValue, treePlate
+        case node, nodeType, parameterName, distribution, distributionParameters, constantValue, observedValue
     }
     
     init(name: String, frameOnCanvas: NSRect, analysis: Analysis, node: PalettItem){
@@ -80,7 +78,6 @@ class ModelNode: Connectable {
     
     required init?(coder aDecoder: NSCoder) {
         self.node = aDecoder.decodeObject(forKey: CodingKeys.node.rawValue) as? PalettItem ?? PaletteVariable()
-        self.treePlate = aDecoder.decodeObject(forKey: CodingKeys.treePlate.rawValue) as? TreePlate
         self.nodeType = PaletteVariable.VariableType(rawValue: aDecoder.decodeObject(forKey: CodingKeys.nodeType.rawValue) as! String)
         self.parameterName = aDecoder.decodeObject(forKey: CodingKeys.parameterName.rawValue) as? String
         self.distribution = aDecoder.decodeObject(forKey: CodingKeys.distribution.rawValue) as? Distribution
@@ -92,7 +89,6 @@ class ModelNode: Connectable {
     
     override func encode(with coder: NSCoder) {
         coder.encode(node, forKey: CodingKeys.node.rawValue)
-        coder.encode(treePlate, forKey: CodingKeys.treePlate.rawValue)
         coder.encode(nodeType?.rawValue, forKey: CodingKeys.nodeType.rawValue)
         coder.encode(parameterName, forKey: CodingKeys.parameterName.rawValue)
         coder.encode(distribution, forKey: CodingKeys.distribution.rawValue)

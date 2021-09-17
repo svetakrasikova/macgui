@@ -242,7 +242,6 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
             }
         }
         
-        guard tool.name != PalettItem.treeTopologyType else { return }
         viewController.checkForLoopInclusion()
     }
     

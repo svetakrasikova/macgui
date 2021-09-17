@@ -60,8 +60,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     }
     
     var drawLabelAndDivider: Bool? {
-        guard let node = self.tool as? ModelNode else { return nil }
-        return node.name == PalettItem.treeTopologyType ? false : true
+        return true
     }
     
     var actionButton: ActionButton?
@@ -100,13 +99,6 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     }()
     
     
-    lazy var topologyController: TreeTopologyController = {
-        let controller = NSStoryboard.loadVC(StoryBoardName.treeTopologyController) as! TreeTopologyController
-        if let node = self.tool as? ModelNode, let canvasVC = self.modelCanvas {
-            controller.modelNode = node
-        }
-        return controller
-    }()
     
     override weak var outerLoopViewController: ResizableCanvasObjectViewController? {
         didSet {
@@ -164,22 +156,10 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         }
     }
      
-//    MARK: -- Interaction with Tree Plate
-    func checkForTreePlateInclusion() {
-        guard let canvasVC = self.parent as? GenericCanvasViewController else { return }
-        for case let treePlateController as TreePlateViewController in canvasVC.children.filter({$0.isKind(of: TreePlateViewController.self)}) {
-            if treePlateController.view.frame.intersection(view.frame) == view.frame {
-                treePlateController.embedNodeInTreePlate(nodeVC: self)
-            } else {
-                treePlateController.removeNodeFromTreePlate(nodeVC: self)
-            }
-        }
-    }
-    
+
     
     override func checkForLoopInclusion() {
         super.checkForLoopInclusion()
-        checkForTreePlateInclusion()
     }
     
     
@@ -222,12 +202,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     }
     
     func addImage() {
-        guard let node = self.tool as? ModelNode, node.treePlate != nil
-        else {
-            print("Tree topolgy node is not pointing to tree plate.")
-            return
-            
-        }
+      
         guard let strokeColor = self.strokeColor else {
             print("drawShapeInLayer: stroke color for the shape layer is undefined.")
             return
@@ -345,15 +320,12 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
     func actionButtonClicked(_ button: ActionButton) {
         
         guard let node = self.tool as? ModelNode else { return }
-        if node.treePlate != nil {
-            self.presentAsModalWindow(topologyController)
-        } else {
-            switch node.nodeType {
-            case .function: self.presentAsModalWindow(functionController)
-            case .constant: self.presentAsModalWindow(constantController)
-            case .randomVariable: self.presentAsModalWindow(variableController)
-            default: break
-            }
+        
+        switch node.nodeType {
+        case .function: self.presentAsModalWindow(functionController)
+        case .constant: self.presentAsModalWindow(constantController)
+        case .randomVariable: self.presentAsModalWindow(variableController)
+        default: break            
         }
     }
     

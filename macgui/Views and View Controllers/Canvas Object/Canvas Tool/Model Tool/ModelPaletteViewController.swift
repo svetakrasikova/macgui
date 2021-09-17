@@ -115,7 +115,7 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
                     textField.stringValue = "\(parameter.type)"
                 } else {
                     textField.stringValue = parameter.type
-                    imageName = parameter.type == PalettItem.treePlateType ? "rectangle.dashed.badge.record" : "rectangle.dashed"
+                    imageName = "rectangle.dashed"
                 }
                 textField.sizeToFit()
             }

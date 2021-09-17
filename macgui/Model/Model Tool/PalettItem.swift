@@ -18,8 +18,6 @@ class PalettItem: NSObject, Codable, NSCoding {
     }
     
     static let plateType: String = "Plate"
-    static let treePlateType: String = "Tree Plate"
-    static let treeTopologyType: String = "Tree Topology"
     
       private enum CodingKeys: String, CodingKey {
          case type, superclasses
@@ -42,7 +40,7 @@ class PalettItem: NSObject, Codable, NSCoding {
 
     
     func isPlate() -> Bool {
-        return self.type == PalettItem.plateType || self.type == PalettItem.treePlateType
+        return self.type == PalettItem.plateType
     }
 
 //   MARK: - NSCoding

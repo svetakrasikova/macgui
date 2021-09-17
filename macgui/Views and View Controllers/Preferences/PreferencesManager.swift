@@ -14,8 +14,6 @@ enum PreferenceKey: String {
     //  Canvas Object
     case canvasObjectDimension = "canvasObjectDimension"
     case canvasLoopDimension = "canvasLoopDimension"
-    case canvasTreePlateHeight
-    case canvasTreePlateWidth
     case canvasLoopBackgroundColor
     
     // Generic Canvas
@@ -61,8 +59,6 @@ class PreferencesManager {
             PreferenceKey.canvasSelectionWidth.rawValue: 5.0,
             PreferenceKey.canvasObjectDimension.rawValue: 50.0,
             PreferenceKey.canvasLoopDimension.rawValue: 100.0,
-            PreferenceKey.canvasTreePlateHeight.rawValue: 200.0,
-            PreferenceKey.canvasTreePlateWidth.rawValue: 300.0,
             PreferenceKey.canvasToolBorderWidth.rawValue: 1.8,
             PreferenceKey.canvasToolSelectionCornerRadius.rawValue: 5.0,
             PreferenceKey.canvasToolSelectionShadowOpacity.rawValue: 0.7,
@@ -160,17 +156,6 @@ class PreferencesManager {
         }
     }
     
-    var canvasTreePlateHeight: CGFloat? {
-        get {
-            return userDefaults.object(forKey: PreferenceKey.canvasTreePlateHeight.rawValue) as? CGFloat
-        }
-    }
-    
-    var canvasTreePlateWidth: CGFloat? {
-        get {
-            return userDefaults.object(forKey: PreferenceKey.canvasTreePlateWidth.rawValue) as? CGFloat
-        }
-    }
     
     
     var canvasLoopBackgroundColor: NSColor? {
@@ -275,10 +260,6 @@ class PreferencesManager {
                 self.cachedPreferences[key] = canvasObjectDimension
             case PreferenceKey.canvasLoopDimension.rawValue:
                 self.cachedPreferences[key] = canvasLoopDimension
-            case PreferenceKey.canvasTreePlateHeight.rawValue:
-                self.cachedPreferences[key] = canvasTreePlateHeight
-            case PreferenceKey.canvasTreePlateWidth.rawValue:
-                self.cachedPreferences[key] = canvasTreePlateWidth
             case PreferenceKey.canvasLoopBackgroundColor.rawValue:
                 self.cachedPreferences[key] = canvasLoopBackgroundColor
             case PreferenceKey.canvasSelectionWidth.rawValue:
