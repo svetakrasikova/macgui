@@ -223,4 +223,8 @@ class Tree: NSObject, NSCoding {
         return Tree(root: newRoot)
     }
     
+    class func numBranches(numLeaves: Int, rooted: Bool) -> Int {
+        return rooted ? 2*numLeaves-2 : 2*numLeaves-3
+    }
+    
 }

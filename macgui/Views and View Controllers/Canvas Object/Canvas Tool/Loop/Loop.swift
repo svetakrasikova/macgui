@@ -78,9 +78,13 @@ class Loop: ToolObject {
         return outerLoop.embedLevel() + 1
     }
     
-    func updateOuterLoop(_ loop: Loop) {
-        if outerLoop !== loop {
-            outerLoop = loop
+    func updateOuterLoop(_ loop: Loop?) {
+        if let newOuterloop = loop {
+            if outerLoop !==  newOuterloop {
+                outerLoop =  newOuterloop
+            }
+        } else {
+            outerLoop = nil
         }
     }
     

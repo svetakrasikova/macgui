@@ -19,7 +19,7 @@ enum DataType: String, Codable {
     case Unknown = "Unknown"
 }
 
-
+@objcMembers
 class DataMatrix : NSObject,Codable, NSCoding {
     
     

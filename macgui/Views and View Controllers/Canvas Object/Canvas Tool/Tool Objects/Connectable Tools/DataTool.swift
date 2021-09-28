@@ -155,17 +155,21 @@ class DataTool: Connectable {
    
     
     
-    func connectAlignedData(from: DataTool) {
+    func connectAlignedData(from: DataTool) throws {
         let alignedMatrices =  from.dataMatrices.filter{$0.homologyEstablished == true}
         if !alignedMatrices.isEmpty {
             propagateAlignedData(data: alignedMatrices)
+        } else {
+            throw Connection.ConnectionError.NoAlignedData
         }
     }
     
-    func connectUnalignedData(from: DataTool) {
+    func connectUnalignedData(from: DataTool) throws {
         let unalignedMatrices =  from.dataMatrices.filter{$0.homologyEstablished == false}
         if !unalignedMatrices.isEmpty {
             propagateUnalignedData(data: unalignedMatrices)
+        } else {
+            throw Connection.ConnectionError.NoUnalignedData
         }
     }
     

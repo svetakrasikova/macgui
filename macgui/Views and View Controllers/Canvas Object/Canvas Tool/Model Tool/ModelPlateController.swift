@@ -11,16 +11,20 @@ import Cocoa
 class ModelPlateController: LoopController {
     
     
+    
     @IBOutlet weak var box: NSBox!
     @IBOutlet weak var valueTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var numberBranchesTopConstraint: NSLayoutConstraint!
     var boxHeightConstraint = NSLayoutConstraint()
     @IBOutlet weak var valueStack: NSStackView!
+    @IBOutlet weak var numberBranchesStack: NSStackView!
     
     @IBOutlet weak var helpField: NSTextField!
     
-    var plate: Plate? {
+    @objc dynamic var plate: Plate? {
         self.loop as? Plate
     }
+    
     
     @objc dynamic var enableValueEdit: Bool = true
     @objc dynamic var enableIteratorRange: Bool = true
@@ -43,20 +47,35 @@ class ModelPlateController: LoopController {
                     }
                 case Plate.IteratorRange.numberMatrices.rawValue:
                     plate.upperRange = matricesCount
-                default: plate.upperRange = -1
+                case Plate.IteratorRange.numberBranches.rawValue:
+                    plate.setNumBranchesUpperRange()
+                default:
+                    plate.upperRange = -1
+                    print("Not an acceptable upper range!")
                 }
-            }
+            },
+            plate.observe(\Plate.numBranchesFunc, options: [.old, .new]) {(plate, change) in
+                plate.setNumBranchesUpperRange()
+                self.view.needsDisplay = true
+            },
+            plate.observe(\Plate.assignedMatrix, options: [.old, .new]) {(plate, change) in
+                plate.setNumBranchesUpperRange()
+                self.view.needsDisplay = true
+            },
         ]
     }
     
+    
+   
+    
     @IBOutlet weak var rangePopup: NSPopUpButton!
     
-    var matricesCount: Int?
+    @objc dynamic var matrices: [DataMatrix]?
     
-    func setUpperRangeToNumMatrices() {
-        guard let plate = self.plate else { return }
-        guard let matricesCount = self.matricesCount else { return }
-        plate.upperRange = matricesCount
+    
+    
+    var matricesCount: Int? {
+        return matrices?.count
     }
     
     
@@ -86,27 +105,35 @@ class ModelPlateController: LoopController {
     override func viewDidAppear() {
         super.viewDidAppear()
         guard let plate = self.plate else { return }
-        setValue(index: plate.rangeType)
+        setRangePopup()
+        setHelpText()
+        setAdditionalParameters(index: plate.rangeType)
     }
     
     func setRangePopup() {
         guard let plate = self.plate else { return }
         let selectedIndex = plate.rangeType
         if let numMatrices = self.matricesCount {
-            if numMatrices > 0 {
+            if numMatrices > 1 {
                 if isEmbeddedInOuterLoopWithMatrixRange {
                     for i in 0..<rangePopup.numberOfItems {
+                        let isNum: Bool = i == Plate.IteratorRange.number.rawValue
                         let isNumChar: Bool = i == Plate.IteratorRange.numberChar.rawValue
                         let isNumTaxa: Bool = i == Plate.IteratorRange.numberTaxa.rawValue
-                        rangePopup.item(at: i)?.isEnabled = isNumChar || isNumTaxa ? true : false
+                        let isNumBranch: Bool = i == Plate.IteratorRange.numberBranches.rawValue
+                        rangePopup.item(at: i)?.isEnabled = isNum || isNumChar || isNumTaxa || isNumBranch ? true : false
                     }
                 } else {
                     for i in 0..<rangePopup.numberOfItems {
                         let isNum: Bool = i == Plate.IteratorRange.number.rawValue
                         let isNumMatrices: Bool = i == Plate.IteratorRange.numberMatrices.rawValue
-                        rangePopup.item(at: i)?.isEnabled = isNum || isNumMatrices ? true : false
+                        let isNumBranch: Bool = i == Plate.IteratorRange.numberBranches.rawValue
+                        rangePopup.item(at: i)?.isEnabled = isNum || isNumMatrices || isNumBranch  ? true : false
                     }
                 }
+                
+            } else if numMatrices == 1 {
+                rangePopup.itemArray.forEach {$0.isEnabled = true }
                 
             } else {
                 for i in 0..<rangePopup.numberOfItems {
@@ -117,11 +144,15 @@ class ModelPlateController: LoopController {
             
             if rangePopup.item(at: selectedIndex)!.isEnabled {
                 rangePopup.selectItem(at: selectedIndex)
-            } else {  print("Error in setRangePopup") }
-            
-            
+            } else
+            {
+                print("Error in setRangePopup")
+                
+            }
         }
+       
     }
+    
     
     func setHelpText() {
         guard let plate = self.plate else { return }
@@ -135,6 +166,8 @@ class ModelPlateController: LoopController {
             str = helpTextForEmbeddedCharPlates(index: plate.outerLoop?.index)
         case Plate.IteratorRange.numberTaxa.rawValue:
             str = helpTextForEmbeddedTaxaPlates(index: plate.outerLoop?.index)
+        case Plate.IteratorRange.numberBranches.rawValue:
+            str = helpTextForNumberBranchesPlates()
         default: break
         }
         helpField.stringValue = str
@@ -173,23 +206,36 @@ class ModelPlateController: LoopController {
         return "This plate ranges over the number of taxa in the \(index)-th character matrix attached to the Model Tool."
     }
     
+    func helpTextForNumberBranchesPlates() -> String {
+        return "This plate ranges over the number of branches in the selected matrix."
+    }
     
-    
+
     @IBAction func selectRange(_ sender: NSPopUpButton) {
-        setValue(index: sender.indexOfSelectedItem)
+        if sender.indexOfSelectedItem == Plate.IteratorRange.numberBranches.rawValue {
+            plate?.assignedMatrix = self.matrices?.first
+        }
+        setAdditionalParameters(index: sender.indexOfSelectedItem)
         setHelpText()
     }
     
-    func setValue(index: Int) {
+    func setAdditionalParameters(index: Int) {
         box.removeConstraint(boxHeightConstraint)
         let hideValue = index != Plate.IteratorRange.number.rawValue
         toggleValue(hide: hideValue)
+        let hideNumberBranches = index != Plate.IteratorRange.numberBranches.rawValue
+        toggleNumberBranches(hide: hideNumberBranches)
         addHeightConstraintToBox()
     }
     
     func toggleValue(hide: Bool) {
         valueStack.isHidden = hide
         valueTopConstraint.constant = hide ? -20 : 15
+    }
+    
+    func toggleNumberBranches(hide: Bool) {
+        numberBranchesStack.isHidden = hide
+        numberBranchesTopConstraint.constant = hide ? -20 : 15
     }
     
     func addHeightConstraintToBox() {

@@ -118,6 +118,7 @@ DQ
                                                                 <menuItem title="Number of matrices" id="PdN-xk-wn8" userLabel="Number of matrices"/>
                                                                 <menuItem title="Number of characters" id="2V8-gO-jrE" userLabel="Number of characters"/>
                                                                 <menuItem title="Number of taxa" id="2ue-3i-bE9" userLabel="Number of taxa"/>
+                                                                <menuItem title="Number of branches" id="eI4-ad-HVI" userLabel="Number of branches"/>
                                                             </items>
                                                         </menu>
                                                     </popUpButtonCell>
@@ -137,7 +138,52 @@ DQ
                                                 <real value="3.4028234663852886e+38"/>
                                             </customSpacing>
                                         </stackView>
-                                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ThA-rs-VXM" userLabel="Value">
+                                        <stackView hidden="YES" distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hsi-Mk-8P7" userLabel="Number Branches Stack">
+                                            <rect key="frame" x="20" y="49" width="352" height="21"/>
+                                            <subviews>
+                                                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h4f-vP-tc1" userLabel="Matrix selector">
+                                                    <rect key="frame" x="-3" y="-3" width="181" height="25"/>
+                                                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" id="HGA-4n-GOi">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" autoenablesItems="NO" id="Mf4-6a-JNH"/>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <binding destination="vAX-Ig-4xC" name="content" keyPath="self.matrices" id="awG-S4-OBB"/>
+                                                        <binding destination="vAX-Ig-4xC" name="contentValues" keyPath="self.matrices.matrixName" previousBinding="awG-S4-OBB" id="nev-cg-pWh"/>
+                                                        <binding destination="vAX-Ig-4xC" name="selectedObject" keyPath="self.plate.assignedMatrix" previousBinding="nev-cg-pWh" id="vfw-6U-bCJ"/>
+                                                    </connections>
+                                                </popUpButton>
+                                                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VCI-a2-jEE" userLabel="Function">
+                                                    <rect key="frame" x="176" y="-3" width="180" height="25"/>
+                                                    <popUpButtonCell key="cell" type="push" title="rooted tree" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="SH7-pH-XXb" id="qbJ-mp-h6i">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" autoenablesItems="NO" id="RQs-CM-8Ra">
+                                                            <items>
+                                                                <menuItem title="rooted tree" state="on" id="SH7-pH-XXb"/>
+                                                                <menuItem title="unrooted tree" id="y78-Kc-K0N"/>
+                                                            </items>
+                                                        </menu>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <binding destination="vAX-Ig-4xC" name="selectedIndex" keyPath="self.plate.numBranchesFunc" id="K9q-lX-HYi"/>
+                                                    </connections>
+                                                </popUpButton>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="h4f-vP-tc1" firstAttribute="width" secondItem="VCI-a2-jEE" secondAttribute="width" id="Vrf-8A-f7U"/>
+                                            </constraints>
+                                            <visibilityPriorities>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                            </visibilityPriorities>
+                                            <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                            </customSpacing>
+                                        </stackView>
+                                        <stackView hidden="YES" distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ThA-rs-VXM" userLabel="Value">
                                             <rect key="frame" x="20" y="49" width="352" height="21"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aEj-zc-fPH" userLabel="Distribution Label">
@@ -187,16 +233,20 @@ DQ
                                         <constraint firstItem="zRQ-rN-2w1" firstAttribute="leading" secondItem="u4f-2m-kbL" secondAttribute="leading" constant="20" id="9qq-VY-lHz"/>
                                         <constraint firstItem="wtB-cp-oU4" firstAttribute="top" secondItem="ThA-rs-VXM" secondAttribute="bottom" constant="15" id="B5x-Rj-fs8"/>
                                         <constraint firstItem="6zy-dS-jDN" firstAttribute="leading" secondItem="u4f-2m-kbL" secondAttribute="leading" constant="20" id="CM4-i6-qJm"/>
+                                        <constraint firstItem="Hsi-Mk-8P7" firstAttribute="top" secondItem="6zy-dS-jDN" secondAttribute="bottom" constant="15" id="GNC-6l-5Cr"/>
                                         <constraint firstAttribute="trailing" secondItem="6zy-dS-jDN" secondAttribute="trailing" constant="20" id="Hi3-4f-7CM"/>
                                         <constraint firstItem="zRQ-rN-2w1" firstAttribute="top" secondItem="u4f-2m-kbL" secondAttribute="top" constant="20" id="IkL-oW-XSy"/>
                                         <constraint firstItem="H2j-7V-1cO" firstAttribute="width" secondItem="MqV-uC-dL6" secondAttribute="width" id="L3U-0V-89e"/>
                                         <constraint firstItem="ThA-rs-VXM" firstAttribute="leading" secondItem="u4f-2m-kbL" secondAttribute="leading" constant="20" id="LrD-ln-QCk"/>
                                         <constraint firstAttribute="bottom" secondItem="wtB-cp-oU4" secondAttribute="bottom" constant="20" id="Osi-ls-Znj"/>
                                         <constraint firstItem="6zy-dS-jDN" firstAttribute="top" secondItem="zRQ-rN-2w1" secondAttribute="bottom" constant="15" id="RWp-qu-EdA"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hsi-Mk-8P7" secondAttribute="trailing" constant="20" id="U3k-de-nCl"/>
                                         <constraint firstAttribute="trailing" secondItem="wtB-cp-oU4" secondAttribute="trailing" constant="20" id="U4F-FT-UZF"/>
                                         <constraint firstItem="wtB-cp-oU4" firstAttribute="leading" secondItem="u4f-2m-kbL" secondAttribute="leading" constant="20" id="UQK-Ry-sph"/>
                                         <constraint firstAttribute="trailing" secondItem="ThA-rs-VXM" secondAttribute="trailing" constant="20" id="avL-BI-NlQ"/>
+                                        <constraint firstItem="Hsi-Mk-8P7" firstAttribute="leading" secondItem="u4f-2m-kbL" secondAttribute="leading" constant="20" id="h3N-qR-6hE"/>
                                         <constraint firstItem="ctT-9q-qUz" firstAttribute="width" secondItem="H2j-7V-1cO" secondAttribute="width" id="kd2-Zg-XxU"/>
+                                        <constraint firstItem="wtB-cp-oU4" firstAttribute="top" secondItem="Hsi-Mk-8P7" secondAttribute="bottom" constant="15" id="qh0-B3-LM4"/>
                                         <constraint firstAttribute="trailing" secondItem="zRQ-rN-2w1" secondAttribute="trailing" constant="20" id="y0u-Xk-eg1"/>
                                     </constraints>
                                 </view>
@@ -216,6 +266,8 @@ DQ
                         <outlet property="box" destination="YJN-ta-MHT" id="3a7-td-44s"/>
                         <outlet property="helpField" destination="wtB-cp-oU4" id="Sf3-d9-Us1"/>
                         <outlet property="indexPopup" destination="MqV-uC-dL6" id="opT-hQ-gkP"/>
+                        <outlet property="numberBranchesStack" destination="Hsi-Mk-8P7" id="WAd-7t-nvw"/>
+                        <outlet property="numberBranchesTopConstraint" destination="GNC-6l-5Cr" id="FnV-mj-DeP"/>
                         <outlet property="rangePopup" destination="H2j-7V-1cO" id="F6l-Sn-Tjk"/>
                         <outlet property="valueStack" destination="ThA-rs-VXM" id="bVu-IP-JhY"/>
                         <outlet property="valueTopConstraint" destination="5L8-hZ-YMK" id="BTR-j4-DEh"/>

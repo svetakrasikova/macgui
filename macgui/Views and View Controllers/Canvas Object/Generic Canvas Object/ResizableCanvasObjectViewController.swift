@@ -16,7 +16,7 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
     
     var loop: Loop { return self.tool as! Loop }
     
-    private var observers = [NSKeyValueObservation]()
+    var observers = [NSKeyValueObservation]()
     
    func observeLabelChange(){
         
@@ -171,7 +171,9 @@ class ResizableCanvasObjectViewController: CanvasObjectViewController, ActionBut
         guard let canvasVC = self.parent as? GenericCanvasViewController else { return }
         let loopViewControllers = canvasVC.children.filter {$0.isKind(of: ResizableCanvasObjectViewController.self) && $0 !== self} as! [ResizableCanvasObjectViewController]
         if let smallestOuterLoop = findSmallestOuterLoopFrom(loopViewControllers) {
-            loop.updateOuterLoop(smallestOuterLoop.tool as! Loop)
+            loop.updateOuterLoop(smallestOuterLoop.tool as? Loop)
+        } else {
+            loop.updateOuterLoop(nil)
         }
         for node in loop.embeddedNodes {
             if let toolVC = canvasVC.findVCByTool(node) {
