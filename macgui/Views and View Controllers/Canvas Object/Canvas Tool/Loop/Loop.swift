@@ -86,6 +86,7 @@ class Loop: ToolObject {
         } else {
             outerLoop = nil
         }
+
     }
     
     func addEmbeddedNode(_ node: Connectable){

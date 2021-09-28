@@ -50,8 +50,7 @@ class ModelPlateController: LoopController {
                 case Plate.IteratorRange.numberBranches.rawValue:
                     plate.setNumBranchesUpperRange()
                 default:
-                    plate.upperRange = -1
-                    print("Not an acceptable upper range!")
+                   break
                 }
             },
             plate.observe(\Plate.numBranchesFunc, options: [.old, .new]) {(plate, change) in

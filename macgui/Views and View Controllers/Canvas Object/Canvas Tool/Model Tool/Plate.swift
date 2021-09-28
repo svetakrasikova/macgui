@@ -29,6 +29,12 @@ class Plate: Loop {
         case rangeType, assignedMatrix, numBranchesFunc
     }
     
+    override var outerLoop: Loop? {
+        didSet {
+           self.rangeType = Plate.IteratorRange.number.rawValue
+        }
+    }
+    
     dynamic var rangeType: Int = IteratorRange.number.rawValue {
         didSet {
             if rangeType != IteratorRange.numberBranches.rawValue {
@@ -73,11 +79,6 @@ class Plate: Loop {
         super.init(coder: decoder)
     }
     
-    override func updateOuterLoop(_ loop: Loop?) {
-        super.updateOuterLoop(loop)
-        self.rangeType = Plate.IteratorRange.number.rawValue
-        
-    }
     
     func setNumBranchesUpperRange() {
         guard let numTaxa = self.assignedNumTaxa else { return }
