@@ -62,15 +62,15 @@ class CanvasViewController: GenericCanvasViewController {
         else {return}
         if userInfo["target"]?.window == self.view.window, let color = userInfo["target"]?.connectionColor, let targetTool = userInfo["target"]?.concreteDelegate?.getTool() as? Connectable, let sourceTool = userInfo["source"]?.concreteDelegate?.getTool() as? Connectable {
             let toConnector = userInfo["target"]?.concreteDelegate?.getConnector() as! Connector
-            let connection = Connection(to: targetTool, from: sourceTool, type: toConnector.type)
-            let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool, connection: connection)
-            analysis?.arrows.append(connection)
-            addChild(arrowController)
-            canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: bottomMostNonResizableObject?.view)
-            bottomMostNonResizableObject = arrowController
-            let userInfo  = ["sourceTool" : sourceTool, "targetTool" : targetTool]
-            NotificationCenter.default.post(name: .didAddNewArrow, object: self, userInfo: userInfo)
-            
+            if let connection = Connection(to: targetTool, from: sourceTool, type: toConnector.type) {
+                let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool, connection: connection)
+                analysis?.arrows.append(connection)
+                addChild(arrowController)
+                canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: bottomMostNonResizableObject?.view)
+                bottomMostNonResizableObject = arrowController
+                let userInfo  = ["sourceTool" : sourceTool, "targetTool" : targetTool]
+                NotificationCenter.default.post(name: .didAddNewArrow, object: self, userInfo: userInfo)
+            }
             
         }
     }

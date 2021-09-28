@@ -20,19 +20,24 @@ class Connection: NSObject, NSCoding {
         case to, from, type
     }
     
-    init(to: Connectable, from: Connectable, type: ConnectorType) {
+    enum ConnectionError: Error {
+        case NoAlignedData, NoUnalignedData
+    }
+    
+    init?(to: Connectable, from: Connectable, type: ConnectorType) {
         to.addNeighbor(connectionType: type, linkType: LinkType.inlet)
         from.addNeighbor(connectionType: type, linkType: LinkType.outlet)
         self.to = to
         self.from = from
         self.type = type
+        do {
         switch self.type {
         case .alignedData:
             guard let to = to as? DataTool, let from = from as? DataTool else { return }
-            to.connectAlignedData(from: from)
+            try to.connectAlignedData(from: from)
         case .unalignedData:
             guard let to = to as? DataTool, let from = from as? DataTool else { return }
-            to.connectUnalignedData(from: from)
+            try to.connectUnalignedData(from: from)
         case .readnumbers:
             guard let to = to as? DataTool, let from = from as? DataTool else { return }
             to.connectNumberData(from: from)
@@ -42,6 +47,23 @@ class Connection: NSObject, NSCoding {
         default:
             print("No action defined for connection type", self.type)
         }
+        } catch ConnectionError.NoAlignedData {
+            Connection.runConnectionErrorAlert(message: "No aligned data on the source tool.")
+            return nil
+        } catch ConnectionError.NoUnalignedData {
+            Connection.runConnectionErrorAlert(message: "No unaligned data on the source tool.")
+            return nil
+        } catch {
+            print("Connection error.")
+            return nil
+        }
+    }
+    
+    class func runConnectionErrorAlert(message: String) {
+        let alert = NSAlert()
+        alert.messageText = "The tools could not be connected."
+        alert.informativeText = message
+        alert.runModal()
     }
     
     func encode(with aCoder: NSCoder) {
