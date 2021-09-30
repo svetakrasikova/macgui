@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,11 +11,11 @@
             <objects>
                 <viewController storyboardIdentifier="ConstantController" id="bO0-gr-cJy" customClass="ModelConstantController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Cc8-PK-k6n">
-                        <rect key="frame" x="0.0" y="0.0" width="307" height="197"/>
+                        <rect key="frame" x="0.0" y="0.0" width="406" height="197"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G8n-3T-mcW" userLabel="OK Cancel Button Stack View">
-                                <rect key="frame" x="151" y="20" width="136" height="20"/>
+                                <rect key="frame" x="250" y="20" width="136" height="20"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bDy-n1-Sbn">
                                         <rect key="frame" x="-7" y="-7" width="76" height="32"/>
@@ -53,13 +54,13 @@ DQ
                                 </customSpacing>
                             </stackView>
                             <box placeholderIntrinsicWidth="265" placeholderIntrinsicHeight="117" borderType="bezel" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="o0f-T0-bls">
-                                <rect key="frame" x="17" y="56" width="273" height="123"/>
+                                <rect key="frame" x="17" y="56" width="372" height="123"/>
                                 <view key="contentView" id="sKk-6f-R5a">
-                                    <rect key="frame" x="3" y="3" width="267" height="117"/>
+                                    <rect key="frame" x="3" y="3" width="366" height="117"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SY2-kr-H48" userLabel="Name">
-                                            <rect key="frame" x="20" y="76" width="227" height="21"/>
+                                            <rect key="frame" x="20" y="76" width="326" height="21"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mnk-QZ-npd">
                                                     <rect key="frame" x="-2" y="3" width="40" height="16"/>
@@ -70,7 +71,7 @@ DQ
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2F7-Zd-AWY" userLabel="Name">
-                                                    <rect key="frame" x="41" y="0.0" width="186" height="21"/>
+                                                    <rect key="frame" x="41" y="0.0" width="285" height="21"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="D0E-sx-Jda">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -91,31 +92,34 @@ DQ
                                             </customSpacing>
                                         </stackView>
                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ftC-45-SJZ" userLabel="Value">
-                                            <rect key="frame" x="20" y="20" width="227" height="41"/>
+                                            <rect key="frame" x="20" y="20" width="326" height="41"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qhy-eb-NMX" userLabel="Value Label">
-                                                    <rect key="frame" x="-2" y="13" width="40" height="16"/>
+                                                    <rect key="frame" x="-2" y="13" width="38" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Value" id="MG1-Bp-CVc" userLabel="Value">
                                                         <font key="font" usesAppearanceFont="YES"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VpA-Ky-W02">
-                                                    <rect key="frame" x="41" y="10" width="186" height="21"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="LcV-O5-rYh">
+                                                <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EHR-t9-9nQ" userLabel="Value Combo Box">
+                                                    <rect key="frame" x="39" y="7" width="290" height="25"/>
+                                                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="nfg-af-ccF">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
+                                                        <objectValues>
+                                                            <string>Item 1</string>
+                                                            <string>Item 2</string>
+                                                            <string>Item 3</string>
+                                                        </objectValues>
+                                                    </comboBoxCell>
                                                     <connections>
-                                                        <binding destination="bO0-gr-cJy" name="value" keyPath="self.modelNode.constantValue" id="3rj-zl-7oK">
-                                                            <dictionary key="options">
-                                                                <bool key="NSValidatesImmediately" value="YES"/>
-                                                            </dictionary>
-                                                        </binding>
+                                                        <binding destination="O9O-6h-lQC" name="content" keyPath="arrangedObjects" id="r0T-v1-9iu"/>
+                                                        <binding destination="O9O-6h-lQC" name="contentValues" keyPath="arrangedObjects.name" previousBinding="r0T-v1-9iu" id="85T-Rp-d31"/>
+                                                        <binding destination="bO0-gr-cJy" name="value" keyPath="self.constant" previousBinding="85T-Rp-d31" id="s5Y-s7-EM2"/>
                                                     </connections>
-                                                </textField>
+                                                </comboBox>
                                             </subviews>
                                             <visibilityPriorities>
                                                 <integer value="1000"/>
@@ -128,7 +132,6 @@ DQ
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="VpA-Ky-W02" firstAttribute="width" secondItem="2F7-Zd-AWY" secondAttribute="width" id="UO9-VH-vsK"/>
                                         <constraint firstAttribute="trailing" secondItem="ftC-45-SJZ" secondAttribute="trailing" constant="20" id="gXz-tp-ZCI"/>
                                         <constraint firstAttribute="trailing" secondItem="SY2-kr-H48" secondAttribute="trailing" constant="20" id="jf1-pl-aiO"/>
                                         <constraint firstItem="ftC-45-SJZ" firstAttribute="leading" secondItem="sKk-6f-R5a" secondAttribute="leading" constant="20" id="pYK-Il-yBp"/>
@@ -151,11 +154,12 @@ DQ
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="constantValueTextField" destination="VpA-Ky-W02" id="gNU-Ty-Xp6"/>
                         <outlet property="nameTextField" destination="2F7-Zd-AWY" id="9qi-l9-19n"/>
+                        <outlet property="valueComboBox" destination="EHR-t9-9nQ" id="ExY-KX-s0r"/>
                     </connections>
                 </viewController>
                 <customObject id="fMr-np-GbJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <arrayController id="O9O-6h-lQC"/>
             </objects>
             <point key="canvasLocation" x="876.5" y="-717.5"/>
         </scene>

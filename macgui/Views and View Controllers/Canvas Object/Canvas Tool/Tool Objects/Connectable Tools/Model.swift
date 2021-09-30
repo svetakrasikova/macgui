@@ -142,7 +142,7 @@ class Model: DataTool {
     }
     
     func initMockupFunctions() throws {
-        let jsonDistributionStringArray: [String] = [ TestDataConstants.mockFunction]
+        let jsonDistributionStringArray: [String] = TestDataConstants.mockFunctions
 
         let distributionsDataArray: [Data] = JsonCoreBridge(jsonArray: jsonDistributionStringArray).encodeJsonStringArray()
         

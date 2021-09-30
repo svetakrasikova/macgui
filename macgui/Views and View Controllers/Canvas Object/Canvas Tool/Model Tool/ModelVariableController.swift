@@ -40,7 +40,7 @@ class ModelVariableController: ModelPaletteItemController {
         }
     }
     
-    weak var delegate: ModelVariableControllerDelegate?
+  
     
     var distributions: [Distribution] {
         return []
@@ -107,8 +107,10 @@ class ModelVariableController: ModelPaletteItemController {
                 if let delegate = self.delegate as? ModelCanvasViewController, let model = delegate.model {
                     var selectionItemNames: [String] = []
                     switch parameter.type {
-                    case "Taxon[]":
-                        selectionItemNames = Array(model.taxaDict.keys)
+                    case "Taxon":
+                        if parameter.dimension == 1 {
+                            selectionItemNames = Array(model.taxaDict.keys)
+                        }
                     default:
                         var modelNodes: [ModelNode] = []
                         for connection in model.edges {

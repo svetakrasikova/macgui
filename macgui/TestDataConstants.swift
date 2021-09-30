@@ -56,7 +56,7 @@ class TestDataConstants {
                 "name": "Exponential Distribution",
                 "domain": "RealPos",
                 "descriptiveString": "The exponential distribution models the waiting time between events that occur at a constant rate, \u{039B}.",
-                "parameters": [{"name": "\u{039B}", "type": "RealPos", "descriptiveString": "The rate parameter of the process"}]
+                "parameters": [{"name": "\u{039B}", "type": "RealPos", "dimension": 0, "descriptiveString": "The rate parameter of the process"}]
 
             }
 """
@@ -67,8 +67,8 @@ class TestDataConstants {
             "name": "Lognormal Distribution",
             "domain": "RealPos",
             "descriptiveString": "Lognormal distribution is the distribution for a log-transformed normally distributed random variable with mean 'mu' and standard deviation 'sigma'.",
-            "parameters": [{"name": "\u{03BC}", "type": "Real", "descriptiveString": "The mean in log-space (observed mean is exp(m))."},
-                            {"name": "\u{03C3}", "type": "RealPos", "descriptiveString": "The standard deviation in log-space."}
+            "parameters": [{"name": "\u{03BC}", "type": "Real", "dimension": 0, "descriptiveString": "The mean in log-space (observed mean is exp(m))."},
+                            {"name": "\u{03C3}", "type": "RealPos", "dimension": 0,"descriptiveString": "The standard deviation in log-space."}
                                         ],
         }
         
@@ -78,8 +78,8 @@ static let normalDistribution =  """
                 "name": "Normal Distribution",
                 "domain": "Real",
                 "descriptiveString": "The normal distribution, also known as the Gaussian or Bell-shaped distribution, is used to model many biological phenomena, partly because of the Central Limit Theorem.",
-                "parameters": [{"name": "\u{03BC}", "type": "Real", "descriptiveString": "The mean of the normal distribution"},
-                                {"name": "\u{03C3}", "type": "RealPos", "descriptiveString": "The standard deviation of the distribution."}
+                "parameters": [{"name": "\u{03BC}", "type": "Real", "dimension": 0, "descriptiveString": "The mean of the normal distribution"},
+                                {"name": "\u{03C3}", "type": "RealPos", "dimension": 0, "descriptiveString": "The standard deviation of the distribution."}
                                 ]
 
             }
@@ -90,8 +90,8 @@ static let normalDistribution =  """
                     "name": "Gamma Distribution",
                     "domain": "RealPos",
                     "descriptiveString": "The gamma distribution represents a generalization of the exponential, with the rate being the scale parameter and the number of summed sojourn times being the scale.",
-                    "parameters": [{"name": "\u{03B1}", "type": "RealPos", "descriptiveString": "The shape parameter of the gamma distribution."},
-                                    {"name": "\u{03D0}", "type": "RealPos", "descriptiveString": "The scale parameter of the gamma distribution."}
+                    "parameters": [{"name": "\u{03B1}", "type": "RealPos", "dimension": 0, "descriptiveString": "The shape parameter of the gamma distribution."},
+                                    {"name": "\u{03D0}", "type": "RealPos", "dimension": 0, "descriptiveString": "The scale parameter of the gamma distribution."}
                                     ]
 
                 }
@@ -103,7 +103,7 @@ static let normalDistribution =  """
                     "name": "Poisson Distribution",
                     "domain": "Natural",
                     "descriptiveString": "The Poisson distribution models the number of events that occur in some time interval when the rate at which the events occur is constant.",
-                    "parameters": [{"name": "\u{039B}", "type": "RealPos", "descriptiveString": "The rate parameter of the process."}]
+                    "parameters": [{"name": "\u{039B}", "type": "RealPos", "dimension": 0, "descriptiveString": "The rate parameter of the process."}]
 
                 }
     """
@@ -113,7 +113,7 @@ static let normalDistribution =  """
                     "name": "Uniform Topology",
                     "domain": "Tree",
                     "descriptiveString": "to be added",
-                    "parameters": [{"name": "taxa", "type": "Taxon[]", "descriptiveString": "The vector of taxa that will be used for the tips."}]
+                    "parameters": [{"name": "taxa", "type": "Taxon", "dimension": 1, "descriptiveString": "The vector of taxa that will be used for the tips."}]
 
                 }
     """
@@ -178,27 +178,41 @@ static let normalDistribution =  """
     static let BranchLengthTree =  """
                 {
                     "type": "\(PalettItem.PaletteVariableType.BranchLengthTree.rawValue)",
-                    "superclasses": ["Tree"],
+                    "superclasses": ["\(PalettItem.PaletteVariableType.Tree.rawValue)"],
                     "dimension": 0,
                 }
     """
     
-    static let mockPaletteItems = [Integer, Real, RealPos, RealVector, RealMatrix, RealPosVector, RealPosMatrix, BranchLengthTree]
+    static let Tree = """
+    
+    {
+                        "type": "\(PalettItem.PaletteVariableType.Tree.rawValue)",
+                        "superclasses": [],
+                        "dimension": 0,
+    }
+    
+    """
+    
+    
+    static let mockPaletteItems = [Integer, Real, RealPos, RealVector, RealMatrix, RealPosVector, RealPosMatrix, BranchLengthTree, Tree]
     
 //    MARK: -- Model Tool: Mock Functions
     
  
-    static let mockFunction =  """
-                {
-                    "name": "Location",
-                    "domain": "Real",
-                    "descriptiveString": "ln(M) - Sq(sigma)/2",
-                    "parameters": [{"name": "M", "type": "RealPos", "descriptiveString": "Mean."},
-                                    {"name": "\u{03C3}", "type": "RealPos", "descriptiveString": "Starndard deviation."}
-                                    ]
+    static let treeAssembly = """
+                        {
+                            "name": "TreeAssembly",
+                            "domain": "Tree",
+                            "descriptiveString": "to be added",
+                            "parameters": [{"name": "topology", "type": "Tree", "dimension": 0, "descriptiveString": "The tree topology variable."},
+                                            {"name": "brlens", "type": "RealPos", "dimension": 1, "descriptiveString": "The vector of branch lengths."}
+                                            ]
 
-                }
+                        }
+        
     """
+    
+    static let mockFunctions = [treeAssembly]
 }
 
 

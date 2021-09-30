@@ -21,6 +21,7 @@ class ModelPaletteItemController: NSViewController {
         setUpTitle()
     }
     
+    weak var delegate: ModelVariableControllerDelegate?
    
     
     func setUpTitle() {

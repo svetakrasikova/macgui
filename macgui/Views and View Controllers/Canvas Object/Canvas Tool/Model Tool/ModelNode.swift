@@ -40,7 +40,7 @@ class ModelNode: Connectable {
         }
     }
    
-    dynamic var constantValue: Double = 0.0 {
+    dynamic var constantValue: Any? {
         didSet {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
         }

@@ -29,7 +29,7 @@ class PalettItem: NSObject, Codable, NSCoding {
     }
     
     enum PaletteVariableType: String {
-        case BranchLengthTree
+        case BranchLengthTree, Tree
     }
     
     init(name: String, superclasses: [String]?) {
