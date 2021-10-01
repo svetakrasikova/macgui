@@ -148,7 +148,8 @@ extension ModelPaletteViewController: NSOutlineViewDelegate {
             pasteboard.clearContents()
             let name = item.0.type
             let type = item.1.rawValue
-            let pasteboardString = "\(name):\(type)"
+            let dimension = item.0.dimension
+            let pasteboardString = "\(name):\(type):\(dimension)"
             pasteboard.writeObjects([pasteboardString as NSString])
             return true
         }

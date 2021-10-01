@@ -82,7 +82,7 @@ class ModelNode: Connectable {
         self.parameterName = aDecoder.decodeObject(forKey: CodingKeys.parameterName.rawValue) as? String
         self.distribution = aDecoder.decodeObject(forKey: CodingKeys.distribution.rawValue) as? Distribution
         self.distributionParameters = aDecoder.decodeObject(forKey: CodingKeys.distributionParameters.rawValue) as? [ModelNode] ?? []
-        self.constantValue = aDecoder.decodeDouble(forKey: CodingKeys.constantValue.rawValue)
+        self.constantValue = aDecoder.decodeObject(forKey: CodingKeys.constantValue.rawValue)
         self.observedValue = aDecoder.decodeObject(forKey: CodingKeys.observedValue.rawValue) as? NumberList ?? NumberList()
         super.init(coder: aDecoder)
     }

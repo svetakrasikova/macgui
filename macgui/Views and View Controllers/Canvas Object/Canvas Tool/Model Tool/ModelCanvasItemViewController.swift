@@ -85,6 +85,7 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
         let constantController = NSStoryboard.loadVC(StoryBoardName.constantController) as! ModelConstantController
         if let node = self.tool as? ModelNode, let canvasVC = self.modelCanvas {
             constantController.modelNode = node
+            constantController.delegate = canvasVC
         }
         return constantController
     }()

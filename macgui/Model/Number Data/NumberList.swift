@@ -20,6 +20,7 @@ class NumberList: NSObject, NSCoding {
     }
     
     dynamic var name: String = "unnamed"
+   
     var type: NumberListType {
         didSet {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)

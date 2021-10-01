@@ -122,7 +122,6 @@ class ModelCanvasViewController: GenericCanvasViewController {
     
     override func removeConnectable(viewController: CanvasObjectViewController) {
         guard let node = viewController.tool as? ModelNode else { return }
-        guard let canvasVC = viewController.parent as? GenericCanvasViewController else { return }
     
         super.removeConnectable(viewController: viewController)
         if let model = self.model, let index = model.nodes.firstIndex(of: node){
@@ -232,11 +231,11 @@ class ModelCanvasViewController: GenericCanvasViewController {
         resettingCanvasView = false
     }
     
-    func getPalettVariableWithName(_ name: String) -> PaletteVariable? {
+    func getPalettVariableWithName(_ name: String, dimension: Int) -> PaletteVariable? {
         if let model = self.model {
             for item in model.palettItems {
                 guard let item = item as? PaletteVariable else {return nil}
-                if item.type == name {
+                if item.type == name, item.dimension == dimension {
                     return item
                 }
             }
@@ -266,7 +265,8 @@ extension ModelCanvasViewController: ModelCanvasViewDelegate {
             addPlateToModel(frame: canvasItemFrame(center: center, dimension: plateDimension))
         default:
             guard let nodeDimension = self.canvasView.canvasObjectDimension else { return }
-            guard let variableName = getPalettVariableWithName(String(variableData[0])) else { return }
+            guard let variableDimension = Int(variableData[2]) else { return }
+            guard let variableName = getPalettVariableWithName(String(variableData[0]), dimension: variableDimension) else { return }
             guard let variableType = PaletteVariable.VariableType(rawValue: String(variableData[1])) else { return }
             addVariableToModel(frame: canvasItemFrame(center: center, dimension: nodeDimension), item: variableName, type: variableType)
         }

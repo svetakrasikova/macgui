@@ -10,11 +10,16 @@ import Cocoa
 
 class ModelConstantController: ModelPaletteItemController {
 
-    @IBOutlet weak var valueComboBox: NSComboBox!
     
+    @IBOutlet weak var valueComboBox: NSComboBox!
+    @IBOutlet weak var valuePopup: NSPopUpButton!
+    
+    @IBOutlet weak var popupStack: NSStackView!
+    @IBOutlet weak var comboStack: NSStackView!
+    @IBOutlet var arrayController: NSArrayController!
     
     @objc dynamic var valueData: [NumberList] {
-        guard let modelNode = modelNode, modelNode.nodeType == .randomVariable else { return [] }
+        guard let modelNode = modelNode else { return [] }
         guard let variable = modelNode.node as? PaletteVariable else { return [] }
         var data: [NumberList] = []
         if let delegate = self.delegate as? ModelCanvasViewController, let model = delegate.model {
@@ -30,19 +35,35 @@ class ModelConstantController: ModelPaletteItemController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setComboBoxFormatter()
+        setValueSelector()
+        
     }
     
     override func viewWillAppear() {
         super.viewWillAppear()
+        arrayController.content = valueData
         
     }
     
-    func setComboBoxFormatter() {
-        let onlyNumbersFormatter = OnlyNumbersFormatter()
-        onlyNumbersFormatter.minimumFractionDigits = 2
-        valueComboBox.formatter = onlyNumbersFormatter
+    func setValueSelector() {
+        guard let modelNode = modelNode, let variable = modelNode.node as? PaletteVariable
+        else { return }
+        switch variable.dimension {
+        case 0:
+            displayValueSelector(hideCombo: false)
+            let onlyNumbersFormatter = NumberFormatter()
+            onlyNumbersFormatter.minimumFractionDigits = 2
+            valueComboBox.formatter = onlyNumbersFormatter
+        default:
+            displayValueSelector(hideCombo: true)
+        }
+        
     }
-
     
+    func displayValueSelector(hideCombo: Bool) {
+            comboStack.isHidden = hideCombo
+            popupStack.isHidden = !hideCombo
+    }
+    
+   
 }
