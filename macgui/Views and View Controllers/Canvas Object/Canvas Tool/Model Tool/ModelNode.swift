@@ -46,14 +46,14 @@ class ModelNode: Connectable {
         }
     }
     
-    dynamic var observedValue: NumberList = NumberList() {
+    dynamic var observedValue: Any? {
         didSet {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
         }
     }
     
     dynamic var clamped: Bool {
-        return !observedValue.isEmpty
+        return observedValue != nil
     }
     
     enum CodingKeys: String {
@@ -83,7 +83,7 @@ class ModelNode: Connectable {
         self.distribution = aDecoder.decodeObject(forKey: CodingKeys.distribution.rawValue) as? Distribution
         self.distributionParameters = aDecoder.decodeObject(forKey: CodingKeys.distributionParameters.rawValue) as? [ModelNode] ?? []
         self.constantValue = aDecoder.decodeObject(forKey: CodingKeys.constantValue.rawValue)
-        self.observedValue = aDecoder.decodeObject(forKey: CodingKeys.observedValue.rawValue) as? NumberList ?? NumberList()
+        self.observedValue = aDecoder.decodeObject(forKey: CodingKeys.observedValue.rawValue)
         super.init(coder: aDecoder)
     }
     
@@ -108,12 +108,11 @@ class ModelNode: Connectable {
        
     }
     
-    func changeObservedValueTo(_ value: NumberList?) {
-        if let list = value {
-            list.observed = true
-            observedValue = list
+    func changeObservedValueTo(_ value: TypeBundle?) {
+        if let data = value {
+            observedValue = data
         } else {
-            observedValue = NumberList()
+            observedValue = nil
         }
     }
     

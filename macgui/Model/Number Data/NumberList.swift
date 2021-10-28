@@ -55,22 +55,17 @@ class NumberList: NSObject, NSCoding {
     
     dynamic var observed: Bool = false
     
-    var size: (Int, Int)? {
-        switch dimension {
-        case 0: return (1,0)
-        case 1:
-            guard let vector = (valueList.first as? [Any]) else { return nil }
-            let numberRows = vector.count
-            return (numberRows,0)
-        case 2:
-            guard let matrix = (valueList.first as? [Any]) else { return nil }
-            let numberRows = matrix.count
-            guard let numberColums = (matrix.first as? [Any])?.count else { return nil}
-            return (numberRows, numberColums)
-        default: return nil
+    var numberBundles: [TypeBundle] {
+        var nb = [TypeBundle]()
+        let size = self.valueList.count
+        for index in 0..<size {
+            nb.append(self.numberBundleAtIndex(index))
         }
+        
+        return nb
     }
     
+ 
     var isEmpty: Bool {
         return valueList.isEmpty
     }
@@ -92,6 +87,13 @@ class NumberList: NSObject, NSCoding {
         (self.dimension, self.type, self.valueList) = try NumberList.parseNumberList(dataAsString, dimension: 0, type: NumberListType.Real)
         
     }
+    
+    func numberBundleAtIndex(_ index: Int) -> TypeBundle {
+        let value = self.valueList[index]
+        let str = self.stringValue(index: index)
+        return TypeBundle(value: value, type: self.type.rawValue, dimension: self.dimension, valueString: str)
+    }
+    
 
     
     func stringValue(index: Int) -> String {
@@ -209,6 +211,21 @@ class NumberList: NSObject, NSCoding {
         self.valueList.append(contentsOf: aList.valueList)
     }
     
+    class func flattenLists(lists: [NumberList]) throws -> NumberList {
+        let flat = NumberList()
+        let dimension: Int = lists[0].dimension
+        flat.dimension = dimension
+        flat.type = lists[0].type
+        flat.valueList = lists[0].valueList
+
+        for i in 1..<lists.count {
+            guard lists[i].dimension == dimension else { throw NumberListError.NumberListDimensionError }
+            flat.updateTypeTo(lists[i].type)
+            flat.valueList.append(contentsOf: lists[i].valueList)
+        }
+        return flat
+    }
+    
     func updateTypeTo(_ type: NumberListType) {
         switch self.type {
         case .Natural:
@@ -267,3 +284,4 @@ enum NumberListType: String, CaseIterable {
 enum NumberListDimension: Int {
     case number, vector, matrix
 }
+

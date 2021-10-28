@@ -110,13 +110,13 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
                     plateIndex = outerLoop.indexPath()
                 }
                 if oldValue == nil && !canvasVC.resettingCanvasView {
-                    modelNode.observedValue = NumberList()
+                    modelNode.observedValue = nil
                 }
                 
             } else {
                 plateIndex = nil
                 if oldValue != nil && !canvasVC.resettingCanvasView {
-                    modelNode.observedValue = NumberList()
+                    modelNode.observedValue = nil
                 }
             }
             view.needsDisplay = true

@@ -34,22 +34,26 @@ class ModelStochasticVariableController: ModelVariableController {
         
     }
     
+
+    
     func selectDataForClamping() {
         guard let node = self.modelNode else { return }
         switch clampButton.state {
         case .on:
-          if let observedDataList = clampArrayController.selectedObjects.first as? NumberList {
-            node.changeObservedValueTo(observedDataList)
-            guard let size = observedDataList.size else { return }
-            updatePlateRange(size, clampedRange: true)
-          }
+            if let observedData = clampArrayController.selectedObjects.first as? TypeBundle {
+                node.changeObservedValueTo(observedData)
+                observedNumberLists?.forEach {$0.observed = true }
+                guard let size = observedData.numberBundleSize else { return }
+                updatePlateRange(size, clampedRange: true)
+            }
         case .off:
             updatePlateRange((1,1), clampedRange: false)
             node.changeObservedValueTo(nil)
-            
         default: break
         }
     }
+    
+    var observedNumberLists: [NumberList]?
     
     func updatePlateRange(_ newRange: (Int, Int), clampedRange: Bool) {
         guard let canvasVC = self.delegate as? ModelCanvasViewController else { return }
@@ -68,19 +72,35 @@ class ModelStochasticVariableController: ModelVariableController {
         }
     }
     
-    @objc dynamic var observedData: [NumberList] {
-        guard let modelNode = modelNode, modelNode.nodeType == .randomVariable else { return [] }
-        guard let variable = modelNode.node as? PaletteVariable else { return [] }
-        guard let nodeEmbedLevel = nodeEmbedLevel else { return [] }
-        var data: [NumberList] = []
-        if let delegate = self.delegate as? ModelCanvasViewController, let model = delegate.model {
+    @objc dynamic var observedData: [TypeBundle] {
+        var bundles: [TypeBundle] = []
+        guard let modelNode = modelNode, modelNode.nodeType == .randomVariable
+            else { return bundles }
+        guard let variable = modelNode.node as? PaletteVariable
+            else { return bundles }
+        guard let nodeEmbedLevel = nodeEmbedLevel
+            else { return bundles }
+        guard let delegate = self.delegate as? ModelCanvasViewController, let model = delegate.model
+            else { return bundles }
+        if variable.type == MatrixDataType.AbstractHomologousDiscreteCharacterData.rawValue || variable.superclasses.contains(MatrixDataType.AbstractHomologousDiscreteCharacterData.rawValue) {
+            for dm in model.dataMatrices {
+                bundles.append(TypeBundle(dataMatrix: dm))
+            }
+        } else {
+            var data = [NumberList]()
+            
             for l in model.numberData.numberLists {
                 if variable.type == l.type.rawValue && variable.dimension + nodeEmbedLevel == l.dimension {
                     data.append(l)
                 }
             }
+            
+            guard !data.isEmpty else { return [] }
+            let numberList = try! NumberList.flattenLists(lists: data)
+            observedNumberLists = data
+            bundles = numberList.numberBundles
         }
-        return data
+        return bundles
     }
     
     var nodeEmbedLevel: Int? {

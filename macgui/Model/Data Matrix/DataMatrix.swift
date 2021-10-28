@@ -9,7 +9,7 @@
 import Foundation
 
 
-enum DataType: String, Codable {
+enum DataType: String, Codable, CaseIterable {
     
     case DNA = "DNA"
     case RNA = "RNA"
@@ -17,6 +17,10 @@ enum DataType: String, Codable {
     case Standard = "Standard"
     case Continuous = "Continuous"
     case Unknown = "Unknown"
+}
+
+enum MatrixDataType: String {
+    case AbstractHomologousDiscreteCharacterData
 }
 
 @objcMembers

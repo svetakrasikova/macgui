@@ -26,6 +26,10 @@ class ModelVariableController: ModelPaletteItemController {
     @IBOutlet weak var param4StackView: NSStackView!
     @IBOutlet weak var param5StackView: NSStackView!
     
+    var dataTypes: [String] {
+        return DataType.allCases.map {$0.rawValue}
+    }
+    
     var boxHeightConstraint = NSLayoutConstraint()
     
     var parametersStack: [NSStackView] {
@@ -111,6 +115,8 @@ class ModelVariableController: ModelPaletteItemController {
                         if parameter.dimension == 1 {
                             selectionItemNames = Array(model.taxaDict.keys)
                         }
+                    case "DataType":
+                        selectionItemNames = dataTypes
                     default:
                         var modelNodes: [ModelNode] = []
                         for connection in model.edges {
@@ -136,6 +142,10 @@ class ModelVariableController: ModelPaletteItemController {
                         } else {
                             if let matrixTaxaPair = modelNode.distributionParameters[index] as? (String, [String]) {
                                 itemToSelect = popup.item(withTitle: matrixTaxaPair.0)
+                            } else if let dataType = modelNode.distributionParameters[index] as? String, dataTypes.contains(dataType) {
+                                itemToSelect = popup.item(withTitle: dataType)
+                            } else {
+                                itemToSelect = popup.item(withTitle: "<no selection>")
                             }
                            
                         }
@@ -228,18 +238,23 @@ class ModelVariableController: ModelPaletteItemController {
         if let delegate = self.delegate as? ModelCanvasViewController, let modelNode = self.modelNode, let selectedDistribution = distributions.first(where: { $0.name == distributionPopup.selectedItem?.title}) {
             modelNode.distribution = selectedDistribution
             modelNode.distributionParameters.removeAll()
+            let numberOfParam = selectedDistribution.parameters.count
+            modelNode.distributionParameters = Array(repeating: 0, count: numberOfParam)
             for (index, _) in parameters.enumerated() {
                 guard index < parametersStack.count else { return }
                 let parameterStackView = parametersStack[index]
                 for subview in parameterStackView.subviews {
                     if let parameterPopup = subview as? NSPopUpButton {
                         if let parameterNode = delegate.model?.nodes.first(where: {$0.parameterName == parameterPopup.selectedItem?.title}) {
-                            modelNode.distributionParameters.append(parameterNode)
+                            modelNode.distributionParameters[index] = parameterNode
                         } else {
                             if let matrixName = parameterPopup.selectedItem?.title, let taxa = delegate.model?.taxaDict[matrixName] {
                                 let matrixTaxaPair = (matrixName, taxa)
-                                modelNode.distributionParameters.append(matrixTaxaPair)
+                                modelNode.distributionParameters[index] = matrixTaxaPair
+                            } else if let dataType = parameterPopup.selectedItem?.title, dataTypes.contains(dataType) {
+                                modelNode.distributionParameters[index] = dataType
                             }
+                            
                         }
                         break
                     }

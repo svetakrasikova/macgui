@@ -139,7 +139,7 @@ DQ
                                             <rect key="frame" x="59" y="177" width="228" height="0.0"/>
                                             <subviews>
                                                 <stackView hidden="YES" distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f9y-nl-KST" userLabel="Parameter 1">
-                                                    <rect key="frame" x="0.0" y="-20" width="225" height="20"/>
+                                                    <rect key="frame" x="3" y="-20" width="225" height="20"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FAi-Ap-epb">
                                                             <rect key="frame" x="-2" y="2" width="35" height="16"/>
@@ -174,7 +174,7 @@ DQ
                                                     </customSpacing>
                                                 </stackView>
                                                 <stackView hidden="YES" distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUG-hd-AWE" userLabel="Parameter 2">
-                                                    <rect key="frame" x="0.0" y="-20" width="225" height="20"/>
+                                                    <rect key="frame" x="3" y="-20" width="225" height="20"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yoX-nj-xgQ">
                                                             <rect key="frame" x="-2" y="2" width="35" height="16"/>
@@ -209,7 +209,7 @@ DQ
                                                     </customSpacing>
                                                 </stackView>
                                                 <stackView hidden="YES" distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ssA-SX-533" userLabel="Parameter 3">
-                                                    <rect key="frame" x="0.0" y="-20" width="225" height="20"/>
+                                                    <rect key="frame" x="3" y="-20" width="225" height="20"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iuV-TN-jZO">
                                                             <rect key="frame" x="-2" y="2" width="35" height="16"/>
@@ -244,7 +244,7 @@ DQ
                                                     </customSpacing>
                                                 </stackView>
                                                 <stackView hidden="YES" distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3tm-af-RH1" userLabel="Parameter 4">
-                                                    <rect key="frame" x="0.0" y="-20" width="225" height="20"/>
+                                                    <rect key="frame" x="3" y="-20" width="225" height="20"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KWS-su-eWu">
                                                             <rect key="frame" x="-2" y="2" width="35" height="16"/>
@@ -279,7 +279,7 @@ DQ
                                                     </customSpacing>
                                                 </stackView>
                                                 <stackView hidden="YES" distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hy5-p5-h12" userLabel="Parameter 5">
-                                                    <rect key="frame" x="0.0" y="-20" width="225" height="20"/>
+                                                    <rect key="frame" x="3" y="-20" width="225" height="20"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T0c-Nl-O24">
                                                             <rect key="frame" x="-2" y="2" width="35" height="16"/>
@@ -315,7 +315,11 @@ DQ
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="4cO-KR-2B0" firstAttribute="trailing" secondItem="u3T-f2-lyz" secondAttribute="trailing" id="5ha-7z-yh3"/>
                                                 <constraint firstItem="oQW-Ob-8ax" firstAttribute="width" secondItem="lEF-fo-alP" secondAttribute="width" id="DC5-vQ-PPb"/>
+                                                <constraint firstItem="u3T-f2-lyz" firstAttribute="trailing" secondItem="7s4-Qm-LGj" secondAttribute="trailing" id="GYn-st-aYS"/>
+                                                <constraint firstItem="oQW-Ob-8ax" firstAttribute="trailing" secondItem="lEF-fo-alP" secondAttribute="trailing" id="T9P-ON-usd"/>
+                                                <constraint firstItem="lEF-fo-alP" firstAttribute="trailing" secondItem="4cO-KR-2B0" secondAttribute="trailing" id="YUu-I2-rEU"/>
                                                 <constraint firstItem="oQW-Ob-8ax" firstAttribute="width" secondItem="4cO-KR-2B0" secondAttribute="width" id="gZI-C1-igJ"/>
                                                 <constraint firstItem="oQW-Ob-8ax" firstAttribute="width" secondItem="7s4-Qm-LGj" secondAttribute="width" id="ncZ-Oq-3rK"/>
                                                 <constraint firstItem="oQW-Ob-8ax" firstAttribute="width" secondItem="u3T-f2-lyz" secondAttribute="width" id="oOs-Lg-eMj"/>
@@ -365,8 +369,8 @@ DQ
                                                     <connections>
                                                         <action selector="selectDataforClamping:" target="cKf-d5-poh" id="KN3-PX-5o9"/>
                                                         <binding destination="lcO-op-o9n" name="content" keyPath="arrangedObjects" id="oe5-va-u9X"/>
-                                                        <binding destination="lcO-op-o9n" name="contentValues" keyPath="arrangedObjects.name" previousBinding="oe5-va-u9X" id="WXq-eb-iGp"/>
-                                                        <binding destination="lcO-op-o9n" name="selectedIndex" keyPath="selectionIndex" previousBinding="WXq-eb-iGp" id="juo-VU-Uac"/>
+                                                        <binding destination="lcO-op-o9n" name="contentValues" keyPath="arrangedObjects.valueString" previousBinding="oe5-va-u9X" id="sJc-9V-kmv"/>
+                                                        <binding destination="lcO-op-o9n" name="selectedIndex" keyPath="selectionIndex" id="NO4-P4-ep1"/>
                                                         <binding destination="cKf-d5-poh" name="enabled" keyPath="self.enableClampSelection" id="JMz-Sr-HvU"/>
                                                     </connections>
                                                 </popUpButton>
@@ -389,6 +393,7 @@ DQ
                                         <constraint firstAttribute="trailing" secondItem="KNV-gw-yon" secondAttribute="trailing" constant="20" id="Jc1-gO-LR4"/>
                                         <constraint firstItem="ptg-Lq-bLN" firstAttribute="width" secondItem="ZQ6-6c-LWN" secondAttribute="width" id="NYW-gC-Ok2"/>
                                         <constraint firstItem="huH-y0-sRL" firstAttribute="top" secondItem="KNV-gw-yon" secondAttribute="bottom" constant="20" id="NyV-80-rTM"/>
+                                        <constraint firstItem="ptg-Lq-bLN" firstAttribute="trailing" secondItem="ZQ6-6c-LWN" secondAttribute="trailing" id="eed-hN-kY9"/>
                                         <constraint firstItem="KNV-gw-yon" firstAttribute="leading" secondItem="a3A-a8-h9e" secondAttribute="leading" constant="20" id="gGS-4w-ko0"/>
                                         <constraint firstAttribute="bottom" secondItem="dGa-Rd-icN" secondAttribute="bottom" constant="20" id="geY-rA-530"/>
                                         <constraint firstAttribute="trailing" secondItem="dGa-Rd-icN" secondAttribute="trailing" constant="20" id="glS-Le-XAZ"/>
@@ -396,6 +401,7 @@ DQ
                                         <constraint firstItem="dGa-Rd-icN" firstAttribute="leading" secondItem="a3A-a8-h9e" secondAttribute="leading" constant="20" id="ixF-TO-NZz"/>
                                         <constraint firstItem="oQW-Ob-8ax" firstAttribute="width" secondItem="ZQ6-6c-LWN" secondAttribute="width" id="kQK-xL-wBn"/>
                                         <constraint firstItem="vx2-MA-xnl" firstAttribute="top" secondItem="a3A-a8-h9e" secondAttribute="top" constant="20" id="otf-84-oDv"/>
+                                        <constraint firstItem="7s4-Qm-LGj" firstAttribute="trailing" secondItem="ZQ6-6c-LWN" secondAttribute="trailing" id="uEe-oE-L9Z"/>
                                         <constraint firstItem="vx2-MA-xnl" firstAttribute="leading" secondItem="a3A-a8-h9e" secondAttribute="leading" constant="20" id="ydO-HR-BJC"/>
                                         <constraint firstItem="huH-y0-sRL" firstAttribute="leading" secondItem="a3A-a8-h9e" secondAttribute="leading" constant="59" id="zSb-zY-yh9"/>
                                     </constraints>

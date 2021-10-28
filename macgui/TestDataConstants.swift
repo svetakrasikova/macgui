@@ -118,7 +118,21 @@ static let normalDistribution =  """
                 }
     """
     
-    static let mockDistributions = [ gammaDistribution, normalDistribution, poissonDistribution, exponentialDistribution, logNormalDistribution, uniformTopology]
+//    TODO: PhyloCTMC(tree: variable, Q: matrix model, type = String)
+    static let PhyloCTMC =  """
+                {
+                    "name": "PhyloCTMC",
+                    "domain": "\(MatrixDataType.AbstractHomologousDiscreteCharacterData.rawValue)",
+                    "descriptiveString": "to be added",
+                    "parameters": [{"name": "tree", "type": "Tree", "dimension": 0, "descriptiveString": "The tree along which the process evolves."},
+                        {"name": "Q", "type": "Real", "dimension": 2, "descriptiveString": "The global, branch-specific or site-mixture rate matrices."},
+                        {"name": "type", "type": "DataType", "dimension": 0, "descriptiveString": "The data type, used for simulation and initialization."}
+                        ]
+
+                }
+    """
+    
+    static let mockDistributions = [ gammaDistribution, normalDistribution, poissonDistribution, exponentialDistribution, logNormalDistribution, uniformTopology, PhyloCTMC]
 
     
 //    MARK: -- Model Tool: Mock Palette Items
@@ -193,8 +207,17 @@ static let normalDistribution =  """
     
     """
     
+    static let AbstractHomologousDiscreteCharacterData = """
     
-    static let mockPaletteItems = [Integer, Real, RealPos, RealVector, RealMatrix, RealPosVector, RealPosMatrix, BranchLengthTree, Tree]
+    {
+                        "type": "\(MatrixDataType.AbstractHomologousDiscreteCharacterData.rawValue)",
+                        "superclasses": [],
+                        "dimension": 2,
+    }
+    
+    """
+    
+    static let mockPaletteItems = [Integer, Real, RealPos, RealVector, RealMatrix, RealPosVector, RealPosMatrix, BranchLengthTree, Tree, AbstractHomologousDiscreteCharacterData]
     
 //    MARK: -- Model Tool: Mock Functions
     

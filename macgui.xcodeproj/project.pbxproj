@@ -133,6 +133,7 @@
 		14B5852C225819F6003EB752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5852A225819F6003EB752 /* MainWindowController.swift */; };
 		14BF307D23E236F100426D7A /* ModelCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF307C23E236F100426D7A /* ModelCanvasView.swift */; };
 		14BF307F23E4BD9700426D7A /* LineOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF307E23E4BD9600426D7A /* LineOverlay.swift */; };
+		14C1D47A2709417B0020C2F5 /* TypeBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1D4792709417B0020C2F5 /* TypeBundle.swift */; };
 		14C618DE23DFC16C001FFFD6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618DD23DFC16C001FFFD6 /* Color.swift */; };
 		14C618E023E0E0CE001FFFD6 /* ModelCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */; };
 		14C618E323E0E0FB001FFFD6 /* ModelPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */; };
@@ -1636,6 +1637,7 @@
 		14B5852A225819F6003EB752 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		14BF307C23E236F100426D7A /* ModelCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasView.swift; sourceTree = "<group>"; };
 		14BF307E23E4BD9600426D7A /* LineOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineOverlay.swift; sourceTree = "<group>"; };
+		14C1D4792709417B0020C2F5 /* TypeBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBundle.swift; sourceTree = "<group>"; };
 		14C618DD23DFC16C001FFFD6 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasViewController.swift; sourceTree = "<group>"; };
 		14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPaletteViewController.swift; sourceTree = "<group>"; };
@@ -8695,6 +8697,7 @@
 			children = (
 				14E22D472645AAA40090B860 /* NumberData.swift */,
 				14E22D492645ABA70090B860 /* NumberList.swift */,
+				14C1D4792709417B0020C2F5 /* TypeBundle.swift */,
 			);
 			path = "Number Data";
 			sourceTree = "<group>";
@@ -9812,6 +9815,7 @@
 				14E008F8261BCAE600D97E68 /* Func_listOptions.cpp in Sources */,
 				14E005F0261BCAE400D97E68 /* RateMatrix_TIM.cpp in Sources */,
 				14E00609261BCAE400D97E68 /* RateMatrix_JC.cpp in Sources */,
+				14C1D47A2709417B0020C2F5 /* TypeBundle.swift in Sources */,
 				14E0068A261BCAE400D97E68 /* DistributionBeta.cpp in Sources */,
 				14E00883261BCAE600D97E68 /* RlDnaState.cpp in Sources */,
 				14E006D1261BCAE400D97E68 /* SimplexFunction.cpp in Sources */,
