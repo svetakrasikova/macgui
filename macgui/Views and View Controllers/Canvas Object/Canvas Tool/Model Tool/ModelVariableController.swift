@@ -140,8 +140,8 @@ class ModelVariableController: ModelPaletteItemController {
                         if let selectedNode = modelNode.distributionParameters[index] as? ModelNode, let selectedNodeName = selectedNode.parameterName {
                             itemToSelect = popup.item(withTitle: selectedNodeName)
                         } else {
-                            if let matrixTaxaPair = modelNode.distributionParameters[index] as? (String, [String]) {
-                                itemToSelect = popup.item(withTitle: matrixTaxaPair.0)
+                            if let matrixTaxaPair = modelNode.distributionParameters[index] as? MatrixTaxaPair {
+                                itemToSelect = popup.item(withTitle: matrixTaxaPair.matrixName)
                             } else if let dataType = modelNode.distributionParameters[index] as? String, dataTypes.contains(dataType) {
                                 itemToSelect = popup.item(withTitle: dataType)
                             } else {
@@ -249,7 +249,7 @@ class ModelVariableController: ModelPaletteItemController {
                             modelNode.distributionParameters[index] = parameterNode
                         } else {
                             if let matrixName = parameterPopup.selectedItem?.title, let taxa = delegate.model?.taxaDict[matrixName] {
-                                let matrixTaxaPair = (matrixName, taxa)
+                                let matrixTaxaPair = MatrixTaxaPair(matrixName: matrixName, taxaList: taxa)
                                 modelNode.distributionParameters[index] = matrixTaxaPair
                             } else if let dataType = parameterPopup.selectedItem?.title, dataTypes.contains(dataType) {
                                 modelNode.distributionParameters[index] = dataType
@@ -272,4 +272,30 @@ class ModelVariableController: ModelPaletteItemController {
 protocol ModelVariableControllerDelegate: AnyObject {
     func getDistributionsForParameter(_ modelNode: ModelNode) -> [Distribution]
     func getFunctionsForParameter(_ modelNode: ModelNode) -> [Distribution]
+}
+
+class MatrixTaxaPair: NSObject, NSCoding {
+    
+    enum CodingKey: String {
+        case matrixName, taxaList
+    }
+    var matrixName: String
+    var taxaList: [String]
+    
+    init(matrixName: String, taxaList: [String]) {
+        self.matrixName = matrixName
+        self.taxaList = taxaList
+    }
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(matrixName, forKey: CodingKey.matrixName.rawValue)
+        coder.encode(taxaList, forKey: CodingKey.taxaList.rawValue)
+    }
+    
+    required init?(coder: NSCoder) {
+        matrixName = coder.decodeObject(forKey: CodingKey.matrixName.rawValue) as? String ?? "unnamed"
+        taxaList = coder.decodeObject(forKey: CodingKey.taxaList.rawValue) as? [String] ?? []
+    }
+    
+    
 }
