@@ -65,19 +65,19 @@ class ModelConstantController: ModelPaletteItemController {
         else { return }
         switch variable.dimension {
         case 0:
-            displayValueSelector(hideCombo: false)
+            displayValueSelector(hideTextField: false)
             let onlyNumbersFormatter = NumberFormatter()
             onlyNumbersFormatter.minimumFractionDigits = 2
             valueTextField.formatter = onlyNumbersFormatter
         default:
-            displayValueSelector(hideCombo: true)
+            displayValueSelector(hideTextField: true)
         }
         
     }
     
-    func displayValueSelector(hideCombo: Bool) {
-            textFieldStack.isHidden = hideCombo
-            popupStack.isHidden = !hideCombo
+    func displayValueSelector(hideTextField: Bool) {
+            textFieldStack.isHidden = hideTextField
+            popupStack.isHidden = !hideTextField
     }
     
    
