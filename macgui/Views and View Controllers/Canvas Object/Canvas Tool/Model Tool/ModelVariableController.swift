@@ -121,7 +121,8 @@ class ModelVariableController: ModelPaletteItemController {
                         var modelNodes: [ModelNode] = []
                         for connection in model.edges {
                             if modelNode == connection.to, let modelNode = connection.from as? ModelNode {
-                                if modelNode.node.type == parameter.type {
+                                guard let variable = modelNode.node as? PaletteVariable else { return }
+                                if variable.type == parameter.type && variable.dimension == parameter.dimension {
                                     modelNodes.append(modelNode)
                                 }
                             }
