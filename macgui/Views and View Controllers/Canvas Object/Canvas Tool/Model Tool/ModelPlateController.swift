@@ -105,7 +105,6 @@ class ModelPlateController: LoopController {
         setRangePopup()
         setHelpText()
         setAdditionalParameters(index: plate.rangeType)
-        print("The saved range type: \(plate.rangeType)")
     }
     
     func setRangePopup() {
