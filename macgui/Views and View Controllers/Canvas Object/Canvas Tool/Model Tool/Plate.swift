@@ -31,12 +31,14 @@ class Plate: Loop {
     
     override var outerLoop: Loop? {
         didSet {
-           self.rangeType = Plate.IteratorRange.number.rawValue
+            guard self.rangeType !=  Plate.IteratorRange.numberBranches.rawValue else { return }
+            self.rangeType = Plate.IteratorRange.number.rawValue
         }
     }
     
     dynamic var rangeType: Int = IteratorRange.number.rawValue {
         didSet {
+            let rangeType = rangeType
             if rangeType != IteratorRange.numberBranches.rawValue {
                 assignedMatrix = nil
             }
