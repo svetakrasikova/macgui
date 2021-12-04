@@ -10,8 +10,6 @@ import Cocoa
 
 class ModelPlateController: LoopController {
     
-    
-    
     @IBOutlet weak var box: NSBox!
     @IBOutlet weak var valueTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var numberBranchesTopConstraint: NSLayoutConstraint!
@@ -107,6 +105,7 @@ class ModelPlateController: LoopController {
         setRangePopup()
         setHelpText()
         setAdditionalParameters(index: plate.rangeType)
+        print("The saved range type: \(plate.rangeType)")
     }
     
     func setRangePopup() {
