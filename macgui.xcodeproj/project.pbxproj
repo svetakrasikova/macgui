@@ -139,6 +139,8 @@
 		14C618E323E0E0FB001FFFD6 /* ModelPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */; };
 		14C618E823E20411001FFFD6 /* ModelToolWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618E623E20411001FFFD6 /* ModelToolWindowController.swift */; };
 		14CF75A1243BCF560022B3A8 /* ModelCanvasItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14CF75A0243BCF560022B3A8 /* ModelCanvasItem.storyboard */; };
+		14D2C0C327AA0D0000F00F47 /* analysis_window.png in Resources */ = {isa = PBXBuildFile; fileRef = 14D2C0C127AA0D0000F00F47 /* analysis_window.png */; };
+		14D2C0C427AA0D0000F00F47 /* model_canvas.png in Resources */ = {isa = PBXBuildFile; fileRef = 14D2C0C227AA0D0000F00F47 /* model_canvas.png */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
 		14D6DE03221F47CD00021607 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE02221F47CD00021607 /* MainSplitViewController.swift */; };
 		14D6DE062220B50800021607 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE042220B50800021607 /* CanvasViewController.swift */; };
@@ -1491,6 +1493,7 @@
 		14F29F70252F7FFF001104A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F29F6F252F7FFF001104A9 /* QuartzCore.framework */; };
 		14F29F74252F92B2001104A9 /* TreeSetTool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */; };
 		14F29F79252FAF9C001104A9 /* TreeSetToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F29F78252FAF9C001104A9 /* TreeSetToolViewController.swift */; };
+		14F89EE3276954470065F251 /* ModelNodeChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F89EE2276954470065F251 /* ModelNodeChecker.swift */; };
 		14F95D6623569913009884D2 /* InfoToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D6523569913009884D2 /* InfoToolViewController.swift */; };
 		14F95D6C23569A70009884D2 /* CoreBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14F95D6A23569A70009884D2 /* CoreBridge.mm */; };
 /* End PBXBuildFile section */
@@ -1643,6 +1646,9 @@
 		14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPaletteViewController.swift; sourceTree = "<group>"; };
 		14C618E623E20411001FFFD6 /* ModelToolWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelToolWindowController.swift; sourceTree = "<group>"; };
 		14CF75A0243BCF560022B3A8 /* ModelCanvasItem.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ModelCanvasItem.storyboard; path = "macgui/Views and View Controllers/Canvas Object/Canvas Tool/Model Tool/ModelCanvasItem.storyboard"; sourceTree = SOURCE_ROOT; };
+		14D2C0BF27A4B01A00F00F47 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		14D2C0C127AA0D0000F00F47 /* analysis_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = analysis_window.png; path = "../../../../Documents/Phylogenetics/macgui Images/Screenshots of GUI/analysis_window.png"; sourceTree = "<group>"; };
+		14D2C0C227AA0D0000F00F47 /* model_canvas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = model_canvas.png; path = "../../../../Documents/Phylogenetics/macgui Images/Screenshots of GUI/model_canvas.png"; sourceTree = "<group>"; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
 		14D6DE02221F47CD00021607 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		14D6DE042220B50800021607 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
@@ -4519,6 +4525,7 @@
 		14F29F6F252F7FFF001104A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		14F29F73252F92B2001104A9 /* TreeSetTool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TreeSetTool.storyboard; sourceTree = "<group>"; };
 		14F29F78252FAF9C001104A9 /* TreeSetToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSetToolViewController.swift; sourceTree = "<group>"; };
+		14F89EE2276954470065F251 /* ModelNodeChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNodeChecker.swift; sourceTree = "<group>"; };
 		14F95D6523569913009884D2 /* InfoToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoToolViewController.swift; sourceTree = "<group>"; };
 		14F95D6A23569A70009884D2 /* CoreBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CoreBridge.mm; sourceTree = "<group>"; };
 		14F95D6B23569A70009884D2 /* CoreBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreBridge.h; sourceTree = "<group>"; };
@@ -4605,6 +4612,8 @@
 				1452356C220DF55C00A85186 /* Extensions */,
 				1452356F220DF61600A85186 /* XIbs and Storyboards */,
 				14ECE4DE233BFE2300106EB4 /* aquabayes.icns */,
+				14D2C0C027AA054F00F00F47 /* Screenshots */,
+				14D2C0BF27A4B01A00F00F47 /* README.md */,
 			);
 			path = macgui;
 			sourceTree = "<group>";
@@ -4918,6 +4927,7 @@
 				14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */,
 				14BF307C23E236F100426D7A /* ModelCanvasView.swift */,
 				1410C3B0240594720044EB48 /* ModelNode.swift */,
+				14F89EE2276954470065F251 /* ModelNodeChecker.swift */,
 				144031D6261CCEDE007D7BB7 /* ModelPaletteItemController.swift */,
 				14ADDC8A2460A3D0000D49DB /* ModelVariableController.swift */,
 				141461682684DB17006CEE54 /* ModelDeterministicVariableController.swift */,
@@ -4931,6 +4941,15 @@
 				1471746A2668122400D921E6 /* Plate.swift */,
 			);
 			path = "Model Tool";
+			sourceTree = "<group>";
+		};
+		14D2C0C027AA054F00F00F47 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				14D2C0C127AA0D0000F00F47 /* analysis_window.png */,
+				14D2C0C227AA0D0000F00F47 /* model_canvas.png */,
+			);
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		14E00007261BCAE200D97E68 /* integer */ = {
@@ -8912,8 +8931,10 @@
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
 				14CF75A1243BCF560022B3A8 /* ModelCanvasItem.storyboard in Resources */,
 				144031CF261CCD86007D7BB7 /* FunctionController.storyboard in Resources */,
+				14D2C0C427AA0D0000F00F47 /* model_canvas.png in Resources */,
 				147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */,
 				149A500724995B8C007E4D4B /* clustal in Resources */,
+				14D2C0C327AA0D0000F00F47 /* analysis_window.png in Resources */,
 				1471052B226CD75300E88657 /* ConnectorItemArrow.xib in Resources */,
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
 				14EE87C6255B061C0064F290 /* PaupSearch.storyboard in Resources */,
@@ -9271,6 +9292,7 @@
 				14E005B0261BCAE400D97E68 /* ProbabilityMonitor.cpp in Sources */,
 				14E00770261BCAE500D97E68 /* PiecewiseConstantCoalescent.cpp in Sources */,
 				14E00857261BCAE500D97E68 /* RlValidationAnalysis.cpp in Sources */,
+				14F89EE3276954470065F251 /* ModelNodeChecker.swift in Sources */,
 				14E0075C261BCAE500D97E68 /* LaplaceDistribution.cpp in Sources */,
 				14E00543261BCAE400D97E68 /* RootTimeScaleBactrianProposal.cpp in Sources */,
 				140E726023F219D400E86919 /* PreferencesViewController.swift in Sources */,

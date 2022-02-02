@@ -92,7 +92,6 @@ class ModelNode: Connectable {
         coder.encode(nodeType?.rawValue, forKey: CodingKeys.nodeType.rawValue)
         coder.encode(parameterName, forKey: CodingKeys.parameterName.rawValue)
         coder.encode(distribution, forKey: CodingKeys.distribution.rawValue)
-        let dip = distributionParameters
         coder.encode(distributionParameters, forKey: CodingKeys.distributionParameters.rawValue)
         coder.encode(constantValue, forKey: CodingKeys.constantValue.rawValue)
         coder.encode(observedValue, forKey: CodingKeys.observedValue.rawValue)

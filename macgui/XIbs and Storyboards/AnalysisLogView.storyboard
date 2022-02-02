@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="zIC-UL-v7m">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="zIC-UL-v7m">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -9,18 +10,18 @@
         <scene sceneID="xBN-lo-QfV">
             <objects>
                 <viewController id="zIC-UL-v7m" customClass="NavigatorViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="8XU-F7-TRZ">
-                        <rect key="frame" x="0.0" y="0.0" width="309" height="320"/>
+                    <view key="view" misplaced="YES" id="8XU-F7-TRZ">
+                        <rect key="frame" x="0.0" y="0.0" width="309" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kH3-y3-DJd">
-                                <rect key="frame" x="0.0" y="0.0" width="309" height="320"/>
+                                <rect key="frame" x="0.0" y="0.0" width="309" height="248"/>
                                 <clipView key="contentView" drawsBackground="NO" id="f06-yZ-zIx">
-                                    <rect key="frame" x="1" y="1" width="307" height="318"/>
+                                    <rect key="frame" x="1" y="1" width="307" height="246"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="9NU-YZ-rMa" viewBased="YES" id="TNo-lx-0sx">
-                                            <rect key="frame" x="0.0" y="0.0" width="307" height="295"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="307" height="223"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

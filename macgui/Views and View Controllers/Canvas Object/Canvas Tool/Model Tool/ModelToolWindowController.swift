@@ -23,6 +23,20 @@ class ModelToolWindowController: NSWindowController {
         picker.show(relativeTo: .zero, of: sender, preferredEdge: .minY)
     }
     
+    @IBAction func checkModelClicked(_ sender: NSButton) {
+//       validate the model tool and output the result in an alert, highlight the problematic nodes
+        guard let model = self.tool else {
+//            alert that the model is undefined
+            return
+        }
+        if let isValid = model.isValid() {
+            print(isValid)
+        } else {
+//            run alert that the model is empty
+        }
+        
+    }
+    
     weak var canvas: NSSplitViewItem? {
         if let canvas = (contentViewController as? ModelToolViewController)?.splitViewItems[1] {
             return canvas

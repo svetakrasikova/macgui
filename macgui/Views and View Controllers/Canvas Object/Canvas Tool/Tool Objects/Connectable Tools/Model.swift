@@ -12,6 +12,11 @@ import Cocoa
 
 class Model: DataTool {
     
+    enum Key: String {
+        case palettItems, nodes, edges, distributions, functions, plates, errors
+    }
+
+    
     override var dataToolType: DataTool.DataToolType {
         return .matrixData
     }
@@ -19,6 +24,13 @@ class Model: DataTool {
     dynamic var palettItems: [PalettItem] = []
     dynamic var distributions: [Distribution] = []
     dynamic var functions: [Distribution] = []
+    
+    var errors: [Error]? {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
+        }
+    }
+    
     dynamic var nodes: [ModelNode] = [] {
         didSet {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
@@ -34,6 +46,7 @@ class Model: DataTool {
             NotificationCenter.default.post(name: .didUpdateDocument, object: nil)
         }
     }
+    
     
     override dynamic var alignedDataMatrices: [DataMatrix] {
         didSet {
@@ -53,10 +66,7 @@ class Model: DataTool {
         }
     }
     
-    enum Key: String {
-        case palettItems, nodes, edges, distributions, functions, plates
-    }
-    
+   
     init(frameOnCanvas: NSRect, analysis: Analysis) {
         
         super.init(name: ToolType.model.rawValue, frameOnCanvas: frameOnCanvas, analysis: analysis)
@@ -68,7 +78,7 @@ class Model: DataTool {
         self.outlets = [purple]
         
         do {
-//            try initPalettItemsFromCore()
+            try initPalettItemsFromCore()
             try initMockupPaletteItems()
             try initMockupDistributions()
             try initMockupFunctions()
@@ -89,6 +99,7 @@ class Model: DataTool {
         nodes = aDecoder.decodeObject(forKey: Key.nodes.rawValue) as? [ModelNode] ?? []
         edges = aDecoder.decodeObject(forKey: Key.edges.rawValue) as? [Connection] ?? []
         plates = aDecoder.decodeObject(forKey: Key.plates.rawValue) as? [Plate] ?? []
+        errors = aDecoder.decodeObject(forKey: Key.errors.rawValue) as? [Error] ?? []
         
     }
     
@@ -100,6 +111,7 @@ class Model: DataTool {
         coder.encode(nodes, forKey: Key.nodes.rawValue)
         coder.encode(edges, forKey: Key.edges.rawValue)
         coder.encode(plates, forKey: Key.plates.rawValue)
+        coder.encode(errors, forKey: Key.errors.rawValue)
     }
     
     func initPalettItemsFromCore() throws {
@@ -178,5 +190,55 @@ class Model: DataTool {
         palettItems += variables.variables
     }
     
+    func isValid() -> Bool? {
+        var segments: Int = 0
+        var undiscovered: [ModelNode] = self.nodes
+        for node in self.nodes {
+            if undiscovered.contains(node),  let (discovered, errors) = traverse(node: node, undiscovered: undiscovered, dataMatrix: nil) {
+                undiscovered = undiscovered.filter {node in !discovered.contains(node) }
+                if !isConnected(discovered: discovered)
+                {
+                    segments += 1
+                }
+            }
+        }
+        print(segments)
+        return segments == 0
+        
+    }
+    
+    func isConnected(discovered: [ModelNode]) -> Bool {
+        let undiscovered = self.nodes.filter {node in !discovered.contains(node)}
+        return undiscovered.isEmpty
+    }
+    
+
+    func traverse(node: ModelNode, undiscovered: [ModelNode], dataMatrix: String?) -> ([ModelNode], [Error])? {
+        
+        guard !self.nodes.isEmpty else { return nil }
+      
+        let updatedUndiscovered: [ModelNode] = undiscovered.filter {n in n !== node}
+        var discovered: [ModelNode] = [node]
+        var errors = [Error]()
+        // check startNode, return errors and name of data matrix if present
+//       let nodeChecker = NodeChecker(node)
+//       nodeChecker.runCheck()
+//        errors = nodeChecker.errors
+//        var dataMatrixName = nodeChecker.linkedData
+     
+        for edge in self.edges {
+            var startNode: ModelNode?
+            if edge.from === node, let to = edge.to as? ModelNode, updatedUndiscovered.contains(to) {
+                startNode = to
+            } else if edge.to === node, let from = edge.from as? ModelNode, updatedUndiscovered.contains(from){
+                startNode = from
+            }
+            if let node = startNode, let result = traverse(node: node, undiscovered: updatedUndiscovered, dataMatrix: nil) {
+                discovered.append(contentsOf: result.0)
+                errors.append(contentsOf: result.1)
+            }
+        }
+        return (discovered, errors)
+    }
     
 }

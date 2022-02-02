@@ -93,6 +93,7 @@ using json = nlohmann::json;
             [variables addObject: [NSString stringWithUTF8String:jsonStr.c_str()]];
             }
         }
+    NSLog(@"%@", variables);
     return variables;
 }
 
