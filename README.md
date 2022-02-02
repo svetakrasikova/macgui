@@ -1,7 +1,7 @@
 #  RevBayes GUI
 
 
-This is the RevBayes GUI project repository. RevBayes GUI is a graphical user interface for RevBayes. It is written in Swift with the use of Cocoa libraries and runs on the macOS platform.
+This is the RevBayes GUI project. RevBayes GUI is a graphical user interface for RevBayes. It is written in Swift with the use of Cocoa libraries, for the macOS platform.
 
 ## Motivation
 
@@ -11,7 +11,9 @@ The complexity of the RevBayes program and the Rev language can be a significant
 
 RevBayes GUI allows the user to interact with RevBayes by using graphical elements instead of text-based commands typed in the command line. RevBayes GUI exposes the full functionality of the program while at the same time simplifying how models are specified.
 
-RevBayes GUI is a document-based application. This means that the user of the applicatio can create and manage several documents. A document is a subclass of the Cocoa `NSDocument` class. The data model of a document is a list of phylogenetic analyses. 
+## Description
+
+RevBayes GUI is a document-based application. This means that the user can create and manage several documents. A document is a subclass of the Cocoa `NSDocument` class. The data model of a document in RevBayes GUI is a list of phylogenetic analyses. 
 
 ### Analysis and Tools
 
@@ -19,7 +21,7 @@ RevBayes GUI adopts a convention from the field of graphical models in computer 
 
 A RevBayes GUI analysis is an icon that appears on a horizontal palette at the bottom of the main window. The user can drag and drop in on the analysis canvas in the middle of the window. A tool on the canvas allows the user to manipulate its state. The user can drag-connect an inlet of one tool to the same color outlet of another tool. Establishing a connection between tools triggers the propagation of data and information downstream in the analysis graph.
 
-[Analysis Window](/screenshots/analysis_window.png)
+![Analysis Window](macgui/screenshots/analysis_window.png)
 
 ### Model Tool
 
@@ -27,7 +29,7 @@ Tool Model allows the user to specify their model assumptions. Like with the ana
 
 By dragging model components — such as random variables of various types — to a canvas and hooking them up, the user constructs a directed acyclic graph showing the dependencies among variables. Each element in the graph can have its assumptions changed by clicking on an information button (the ‘i’ at the six o’clock position of the circular nodes in the snapshot). So, for example, a continuous positive random variable can have its probability distribution set to one of several distributions that have as their domain the positive real numbers. 
 
-[Model Canvas](/screenshots/model_canvas.png)
+![Model Canvas](macgui/screenshots/model_canvas.png)
 
 This graphical method for specifying models has several advantages. First, it simplifies programming. Each element of the graph can be checked for completeness and errors flagged. The model can be instantiated simply by performing a postorder traversal of the graph, outputting to the parser the string that would instantiate each graph element in turn. Second, the graph constrains the user to do only sensible things when specifying the model. For example, the user cannot specify a probability distribution with a domain that is incompatible with the type of random variable that was selected. Finally, and perhaps most importantly, the graph representing the statistical model has pedagogical value. Although graphical models have been around for decades in the statistics literature, they are new to most biologists. A graphical representation of a phylogenetic model exposes all of the assumptions of the analysis to the user. Programs such as MrBayes allow the user to essentially forget about the prior probability distributions assigned to parameters because a default prior is specified for every parameter in the model. By contrast, the graphical representation of models in RevBayes shows all of the model’s parameters, including the constants that are the parameters of the prior distribution.
 
