@@ -139,8 +139,6 @@
 		14C618E323E0E0FB001FFFD6 /* ModelPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618E123E0E0FB001FFFD6 /* ModelPaletteViewController.swift */; };
 		14C618E823E20411001FFFD6 /* ModelToolWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C618E623E20411001FFFD6 /* ModelToolWindowController.swift */; };
 		14CF75A1243BCF560022B3A8 /* ModelCanvasItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14CF75A0243BCF560022B3A8 /* ModelCanvasItem.storyboard */; };
-		14D2C0C327AA0D0000F00F47 /* analysis_window.png in Resources */ = {isa = PBXBuildFile; fileRef = 14D2C0C127AA0D0000F00F47 /* analysis_window.png */; };
-		14D2C0C427AA0D0000F00F47 /* model_canvas.png in Resources */ = {isa = PBXBuildFile; fileRef = 14D2C0C227AA0D0000F00F47 /* model_canvas.png */; };
 		14D6DDFF22164A6E00021607 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DDFE22164A6E00021607 /* Analysis.swift */; };
 		14D6DE03221F47CD00021607 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE02221F47CD00021607 /* MainSplitViewController.swift */; };
 		14D6DE062220B50800021607 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6DE042220B50800021607 /* CanvasViewController.swift */; };
@@ -1647,8 +1645,6 @@
 		14C618E623E20411001FFFD6 /* ModelToolWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelToolWindowController.swift; sourceTree = "<group>"; };
 		14CF75A0243BCF560022B3A8 /* ModelCanvasItem.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ModelCanvasItem.storyboard; path = "macgui/Views and View Controllers/Canvas Object/Canvas Tool/Model Tool/ModelCanvasItem.storyboard"; sourceTree = SOURCE_ROOT; };
 		14D2C0BF27A4B01A00F00F47 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		14D2C0C127AA0D0000F00F47 /* analysis_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = analysis_window.png; path = "../../../../Documents/Phylogenetics/macgui Images/Screenshots of GUI/analysis_window.png"; sourceTree = "<group>"; };
-		14D2C0C227AA0D0000F00F47 /* model_canvas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = model_canvas.png; path = "../../../../Documents/Phylogenetics/macgui Images/Screenshots of GUI/model_canvas.png"; sourceTree = "<group>"; };
 		14D6DDFE22164A6E00021607 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
 		14D6DE02221F47CD00021607 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		14D6DE042220B50800021607 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
@@ -4612,7 +4608,6 @@
 				1452356C220DF55C00A85186 /* Extensions */,
 				1452356F220DF61600A85186 /* XIbs and Storyboards */,
 				14ECE4DE233BFE2300106EB4 /* aquabayes.icns */,
-				14D2C0C027AA054F00F00F47 /* Screenshots */,
 				14D2C0BF27A4B01A00F00F47 /* README.md */,
 			);
 			path = macgui;
@@ -4941,15 +4936,6 @@
 				1471746A2668122400D921E6 /* Plate.swift */,
 			);
 			path = "Model Tool";
-			sourceTree = "<group>";
-		};
-		14D2C0C027AA054F00F00F47 /* Screenshots */ = {
-			isa = PBXGroup;
-			children = (
-				14D2C0C127AA0D0000F00F47 /* analysis_window.png */,
-				14D2C0C227AA0D0000F00F47 /* model_canvas.png */,
-			);
-			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		14E00007261BCAE200D97E68 /* integer */ = {
@@ -8931,10 +8917,8 @@
 				1411BEAE220524E9009BEE1D /* EditorTools.storyboard in Resources */,
 				14CF75A1243BCF560022B3A8 /* ModelCanvasItem.storyboard in Resources */,
 				144031CF261CCD86007D7BB7 /* FunctionController.storyboard in Resources */,
-				14D2C0C427AA0D0000F00F47 /* model_canvas.png in Resources */,
 				147429DE22D154D200FF1963 /* ModelTool.storyboard in Resources */,
 				149A500724995B8C007E4D4B /* clustal in Resources */,
-				14D2C0C327AA0D0000F00F47 /* analysis_window.png in Resources */,
 				1471052B226CD75300E88657 /* ConnectorItemArrow.xib in Resources */,
 				1411BEA922051B26009BEE1D /* AnalysisLogView.storyboard in Resources */,
 				14EE87C6255B061C0064F290 /* PaupSearch.storyboard in Resources */,
