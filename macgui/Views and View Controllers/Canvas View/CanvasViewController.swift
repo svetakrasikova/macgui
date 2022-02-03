@@ -60,18 +60,13 @@ class CanvasViewController: GenericCanvasViewController {
     @objc func didConnectTools(notification: Notification){
         guard let userInfo = notification.userInfo as? [String: ConnectorItemArrowView]
         else {return}
-        if userInfo["target"]?.window == self.view.window, let color = userInfo["target"]?.connectionColor, let targetTool = userInfo["target"]?.concreteDelegate?.getTool() as? Connectable, let sourceTool = userInfo["source"]?.concreteDelegate?.getTool() as? Connectable {
+        if userInfo["target"]?.window == self.view.window, let targetTool = userInfo["target"]?.concreteDelegate?.getTool() as? Connectable, let sourceTool = userInfo["source"]?.concreteDelegate?.getTool() as? Connectable {
             let toConnector = userInfo["target"]?.concreteDelegate?.getConnector() as! Connector
             if let connection = Connection(to: targetTool, from: sourceTool, type: toConnector.type) {
-                let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: sourceTool, targetTool: targetTool, connection: connection)
-                analysis?.arrows.append(connection)
-                addChild(arrowController)
-                canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: bottomMostNonResizableObject?.view)
-                bottomMostNonResizableObject = arrowController
+                addConnectionToAnalysis(connection: connection)
                 let userInfo  = ["sourceTool" : sourceTool, "targetTool" : targetTool]
                 NotificationCenter.default.post(name: .didAddNewArrow, object: self, userInfo: userInfo)
             }
-            
         }
     }
     
@@ -97,22 +92,21 @@ class CanvasViewController: GenericCanvasViewController {
     }
 
     
-    func setUpConnection(frame: NSRect, color: NSColor, sourceTool: Connectable, targetTool: Connectable, connection: Connection) -> ArrowViewController {
+    func setUpArrowViewController(connection: Connection) -> ArrowViewController {
         let arrowController = ArrowViewController()
-        arrowController.frame = frame
-        arrowController.color = color
-        arrowController.sourceTool = sourceTool
-        arrowController.targetTool = targetTool
+        arrowController.frame = canvasView.bounds
+        arrowController.color = Connector.getColor(type: connection.type)
+        arrowController.sourceTool = connection.from
+        arrowController.targetTool = connection.to
         arrowController.connection = connection
         return arrowController
     }
     
-    func addArrowView(connection: Connection){
-        let color = Connector.getColor(type: connection.type)
-        let arrowController = setUpConnection(frame: canvasView.bounds, color: color, sourceTool: connection.from, targetTool: connection.to, connection: connection)
-        addChild(arrowController)
-        canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: bottomMostNonResizableObject?.view)
-        bottomMostNonResizableObject = arrowController
+    
+    func addConnectionToAnalysis(connection: Connection) {
+        analysis?.arrows.append(connection)
+        let arrowController = setUpArrowViewController(connection: connection)
+        addArrowView(arrowController: arrowController)
     }
     
 // MARK: - Add and Delete Canvas Objects
@@ -147,7 +141,7 @@ class CanvasViewController: GenericCanvasViewController {
             }
         }
         for connection in analysis.arrows {
-            addArrowView(connection: connection)
+            addArrowView(arrowController: setUpArrowViewController(connection: connection))
         }
     }
     override func toolViewController() -> CanvasObjectViewController? {

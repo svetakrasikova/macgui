@@ -227,6 +227,17 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
         canvasLoopViewController.checkForLoopInclusion()
     }
     
+    func addArrowView(arrowController: ArrowViewController){
+        addChild(arrowController)
+        if let topMostLoop = topMostLoop {
+            canvasView.addSubview(arrowController.view, positioned: .above, relativeTo: topMostLoop.view)
+        } else {
+            canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: bottomMostNonResizableObject?.view)
+        }
+        bottomMostNonResizableObject = arrowController
+    }
+    
+    
     func addToolView(tool: ToolObject) {
         guard let viewController = toolViewController() else { return }
         viewController.tool = tool
