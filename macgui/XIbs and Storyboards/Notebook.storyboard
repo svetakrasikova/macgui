@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="ief-cJ-d7x">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="JuD-M4-Jte">
+            <objects>
+                <windowController storyboardIdentifier="Notebook" id="ief-cJ-d7x" customClass="NotebookWindowController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="rGH-sU-vwN">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="600"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="480" height="600"/>
+                        <toolbar key="toolbar" implicitIdentifier="3DCA121D-5838-4123-9BE7-6C805162274A" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="t1C-Gl-h8l">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="9n4-0d-jfe"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="zUZ-ev-xVp"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="ZFB-yp-QsM"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="fw6-88-AH9"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="MRA-dg-kWk"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="ZFB-yp-QsM"/>
+                            </defaultToolbarItems>
+                        </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="ief-cJ-d7x" id="JTq-WH-qpn"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Pac-7x-8u9" kind="relationship" relationship="window.shadowedContentViewController" id="rA1-7d-IbL"/>
+                    </connections>
+                </windowController>
+                <customObject id="QFK-hp-IrH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-439" y="718"/>
+        </scene>
+        <!--Notebook View Controller-->
+        <scene sceneID="HrA-74-Crg">
+            <objects>
+                <viewController id="Pac-7x-8u9" customClass="NotebookViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="kxc-E6-TJe">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView appearanceType="aqua" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ttr-R8-e0j">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="LRy-YP-cN8">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView verticallyResizable="YES" usesFontPanel="YES" usesInspectorBar="YES" findStyle="bar" allowsDocumentBackgroundColorChange="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="E2V-Ws-g8f">
+                                            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <size key="minSize" width="450" height="300"/>
+                                            <size key="maxSize" width="450" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="q8f-LZ-hNl">
+                                    <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="bW5-ju-rYY">
+                                    <rect key="frame" x="434" y="0.0" width="16" height="300"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ttr-R8-e0j" secondAttribute="trailing" id="8rP-3P-ymy"/>
+                            <constraint firstItem="Ttr-R8-e0j" firstAttribute="top" secondItem="kxc-E6-TJe" secondAttribute="top" id="9ju-hQ-YS6"/>
+                            <constraint firstItem="Ttr-R8-e0j" firstAttribute="leading" secondItem="kxc-E6-TJe" secondAttribute="leading" id="bYP-nT-rMa"/>
+                            <constraint firstAttribute="bottom" secondItem="Ttr-R8-e0j" secondAttribute="bottom" id="qq4-V5-Ybr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="E2V-Ws-g8f" id="ZxI-9b-rBF"/>
+                    </connections>
+                </viewController>
+                <customObject id="3Xc-df-hck" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-439" y="1408"/>
+        </scene>
+    </scenes>
+</document>

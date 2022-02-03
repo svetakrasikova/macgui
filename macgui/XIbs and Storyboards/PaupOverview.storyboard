@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="U1w-IH-cmr">
+            <objects>
+                <windowController storyboardIdentifier="PaupOverview" id="yvz-mv-3V5" customClass="TablessWindowController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aAv-6B-hCA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="450" height="279"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minFullScreenContentSize" type="size" width="551" height="279"/>
+                        <view key="contentView" id="8yE-Y2-vzL">
+                            <rect key="frame" x="0.0" y="0.0" width="450" height="279"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <toolbar key="toolbar" implicitIdentifier="B97CCA35-1677-4874-A132-8B774B813F1E" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="4DY-A0-rTb">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="xuq-1V-1Sj"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="xLx-J1-SPT"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="3PG-fZ-Khb"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="oFD-M0-Cdf"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="MmH-wm-26q"/>
+                                <toolbarItem implicitItemIdentifier="61FABB9C-4FA1-410E-B506-6C6F14F263D4" label="Custom View" paletteLabel="Custom View" image="NSGoLeftTemplate" sizingBehavior="auto" id="YMo-F8-sJy">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="dj3-YA-QrH">
+                                        <rect key="frame" x="27" y="14" width="22" height="23"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSGoLeftTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hUy-b3-LcF">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="switchToOverview:" target="yvz-mv-3V5" id="0zP-PN-UmK"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="YMo-F8-sJy"/>
+                            </defaultToolbarItems>
+                        </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="yvz-mv-3V5" id="3s8-6P-Y76"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="DXU-ea-2MH" kind="relationship" relationship="window.shadowedContentViewController" id="7cD-yS-ETs"/>
+                    </connections>
+                </windowController>
+                <customObject id="Gls-Ue-hcB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1548" y="-1209"/>
+        </scene>
+        <!--Info Tool View Controller-->
+        <scene sceneID="0Sf-B1-ZLK">
+            <objects>
+                <viewController id="DXU-ea-2MH" customClass="InfoToolViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="grF-KD-sno">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="xQw-Tj-uNo">
+                                <rect key="frame" x="20" y="20" width="410" height="260"/>
+                                <connections>
+                                    <segue destination="wXy-7h-Rb5" kind="embed" identifier="TabViewController" id="0F7-3e-QkC"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xQw-Tj-uNo" secondAttribute="trailing" constant="20" id="9A9-Ab-ZIM"/>
+                            <constraint firstItem="xQw-Tj-uNo" firstAttribute="top" secondItem="grF-KD-sno" secondAttribute="top" constant="20" id="Mao-46-gom"/>
+                            <constraint firstItem="xQw-Tj-uNo" firstAttribute="leading" secondItem="grF-KD-sno" secondAttribute="leading" constant="20" id="ePZ-KR-xhx"/>
+                            <constraint firstAttribute="bottom" secondItem="xQw-Tj-uNo" secondAttribute="bottom" constant="20" id="rQy-ZJ-iza"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="Fom-WT-h7B" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1548" y="-704"/>
+        </scene>
+        <!--Tab View Controller-->
+        <scene sceneID="DIF-wy-BhF">
+            <objects>
+                <tabViewController selectedTabViewItemIndex="1" tabStyle="unspecified" id="wXy-7h-Rb5" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="PaupSearch" id="KPX-3u-R2w"/>
+                        <tabViewItem identifier="Overview" id="rik-Ae-GjA"/>
+                        <tabViewItem identifier="PaupCriterion" id="CnN-Ej-e8m"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="LPb-Ky-0kr">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="LPb-Ky-0kr" id="PaX-8t-Ro6"/>
+                        <segue destination="Avs-Hp-Gxb" kind="relationship" relationship="tabItems" id="Nm0-lo-sGD"/>
+                        <segue destination="qm1-hf-31G" kind="relationship" relationship="tabItems" id="dgQ-Bf-uLt"/>
+                        <segue destination="8kj-Kb-lI9" kind="relationship" relationship="tabItems" id="a2Y-TQ-mT0"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="M0N-Pu-OKm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-928" y="-704"/>
+        </scene>
+        <!--Overview-->
+        <scene sceneID="HCP-6F-iTM">
+            <objects>
+                <tabViewController title="Overview" storyboardIdentifier="Overview" selectedTabViewItemIndex="2" tabStyle="unspecified" id="qm1-hf-31G" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="Data" id="rg9-a4-Eat"/>
+                        <tabViewItem label="Criterion" identifier="PaupCriterion" id="iMK-GV-Cs0"/>
+                        <tabViewItem label="Search" identifier="PaupSearch" id="4t5-LI-MXf"/>
+                    </tabViewItems>
+                    <tabView key="tabView" id="2Gq-3A-GV8">
+                        <rect key="frame" x="0.0" y="0.0" width="437" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="qm1-hf-31G" id="7id-qs-VG8"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="2Gq-3A-GV8" id="I0U-5x-9En"/>
+                        <segue destination="j1b-Mf-ZGM" kind="relationship" relationship="tabItems" id="09H-Pz-V7k"/>
+                        <segue destination="y8p-tv-I5A" kind="relationship" relationship="tabItems" id="eDh-CY-zcC"/>
+                        <segue destination="Zw3-Uh-gTX" kind="relationship" relationship="tabItems" id="4rX-Pa-DFD"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="51N-Gj-9Ik" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-404" y="-704"/>
+        </scene>
+        <!--Data-->
+        <scene sceneID="cN9-TK-bwg">
+            <objects>
+                <viewController title="Data" id="j1b-Mf-ZGM" sceneMemberID="viewController">
+                    <view key="view" id="XHd-i3-qgf">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="mch-NF-keW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="473" y="-967"/>
+        </scene>
+        <!--Criterion-->
+        <scene sceneID="5od-A8-xoN">
+            <objects>
+                <viewController title="Criterion" id="y8p-tv-I5A" customClass="PaupOverviewViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="PAH-az-Le6">
+                        <rect key="frame" x="0.0" y="0.0" width="494" height="338"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xll-yL-occ">
+                                <rect key="frame" x="13" y="13" width="69" height="32"/>
+                                <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i23-iU-Y1T">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="reset:" target="y8p-tv-I5A" id="hBr-Nv-3kZ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="04j-Nc-sFl">
+                                <rect key="frame" x="360" y="13" width="121" height="32"/>
+                                <buttonCell key="cell" type="push" title="Edit options ..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="n9k-59-oTg">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openOptionsTab:" target="y8p-tv-I5A" id="jp0-u3-SlR"/>
+                                </connections>
+                            </button>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Jg-ea-G4l">
+                                <rect key="frame" x="20" y="80" width="454" height="238"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tjk-lQ-PdM">
+                                        <rect key="frame" x="73" y="165" width="308" height="73"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="24v-xd-bnQ">
+                                                <rect key="frame" x="-2" y="29" width="182" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Selected optimality criterion: " id="lOA-0e-WKH">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ai2-ar-nrp">
+                                                <rect key="frame" x="175" y="23" width="137" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="130" id="Gmk-2t-iPU"/>
+                                                </constraints>
+                                                <popUpButtonCell key="cell" type="push" title="Parsimony" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mHK-kH-Fp4" id="mJI-WP-BOC">
+                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="menu"/>
+                                                    <menu key="menu" id="FCP-wo-xfc">
+                                                        <items>
+                                                            <menuItem title="Parsimony" state="on" id="mHK-kH-Fp4"/>
+                                                            <menuItem title="Distance" id="dvI-6W-IlK"/>
+                                                            <menuItem title="Likelihood" id="4kl-xt-dII"/>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="selectKeyOption:" target="y8p-tv-I5A" id="mYS-aD-1hw"/>
+                                                    <binding destination="y8p-tv-I5A" name="selectedIndex" keyPath="self.options.criterion" id="kcY-5I-3ES"/>
+                                                </connections>
+                                            </popUpButton>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="rfd-YH-Hhy">
+                                        <rect key="frame" x="115" y="0.0" width="225" height="150"/>
+                                        <connections>
+                                            <segue destination="aaH-a8-ygy" kind="embed" identifier="SummaryViewController" id="Bjv-sv-BdK"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="3Jg-ea-G4l" firstAttribute="top" secondItem="PAH-az-Le6" secondAttribute="top" constant="20" id="0tD-ye-mLp"/>
+                            <constraint firstItem="xll-yL-occ" firstAttribute="leading" secondItem="PAH-az-Le6" secondAttribute="leading" constant="20" id="9pa-yW-9dy"/>
+                            <constraint firstAttribute="trailing" secondItem="04j-Nc-sFl" secondAttribute="trailing" constant="20" id="E03-vD-NTc"/>
+                            <constraint firstAttribute="bottom" secondItem="04j-Nc-sFl" secondAttribute="bottom" constant="20" id="afo-mN-rBD"/>
+                            <constraint firstItem="xll-yL-occ" firstAttribute="top" secondItem="3Jg-ea-G4l" secondAttribute="bottom" constant="40" id="iUW-Cd-KkD"/>
+                            <constraint firstAttribute="bottom" secondItem="xll-yL-occ" secondAttribute="bottom" constant="20" id="mqH-41-SHJ"/>
+                            <constraint firstItem="3Jg-ea-G4l" firstAttribute="leading" secondItem="PAH-az-Le6" secondAttribute="leading" constant="20" id="xRW-tu-5bO"/>
+                            <constraint firstAttribute="trailing" secondItem="3Jg-ea-G4l" secondAttribute="trailing" constant="20" id="zud-y4-J8E"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="criterionPopup" destination="Ai2-ar-nrp" id="OmK-ed-dsb"/>
+                        <outlet property="searchMethodPopup" destination="Ai2-ar-nrp" id="HrQ-52-V7A"/>
+                    </connections>
+                </viewController>
+                <customObject id="Dvm-o4-CaK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="482" y="-512"/>
+        </scene>
+        <!--Search Method -->
+        <scene sceneID="lWs-oD-qUD">
+            <objects>
+                <customObject id="f3O-xh-CaF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController title="Search Method " id="Zw3-Uh-gTX" customClass="PaupOverviewViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="38O-uf-c0K">
+                        <rect key="frame" x="0.0" y="0.0" width="377" height="312"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wgj-YD-vRu">
+                                <rect key="frame" x="20" y="80" width="337" height="212"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J3m-B4-4TS">
+                                        <rect key="frame" x="26" y="170" width="285" height="42"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7jW-PS-Mla">
+                                                <rect key="frame" x="-2" y="13" width="159" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Selected search method: " id="FEt-53-2Mr">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j6X-M9-3nB">
+                                                <rect key="frame" x="152" y="7" width="137" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="130" id="4F6-8s-cNH"/>
+                                                </constraints>
+                                                <popUpButtonCell key="cell" type="push" title="Heuristic" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="pOT-yO-BGf" id="iiF-fs-lDY">
+                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="menu"/>
+                                                    <menu key="menu" id="yfy-Cs-ydv">
+                                                        <items>
+                                                            <menuItem title="Exhaustive" id="479-Uc-Lb4" userLabel="Exhaustive"/>
+                                                            <menuItem title="Branch &amp; Bound" id="5YZ-HH-oYP" userLabel="Branch &amp; Bound"/>
+                                                            <menuItem title="Heuristic" state="on" id="pOT-yO-BGf" userLabel="Heuristic"/>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="selectKeyOption:" target="Zw3-Uh-gTX" id="Lkm-Av-T0r"/>
+                                                    <binding destination="Zw3-Uh-gTX" name="selectedIndex" keyPath="self.options.searchMethod" id="2w3-hf-ddp"/>
+                                                </connections>
+                                            </popUpButton>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="a4F-FJ-ybw">
+                                        <rect key="frame" x="28" y="0.0" width="281" height="150"/>
+                                        <connections>
+                                            <segue destination="A0d-lf-2ia" kind="embed" identifier="SummaryViewController" id="2rP-uV-oID"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lpa-Lp-2qM">
+                                <rect key="frame" x="13" y="13" width="69" height="32"/>
+                                <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="89w-mO-3NQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="reset:" target="Zw3-Uh-gTX" id="0dU-c2-SaJ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FYp-BY-Eco">
+                                <rect key="frame" x="243" y="13" width="121" height="32"/>
+                                <buttonCell key="cell" type="push" title="Edit options ..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Z2o-5g-nOO">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openOptionsTab:" target="Zw3-Uh-gTX" id="2Fb-be-A4T"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="lpa-Lp-2qM" secondAttribute="bottom" constant="20" id="BDZ-Oi-VwE"/>
+                            <constraint firstAttribute="bottom" secondItem="FYp-BY-Eco" secondAttribute="bottom" constant="20" id="Blu-Vt-Z3c"/>
+                            <constraint firstItem="lpa-Lp-2qM" firstAttribute="top" secondItem="wgj-YD-vRu" secondAttribute="bottom" constant="40" id="Gg9-Vq-En6"/>
+                            <constraint firstItem="wgj-YD-vRu" firstAttribute="top" secondItem="38O-uf-c0K" secondAttribute="top" constant="20" id="J8e-9N-IE1"/>
+                            <constraint firstItem="wgj-YD-vRu" firstAttribute="leading" secondItem="38O-uf-c0K" secondAttribute="leading" constant="20" id="T5x-3a-1y4"/>
+                            <constraint firstAttribute="trailing" secondItem="wgj-YD-vRu" secondAttribute="trailing" constant="20" id="WLZ-xD-3h9"/>
+                            <constraint firstAttribute="trailing" secondItem="FYp-BY-Eco" secondAttribute="trailing" constant="20" id="cgb-za-1vt"/>
+                            <constraint firstItem="lpa-Lp-2qM" firstAttribute="leading" secondItem="38O-uf-c0K" secondAttribute="leading" constant="20" id="qnB-jI-y3z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchMethodPopup" destination="j6X-M9-3nB" id="MXo-cZ-KTW"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="450.5" y="-1434.5"/>
+        </scene>
+        <!--PaupSearch-->
+        <scene sceneID="9Zt-au-IiM">
+            <objects>
+                <controllerPlaceholder storyboardName="PaupSearch" id="Avs-Hp-Gxb" sceneMemberID="viewController"/>
+                <customObject id="Ag2-xO-rO8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1060" y="-373"/>
+        </scene>
+        <!--PaupCriterion-->
+        <scene sceneID="Mvu-Zx-5Rd">
+            <objects>
+                <controllerPlaceholder storyboardName="PaupCriterion" id="8kj-Kb-lI9" sceneMemberID="viewController"/>
+                <customObject id="fzJ-Tt-KqB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-782" y="-373"/>
+        </scene>
+        <!--Summary View Conroller-->
+        <scene sceneID="0W8-9L-bgg">
+            <objects>
+                <viewController id="A0d-lf-2ia" customClass="SummaryViewConroller" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="7iV-JH-dX5">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="oyT-Dd-4W4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="955" y="-1432"/>
+        </scene>
+        <!--Summary View Conroller-->
+        <scene sceneID="LlS-9Y-dcc">
+            <objects>
+                <viewController id="aaH-a8-ygy" customClass="SummaryViewConroller" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="9fh-cM-qUR">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="IBZ-DS-HNJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="-553"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="NSGoLeftTemplate" width="10" height="14"/>
+    </resources>
+</document>

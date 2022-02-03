@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="rJO-e0-FMZ">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Preferences-->
+        <scene sceneID="Wam-2v-CAf">
+            <objects>
+                <viewController title="Preferences" storyboardIdentifier="Preferences" id="rJO-e0-FMZ" customClass="PreferencesViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Tq1-5k-ETI">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="325"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="tHB-Uw-tzn">
+                                <rect key="frame" x="20" y="8" width="410" height="53"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="165" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sem-44-W04">
+                                        <rect key="frame" x="14" y="16" width="383" height="21"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HSr-ks-UMA">
+                                                <rect key="frame" x="-6" y="-7" width="87" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Restore" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r6f-yZ-iH1">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="restorePreferencesPushed:" target="rJO-e0-FMZ" id="aVs-qE-HT0"/>
+                                                </connections>
+                                            </button>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8uC-sq-eyz">
+                                                <rect key="frame" x="240" y="0.0" width="143" height="21"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ylc-n3-mbr">
+                                                        <rect key="frame" x="-6" y="-7" width="82" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5Hp-ot-hkB">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="cancelPushed:" target="rJO-e0-FMZ" id="Mfe-Hu-YTc"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sxa-JT-YKk">
+                                                        <rect key="frame" x="79" y="-7" width="70" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Bh2-Wi-Utp">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="savePushed:" target="rJO-e0-FMZ" id="7CF-xd-fMJ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Sem-44-W04" firstAttribute="centerY" secondItem="tHB-Uw-tzn" secondAttribute="centerY" id="GsW-F9-huQ"/>
+                                    <constraint firstItem="Sem-44-W04" firstAttribute="centerX" secondItem="tHB-Uw-tzn" secondAttribute="centerX" id="qVP-xa-wCk"/>
+                                </constraints>
+                            </customView>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="s52-M1-0b3">
+                                <rect key="frame" x="20" y="60" width="410" height="249"/>
+                                <connections>
+                                    <segue destination="BRS-mX-eaK" kind="embed" id="Iee-oh-idQ"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="s52-M1-0b3" firstAttribute="top" secondItem="Tq1-5k-ETI" secondAttribute="top" constant="16" id="2nh-qq-S83"/>
+                            <constraint firstItem="tHB-Uw-tzn" firstAttribute="leading" secondItem="s52-M1-0b3" secondAttribute="leading" id="HtI-mX-N2D"/>
+                            <constraint firstItem="tHB-Uw-tzn" firstAttribute="trailing" secondItem="s52-M1-0b3" secondAttribute="trailing" id="Q1n-A5-PfB"/>
+                            <constraint firstItem="tHB-Uw-tzn" firstAttribute="top" secondItem="Tq1-5k-ETI" secondAttribute="top" constant="264" id="cSS-wQ-XgH"/>
+                            <constraint firstAttribute="bottom" secondItem="tHB-Uw-tzn" secondAttribute="bottom" constant="8" id="fcX-ng-aQb"/>
+                            <constraint firstItem="tHB-Uw-tzn" firstAttribute="leading" secondItem="Tq1-5k-ETI" secondAttribute="leading" constant="20" symbolic="YES" id="gOD-1r-FsM"/>
+                            <constraint firstAttribute="trailing" secondItem="tHB-Uw-tzn" secondAttribute="trailing" constant="20" symbolic="YES" id="gdd-iS-9pE"/>
+                            <constraint firstAttribute="bottom" secondItem="s52-M1-0b3" secondAttribute="bottom" constant="60" id="yFH-tD-Q10"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="Dvc-Yt-ZqA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="367" y="-596.5"/>
+        </scene>
+        <!--Tab View Controller-->
+        <scene sceneID="VPL-SH-dGi">
+            <objects>
+                <tabViewController selectedTabViewItemIndex="0" id="BRS-mX-eaK" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="I8t-V4-x8H"/>
+                        <tabViewItem identifier="" id="LMu-fh-d9C"/>
+                        <tabViewItem id="kMQ-hc-7uc"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsBezelBorder" id="F4n-7d-V6d">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="system"/>
+                        <connections>
+                            <outlet property="delegate" destination="BRS-mX-eaK" id="xed-BV-cdu"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="F4n-7d-V6d" id="1ag-Zj-GIh"/>
+                        <segue destination="l0K-EM-D6H" kind="relationship" relationship="tabItems" id="Ju2-jR-1CL"/>
+                        <segue destination="fWe-tg-beU" kind="relationship" relationship="tabItems" id="NOV-di-D1P"/>
+                        <segue destination="KZA-BJ-vlx" kind="relationship" relationship="tabItems" id="L05-dI-WJZ"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="Yei-3N-7Vx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="302" y="-124"/>
+        </scene>
+        <!--Analysis-->
+        <scene sceneID="h6m-R1-5EN">
+            <objects>
+                <viewController title="Analysis" id="l0K-EM-D6H" customClass="MainCanvasPreferencesController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="0gG-VG-qOC">
+                        <rect key="frame" x="0.0" y="0.0" width="432" height="217"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mrc-y3-KxW">
+                                <rect key="frame" x="76" y="77" width="281" height="63"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Y3-RR-pg2">
+                                        <rect key="frame" x="0.0" y="36" width="280" height="27"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ShZ-2z-LZK">
+                                                <rect key="frame" x="-2" y="0.0" width="164" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="160" id="0ao-8o-PJJ"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="MG4-aJ-AvV"/>
+                                                    <constraint firstAttribute="height" constant="25" id="RXk-wM-z4Z"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Canvas Background Color" id="hmO-JC-0gS">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="ERi-sG-LBM">
+                                                <rect key="frame" x="180" y="2" width="100" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="NTm-xb-Tcp"/>
+                                                    <constraint firstAttribute="width" constant="100" id="PdP-WO-RE8"/>
+                                                </constraints>
+                                                <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="changeBackgroundColor:" target="l0K-EM-D6H" id="iwB-G6-J9K"/>
+                                                    <binding destination="l0K-EM-D6H" name="value" keyPath="defaultsWorkaround.values.mainCanvasBackgroundColor" id="4fF-9l-eNR">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </colorWell>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ERi-sG-LBM" secondAttribute="bottom" constant="2" id="vaH-3y-vjZ"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="21" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HVF-fK-fXv">
+                                        <rect key="frame" x="0.0" y="0.0" width="281" height="28"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pfy-Mm-9YI">
+                                                <rect key="frame" x="-2" y="0.0" width="164" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="160" id="uPI-1U-wLY"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="vTU-nF-2hT"/>
+                                                    <constraint firstAttribute="height" constant="25" id="wfR-hg-6Ny"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Grid Color" id="qAt-LV-r5V">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="8GM-x9-oLp" userLabel="Grid Color Well">
+                                                <rect key="frame" x="181" y="3" width="100" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="FTa-dk-wOu"/>
+                                                    <constraint firstAttribute="height" constant="25" id="HZe-9H-BIr"/>
+                                                </constraints>
+                                                <color key="color" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                                                <connections>
+                                                    <action selector="changeGridColor:" target="l0K-EM-D6H" id="jNx-Mx-3d2"/>
+                                                    <binding destination="l0K-EM-D6H" name="value" keyPath="defaultsWorkaround.values.mainCanvasGridColor" id="aXV-hE-Ty4">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </colorWell>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="mrc-y3-KxW" firstAttribute="centerX" secondItem="0gG-VG-qOC" secondAttribute="centerX" id="J4x-mu-QTC"/>
+                            <constraint firstItem="mrc-y3-KxW" firstAttribute="centerY" secondItem="0gG-VG-qOC" secondAttribute="centerY" id="UbW-n3-hDO"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="sF6-0y-WAJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="207" y="360.5"/>
+        </scene>
+        <!--Model Tool-->
+        <scene sceneID="Z1L-VU-sSd">
+            <objects>
+                <viewController title="Model Tool" id="fWe-tg-beU" customClass="ModelCanvasPreferencesController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="xBu-pR-unk">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7pY-RU-5Oc">
+                                <rect key="frame" x="85" y="94" width="280" height="112"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geV-uo-h1P">
+                                        <rect key="frame" x="0.0" y="84" width="280" height="28"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ntg-0e-KaB">
+                                                <rect key="frame" x="-2" y="0.0" width="164" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="0Gb-Gc-1Ms"/>
+                                                    <constraint firstAttribute="height" constant="25" id="P7e-IH-EwT"/>
+                                                    <constraint firstAttribute="width" constant="160" id="hka-9R-n1Z"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Clamped  Node Color" id="P93-2E-nGE">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Xd7-YZ-Qh6">
+                                                <rect key="frame" x="180" y="3" width="100" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="QgJ-c1-5zl"/>
+                                                    <constraint firstAttribute="width" constant="100" id="qf5-Xf-6nu"/>
+                                                </constraints>
+                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="changeClampedNodeColor:" target="fWe-tg-beU" id="lxS-Ll-Yv4"/>
+                                                    <binding destination="fWe-tg-beU" name="value" keyPath="defaultsWorkaround.values.modelCanvasClampedNodeColor" id="dBL-Ck-iWA">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </colorWell>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ih4-MR-3JJ">
+                                        <rect key="frame" x="0.0" y="56" width="280" height="28"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8qc-S7-h8k">
+                                                <rect key="frame" x="-2" y="0.0" width="164" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="160" id="6aW-DM-um3"/>
+                                                    <constraint firstAttribute="height" constant="25" id="COK-3n-uV8"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="aIz-XW-gdf"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Arrow Color" id="dbd-h1-ag9">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="gux-Wk-wSp">
+                                                <rect key="frame" x="180" y="3" width="100" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="Xi6-sd-ia6"/>
+                                                    <constraint firstAttribute="width" constant="100" id="q3D-P4-ebL"/>
+                                                </constraints>
+                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="changeArrowColor:" target="fWe-tg-beU" id="D1e-X0-ao4"/>
+                                                    <binding destination="fWe-tg-beU" name="value" keyPath="defaultsWorkaround.values.modelCanvasArrowColor" id="zWE-Uq-9LF">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </colorWell>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r6C-bJ-AMN">
+                                        <rect key="frame" x="0.0" y="28" width="280" height="28"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fVB-um-0zQ">
+                                                <rect key="frame" x="-2" y="0.0" width="164" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="0Ie-Ch-CYF"/>
+                                                    <constraint firstAttribute="width" constant="160" id="SjG-Cd-jSe"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="UmC-jA-4FV"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Node Border Color " id="xXI-Zt-Cxo">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="OBE-6X-w07">
+                                                <rect key="frame" x="180" y="3" width="100" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="Hea-OH-dLa"/>
+                                                    <constraint firstAttribute="width" constant="100" id="z43-BW-xdO"/>
+                                                </constraints>
+                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="changeNodeBorderColor:" target="fWe-tg-beU" id="8WT-6f-WQ2"/>
+                                                    <binding destination="fWe-tg-beU" name="value" keyPath="defaultsWorkaround.values.modelCanvasNodeBorderColor" id="Nmy-hq-1Fq">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </colorWell>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKk-SI-z18">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="28"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qkA-qQ-dkY">
+                                                <rect key="frame" x="-2" y="0.0" width="164" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="31a-D7-OBP"/>
+                                                    <constraint firstAttribute="width" constant="160" id="iIn-FP-tBs"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="xgf-0a-wbo"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Canvas Background Color" id="Kwy-X1-LKD">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="nV3-Oe-22X">
+                                                <rect key="frame" x="180" y="3" width="100" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="g1U-5t-Ht8"/>
+                                                    <constraint firstAttribute="width" constant="100" id="nMo-RE-bO9"/>
+                                                </constraints>
+                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="changeCanvasBackgroundColor:" target="fWe-tg-beU" id="QfP-aM-fxi"/>
+                                                    <binding destination="fWe-tg-beU" name="value" keyPath="defaultsWorkaround.values.modelCanvasBackgroundColor" id="s5p-1p-UbE">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </colorWell>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="7pY-RU-5Oc" firstAttribute="centerX" secondItem="xBu-pR-unk" secondAttribute="centerX" id="IyZ-or-jgZ"/>
+                            <constraint firstItem="7pY-RU-5Oc" firstAttribute="centerY" secondItem="xBu-pR-unk" secondAttribute="centerY" id="Pql-1a-jIb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="8SQ-x1-Yn9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="-4"/>
+        </scene>
+        <!--Notebook-->
+        <scene sceneID="5ct-I6-XX4">
+            <objects>
+                <viewController title="Notebook" id="KZA-BJ-vlx" sceneMemberID="viewController">
+                    <view key="view" id="0zT-rZ-ee5">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="Ve4-PL-Jf2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="717" y="490"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,24 @@
+//
+//  Bootstrap.swift
+//  macgui
+//
+//  Created by Svetlana Krasikova on 4/15/19.
+//  Copyright © 2019 Svetlana Krasikova. All rights reserved.
+//
+
+import Cocoa
+
+class Bootstrap: Connectable {
+    
+   init(frameOnCanvas: NSRect, analysis: Analysis) {
+    super.init(name: ToolType.bootstrap.rawValue, frameOnCanvas: frameOnCanvas, analysis: analysis)
+        
+        let green1 = Connector(type: ConnectorType.alignedData)
+        let green2 = Connector(type: ConnectorType.alignedData)
+        self.inlets = [green1]
+        self.outlets = [green2]
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}

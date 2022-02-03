@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="BCK-7b-Het">
+            <objects>
+                <windowController storyboardIdentifier="TreeInspector" id="Abj-oK-TGa" customClass="TreeInspectorWindowController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="tuA-bY-n2Q">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <view key="contentView" id="oP4-T9-MaV">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="Abj-oK-TGa" id="fzq-F8-7RB"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="bZa-3s-pcm" kind="relationship" relationship="window.shadowedContentViewController" id="r57-q9-oXf"/>
+                    </connections>
+                </windowController>
+                <customObject id="HHh-UI-zfE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="109" y="75"/>
+        </scene>
+        <!--Tree Inspector View Controller-->
+        <scene sceneID="4G8-r0-Nlv">
+            <objects>
+                <viewController id="bZa-3s-pcm" customClass="TreeInspectorViewController" customModule="macgui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="3DO-3f-4TJ" customClass="iCarousel">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="dataSource" destination="bZa-3s-pcm" id="rBj-LF-2t2"/>
+                            <outlet property="delegate" destination="bZa-3s-pcm" id="XOO-b2-yKK"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="Carousel" destination="3DO-3f-4TJ" id="rTz-IP-lge"/>
+                    </connections>
+                </viewController>
+                <customObject id="qdG-DP-Vpe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="666" y="44"/>
+        </scene>
+    </scenes>
+</document>

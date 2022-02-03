@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab View Controller-->
+        <scene sceneID="Z68-No-4E7">
+            <objects>
+                <customObject id="MKF-UK-4bl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <tabViewController identifier="ModalSheetTabView" storyboardIdentifier="ModalSheetTabView" selectedTabViewItemIndex="0" tabStyle="unspecified" id="3V7-fT-kdA" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem label="Align Tool" identifier="AlignTool" id="aNB-se-BiG" userLabel="Align Tool"/>
+                        <tabViewItem label="Tree Set Tool" identifier="TreeSetTool" id="U0y-i9-mmW" userLabel="Tree Set Tool"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="626-6W-VnF">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="350"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="system"/>
+                        <connections>
+                            <outlet property="delegate" destination="3V7-fT-kdA" id="7YQ-hA-Fzd"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="626-6W-VnF" id="fIH-O1-OPa"/>
+                        <segue destination="Rrq-Y6-Cvx" kind="relationship" relationship="tabItems" id="frO-Kj-LEN"/>
+                        <segue destination="22G-oc-xpa" kind="relationship" relationship="tabItems" id="mxW-dn-F8z"/>
+                    </connections>
+                </tabViewController>
+            </objects>
+            <point key="canvasLocation" x="-544" y="-1130"/>
+        </scene>
+        <!--Align Tool-->
+        <scene sceneID="ip6-6G-0IH">
+            <objects>
+                <controllerPlaceholder storyboardIdentifier="AlignTool" storyboardName="AlignTool" id="Rrq-Y6-Cvx" userLabel="Align Tool" sceneMemberID="viewController"/>
+                <customObject id="BrN-8v-Jjz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-17" y="-208"/>
+        </scene>
+        <!--ParsimonyTool-->
+        <scene sceneID="0LD-OA-lJJ">
+            <objects>
+                <controllerPlaceholder storyboardName="ParsimonyTool" id="gmB-dj-xDz" sceneMemberID="viewController"/>
+                <customObject id="2jk-bU-PJ2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="353" y="-1060"/>
+        </scene>
+        <!--TreeSetTool-->
+        <scene sceneID="vB1-He-bAm">
+            <objects>
+                <controllerPlaceholder storyboardIdentifier="TreeSetTool" storyboardName="TreeSetTool" referencedIdentifier="TreeSetTool" id="22G-oc-xpa" sceneMemberID="viewController"/>
+                <customObject id="6m5-S1-b0n" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-17" y="-786"/>
+        </scene>
+    </scenes>
+</document>
