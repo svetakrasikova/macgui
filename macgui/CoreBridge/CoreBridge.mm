@@ -202,7 +202,7 @@ using json = nlohmann::json;
                 std::vector<std::string> aliases = distPtr->getDistributionFunctionAliases();
                 TypeSpec typeSpec = distPtr->getVariableTypeSpec();
                 MemberRules memberRules = distPtr->getParameterRules();
-                
+
                 std::cout << "   constructorName  = " << constructorName << std::endl;
                 std::cout << "   distributionName = " << distributionName << std::endl;
                 std::cout << "   typeSpec         = " << typeSpec << std::endl;
