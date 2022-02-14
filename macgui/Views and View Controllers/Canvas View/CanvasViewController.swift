@@ -92,22 +92,11 @@ class CanvasViewController: GenericCanvasViewController {
     }
 
     
-    func setUpArrowViewController(connection: Connection) -> ArrowViewController {
-        let arrowController = ArrowViewController()
-        arrowController.frame = canvasView.bounds
-        arrowController.color = Connector.getColor(type: connection.type)
-        arrowController.sourceTool = connection.from
-        arrowController.targetTool = connection.to
-        arrowController.connection = connection
-        return arrowController
-    }
-    
-    
     func addConnectionToAnalysis(connection: Connection) {
         analysis?.arrows.append(connection)
-        let arrowController = setUpArrowViewController(connection: connection)
-        addArrowView(arrowController: arrowController)
+        addArrowView(connection: connection)
     }
+    
     
 // MARK: - Add and Delete Canvas Objects
     
@@ -141,7 +130,7 @@ class CanvasViewController: GenericCanvasViewController {
             }
         }
         for connection in analysis.arrows {
-            addArrowView(arrowController: setUpArrowViewController(connection: connection))
+            addArrowView(connection: connection)
         }
     }
     override func toolViewController() -> CanvasObjectViewController? {
@@ -195,7 +184,7 @@ class CanvasViewController: GenericCanvasViewController {
     
     override func removeConnection(arrowViewController: ArrowViewController){
         super.removeConnection(arrowViewController: arrowViewController)
-        if let analysis = analysis, let connection = arrowViewController.connection, let index = analysis.arrows.firstIndex(of: connection) {
+        if let analysis = analysis, let index = analysis.arrows.firstIndex(of: arrowViewController.connection) {
             analysis.arrows.remove(at: index)
         }
     }

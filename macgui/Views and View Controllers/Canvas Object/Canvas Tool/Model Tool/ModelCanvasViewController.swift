@@ -115,7 +115,7 @@ class ModelCanvasViewController: GenericCanvasViewController {
     
     override func removeConnection(arrowViewController: ArrowViewController) {
         super.removeConnection(arrowViewController: arrowViewController)
-        if let model = self.model, let connection = arrowViewController.connection, let index = model.edges.firstIndex(of: connection) {
+        if let model = self.model, let index = model.edges.firstIndex(of: arrowViewController.connection) {
             model.edges.remove(at: index)
         }
     }
@@ -145,27 +145,6 @@ class ModelCanvasViewController: GenericCanvasViewController {
     func setUpConnection(sourceNode: Connectable, targetNode: Connectable) -> Connection? {
         let connection = Connection(to: targetNode, from: sourceNode, type: .modelParameter)
         return connection
-    }
-    
-    func setUpArrowViewController(_ connection:  Connection) -> ArrowViewController {
-        let arrowController = ArrowViewController()
-        arrowController.frame = canvasView.bounds
-        arrowController.sourceTool = connection.from
-        arrowController.targetTool = connection.to
-        arrowController.connection = connection
-        return arrowController
-    }
-    
-    
-    func addArrowView(connection: Connection) {
-        let arrowController = setUpArrowViewController(connection)
-        addChild(arrowController)
-        if let topMostLoop = topMostLoop {
-            canvasView.addSubview(arrowController.view, positioned: .above, relativeTo: topMostLoop.view)
-        } else {
-            canvasView.addSubview(arrowController.view, positioned: .below, relativeTo: bottomMostNonResizableObject?.view)
-        }
-        bottomMostNonResizableObject = arrowController
     }
     
     

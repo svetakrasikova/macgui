@@ -78,7 +78,7 @@ class Model: DataTool {
         self.outlets = [purple]
         
         do {
-            try initPalettItemsFromCore()
+//            try initPalettItemsFromCore()
             try initMockupPaletteItems()
             try initMockupDistributions()
             try initMockupFunctions()

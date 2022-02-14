@@ -11,33 +11,42 @@ import Darwin
 
 class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
     
+    enum CodingKeys: String {
+       case connection, frame
+    }
     private var observers = [NSKeyValueObservation]()
     
     let preferencesManager = (NSApp.delegate as! AppDelegate).preferencesManager
     
+    var connection: Connection
+    var frame: NSRect
     
-
-    weak var targetTool: Connectable?
-    weak var sourceTool: Connectable?
-    weak var connection: Connection?
-    var frame: NSRect?
-    var color: NSColor?
+    var targetTool: Connectable {
+        return connection.to
+    }
+    var sourceTool: Connectable {
+        return connection.from
+    }
+    
+    var color: NSColor {
+        return Connector.getColor(type: connection.type)
+    }
     
     var endPoint: NSPoint {
         get{
-            return (targetTool?.frameOnCanvas.center())!
+            return targetTool.frameOnCanvas.center()
         }
     }
     
     var beginPoint: NSPoint {
         get {
-            return (sourceTool?.frameOnCanvas.center())!
+            return sourceTool.frameOnCanvas.center()
         }
     }
     
     private var targetToolFrame: NSRect {
         get {
-            return (targetTool?.frameOnCanvas)!
+            return targetTool.frameOnCanvas
         }
     }
     
@@ -66,6 +75,23 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
         }
     }
     
+    init(connection: Connection, frame: NSRect) {
+        self.connection = connection
+        self.frame = frame
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        connection = coder.decodeObject(forKey: CodingKeys.connection.rawValue) as! Connection
+        frame = coder.decodeRect(forKey: CodingKeys.frame.rawValue)
+        super.init(coder: coder)
+    }
+    
+    
+    override func encode(with coder: NSCoder) {
+        coder.encode(connection, forKey: CodingKeys.connection.rawValue)
+        coder.encode(frame, forKey: CodingKeys.frame.rawValue)
+    }
     
     func ownedBy(tool: ToolObject) -> Bool{
         if self.targetTool  === tool || self.sourceTool === tool {
@@ -82,10 +108,10 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
             targetTool.propagateNumberData()
             targetTool.propagateTreeData(source: sourceTool, removeSource: true)
         }
-        if let type = self.connection?.type {
-            targetTool?.removeNeighbor(connectionType: type, linkType: LinkType.inlet)
-            sourceTool?.removeNeighbor(connectionType: type, linkType: LinkType.outlet)
-        }
+        
+        targetTool.removeNeighbor(connectionType: connection.type, linkType: LinkType.inlet)
+        sourceTool.removeNeighbor(connectionType: connection.type, linkType: LinkType.outlet)
+        
     }
 
     func clearSublayers(){
@@ -99,11 +125,7 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
     func drawArrow(width: CGFloat, highlight: Bool){
         clearSublayers()
         let arrowLayer = CAShapeLayer()
-        if let color = self.color {
-            arrowLayer.strokeColor = color.cgColor
-        } else {
-            arrowLayer.strokeColor = preferencesManager.modelCanvasArrowColor?.cgColor
-        }
+        arrowLayer.strokeColor = color.cgColor
         arrowLayer.lineWidth = width
         if highlight {
             arrowLayer.shadowOpacity = 0.7
@@ -134,7 +156,7 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
         (self.view as! ArrowView).clickArea = path.copy(strokingWithWidth: 15, lineCap: CGLineCap.round, lineJoin: CGLineJoin.round, miterLimit: 1)    }
     
     override func loadView() {
-        self.view = ArrowView(frame: frame!)
+        self.view = ArrowView(frame: frame)
     }
     
     override func viewDidLoad() {
@@ -157,11 +179,11 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
     
     func observeEndPointChanges(){
         observers = [
-            sourceTool?.observe(\Connectable.frameOnCanvas, options: [.old, .new]) {tool, change in
+            sourceTool.observe(\Connectable.frameOnCanvas, options: [.old, .new]) {tool, change in
                 self.view.needsDisplay = true},
             
-            targetTool?.observe(\Connectable.frameOnCanvas, options: [.old, .new]) {tool, change in
-                self.view.needsDisplay = true}] as! [NSKeyValueObservation]
+            targetTool.observe(\Connectable.frameOnCanvas, options: [.old, .new]) {tool, change in
+                self.view.needsDisplay = true}] 
     }
     
 }

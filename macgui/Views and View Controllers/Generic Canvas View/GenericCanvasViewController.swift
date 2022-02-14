@@ -227,7 +227,13 @@ class GenericCanvasViewController: NSViewController, NSWindowDelegate {
         canvasLoopViewController.checkForLoopInclusion()
     }
     
-    func addArrowView(arrowController: ArrowViewController){
+    func setUpArrowViewController(connection: Connection) -> ArrowViewController {
+        return ArrowViewController(connection: connection, frame: canvasView.bounds)
+    }
+    
+    
+    func addArrowView(connection: Connection) {
+        let arrowController = setUpArrowViewController(connection: connection)
         addChild(arrowController)
         if let topMostLoop = topMostLoop {
             canvasView.addSubview(arrowController.view, positioned: .above, relativeTo: topMostLoop.view)
