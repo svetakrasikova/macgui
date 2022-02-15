@@ -118,15 +118,8 @@ class ModelVariableController: ModelPaletteItemController {
                     case "DataType":
                         selectionItemNames = dataTypes
                     default:
-                        var modelNodes: [ModelNode] = []
-                        for connection in model.edges {
-                            if modelNode == connection.to, let modelNode = connection.from as? ModelNode {
-                                guard let variable = modelNode.node as? PaletteVariable else { return }
-                                if variable.type == parameter.type && variable.dimension == parameter.dimension {
-                                    modelNodes.append(modelNode)
-                                }
-                            }
-                        }
+                        guard let modelNode = modelNode else { return }
+                        let modelNodes = model.incomingNodesWithMatchingTypeAndDimension(targetNode: modelNode, parameter: parameter)
                         selectionItemNames = modelNodes.map { ($0.parameterName ?? "Unknown") }
                     }
                     

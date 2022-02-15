@@ -106,25 +106,28 @@ class ModelCanvasItemViewController: CanvasObjectViewController, ActionButtonDel
             guard let modelNode =  self.tool as? ModelNode else { return }
             guard let canvasVC = self.parent as? ModelCanvasViewController else { return }
             if let outerLoop = self.outerLoopViewController?.tool as? Loop {
+                let outerLoopIndexPath = outerLoop.indexPath()
+                modelNode.updateLoopEmbedLevel(loopIndexPath: outerLoopIndexPath)
                 if modelNode.nodeType != .constant {
-                    plateIndex = outerLoop.indexPath()
+                    plateIndex = outerLoopIndexPath
                 }
                 if oldValue == nil && !canvasVC.resettingCanvasView {
                     modelNode.observedValue = nil
                 }
                 
             } else {
-                plateIndex = nil
                 if oldValue != nil && !canvasVC.resettingCanvasView {
+                    modelNode.updateLoopEmbedLevel(loopIndexPath: nil)
+                    plateIndex = nil
                     modelNode.observedValue = nil
                 }
             }
             view.needsDisplay = true
           }
     }
+
     
     var plateIndex: String?
-    
     
     
 //    MARK: -- Observers

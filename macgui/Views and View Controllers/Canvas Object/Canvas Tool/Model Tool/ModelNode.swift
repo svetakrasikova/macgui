@@ -15,6 +15,8 @@ class ModelNode: Connectable {
     var node: PalettItem
     
     var nodeType: PaletteVariable.VariableType?
+    
+    var loopEmbedLevel: Int = 0
 
    
     dynamic var parameterName: String? {
@@ -57,7 +59,7 @@ class ModelNode: Connectable {
     }
     
     enum CodingKeys: String {
-        case node, nodeType, parameterName, distribution, distributionParameters, constantValue, observedValue
+        case node, nodeType, parameterName, distribution, distributionParameters, constantValue, observedValue, loopEmbedLevel
     }
     
     init(name: String, frameOnCanvas: NSRect, analysis: Analysis, node: PalettItem){
@@ -84,6 +86,7 @@ class ModelNode: Connectable {
         self.distributionParameters = aDecoder.decodeObject(forKey: CodingKeys.distributionParameters.rawValue) as? [Any] ?? []
         self.constantValue = aDecoder.decodeObject(forKey: CodingKeys.constantValue.rawValue)
         self.observedValue = aDecoder.decodeObject(forKey: CodingKeys.observedValue.rawValue)
+        self.loopEmbedLevel = aDecoder.decodeInteger(forKey: CodingKeys.loopEmbedLevel.rawValue)
         super.init(coder: aDecoder)
     }
     
@@ -95,6 +98,7 @@ class ModelNode: Connectable {
         coder.encode(distributionParameters, forKey: CodingKeys.distributionParameters.rawValue)
         coder.encode(constantValue, forKey: CodingKeys.constantValue.rawValue)
         coder.encode(observedValue, forKey: CodingKeys.observedValue.rawValue)
+        coder.encode(loopEmbedLevel, forKey: CodingKeys.loopEmbedLevel.rawValue)
         super.encode(with: coder)
     }
     
@@ -113,6 +117,16 @@ class ModelNode: Connectable {
             observedValue = data
         } else {
             observedValue = nil
+        }
+    }
+    
+    func updateLoopEmbedLevel(loopIndexPath: String?) {
+        guard let variable = node as? PaletteVariable else { return }
+        let currentDimension = variable.dimension
+        if let index = loopIndexPath {
+            loopEmbedLevel = currentDimension + index.count
+        } else {
+            loopEmbedLevel = 0
         }
     }
     

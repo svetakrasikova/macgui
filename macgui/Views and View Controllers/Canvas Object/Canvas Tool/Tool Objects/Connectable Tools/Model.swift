@@ -241,4 +241,45 @@ class Model: DataTool {
         return (discovered, errors)
     }
     
+    private func sharePlate(n1: ModelNode, n2: ModelNode) -> Bool {
+        for plate in plates {
+            if plate.embeddedNodes.contains(n1) && plate.embeddedNodes.contains(n2) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    private func isUnembeddedNode(node: ModelNode) -> Bool {
+        for plate in plates {
+            if plate.embeddedNodes.contains(node) {
+                return false
+            }
+        }
+        return true
+    }
+
+    
+    func incomingNodesWithMatchingTypeAndDimension(targetNode: ModelNode, parameter: Parameter) -> [ModelNode] {
+        var matchingNodes: [ModelNode] = []
+        for connection in edges {
+            if targetNode == connection.to, let incomingNode = connection.from as? ModelNode {
+                guard let variable = incomingNode.node as? PaletteVariable else { return [] }
+                if variable.type == parameter.type || variable.superclasses.contains(parameter.type) {
+                    if sharePlate(n1: targetNode, n2: incomingNode) || isUnembeddedNode(node: incomingNode) {
+                        if variable.dimension == parameter.dimension {
+                            matchingNodes.append(incomingNode)
+                        }
+                    } else {
+                        if incomingNode.loopEmbedLevel == parameter.dimension {
+                            matchingNodes.append(incomingNode)
+                        }
+                    }
+                }
+            }
+            
+        }
+        return matchingNodes
+    }
+    
 }
