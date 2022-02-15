@@ -47,6 +47,10 @@ class PaletteVariable : PalettItem {
             return Symbol.doubleStruckCapitalZ.rawValue
         case "Probability":
             return Symbol.doubleStruckCapitalP.rawValue
+        case PaletteVariableType.Tree.rawValue:
+            return Symbol.tau.rawValue
+        case PaletteVariableType.BranchLengthTree.rawValue:
+            return Symbol.tau.rawValue
         default:
             return "#"
         }
@@ -102,7 +106,6 @@ class PaletteVariable : PalettItem {
             throw PaletteVariableError.decodingError
         }
     }
-    
     
     
    override var description: String {

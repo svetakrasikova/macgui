@@ -17,6 +17,7 @@ enum Symbol: String {
     case capitalDelta = "\u{0394}"
     case plus = "\u{002B}"
     case sigma = "\u{03C3}"
+    case tau = "\u{03C4}"
     case mu = "\u{03BC}"
     case lambda = "\u{039B}"
     case alpha = "\u{03B1}"
