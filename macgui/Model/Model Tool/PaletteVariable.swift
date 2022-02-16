@@ -51,6 +51,8 @@ class PaletteVariable : PalettItem {
             return Symbol.tau.rawValue
         case PaletteVariableType.BranchLengthTree.rawValue:
             return Symbol.tau.rawValue
+        case PaletteVariableType.AbstractHomologousDiscreteCharacterData.rawValue:
+            return "X"
         default:
             return "#"
         }
