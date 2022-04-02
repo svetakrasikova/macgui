@@ -109,9 +109,12 @@ class ArrowViewController: CanvasObjectViewController, ArrowViewDelegate {
             targetTool.propagateTreeData(source: sourceTool, removeSource: true)
         }
         
+        if let targetNode = targetTool as? ModelNode, let sourceNode = sourceTool as? ModelNode {
+            targetNode.removeNodeFromParameters(sourceNode)
+        }
+        
         targetTool.removeNeighbor(connectionType: connection.type, linkType: LinkType.inlet)
         sourceTool.removeNeighbor(connectionType: connection.type, linkType: LinkType.outlet)
-        
     }
 
     func clearSublayers(){
