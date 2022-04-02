@@ -8,7 +8,7 @@
 
 import Cocoa
 /**
- ModelNodeChecker runs a validation check on a model node. It stores a list of errors and the name of a data matrix if the node is associated with throu the through the observed data field or in one of it's distribution parameters.
+ ModelNodeChecker runs a validation check on a model node. It stores a list of errors, such as undefined value and undefined parameters of the node distribution or function. 
  */
 class ModelNodeChecker: NSObject {
     
@@ -17,13 +17,12 @@ class ModelNodeChecker: NSObject {
     }
     
     enum ModelNodeError: Error {
-        case constantValueUndefined
-        case distributionUndefined
-        case distributionParametersUndefined(Int)
+        case constantValueUndefined(ModelNode)
+        case distributionUndefined(ModelNode)
+        case distributionParametersUndefined(ModelNode, Int)
     }
     var node: ModelNode
     var errors: [Error] = []
-    var linkedData: String?
     
     init(node: ModelNode) {
         self.node = node
@@ -50,7 +49,7 @@ class ModelNodeChecker: NSObject {
     
     func checkConstantValue() -> [Error]? {
         guard let _ = node.constantValue else {
-            return [ModelNodeError.constantValueUndefined]
+            return [ModelNodeError.constantValueUndefined(node)]
         }
         return nil
     }
@@ -58,7 +57,7 @@ class ModelNodeChecker: NSObject {
  
     func checkFunctionAndRandomVariable() -> Error? {
         guard let _ = node.distribution else {
-            return ModelNodeError.distributionUndefined
+            return ModelNodeError.distributionUndefined(node)
         }
         if let paramError = checkDistributionParameters() {
             return paramError
@@ -69,10 +68,11 @@ class ModelNodeChecker: NSObject {
     
     func checkDistributionParameters() -> Error? {
         guard let distribution = node.distribution else { return nil }
-        let paramDiff = distribution.parameters.count - node.distributionParameters.count
+        let paramCount = node.distributionParameters.filter({ $0 is ModelNode }).count
+        let paramDiff = distribution.parameters.count - paramCount 
         guard paramDiff == 0
         else {
-            return ModelNodeError.distributionParametersUndefined(paramDiff)
+            return ModelNodeError.distributionParametersUndefined(node, paramDiff)
         }
         return nil
     }
