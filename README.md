@@ -34,9 +34,8 @@ By dragging model components — such as random variables of various types — t
 This graphical method for specifying models has several advantages. First, it simplifies programming. Each element of the graph can be checked for completeness and errors flagged. The model can be instantiated simply by performing a postorder traversal of the graph, outputting to the parser the string that would instantiate each graph element in turn. Second, the graph constrains the user to do only sensible things when specifying the model. For example, the user cannot specify a probability distribution with a domain that is incompatible with the type of random variable that was selected. Finally, and perhaps most importantly, the graph representing the statistical model has pedagogical value. Although graphical models have been around for decades in the statistics literature, they are new to most biologists. A graphical representation of a phylogenetic model exposes all of the assumptions of the analysis to the user. Programs such as MrBayes allow the user to essentially forget about the prior probability distributions assigned to parameters because a default prior is specified for every parameter in the model. By contrast, the graphical representation of models in RevBayes shows all of the model’s parameters, including the constants that are the parameters of the prior distribution.
 
 
-## Installation
+## How To Compile
 
-To be written
 
 ## Credits
 
