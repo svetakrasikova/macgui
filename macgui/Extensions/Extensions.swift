@@ -396,7 +396,19 @@ extension NSTableView {
     }
 }
 
-
+extension NSAlert {
+    
+    class func runInfoDialog(message: String, infoText: String?) {
+        let alert = NSAlert()
+        alert.alertStyle = NSAlert.Style.informational
+        alert.messageText = message
+        if let text = infoText {
+            alert.informativeText = text
+        }
+        alert.runModal()
+        
+    }
+}
 
 
 
