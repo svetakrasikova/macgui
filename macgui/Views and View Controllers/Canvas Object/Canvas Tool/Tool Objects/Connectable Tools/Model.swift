@@ -191,19 +191,23 @@ class Model: DataTool {
     }
     
     func isValid() -> Bool? {
+        
+        self.errors?.removeAll()
         var segments: Int = 0
         var undiscovered: [ModelNode] = self.nodes
+        print("Starting the model check...")
         for node in self.nodes {
-            if undiscovered.contains(node),  let (discovered, errors) = traverse(node: node, undiscovered: undiscovered, dataMatrix: nil) {
+            if undiscovered.contains(node),  let (discovered, errors) = traverse(node: node, undiscovered: undiscovered) {
                 undiscovered = undiscovered.filter {node in !discovered.contains(node) }
                 if !isConnected(discovered: discovered)
                 {
                     segments += 1
                 }
+                self.errors?.append(contentsOf: errors)
             }
         }
-        print(segments)
-        return segments == 0
+        print("# segments: \(segments)")
+        return segments == 0 && errors?.count == 0
         
     }
     
@@ -213,18 +217,15 @@ class Model: DataTool {
     }
     
 
-    func traverse(node: ModelNode, undiscovered: [ModelNode], dataMatrix: String?) -> ([ModelNode], [Error])? {
+    func traverse(node: ModelNode, undiscovered: [ModelNode]) -> ([ModelNode], [Error])? {
         
         guard !self.nodes.isEmpty else { return nil }
       
         let updatedUndiscovered: [ModelNode] = undiscovered.filter {n in n !== node}
         var discovered: [ModelNode] = [node]
-        var errors = [Error]()
-        // check startNode, return errors and name of data matrix if present
-//       let nodeChecker = NodeChecker(node)
-//       nodeChecker.runCheck()
-//        errors = nodeChecker.errors
-//        var dataMatrixName = nodeChecker.linkedData
+        let nodeChecker = ModelNodeChecker(node: node)
+        try! nodeChecker.runCheck()
+        var errors = nodeChecker.errors
      
         for edge in self.edges {
             var startNode: ModelNode?
@@ -233,13 +234,15 @@ class Model: DataTool {
             } else if edge.to === node, let from = edge.from as? ModelNode, updatedUndiscovered.contains(from){
                 startNode = from
             }
-            if let node = startNode, let result = traverse(node: node, undiscovered: updatedUndiscovered, dataMatrix: nil) {
+            if let node = startNode, let result = traverse(node: node, undiscovered: updatedUndiscovered) {
                 discovered.append(contentsOf: result.0)
                 errors.append(contentsOf: result.1)
             }
         }
         return (discovered, errors)
     }
+    
+    
     
     private func sharePlate(n1: ModelNode, n2: ModelNode) -> Bool {
         for plate in plates {
@@ -258,7 +261,7 @@ class Model: DataTool {
         }
         return true
     }
-
+    
     
     func incomingNodesWithMatchingTypeAndDimension(targetNode: ModelNode, parameter: Parameter) -> [ModelNode] {
         var matchingNodes: [ModelNode] = []
@@ -281,5 +284,8 @@ class Model: DataTool {
         }
         return matchingNodes
     }
+    
+
+    
     
 }

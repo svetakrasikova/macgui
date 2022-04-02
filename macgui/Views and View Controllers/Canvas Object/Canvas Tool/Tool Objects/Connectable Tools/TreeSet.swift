@@ -195,7 +195,7 @@ class TreeSet: DataTool {
             DispatchQueue.main.async {
                 delegate?.endProgressIndicator()
                 if !successfullyReadData {
-                    readDataAlert(informativeText: "No trees could be imported. An error occurred while parsing the file(s).")
+                    runReadDataAlert(informativeText: "No trees could be imported. An error occurred while parsing the file(s).")
                 }
             }
         }

@@ -92,7 +92,7 @@ class Align: DataTool {
                 DispatchQueue.main.async {
                     self.delegate?.endProgressIndicator()
                     if !successfullyReadData {
-                        self.readDataAlert(informativeText: "Data could not be read")
+                        self.runReadDataAlert(informativeText: "Data could not be read")
                     }
                 }
             }

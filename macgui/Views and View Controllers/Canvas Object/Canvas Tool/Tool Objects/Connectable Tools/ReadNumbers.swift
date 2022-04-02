@@ -85,7 +85,7 @@ class ReadNumbers: DataTool {
             DispatchQueue.main.async {
                 self.delegate?.endProgressIndicator()
                 if !successfullyReadData {
-                    self.readDataAlert(informativeText: message)
+                    self.runReadDataAlert(informativeText: message)
                 }
             }
         }

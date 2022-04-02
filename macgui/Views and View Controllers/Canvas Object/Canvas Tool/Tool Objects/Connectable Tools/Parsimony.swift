@@ -73,7 +73,7 @@ class Parsimony: DataTool, ResolveStateOnExecution {
                 DispatchQueue.main.async {
                     self.delegate?.endProgressIndicator()
                     if !successfullyReadData {
-                        self.readDataAlert(informativeText: "Tree data output from paup could not be read")
+                        self.runReadDataAlert(informativeText: "Tree data output from paup could not be read")
                     }
                 }
             }
