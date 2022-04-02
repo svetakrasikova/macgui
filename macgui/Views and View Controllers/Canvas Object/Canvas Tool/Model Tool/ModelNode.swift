@@ -130,5 +130,16 @@ class ModelNode: Connectable {
         }
     }
     
+    func removeNodeFromParameters(_ node: ModelNode) {
+        guard !distributionParameters.isEmpty else { return }
+        var newParameters = [ModelNode]()
+        for case let par as ModelNode in distributionParameters {
+            if par !== node {
+                newParameters.append(par)
+            }
+        }
+        distributionParameters = newParameters
+    }
+    
     
 }
