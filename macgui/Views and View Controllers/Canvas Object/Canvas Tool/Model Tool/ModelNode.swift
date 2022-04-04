@@ -18,6 +18,9 @@ class ModelNode: Connectable {
     
     var loopEmbedLevel: Int = 0
 
+    override var descriptiveName: String {
+        return "Node \(self.name) of type \(node.type)"
+    }
    
     dynamic var parameterName: String? {
         didSet {
