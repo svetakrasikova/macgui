@@ -23,6 +23,25 @@ class ModelToolWindowController: NSWindowController {
         picker.show(relativeTo: .zero, of: sender, preferredEdge: .minY)
     }
     
+    
+    func errorsDescription(errors: [Error]?) -> String? {
+        if let errors = errors {
+            for error in errors {
+                switch error  {
+                case ModelNodeChecker.ModelNodeError.distributionUndefined(let node):
+                    return "\(node.descriptiveName): undefined distribution"
+                case ModelNodeChecker.ModelNodeError.constantValueUndefined(let node):
+                    return "\(node.descriptiveName): undefined value"
+                case ModelNodeChecker.ModelNodeError.distributionParametersUndefined(let node, let num):
+                    let numParamString = num > 1 ? "\(num) parameters are" : "1 parameter is"
+                    return "\(node.descriptiveName): \(numParamString) undefined"
+                default: return "error description"
+                }
+            }
+        }
+        return nil
+    }
+    
     @IBAction func checkModelClicked(_ sender: NSButton) {
 //       validate the model tool and output the result in an alert, highlight the problematic nodes
         guard let model = self.tool else {
@@ -30,7 +49,8 @@ class ModelToolWindowController: NSWindowController {
             return
         }
         if let isValid = model.isValid() {
-            print(isValid)
+            let validityStatement = isValid ? "Model is valid"  : "Model is invalid"
+            NSAlert.runInfoDialog(message: validityStatement, infoText: errorsDescription(errors: model.errors))
         } else {
 //            run alert that the model is empty
         }
