@@ -19,7 +19,18 @@ class ModelNode: Connectable {
     var loopEmbedLevel: Int = 0
 
     override var descriptiveName: String {
-        return "Node \(self.name) of type \(node.type)"
+        var typeOfNode = ""
+        if let nodeType = nodeType {
+            switch nodeType {
+            case .constant: typeOfNode = "Constant"
+            case .function: typeOfNode = "Function"
+            case . randomVariable: typeOfNode = "Random variable"
+            }
+        }
+        if let name = parameterName {
+            return "\(typeOfNode) \(name) of type \(node.type)"
+        }
+        return super.descriptiveName
     }
    
     dynamic var parameterName: String? {
