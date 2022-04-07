@@ -8869,7 +8869,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1330;
 				ORGANIZATIONNAME = "Svetlana Krasikova";
 				TargetAttributes = {
 					1411BE8B2203D8FB009BEE1D = {
@@ -10555,7 +10555,6 @@
 				MTL_FAST_MATH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-lboost_program_options";
 				SDKROOT = macosx;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;

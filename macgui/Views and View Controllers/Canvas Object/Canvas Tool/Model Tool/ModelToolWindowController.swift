@@ -25,21 +25,24 @@ class ModelToolWindowController: NSWindowController {
     
     
     func errorsDescription(errors: [Error]?) -> String? {
+        var str = ""
+        var errNum = 0
         if let errors = errors {
             for error in errors {
+                errNum += 1
                 switch error  {
                 case ModelNodeChecker.ModelNodeError.distributionUndefined(let node):
-                    return "\(node.descriptiveName): undefined distribution"
+                    str += "\(errNum). \(node.descriptiveName): undefined distribution.\n"
                 case ModelNodeChecker.ModelNodeError.constantValueUndefined(let node):
-                    return "\(node.descriptiveName): undefined value"
+                    str += "\(errNum). \(node.descriptiveName): undefined value.\n"
                 case ModelNodeChecker.ModelNodeError.distributionParametersUndefined(let node, let num):
-                    let numParamString = num > 1 ? "\(num) parameters are" : "1 parameter is"
-                    return "\(node.descriptiveName): \(numParamString) undefined"
-                default: return "error description"
+                    let numParamString = num > 1 ? "\(num) parameters" : "1 parameter"
+                    str += "\(errNum). \(node.descriptiveName): \(numParamString) undefined.\n"
+                default: str += "\(errNum). error description\n"
                 }
             }
         }
-        return nil
+        return str
     }
     
     @IBAction func checkModelClicked(_ sender: NSButton) {
