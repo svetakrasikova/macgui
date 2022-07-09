@@ -191,11 +191,12 @@ class Model: DataTool {
     }
     
     func isValid() -> Bool? {
-        
-        self.errors?.removeAll()
-        var segments: Int = 0
         var undiscovered: [ModelNode] = self.nodes
-        print("Starting the model check...")
+        self.errors = nil
+        var segments: Int = 0
+        guard !undiscovered.isEmpty else {
+            return nil
+        }
         for node in self.nodes {
             if undiscovered.contains(node),  let (discovered, errors) = traverse(node: node, undiscovered: undiscovered) {
                 undiscovered = undiscovered.filter {node in !discovered.contains(node) }
@@ -206,8 +207,7 @@ class Model: DataTool {
                 self.errors?.append(contentsOf: errors)
             }
         }
-        print("# segments: \(segments)")
-        return segments == 0 && errors?.count == 0
+        return segments == 0 && self.errors == nil
         
     }
     
