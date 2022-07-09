@@ -24,38 +24,43 @@ class ModelToolWindowController: NSWindowController {
     }
     
     
-    func errorsDescription(errors: [Error]?) -> String? {
-        var str = ""
-        var errNum = 0
-        if let errors = errors {
-            for error in errors {
-                errNum += 1
-                switch error  {
-                case ModelNodeChecker.ModelNodeError.distributionUndefined(let node):
-                    str += "\(errNum). \(node.descriptiveName): undefined distribution.\n"
-                case ModelNodeChecker.ModelNodeError.constantValueUndefined(let node):
-                    str += "\(errNum). \(node.descriptiveName): undefined value.\n"
-                case ModelNodeChecker.ModelNodeError.distributionParametersUndefined(let node, let num):
-                    let numParamString = num > 1 ? "\(num) parameters" : "1 parameter"
-                    str += "\(errNum). \(node.descriptiveName): \(numParamString) undefined.\n"
-                default: str += "\(errNum). error description\n"
-                }
+    func errorsDescription(errors: [Error]) -> [String] {
+        var errorDescriptions = [String]()
+        for error in errors {
+            switch error  {
+            case ModelNodeChecker.ModelNodeError.distributionUndefined(let node):
+                errorDescriptions.append("\(node.descriptiveName) has undefined distribution.")
+            case ModelNodeChecker.ModelNodeError.constantValueUndefined(let node):
+                errorDescriptions.append("\(node.descriptiveName) has undefined value.")
+            case ModelNodeChecker.ModelNodeError.distributionParametersUndefined(let node, let num):
+                let numParamString = num > 1 ? "\(num) undefined parameters" : "undefined 1 parameter"
+                errorDescriptions.append("\(node.descriptiveName) has \(numParamString).")
+            default: break
             }
         }
-        return str
+        return errorDescriptions
     }
     
     @IBAction func checkModelClicked(_ sender: NSButton) {
-//       validate the model tool and output the result in an alert, highlight the problematic nodes
-        guard let model = self.tool else {
-//            alert that the model is undefined
-            return
-        }
+        // validate the model tool and output the result in an alert, highlight the problematic nodes
+        guard let model = self.tool else { return }
         if let isValid = model.isValid() {
-            let validityStatement = isValid ? "Model is valid"  : "Model is invalid"
-            NSAlert.runInfoDialog(message: validityStatement, infoText: errorsDescription(errors: model.errors))
+            let validityStatement = isValid ? "Model is valid."  : "Model is invalid."
+            var infoText = ""
+            var errorLog = [String]()
+            if isValid {
+                infoText = "All nodes are complete."
+            } else {
+                if let errors = model.errors {
+                    infoText = "Model traversal found \(errors.count) issue(s)."
+                    errorLog = errorsDescription(errors: errors)
+                } else {
+                    infoText = "Model traversal found unconnected nodes."
+                }
+            }
+            NSAlert.runInfoDialog(message: validityStatement, infoText: infoText, logOfErrors: errorLog)
         } else {
-//            run alert that the model is empty
+            NSAlert.runInfoDialog(message: "Model is empty", infoText: nil)
         }
         
     }
