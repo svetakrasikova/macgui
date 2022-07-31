@@ -254,7 +254,7 @@ class DataTool: Connectable {
     
     
     func runReadDataAlert(informativeText: String) {
-        NSAlert.runInfoDialog(message: "Problem Reading Data", infoText: informativeText)
+        NSAlert.runInfoAlert(message: "Problem Reading Data", infoText: informativeText)
     }
     
 }

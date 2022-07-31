@@ -398,27 +398,17 @@ extension NSTableView {
 
 extension NSAlert {
     
-    class func runInfoDialog(message: String, infoText: String?, logOfErrors: [String] = [String]()) {
+    class func runInfoAlert(message: String, infoText: String?) {
         let alert = NSAlert()
         alert.alertStyle = NSAlert.Style.informational
         alert.messageText = message
         if let info = infoText {
             alert.informativeText = info
-            if !logOfErrors.isEmpty {
-                alert.addButton(withTitle: "OK")
-                alert.addButton(withTitle: "View Errors")
-            }
-              
         }
-          
-        alert.runModal()
         
-//        NSModalResponse responseTag = al.runModal();
-//        if (responseTag == NSAlertFirstButtonReturn) {
-//           ...
-//        } else {
-//           ...
+        alert.runModal()
     }
+    
 }
 
 
