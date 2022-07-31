@@ -4,3 +4,4 @@
 
 #import "CoreBridge.h"
 #import "iCarousel.h"
+#import <UserNotifications/UserNotifications.h>

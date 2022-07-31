@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import UserNotifications
 
 @NSApplicationMain
 
@@ -16,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let preferencesManager = PreferencesManager()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
+        UNUserNotificationCenter.current().delegate = self
         coreBridge.startCore()
     }
 
@@ -25,3 +26,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        return completionHandler([.list, .sound])
+    }
+}

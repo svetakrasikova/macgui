@@ -7,6 +7,9 @@
 //
 
 import Cocoa
+import UserNotifications
+import Foundation
+import UserNotifications
 
 class ModelToolWindowController: NSWindowController {
     
@@ -14,6 +17,7 @@ class ModelToolWindowController: NSWindowController {
     var parameters: [PaletteCategory]?
     @IBOutlet weak var zoom: NSPopUpButton!
     @IBOutlet weak var share: NSButton!
+    let un = UNUserNotificationCenter.current()
     
     @IBAction func shareClicked(_ sender: NSButton) {
         //show a picker pop up menu with the export and import option
@@ -42,29 +46,46 @@ class ModelToolWindowController: NSWindowController {
     }
     
     @IBAction func checkModelClicked(_ sender: NSButton) {
-        // validate the model tool and output the result in an alert, highlight the problematic nodes
+        // validate the model tool, show the succeed message like in Xcode build or fail message, possibly highlight the problematic nodes, add a button to see the log of active issues
         guard let model = self.tool else { return }
         if let isValid = model.isValid() {
-            let validityStatement = isValid ? "Model is valid."  : "Model is invalid."
-            var infoText = ""
-            var errorLog = [String]()
-            if isValid {
-                infoText = "All nodes are complete."
-            } else {
-                if let errors = model.errors {
-                    infoText = "Model traversal found \(errors.count) issue(s)."
-                    errorLog = errorsDescription(errors: errors)
-                } else {
-                    infoText = "Model traversal found unconnected nodes."
-                }
-            }
-            NSAlert.runInfoDialog(message: validityStatement, infoText: infoText, logOfErrors: errorLog)
+            let validityStatement = isValid ? "Model Check Succeeded"  : "Model Check Failed"
+            validityCheckNotification(body: validityStatement)
         } else {
-            NSAlert.runInfoDialog(message: "Model is empty", infoText: nil)
+            NSAlert.runInfoAlert(message: "Model is empty.", infoText: nil)
         }
         
     }
     
+    func validityCheckNotification(body: String) {
+        un.requestAuthorization(options: [.alert, .sound, ], completionHandler: {(authorized, error) in
+            if authorized {
+                print("Authorized")
+            } else if !authorized {
+                print("Not authorized")
+            } else {
+                print(error?.localizedDescription as Any)
+            }
+        })
+        
+        un.getNotificationSettings { (settings) in
+            if settings.authorizationStatus == .authorized {
+                let content = UNMutableNotificationContent()
+                content.body = body
+                content.sound = .default
+                let id = "ValidityCheckNotificationID"
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+                self.un.add(request) {(error) in
+                    if error != nil { print(error?.localizedDescription as Any)}
+                }
+            }
+            
+        }
+    }
+    
+    
+
     weak var canvas: NSSplitViewItem? {
         if let canvas = (contentViewController as? ModelToolViewController)?.splitViewItems[1] {
             return canvas
