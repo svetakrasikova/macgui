@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="TZL-73-EW0">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="TZL-73-EW0">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -49,18 +49,29 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="01E5892F-66C8-4941-840C-8A5438FC0763" label="" paletteLabel="" image="checkmark.seal" catalog="system" bordered="YES" sizingBehavior="auto" id="ktn-tH-V5u" userLabel="Validate">
+                                <toolbarItem implicitItemIdentifier="01E5892F-66C8-4941-840C-8A5438FC0763" label="" paletteLabel="" image="play.circle" catalog="system" bordered="YES" sizingBehavior="auto" id="ktn-tH-V5u" userLabel="Validate">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="RZ9-Z8-NjR">
-                                        <rect key="frame" x="0.0" y="14" width="29" height="23"/>
+                                        <rect key="frame" x="0.0" y="14" width="27" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="checkmark.seal" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jdU-sl-Fzo">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="play.circle" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jdU-sl-Fzo">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="checkModelClicked:" target="lNQ-3N-ZeC" id="MCW-0H-5RX"/>
                                         </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="D54D5683-CCE8-4EAC-9CD7-B891427D0EC3" label="" paletteLabel="" image="exclamationmark.triangle" catalog="system" bordered="YES" sizingBehavior="auto" id="5YP-Cv-ufc" userLabel="ErrorLog">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="cUX-2o-Zym">
+                                        <rect key="frame" x="0.0" y="14" width="29" height="23"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="exclamationmark.triangle" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tzy-6J-GAA">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
                                     </button>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="1D44E6B5-76E1-4C4C-AA1C-6B559AD65A30" label="" paletteLabel="" title="100%" sizingBehavior="auto" id="MfI-2i-fSw" userLabel="Zoom">
@@ -98,6 +109,7 @@
                                 <toolbarItem reference="MfI-2i-fSw"/>
                                 <toolbarItem reference="dTc-yJ-UM6"/>
                                 <toolbarItem reference="ktn-tH-V5u"/>
+                                <toolbarItem reference="5YP-Cv-ufc"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -148,13 +160,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzX-73-IOT">
-                                <rect key="frame" x="0.0" y="0.0" width="170" height="297"/>
+                                <rect key="frame" x="0.0" y="0.0" width="170" height="289"/>
                                 <clipView key="contentView" drawsBackground="NO" id="3eZ-bW-qyJ">
-                                    <rect key="frame" x="1" y="1" width="168" height="295"/>
+                                    <rect key="frame" x="1" y="1" width="168" height="287"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" autosaveName="OutlineView" rowHeight="28" rowSizeStyle="systemDefault" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="14" autosaveExpandedItems="YES" outlineTableColumn="uGO-87-8zt" id="qa1-j9-JlY">
-                                            <rect key="frame" x="0.0" y="0.0" width="168" height="295"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="168" height="287"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -338,6 +350,7 @@
         <image name="NSActionTemplate" width="15" height="15"/>
         <image name="NSShareTemplate" width="15" height="17"/>
         <image name="NSTouchBarSidebarTemplate" width="18" height="14"/>
-        <image name="checkmark.seal" catalog="system" width="17" height="17"/>
+        <image name="exclamationmark.triangle" catalog="system" width="17" height="15"/>
+        <image name="play.circle" catalog="system" width="15" height="15"/>
     </resources>
 </document>
