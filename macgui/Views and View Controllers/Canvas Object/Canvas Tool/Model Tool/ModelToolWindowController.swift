@@ -13,6 +13,10 @@ import UserNotifications
 
 class ModelToolWindowController: NSWindowController {
     
+    enum NotificationID: String {
+        case ValidityCheckNotificationID, ValidityCheckErrors, ShowIssues
+    }
+    
     weak var tool: Model?
     var parameters: [PaletteCategory]?
     @IBOutlet weak var zoom: NSPopUpButton!
@@ -49,15 +53,14 @@ class ModelToolWindowController: NSWindowController {
         // validate the model tool, show the succeed message like in Xcode build or fail message, possibly highlight the problematic nodes, add a button to see the log of active issues
         guard let model = self.tool else { return }
         if let isValid = model.isValid() {
-            let validityStatement = isValid ? "Model Check Succeeded"  : "Model Check Failed"
-            validityCheckNotification(body: validityStatement)
+            validityCheckNotification(isValid: isValid)
         } else {
             NSAlert.runInfoAlert(message: "Model is empty.", infoText: nil)
         }
         
     }
     
-    func validityCheckNotification(body: String) {
+    func validityCheckNotification(isValid: Bool) {
         un.requestAuthorization(options: [.alert, .sound, ], completionHandler: {(authorized, error) in
             if authorized {
                 print("Authorized")
@@ -71,11 +74,22 @@ class ModelToolWindowController: NSWindowController {
         un.getNotificationSettings { (settings) in
             if settings.authorizationStatus == .authorized {
                 let content = UNMutableNotificationContent()
-                content.body = body
+                content.body = isValid ? "Model Check Succeeded"  : "Model Check Failed"
                 content.sound = .default
-                let id = "ValidityCheckNotificationID"
+              
+                let id = NotificationID.ValidityCheckNotificationID.rawValue
+                content.categoryIdentifier = NotificationID.ValidityCheckErrors.rawValue
+                
+                
                 let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
                 let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+                
+                if !isValid {
+                    let showIssues = UNNotificationAction(identifier: NotificationID.ShowIssues.rawValue, title: "Show Issues", options: [])
+                    let category = UNNotificationCategory(identifier: NotificationID.ValidityCheckErrors.rawValue, actions: [showIssues], intentIdentifiers: [], options: [])
+                    self.un.setNotificationCategories([category])
+                }
+                
                 self.un.add(request) {(error) in
                     if error != nil { print(error?.localizedDescription as Any)}
                 }

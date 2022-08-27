@@ -27,6 +27,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if response.notification.request.content.categoryIdentifier == ModelToolWindowController.NotificationID.ValidityCheckErrors.rawValue {
+            
+            switch response.actionIdentifier {
+            case ModelToolWindowController.NotificationID.ShowIssues.rawValue:
+                ModelNotificationActionHandler.sharedNotificationActionHandler.showIssues()                
+            default:
+                break
+            }
+        }
+    }
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         return completionHandler([.list, .sound])
     }

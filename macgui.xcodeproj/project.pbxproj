@@ -127,6 +127,7 @@
 		14A705CA2633956B006B7F6B /* ModelCanvasPlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A705C92633956B006B7F6B /* ModelCanvasPlateViewController.swift */; };
 		14A705CE2639D83E006B7F6B /* ModelCanvasPlateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A705CD2639D83E006B7F6B /* ModelCanvasPlateView.swift */; };
 		14AA8FBC2589973700BBEB90 /* PaupLikelihoodOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA8FBB2589973700BBEB90 /* PaupLikelihoodOptionsViewController.swift */; };
+		14AC6F4628BAC1A800F01B95 /* ModelNotificationActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AC6F4528BAC1A800F01B95 /* ModelNotificationActionHandler.swift */; };
 		14ADDC87245BB151000D49DB /* Distribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADDC86245BB151000D49DB /* Distribution.swift */; };
 		14ADDC89245BB62A000D49DB /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADDC88245BB62A000D49DB /* Parameter.swift */; };
 		14ADDC8B2460A3D0000D49DB /* ModelVariableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADDC8A2460A3D0000D49DB /* ModelVariableController.swift */; };
@@ -1633,6 +1634,7 @@
 		14A705C92633956B006B7F6B /* ModelCanvasPlateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasPlateViewController.swift; sourceTree = "<group>"; };
 		14A705CD2639D83E006B7F6B /* ModelCanvasPlateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCanvasPlateView.swift; sourceTree = "<group>"; };
 		14AA8FBB2589973700BBEB90 /* PaupLikelihoodOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaupLikelihoodOptionsViewController.swift; sourceTree = "<group>"; };
+		14AC6F4528BAC1A800F01B95 /* ModelNotificationActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNotificationActionHandler.swift; sourceTree = "<group>"; };
 		14ADDC86245BB151000D49DB /* Distribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distribution.swift; sourceTree = "<group>"; };
 		14ADDC88245BB62A000D49DB /* Parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		14ADDC8A2460A3D0000D49DB /* ModelVariableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVariableController.swift; sourceTree = "<group>"; };
@@ -4935,6 +4937,7 @@
 				14A705C92633956B006B7F6B /* ModelCanvasPlateViewController.swift */,
 				14717594264312D900117EC0 /* ModelPlateController.swift */,
 				1471746A2668122400D921E6 /* Plate.swift */,
+				14AC6F4528BAC1A800F01B95 /* ModelNotificationActionHandler.swift */,
 			);
 			path = "Model Tool";
 			sourceTree = "<group>";
@@ -9098,6 +9101,7 @@
 				14E00822261BCAE500D97E68 /* Move_CorrelationMatrixSingleElementBeta.cpp in Sources */,
 				14E00A2F261BCAE700D97E68 /* nxsdatablock.cpp in Sources */,
 				14E00777261BCAE500D97E68 /* AbstractCoalescent.cpp in Sources */,
+				14AC6F4628BAC1A800F01B95 /* ModelNotificationActionHandler.swift in Sources */,
 				14E00564261BCAE400D97E68 /* RandomIntegerWalkProposal.cpp in Sources */,
 				14E0052F261BCAE400D97E68 /* IndependentTopologyProposal.cpp in Sources */,
 				14E006E6261BCAE500D97E68 /* SampledCladogenesisRootFrequenciesFunction.cpp in Sources */,
