@@ -43,8 +43,8 @@ class ModelToolViewController: NSSplitViewController, ModelPaletteViewController
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        if let modelToolWC = view.window?.windowController as? ModelToolWindowController {
-            self.tool = modelToolWC.tool
+        if let modelToolWC = view.window?.windowController as? ModelToolWindowController, let model = modelToolWC.tool as? Model {
+            self.tool = model
             self.parameters = modelToolWC.parameters
         }
         paletteViewController?.delegate = self

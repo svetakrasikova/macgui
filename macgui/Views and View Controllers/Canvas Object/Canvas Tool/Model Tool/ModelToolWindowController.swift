@@ -11,20 +11,18 @@ import UserNotifications
 import Foundation
 import UserNotifications
 
-class ModelToolWindowController: NSWindowController {
+class ModelToolWindowController: InspectorWindowController {
     
     enum NotificationID: String {
         case ValidityCheckNotificationID, ValidityCheckErrors, ShowIssues
     }
     
-    weak var tool: Model?
     var parameters: [PaletteCategory]?
     @IBOutlet weak var zoom: NSPopUpButton!
     @IBOutlet weak var share: NSButton!
     let un = UNUserNotificationCenter.current()
     
     @IBAction func shareClicked(_ sender: NSButton) {
-        //show a picker pop up menu with the export and import option
         let model = "Model"
         let picker = NSSharingServicePicker(items: [model])
         picker.delegate = self
@@ -51,7 +49,7 @@ class ModelToolWindowController: NSWindowController {
     
     @IBAction func checkModelClicked(_ sender: NSButton) {
         // validate the model tool, show the succeed message like in Xcode build or fail message, possibly highlight the problematic nodes, add a button to see the log of active issues
-        guard let model = self.tool else { return }
+        guard let model = self.tool as? Model else { return }
         if let isValid = model.isValid() {
             validityCheckNotification(isValid: isValid)
         } else {
