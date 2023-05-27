@@ -4925,7 +4925,6 @@
 				14C618DF23E0E0CE001FFFD6 /* ModelCanvasViewController.swift */,
 				14BF307C23E236F100426D7A /* ModelCanvasView.swift */,
 				1410C3B0240594720044EB48 /* ModelNode.swift */,
-				14F89EE2276954470065F251 /* ModelNodeChecker.swift */,
 				144031D6261CCEDE007D7BB7 /* ModelPaletteItemController.swift */,
 				14ADDC8A2460A3D0000D49DB /* ModelVariableController.swift */,
 				141461682684DB17006CEE54 /* ModelDeterministicVariableController.swift */,
@@ -4937,6 +4936,7 @@
 				14A705C92633956B006B7F6B /* ModelCanvasPlateViewController.swift */,
 				14717594264312D900117EC0 /* ModelPlateController.swift */,
 				1471746A2668122400D921E6 /* Plate.swift */,
+				14F89EE2276954470065F251 /* ModelNodeChecker.swift */,
 				14AC6F4528BAC1A800F01B95 /* ModelNotificationActionHandler.swift */,
 			);
 			path = "Model Tool";
