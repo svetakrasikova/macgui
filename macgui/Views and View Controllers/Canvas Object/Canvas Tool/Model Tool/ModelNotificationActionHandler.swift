@@ -13,9 +13,18 @@ class ModelNotificationActionHandler {
     
     static let sharedNotificationActionHandler = ModelNotificationActionHandler()
     
-    private init() {}
+    weak var delegate: ModelNotificationDelegate?
+    
+    private init() {
+    }
     
     func showIssues() {
-        print("Implement Show Issues Navigator")
-    }
+        guard let delegate = self.delegate else { return }
+        delegate.showIssues()
+   }
+}
+
+
+protocol ModelNotificationDelegate: AnyObject {
+    func showIssues()
 }

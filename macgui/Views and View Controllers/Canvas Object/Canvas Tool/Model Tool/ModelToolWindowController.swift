@@ -12,6 +12,7 @@ import Foundation
 import UserNotifications
 
 class ModelToolWindowController: InspectorWindowController {
+  
     
     enum NotificationID: String {
         case ValidityCheckNotificationID, ValidityCheckErrors, ShowIssues
@@ -112,16 +113,14 @@ class ModelToolWindowController: InspectorWindowController {
         return nil
     }
     
-    @IBAction func collapseExpandSidebar(_ sender: NSButton) {
-        guard let  palette = self.palette else {
-            return
+    weak var issuesLog: NSSplitViewItem? {
+        if let issuesLog = (contentViewController as? ModelToolViewController)?.splitViewItems[1] {
+            return issuesLog
         }
-        if palette.isCollapsed {
-            palette.isCollapsed = false
-        } else {
-            palette.isCollapsed = true
-        }
+        return nil
     }
+    
+    
     
     @objc func changeModelZoomTitle(notification: Notification){
         let userInfo = notification.userInfo! as! [String : Float]
@@ -138,6 +137,8 @@ class ModelToolWindowController: InspectorWindowController {
                                                selector: #selector(changeModelZoomTitle(notification:)),
                                                name: .didChangeMagnification,
                                                object: nil)
+        
+        ModelNotificationActionHandler.sharedNotificationActionHandler.delegate = self
     }
     
 }
@@ -166,3 +167,14 @@ extension ModelToolWindowController: NSSharingServicePickerDelegate {
         
     }
 }
+
+extension ModelToolWindowController: ModelNotificationDelegate {
+    
+    func showIssues() {
+        self.collapseRightSidebar(NSButton())
+    }
+    
+}
+
+
+
