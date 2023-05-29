@@ -69,12 +69,31 @@ class ModelNodeChecker: NSObject {
     func checkDistributionParameters() -> Error? {
         guard let distribution = node.distribution else { return nil }
         let paramCount = node.distributionParameters.filter({ $0 is ModelNode }).count
-        let paramDiff = distribution.parameters.count - paramCount 
-        guard paramDiff == 0
-        else {
+        let paramDiff = distribution.parameters.count - paramCount
+        
+        if (distribution.parameters.count - paramCount == 0) {
+            return nil
+        } else {
             return ModelNodeError.distributionParametersUndefined(node, paramDiff)
         }
-        return nil
+    }
+    
+    
+    func errorsDescription(errors: [Error]) -> [String] {
+        var errorDescriptions = [String]()
+        for error in errors {
+            switch error  {
+            case ModelNodeChecker.ModelNodeError.distributionUndefined(let node):
+                errorDescriptions.append("\(node.descriptiveName): undefined distribution.")
+            case ModelNodeChecker.ModelNodeError.constantValueUndefined(let node):
+                errorDescriptions.append("\(node.descriptiveName): undefined constant value.")
+            case ModelNodeChecker.ModelNodeError.distributionParametersUndefined(let node, let num):
+                let numParamString = num > 1 ? "\(num) undefined parameters" : "1 undefined parameter"
+                errorDescriptions.append("\(node.descriptiveName): \(numParamString).")
+            default: break
+            }
+        }
+        return errorDescriptions
     }
 }
 

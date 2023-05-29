@@ -30,24 +30,6 @@ class ModelToolWindowController: InspectorWindowController {
         picker.show(relativeTo: .zero, of: sender, preferredEdge: .minY)
     }
     
-    
-    func errorsDescription(errors: [Error]) -> [String] {
-        var errorDescriptions = [String]()
-        for error in errors {
-            switch error  {
-            case ModelNodeChecker.ModelNodeError.distributionUndefined(let node):
-                errorDescriptions.append("\(node.descriptiveName) has undefined distribution.")
-            case ModelNodeChecker.ModelNodeError.constantValueUndefined(let node):
-                errorDescriptions.append("\(node.descriptiveName) has undefined value.")
-            case ModelNodeChecker.ModelNodeError.distributionParametersUndefined(let node, let num):
-                let numParamString = num > 1 ? "\(num) undefined parameters" : "undefined 1 parameter"
-                errorDescriptions.append("\(node.descriptiveName) has \(numParamString).")
-            default: break
-            }
-        }
-        return errorDescriptions
-    }
-    
     @IBAction func checkModelClicked(_ sender: NSButton) {
         // validate the model tool, show the succeed message like in Xcode build or fail message, possibly highlight the problematic nodes, add a button to see the log of active issues
         guard let model = self.tool as? Model else { return }
